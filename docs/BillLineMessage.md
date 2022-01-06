@@ -1,0 +1,26 @@
+# Buildium::BillLineMessage
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **gl_account** | [**GLAccountMessage**](GLAccountMessage.md) |  | [optional] |
+| **amount** | **Float** | Line item amount. | [optional] |
+| **markup** | [**BillMarkupMessage**](BillMarkupMessage.md) |  | [optional] |
+| **memo** | **String** | Description of the line item. | [optional] |
+
+## Example
+
+```ruby
+require 'buildium'
+
+instance = Buildium::BillLineMessage.new(
+  accounting_entity: null,
+  gl_account: null,
+  amount: null,
+  markup: null,
+  memo: null
+)
+```
+

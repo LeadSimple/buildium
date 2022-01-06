@@ -1,0 +1,4 @@
+additionalProperties:
+  moduleName: Buildium
+  gemDescription: API client library for Buildium
+  gemVersion: 1.0.0

@@ -1,0 +1,20 @@
+# Buildium::GLAccountBalanceItemMessage
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **balance** | **Float** | The sum of transactions associated with the general ledger account for the given accounting entity. | [optional] |
+| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+
+## Example
+
+```ruby
+require 'buildium'
+
+instance = Buildium::GLAccountBalanceItemMessage.new(
+  balance: null,
+  accounting_entity: null
+)
+```
+

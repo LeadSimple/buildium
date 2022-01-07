@@ -17,7 +17,7 @@ sed -i "s/require 'buildium\/models\/api_error'//g" lib/buildium.rb
 
 # Move the READMEs around so that we can customize them
 # The real readme for the project is in bin/README.md
-mv README.md docs/README.md
+mv README.md DOCS.md
 cp bin/README.md README.md
 
 # Remove final files that we don't need from the template

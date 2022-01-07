@@ -79,7 +79,7 @@ rental_properties_api.get_all_rentals()
 ```
 
 ## Documentation
-Read the [generated docs here](../docs/README.md). They're actually pretty good!
+Read the [generated docs here](/docs/README.md). They're actually pretty good!
 
 ## How to Regenerate This Library
 

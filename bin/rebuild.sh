@@ -1,3 +1,6 @@
+# Delete old files
+rm -rf lib/ spec/ docs/
+
 # Rename operations that have duplicated names after we remove the "ExternalApi"
 # artifact below. Without this, both operations will be named "CreateCharge" and conflict.
 sed -i 's/LeaseLedgerTransactionsExternalApi_CreateCharge/CreateLeaseLedgerCharge/g' bin/swagger.json

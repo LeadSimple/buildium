@@ -8,7 +8,7 @@ sed -i 's/OwnershipAccountsLedgerExternalApi_CreateCharge/CreateOwnershipAccount
 sed -i 's/: ".*ExternalApi_/: "/g' bin/swagger.json
 
 # Generate the files using openapi-generator: https://openapi-generator.tech/
-npx @openapitools/openapi-generator-cli generate -i bin/swagger.json -g ruby -o . -c bin/config.yml --library=faraday
+npx @openapitools/openapi-generator-cli generate -i bin/swagger.json -g ruby -o . -c bin/config.yml --library=faraday -t ./.openapi-generator/templates/ruby-client
 
 # Remove the ApiError model: it is not used and conflicts with the ApiError exception class
 rm lib/buildium/models/api_error.rb

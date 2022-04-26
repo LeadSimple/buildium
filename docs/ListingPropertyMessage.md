@@ -11,6 +11,7 @@
 | **structure_description** | **String** | Description of the rental property structure. | [optional] |
 | **year_built** | **Integer** | Year the rental property was built. | [optional] |
 | **features** | **Array&lt;String&gt;** | List of features for the property. | [optional] |
+| **included_in_rent** | **Array&lt;String&gt;** | The list of amenities included in rent the property has. | [optional] |
 | **files** | [**Array&lt;ListingFileMessage&gt;**](ListingFileMessage.md) | List of media files associated with the property. | [optional] |
 
 ## Example
@@ -26,6 +27,7 @@ instance = Buildium::ListingPropertyMessage.new(
   structure_description: null,
   year_built: null,
   features: null,
+  included_in_rent: null,
   files: null
 )
 ```

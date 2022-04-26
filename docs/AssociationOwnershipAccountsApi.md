@@ -5,18 +5,19 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_association_ownership_account**](AssociationOwnershipAccountsApi.md#create_association_ownership_account) | **POST** /v1/associations/ownershipaccounts | Create an ownership account |
-| [**create_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#create_association_ownership_account_note) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Create an ownership account note |
+| [**create_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#create_association_ownership_account_note) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Create a note |
 | [**create_ownership_account_credit**](AssociationOwnershipAccountsApi.md#create_ownership_account_credit) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/credits | Create a ledger credit |
 | [**create_ownership_account_ledger_charge**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_charge) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/charges | Create a ledger charge |
 | [**create_ownership_account_ledger_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/payments | Create a ledger payment |
 | [**get_all_ownership_accounts**](AssociationOwnershipAccountsApi.md#get_all_ownership_accounts) | **GET** /v1/associations/ownershipaccounts | Retrieve all ownership accounts |
-| [**get_association_ownership_account_note_by_note_id**](AssociationOwnershipAccountsApi.md#get_association_ownership_account_note_by_note_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Retrieve an ownership account note |
-| [**get_association_ownership_account_notes**](AssociationOwnershipAccountsApi.md#get_association_ownership_account_notes) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Retrieve all ownership account notes |
+| [**get_association_ownership_account_note_by_note_id**](AssociationOwnershipAccountsApi.md#get_association_ownership_account_note_by_note_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Retrieve a note |
+| [**get_association_ownership_account_notes**](AssociationOwnershipAccountsApi.md#get_association_ownership_account_notes) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Retrieve all notes |
 | [**get_ownership_account_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId} | Retrieve an ownership account |
 | [**get_ownership_account_ledger**](AssociationOwnershipAccountsApi.md#get_ownership_account_ledger) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/transactions | Retrieve ownership account transactions |
 | [**get_ownership_account_outstanding_balances**](AssociationOwnershipAccountsApi.md#get_ownership_account_outstanding_balances) | **GET** /v1/associations/ownershipaccounts/outstandingbalances | Retrieve all outstanding balances |
-| [**get_ownership_account_transaction_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_transaction_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/transactions/{transactionId} | Retrieve a single ownership account transaction |
-| [**update_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#update_association_ownership_account_note) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Update an ownership account note |
+| [**get_ownership_account_transaction_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_transaction_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/transactions/{transactionId} | Retrieve an ownership account transaction |
+| [**update_association_ownership_account**](AssociationOwnershipAccountsApi.md#update_association_ownership_account) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId} | Update an ownership account |
+| [**update_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#update_association_ownership_account_note) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Update a note |
 
 
 ## create_association_ownership_account
@@ -99,7 +100,7 @@ end
 
 > <NoteMessage> create_association_ownership_account_note(ownership_account_id, note_post_message)
 
-Create an ownership account note
+Create a note
 
 Creates a new ownership account note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
 
@@ -126,7 +127,7 @@ ownership_account_id = 56 # Integer |
 note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
 
 begin
-  # Create an ownership account note
+  # Create a note
   result = api_instance.create_association_ownership_account_note(ownership_account_id, note_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -142,7 +143,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create an ownership account note
+  # Create a note
   data, status_code, headers = api_instance.create_association_ownership_account_note_with_http_info(ownership_account_id, note_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -503,7 +504,7 @@ end
 
 > <NoteMessage> get_association_ownership_account_note_by_note_id(ownership_account_id, note_id)
 
-Retrieve an ownership account note
+Retrieve a note
 
 Retrieves an ownership account note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; OwnershipAccounts</span> - `View`
 
@@ -530,7 +531,7 @@ ownership_account_id = 56 # Integer |
 note_id = 56 # Integer | 
 
 begin
-  # Retrieve an ownership account note
+  # Retrieve a note
   result = api_instance.get_association_ownership_account_note_by_note_id(ownership_account_id, note_id)
   p result
 rescue Buildium::ApiError => e
@@ -546,7 +547,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve an ownership account note
+  # Retrieve a note
   data, status_code, headers = api_instance.get_association_ownership_account_note_by_note_id_with_http_info(ownership_account_id, note_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -581,7 +582,7 @@ end
 
 > <Array<NoteMessage>> get_association_ownership_account_notes(ownership_account_id, opts)
 
-Retrieve all ownership account notes
+Retrieve all notes
 
 Retrieves notes for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; OwnershipAccounts</span> - `View`
 
@@ -615,7 +616,7 @@ opts = {
 }
 
 begin
-  # Retrieve all ownership account notes
+  # Retrieve all notes
   result = api_instance.get_association_ownership_account_notes(ownership_account_id, opts)
   p result
 rescue Buildium::ApiError => e
@@ -631,7 +632,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all ownership account notes
+  # Retrieve all notes
   data, status_code, headers = api_instance.get_association_ownership_account_notes_with_http_info(ownership_account_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -929,7 +930,7 @@ end
 
 > <OwnershipAccountTransactionMessage> get_ownership_account_transaction_by_id(ownership_account_id, transaction_id)
 
-Retrieve a single ownership account transaction
+Retrieve an ownership account transaction
 
 Retrieves a single ownership account transaction.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
 
@@ -956,7 +957,7 @@ ownership_account_id = 56 # Integer | The ownership account identifier.
 transaction_id = 56 # Integer | The transaction identifier.
 
 begin
-  # Retrieve a single ownership account transaction
+  # Retrieve an ownership account transaction
   result = api_instance.get_ownership_account_transaction_by_id(ownership_account_id, transaction_id)
   p result
 rescue Buildium::ApiError => e
@@ -972,7 +973,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a single ownership account transaction
+  # Retrieve an ownership account transaction
   data, status_code, headers = api_instance.get_ownership_account_transaction_by_id_with_http_info(ownership_account_id, transaction_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1003,13 +1004,91 @@ end
 - **Accept**: application/json
 
 
+## update_association_ownership_account
+
+> <AssociationOwnershipAccountMessage> update_association_ownership_account(ownership_account_id, association_ownership_account_put_message)
+
+Update an ownership account
+
+Updates an ownership account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+association_ownership_account_put_message = Buildium::AssociationOwnershipAccountPutMessage.new({date_of_purchase: Date.today}) # AssociationOwnershipAccountPutMessage | 
+
+begin
+  # Update an ownership account
+  result = api_instance.update_association_ownership_account(ownership_account_id, association_ownership_account_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->update_association_ownership_account: #{e}"
+end
+```
+
+#### Using the update_association_ownership_account_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AssociationOwnershipAccountMessage>, Integer, Hash)> update_association_ownership_account_with_http_info(ownership_account_id, association_ownership_account_put_message)
+
+```ruby
+begin
+  # Update an ownership account
+  data, status_code, headers = api_instance.update_association_ownership_account_with_http_info(ownership_account_id, association_ownership_account_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AssociationOwnershipAccountMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->update_association_ownership_account_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **association_ownership_account_put_message** | [**AssociationOwnershipAccountPutMessage**](AssociationOwnershipAccountPutMessage.md) |  |  |
+
+### Return type
+
+[**AssociationOwnershipAccountMessage**](AssociationOwnershipAccountMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_association_ownership_account_note
 
 > <NoteMessage> update_association_ownership_account_note(ownership_account_id, note_id, note_put_message)
 
-Update an ownership account note
+Update a note
 
-Updates an association ownership account note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View` `Edit`
+Updates an association ownership account note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -1035,7 +1114,7 @@ note_id = 56 # Integer |
 note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
 
 begin
-  # Update an ownership account note
+  # Update a note
   result = api_instance.update_association_ownership_account_note(ownership_account_id, note_id, note_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -1051,7 +1130,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update an ownership account note
+  # Update a note
   data, status_code, headers = api_instance.update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, note_put_message)
   p status_code # => 2xx
   p headers # => { ... }

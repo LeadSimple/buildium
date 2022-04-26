@@ -41,6 +41,8 @@ module Buildium
 
     attr_accessor :payment_detail
 
+    attr_accessor :deposit_details
+
     attr_accessor :journal
 
     class EnumAttributeValidator
@@ -77,6 +79,7 @@ module Buildium
         :'unit_id' => :'UnitId',
         :'unit_number' => :'UnitNumber',
         :'payment_detail' => :'PaymentDetail',
+        :'deposit_details' => :'DepositDetails',
         :'journal' => :'Journal'
       }
     end
@@ -98,6 +101,7 @@ module Buildium
         :'unit_id' => :'Integer',
         :'unit_number' => :'String',
         :'payment_detail' => :'PaymentDetailMessage',
+        :'deposit_details' => :'DepositDetailMessage',
         :'journal' => :'GeneralLedgerJournalMessage'
       }
     end
@@ -159,6 +163,10 @@ module Buildium
         self.payment_detail = attributes[:'payment_detail']
       end
 
+      if attributes.key?(:'deposit_details')
+        self.deposit_details = attributes[:'deposit_details']
+      end
+
       if attributes.key?(:'journal')
         self.journal = attributes[:'journal']
       end
@@ -184,7 +192,7 @@ module Buildium
     def transaction_type=(transaction_type)
       validator = EnumAttributeValidator.new('String', ["Bill", "Check", "Charge", "Payment", "Credit", "Refund", "ApplyDeposit", "ElectronicFundsTransfer", "Other", "Deposit", "GeneralJournalEntry", "OwnerContribution", "ReversePayment", "ReverseElectronicFundsTransfer", "VendorCredit", "RentalApplicationFeePayment", "ReverseRentalApplicationFeePayment", "ReverseOwnerContribution", "VendorRefund", "UnreversedPayment", "UnreversedElectronicFundsTransfer", "UnreversedOwnerContribution", "UnreversedRentalApplicationFeePayment"])
       unless validator.valid?(transaction_type)
-        fail ArgumentError, "invalid value for \"transaction_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ transaction_type.inspect } for \"transaction_type\", must be one of #{validator.allowable_values}."
       end
       @transaction_type = transaction_type
     end
@@ -203,6 +211,7 @@ module Buildium
           unit_id == o.unit_id &&
           unit_number == o.unit_number &&
           payment_detail == o.payment_detail &&
+          deposit_details == o.deposit_details &&
           journal == o.journal
     end
 
@@ -215,7 +224,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, date, transaction_type, total_amount, check_number, unit_agreement, unit_id, unit_number, payment_detail, journal].hash
+      [id, date, transaction_type, total_amount, check_number, unit_agreement, unit_id, unit_number, payment_detail, deposit_details, journal].hash
     end
 
     # Builds the object from hash
@@ -337,5 +346,4 @@ module Buildium
     end
 
   end
-
 end

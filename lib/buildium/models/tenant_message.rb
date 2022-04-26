@@ -244,7 +244,7 @@ module Buildium
     def sms_opt_in_status=(sms_opt_in_status)
       validator = EnumAttributeValidator.new('String', ["NotSet", "RequestSent", "OptedIn", "OptedOut"])
       unless validator.valid?(sms_opt_in_status)
-        fail ArgumentError, "invalid value for \"sms_opt_in_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ sms_opt_in_status.inspect } for \"sms_opt_in_status\", must be one of #{validator.allowable_values}."
       end
       @sms_opt_in_status = sms_opt_in_status
     end
@@ -254,7 +254,7 @@ module Buildium
     def mailing_preference=(mailing_preference)
       validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
       unless validator.valid?(mailing_preference)
-        fail ArgumentError, "invalid value for \"mailing_preference\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ mailing_preference.inspect } for \"mailing_preference\", must be one of #{validator.allowable_values}."
       end
       @mailing_preference = mailing_preference
     end
@@ -413,5 +413,4 @@ module Buildium
     end
 
   end
-
 end

@@ -115,7 +115,7 @@ module Buildium
     def bank_account_status=(bank_account_status)
       validator = EnumAttributeValidator.new('String', ["Active", "InActive"])
       unless validator.valid?(bank_account_status)
-        fail ArgumentError, "invalid value for \"bank_account_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ bank_account_status.inspect } for \"bank_account_status\", must be one of #{validator.allowable_values}."
       end
       @bank_account_status = bank_account_status
     end
@@ -260,5 +260,4 @@ module Buildium
     end
 
   end
-
 end

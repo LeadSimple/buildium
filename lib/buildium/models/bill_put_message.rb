@@ -31,6 +31,9 @@ module Buildium
     # The reference or invoice number that the vendor assigned to the invoice. The value cannot exceed 40 characters.
     attr_accessor :reference_number
 
+    # A collection of line items associated with the bill.
+    attr_accessor :lines
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -38,7 +41,8 @@ module Buildium
         :'due_date' => :'DueDate',
         :'memo' => :'Memo',
         :'vendor_id' => :'VendorId',
-        :'reference_number' => :'ReferenceNumber'
+        :'reference_number' => :'ReferenceNumber',
+        :'lines' => :'Lines'
       }
     end
 
@@ -54,7 +58,8 @@ module Buildium
         :'due_date' => :'Date',
         :'memo' => :'String',
         :'vendor_id' => :'Integer',
-        :'reference_number' => :'String'
+        :'reference_number' => :'String',
+        :'lines' => :'Array<BillLinePutMessage>'
       }
     end
 
@@ -98,6 +103,12 @@ module Buildium
       if attributes.key?(:'reference_number')
         self.reference_number = attributes[:'reference_number']
       end
+
+      if attributes.key?(:'lines')
+        if (value = attributes[:'lines']).is_a?(Array)
+          self.lines = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -137,7 +148,8 @@ module Buildium
           due_date == o.due_date &&
           memo == o.memo &&
           vendor_id == o.vendor_id &&
-          reference_number == o.reference_number
+          reference_number == o.reference_number &&
+          lines == o.lines
     end
 
     # @see the `==` method
@@ -149,7 +161,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [date, due_date, memo, vendor_id, reference_number].hash
+      [date, due_date, memo, vendor_id, reference_number, lines].hash
     end
 
     # Builds the object from hash
@@ -271,5 +283,4 @@ module Buildium
     end
 
   end
-
 end

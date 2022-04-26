@@ -125,7 +125,7 @@ module Buildium
     def section_type=(section_type)
       validator = EnumAttributeValidator.new('String', ["ApplicantInformation", "PropertyInformation", "RentalHistory", "Employment", "References", "Cosigners", "AdditionalOccupants", "Pets", "Vehicles", "TermsAndConditions", "Other"])
       unless validator.valid?(section_type)
-        fail ArgumentError, "invalid value for \"section_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ section_type.inspect } for \"section_type\", must be one of #{validator.allowable_values}."
       end
       @section_type = section_type
     end
@@ -271,5 +271,4 @@ module Buildium
     end
 
   end
-
 end

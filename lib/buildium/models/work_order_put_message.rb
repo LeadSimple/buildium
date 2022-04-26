@@ -189,7 +189,7 @@ module Buildium
     def entry_allowed=(entry_allowed)
       validator = EnumAttributeValidator.new('String', ["Unknown", "Yes", "No"])
       unless validator.valid?(entry_allowed)
-        fail ArgumentError, "invalid value for \"entry_allowed\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ entry_allowed.inspect } for \"entry_allowed\", must be one of #{validator.allowable_values}."
       end
       @entry_allowed = entry_allowed
     end
@@ -341,5 +341,4 @@ module Buildium
     end
 
   end
-
 end

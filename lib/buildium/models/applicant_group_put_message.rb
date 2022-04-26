@@ -135,7 +135,7 @@ module Buildium
     def applicant_group_status=(applicant_group_status)
       validator = EnumAttributeValidator.new('String', ["Undecided", "Approved", "Rejected", "Cancelled", "Deferred"])
       unless validator.valid?(applicant_group_status)
-        fail ArgumentError, "invalid value for \"applicant_group_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ applicant_group_status.inspect } for \"applicant_group_status\", must be one of #{validator.allowable_values}."
       end
       @applicant_group_status = applicant_group_status
     end
@@ -281,5 +281,4 @@ module Buildium
     end
 
   end
-
 end

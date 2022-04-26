@@ -162,7 +162,7 @@ module Buildium
     def entity_type=(entity_type)
       validator = EnumAttributeValidator.new('String', ["Rental", "RentalOwner"])
       unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value for \"entity_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
       end
       @entity_type = entity_type
     end
@@ -172,7 +172,7 @@ module Buildium
     def past_due_email=(past_due_email)
       validator = EnumAttributeValidator.new('String', ["NoEmailAddress", "Sent"])
       unless validator.valid?(past_due_email)
-        fail ArgumentError, "invalid value for \"past_due_email\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ past_due_email.inspect } for \"past_due_email\", must be one of #{validator.allowable_values}."
       end
       @past_due_email = past_due_email
     end
@@ -182,7 +182,7 @@ module Buildium
     def balance_duration=(balance_duration)
       validator = EnumAttributeValidator.new('String', ["TotalBalance", "Balance0to30Days", "Balance31to60Days", "Balance61to90Days", "BalanceOver90Days"])
       unless validator.valid?(balance_duration)
-        fail ArgumentError, "invalid value for \"balance_duration\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ balance_duration.inspect } for \"balance_duration\", must be one of #{validator.allowable_values}."
       end
       @balance_duration = balance_duration
     end
@@ -192,7 +192,7 @@ module Buildium
     def eviction_status=(eviction_status)
       validator = EnumAttributeValidator.new('String', ["NotEvictionPending", "EvictionPending"])
       unless validator.valid?(eviction_status)
-        fail ArgumentError, "invalid value for \"eviction_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ eviction_status.inspect } for \"eviction_status\", must be one of #{validator.allowable_values}."
       end
       @eviction_status = eviction_status
     end
@@ -342,5 +342,4 @@ module Buildium
     end
 
   end
-
 end

@@ -158,7 +158,7 @@ module Buildium
     def credit_type=(credit_type)
       validator = EnumAttributeValidator.new('String', ["WaiveUnpaid", "Exchange", "PreviouslyDeposited"])
       unless validator.valid?(credit_type)
-        fail ArgumentError, "invalid value for \"credit_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ credit_type.inspect } for \"credit_type\", must be one of #{validator.allowable_values}."
       end
       @credit_type = credit_type
     end
@@ -306,5 +306,4 @@ module Buildium
     end
 
   end
-
 end

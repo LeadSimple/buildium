@@ -9,6 +9,7 @@
 | **application_statuses** | **Array&lt;String&gt;** | Filters results by the applicant application status. If no status is specified, applicants with an application in any status will be returned. | [optional] |
 | **unit_ids** | **Array&lt;Integer&gt;** | Filters results to applicants associated to any of the specified rental property unit identifiers. | [optional] |
 | **name** | **String** | Filters results to applicants whose name *contains* the specified value. | [optional] |
+| **email** | **String** | Filters results to applicants whose email *contains* the specified value | [optional] |
 | **application_submitted_start_date** | **Time** | Filters results to any applicant who submitted an application on or after the date specified. | [optional] |
 | **application_submitted_end_date** | **Time** | Filters results to any applicant who submitted an application on or prior to the date specified. | [optional] |
 
@@ -23,6 +24,7 @@ instance = Buildium::ApplicantSearchMessage.new(
   application_statuses: null,
   unit_ids: null,
   name: null,
+  email: null,
   application_submitted_start_date: null,
   application_submitted_end_date: null
 )

@@ -147,7 +147,7 @@ module Buildium
     def past_due_email=(past_due_email)
       validator = EnumAttributeValidator.new('String', ["NoEmailAddress", "Sent"])
       unless validator.valid?(past_due_email)
-        fail ArgumentError, "invalid value for \"past_due_email\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ past_due_email.inspect } for \"past_due_email\", must be one of #{validator.allowable_values}."
       end
       @past_due_email = past_due_email
     end
@@ -157,7 +157,7 @@ module Buildium
     def balance_duration=(balance_duration)
       validator = EnumAttributeValidator.new('String', ["TotalBalance", "Balance0to30Days", "Balance31to60Days", "Balance61to90Days", "BalanceOver90Days"])
       unless validator.valid?(balance_duration)
-        fail ArgumentError, "invalid value for \"balance_duration\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ balance_duration.inspect } for \"balance_duration\", must be one of #{validator.allowable_values}."
       end
       @balance_duration = balance_duration
     end
@@ -305,5 +305,4 @@ module Buildium
     end
 
   end
-
 end

@@ -152,7 +152,7 @@ module Buildium
     def status=(status)
       validator = EnumAttributeValidator.new('String', ["Inactive", "Active"])
       unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ status.inspect } for \"status\", must be one of #{validator.allowable_values}."
       end
       @status = status
     end
@@ -162,7 +162,7 @@ module Buildium
     def insurance_expiration=(insurance_expiration)
       validator = EnumAttributeValidator.new('String', ["None", "Any", "Expired", "ThirtyDaysOrLess", "SixtyDaysOrLess", "NinetyDaysOrLess"])
       unless validator.valid?(insurance_expiration)
-        fail ArgumentError, "invalid value for \"insurance_expiration\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ insurance_expiration.inspect } for \"insurance_expiration\", must be one of #{validator.allowable_values}."
       end
       @insurance_expiration = insurance_expiration
     end
@@ -311,5 +311,4 @@ module Buildium
     end
 
   end
-
 end

@@ -159,7 +159,7 @@ module Buildium
     def selection_entity_type=(selection_entity_type)
       validator = EnumAttributeValidator.new('String', ["Rental", "RentalOwner", "Association"])
       unless validator.valid?(selection_entity_type)
-        fail ArgumentError, "invalid value for \"selection_entity_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ selection_entity_type.inspect } for \"selection_entity_type\", must be one of #{validator.allowable_values}."
       end
       @selection_entity_type = selection_entity_type
     end
@@ -307,5 +307,4 @@ module Buildium
     end
 
   end
-
 end

@@ -124,7 +124,7 @@ module Buildium
     def type=(type)
       validator = EnumAttributeValidator.new('String', ["NotSet", "Lease", "OwnershipAccount"])
       unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ type.inspect } for \"type\", must be one of #{validator.allowable_values}."
       end
       @type = type
     end
@@ -270,5 +270,4 @@ module Buildium
     end
 
   end
-
 end

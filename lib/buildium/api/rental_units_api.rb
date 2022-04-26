@@ -19,7 +19,7 @@ module Buildium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create a rental unit
+    # Create a unit
     # Creates a rental unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param rental_units_post_message [RentalUnitsPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -29,7 +29,7 @@ module Buildium
       data
     end
 
-    # Create a rental unit
+    # Create a unit
     # Creates a rental unit.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_units_post_message [RentalUnitsPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -87,7 +87,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a rental unit note
+    # Create a note
     # Creates a rental unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param unit_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -98,7 +98,7 @@ module Buildium
       data
     end
 
-    # Create a rental unit note
+    # Create a note
     # Creates a rental unit note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param unit_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -161,7 +161,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all rental property units
+    # Retrieve all units
     # Retrieves a list of rental property units.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to rental units that belong to the specified set of property ids.
@@ -174,7 +174,7 @@ module Buildium
       data
     end
 
-    # Retrieve all rental property units
+    # Retrieve all units
     # Retrieves a list of rental property units.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to rental units that belong to the specified set of property ids.
@@ -230,7 +230,70 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a rental property unit
+    # Retrieve all amenities
+    # Retrieves all amenities for a rental unit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # @param unit_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [RentalUnitFeaturesMessage]
+    def get_features_for_rental_unit_by_id(unit_id, opts = {})
+      data, _status_code, _headers = get_features_for_rental_unit_by_id_with_http_info(unit_id, opts)
+      data
+    end
+
+    # Retrieve all amenities
+    # Retrieves all amenities for a rental unit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # @param unit_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RentalUnitFeaturesMessage, Integer, Hash)>] RentalUnitFeaturesMessage data, response status code and response headers
+    def get_features_for_rental_unit_by_id_with_http_info(unit_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RentalUnitsApi.get_features_for_rental_unit_by_id ...'
+      end
+      # verify the required parameter 'unit_id' is set
+      if @api_client.config.client_side_validation && unit_id.nil?
+        fail ArgumentError, "Missing the required parameter 'unit_id' when calling RentalUnitsApi.get_features_for_rental_unit_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/rentals/units/{unitId}/amenities'.sub('{' + 'unitId' + '}', CGI.escape(unit_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RentalUnitFeaturesMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"RentalUnitsApi.get_features_for_rental_unit_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RentalUnitsApi#get_features_for_rental_unit_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a unit
     # Retrieves a specific rental property unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param unit_id [Integer] The rental unit identifier.
     # @param [Hash] opts the optional parameters
@@ -240,7 +303,7 @@ module Buildium
       data
     end
 
-    # Retrieve a rental property unit
+    # Retrieve a unit
     # Retrieves a specific rental property unit.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param unit_id [Integer] The rental unit identifier.
     # @param [Hash] opts the optional parameters
@@ -293,7 +356,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a rental unit note
+    # Retrieve a note
     # Retrieves a rental unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param unit_id [Integer] 
     # @param note_id [Integer] 
@@ -304,7 +367,7 @@ module Buildium
       data
     end
 
-    # Retrieve a rental unit note
+    # Retrieve a note
     # Retrieves a rental unit note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param unit_id [Integer] 
     # @param note_id [Integer] 
@@ -362,7 +425,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all rental unit notes
+    # Retrieve all notes
     # Retrieves all rental unit notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param unit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -378,7 +441,7 @@ module Buildium
       data
     end
 
-    # Retrieve all rental unit notes
+    # Retrieve all notes
     # Retrieves all rental unit notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param unit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -443,8 +506,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a rental unit note
-    # Updates a rental unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # Update a note
+    # Updates a rental unit note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param unit_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -455,8 +518,8 @@ module Buildium
       data
     end
 
-    # Update a rental unit note
-    # Updates a rental unit note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates a rental unit note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param unit_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -523,8 +586,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a rental unit
-    # Updates a rental unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # Update a unit
+    # Updates a rental unit.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param unit_id [Integer] The identifier of the unit to update.
     # @param rental_unit_put_message [RentalUnitPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -534,8 +597,8 @@ module Buildium
       data
     end
 
-    # Update a rental unit
-    # Updates a rental unit.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a unit
+    # Updates a rental unit.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param unit_id [Integer] The identifier of the unit to update.
     # @param rental_unit_put_message [RentalUnitPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -593,6 +656,80 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: RentalUnitsApi#update_rental_unit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update amenities
+    # Updates the amenities for a rental unit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # @param unit_id [Integer] 
+    # @param rental_unit_features_put_message [RentalUnitFeaturesPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [RentalUnitFeaturesMessage]
+    def update_rental_unit_features(unit_id, rental_unit_features_put_message, opts = {})
+      data, _status_code, _headers = update_rental_unit_features_with_http_info(unit_id, rental_unit_features_put_message, opts)
+      data
+    end
+
+    # Update amenities
+    # Updates the amenities for a rental unit.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param unit_id [Integer] 
+    # @param rental_unit_features_put_message [RentalUnitFeaturesPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RentalUnitFeaturesMessage, Integer, Hash)>] RentalUnitFeaturesMessage data, response status code and response headers
+    def update_rental_unit_features_with_http_info(unit_id, rental_unit_features_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RentalUnitsApi.update_rental_unit_features ...'
+      end
+      # verify the required parameter 'unit_id' is set
+      if @api_client.config.client_side_validation && unit_id.nil?
+        fail ArgumentError, "Missing the required parameter 'unit_id' when calling RentalUnitsApi.update_rental_unit_features"
+      end
+      # verify the required parameter 'rental_unit_features_put_message' is set
+      if @api_client.config.client_side_validation && rental_unit_features_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'rental_unit_features_put_message' when calling RentalUnitsApi.update_rental_unit_features"
+      end
+      # resource path
+      local_var_path = '/v1/rentals/units/{unitId}/amenities'.sub('{' + 'unitId' + '}', CGI.escape(unit_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_unit_features_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RentalUnitFeaturesMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"RentalUnitsApi.update_rental_unit_features",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RentalUnitsApi#update_rental_unit_features\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

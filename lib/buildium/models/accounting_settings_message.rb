@@ -152,7 +152,7 @@ module Buildium
     def default_accounting_basis=(default_accounting_basis)
       validator = EnumAttributeValidator.new('String', ["Accrual", "Cash"])
       unless validator.valid?(default_accounting_basis)
-        fail ArgumentError, "invalid value for \"default_accounting_basis\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ default_accounting_basis.inspect } for \"default_accounting_basis\", must be one of #{validator.allowable_values}."
       end
       @default_accounting_basis = default_accounting_basis
     end
@@ -162,7 +162,7 @@ module Buildium
     def trust_account_warning=(trust_account_warning)
       validator = EnumAttributeValidator.new('String', ["Off", "ByProperty", "ByRentalOwner"])
       unless validator.valid?(trust_account_warning)
-        fail ArgumentError, "invalid value for \"trust_account_warning\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ trust_account_warning.inspect } for \"trust_account_warning\", must be one of #{validator.allowable_values}."
       end
       @trust_account_warning = trust_account_warning
     end
@@ -311,5 +311,4 @@ module Buildium
     end
 
   end
-
 end

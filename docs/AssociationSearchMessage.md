@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **location** | **String** | Filters results to any association whose address *contains* the specified value. | [optional] |
+| **location** | **String** | Filters results to any association whose city or state *contains* the specified value. | [optional] |
 | **status** | **String** | Filters results by the status of the association. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; associations will be returned. | [optional] |
 
 ## Example

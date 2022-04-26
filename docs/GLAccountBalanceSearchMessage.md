@@ -8,7 +8,7 @@
 | **entity_id** | **Integer** | Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in &#x60;EntityType&#x60;. | [optional] |
 | **gl_account_ids** | **Array&lt;Integer&gt;** | Filters results to the specified set of general ledger account identifiers. | [optional] |
 | **accounting_basis** | **String** | The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened. |  |
-| **as_of_date** | **Date** |  |  |
+| **as_of_date** | **Date** | Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date. |  |
 
 ## Example
 

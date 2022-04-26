@@ -1,0 +1,22 @@
+# Buildium::PaymentTransactionsMessage
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | Payment transaction unique identifier. | [optional] |
+| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **amount** | **Float** | Payment amount. | [optional] |
+
+## Example
+
+```ruby
+require 'buildium'
+
+instance = Buildium::PaymentTransactionsMessage.new(
+  id: null,
+  accounting_entity: null,
+  amount: null
+)
+```
+

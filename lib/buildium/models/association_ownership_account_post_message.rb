@@ -192,7 +192,7 @@ module Buildium
     def recurring_frequency=(recurring_frequency)
       validator = EnumAttributeValidator.new('String', ["Monthly", "Weekly", "Every2Weeks", "Quarterly", "Yearly", "Every2Months", "Daily", "Every6Months", "OneTime"])
       unless validator.valid?(recurring_frequency)
-        fail ArgumentError, "invalid value for \"recurring_frequency\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ recurring_frequency.inspect } for \"recurring_frequency\", must be one of #{validator.allowable_values}."
       end
       @recurring_frequency = recurring_frequency
     end
@@ -343,5 +343,4 @@ module Buildium
     end
 
   end
-
 end

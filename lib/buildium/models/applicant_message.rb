@@ -27,6 +27,9 @@ module Buildium
     # Rental property unit unique identifier that the applicant is associated with.
     attr_accessor :unit_id
 
+    # The rental tenant identifier associated with the applicant. This value will be null if the applicant never transitioned into a tenant.
+    attr_accessor :tenant_id
+
     # Applicant first name.
     attr_accessor :first_name
 
@@ -49,6 +52,7 @@ module Buildium
         :'applicant_group_id' => :'ApplicantGroupId',
         :'property_id' => :'PropertyId',
         :'unit_id' => :'UnitId',
+        :'tenant_id' => :'TenantId',
         :'first_name' => :'FirstName',
         :'last_name' => :'LastName',
         :'email' => :'Email',
@@ -69,6 +73,7 @@ module Buildium
         :'applicant_group_id' => :'Integer',
         :'property_id' => :'Integer',
         :'unit_id' => :'Integer',
+        :'tenant_id' => :'Integer',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'email' => :'String',
@@ -112,6 +117,10 @@ module Buildium
 
       if attributes.key?(:'unit_id')
         self.unit_id = attributes[:'unit_id']
+      end
+
+      if attributes.key?(:'tenant_id')
+        self.tenant_id = attributes[:'tenant_id']
       end
 
       if attributes.key?(:'first_name')
@@ -161,6 +170,7 @@ module Buildium
           applicant_group_id == o.applicant_group_id &&
           property_id == o.property_id &&
           unit_id == o.unit_id &&
+          tenant_id == o.tenant_id &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           email == o.email &&
@@ -177,7 +187,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, applicant_group_id, property_id, unit_id, first_name, last_name, email, phone_numbers, applications].hash
+      [id, applicant_group_id, property_id, unit_id, tenant_id, first_name, last_name, email, phone_numbers, applications].hash
     end
 
     # Builds the object from hash
@@ -299,5 +309,4 @@ module Buildium
     end
 
   end
-
 end

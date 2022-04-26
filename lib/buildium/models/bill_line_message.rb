@@ -16,6 +16,9 @@ require 'time'
 module Buildium
   # Bill line items.
   class BillLineMessage
+    # The bill line item unique identifier.
+    attr_accessor :id
+
     attr_accessor :accounting_entity
 
     attr_accessor :gl_account
@@ -31,6 +34,7 @@ module Buildium
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'Id',
         :'accounting_entity' => :'AccountingEntity',
         :'gl_account' => :'GLAccount',
         :'amount' => :'Amount',
@@ -47,6 +51,7 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'id' => :'Integer',
         :'accounting_entity' => :'AccountingEntityMessage',
         :'gl_account' => :'GLAccountMessage',
         :'amount' => :'Float',
@@ -75,6 +80,10 @@ module Buildium
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
 
       if attributes.key?(:'accounting_entity')
         self.accounting_entity = attributes[:'accounting_entity']
@@ -115,6 +124,7 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
           accounting_entity == o.accounting_entity &&
           gl_account == o.gl_account &&
           amount == o.amount &&
@@ -131,7 +141,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accounting_entity, gl_account, amount, markup, memo].hash
+      [id, accounting_entity, gl_account, amount, markup, memo].hash
     end
 
     # Builds the object from hash
@@ -253,5 +263,4 @@ module Buildium
     end
 
   end
-
 end

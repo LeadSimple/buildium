@@ -30,6 +30,9 @@ module Buildium
     # Filters results to applicants whose name *contains* the specified value.
     attr_accessor :name
 
+    # Filters results to applicants whose email *contains* the specified value
+    attr_accessor :email
+
     # Filters results to any applicant who submitted an application on or after the date specified.
     attr_accessor :application_submitted_start_date
 
@@ -66,6 +69,7 @@ module Buildium
         :'application_statuses' => :'ApplicationStatuses',
         :'unit_ids' => :'UnitIds',
         :'name' => :'Name',
+        :'email' => :'Email',
         :'application_submitted_start_date' => :'ApplicationSubmittedStartDate',
         :'application_submitted_end_date' => :'ApplicationSubmittedEndDate'
       }
@@ -84,6 +88,7 @@ module Buildium
         :'application_statuses' => :'Array<String>',
         :'unit_ids' => :'Array<Integer>',
         :'name' => :'String',
+        :'email' => :'String',
         :'application_submitted_start_date' => :'Time',
         :'application_submitted_end_date' => :'Time'
       }
@@ -134,6 +139,10 @@ module Buildium
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'email')
+        self.email = attributes[:'email']
+      end
+
       if attributes.key?(:'application_submitted_start_date')
         self.application_submitted_start_date = attributes[:'application_submitted_start_date']
       end
@@ -163,7 +172,7 @@ module Buildium
     def entity_type=(entity_type)
       validator = EnumAttributeValidator.new('String', ["Rental", "RentalOwner"])
       unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value for \"entity_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
       end
       @entity_type = entity_type
     end
@@ -178,6 +187,7 @@ module Buildium
           application_statuses == o.application_statuses &&
           unit_ids == o.unit_ids &&
           name == o.name &&
+          email == o.email &&
           application_submitted_start_date == o.application_submitted_start_date &&
           application_submitted_end_date == o.application_submitted_end_date
     end
@@ -191,7 +201,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [entity_id, entity_type, application_statuses, unit_ids, name, application_submitted_start_date, application_submitted_end_date].hash
+      [entity_id, entity_type, application_statuses, unit_ids, name, email, application_submitted_start_date, application_submitted_end_date].hash
     end
 
     # Builds the object from hash
@@ -313,5 +323,4 @@ module Buildium
     end
 
   end
-
 end

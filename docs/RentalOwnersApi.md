@@ -4,21 +4,21 @@ All URIs are relative to *https://api.buildium.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_rental_owner**](RentalOwnersApi.md#create_rental_owner) | **POST** /v1/rentals/owners | Create a rental owner |
-| [**create_rental_owner_note**](RentalOwnersApi.md#create_rental_owner_note) | **POST** /v1/rentals/owners/{rentalOwnerId}/notes | Create a Rental Owner note |
-| [**get_rental_owner_by_id**](RentalOwnersApi.md#get_rental_owner_by_id) | **GET** /v1/rentals/owners/{rentalOwnerId} | Retrieve a rental owner |
-| [**get_rental_owner_note_by_id**](RentalOwnersApi.md#get_rental_owner_note_by_id) | **GET** /v1/rentals/owners/{rentalOwnerId}/notes/{noteId} | Retrieve a rental owner note |
-| [**get_rental_owner_notes**](RentalOwnersApi.md#get_rental_owner_notes) | **GET** /v1/rentals/owners/{rentalOwnerId}/notes | Retrieves all rental owner notes |
-| [**get_rental_owners**](RentalOwnersApi.md#get_rental_owners) | **GET** /v1/rentals/owners | Retrieve all rental owners |
-| [**update_rental_owner**](RentalOwnersApi.md#update_rental_owner) | **PUT** /v1/rentals/owners/{rentalOwnerId} | Update a rental owner |
-| [**update_rental_owner_note**](RentalOwnersApi.md#update_rental_owner_note) | **PUT** /v1/rentals/owners/{rentalOwnerId}/notes/{noteId} | Update a Rental Owner note |
+| [**create_rental_owner**](RentalOwnersApi.md#create_rental_owner) | **POST** /v1/rentals/owners | Create an owner |
+| [**create_rental_owner_note**](RentalOwnersApi.md#create_rental_owner_note) | **POST** /v1/rentals/owners/{rentalOwnerId}/notes | Create a note |
+| [**get_rental_owner_by_id**](RentalOwnersApi.md#get_rental_owner_by_id) | **GET** /v1/rentals/owners/{rentalOwnerId} | Retrieve an owner |
+| [**get_rental_owner_note_by_id**](RentalOwnersApi.md#get_rental_owner_note_by_id) | **GET** /v1/rentals/owners/{rentalOwnerId}/notes/{noteId} | Retrieve a note |
+| [**get_rental_owner_notes**](RentalOwnersApi.md#get_rental_owner_notes) | **GET** /v1/rentals/owners/{rentalOwnerId}/notes | Retrieves all notes |
+| [**get_rental_owners**](RentalOwnersApi.md#get_rental_owners) | **GET** /v1/rentals/owners | Retrieve all owners |
+| [**update_rental_owner**](RentalOwnersApi.md#update_rental_owner) | **PUT** /v1/rentals/owners/{rentalOwnerId} | Update an owner |
+| [**update_rental_owner_note**](RentalOwnersApi.md#update_rental_owner_note) | **PUT** /v1/rentals/owners/{rentalOwnerId}/notes/{noteId} | Update a note |
 
 
 ## create_rental_owner
 
 > <RentalOwnerMessage> create_rental_owner(rental_owner_post_message)
 
-Create a rental owner
+Create an owner
 
 Creates a rental owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
 
@@ -44,7 +44,7 @@ api_instance = Buildium::RentalOwnersApi.new
 rental_owner_post_message = Buildium::RentalOwnerPostMessage.new({is_company: false, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'}), property_ids: [37]}) # RentalOwnerPostMessage | 
 
 begin
-  # Create a rental owner
+  # Create an owner
   result = api_instance.create_rental_owner(rental_owner_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -60,7 +60,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a rental owner
+  # Create an owner
   data, status_code, headers = api_instance.create_rental_owner_with_http_info(rental_owner_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -94,7 +94,7 @@ end
 
 > <NoteMessage> create_rental_owner_note(rental_owner_id, note_post_message)
 
-Create a Rental Owner note
+Create a note
 
 Creates a new Rental Owner note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
 
@@ -121,7 +121,7 @@ rental_owner_id = 56 # Integer |
 note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
 
 begin
-  # Create a Rental Owner note
+  # Create a note
   result = api_instance.create_rental_owner_note(rental_owner_id, note_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -137,7 +137,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a Rental Owner note
+  # Create a note
   data, status_code, headers = api_instance.create_rental_owner_note_with_http_info(rental_owner_id, note_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -172,7 +172,7 @@ end
 
 > <RentalOwnerMessage> get_rental_owner_by_id(rental_owner_id)
 
-Retrieve a rental owner
+Retrieve an owner
 
 Retrieves a specific rental owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
 
@@ -198,7 +198,7 @@ api_instance = Buildium::RentalOwnersApi.new
 rental_owner_id = 56 # Integer | The rental owner identifier.
 
 begin
-  # Retrieve a rental owner
+  # Retrieve an owner
   result = api_instance.get_rental_owner_by_id(rental_owner_id)
   p result
 rescue Buildium::ApiError => e
@@ -214,7 +214,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a rental owner
+  # Retrieve an owner
   data, status_code, headers = api_instance.get_rental_owner_by_id_with_http_info(rental_owner_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -248,7 +248,7 @@ end
 
 > <NoteMessage> get_rental_owner_note_by_id(rental_owner_id, note_id)
 
-Retrieve a rental owner note
+Retrieve a note
 
 Retrieves a rental owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
 
@@ -275,7 +275,7 @@ rental_owner_id = 56 # Integer |
 note_id = 56 # Integer | 
 
 begin
-  # Retrieve a rental owner note
+  # Retrieve a note
   result = api_instance.get_rental_owner_note_by_id(rental_owner_id, note_id)
   p result
 rescue Buildium::ApiError => e
@@ -291,7 +291,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a rental owner note
+  # Retrieve a note
   data, status_code, headers = api_instance.get_rental_owner_note_by_id_with_http_info(rental_owner_id, note_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -326,7 +326,7 @@ end
 
 > <Array<NoteMessage>> get_rental_owner_notes(rental_owner_id, opts)
 
-Retrieves all rental owner notes
+Retrieves all notes
 
 Retrieves all rental owner notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
 
@@ -360,7 +360,7 @@ opts = {
 }
 
 begin
-  # Retrieves all rental owner notes
+  # Retrieves all notes
   result = api_instance.get_rental_owner_notes(rental_owner_id, opts)
   p result
 rescue Buildium::ApiError => e
@@ -376,7 +376,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieves all rental owner notes
+  # Retrieves all notes
   data, status_code, headers = api_instance.get_rental_owner_notes_with_http_info(rental_owner_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -416,7 +416,7 @@ end
 
 > <Array<RentalOwnerMessage>> get_rental_owners(opts)
 
-Retrieve all rental owners
+Retrieve all owners
 
 Retrieves a list of rental owners.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
 
@@ -451,7 +451,7 @@ opts = {
 }
 
 begin
-  # Retrieve all rental owners
+  # Retrieve all owners
   result = api_instance.get_rental_owners(opts)
   p result
 rescue Buildium::ApiError => e
@@ -467,7 +467,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all rental owners
+  # Retrieve all owners
   data, status_code, headers = api_instance.get_rental_owners_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -508,9 +508,9 @@ end
 
 > <RentalOwnerMessage> update_rental_owner(rental_owner_id, rental_owner_put_message)
 
-Update a rental owner
+Update an owner
 
-Updates a rental owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
+Updates a rental owner.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
 
 ### Examples
 
@@ -535,7 +535,7 @@ rental_owner_id = 56 # Integer | The identifier of the rental owner to update.
 rental_owner_put_message = Buildium::RentalOwnerPutMessage.new({is_company: false, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'}), property_ids: [37]}) # RentalOwnerPutMessage | 
 
 begin
-  # Update a rental owner
+  # Update an owner
   result = api_instance.update_rental_owner(rental_owner_id, rental_owner_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -551,7 +551,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a rental owner
+  # Update an owner
   data, status_code, headers = api_instance.update_rental_owner_with_http_info(rental_owner_id, rental_owner_put_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -586,9 +586,9 @@ end
 
 > <NoteMessage> update_rental_owner_note(rental_owner_id, note_id, note_put_message)
 
-Update a Rental Owner note
+Update a note
 
-Updates a Rental Owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
+Updates a Rental Owner note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
 
 ### Examples
 
@@ -614,7 +614,7 @@ note_id = 56 # Integer |
 note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
 
 begin
-  # Update a Rental Owner note
+  # Update a note
   result = api_instance.update_rental_owner_note(rental_owner_id, note_id, note_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -630,7 +630,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a Rental Owner note
+  # Update a note
   data, status_code, headers = api_instance.update_rental_owner_note_with_http_info(rental_owner_id, note_id, note_put_message)
   p status_code # => 2xx
   p headers # => { ... }

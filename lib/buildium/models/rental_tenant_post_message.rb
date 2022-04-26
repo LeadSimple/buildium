@@ -229,7 +229,7 @@ module Buildium
     def mailing_preference=(mailing_preference)
       validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
       unless validator.valid?(mailing_preference)
-        fail ArgumentError, "invalid value for \"mailing_preference\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ mailing_preference.inspect } for \"mailing_preference\", must be one of #{validator.allowable_values}."
       end
       @mailing_preference = mailing_preference
     end
@@ -385,5 +385,4 @@ module Buildium
     end
 
   end
-
 end

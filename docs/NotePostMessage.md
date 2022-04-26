@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **note** | **String** | Note contents. |  |
+| **note** | **String** | Note contents. The value cannot exceed 65535 characters. |  |
 
 ## Example
 

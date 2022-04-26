@@ -984,7 +984,7 @@ module Buildium
     end
 
     # Retrieve all transactions
-    # Retrieves all bank account transactions.              <br /><br />              Note: When using the `orderby` query string parameter, the only supported parameter is EntryDate.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves all bank account transactions.              <br /><br />              Note: When using the `orderby` query string parameter, the only supported parameter is `EntryDate`.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1001,7 +1001,7 @@ module Buildium
     end
 
     # Retrieve all transactions
-    # Retrieves all bank account transactions.              &lt;br /&gt;&lt;br /&gt;              Note: When using the &#x60;orderby&#x60; query string parameter, the only supported parameter is EntryDate.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all bank account transactions.              &lt;br /&gt;&lt;br /&gt;              Note: When using the &#x60;orderby&#x60; query string parameter, the only supported parameter is &#x60;EntryDate&#x60;.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1600,7 +1600,7 @@ module Buildium
     end
 
     # Update a bank account
-    # Updates a bank account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Banking</span> - `View` `Edit`
+    # Updates a bank account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Banking</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param bank_account_put_message [BankAccountPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1611,7 +1611,7 @@ module Buildium
     end
 
     # Update a bank account
-    # Updates a bank account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Banking&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a bank account.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Banking&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param bank_account_put_message [BankAccountPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1674,7 +1674,7 @@ module Buildium
     end
 
     # Update a deposit
-    # Updates a deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
     # @param bank_account_deposit_put_message [BankAccountDepositPutMessage] 
@@ -1686,7 +1686,7 @@ module Buildium
     end
 
     # Update a deposit
-    # Updates a deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a deposit.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
     # @param bank_account_deposit_put_message [BankAccountDepositPutMessage] 
@@ -1753,8 +1753,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a transfer for a bank account
-    # Updates a bank account transfer.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
+    # Update a transfer
+    # Updates a bank account transfer.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
     # @param bank_account_id [Integer] 
     # @param transfer_id [Integer] 
     # @param bank_account_transfer_save_message [BankAccountTransferSaveMessage] 
@@ -1765,8 +1765,8 @@ module Buildium
       data
     end
 
-    # Update a transfer for a bank account
-    # Updates a bank account transfer.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;Edit&#x60;
+    # Update a transfer
+    # Updates a bank account transfer.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param transfer_id [Integer] 
     # @param bank_account_transfer_save_message [BankAccountTransferSaveMessage] 
@@ -1834,7 +1834,7 @@ module Buildium
     end
 
     # Update a withdrawal
-    # Updates a bank account withdrawal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a bank account withdrawal.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param withdrawal_id [Integer] 
     # @param bank_account_withdrawal_save_message [BankAccountWithdrawalSaveMessage] 
@@ -1846,7 +1846,7 @@ module Buildium
     end
 
     # Update a withdrawal
-    # Updates a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param withdrawal_id [Integer] 
     # @param bank_account_withdrawal_save_message [BankAccountWithdrawalSaveMessage] 
@@ -1914,7 +1914,7 @@ module Buildium
     end
 
     # Update a check
-    # Updates a check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a check.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param bank_account_check_put_message [BankAccountCheckPutMessage] 
@@ -1926,7 +1926,7 @@ module Buildium
     end
 
     # Update a check
-    # Updates a check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a check.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param bank_account_check_put_message [BankAccountCheckPutMessage] 
@@ -1994,7 +1994,7 @@ module Buildium
     end
 
     # Update a quick deposit
-    # Updates a quick deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
+    # Updates a quick deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
     # @param bank_account_id [Integer] 
     # @param quick_deposit_id [Integer] 
     # @param bank_account_quick_deposit_save_message [BankAccountQuickDepositSaveMessage] 
@@ -2006,7 +2006,7 @@ module Buildium
     end
 
     # Update a quick deposit
-    # Updates a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;Edit&#x60;
+    # Updates a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param quick_deposit_id [Integer] 
     # @param bank_account_quick_deposit_save_message [BankAccountQuickDepositSaveMessage] 

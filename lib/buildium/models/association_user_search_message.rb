@@ -24,11 +24,17 @@ module Buildium
     # Filters results to only records whose email *contains* the specified value.
     attr_accessor :email
 
-    # Filters results to only records that belong to the specified set of association ids.
+    # Filters results to only records that belong to the specified set of association identifiers.
     attr_accessor :association_ids
 
     # Filters results to only records whose status is equal to the specified value.
     attr_accessor :statuses
+
+    # Filters results to only records that were created before this date. Must be formatted as `YYYY-MM-DD`.
+    attr_accessor :created_date_time_to
+
+    # Filters results to only records that were created after this date. Must be formatted as `YYYY-MM-DD`.
+    attr_accessor :created_date_time_from
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -59,7 +65,9 @@ module Buildium
         :'phone' => :'Phone',
         :'email' => :'Email',
         :'association_ids' => :'AssociationIds',
-        :'statuses' => :'Statuses'
+        :'statuses' => :'Statuses',
+        :'created_date_time_to' => :'CreatedDateTimeTo',
+        :'created_date_time_from' => :'CreatedDateTimeFrom'
       }
     end
 
@@ -75,7 +83,9 @@ module Buildium
         :'phone' => :'String',
         :'email' => :'String',
         :'association_ids' => :'Array<Integer>',
-        :'statuses' => :'Array<String>'
+        :'statuses' => :'Array<String>',
+        :'created_date_time_to' => :'Time',
+        :'created_date_time_from' => :'Time'
       }
     end
 
@@ -123,6 +133,14 @@ module Buildium
           self.statuses = value
         end
       end
+
+      if attributes.key?(:'created_date_time_to')
+        self.created_date_time_to = attributes[:'created_date_time_to']
+      end
+
+      if attributes.key?(:'created_date_time_from')
+        self.created_date_time_from = attributes[:'created_date_time_from']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -147,7 +165,9 @@ module Buildium
           phone == o.phone &&
           email == o.email &&
           association_ids == o.association_ids &&
-          statuses == o.statuses
+          statuses == o.statuses &&
+          created_date_time_to == o.created_date_time_to &&
+          created_date_time_from == o.created_date_time_from
     end
 
     # @see the `==` method
@@ -159,7 +179,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, phone, email, association_ids, statuses].hash
+      [name, phone, email, association_ids, statuses, created_date_time_to, created_date_time_from].hash
     end
 
     # Builds the object from hash
@@ -281,5 +301,4 @@ module Buildium
     end
 
   end
-
 end

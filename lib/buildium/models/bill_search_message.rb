@@ -161,7 +161,7 @@ module Buildium
     def entity_type=(entity_type)
       validator = EnumAttributeValidator.new('String', ["Rental", "RentalOwner", "Association"])
       unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value for \"entity_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
       end
       @entity_type = entity_type
     end
@@ -171,7 +171,7 @@ module Buildium
     def paid_status=(paid_status)
       validator = EnumAttributeValidator.new('String', ["Paid", "Unpaid", "UncollectedMarkups"])
       unless validator.valid?(paid_status)
-        fail ArgumentError, "invalid value for \"paid_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ paid_status.inspect } for \"paid_status\", must be one of #{validator.allowable_values}."
       end
       @paid_status = paid_status
     end
@@ -321,5 +321,4 @@ module Buildium
     end
 
   end
-
 end

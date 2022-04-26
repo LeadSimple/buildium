@@ -124,7 +124,7 @@ module Buildium
     def accounting_entity_type=(accounting_entity_type)
       validator = EnumAttributeValidator.new('String', ["Association", "Rental", "Company"])
       unless validator.valid?(accounting_entity_type)
-        fail ArgumentError, "invalid value for \"accounting_entity_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ accounting_entity_type.inspect } for \"accounting_entity_type\", must be one of #{validator.allowable_values}."
       end
       @accounting_entity_type = accounting_entity_type
     end
@@ -269,5 +269,4 @@ module Buildium
     end
 
   end
-
 end

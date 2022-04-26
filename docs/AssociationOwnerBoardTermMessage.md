@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | Association Owner Board Term unique identifier | [optional] |
-| **association_id** | **Integer** | Association unique identifier | [optional] |
-| **board_position_type** | **String** | Indicates the board position held by the association owner | [optional] |
-| **start_date** | **Date** | Start date of the Association Owners term as Board Member | [optional] |
-| **end_date** | **Date** | End date of the Association Owners term as Board Member | [optional] |
-| **created_date_time** | **Time** | Date and time when the Board Member position was added for the Association Owner | [optional] |
+| **id** | **Integer** | Board term unique identifier. | [optional] |
+| **association_id** | **Integer** | Association unique identifier. | [optional] |
+| **board_position_type** | **String** | Indicates the board position held by the association owner. | [optional] |
+| **start_date** | **Date** | Start date of the board member term. | [optional] |
+| **end_date** | **Date** | End date of the board member term. | [optional] |
+| **created_date_time** | **Time** | Date and time the board member position was created. | [optional] |
 
 ## Example
 

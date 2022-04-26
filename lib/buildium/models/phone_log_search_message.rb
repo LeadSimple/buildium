@@ -172,7 +172,7 @@ module Buildium
     def participant_entity_type=(participant_entity_type)
       validator = EnumAttributeValidator.new('String', ["Vendor", "RentalOwner", "RentalTenant", "AssociationOwner"])
       unless validator.valid?(participant_entity_type)
-        fail ArgumentError, "invalid value for \"participant_entity_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ participant_entity_type.inspect } for \"participant_entity_type\", must be one of #{validator.allowable_values}."
       end
       @participant_entity_type = participant_entity_type
     end
@@ -182,7 +182,7 @@ module Buildium
     def unit_agreement_type=(unit_agreement_type)
       validator = EnumAttributeValidator.new('String', ["Lease", "OwnershipAccount"])
       unless validator.valid?(unit_agreement_type)
-        fail ArgumentError, "invalid value for \"unit_agreement_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ unit_agreement_type.inspect } for \"unit_agreement_type\", must be one of #{validator.allowable_values}."
       end
       @unit_agreement_type = unit_agreement_type
     end
@@ -333,5 +333,4 @@ module Buildium
     end
 
   end
-
 end

@@ -28,6 +28,7 @@ module Buildium
     # The methodology in which revenues and expenses are recognized when calculating the balances. Specifying `Cash` calculates balances based on when money changes hands. Specifying `Accrual` calculates balances based on the period in which the transaction originally happened.
     attr_accessor :accounting_basis
 
+    # Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date.
     attr_accessor :as_of_date
 
     class EnumAttributeValidator
@@ -155,7 +156,7 @@ module Buildium
     def entity_type=(entity_type)
       validator = EnumAttributeValidator.new('String', ["Association", "Rental", "RentalOwner"])
       unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value for \"entity_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
       end
       @entity_type = entity_type
     end
@@ -165,7 +166,7 @@ module Buildium
     def accounting_basis=(accounting_basis)
       validator = EnumAttributeValidator.new('String', ["Accrual", "Cash"])
       unless validator.valid?(accounting_basis)
-        fail ArgumentError, "invalid value for \"accounting_basis\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ accounting_basis.inspect } for \"accounting_basis\", must be one of #{validator.allowable_values}."
       end
       @accounting_basis = accounting_basis
     end
@@ -313,5 +314,4 @@ module Buildium
     end
 
   end
-
 end

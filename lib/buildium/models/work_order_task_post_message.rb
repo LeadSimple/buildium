@@ -182,7 +182,7 @@ module Buildium
     def priority=(priority)
       validator = EnumAttributeValidator.new('String', ["Low", "Normal", "High"])
       unless validator.valid?(priority)
-        fail ArgumentError, "invalid value for \"priority\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ priority.inspect } for \"priority\", must be one of #{validator.allowable_values}."
       end
       @priority = priority
     end
@@ -192,7 +192,7 @@ module Buildium
     def status=(status)
       validator = EnumAttributeValidator.new('String', ["New", "InProgress", "Completed", "Deferred", "Closed"])
       unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ status.inspect } for \"status\", must be one of #{validator.allowable_values}."
       end
       @status = status
     end
@@ -342,5 +342,4 @@ module Buildium
     end
 
   end
-
 end

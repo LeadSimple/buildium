@@ -19,6 +19,8 @@
 | **vehicles** | [**Array&lt;VehicleMessage&gt;**](VehicleMessage.md) | List of vehicles associated with the association owner. | [optional] |
 | **occupies_unit** | **Boolean** | Indicates if the association owner occupies a unit(s) within the association. | [optional] |
 | **board_member_terms** | [**Array&lt;AssociationOwnerBoardTermMessage&gt;**](AssociationOwnerBoardTermMessage.md) | List of Board Member Terms for the given Association Owner(s) | [optional] |
+| **created_date_time** | **Time** | Date and time the association owner was created. | [optional] |
+| **tax_id** | **String** | Taxpayer identification number. Examples of United States identification numbers are Social Security number or a Employer Identification Number. | [optional] |
 
 ## Example
 
@@ -40,7 +42,9 @@ instance = Buildium::AssociationOwnerMessage.new(
   mailing_preference: null,
   vehicles: null,
   occupies_unit: null,
-  board_member_terms: null
+  board_member_terms: null,
+  created_date_time: null,
+  tax_id: null
 )
 ```
 

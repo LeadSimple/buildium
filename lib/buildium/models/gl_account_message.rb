@@ -202,7 +202,7 @@ module Buildium
     def type=(type)
       validator = EnumAttributeValidator.new('String', ["Asset", "Liability", "Equity", "Income", "Expense"])
       unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ type.inspect } for \"type\", must be one of #{validator.allowable_values}."
       end
       @type = type
     end
@@ -212,7 +212,7 @@ module Buildium
     def sub_type=(sub_type)
       validator = EnumAttributeValidator.new('String', ["CurrentAsset", "FixedAsset", "CurrentLiability", "LongTermLiability", "Equity", "Income", "NonOperatingIncome", "OperatingExpenses", "NonOperatingExpenses"])
       unless validator.valid?(sub_type)
-        fail ArgumentError, "invalid value for \"sub_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ sub_type.inspect } for \"sub_type\", must be one of #{validator.allowable_values}."
       end
       @sub_type = sub_type
     end
@@ -222,7 +222,7 @@ module Buildium
     def cash_flow_classification=(cash_flow_classification)
       validator = EnumAttributeValidator.new('String', ["OperatingActivities", "InvestingActivities", "FinancingActivities"])
       unless validator.valid?(cash_flow_classification)
-        fail ArgumentError, "invalid value for \"cash_flow_classification\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ cash_flow_classification.inspect } for \"cash_flow_classification\", must be one of #{validator.allowable_values}."
       end
       @cash_flow_classification = cash_flow_classification
     end
@@ -376,5 +376,4 @@ module Buildium
     end
 
   end
-
 end

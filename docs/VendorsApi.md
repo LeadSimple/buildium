@@ -6,16 +6,16 @@ All URIs are relative to *https://api.buildium.com*
 | ------ | ------------ | ----------- |
 | [**create_vendor**](VendorsApi.md#create_vendor) | **POST** /v1/vendors | Create a vendor |
 | [**create_vendor_category**](VendorsApi.md#create_vendor_category) | **POST** /v1/vendors/categories | Create a vendor category |
-| [**create_vendor_note**](VendorsApi.md#create_vendor_note) | **POST** /v1/vendors/{vendorId}/notes | Create a vendor note |
+| [**create_vendor_note**](VendorsApi.md#create_vendor_note) | **POST** /v1/vendors/{vendorId}/notes | Create a note |
 | [**get_all_vendor_categories**](VendorsApi.md#get_all_vendor_categories) | **GET** /v1/vendors/categories | Retrieve all vendor categories |
 | [**get_all_vendors**](VendorsApi.md#get_all_vendors) | **GET** /v1/vendors | Retrieve all vendors |
 | [**get_vendor_by_id**](VendorsApi.md#get_vendor_by_id) | **GET** /v1/vendors/{vendorId} | Retrieve a vendor |
 | [**get_vendor_category_by_id**](VendorsApi.md#get_vendor_category_by_id) | **GET** /v1/vendors/categories/{vendorCategoryId} | Retrieve a vendor category |
-| [**get_vendor_note_by_note_id**](VendorsApi.md#get_vendor_note_by_note_id) | **GET** /v1/vendors/{vendorId}/notes/{noteId} | Retrieve a vendor note |
-| [**get_vendor_notes**](VendorsApi.md#get_vendor_notes) | **GET** /v1/vendors/{vendorId}/notes | Retrieve all vendor notes |
+| [**get_vendor_note_by_note_id**](VendorsApi.md#get_vendor_note_by_note_id) | **GET** /v1/vendors/{vendorId}/notes/{noteId} | Retrieve a note |
+| [**get_vendor_notes**](VendorsApi.md#get_vendor_notes) | **GET** /v1/vendors/{vendorId}/notes | Retrieve all notes |
 | [**update_vendor**](VendorsApi.md#update_vendor) | **PUT** /v1/vendors/{vendorId} | Update a vendor |
 | [**update_vendor_category**](VendorsApi.md#update_vendor_category) | **PUT** /v1/vendors/categories/{vendorCategoryId} | Update a vendor category |
-| [**update_vendor_note**](VendorsApi.md#update_vendor_note) | **PUT** /v1/vendors/{vendorId}/notes/{noteId} | Update a vendor note |
+| [**update_vendor_note**](VendorsApi.md#update_vendor_note) | **PUT** /v1/vendors/{vendorId}/notes/{noteId} | Update a note |
 
 
 ## create_vendor
@@ -174,7 +174,7 @@ end
 
 > <NoteMessage> create_vendor_note(vendor_id, note_post_message)
 
-Create a vendor note
+Create a note
 
 Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
 
@@ -201,7 +201,7 @@ vendor_id = 56 # Integer |
 note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
 
 begin
-  # Create a vendor note
+  # Create a note
   result = api_instance.create_vendor_note(vendor_id, note_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -217,7 +217,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a vendor note
+  # Create a note
   data, status_code, headers = api_instance.create_vendor_note_with_http_info(vendor_id, note_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -580,7 +580,7 @@ end
 
 > <NoteMessage> get_vendor_note_by_note_id(vendor_id, note_id)
 
-Retrieve a vendor note
+Retrieve a note
 
 Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
 
@@ -607,7 +607,7 @@ vendor_id = 56 # Integer |
 note_id = 56 # Integer | 
 
 begin
-  # Retrieve a vendor note
+  # Retrieve a note
   result = api_instance.get_vendor_note_by_note_id(vendor_id, note_id)
   p result
 rescue Buildium::ApiError => e
@@ -623,7 +623,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a vendor note
+  # Retrieve a note
   data, status_code, headers = api_instance.get_vendor_note_by_note_id_with_http_info(vendor_id, note_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -658,7 +658,7 @@ end
 
 > <Array<NoteMessage>> get_vendor_notes(vendor_id, opts)
 
-Retrieve all vendor notes
+Retrieve all notes
 
 Retrieves all vendor notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
 
@@ -692,7 +692,7 @@ opts = {
 }
 
 begin
-  # Retrieve all vendor notes
+  # Retrieve all notes
   result = api_instance.get_vendor_notes(vendor_id, opts)
   p result
 rescue Buildium::ApiError => e
@@ -708,7 +708,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all vendor notes
+  # Retrieve all notes
   data, status_code, headers = api_instance.get_vendor_notes_with_http_info(vendor_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -750,7 +750,7 @@ end
 
 Update a vendor
 
-Updates a vendor.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
+Updates a vendor.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
 
 ### Examples
 
@@ -828,7 +828,7 @@ end
 
 Update a vendor category
 
-Updates a vendor category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
+Updates a vendor category.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
 
 ### Examples
 
@@ -904,9 +904,9 @@ end
 
 > <NoteMessage> update_vendor_note(vendor_id, note_id, note_put_message)
 
-Update a vendor note
+Update a note
 
-Updates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Updates a vendor note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -932,7 +932,7 @@ note_id = 56 # Integer |
 note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
 
 begin
-  # Update a vendor note
+  # Update a note
   result = api_instance.update_vendor_note(vendor_id, note_id, note_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -948,7 +948,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a vendor note
+  # Update a note
   data, status_code, headers = api_instance.update_vendor_note_with_http_info(vendor_id, note_id, note_put_message)
   p status_code # => 2xx
   p headers # => { ... }

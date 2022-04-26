@@ -44,6 +44,12 @@ module Buildium
 
     attr_accessor :association_manager
 
+    # The day the fiscal year ends for the association.
+    attr_accessor :fiscal_year_end_day
+
+    # The month the fiscal year ends for the association.
+    attr_accessor :fiscal_year_end_month
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -56,7 +62,9 @@ module Buildium
         :'operating_bank_account' => :'OperatingBankAccount',
         :'operating_bank_account_id' => :'OperatingBankAccountId',
         :'address' => :'Address',
-        :'association_manager' => :'AssociationManager'
+        :'association_manager' => :'AssociationManager',
+        :'fiscal_year_end_day' => :'FiscalYearEndDay',
+        :'fiscal_year_end_month' => :'FiscalYearEndMonth'
       }
     end
 
@@ -77,7 +85,9 @@ module Buildium
         :'operating_bank_account' => :'String',
         :'operating_bank_account_id' => :'Integer',
         :'address' => :'AddressMessage',
-        :'association_manager' => :'PropertyManagerMessage'
+        :'association_manager' => :'PropertyManagerMessage',
+        :'fiscal_year_end_day' => :'Integer',
+        :'fiscal_year_end_month' => :'Integer'
       }
     end
 
@@ -141,6 +151,14 @@ module Buildium
       if attributes.key?(:'association_manager')
         self.association_manager = attributes[:'association_manager']
       end
+
+      if attributes.key?(:'fiscal_year_end_day')
+        self.fiscal_year_end_day = attributes[:'fiscal_year_end_day']
+      end
+
+      if attributes.key?(:'fiscal_year_end_month')
+        self.fiscal_year_end_month = attributes[:'fiscal_year_end_month']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -170,7 +188,9 @@ module Buildium
           operating_bank_account == o.operating_bank_account &&
           operating_bank_account_id == o.operating_bank_account_id &&
           address == o.address &&
-          association_manager == o.association_manager
+          association_manager == o.association_manager &&
+          fiscal_year_end_day == o.fiscal_year_end_day &&
+          fiscal_year_end_month == o.fiscal_year_end_month
     end
 
     # @see the `==` method
@@ -182,7 +202,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, is_active, reserve, description, year_built, operating_bank_account, operating_bank_account_id, address, association_manager].hash
+      [id, name, is_active, reserve, description, year_built, operating_bank_account, operating_bank_account_id, address, association_manager, fiscal_year_end_day, fiscal_year_end_month].hash
     end
 
     # Builds the object from hash
@@ -304,5 +324,4 @@ module Buildium
     end
 
   end
-
 end

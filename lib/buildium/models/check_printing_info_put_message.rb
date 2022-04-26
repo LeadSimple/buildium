@@ -246,7 +246,7 @@ module Buildium
     def check_layout_type=(check_layout_type)
       validator = EnumAttributeValidator.new('String', ["Voucher1StubBottomMemo1Signature", "Voucher2StubBottomMemo1Signature", "Voucher2StubBottomMemo2Signatures", "Voucher2StubTopMemo", "Voucher2StubsPrePrintedLayout"])
       unless validator.valid?(check_layout_type)
-        fail ArgumentError, "invalid value for \"check_layout_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ check_layout_type.inspect } for \"check_layout_type\", must be one of #{validator.allowable_values}."
       end
       @check_layout_type = check_layout_type
     end
@@ -404,5 +404,4 @@ module Buildium
     end
 
   end
-
 end

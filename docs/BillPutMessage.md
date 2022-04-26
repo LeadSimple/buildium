@@ -9,6 +9,7 @@
 | **memo** | **String** | A description of what the invoice was for. The value cannot exceed 245 characters. | [optional] |
 | **vendor_id** | **Integer** | The unique identifier of the vendor or supplier who sent you an invoice. |  |
 | **reference_number** | **String** | The reference or invoice number that the vendor assigned to the invoice. The value cannot exceed 40 characters. | [optional] |
+| **lines** | [**Array&lt;BillLinePutMessage&gt;**](BillLinePutMessage.md) | A collection of line items associated with the bill. | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = Buildium::BillPutMessage.new(
   due_date: null,
   memo: null,
   vendor_id: null,
-  reference_number: null
+  reference_number: null,
+  lines: null
 )
 ```
 

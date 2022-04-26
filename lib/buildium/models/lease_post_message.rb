@@ -204,7 +204,7 @@ module Buildium
     def lease_type=(lease_type)
       validator = EnumAttributeValidator.new('String', ["Fixed", "FixedWithRollover", "AtWill"])
       unless validator.valid?(lease_type)
-        fail ArgumentError, "invalid value for \"lease_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ lease_type.inspect } for \"lease_type\", must be one of #{validator.allowable_values}."
       end
       @lease_type = lease_type
     end
@@ -356,5 +356,4 @@ module Buildium
     end
 
   end
-
 end

@@ -19,7 +19,7 @@ module Buildium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create a rental tenant
+    # Create a tenant
     # Creates a rental tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
     # @param rental_tenant_post_message [RentalTenantPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -29,7 +29,7 @@ module Buildium
       data
     end
 
-    # Create a rental tenant
+    # Create a tenant
     # Creates a rental tenant.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_tenant_post_message [RentalTenantPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -87,8 +87,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a lease tenant note
-    # Creates a lease tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+    # Create a note
+    # Creates a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
     # @param note_post_message [NotePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -98,8 +98,8 @@ module Buildium
       data
     end
 
-    # Create a lease tenant note
-    # Creates a lease tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Create a note
+    # Creates a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
     # @param note_post_message [NotePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -161,7 +161,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all tenant notes
+    # Retrieve all notes
     # Retrieves all tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
@@ -177,7 +177,7 @@ module Buildium
       data
     end
 
-    # Retrieve all tenant notes
+    # Retrieve all notes
     # Retrieves all tenant notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
@@ -403,7 +403,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a tenant note
+    # Retrieve a note
     # Retrieves a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
@@ -414,7 +414,7 @@ module Buildium
       data
     end
 
-    # Retrieve a tenant note
+    # Retrieve a note
     # Retrieves a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
@@ -472,8 +472,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a lease tenant note
-    # Updates a lease tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+    # Update a note
+    # Updates a tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -484,8 +484,8 @@ module Buildium
       data
     end
 
-    # Update a lease tenant note
-    # Updates a lease tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -552,8 +552,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a rental tenant
-    # Updates a rental tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+    # Update a tenant
+    # Updates a rental tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
     # @param rental_tenant_put_message [RentalTenantPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -563,8 +563,8 @@ module Buildium
       data
     end
 
-    # Update a rental tenant
-    # Updates a rental tenant.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a tenant
+    # Updates a rental tenant.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
     # @param rental_tenant_put_message [RentalTenantPutMessage] 
     # @param [Hash] opts the optional parameters

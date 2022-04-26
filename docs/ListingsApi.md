@@ -491,7 +491,7 @@ end
 
 Update a listing contact
 
-Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`
+Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`
 
 ### Examples
 

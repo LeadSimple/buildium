@@ -132,7 +132,7 @@ module Buildium
     def application_status=(application_status)
       validator = EnumAttributeValidator.new('String', ["Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New"])
       unless validator.valid?(application_status)
-        fail ArgumentError, "invalid value for \"application_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ application_status.inspect } for \"application_status\", must be one of #{validator.allowable_values}."
       end
       @application_status = application_status
     end
@@ -279,5 +279,4 @@ module Buildium
     end
 
   end
-
 end

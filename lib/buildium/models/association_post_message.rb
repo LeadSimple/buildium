@@ -35,6 +35,9 @@ module Buildium
     # Indicates the year the association was established. If provided this value must be a four digit integer between 1000 and the current year.
     attr_accessor :year_built
 
+    # Indicates the staff member identifier that acts as the property manager for this association. Note, the staff member must have permissions to this association to be assigned as the property manager.  Leave this field null if you don't want to assign a staff member to the association.
+    attr_accessor :property_manager_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -44,7 +47,8 @@ module Buildium
         :'is_active' => :'IsActive',
         :'reserve' => :'Reserve',
         :'description' => :'Description',
-        :'year_built' => :'YearBuilt'
+        :'year_built' => :'YearBuilt',
+        :'property_manager_id' => :'PropertyManagerId'
       }
     end
 
@@ -62,7 +66,8 @@ module Buildium
         :'is_active' => :'Boolean',
         :'reserve' => :'Float',
         :'description' => :'String',
-        :'year_built' => :'Integer'
+        :'year_built' => :'Integer',
+        :'property_manager_id' => :'Integer'
       }
     end
 
@@ -114,6 +119,10 @@ module Buildium
       if attributes.key?(:'year_built')
         self.year_built = attributes[:'year_built']
       end
+
+      if attributes.key?(:'property_manager_id')
+        self.property_manager_id = attributes[:'property_manager_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -155,7 +164,8 @@ module Buildium
           is_active == o.is_active &&
           reserve == o.reserve &&
           description == o.description &&
-          year_built == o.year_built
+          year_built == o.year_built &&
+          property_manager_id == o.property_manager_id
     end
 
     # @see the `==` method
@@ -167,7 +177,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, operating_bank_account_id, address, is_active, reserve, description, year_built].hash
+      [name, operating_bank_account_id, address, is_active, reserve, description, year_built, property_manager_id].hash
     end
 
     # Builds the object from hash
@@ -289,5 +299,4 @@ module Buildium
     end
 
   end
-
 end

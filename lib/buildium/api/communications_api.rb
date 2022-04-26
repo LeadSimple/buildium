@@ -249,7 +249,7 @@ module Buildium
     end
 
     # Update a phone log
-    # Update a phone log  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View` `Edit`
+    # Update a phone log  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View` `Edit`
     # @param phone_log_id [Integer] The phone log identifier.
     # @param phone_log_put_message [PhoneLogPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -260,7 +260,7 @@ module Buildium
     end
 
     # Update a phone log
-    # Update a phone log  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a phone log  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param phone_log_id [Integer] The phone log identifier.
     # @param phone_log_put_message [PhoneLogPutMessage] 
     # @param [Hash] opts the optional parameters

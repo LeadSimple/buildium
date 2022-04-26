@@ -64,7 +64,7 @@ module Buildium
         :'vendor_id' => :'Integer',
         :'work_order_id' => :'Integer',
         :'reference_number' => :'String',
-        :'lines' => :'Array<BillLineSaveMessage>'
+        :'lines' => :'Array<BillLinePostMessage>'
       }
     end
 
@@ -298,5 +298,4 @@ module Buildium
     end
 
   end
-
 end

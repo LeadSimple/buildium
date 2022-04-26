@@ -17,6 +17,7 @@
 | **emergency_contact** | [**SaveEmergencyContactMessage**](SaveEmergencyContactMessage.md) |  | [optional] |
 | **comment** | **String** | Comments about the owner. The value cannot exceed 65,535 characters. | [optional] |
 | **mailing_preference** | **String** | Mailing preferences for the owner. If an alternate address exists and this value is not provided then the primary address will be set as the preferred address. | [optional] |
+| **tax_id** | **String** | Taxpayer identification number of the owner. Examples of United States identification numbers are Social Security number or a Employer Identification Number. Valid formats are: &#x60;12-1234567&#x60;, &#x60;123-12-1234&#x60;, &#x60;123456789&#x60;. | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = Buildium::AssociationOwnerPostMessage.new(
   date_of_birth: null,
   emergency_contact: null,
   comment: null,
-  mailing_preference: null
+  mailing_preference: null,
+  tax_id: null
 )
 ```
 

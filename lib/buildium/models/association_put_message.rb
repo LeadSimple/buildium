@@ -32,6 +32,15 @@ module Buildium
 
     attr_accessor :address
 
+    # Indicates the staff member identifier that acts as the property manager for this association. Note, the staff member must have permissions to this association to be assigned as the property manager.  Set this field to null if you don't want to assign a staff member to the association.
+    attr_accessor :property_manager_id
+
+    # The day the fiscal year ends for the association.
+    attr_accessor :fiscal_year_end_day
+
+    # The month the fiscal year ends for the association.
+    attr_accessor :fiscal_year_end_month
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +49,10 @@ module Buildium
         :'year_built' => :'YearBuilt',
         :'operating_bank_account_id' => :'OperatingBankAccountId',
         :'reserve' => :'Reserve',
-        :'address' => :'Address'
+        :'address' => :'Address',
+        :'property_manager_id' => :'PropertyManagerId',
+        :'fiscal_year_end_day' => :'FiscalYearEndDay',
+        :'fiscal_year_end_month' => :'FiscalYearEndMonth'
       }
     end
 
@@ -57,7 +69,10 @@ module Buildium
         :'year_built' => :'Integer',
         :'operating_bank_account_id' => :'Integer',
         :'reserve' => :'Float',
-        :'address' => :'SaveAddressMessage'
+        :'address' => :'SaveAddressMessage',
+        :'property_manager_id' => :'Integer',
+        :'fiscal_year_end_day' => :'Integer',
+        :'fiscal_year_end_month' => :'Integer'
       }
     end
 
@@ -105,6 +120,18 @@ module Buildium
       if attributes.key?(:'address')
         self.address = attributes[:'address']
       end
+
+      if attributes.key?(:'property_manager_id')
+        self.property_manager_id = attributes[:'property_manager_id']
+      end
+
+      if attributes.key?(:'fiscal_year_end_day')
+        self.fiscal_year_end_day = attributes[:'fiscal_year_end_day']
+      end
+
+      if attributes.key?(:'fiscal_year_end_month')
+        self.fiscal_year_end_month = attributes[:'fiscal_year_end_month']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -123,6 +150,14 @@ module Buildium
         invalid_properties.push('invalid value for "address", address cannot be nil.')
       end
 
+      if @fiscal_year_end_day.nil?
+        invalid_properties.push('invalid value for "fiscal_year_end_day", fiscal_year_end_day cannot be nil.')
+      end
+
+      if @fiscal_year_end_month.nil?
+        invalid_properties.push('invalid value for "fiscal_year_end_month", fiscal_year_end_month cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -132,6 +167,8 @@ module Buildium
       return false if @name.nil?
       return false if @operating_bank_account_id.nil?
       return false if @address.nil?
+      return false if @fiscal_year_end_day.nil?
+      return false if @fiscal_year_end_month.nil?
       true
     end
 
@@ -145,7 +182,10 @@ module Buildium
           year_built == o.year_built &&
           operating_bank_account_id == o.operating_bank_account_id &&
           reserve == o.reserve &&
-          address == o.address
+          address == o.address &&
+          property_manager_id == o.property_manager_id &&
+          fiscal_year_end_day == o.fiscal_year_end_day &&
+          fiscal_year_end_month == o.fiscal_year_end_month
     end
 
     # @see the `==` method
@@ -157,7 +197,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, year_built, operating_bank_account_id, reserve, address].hash
+      [name, description, year_built, operating_bank_account_id, reserve, address, property_manager_id, fiscal_year_end_day, fiscal_year_end_month].hash
     end
 
     # Builds the object from hash
@@ -279,5 +319,4 @@ module Buildium
     end
 
   end
-
 end

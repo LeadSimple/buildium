@@ -559,7 +559,7 @@ module Buildium
     # Retrieve all general ledger account balances
     # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
     # @param accountingbasis [String] The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened.
-    # @param asofdate [Date] 
+    # @param asofdate [Date] Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; field refers to.
     # @option opts [Integer] :entityid Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in &#x60;EntityType&#x60;.
@@ -576,7 +576,7 @@ module Buildium
     # Retrieve all general ledger account balances
     # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param accountingbasis [String] The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened.
-    # @param asofdate [Date] 
+    # @param asofdate [Date] Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; field refers to.
     # @option opts [Integer] :entityid Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in &#x60;EntityType&#x60;.
@@ -781,7 +781,7 @@ module Buildium
     end
 
     # Update a bill
-    # Updates a bill.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+    # Use this operation to update any of the writable fields of an existing bill resource. When updating this resource keep the following in mind: <br /><ul><li>Writable fields omitted from the request or that do not have a value in the request message are set to `NULL`. If you do not want to update the field, submit the original field value.</li><li>When a bill has an existing payment any edits to the line items that change the total bill amount must result in the new total bill amount being equal to or greater than the amount paid.</li><li>When adding a new line item leave the `LineItem.Id` field empty.</li></ul><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
     # @param bill_id [Integer] 
     # @param bill_put_message [BillPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -792,7 +792,7 @@ module Buildium
     end
 
     # Update a bill
-    # Updates a bill.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Use this operation to update any of the writable fields of an existing bill resource. When updating this resource keep the following in mind: &lt;br /&gt;&lt;ul&gt;&lt;li&gt;Writable fields omitted from the request or that do not have a value in the request message are set to &#x60;NULL&#x60;. If you do not want to update the field, submit the original field value.&lt;/li&gt;&lt;li&gt;When a bill has an existing payment any edits to the line items that change the total bill amount must result in the new total bill amount being equal to or greater than the amount paid.&lt;/li&gt;&lt;li&gt;When adding a new line item leave the &#x60;LineItem.Id&#x60; field empty.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bill_id [Integer] 
     # @param bill_put_message [BillPutMessage] 
     # @param [Hash] opts the optional parameters

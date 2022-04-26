@@ -19,7 +19,7 @@ module Buildium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create an association owner
+    # Create an owner
     # Creates an association owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
     # @param association_owner_to_existing_ownership_account_post_message [AssociationOwnerToExistingOwnershipAccountPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -29,7 +29,7 @@ module Buildium
       data
     end
 
-    # Create an association owner
+    # Create an owner
     # Creates an association owner.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_owner_to_existing_ownership_account_post_message [AssociationOwnerToExistingOwnershipAccountPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -87,7 +87,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create an association owner note
+    # Create a note
     # Creates an association owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
     # @param owner_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -98,7 +98,7 @@ module Buildium
       data
     end
 
-    # Create an association owner note
+    # Create a note
     # Creates an association owner note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param owner_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -161,14 +161,16 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all association owners
+    # Retrieve all owners
     # Retrieves a list of association owners.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name Filters results to only records whose name *contains* the specified value.
     # @option opts [String] :phone Filters results to only records whose phone number *contains* the specified value.
     # @option opts [String] :email Filters results to only records whose email *contains* the specified value.
-    # @option opts [Array<Integer>] :associationids Filters results to only records that belong to the specified set of association ids.
+    # @option opts [Array<Integer>] :associationids Filters results to only records that belong to the specified set of association identifiers.
     # @option opts [Array<String>] :statuses Filters results to only records whose status is equal to the specified value.
+    # @option opts [Time] :createddatetimeto Filters results to only records that were created before this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
+    # @option opts [Time] :createddatetimefrom Filters results to only records that were created after this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -178,14 +180,16 @@ module Buildium
       data
     end
 
-    # Retrieve all association owners
+    # Retrieve all owners
     # Retrieves a list of association owners.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name Filters results to only records whose name *contains* the specified value.
     # @option opts [String] :phone Filters results to only records whose phone number *contains* the specified value.
     # @option opts [String] :email Filters results to only records whose email *contains* the specified value.
-    # @option opts [Array<Integer>] :associationids Filters results to only records that belong to the specified set of association ids.
+    # @option opts [Array<Integer>] :associationids Filters results to only records that belong to the specified set of association identifiers.
     # @option opts [Array<String>] :statuses Filters results to only records whose status is equal to the specified value.
+    # @option opts [Time] :createddatetimeto Filters results to only records that were created before this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
+    # @option opts [Time] :createddatetimefrom Filters results to only records that were created after this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -208,6 +212,8 @@ module Buildium
       query_params[:'email'] = opts[:'email'] if !opts[:'email'].nil?
       query_params[:'associationids'] = @api_client.build_collection_param(opts[:'associationids'], :multi) if !opts[:'associationids'].nil?
       query_params[:'statuses'] = @api_client.build_collection_param(opts[:'statuses'], :multi) if !opts[:'statuses'].nil?
+      query_params[:'createddatetimeto'] = opts[:'createddatetimeto'] if !opts[:'createddatetimeto'].nil?
+      query_params[:'createddatetimefrom'] = opts[:'createddatetimefrom'] if !opts[:'createddatetimefrom'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
@@ -246,7 +252,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve an association owner
+    # Retrieve an owner
     # Retrieve a specific association owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
     # @param owner_id [Integer] The association owner identifier.
     # @param [Hash] opts the optional parameters
@@ -256,7 +262,7 @@ module Buildium
       data
     end
 
-    # Retrieve an association owner
+    # Retrieve an owner
     # Retrieve a specific association owner.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param owner_id [Integer] The association owner identifier.
     # @param [Hash] opts the optional parameters
@@ -309,7 +315,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve an association owner note
+    # Retrieve a note
     # Retrieves an association owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
     # @param owner_id [Integer] 
     # @param note_id [Integer] 
@@ -320,7 +326,7 @@ module Buildium
       data
     end
 
-    # Retrieve an association owner note
+    # Retrieve a note
     # Retrieves an association owner note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param owner_id [Integer] 
     # @param note_id [Integer] 
@@ -378,7 +384,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all association owner notes
+    # Retrieve all notes
     # Retrieves all association owner notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
     # @param owner_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -394,7 +400,7 @@ module Buildium
       data
     end
 
-    # Retrieve all association owner notes
+    # Retrieve all notes
     # Retrieves all association owner notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param owner_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -459,8 +465,149 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update an association owner
-    # Updates an existing association owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Retrieve an occupancy status
+    # Retrieves the owner occupancy status for an association unit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
+    # @param owner_id [Integer] 
+    # @param unit_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AssociationOwnerUnitOccupancyStatusMessage]
+    def get_unit_occupancy_statuses_by_id_for_association_owner(owner_id, unit_id, opts = {})
+      data, _status_code, _headers = get_unit_occupancy_statuses_by_id_for_association_owner_with_http_info(owner_id, unit_id, opts)
+      data
+    end
+
+    # Retrieve an occupancy status
+    # Retrieves the owner occupancy status for an association unit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param owner_id [Integer] 
+    # @param unit_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AssociationOwnerUnitOccupancyStatusMessage, Integer, Hash)>] AssociationOwnerUnitOccupancyStatusMessage data, response status code and response headers
+    def get_unit_occupancy_statuses_by_id_for_association_owner_with_http_info(owner_id, unit_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnersApi.get_unit_occupancy_statuses_by_id_for_association_owner ...'
+      end
+      # verify the required parameter 'owner_id' is set
+      if @api_client.config.client_side_validation && owner_id.nil?
+        fail ArgumentError, "Missing the required parameter 'owner_id' when calling AssociationOwnersApi.get_unit_occupancy_statuses_by_id_for_association_owner"
+      end
+      # verify the required parameter 'unit_id' is set
+      if @api_client.config.client_side_validation && unit_id.nil?
+        fail ArgumentError, "Missing the required parameter 'unit_id' when calling AssociationOwnersApi.get_unit_occupancy_statuses_by_id_for_association_owner"
+      end
+      # resource path
+      local_var_path = '/v1/associations/owners/{ownerId}/units/{unitId}'.sub('{' + 'ownerId' + '}', CGI.escape(owner_id.to_s)).sub('{' + 'unitId' + '}', CGI.escape(unit_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AssociationOwnerUnitOccupancyStatusMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnersApi.get_unit_occupancy_statuses_by_id_for_association_owner",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnersApi#get_unit_occupancy_statuses_by_id_for_association_owner\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all occupancy statuses
+    # Retrieves the occupancy status for all of the units owned by the association owner.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
+    # @param owner_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<AssociationOwnerUnitOccupancyStatusMessage>]
+    def get_unit_occupancy_statuses_for_association_owner(owner_id, opts = {})
+      data, _status_code, _headers = get_unit_occupancy_statuses_for_association_owner_with_http_info(owner_id, opts)
+      data
+    end
+
+    # Retrieve all occupancy statuses
+    # Retrieves the occupancy status for all of the units owned by the association owner.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param owner_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<AssociationOwnerUnitOccupancyStatusMessage>, Integer, Hash)>] Array<AssociationOwnerUnitOccupancyStatusMessage> data, response status code and response headers
+    def get_unit_occupancy_statuses_for_association_owner_with_http_info(owner_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnersApi.get_unit_occupancy_statuses_for_association_owner ...'
+      end
+      # verify the required parameter 'owner_id' is set
+      if @api_client.config.client_side_validation && owner_id.nil?
+        fail ArgumentError, "Missing the required parameter 'owner_id' when calling AssociationOwnersApi.get_unit_occupancy_statuses_for_association_owner"
+      end
+      # resource path
+      local_var_path = '/v1/associations/owners/{ownerId}/units'.sub('{' + 'ownerId' + '}', CGI.escape(owner_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<AssociationOwnerUnitOccupancyStatusMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnersApi.get_unit_occupancy_statuses_for_association_owner",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnersApi#get_unit_occupancy_statuses_for_association_owner\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an owner
+    # Updates an existing association owner.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
     # @param owner_id [Integer] The identifier of the association owner to update.
     # @param association_owner_put_message [AssociationOwnerPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -470,8 +617,8 @@ module Buildium
       data
     end
 
-    # Update an association owner
-    # Updates an existing association owner.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update an owner
+    # Updates an existing association owner.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param owner_id [Integer] The identifier of the association owner to update.
     # @param association_owner_put_message [AssociationOwnerPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -533,8 +680,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update an association owner note
-    # Updates an association owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Update a note
+    # Updates an association owner note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
     # @param owner_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -545,8 +692,8 @@ module Buildium
       data
     end
 
-    # Update an association owner note
-    # Updates an association owner note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates an association owner note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param owner_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -609,6 +756,86 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AssociationOwnersApi#update_association_owner_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update occupancy status
+    # Updates whether a unit is occupied by the association owner.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
+    # @param owner_id [Integer] 
+    # @param unit_id [Integer] 
+    # @param association_owner_unit_occupancy_put_message [AssociationOwnerUnitOccupancyPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [AssociationOwnerUnitOccupancyStatusMessage]
+    def update_association_owner_occupancy_status(owner_id, unit_id, association_owner_unit_occupancy_put_message, opts = {})
+      data, _status_code, _headers = update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, association_owner_unit_occupancy_put_message, opts)
+      data
+    end
+
+    # Update occupancy status
+    # Updates whether a unit is occupied by the association owner.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param owner_id [Integer] 
+    # @param unit_id [Integer] 
+    # @param association_owner_unit_occupancy_put_message [AssociationOwnerUnitOccupancyPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AssociationOwnerUnitOccupancyStatusMessage, Integer, Hash)>] AssociationOwnerUnitOccupancyStatusMessage data, response status code and response headers
+    def update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, association_owner_unit_occupancy_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnersApi.update_association_owner_occupancy_status ...'
+      end
+      # verify the required parameter 'owner_id' is set
+      if @api_client.config.client_side_validation && owner_id.nil?
+        fail ArgumentError, "Missing the required parameter 'owner_id' when calling AssociationOwnersApi.update_association_owner_occupancy_status"
+      end
+      # verify the required parameter 'unit_id' is set
+      if @api_client.config.client_side_validation && unit_id.nil?
+        fail ArgumentError, "Missing the required parameter 'unit_id' when calling AssociationOwnersApi.update_association_owner_occupancy_status"
+      end
+      # verify the required parameter 'association_owner_unit_occupancy_put_message' is set
+      if @api_client.config.client_side_validation && association_owner_unit_occupancy_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'association_owner_unit_occupancy_put_message' when calling AssociationOwnersApi.update_association_owner_occupancy_status"
+      end
+      # resource path
+      local_var_path = '/v1/associations/owners/{ownerId}/units/{unitId}'.sub('{' + 'ownerId' + '}', CGI.escape(owner_id.to_s)).sub('{' + 'unitId' + '}', CGI.escape(unit_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_owner_unit_occupancy_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AssociationOwnerUnitOccupancyStatusMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnersApi.update_association_owner_occupancy_status",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnersApi#update_association_owner_occupancy_status\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

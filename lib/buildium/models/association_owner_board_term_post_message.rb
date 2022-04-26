@@ -14,14 +14,15 @@ require 'date'
 require 'time'
 
 module Buildium
+  # Board member term.
   class AssociationOwnerBoardTermPostMessage
     # Indicates the board position held by the association owner.
     attr_accessor :board_position_type
 
-    # Start date of the association owners term as a board member. Must be formatted as `YYYY-MM-DD`.
+    # Start date of the board member term. Must be formatted as `YYYY-MM-DD`.
     attr_accessor :start_date
 
-    # End date of the association owners term as a board member. Must be formatted as `YYYY-MM-DD`.
+    # End date of the board member term. Must be formatted as `YYYY-MM-DD`.
     attr_accessor :end_date
 
     class EnumAttributeValidator
@@ -128,7 +129,7 @@ module Buildium
     def board_position_type=(board_position_type)
       validator = EnumAttributeValidator.new('String', ["President", "VicePresident", "Treasurer", "Secretary", "BoardMember"])
       unless validator.valid?(board_position_type)
-        fail ArgumentError, "invalid value for \"board_position_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ board_position_type.inspect } for \"board_position_type\", must be one of #{validator.allowable_values}."
       end
       @board_position_type = board_position_type
     end
@@ -274,5 +275,4 @@ module Buildium
     end
 
   end
-
 end

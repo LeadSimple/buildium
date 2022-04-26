@@ -127,7 +127,7 @@ module Buildium
     def cycle=(cycle)
       validator = EnumAttributeValidator.new('String', ["Monthly", "Weekly", "Every2Weeks", "Quarterly", "Yearly", "Every2Months", "Daily", "Every6Months", "OneTime"])
       unless validator.valid?(cycle)
-        fail ArgumentError, "invalid value for \"cycle\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ cycle.inspect } for \"cycle\", must be one of #{validator.allowable_values}."
       end
       @cycle = cycle
     end
@@ -272,5 +272,4 @@ module Buildium
     end
 
   end
-
 end

@@ -36,6 +36,9 @@ module Buildium
     # List of features for the property.
     attr_accessor :features
 
+    # The list of amenities included in rent the property has.
+    attr_accessor :included_in_rent
+
     # List of media files associated with the property.
     attr_accessor :files
 
@@ -71,6 +74,7 @@ module Buildium
         :'structure_description' => :'StructureDescription',
         :'year_built' => :'YearBuilt',
         :'features' => :'Features',
+        :'included_in_rent' => :'IncludedInRent',
         :'files' => :'Files'
       }
     end
@@ -90,6 +94,7 @@ module Buildium
         :'structure_description' => :'String',
         :'year_built' => :'Integer',
         :'features' => :'Array<String>',
+        :'included_in_rent' => :'Array<String>',
         :'files' => :'Array<ListingFileMessage>'
       }
     end
@@ -145,6 +150,12 @@ module Buildium
         end
       end
 
+      if attributes.key?(:'included_in_rent')
+        if (value = attributes[:'included_in_rent']).is_a?(Array)
+          self.included_in_rent = value
+        end
+      end
+
       if attributes.key?(:'files')
         if (value = attributes[:'files']).is_a?(Array)
           self.files = value
@@ -177,6 +188,7 @@ module Buildium
           structure_description == o.structure_description &&
           year_built == o.year_built &&
           features == o.features &&
+          included_in_rent == o.included_in_rent &&
           files == o.files
     end
 
@@ -189,7 +201,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, address, number_units, structure_description, year_built, features, files].hash
+      [id, name, address, number_units, structure_description, year_built, features, included_in_rent, files].hash
     end
 
     # Builds the object from hash
@@ -311,5 +323,4 @@ module Buildium
     end
 
   end
-
 end

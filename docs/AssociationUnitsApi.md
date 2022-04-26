@@ -4,21 +4,21 @@ All URIs are relative to *https://api.buildium.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_association_unit**](AssociationUnitsApi.md#create_association_unit) | **POST** /v1/associations/units | Create an association unit |
-| [**create_association_unit_note**](AssociationUnitsApi.md#create_association_unit_note) | **POST** /v1/associations/units/{unitId}/notes | Create an association unit note |
-| [**get_all_association_units**](AssociationUnitsApi.md#get_all_association_units) | **GET** /v1/associations/units | Retrieve all association units |
-| [**get_association_unit_by_id**](AssociationUnitsApi.md#get_association_unit_by_id) | **GET** /v1/associations/units/{unitId} | Retrieve an association unit |
-| [**get_association_unit_note_by_note_id**](AssociationUnitsApi.md#get_association_unit_note_by_note_id) | **GET** /v1/associations/units/{unitId}/notes/{noteId} | Retrieve an association unit note |
-| [**get_association_unit_notes**](AssociationUnitsApi.md#get_association_unit_notes) | **GET** /v1/associations/units/{unitId}/notes | Retrieve all association unit notes |
-| [**update_association_unit**](AssociationUnitsApi.md#update_association_unit) | **PUT** /v1/associations/units/{unitId} | Update an association unit |
-| [**update_association_unit_note**](AssociationUnitsApi.md#update_association_unit_note) | **PUT** /v1/associations/units/{unitId}/notes/{noteId} | Update an association unit note |
+| [**create_association_unit**](AssociationUnitsApi.md#create_association_unit) | **POST** /v1/associations/units | Create a unit |
+| [**create_association_unit_note**](AssociationUnitsApi.md#create_association_unit_note) | **POST** /v1/associations/units/{unitId}/notes | Create a note |
+| [**get_all_association_units**](AssociationUnitsApi.md#get_all_association_units) | **GET** /v1/associations/units | Retrieve all units |
+| [**get_association_unit_by_id**](AssociationUnitsApi.md#get_association_unit_by_id) | **GET** /v1/associations/units/{unitId} | Retrieve a unit |
+| [**get_association_unit_note_by_note_id**](AssociationUnitsApi.md#get_association_unit_note_by_note_id) | **GET** /v1/associations/units/{unitId}/notes/{noteId} | Retrieve a note |
+| [**get_association_unit_notes**](AssociationUnitsApi.md#get_association_unit_notes) | **GET** /v1/associations/units/{unitId}/notes | Retrieve all notes |
+| [**update_association_unit**](AssociationUnitsApi.md#update_association_unit) | **PUT** /v1/associations/units/{unitId} | Update a unit |
+| [**update_association_unit_note**](AssociationUnitsApi.md#update_association_unit_note) | **PUT** /v1/associations/units/{unitId}/notes/{noteId} | Update a note |
 
 
 ## create_association_unit
 
 > <AssociationUnitMessage> create_association_unit(association_units_post_message)
 
-Create an association unit
+Create a unit
 
 Creates an association unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
@@ -44,7 +44,7 @@ api_instance = Buildium::AssociationUnitsApi.new
 association_units_post_message = Buildium::AssociationUnitsPostMessage.new({unit_number: 'unit_number_example', association_id: 37, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # AssociationUnitsPostMessage | 
 
 begin
-  # Create an association unit
+  # Create a unit
   result = api_instance.create_association_unit(association_units_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -60,7 +60,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create an association unit
+  # Create a unit
   data, status_code, headers = api_instance.create_association_unit_with_http_info(association_units_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -94,7 +94,7 @@ end
 
 > <NoteMessage> create_association_unit_note(unit_id, note_post_message)
 
-Create an association unit note
+Create a note
 
 Creates a new association unit note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
@@ -121,7 +121,7 @@ unit_id = 56 # Integer |
 note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
 
 begin
-  # Create an association unit note
+  # Create a note
   result = api_instance.create_association_unit_note(unit_id, note_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -137,7 +137,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create an association unit note
+  # Create a note
   data, status_code, headers = api_instance.create_association_unit_note_with_http_info(unit_id, note_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -172,7 +172,7 @@ end
 
 > <Array<AssociationUnitMessage>> get_all_association_units(opts)
 
-Retrieve all association units
+Retrieve all units
 
 Retrieves a list of association units.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
 
@@ -203,7 +203,7 @@ opts = {
 }
 
 begin
-  # Retrieve all association units
+  # Retrieve all units
   result = api_instance.get_all_association_units(opts)
   p result
 rescue Buildium::ApiError => e
@@ -219,7 +219,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all association units
+  # Retrieve all units
   data, status_code, headers = api_instance.get_all_association_units_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -256,7 +256,7 @@ end
 
 > <AssociationUnitMessage> get_association_unit_by_id(unit_id)
 
-Retrieve an association unit
+Retrieve a unit
 
 Retrieve a specific association unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
 
@@ -282,7 +282,7 @@ api_instance = Buildium::AssociationUnitsApi.new
 unit_id = 56 # Integer | The association unit identifier.
 
 begin
-  # Retrieve an association unit
+  # Retrieve a unit
   result = api_instance.get_association_unit_by_id(unit_id)
   p result
 rescue Buildium::ApiError => e
@@ -298,7 +298,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve an association unit
+  # Retrieve a unit
   data, status_code, headers = api_instance.get_association_unit_by_id_with_http_info(unit_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -332,7 +332,7 @@ end
 
 > <NoteMessage> get_association_unit_note_by_note_id(unit_id, note_id)
 
-Retrieve an association unit note
+Retrieve a note
 
 Retrieves an association unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
 
@@ -359,7 +359,7 @@ unit_id = 56 # Integer |
 note_id = 56 # Integer | 
 
 begin
-  # Retrieve an association unit note
+  # Retrieve a note
   result = api_instance.get_association_unit_note_by_note_id(unit_id, note_id)
   p result
 rescue Buildium::ApiError => e
@@ -375,7 +375,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve an association unit note
+  # Retrieve a note
   data, status_code, headers = api_instance.get_association_unit_note_by_note_id_with_http_info(unit_id, note_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -410,7 +410,7 @@ end
 
 > <Array<NoteMessage>> get_association_unit_notes(unit_id, opts)
 
-Retrieve all association unit notes
+Retrieve all notes
 
 Retrieves all association unit notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
 
@@ -444,7 +444,7 @@ opts = {
 }
 
 begin
-  # Retrieve all association unit notes
+  # Retrieve all notes
   result = api_instance.get_association_unit_notes(unit_id, opts)
   p result
 rescue Buildium::ApiError => e
@@ -460,7 +460,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all association unit notes
+  # Retrieve all notes
   data, status_code, headers = api_instance.get_association_unit_notes_with_http_info(unit_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -500,9 +500,9 @@ end
 
 > <AssociationUnitMessage> update_association_unit(unit_id, association_unit_put_message)
 
-Update an association unit
+Update a unit
 
-Updates an association unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates an association unit.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -527,7 +527,7 @@ unit_id = 56 # Integer | The identifier of the unit to update.
 association_unit_put_message = Buildium::AssociationUnitPutMessage.new({unit_number: 'unit_number_example', address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # AssociationUnitPutMessage | 
 
 begin
-  # Update an association unit
+  # Update a unit
   result = api_instance.update_association_unit(unit_id, association_unit_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -543,7 +543,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update an association unit
+  # Update a unit
   data, status_code, headers = api_instance.update_association_unit_with_http_info(unit_id, association_unit_put_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -578,9 +578,9 @@ end
 
 > <NoteMessage> update_association_unit_note(unit_id, note_id, note_put_message)
 
-Update an association unit note
+Update a note
 
-Updates an association unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates an association unit note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -606,7 +606,7 @@ note_id = 56 # Integer |
 note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
 
 begin
-  # Update an association unit note
+  # Update a note
   result = api_instance.update_association_unit_note(unit_id, note_id, note_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -622,7 +622,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update an association unit note
+  # Update a note
   data, status_code, headers = api_instance.update_association_unit_note_with_http_info(unit_id, note_id, note_put_message)
   p status_code # => 2xx
   p headers # => { ... }

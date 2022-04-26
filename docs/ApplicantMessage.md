@@ -8,6 +8,7 @@
 | **applicant_group_id** | **Integer** | Applicant group unique identifier. | [optional] |
 | **property_id** | **Integer** | Rental property unique identifier that the applicant is associated with. | [optional] |
 | **unit_id** | **Integer** | Rental property unit unique identifier that the applicant is associated with. | [optional] |
+| **tenant_id** | **Integer** | The rental tenant identifier associated with the applicant. This value will be null if the applicant never transitioned into a tenant. | [optional] |
 | **first_name** | **String** | Applicant first name. | [optional] |
 | **last_name** | **String** | Applicant last name. | [optional] |
 | **email** | **String** | Applicant email address. | [optional] |
@@ -24,6 +25,7 @@ instance = Buildium::ApplicantMessage.new(
   applicant_group_id: null,
   property_id: null,
   unit_id: null,
+  tenant_id: null,
   first_name: null,
   last_name: null,
   email: null,

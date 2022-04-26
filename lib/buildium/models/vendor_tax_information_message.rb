@@ -150,7 +150,7 @@ module Buildium
     def tax_payer_id_type=(tax_payer_id_type)
       validator = EnumAttributeValidator.new('String', ["SSN", "EIN"])
       unless validator.valid?(tax_payer_id_type)
-        fail ArgumentError, "invalid value for \"tax_payer_id_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ tax_payer_id_type.inspect } for \"tax_payer_id_type\", must be one of #{validator.allowable_values}."
       end
       @tax_payer_id_type = tax_payer_id_type
     end
@@ -299,5 +299,4 @@ module Buildium
     end
 
   end
-
 end

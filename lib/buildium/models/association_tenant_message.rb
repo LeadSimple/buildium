@@ -52,6 +52,9 @@ module Buildium
     # Move out date for the tenant.
     attr_accessor :move_out_date
 
+    # Date and time the tenant was created.
+    attr_accessor :created_date_time
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -67,7 +70,8 @@ module Buildium
         :'emergency_contact' => :'EmergencyContact',
         :'ownership_accounts' => :'OwnershipAccounts',
         :'move_in_date' => :'MoveInDate',
-        :'move_out_date' => :'MoveOutDate'
+        :'move_out_date' => :'MoveOutDate',
+        :'created_date_time' => :'CreatedDateTime'
       }
     end
 
@@ -91,7 +95,8 @@ module Buildium
         :'emergency_contact' => :'EmergencyContactMessage',
         :'ownership_accounts' => :'Array<AssociationOwnershipAccountMessage>',
         :'move_in_date' => :'Date',
-        :'move_out_date' => :'Date'
+        :'move_out_date' => :'Date',
+        :'created_date_time' => :'Time'
       }
     end
 
@@ -171,6 +176,10 @@ module Buildium
       if attributes.key?(:'move_out_date')
         self.move_out_date = attributes[:'move_out_date']
       end
+
+      if attributes.key?(:'created_date_time')
+        self.created_date_time = attributes[:'created_date_time']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -203,7 +212,8 @@ module Buildium
           emergency_contact == o.emergency_contact &&
           ownership_accounts == o.ownership_accounts &&
           move_in_date == o.move_in_date &&
-          move_out_date == o.move_out_date
+          move_out_date == o.move_out_date &&
+          created_date_time == o.created_date_time
     end
 
     # @see the `==` method
@@ -215,7 +225,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, alternate_email, phone_numbers, primary_address, alternate_address, comment, emergency_contact, ownership_accounts, move_in_date, move_out_date].hash
+      [id, first_name, last_name, email, alternate_email, phone_numbers, primary_address, alternate_address, comment, emergency_contact, ownership_accounts, move_in_date, move_out_date, created_date_time].hash
     end
 
     # Builds the object from hash
@@ -337,5 +347,4 @@ module Buildium
     end
 
   end
-
 end

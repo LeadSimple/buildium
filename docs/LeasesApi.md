@@ -5,19 +5,26 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_lease**](LeasesApi.md#create_lease) | **POST** /v1/leases | Create a lease |
-| [**create_lease_credit**](LeasesApi.md#create_lease_credit) | **POST** /v1/leases/{leaseId}/credits | Create a ledger credit |
-| [**create_lease_ledger_charge**](LeasesApi.md#create_lease_ledger_charge) | **POST** /v1/leases/{leaseId}/charges | Create a ledger charge |
-| [**create_lease_note**](LeasesApi.md#create_lease_note) | **POST** /v1/leases/{leaseId}/notes | Create a lease note |
-| [**create_payment**](LeasesApi.md#create_payment) | **POST** /v1/leases/{leaseId}/payments | Create a ledger payment |
+| [**create_lease_credit**](LeasesApi.md#create_lease_credit) | **POST** /v1/leases/{leaseId}/credits | Create a credit |
+| [**create_lease_ledger_charge**](LeasesApi.md#create_lease_ledger_charge) | **POST** /v1/leases/{leaseId}/charges | Create a charge |
+| [**create_lease_note**](LeasesApi.md#create_lease_note) | **POST** /v1/leases/{leaseId}/notes | Create a note |
+| [**create_lease_reverse_payment**](LeasesApi.md#create_lease_reverse_payment) | **POST** /v1/leases/{leaseId}/reversepayments | Create a payment reversal |
+| [**create_move_out_data**](LeasesApi.md#create_move_out_data) | **POST** /v1/leases/{leaseId}/moveouts | Create a move out |
+| [**create_payment**](LeasesApi.md#create_payment) | **POST** /v1/leases/{leaseId}/payments | Create a payment |
 | [**get_lease_by_id**](LeasesApi.md#get_lease_by_id) | **GET** /v1/leases/{leaseId} | Retrieve a lease |
 | [**get_lease_ledger_transaction_by_id**](LeasesApi.md#get_lease_ledger_transaction_by_id) | **GET** /v1/leases/{leaseId}/transactions/{transactionId} | Retrieve a lease transaction |
 | [**get_lease_ledgers**](LeasesApi.md#get_lease_ledgers) | **GET** /v1/leases/{leaseId}/transactions | Retrieve all lease transactions |
-| [**get_lease_note_by_note_id**](LeasesApi.md#get_lease_note_by_note_id) | **GET** /v1/leases/{leaseId}/notes/{noteId} | Retrieve a lease note |
-| [**get_lease_notes**](LeasesApi.md#get_lease_notes) | **GET** /v1/leases/{leaseId}/notes | Retrieve all lease notes |
-| [**get_lease_outstanding_balances**](LeasesApi.md#get_lease_outstanding_balances) | **GET** /v1/leases/outstandingbalances | Retrieve all lease outstanding balances |
+| [**get_lease_move_out_data_by_tenant_id**](LeasesApi.md#get_lease_move_out_data_by_tenant_id) | **GET** /v1/leases/{leaseId}/moveouts/{tenantId} | Retrieve a move out |
+| [**get_lease_move_out_information_by_id**](LeasesApi.md#get_lease_move_out_information_by_id) | **GET** /v1/leases/{leaseId}/moveouts | Retrieve all move outs |
+| [**get_lease_note_by_note_id**](LeasesApi.md#get_lease_note_by_note_id) | **GET** /v1/leases/{leaseId}/notes/{noteId} | Retrieve a note |
+| [**get_lease_notes**](LeasesApi.md#get_lease_notes) | **GET** /v1/leases/{leaseId}/notes | Retrieve all notes |
+| [**get_lease_outstanding_balances**](LeasesApi.md#get_lease_outstanding_balances) | **GET** /v1/leases/outstandingbalances | Retrieve all outstanding balances |
 | [**get_leases**](LeasesApi.md#get_leases) | **GET** /v1/leases | Retrieve all leases |
+| [**get_rent**](LeasesApi.md#get_rent) | **GET** /v1/leases/{leaseId}/rent | Retrieve all rent schedules |
+| [**get_rent_by_id**](LeasesApi.md#get_rent_by_id) | **GET** /v1/leases/{leaseId}/rent/{rentId} | Retrieve a rent schedule |
+| [**undo_tenant_moveout**](LeasesApi.md#undo_tenant_moveout) | **DELETE** /v1/leases/{leaseId}/moveouts/{tenantId} | Delete a move out |
 | [**update_lease**](LeasesApi.md#update_lease) | **PUT** /v1/leases/{leaseId} | Update a lease |
-| [**update_lease_note**](LeasesApi.md#update_lease_note) | **PUT** /v1/leases/{leaseId}/notes/{noteId} | Update a lease note |
+| [**update_lease_note**](LeasesApi.md#update_lease_note) | **PUT** /v1/leases/{leaseId}/notes/{noteId} | Update a note |
 
 
 ## create_lease
@@ -100,9 +107,9 @@ end
 
 > <LeaseTransactionMessage> create_lease_credit(lease_id, lease_ledger_credit_post_message)
 
-Create a ledger credit
+Create a credit
 
-Creates a lease ledger credit.
+Creates a lease ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
 
 ### Examples
 
@@ -123,11 +130,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::LeasesApi.new
-lease_id = 56 # Integer | 
+lease_id = 56 # Integer | The lease unique identifier.
 lease_ledger_credit_post_message = Buildium::LeaseLedgerCreditPostMessage.new({date: Date.today, credit_type: 'WaiveUnpaid', lines: [Buildium::LeaseLedgerCreditLinePostMessage.new({amount: 3.56, gl_account_id: 37})]}) # LeaseLedgerCreditPostMessage | 
 
 begin
-  # Create a ledger credit
+  # Create a credit
   result = api_instance.create_lease_credit(lease_id, lease_ledger_credit_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -143,7 +150,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a ledger credit
+  # Create a credit
   data, status_code, headers = api_instance.create_lease_credit_with_http_info(lease_id, lease_ledger_credit_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -157,7 +164,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **lease_id** | **Integer** |  |  |
+| **lease_id** | **Integer** | The lease unique identifier. |  |
 | **lease_ledger_credit_post_message** | [**LeaseLedgerCreditPostMessage**](LeaseLedgerCreditPostMessage.md) |  |  |
 
 ### Return type
@@ -178,7 +185,7 @@ end
 
 > <Array<LeaseTransactionMessage>> create_lease_ledger_charge(lease_id, lease_charge_message)
 
-Create a ledger charge
+Create a charge
 
 Creates a charge transaction on a specific lease ledger.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
 
@@ -205,7 +212,7 @@ lease_id = 56 # Integer |
 lease_charge_message = Buildium::LeaseChargeMessage.new # LeaseChargeMessage | 
 
 begin
-  # Create a ledger charge
+  # Create a charge
   result = api_instance.create_lease_ledger_charge(lease_id, lease_charge_message)
   p result
 rescue Buildium::ApiError => e
@@ -221,7 +228,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a ledger charge
+  # Create a charge
   data, status_code, headers = api_instance.create_lease_ledger_charge_with_http_info(lease_id, lease_charge_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -256,7 +263,7 @@ end
 
 > <NoteMessage> create_lease_note(lease_id, note_post_message)
 
-Create a lease note
+Create a note
 
 Creates a lease note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
 
@@ -283,7 +290,7 @@ lease_id = 56 # Integer |
 note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
 
 begin
-  # Create a lease note
+  # Create a note
   result = api_instance.create_lease_note(lease_id, note_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -299,7 +306,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a lease note
+  # Create a note
   data, status_code, headers = api_instance.create_lease_note_with_http_info(lease_id, note_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -330,11 +337,167 @@ end
 - **Accept**: application/json
 
 
+## create_lease_reverse_payment
+
+> <LeaseTransactionMessage> create_lease_reverse_payment(lease_id, lease_ledger_reverse_payment_post_message)
+
+Create a payment reversal
+
+Reverses a lease ledger payment. Note, this action can only be taken on a payment that has been deposited.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | The lease unique identifier.
+lease_ledger_reverse_payment_post_message = Buildium::LeaseLedgerReversePaymentPostMessage.new({entry_date: Date.today, payment_transaction_id: 37}) # LeaseLedgerReversePaymentPostMessage | 
+
+begin
+  # Create a payment reversal
+  result = api_instance.create_lease_reverse_payment(lease_id, lease_ledger_reverse_payment_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_reverse_payment: #{e}"
+end
+```
+
+#### Using the create_lease_reverse_payment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseTransactionMessage>, Integer, Hash)> create_lease_reverse_payment_with_http_info(lease_id, lease_ledger_reverse_payment_post_message)
+
+```ruby
+begin
+  # Create a payment reversal
+  data, status_code, headers = api_instance.create_lease_reverse_payment_with_http_info(lease_id, lease_ledger_reverse_payment_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_reverse_payment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** | The lease unique identifier. |  |
+| **lease_ledger_reverse_payment_post_message** | [**LeaseLedgerReversePaymentPostMessage**](LeaseLedgerReversePaymentPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseTransactionMessage**](LeaseTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_move_out_data
+
+> <LeaseMoveOutDataMessage> create_move_out_data(lease_id, lease_move_out_data_post_message)
+
+Create a move out
+
+Creates move out data for a single tenant on a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+lease_move_out_data_post_message = Buildium::LeaseMoveOutDataPostMessage.new({tenant_id: 37, move_out_date: Date.today}) # LeaseMoveOutDataPostMessage | 
+
+begin
+  # Create a move out
+  result = api_instance.create_move_out_data(lease_id, lease_move_out_data_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_move_out_data: #{e}"
+end
+```
+
+#### Using the create_move_out_data_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseMoveOutDataMessage>, Integer, Hash)> create_move_out_data_with_http_info(lease_id, lease_move_out_data_post_message)
+
+```ruby
+begin
+  # Create a move out
+  data, status_code, headers = api_instance.create_move_out_data_with_http_info(lease_id, lease_move_out_data_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseMoveOutDataMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_move_out_data_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **lease_move_out_data_post_message** | [**LeaseMoveOutDataPostMessage**](LeaseMoveOutDataPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseMoveOutDataMessage**](LeaseMoveOutDataMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_payment
 
 > <LeaseTransactionMessage> create_payment(lease_id, lease_ledger_payment_post_message)
 
-Create a ledger payment
+Create a payment
 
 Creates a lease ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
 
@@ -361,7 +524,7 @@ lease_id = 56 # Integer | The lease unique identifier.
 lease_ledger_payment_post_message = Buildium::LeaseLedgerPaymentPostMessage.new({date: Date.today, payment_method: 'Check', send_email_receipt: false, lines: [Buildium::LeaseLedgerPaymentLineSaveMessage.new({amount: 3.56, gl_account_id: 37})]}) # LeaseLedgerPaymentPostMessage | 
 
 begin
-  # Create a ledger payment
+  # Create a payment
   result = api_instance.create_payment(lease_id, lease_ledger_payment_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -377,7 +540,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a ledger payment
+  # Create a payment
   data, status_code, headers = api_instance.create_payment_with_http_info(lease_id, lease_ledger_payment_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -652,11 +815,173 @@ end
 - **Accept**: application/json
 
 
+## get_lease_move_out_data_by_tenant_id
+
+> <LeaseMoveOutDataMessage> get_lease_move_out_data_by_tenant_id(lease_id, tenant_id)
+
+Retrieve a move out
+
+Retrieves move out data for a single tenant on a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+tenant_id = 56 # Integer | 
+
+begin
+  # Retrieve a move out
+  result = api_instance.get_lease_move_out_data_by_tenant_id(lease_id, tenant_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_move_out_data_by_tenant_id: #{e}"
+end
+```
+
+#### Using the get_lease_move_out_data_by_tenant_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseMoveOutDataMessage>, Integer, Hash)> get_lease_move_out_data_by_tenant_id_with_http_info(lease_id, tenant_id)
+
+```ruby
+begin
+  # Retrieve a move out
+  data, status_code, headers = api_instance.get_lease_move_out_data_by_tenant_id_with_http_info(lease_id, tenant_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseMoveOutDataMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_move_out_data_by_tenant_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **tenant_id** | **Integer** |  |  |
+
+### Return type
+
+[**LeaseMoveOutDataMessage**](LeaseMoveOutDataMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_lease_move_out_information_by_id
+
+> <Array<LeaseMoveOutDataMessage>> get_lease_move_out_information_by_id(lease_id, opts)
+
+Retrieve all move outs
+
+Retrieves a list of move out dates for a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all move outs
+  result = api_instance.get_lease_move_out_information_by_id(lease_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_move_out_information_by_id: #{e}"
+end
+```
+
+#### Using the get_lease_move_out_information_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<LeaseMoveOutDataMessage>>, Integer, Hash)> get_lease_move_out_information_by_id_with_http_info(lease_id, opts)
+
+```ruby
+begin
+  # Retrieve all move outs
+  data, status_code, headers = api_instance.get_lease_move_out_information_by_id_with_http_info(lease_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<LeaseMoveOutDataMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_move_out_information_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;LeaseMoveOutDataMessage&gt;**](LeaseMoveOutDataMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_lease_note_by_note_id
 
 > <NoteMessage> get_lease_note_by_note_id(lease_id, note_id)
 
-Retrieve a lease note
+Retrieve a note
 
 Retrieves a lease note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
 
@@ -683,7 +1008,7 @@ lease_id = 56 # Integer |
 note_id = 56 # Integer | 
 
 begin
-  # Retrieve a lease note
+  # Retrieve a note
   result = api_instance.get_lease_note_by_note_id(lease_id, note_id)
   p result
 rescue Buildium::ApiError => e
@@ -699,7 +1024,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a lease note
+  # Retrieve a note
   data, status_code, headers = api_instance.get_lease_note_by_note_id_with_http_info(lease_id, note_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -734,7 +1059,7 @@ end
 
 > <Array<NoteMessage>> get_lease_notes(lease_id, opts)
 
-Retrieve all lease notes
+Retrieve all notes
 
 Retrieves all lease notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
 
@@ -768,7 +1093,7 @@ opts = {
 }
 
 begin
-  # Retrieve all lease notes
+  # Retrieve all notes
   result = api_instance.get_lease_notes(lease_id, opts)
   p result
 rescue Buildium::ApiError => e
@@ -784,7 +1109,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all lease notes
+  # Retrieve all notes
   data, status_code, headers = api_instance.get_lease_notes_with_http_info(lease_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -824,7 +1149,7 @@ end
 
 > <Array<LeaseOutstandingBalanceMessage>> get_lease_outstanding_balances(opts)
 
-Retrieve all lease outstanding balances
+Retrieve all outstanding balances
 
 Retrieves a list of lease outstanding balances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Outstanding Balances</span> - `View`
 
@@ -861,7 +1186,7 @@ opts = {
 }
 
 begin
-  # Retrieve all lease outstanding balances
+  # Retrieve all outstanding balances
   result = api_instance.get_lease_outstanding_balances(opts)
   p result
 rescue Buildium::ApiError => e
@@ -877,7 +1202,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all lease outstanding balances
+  # Retrieve all outstanding balances
   data, status_code, headers = api_instance.get_lease_outstanding_balances_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1018,13 +1343,252 @@ end
 - **Accept**: application/json
 
 
+## get_rent
+
+> <Array<LeaseRentMessage>> get_rent(lease_id, opts)
+
+Retrieve all rent schedules
+
+The rent schedule provides details (dollar amount, day of the month, etc) of the recurring charges that are applied to the lease ledger each rent cycle. A lease may have more than one rent schedule associated with it if the rent terms change within the duration of the lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all rent schedules
+  result = api_instance.get_rent(lease_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_rent: #{e}"
+end
+```
+
+#### Using the get_rent_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<LeaseRentMessage>>, Integer, Hash)> get_rent_with_http_info(lease_id, opts)
+
+```ruby
+begin
+  # Retrieve all rent schedules
+  data, status_code, headers = api_instance.get_rent_with_http_info(lease_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<LeaseRentMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_rent_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;LeaseRentMessage&gt;**](LeaseRentMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_rent_by_id
+
+> <LeaseRentMessage> get_rent_by_id(lease_id, rent_id)
+
+Retrieve a rent schedule
+
+Retrieves a specific rent schedule for a lease. The rent schedule provides details (dollar amount, day of the month, etc) of the recurring charges that are applied to the lease ledger each rent cycle.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+rent_id = 56 # Integer | 
+
+begin
+  # Retrieve a rent schedule
+  result = api_instance.get_rent_by_id(lease_id, rent_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_rent_by_id: #{e}"
+end
+```
+
+#### Using the get_rent_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseRentMessage>, Integer, Hash)> get_rent_by_id_with_http_info(lease_id, rent_id)
+
+```ruby
+begin
+  # Retrieve a rent schedule
+  data, status_code, headers = api_instance.get_rent_by_id_with_http_info(lease_id, rent_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseRentMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_rent_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **rent_id** | **Integer** |  |  |
+
+### Return type
+
+[**LeaseRentMessage**](LeaseRentMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## undo_tenant_moveout
+
+> undo_tenant_moveout(lease_id, tenant_id)
+
+Delete a move out
+
+Deletes move out data for a tenant on a given lease.              <br /><br /><h4>Required Permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+tenant_id = 56 # Integer | 
+
+begin
+  # Delete a move out
+  api_instance.undo_tenant_moveout(lease_id, tenant_id)
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->undo_tenant_moveout: #{e}"
+end
+```
+
+#### Using the undo_tenant_moveout_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> undo_tenant_moveout_with_http_info(lease_id, tenant_id)
+
+```ruby
+begin
+  # Delete a move out
+  data, status_code, headers = api_instance.undo_tenant_moveout_with_http_info(lease_id, tenant_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->undo_tenant_moveout_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **tenant_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## update_lease
 
 > <LeaseMessage> update_lease(lease_id, lease_put_message)
 
 Update a lease
 
-Update a signed lease.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`
+Update a signed lease.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`
 
 ### Examples
 
@@ -1100,9 +1664,9 @@ end
 
 > <NoteMessage> update_lease_note(lease_id, note_id, note_put_message)
 
-Update a lease note
+Update a note
 
-Updates a lease note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
+Updates a lease note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
 
 ### Examples
 
@@ -1128,7 +1692,7 @@ note_id = 56 # Integer |
 note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
 
 begin
-  # Update a lease note
+  # Update a note
   result = api_instance.update_lease_note(lease_id, note_id, note_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -1144,7 +1708,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a lease note
+  # Update a note
   data, status_code, headers = api_instance.update_lease_note_with_http_info(lease_id, note_id, note_put_message)
   p status_code # => 2xx
   p headers # => { ... }

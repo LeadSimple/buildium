@@ -10,7 +10,7 @@
 | **vendor_id** | **Integer** | The unique identifier of the vendor or supplier who sent you an invoice. |  |
 | **work_order_id** | **Integer** | Unique identifier of the work order associated with this bill. | [optional] |
 | **reference_number** | **String** | The reference or invoice number that the vendor assigned to the invoice. The value cannot exceed 40 characters. | [optional] |
-| **lines** | [**Array&lt;BillLineSaveMessage&gt;**](BillLineSaveMessage.md) | A collection of line items associated with the bill. |  |
+| **lines** | [**Array&lt;BillLinePostMessage&gt;**](BillLinePostMessage.md) | A collection of line items associated with the bill. |  |
 
 ## Example
 

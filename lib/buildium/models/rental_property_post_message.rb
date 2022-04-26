@@ -32,6 +32,9 @@ module Buildium
     # The primary bank account that a rental property uses for its income and expenses.
     attr_accessor :operating_bank_account_id
 
+    # Indicates the staff member identifier that acts as the property manager for this rental property. Note, the staff member must have permissions to this rental to be assigned as the property manager.  Set this field to null if you don't want to assign a staff member to the rental property.
+    attr_accessor :property_manager_id
+
     # A property reserve is cash that a property manager keeps on hand in case of unexpected expenses. It is available cash that isn't disbursed in an owner draw.
     attr_accessor :reserve
 
@@ -69,6 +72,7 @@ module Buildium
         :'rental_sub_type' => :'RentalSubType',
         :'rental_owner_ids' => :'RentalOwnerIds',
         :'operating_bank_account_id' => :'OperatingBankAccountId',
+        :'property_manager_id' => :'PropertyManagerId',
         :'reserve' => :'Reserve',
         :'year_built' => :'YearBuilt'
       }
@@ -88,6 +92,7 @@ module Buildium
         :'rental_sub_type' => :'String',
         :'rental_owner_ids' => :'Array<Integer>',
         :'operating_bank_account_id' => :'Integer',
+        :'property_manager_id' => :'Integer',
         :'reserve' => :'Float',
         :'year_built' => :'Integer'
       }
@@ -140,6 +145,10 @@ module Buildium
         self.operating_bank_account_id = attributes[:'operating_bank_account_id']
       end
 
+      if attributes.key?(:'property_manager_id')
+        self.property_manager_id = attributes[:'property_manager_id']
+      end
+
       if attributes.key?(:'reserve')
         self.reserve = attributes[:'reserve']
       end
@@ -189,7 +198,7 @@ module Buildium
     def rental_sub_type=(rental_sub_type)
       validator = EnumAttributeValidator.new('String', ["CondoTownhome", "MultiFamily", "SingleFamily", "Industrial", "Office", "Retail", "ShoppingCenter", "Storage", "ParkingSpace"])
       unless validator.valid?(rental_sub_type)
-        fail ArgumentError, "invalid value for \"rental_sub_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ rental_sub_type.inspect } for \"rental_sub_type\", must be one of #{validator.allowable_values}."
       end
       @rental_sub_type = rental_sub_type
     end
@@ -205,6 +214,7 @@ module Buildium
           rental_sub_type == o.rental_sub_type &&
           rental_owner_ids == o.rental_owner_ids &&
           operating_bank_account_id == o.operating_bank_account_id &&
+          property_manager_id == o.property_manager_id &&
           reserve == o.reserve &&
           year_built == o.year_built
     end
@@ -218,7 +228,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, structure_description, address, rental_sub_type, rental_owner_ids, operating_bank_account_id, reserve, year_built].hash
+      [name, structure_description, address, rental_sub_type, rental_owner_ids, operating_bank_account_id, property_manager_id, reserve, year_built].hash
     end
 
     # Builds the object from hash
@@ -340,5 +350,4 @@ module Buildium
     end
 
   end
-
 end

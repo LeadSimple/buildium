@@ -16,7 +16,7 @@ require 'time'
 module Buildium
   # This object represents a filter for a home owner association search.
   class AssociationSearchMessage
-    # Filters results to any association whose address *contains* the specified value.
+    # Filters results to any association whose city or state *contains* the specified value.
     attr_accessor :location
 
     # Filters results by the status of the association. If no status is specified both `active` and `inactive` associations will be returned.
@@ -115,7 +115,7 @@ module Buildium
     def status=(status)
       validator = EnumAttributeValidator.new('String', ["Active", "InActive"])
       unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ status.inspect } for \"status\", must be one of #{validator.allowable_values}."
       end
       @status = status
     end
@@ -260,5 +260,4 @@ module Buildium
     end
 
   end
-
 end

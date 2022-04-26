@@ -15,7 +15,7 @@ require 'time'
 
 module Buildium
   class NotePutMessage
-    # Note contents.
+    # Note contents. The value cannot exceed 65535 characters.
     attr_accessor :note
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -220,5 +220,4 @@ module Buildium
     end
 
   end
-
 end

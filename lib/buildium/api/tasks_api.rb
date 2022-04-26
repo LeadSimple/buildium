@@ -1387,7 +1387,7 @@ module Buildium
     end
 
     # Update a contact request
-    # Updates a contact request.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates a contact request.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
     # @param contact_request_task_id [Integer] The contact request identifier.
     # @param contact_request_task_put_message [ContactRequestTaskPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1398,7 +1398,7 @@ module Buildium
     end
 
     # Update a contact request
-    # Updates a contact request.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a contact request.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param contact_request_task_id [Integer] The contact request identifier.
     # @param contact_request_task_put_message [ContactRequestTaskPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1461,7 +1461,7 @@ module Buildium
     end
 
     # Update a rental owner request
-    # Updates a rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates a rental owner request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
     # @param rental_owner_request_task_put_message [RentalOwnerRequestTaskPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1472,7 +1472,7 @@ module Buildium
     end
 
     # Update a rental owner request
-    # Updates a rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
     # @param rental_owner_request_task_put_message [RentalOwnerRequestTaskPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1535,7 +1535,7 @@ module Buildium
     end
 
     # Update a resident request
-    # Update a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
+    # Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
     # @param resident_request_task_id [Integer] The resident request identifier.
     # @param resident_request_task_put_message [ResidentRequestTaskPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1546,7 +1546,7 @@ module Buildium
     end
 
     # Update a resident request
-    # Update a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
+    # Update a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
     # @param resident_request_task_id [Integer] The resident request identifier.
     # @param resident_request_task_put_message [ResidentRequestTaskPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1609,7 +1609,7 @@ module Buildium
     end
 
     # Updates a task category
-    # Updates a task category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
+    # Updates a task category.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
     # @param task_category_id [Integer] The task category identifier.
     # @param task_category_put_message [TaskCategoryPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1620,7 +1620,7 @@ module Buildium
     end
 
     # Updates a task category
-    # Updates a task category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
+    # Updates a task category.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
     # @param task_category_id [Integer] The task category identifier.
     # @param task_category_put_message [TaskCategoryPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1683,7 +1683,7 @@ module Buildium
     end
 
     # Updates a to do task
-    # Updates a to do task  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates a to do task  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
     # @param to_do_task_id [Integer] The to do task identifier.
     # @param to_do_task_put_message [ToDoTaskPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1694,7 +1694,7 @@ module Buildium
     end
 
     # Updates a to do task
-    # Updates a to do task  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a to do task  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param to_do_task_id [Integer] The to do task identifier.
     # @param to_do_task_put_message [ToDoTaskPutMessage] 
     # @param [Hash] opts the optional parameters

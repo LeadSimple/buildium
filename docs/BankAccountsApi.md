@@ -27,7 +27,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_undeposited_funds**](BankAccountsApi.md#get_undeposited_funds) | **GET** /v1/bankaccounts/{bankAccountId}/undepositedfunds | Retrieve all undeposited funds |
 | [**update_bank_account**](BankAccountsApi.md#update_bank_account) | **PUT** /v1/bankaccounts/{bankAccountId} | Update a bank account |
 | [**update_bank_account_deposit**](BankAccountsApi.md#update_bank_account_deposit) | **PUT** /v1/bankaccounts/{bankAccountId}/deposits/{depositId} | Update a deposit |
-| [**update_bank_account_transfer**](BankAccountsApi.md#update_bank_account_transfer) | **PUT** /v1/bankaccounts/{bankAccountId}/transfers/{transferId} | Update a transfer for a bank account |
+| [**update_bank_account_transfer**](BankAccountsApi.md#update_bank_account_transfer) | **PUT** /v1/bankaccounts/{bankAccountId}/transfers/{transferId} | Update a transfer |
 | [**update_bank_account_withdrawal**](BankAccountsApi.md#update_bank_account_withdrawal) | **PUT** /v1/bankaccounts/{bankAccountId}/withdrawals/{withdrawalId} | Update a withdrawal |
 | [**update_check_for_bank_account**](BankAccountsApi.md#update_check_for_bank_account) | **PUT** /v1/bankaccounts/{bankAccountId}/checks/{checkId} | Update a check |
 | [**update_quick_deposit**](BankAccountsApi.md#update_quick_deposit) | **PUT** /v1/bankaccounts/{bankAccountId}/quickdeposits/{quickDepositId} | Update a quick deposit |
@@ -1079,7 +1079,7 @@ end
 
 Retrieve all transactions
 
-Retrieves all bank account transactions.              <br /><br />              Note: When using the `orderby` query string parameter, the only supported parameter is EntryDate.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+Retrieves all bank account transactions.              <br /><br />              Note: When using the `orderby` query string parameter, the only supported parameter is `EntryDate`.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
 
 ### Examples
 
@@ -1743,7 +1743,7 @@ end
 
 Update a bank account
 
-Updates a bank account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Banking</span> - `View` `Edit`
+Updates a bank account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Banking</span> - `View` `Edit`
 
 ### Examples
 
@@ -1821,7 +1821,7 @@ end
 
 Update a deposit
 
-Updates a deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+Updates a deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -1899,9 +1899,9 @@ end
 
 > <BankAccountTransferMessage> update_bank_account_transfer(bank_account_id, transfer_id, bank_account_transfer_save_message)
 
-Update a transfer for a bank account
+Update a transfer
 
-Updates a bank account transfer.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
+Updates a bank account transfer.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
 
 ### Examples
 
@@ -1927,7 +1927,7 @@ transfer_id = 56 # Integer |
 bank_account_transfer_save_message = Buildium::BankAccountTransferSaveMessage.new({entry_date: Date.today, transfer_to_bank_account_id: 37, total_amount: 3.56, accounting_entity: Buildium::BankAccountTransferAccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'})}) # BankAccountTransferSaveMessage | 
 
 begin
-  # Update a transfer for a bank account
+  # Update a transfer
   result = api_instance.update_bank_account_transfer(bank_account_id, transfer_id, bank_account_transfer_save_message)
   p result
 rescue Buildium::ApiError => e
@@ -1943,7 +1943,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a transfer for a bank account
+  # Update a transfer
   data, status_code, headers = api_instance.update_bank_account_transfer_with_http_info(bank_account_id, transfer_id, bank_account_transfer_save_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1981,7 +1981,7 @@ end
 
 Update a withdrawal
 
-Updates a bank account withdrawal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+Updates a bank account withdrawal.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -2061,7 +2061,7 @@ end
 
 Update a check
 
-Updates a check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+Updates a check.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -2141,7 +2141,7 @@ end
 
 Update a quick deposit
 
-Updates a quick deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
+Updates a quick deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`
 
 ### Examples
 

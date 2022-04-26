@@ -134,7 +134,7 @@ module Buildium
     def field_category_type=(field_category_type)
       validator = EnumAttributeValidator.new('String', ["ApplicantName", "ApplicantEmail", "ApplicantSocialSecurityNumber", "ApplicantAlternateEmail", "ApplicantHomePhone", "ApplicantCellPhone", "ApplicantWorkPhone", "ApplicantFax", "ApplicantBirthDate", "ApplicantDriversLicense", "ApplicantCurrentAddress", "ApplicantAlternateAddress", "EmergencyContactName", "EmergencyContactRelationship", "EmergencyContactEmail", "EmergencyContactPhone", "OccupantName", "OccupantRelationship", "OccupantBirthDate", "OccupantEmail", "OccupantPhoneNumber", "CosignerName", "CosignerRelationship", "CosignerSocialSecurityNumber", "CosignerPhoneNumber", "CosignerEmail", "EmployerName", "EmployerAddress", "EmployerPhoneNumber", "EmployerEmail", "PositionHeld", "EmploymentDates", "MonthlyGrossSalary", "SupervisorName", "SupervisorTitle", "PetType", "PetName", "PetAge", "PetSpayedOrNeutered", "PetLicenseNumber", "PetWeight", "DesiredMoveInDate", "DesiredLeaseDuration", "DesiredRent", "DesiredNumberOfBedrooms", "DesiredNumberOfBathrooms", "ReferenceName", "ReferenceRelationship", "ReferencePhoneNumber", "ReferenceEmail", "RentalAddress", "RentalDates", "MonthlyRent", "ReasonForLeaving", "LandlordName", "LandlordPhoneNumber", "LandlordEmail", "VehicleMake", "VehicleModel", "VehicleColor", "VehicleYear", "VehicleLicensePlate", "AgreedTo", "AgreedBy", "CosignerAddress", "ApplicantAddress", "OtherComments", "EmailApplication"])
       unless validator.valid?(field_category_type)
-        fail ArgumentError, "invalid value for \"field_category_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ field_category_type.inspect } for \"field_category_type\", must be one of #{validator.allowable_values}."
       end
       @field_category_type = field_category_type
     end
@@ -144,7 +144,7 @@ module Buildium
     def field_type=(field_type)
       validator = EnumAttributeValidator.new('String', ["TextSingleLine", "Email", "DateDayMonthYear", "Number", "DateMonthYear", "DateYear", "GroupHeading", "NumberOfBathrooms", "NumberOfBedrooms", "PhoneNumber", "SocialSecurityNumber", "TextMultipleLines", "TrueFalse", "YesNo", "Currency", "FirstName", "LastName", "DateRangeFromDate", "DateRangeToDate", "AddressCountry", "AddressStreet", "AddressCity", "AddressState", "AddressZip", "DriversLicenseNumber", "DriversLicenseState", "Attachment"])
       unless validator.valid?(field_type)
-        fail ArgumentError, "invalid value for \"field_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ field_type.inspect } for \"field_type\", must be one of #{validator.allowable_values}."
       end
       @field_type = field_type
     end
@@ -291,5 +291,4 @@ module Buildium
     end
 
   end
-
 end

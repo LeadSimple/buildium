@@ -131,7 +131,7 @@ module Buildium
     def payment_method=(payment_method)
       validator = EnumAttributeValidator.new('String', ["None", "Check", "Cash", "MoneyOrder", "CashierCheck", "DirectDeposit", "CreditCard", "ElectronicPayment", "RetailCash"])
       unless validator.valid?(payment_method)
-        fail ArgumentError, "invalid value for \"payment_method\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ payment_method.inspect } for \"payment_method\", must be one of #{validator.allowable_values}."
       end
       @payment_method = payment_method
     end
@@ -278,5 +278,4 @@ module Buildium
     end
 
   end
-
 end

@@ -19,7 +19,7 @@ module Buildium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create a rental owner
+    # Create an owner
     # Creates a rental owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
     # @param rental_owner_post_message [RentalOwnerPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -29,7 +29,7 @@ module Buildium
       data
     end
 
-    # Create a rental owner
+    # Create an owner
     # Creates a rental owner.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_owner_post_message [RentalOwnerPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -87,7 +87,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a Rental Owner note
+    # Create a note
     # Creates a new Rental Owner note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
     # @param rental_owner_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -98,7 +98,7 @@ module Buildium
       data
     end
 
-    # Create a Rental Owner note
+    # Create a note
     # Creates a new Rental Owner note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_owner_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -161,7 +161,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a rental owner
+    # Retrieve an owner
     # Retrieves a specific rental owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
     # @param rental_owner_id [Integer] The rental owner identifier.
     # @param [Hash] opts the optional parameters
@@ -171,7 +171,7 @@ module Buildium
       data
     end
 
-    # Retrieve a rental owner
+    # Retrieve an owner
     # Retrieves a specific rental owner.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60;
     # @param rental_owner_id [Integer] The rental owner identifier.
     # @param [Hash] opts the optional parameters
@@ -224,7 +224,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a rental owner note
+    # Retrieve a note
     # Retrieves a rental owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
     # @param rental_owner_id [Integer] 
     # @param note_id [Integer] 
@@ -235,7 +235,7 @@ module Buildium
       data
     end
 
-    # Retrieve a rental owner note
+    # Retrieve a note
     # Retrieves a rental owner note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60;
     # @param rental_owner_id [Integer] 
     # @param note_id [Integer] 
@@ -293,7 +293,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieves all rental owner notes
+    # Retrieves all notes
     # Retrieves all rental owner notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
     # @param rental_owner_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -309,7 +309,7 @@ module Buildium
       data
     end
 
-    # Retrieves all rental owner notes
+    # Retrieves all notes
     # Retrieves all rental owner notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60;
     # @param rental_owner_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -374,7 +374,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all rental owners
+    # Retrieve all owners
     # Retrieves a list of rental owners.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to any lease whose unit belongs to the specified set of property ids.
@@ -391,7 +391,7 @@ module Buildium
       data
     end
 
-    # Retrieve all rental owners
+    # Retrieve all owners
     # Retrieves a list of rental owners.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to any lease whose unit belongs to the specified set of property ids.
@@ -459,8 +459,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a rental owner
-    # Updates a rental owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
+    # Update an owner
+    # Updates a rental owner.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
     # @param rental_owner_id [Integer] The identifier of the rental owner to update.
     # @param rental_owner_put_message [RentalOwnerPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -470,8 +470,8 @@ module Buildium
       data
     end
 
-    # Update a rental owner
-    # Updates a rental owner.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update an owner
+    # Updates a rental owner.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_owner_id [Integer] The identifier of the rental owner to update.
     # @param rental_owner_put_message [RentalOwnerPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -533,8 +533,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a Rental Owner note
-    # Updates a Rental Owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
+    # Update a note
+    # Updates a Rental Owner note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Property Rental Owners</span> - `View` `Edit`
     # @param rental_owner_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -545,8 +545,8 @@ module Buildium
       data
     end
 
-    # Update a Rental Owner note
-    # Updates a Rental Owner note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates a Rental Owner note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_owner_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 

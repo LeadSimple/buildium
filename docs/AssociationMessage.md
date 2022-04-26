@@ -14,6 +14,8 @@
 | **operating_bank_account_id** | **Integer** | Primary bank account unique identifier that an association uses for its income and expenses. | [optional] |
 | **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
 | **association_manager** | [**PropertyManagerMessage**](PropertyManagerMessage.md) |  | [optional] |
+| **fiscal_year_end_day** | **Integer** | The day the fiscal year ends for the association. | [optional] |
+| **fiscal_year_end_month** | **Integer** | The month the fiscal year ends for the association. | [optional] |
 
 ## Example
 
@@ -30,7 +32,9 @@ instance = Buildium::AssociationMessage.new(
   operating_bank_account: null,
   operating_bank_account_id: null,
   address: null,
-  association_manager: null
+  association_manager: null,
+  fiscal_year_end_day: null,
+  fiscal_year_end_month: null
 )
 ```
 

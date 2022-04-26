@@ -276,5 +276,4 @@ module Buildium
     end
 
   end
-
 end

@@ -155,7 +155,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a vendor note
+    # Create a note
     # Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
     # @param vendor_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -166,7 +166,7 @@ module Buildium
       data
     end
 
-    # Create a vendor note
+    # Create a note
     # Creates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param vendor_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -513,7 +513,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a vendor note
+    # Retrieve a note
     # Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
@@ -524,7 +524,7 @@ module Buildium
       data
     end
 
-    # Retrieve a vendor note
+    # Retrieve a note
     # Retrieves a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
@@ -582,7 +582,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all vendor notes
+    # Retrieve all notes
     # Retrieves all vendor notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
     # @param vendor_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -598,7 +598,7 @@ module Buildium
       data
     end
 
-    # Retrieve all vendor notes
+    # Retrieve all notes
     # Retrieves all vendor notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -664,7 +664,7 @@ module Buildium
     end
 
     # Update a vendor
-    # Updates a vendor.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
+    # Updates a vendor.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
     # @param vendor_id [Integer] 
     # @param vendor_put_message [VendorPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -675,7 +675,7 @@ module Buildium
     end
 
     # Update a vendor
-    # Updates a vendor.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;Edit&#x60;
+    # Updates a vendor.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;Edit&#x60;
     # @param vendor_id [Integer] 
     # @param vendor_put_message [VendorPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -738,7 +738,7 @@ module Buildium
     end
 
     # Update a vendor category
-    # Updates a vendor category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
+    # Updates a vendor category.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`
     # @param vendor_category_id [Integer] 
     # @param vendor_category_save_message [VendorCategorySaveMessage] 
     # @param [Hash] opts the optional parameters
@@ -749,7 +749,7 @@ module Buildium
     end
 
     # Update a vendor category
-    # Updates a vendor category.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;Edit&#x60;
+    # Updates a vendor category.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;Edit&#x60;
     # @param vendor_category_id [Integer] 
     # @param vendor_category_save_message [VendorCategorySaveMessage] 
     # @param [Hash] opts the optional parameters
@@ -811,8 +811,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a vendor note
-    # Updates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # Update a note
+    # Updates a vendor note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -823,8 +823,8 @@ module Buildium
       data
     end
 
-    # Update a vendor note
-    # Updates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 

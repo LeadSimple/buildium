@@ -192,7 +192,7 @@ module Buildium
     def unit_bedrooms=(unit_bedrooms)
       validator = EnumAttributeValidator.new('String', ["NotSet", "Studio", "OneBed", "TwoBed", "ThreeBed", "FourBed", "FiveBed", "SixBed", "SevenBed", "EightBed", "NineBedPlus"])
       unless validator.valid?(unit_bedrooms)
-        fail ArgumentError, "invalid value for \"unit_bedrooms\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ unit_bedrooms.inspect } for \"unit_bedrooms\", must be one of #{validator.allowable_values}."
       end
       @unit_bedrooms = unit_bedrooms
     end
@@ -202,7 +202,7 @@ module Buildium
     def unit_bathrooms=(unit_bathrooms)
       validator = EnumAttributeValidator.new('String', ["NotSet", "OneBath", "OnePointFiveBath", "TwoBath", "TwoPointFiveBath", "ThreeBath", "FourBath", "FiveBath", "FivePlusBath", "ThreePointFiveBath", "FourPointFiveBath"])
       unless validator.valid?(unit_bathrooms)
-        fail ArgumentError, "invalid value for \"unit_bathrooms\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ unit_bathrooms.inspect } for \"unit_bathrooms\", must be one of #{validator.allowable_values}."
       end
       @unit_bathrooms = unit_bathrooms
     end
@@ -355,5 +355,4 @@ module Buildium
     end
 
   end
-
 end

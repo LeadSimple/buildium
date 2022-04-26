@@ -19,7 +19,7 @@ module Buildium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create a rental property
+    # Create a property
     # Creates a new rental property.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param rental_property_post_message [RentalPropertyPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -29,7 +29,7 @@ module Buildium
       data
     end
 
-    # Create a rental property
+    # Create a property
     # Creates a new rental property.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_property_post_message [RentalPropertyPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -87,8 +87,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a rental property note
-    # Creates a rental property note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # Create a note
+    # Creates a note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param property_id [Integer] 
     # @param note_post_message [NotePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -98,8 +98,8 @@ module Buildium
       data
     end
 
-    # Create a rental property note
-    # Creates a rental property note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Create a note
+    # Creates a note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param property_id [Integer] 
     # @param note_post_message [NotePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -161,10 +161,10 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all rental properties
+    # Retrieve all properties
     # Retrieves a list of rental properties.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :location Filters results to only rental properties whose address *contains* the specified value.
+    # @option opts [String] :location Filters results to only rental properties whose city or state *contains* the specified value.
     # @option opts [Array<String>] :types Filters results by the rental type. If no type is provided all types will be returned.
     # @option opts [Array<String>] :subtypes Filters results by the sub type of the rental property. If no sub type is specified all sub types will be returned.
     # @option opts [String] :status Filters results by the status of the rental property. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; rental properties will be returned.
@@ -179,10 +179,10 @@ module Buildium
       data
     end
 
-    # Retrieve all rental properties
+    # Retrieve all properties
     # Retrieves a list of rental properties.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :location Filters results to only rental properties whose address *contains* the specified value.
+    # @option opts [String] :location Filters results to only rental properties whose city or state *contains* the specified value.
     # @option opts [Array<String>] :types Filters results by the rental type. If no type is provided all types will be returned.
     # @option opts [Array<String>] :subtypes Filters results by the sub type of the rental property. If no sub type is specified all sub types will be returned.
     # @option opts [String] :status Filters results by the status of the rental property. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; rental properties will be returned.
@@ -257,7 +257,70 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a rental property
+    # Retrieve all amenities
+    # Retrieve all the amenities for a rental property.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # @param property_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [RentalFeaturesMessage]
+    def get_features_by_rental_property_id(property_id, opts = {})
+      data, _status_code, _headers = get_features_by_rental_property_id_with_http_info(property_id, opts)
+      data
+    end
+
+    # Retrieve all amenities
+    # Retrieve all the amenities for a rental property.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # @param property_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RentalFeaturesMessage, Integer, Hash)>] RentalFeaturesMessage data, response status code and response headers
+    def get_features_by_rental_property_id_with_http_info(property_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RentalPropertiesApi.get_features_by_rental_property_id ...'
+      end
+      # verify the required parameter 'property_id' is set
+      if @api_client.config.client_side_validation && property_id.nil?
+        fail ArgumentError, "Missing the required parameter 'property_id' when calling RentalPropertiesApi.get_features_by_rental_property_id"
+      end
+      # resource path
+      local_var_path = '/v1/rentals/{propertyId}/amenities'.sub('{' + 'propertyId' + '}', CGI.escape(property_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RentalFeaturesMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"RentalPropertiesApi.get_features_by_rental_property_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RentalPropertiesApi#get_features_by_rental_property_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a property
     # Retrieve a specific rental property.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param property_id [Integer] The rental property identifier.
     # @param [Hash] opts the optional parameters
@@ -267,7 +330,7 @@ module Buildium
       data
     end
 
-    # Retrieve a rental property
+    # Retrieve a property
     # Retrieve a specific rental property.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param property_id [Integer] The rental property identifier.
     # @param [Hash] opts the optional parameters
@@ -320,8 +383,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a rental property note
-    # Retrieves a rental property note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # Retrieve a note
+    # Retrieves a note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param property_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -331,8 +394,8 @@ module Buildium
       data
     end
 
-    # Retrieve a rental property note
-    # Retrieves a rental property note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve a note
+    # Retrieves a note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param property_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -389,8 +452,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all rental property notes
-    # Retrieve all rental property notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # Retrieve all notes
+    # Retrieves all notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
     # @param property_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -405,8 +468,8 @@ module Buildium
       data
     end
 
-    # Retrieve all rental property notes
-    # Retrieve all rental property notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve all notes
+    # Retrieves all notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param property_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -470,8 +533,228 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a rental property
-    # Updates a rental property.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # Retrieve all preferred vendors
+    # Retrieves all preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # @param property_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<RentalPreferredVendorMessage>]
+    def get_rental_preferred_vendors(property_id, opts = {})
+      data, _status_code, _headers = get_rental_preferred_vendors_with_http_info(property_id, opts)
+      data
+    end
+
+    # Retrieve all preferred vendors
+    # Retrieves all preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # @param property_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<RentalPreferredVendorMessage>, Integer, Hash)>] Array<RentalPreferredVendorMessage> data, response status code and response headers
+    def get_rental_preferred_vendors_with_http_info(property_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RentalPropertiesApi.get_rental_preferred_vendors ...'
+      end
+      # verify the required parameter 'property_id' is set
+      if @api_client.config.client_side_validation && property_id.nil?
+        fail ArgumentError, "Missing the required parameter 'property_id' when calling RentalPropertiesApi.get_rental_preferred_vendors"
+      end
+      # resource path
+      local_var_path = '/v1/rentals/{propertyId}/vendors'.sub('{' + 'propertyId' + '}', CGI.escape(property_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<RentalPreferredVendorMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"RentalPropertiesApi.get_rental_preferred_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RentalPropertiesApi#get_rental_preferred_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update amenities
+    # Updates the amenities for a rental property.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # @param property_id [Integer] 
+    # @param rental_features_put_message [RentalFeaturesPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [RentalFeaturesMessage]
+    def update_rental_features(property_id, rental_features_put_message, opts = {})
+      data, _status_code, _headers = update_rental_features_with_http_info(property_id, rental_features_put_message, opts)
+      data
+    end
+
+    # Update amenities
+    # Updates the amenities for a rental property.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param property_id [Integer] 
+    # @param rental_features_put_message [RentalFeaturesPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RentalFeaturesMessage, Integer, Hash)>] RentalFeaturesMessage data, response status code and response headers
+    def update_rental_features_with_http_info(property_id, rental_features_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RentalPropertiesApi.update_rental_features ...'
+      end
+      # verify the required parameter 'property_id' is set
+      if @api_client.config.client_side_validation && property_id.nil?
+        fail ArgumentError, "Missing the required parameter 'property_id' when calling RentalPropertiesApi.update_rental_features"
+      end
+      # verify the required parameter 'rental_features_put_message' is set
+      if @api_client.config.client_side_validation && rental_features_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'rental_features_put_message' when calling RentalPropertiesApi.update_rental_features"
+      end
+      # resource path
+      local_var_path = '/v1/rentals/{propertyId}/amenities'.sub('{' + 'propertyId' + '}', CGI.escape(property_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_features_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'RentalFeaturesMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"RentalPropertiesApi.update_rental_features",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RentalPropertiesApi#update_rental_features\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update preferred vendors
+    # Updates preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # @param property_id [Integer] 
+    # @param rental_preferred_vendor_put_message [RentalPreferredVendorPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<RentalPreferredVendorMessage>]
+    def update_rental_preferred_vendors(property_id, rental_preferred_vendor_put_message, opts = {})
+      data, _status_code, _headers = update_rental_preferred_vendors_with_http_info(property_id, rental_preferred_vendor_put_message, opts)
+      data
+    end
+
+    # Update preferred vendors
+    # Updates preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param property_id [Integer] 
+    # @param rental_preferred_vendor_put_message [RentalPreferredVendorPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<RentalPreferredVendorMessage>, Integer, Hash)>] Array<RentalPreferredVendorMessage> data, response status code and response headers
+    def update_rental_preferred_vendors_with_http_info(property_id, rental_preferred_vendor_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RentalPropertiesApi.update_rental_preferred_vendors ...'
+      end
+      # verify the required parameter 'property_id' is set
+      if @api_client.config.client_side_validation && property_id.nil?
+        fail ArgumentError, "Missing the required parameter 'property_id' when calling RentalPropertiesApi.update_rental_preferred_vendors"
+      end
+      # verify the required parameter 'rental_preferred_vendor_put_message' is set
+      if @api_client.config.client_side_validation && rental_preferred_vendor_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'rental_preferred_vendor_put_message' when calling RentalPropertiesApi.update_rental_preferred_vendors"
+      end
+      # resource path
+      local_var_path = '/v1/rentals/{propertyId}/vendors'.sub('{' + 'propertyId' + '}', CGI.escape(property_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_preferred_vendor_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<RentalPreferredVendorMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"RentalPropertiesApi.update_rental_preferred_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RentalPropertiesApi#update_rental_preferred_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a property
+    # Updates a rental property.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param property_id [Integer] 
     # @param rental_property_put_message [RentalPropertyPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -481,8 +764,8 @@ module Buildium
       data
     end
 
-    # Update a rental property
-    # Updates a rental property.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a property
+    # Updates a rental property.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param property_id [Integer] 
     # @param rental_property_put_message [RentalPropertyPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -544,8 +827,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a rental property note
-    # Updates a rental property note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # Update a note
+    # Updates a note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
     # @param property_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -556,8 +839,8 @@ module Buildium
       data
     end
 
-    # Update a rental property note
-    # Updates a rental property note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates a note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param property_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 

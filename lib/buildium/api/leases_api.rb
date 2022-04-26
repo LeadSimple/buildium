@@ -87,9 +87,9 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a ledger credit
-    # Creates a lease ledger credit.
-    # @param lease_id [Integer] 
+    # Create a credit
+    # Creates a lease ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # @param lease_id [Integer] The lease unique identifier.
     # @param lease_ledger_credit_post_message [LeaseLedgerCreditPostMessage] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
@@ -98,9 +98,9 @@ module Buildium
       data
     end
 
-    # Create a ledger credit
-    # Creates a lease ledger credit.
-    # @param lease_id [Integer] 
+    # Create a credit
+    # Creates a lease ledger credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param lease_id [Integer] The lease unique identifier.
     # @param lease_ledger_credit_post_message [LeaseLedgerCreditPostMessage] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
@@ -161,7 +161,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a ledger charge
+    # Create a charge
     # Creates a charge transaction on a specific lease ledger.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] 
     # @param lease_charge_message [LeaseChargeMessage] 
@@ -172,7 +172,7 @@ module Buildium
       data
     end
 
-    # Create a ledger charge
+    # Create a charge
     # Creates a charge transaction on a specific lease ledger.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
     # @param lease_charge_message [LeaseChargeMessage] 
@@ -235,7 +235,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a lease note
+    # Create a note
     # Creates a lease note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
     # @param lease_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -246,7 +246,7 @@ module Buildium
       data
     end
 
-    # Create a lease note
+    # Create a note
     # Creates a lease note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
     # @param note_post_message [NotePostMessage] 
@@ -309,7 +309,155 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a ledger payment
+    # Create a payment reversal
+    # Reverses a lease ledger payment. Note, this action can only be taken on a payment that has been deposited.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # @param lease_id [Integer] The lease unique identifier.
+    # @param lease_ledger_reverse_payment_post_message [LeaseLedgerReversePaymentPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseTransactionMessage]
+    def create_lease_reverse_payment(lease_id, lease_ledger_reverse_payment_post_message, opts = {})
+      data, _status_code, _headers = create_lease_reverse_payment_with_http_info(lease_id, lease_ledger_reverse_payment_post_message, opts)
+      data
+    end
+
+    # Create a payment reversal
+    # Reverses a lease ledger payment. Note, this action can only be taken on a payment that has been deposited.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param lease_id [Integer] The lease unique identifier.
+    # @param lease_ledger_reverse_payment_post_message [LeaseLedgerReversePaymentPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
+    def create_lease_reverse_payment_with_http_info(lease_id, lease_ledger_reverse_payment_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.create_lease_reverse_payment ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.create_lease_reverse_payment"
+      end
+      # verify the required parameter 'lease_ledger_reverse_payment_post_message' is set
+      if @api_client.config.client_side_validation && lease_ledger_reverse_payment_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_ledger_reverse_payment_post_message' when calling LeasesApi.create_lease_reverse_payment"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/reversepayments'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_reverse_payment_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.create_lease_reverse_payment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#create_lease_reverse_payment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a move out
+    # Creates move out data for a single tenant on a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+    # @param lease_id [Integer] 
+    # @param lease_move_out_data_post_message [LeaseMoveOutDataPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseMoveOutDataMessage]
+    def create_move_out_data(lease_id, lease_move_out_data_post_message, opts = {})
+      data, _status_code, _headers = create_move_out_data_with_http_info(lease_id, lease_move_out_data_post_message, opts)
+      data
+    end
+
+    # Create a move out
+    # Creates move out data for a single tenant on a given lease.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param lease_id [Integer] 
+    # @param lease_move_out_data_post_message [LeaseMoveOutDataPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseMoveOutDataMessage, Integer, Hash)>] LeaseMoveOutDataMessage data, response status code and response headers
+    def create_move_out_data_with_http_info(lease_id, lease_move_out_data_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.create_move_out_data ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.create_move_out_data"
+      end
+      # verify the required parameter 'lease_move_out_data_post_message' is set
+      if @api_client.config.client_side_validation && lease_move_out_data_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_move_out_data_post_message' when calling LeasesApi.create_move_out_data"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/moveouts'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_move_out_data_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseMoveOutDataMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.create_move_out_data",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#create_move_out_data\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a payment
     # Creates a lease ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] The lease unique identifier.
     # @param lease_ledger_payment_post_message [LeaseLedgerPaymentPostMessage] 
@@ -320,7 +468,7 @@ module Buildium
       data
     end
 
-    # Create a ledger payment
+    # Create a payment
     # Creates a lease ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] The lease unique identifier.
     # @param lease_ledger_payment_post_message [LeaseLedgerPaymentPostMessage] 
@@ -600,7 +748,148 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve a lease note
+    # Retrieve a move out
+    # Retrieves move out data for a single tenant on a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+    # @param lease_id [Integer] 
+    # @param tenant_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseMoveOutDataMessage]
+    def get_lease_move_out_data_by_tenant_id(lease_id, tenant_id, opts = {})
+      data, _status_code, _headers = get_lease_move_out_data_by_tenant_id_with_http_info(lease_id, tenant_id, opts)
+      data
+    end
+
+    # Retrieve a move out
+    # Retrieves move out data for a single tenant on a given lease.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param tenant_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseMoveOutDataMessage, Integer, Hash)>] LeaseMoveOutDataMessage data, response status code and response headers
+    def get_lease_move_out_data_by_tenant_id_with_http_info(lease_id, tenant_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.get_lease_move_out_data_by_tenant_id ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.get_lease_move_out_data_by_tenant_id"
+      end
+      # verify the required parameter 'tenant_id' is set
+      if @api_client.config.client_side_validation && tenant_id.nil?
+        fail ArgumentError, "Missing the required parameter 'tenant_id' when calling LeasesApi.get_lease_move_out_data_by_tenant_id"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/moveouts/{tenantId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseMoveOutDataMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.get_lease_move_out_data_by_tenant_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#get_lease_move_out_data_by_tenant_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all move outs
+    # Retrieves a list of move out dates for a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<LeaseMoveOutDataMessage>]
+    def get_lease_move_out_information_by_id(lease_id, opts = {})
+      data, _status_code, _headers = get_lease_move_out_information_by_id_with_http_info(lease_id, opts)
+      data
+    end
+
+    # Retrieve all move outs
+    # Retrieves a list of move out dates for a given lease.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<LeaseMoveOutDataMessage>, Integer, Hash)>] Array<LeaseMoveOutDataMessage> data, response status code and response headers
+    def get_lease_move_out_information_by_id_with_http_info(lease_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.get_lease_move_out_information_by_id ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.get_lease_move_out_information_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/moveouts'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<LeaseMoveOutDataMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.get_lease_move_out_information_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#get_lease_move_out_information_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a note
     # Retrieves a lease note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
     # @param lease_id [Integer] 
     # @param note_id [Integer] 
@@ -611,7 +900,7 @@ module Buildium
       data
     end
 
-    # Retrieve a lease note
+    # Retrieve a note
     # Retrieves a lease note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param note_id [Integer] 
@@ -669,7 +958,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all lease notes
+    # Retrieve all notes
     # Retrieves all lease notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
     # @param lease_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -685,7 +974,7 @@ module Buildium
       data
     end
 
-    # Retrieve all lease notes
+    # Retrieve all notes
     # Retrieves all lease notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -750,7 +1039,7 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all lease outstanding balances
+    # Retrieve all outstanding balances
     # Retrieves a list of lease outstanding balances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Outstanding Balances</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype 
@@ -769,7 +1058,7 @@ module Buildium
       data
     end
 
-    # Retrieve all lease outstanding balances
+    # Retrieve all outstanding balances
     # Retrieves a list of lease outstanding balances.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Outstanding Balances&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype 
@@ -961,8 +1250,218 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve all rent schedules
+    # The rent schedule provides details (dollar amount, day of the month, etc) of the recurring charges that are applied to the lease ledger each rent cycle. A lease may have more than one rent schedule associated with it if the rent terms change within the duration of the lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<LeaseRentMessage>]
+    def get_rent(lease_id, opts = {})
+      data, _status_code, _headers = get_rent_with_http_info(lease_id, opts)
+      data
+    end
+
+    # Retrieve all rent schedules
+    # The rent schedule provides details (dollar amount, day of the month, etc) of the recurring charges that are applied to the lease ledger each rent cycle. A lease may have more than one rent schedule associated with it if the rent terms change within the duration of the lease.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<LeaseRentMessage>, Integer, Hash)>] Array<LeaseRentMessage> data, response status code and response headers
+    def get_rent_with_http_info(lease_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.get_rent ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.get_rent"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/rent'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<LeaseRentMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.get_rent",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#get_rent\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a rent schedule
+    # Retrieves a specific rent schedule for a lease. The rent schedule provides details (dollar amount, day of the month, etc) of the recurring charges that are applied to the lease ledger each rent cycle.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+    # @param lease_id [Integer] 
+    # @param rent_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseRentMessage]
+    def get_rent_by_id(lease_id, rent_id, opts = {})
+      data, _status_code, _headers = get_rent_by_id_with_http_info(lease_id, rent_id, opts)
+      data
+    end
+
+    # Retrieve a rent schedule
+    # Retrieves a specific rent schedule for a lease. The rent schedule provides details (dollar amount, day of the month, etc) of the recurring charges that are applied to the lease ledger each rent cycle.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param rent_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseRentMessage, Integer, Hash)>] LeaseRentMessage data, response status code and response headers
+    def get_rent_by_id_with_http_info(lease_id, rent_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.get_rent_by_id ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.get_rent_by_id"
+      end
+      # verify the required parameter 'rent_id' is set
+      if @api_client.config.client_side_validation && rent_id.nil?
+        fail ArgumentError, "Missing the required parameter 'rent_id' when calling LeasesApi.get_rent_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/rent/{rentId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'rentId' + '}', CGI.escape(rent_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseRentMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.get_rent_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#get_rent_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a move out
+    # Deletes move out data for a tenant on a given lease.              <br /><br /><h4>Required Permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+    # @param lease_id [Integer] 
+    # @param tenant_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def undo_tenant_moveout(lease_id, tenant_id, opts = {})
+      undo_tenant_moveout_with_http_info(lease_id, tenant_id, opts)
+      nil
+    end
+
+    # Delete a move out
+    # Deletes move out data for a tenant on a given lease.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required Permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param tenant_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def undo_tenant_moveout_with_http_info(lease_id, tenant_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.undo_tenant_moveout ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.undo_tenant_moveout"
+      end
+      # verify the required parameter 'tenant_id' is set
+      if @api_client.config.client_side_validation && tenant_id.nil?
+        fail ArgumentError, "Missing the required parameter 'tenant_id' when calling LeasesApi.undo_tenant_moveout"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/moveouts/{tenantId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.undo_tenant_moveout",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#undo_tenant_moveout\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a lease
-    # Update a signed lease.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`
+    # Update a signed lease.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`
     # @param lease_id [Integer] 
     # @param lease_put_message [LeasePutMessage] 
     # @param [Hash] opts the optional parameters
@@ -973,7 +1472,7 @@ module Buildium
     end
 
     # Update a lease
-    # Update a signed lease.  &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;Edit&#x60;
+    # Update a signed lease.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;Edit&#x60;
     # @param lease_id [Integer] 
     # @param lease_put_message [LeasePutMessage] 
     # @param [Hash] opts the optional parameters
@@ -1035,8 +1534,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a lease note
-    # Updates a lease note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
+    # Update a note
+    # Updates a lease note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
     # @param lease_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -1047,8 +1546,8 @@ module Buildium
       data
     end
 
-    # Update a lease note
-    # Updates a lease note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates a lease note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 

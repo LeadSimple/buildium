@@ -18,10 +18,10 @@ module Buildium
     # Tenant unique identifier.
     attr_accessor :tenant_id
 
-    # Date the tenant(s) will move out of the leased unit.
+    # Date the tenant will move out of the leased unit.
     attr_accessor :move_out_date
 
-    # Date the tenant(s) gave their move out notice.
+    # Date the tenant move out notice was received.
     attr_accessor :notice_given_date
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -235,5 +235,4 @@ module Buildium
     end
 
   end
-
 end

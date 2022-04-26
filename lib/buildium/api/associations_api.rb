@@ -87,8 +87,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create an association note
-    # Creates a new association note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Create a note
+    # Creates a note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
     # @param note_post_message [NotePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -98,8 +98,8 @@ module Buildium
       data
     end
 
-    # Create an association note
-    # Creates a new association note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Create a note
+    # Creates a note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
     # @param note_post_message [NotePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -157,6 +157,310 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AssociationsApi#create_association_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a board member
+    # Creates a board member for a given association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # @param association_id [Integer] 
+    # @param association_board_member_post_message [AssociationBoardMemberPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [AssociationBoardMemberMessage]
+    def create_board_member(association_id, association_board_member_post_message, opts = {})
+      data, _status_code, _headers = create_board_member_with_http_info(association_id, association_board_member_post_message, opts)
+      data
+    end
+
+    # Create a board member
+    # Creates a board member for a given association.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param association_id [Integer] 
+    # @param association_board_member_post_message [AssociationBoardMemberPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AssociationBoardMemberMessage, Integer, Hash)>] AssociationBoardMemberMessage data, response status code and response headers
+    def create_board_member_with_http_info(association_id, association_board_member_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationsApi.create_board_member ...'
+      end
+      # verify the required parameter 'association_id' is set
+      if @api_client.config.client_side_validation && association_id.nil?
+        fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.create_board_member"
+      end
+      # verify the required parameter 'association_board_member_post_message' is set
+      if @api_client.config.client_side_validation && association_board_member_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'association_board_member_post_message' when calling AssociationsApi.create_board_member"
+      end
+      # resource path
+      local_var_path = '/v1/associations/{associationId}/boardmembers'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_board_member_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AssociationBoardMemberMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationsApi.create_board_member",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationsApi#create_board_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a board member
+    # Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit` `Delete`
+    # @param association_id [Integer] 
+    # @param board_member_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_board_member(association_id, board_member_id, opts = {})
+      delete_board_member_with_http_info(association_id, board_member_id, opts)
+      nil
+    end
+
+    # Delete a board member
+    # Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+    # @param association_id [Integer] 
+    # @param board_member_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_board_member_with_http_info(association_id, board_member_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationsApi.delete_board_member ...'
+      end
+      # verify the required parameter 'association_id' is set
+      if @api_client.config.client_side_validation && association_id.nil?
+        fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.delete_board_member"
+      end
+      # verify the required parameter 'board_member_id' is set
+      if @api_client.config.client_side_validation && board_member_id.nil?
+        fail ArgumentError, "Missing the required parameter 'board_member_id' when calling AssociationsApi.delete_board_member"
+      end
+      # resource path
+      local_var_path = '/v1/associations/{associationId}/boardmembers/{boardMemberId}'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s)).sub('{' + 'boardMemberId' + '}', CGI.escape(board_member_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationsApi.delete_board_member",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationsApi#delete_board_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all board members
+    # Retrieves all association board members.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # @param association_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :statuses Filters results to only records whose status is equal to the specified values.
+    # @option opts [Array<String>] :boardpositiontypes Filters results to only records whose board position type is equal to the specified values.
+    # @option opts [Time] :createddatetimeto Filters results to only records that were created before this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
+    # @option opts [Time] :createddatetimefrom Filters results to only records that were created after this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<AssociationBoardMemberMessage>]
+    def get_all_association_board_members(association_id, opts = {})
+      data, _status_code, _headers = get_all_association_board_members_with_http_info(association_id, opts)
+      data
+    end
+
+    # Retrieve all board members
+    # Retrieves all association board members.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # @param association_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :statuses Filters results to only records whose status is equal to the specified values.
+    # @option opts [Array<String>] :boardpositiontypes Filters results to only records whose board position type is equal to the specified values.
+    # @option opts [Time] :createddatetimeto Filters results to only records that were created before this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
+    # @option opts [Time] :createddatetimefrom Filters results to only records that were created after this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<AssociationBoardMemberMessage>, Integer, Hash)>] Array<AssociationBoardMemberMessage> data, response status code and response headers
+    def get_all_association_board_members_with_http_info(association_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationsApi.get_all_association_board_members ...'
+      end
+      # verify the required parameter 'association_id' is set
+      if @api_client.config.client_side_validation && association_id.nil?
+        fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.get_all_association_board_members"
+      end
+      allowable_values = ["Current", "Former", "Future"]
+      if @api_client.config.client_side_validation && opts[:'statuses'] && !opts[:'statuses'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"statuses\", must include one of #{allowable_values}"
+      end
+      allowable_values = ["President", "VicePresident", "Treasurer", "Secretary", "BoardMember"]
+      if @api_client.config.client_side_validation && opts[:'boardpositiontypes'] && !opts[:'boardpositiontypes'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"boardpositiontypes\", must include one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/v1/associations/{associationId}/boardmembers'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'statuses'] = @api_client.build_collection_param(opts[:'statuses'], :multi) if !opts[:'statuses'].nil?
+      query_params[:'boardpositiontypes'] = @api_client.build_collection_param(opts[:'boardpositiontypes'], :multi) if !opts[:'boardpositiontypes'].nil?
+      query_params[:'createddatetimeto'] = opts[:'createddatetimeto'] if !opts[:'createddatetimeto'].nil?
+      query_params[:'createddatetimefrom'] = opts[:'createddatetimefrom'] if !opts[:'createddatetimefrom'].nil?
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<AssociationBoardMemberMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationsApi.get_all_association_board_members",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationsApi#get_all_association_board_members\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a board member
+    # Retrieves an association board member.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # @param association_id [Integer] 
+    # @param board_member_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AssociationBoardMemberMessage]
+    def get_association_board_member_by_id(association_id, board_member_id, opts = {})
+      data, _status_code, _headers = get_association_board_member_by_id_with_http_info(association_id, board_member_id, opts)
+      data
+    end
+
+    # Retrieve a board member
+    # Retrieves an association board member.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # @param association_id [Integer] 
+    # @param board_member_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AssociationBoardMemberMessage, Integer, Hash)>] AssociationBoardMemberMessage data, response status code and response headers
+    def get_association_board_member_by_id_with_http_info(association_id, board_member_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationsApi.get_association_board_member_by_id ...'
+      end
+      # verify the required parameter 'association_id' is set
+      if @api_client.config.client_side_validation && association_id.nil?
+        fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.get_association_board_member_by_id"
+      end
+      # verify the required parameter 'board_member_id' is set
+      if @api_client.config.client_side_validation && board_member_id.nil?
+        fail ArgumentError, "Missing the required parameter 'board_member_id' when calling AssociationsApi.get_association_board_member_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/associations/{associationId}/boardmembers/{boardMemberId}'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s)).sub('{' + 'boardMemberId' + '}', CGI.escape(board_member_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AssociationBoardMemberMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationsApi.get_association_board_member_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationsApi#get_association_board_member_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -224,8 +528,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve an association property note
-    # Retrieves a association property note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieve a note
+    # Retrieves a note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
     # @param association_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -235,8 +539,8 @@ module Buildium
       data
     end
 
-    # Retrieve an association property note
-    # Retrieves a association property note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve a note
+    # Retrieves a note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -293,8 +597,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Retrieve all association property notes
-    # Retrieves all association property notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieve all notes
+    # Retrieves all notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -309,8 +613,8 @@ module Buildium
       data
     end
 
-    # Retrieve all association property notes
-    # Retrieves all association property notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve all notes
+    # Retrieves all notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -374,10 +678,82 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve all preferred vendors
+    # Retrieves all preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # @param association_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<AssociationPreferredVendorMessage>]
+    def get_association_preferred_vendors(association_id, opts = {})
+      data, _status_code, _headers = get_association_preferred_vendors_with_http_info(association_id, opts)
+      data
+    end
+
+    # Retrieve all preferred vendors
+    # Retrieves all preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # @param association_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<AssociationPreferredVendorMessage>, Integer, Hash)>] Array<AssociationPreferredVendorMessage> data, response status code and response headers
+    def get_association_preferred_vendors_with_http_info(association_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationsApi.get_association_preferred_vendors ...'
+      end
+      # verify the required parameter 'association_id' is set
+      if @api_client.config.client_side_validation && association_id.nil?
+        fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.get_association_preferred_vendors"
+      end
+      # resource path
+      local_var_path = '/v1/associations/{associationId}/vendors'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<AssociationPreferredVendorMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationsApi.get_association_preferred_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationsApi#get_association_preferred_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all associations
     # Retrieves a list of associations.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :location Filters results to any association whose address *contains* the specified value.
+    # @option opts [String] :location Filters results to any association whose city or state *contains* the specified value.
     # @option opts [String] :status Filters results by the status of the association. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; associations will be returned.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -391,7 +767,7 @@ module Buildium
     # Retrieve all associations
     # Retrieves a list of associations.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :location Filters results to any association whose address *contains* the specified value.
+    # @option opts [String] :location Filters results to any association whose city or state *contains* the specified value.
     # @option opts [String] :status Filters results by the status of the association. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; associations will be returned.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -451,7 +827,7 @@ module Buildium
     end
 
     # Update an association
-    # Updates an association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Updates an association.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
     # @param association_put_message [AssociationPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -462,7 +838,7 @@ module Buildium
     end
 
     # Update an association
-    # Updates an association.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an association.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
     # @param association_put_message [AssociationPutMessage] 
     # @param [Hash] opts the optional parameters
@@ -524,8 +900,8 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update an association note
-    # Updates an association note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Update a note
+    # Updates a note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -536,8 +912,8 @@ module Buildium
       data
     end
 
-    # Update an association note
-    # Updates an association note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a note
+    # Updates a note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
     # @param note_id [Integer] 
     # @param note_put_message [NotePutMessage] 
@@ -600,6 +976,160 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AssociationsApi#update_association_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update preferred vendors
+    # Updates preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # @param association_id [Integer] 
+    # @param association_preferred_vendor_put_message [AssociationPreferredVendorPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<AssociationPreferredVendorMessage>]
+    def update_association_preferred_vendors(association_id, association_preferred_vendor_put_message, opts = {})
+      data, _status_code, _headers = update_association_preferred_vendors_with_http_info(association_id, association_preferred_vendor_put_message, opts)
+      data
+    end
+
+    # Update preferred vendors
+    # Updates preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param association_id [Integer] 
+    # @param association_preferred_vendor_put_message [AssociationPreferredVendorPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<AssociationPreferredVendorMessage>, Integer, Hash)>] Array<AssociationPreferredVendorMessage> data, response status code and response headers
+    def update_association_preferred_vendors_with_http_info(association_id, association_preferred_vendor_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationsApi.update_association_preferred_vendors ...'
+      end
+      # verify the required parameter 'association_id' is set
+      if @api_client.config.client_side_validation && association_id.nil?
+        fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.update_association_preferred_vendors"
+      end
+      # verify the required parameter 'association_preferred_vendor_put_message' is set
+      if @api_client.config.client_side_validation && association_preferred_vendor_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'association_preferred_vendor_put_message' when calling AssociationsApi.update_association_preferred_vendors"
+      end
+      # resource path
+      local_var_path = '/v1/associations/{associationId}/vendors'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_preferred_vendor_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<AssociationPreferredVendorMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationsApi.update_association_preferred_vendors",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationsApi#update_association_preferred_vendors\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a board member
+    # Updates a board member for a given association.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # @param association_id [Integer] 
+    # @param board_member_id [Integer] 
+    # @param association_board_member_put_message [AssociationBoardMemberPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [AssociationBoardMemberMessage]
+    def update_board_member(association_id, board_member_id, association_board_member_put_message, opts = {})
+      data, _status_code, _headers = update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message, opts)
+      data
+    end
+
+    # Update a board member
+    # Updates a board member for a given association.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param association_id [Integer] 
+    # @param board_member_id [Integer] 
+    # @param association_board_member_put_message [AssociationBoardMemberPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AssociationBoardMemberMessage, Integer, Hash)>] AssociationBoardMemberMessage data, response status code and response headers
+    def update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationsApi.update_board_member ...'
+      end
+      # verify the required parameter 'association_id' is set
+      if @api_client.config.client_side_validation && association_id.nil?
+        fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.update_board_member"
+      end
+      # verify the required parameter 'board_member_id' is set
+      if @api_client.config.client_side_validation && board_member_id.nil?
+        fail ArgumentError, "Missing the required parameter 'board_member_id' when calling AssociationsApi.update_board_member"
+      end
+      # verify the required parameter 'association_board_member_put_message' is set
+      if @api_client.config.client_side_validation && association_board_member_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'association_board_member_put_message' when calling AssociationsApi.update_board_member"
+      end
+      # resource path
+      local_var_path = '/v1/associations/{associationId}/boardmembers/{boardMemberId}'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s)).sub('{' + 'boardMemberId' + '}', CGI.escape(board_member_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_board_member_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AssociationBoardMemberMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationsApi.update_board_member",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationsApi#update_board_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

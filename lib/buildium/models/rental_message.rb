@@ -205,7 +205,7 @@ module Buildium
     def rental_type=(rental_type)
       validator = EnumAttributeValidator.new('String', ["None", "Residential", "Commercial"])
       unless validator.valid?(rental_type)
-        fail ArgumentError, "invalid value for \"rental_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ rental_type.inspect } for \"rental_type\", must be one of #{validator.allowable_values}."
       end
       @rental_type = rental_type
     end
@@ -215,7 +215,7 @@ module Buildium
     def rental_sub_type=(rental_sub_type)
       validator = EnumAttributeValidator.new('String', ["CondoTownhome", "MultiFamily", "SingleFamily", "Industrial", "Office", "Retail", "ShoppingCenter", "Storage", "ParkingSpace"])
       unless validator.valid?(rental_sub_type)
-        fail ArgumentError, "invalid value for \"rental_sub_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ rental_sub_type.inspect } for \"rental_sub_type\", must be one of #{validator.allowable_values}."
       end
       @rental_sub_type = rental_sub_type
     end
@@ -370,5 +370,4 @@ module Buildium
     end
 
   end
-
 end

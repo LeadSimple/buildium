@@ -58,6 +58,12 @@ module Buildium
     # List of Board Member Terms for the given Association Owner(s)
     attr_accessor :board_member_terms
 
+    # Date and time the association owner was created.
+    attr_accessor :created_date_time
+
+    # Taxpayer identification number. Examples of United States identification numbers are Social Security number or a Employer Identification Number.
+    attr_accessor :tax_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -97,7 +103,9 @@ module Buildium
         :'mailing_preference' => :'MailingPreference',
         :'vehicles' => :'Vehicles',
         :'occupies_unit' => :'OccupiesUnit',
-        :'board_member_terms' => :'BoardMemberTerms'
+        :'board_member_terms' => :'BoardMemberTerms',
+        :'created_date_time' => :'CreatedDateTime',
+        :'tax_id' => :'TaxId'
       }
     end
 
@@ -123,7 +131,9 @@ module Buildium
         :'mailing_preference' => :'String',
         :'vehicles' => :'Array<VehicleMessage>',
         :'occupies_unit' => :'Boolean',
-        :'board_member_terms' => :'Array<AssociationOwnerBoardTermMessage>'
+        :'board_member_terms' => :'Array<AssociationOwnerBoardTermMessage>',
+        :'created_date_time' => :'Time',
+        :'tax_id' => :'String'
       }
     end
 
@@ -215,6 +225,14 @@ module Buildium
           self.board_member_terms = value
         end
       end
+
+      if attributes.key?(:'created_date_time')
+        self.created_date_time = attributes[:'created_date_time']
+      end
+
+      if attributes.key?(:'tax_id')
+        self.tax_id = attributes[:'tax_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -237,7 +255,7 @@ module Buildium
     def mailing_preference=(mailing_preference)
       validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
       unless validator.valid?(mailing_preference)
-        fail ArgumentError, "invalid value for \"mailing_preference\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ mailing_preference.inspect } for \"mailing_preference\", must be one of #{validator.allowable_values}."
       end
       @mailing_preference = mailing_preference
     end
@@ -261,7 +279,9 @@ module Buildium
           mailing_preference == o.mailing_preference &&
           vehicles == o.vehicles &&
           occupies_unit == o.occupies_unit &&
-          board_member_terms == o.board_member_terms
+          board_member_terms == o.board_member_terms &&
+          created_date_time == o.created_date_time &&
+          tax_id == o.tax_id
     end
 
     # @see the `==` method
@@ -273,7 +293,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, alternate_email, phone_numbers, primary_address, alternate_address, comment, emergency_contact, ownership_accounts, mailing_preference, vehicles, occupies_unit, board_member_terms].hash
+      [id, first_name, last_name, email, alternate_email, phone_numbers, primary_address, alternate_address, comment, emergency_contact, ownership_accounts, mailing_preference, vehicles, occupies_unit, board_member_terms, created_date_time, tax_id].hash
     end
 
     # Builds the object from hash
@@ -395,5 +415,4 @@ module Buildium
     end
 
   end
-
 end

@@ -41,6 +41,9 @@ module Buildium
     # Mailing preferences for the owner. If an alternate address exists and this value is not provided then the primary address will be set as the preferred address.
     attr_accessor :mailing_preference
 
+    # Taxpayer identification number of the owner. Examples of United States identification numbers are Social Security number or a Employer Identification Number. Valid formats are: `12-1234567`, `123-12-1234`, `123456789`.
+    attr_accessor :tax_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -75,7 +78,8 @@ module Buildium
         :'phone_numbers' => :'PhoneNumbers',
         :'emergency_contact' => :'EmergencyContact',
         :'comment' => :'Comment',
-        :'mailing_preference' => :'MailingPreference'
+        :'mailing_preference' => :'MailingPreference',
+        :'tax_id' => :'TaxId'
       }
     end
 
@@ -96,7 +100,8 @@ module Buildium
         :'phone_numbers' => :'PhoneNumbersMessage',
         :'emergency_contact' => :'SaveEmergencyContactMessage',
         :'comment' => :'String',
-        :'mailing_preference' => :'String'
+        :'mailing_preference' => :'String',
+        :'tax_id' => :'String'
       }
     end
 
@@ -160,6 +165,10 @@ module Buildium
       if attributes.key?(:'mailing_preference')
         self.mailing_preference = attributes[:'mailing_preference']
       end
+
+      if attributes.key?(:'tax_id')
+        self.tax_id = attributes[:'tax_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -197,7 +206,7 @@ module Buildium
     def mailing_preference=(mailing_preference)
       validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
       unless validator.valid?(mailing_preference)
-        fail ArgumentError, "invalid value for \"mailing_preference\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ mailing_preference.inspect } for \"mailing_preference\", must be one of #{validator.allowable_values}."
       end
       @mailing_preference = mailing_preference
     end
@@ -216,7 +225,8 @@ module Buildium
           phone_numbers == o.phone_numbers &&
           emergency_contact == o.emergency_contact &&
           comment == o.comment &&
-          mailing_preference == o.mailing_preference
+          mailing_preference == o.mailing_preference &&
+          tax_id == o.tax_id
     end
 
     # @see the `==` method
@@ -228,7 +238,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [first_name, last_name, primary_address, alternate_address, email, alternate_email, phone_numbers, emergency_contact, comment, mailing_preference].hash
+      [first_name, last_name, primary_address, alternate_address, email, alternate_email, phone_numbers, emergency_contact, comment, mailing_preference, tax_id].hash
     end
 
     # Builds the object from hash
@@ -350,5 +360,4 @@ module Buildium
     end
 
   end
-
 end

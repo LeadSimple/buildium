@@ -279,7 +279,7 @@ module Buildium
     def lease_type=(lease_type)
       validator = EnumAttributeValidator.new('String', ["None", "Fixed", "FixedWithRollover", "AtWill"])
       unless validator.valid?(lease_type)
-        fail ArgumentError, "invalid value for \"lease_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ lease_type.inspect } for \"lease_type\", must be one of #{validator.allowable_values}."
       end
       @lease_type = lease_type
     end
@@ -289,7 +289,7 @@ module Buildium
     def lease_status=(lease_status)
       validator = EnumAttributeValidator.new('String', ["Active", "Past", "Future"])
       unless validator.valid?(lease_status)
-        fail ArgumentError, "invalid value for \"lease_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ lease_status.inspect } for \"lease_status\", must be one of #{validator.allowable_values}."
       end
       @lease_status = lease_status
     end
@@ -299,7 +299,7 @@ module Buildium
     def term_type=(term_type)
       validator = EnumAttributeValidator.new('String', ["MonthToMonth", "Standard", "Owner"])
       unless validator.valid?(term_type)
-        fail ArgumentError, "invalid value for \"term_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ term_type.inspect } for \"term_type\", must be one of #{validator.allowable_values}."
       end
       @term_type = term_type
     end
@@ -309,7 +309,7 @@ module Buildium
     def renewal_offer_status=(renewal_offer_status)
       validator = EnumAttributeValidator.new('String', ["NotSet", "NotStarted", "Generated", "Declined", "Renewed", "Draft", "Unsigned", "PartiallySigned", "Countersign", "Activated", "Sent", "Accepted"])
       unless validator.valid?(renewal_offer_status)
-        fail ArgumentError, "invalid value for \"renewal_offer_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ renewal_offer_status.inspect } for \"renewal_offer_status\", must be one of #{validator.allowable_values}."
       end
       @renewal_offer_status = renewal_offer_status
     end
@@ -471,5 +471,4 @@ module Buildium
     end
 
   end
-
 end

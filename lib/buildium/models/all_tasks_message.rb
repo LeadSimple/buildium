@@ -232,7 +232,7 @@ module Buildium
     def task_type=(task_type)
       validator = EnumAttributeValidator.new('String', ["ContactRequest", "ResidentRequest", "Todo", "RentalOwnerRequest"])
       unless validator.valid?(task_type)
-        fail ArgumentError, "invalid value for \"task_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ task_type.inspect } for \"task_type\", must be one of #{validator.allowable_values}."
       end
       @task_type = task_type
     end
@@ -242,7 +242,7 @@ module Buildium
     def task_status=(task_status)
       validator = EnumAttributeValidator.new('String', ["New", "InProgress", "Completed", "Deferred", "Closed"])
       unless validator.valid?(task_status)
-        fail ArgumentError, "invalid value for \"task_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ task_status.inspect } for \"task_status\", must be one of #{validator.allowable_values}."
       end
       @task_status = task_status
     end
@@ -252,7 +252,7 @@ module Buildium
     def priority=(priority)
       validator = EnumAttributeValidator.new('String', ["Low", "Normal", "High"])
       unless validator.valid?(priority)
-        fail ArgumentError, "invalid value for \"priority\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ priority.inspect } for \"priority\", must be one of #{validator.allowable_values}."
       end
       @priority = priority
     end
@@ -410,5 +410,4 @@ module Buildium
     end
 
   end
-
 end

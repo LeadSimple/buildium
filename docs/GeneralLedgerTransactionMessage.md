@@ -13,6 +13,7 @@
 | **unit_id** | **Integer** | Unit unique identifier associated with the transaction, if applicable. Null if value is not set. | [optional] |
 | **unit_number** | **String** | Unit number associated with the transaction, if applicable. Null if value is not set. | [optional] |
 | **payment_detail** | [**PaymentDetailMessage**](PaymentDetailMessage.md) |  | [optional] |
+| **deposit_details** | [**DepositDetailMessage**](DepositDetailMessage.md) |  | [optional] |
 | **journal** | [**GeneralLedgerJournalMessage**](GeneralLedgerJournalMessage.md) |  | [optional] |
 
 ## Example
@@ -30,6 +31,7 @@ instance = Buildium::GeneralLedgerTransactionMessage.new(
   unit_id: null,
   unit_number: null,
   payment_detail: null,
+  deposit_details: null,
   journal: null
 )
 ```

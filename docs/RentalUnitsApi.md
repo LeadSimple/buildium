@@ -4,21 +4,23 @@ All URIs are relative to *https://api.buildium.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_rental_unit**](RentalUnitsApi.md#create_rental_unit) | **POST** /v1/rentals/units | Create a rental unit |
-| [**create_rental_unit_note**](RentalUnitsApi.md#create_rental_unit_note) | **POST** /v1/rentals/units/{unitId}/notes | Create a rental unit note |
-| [**get_all_rental_units**](RentalUnitsApi.md#get_all_rental_units) | **GET** /v1/rentals/units | Retrieve all rental property units |
-| [**get_rental_unit_by_id**](RentalUnitsApi.md#get_rental_unit_by_id) | **GET** /v1/rentals/units/{unitId} | Retrieve a rental property unit |
-| [**get_rental_unit_note_by_note_id**](RentalUnitsApi.md#get_rental_unit_note_by_note_id) | **GET** /v1/rentals/units/{unitId}/notes/{noteId} | Retrieve a rental unit note |
-| [**get_rental_unit_notes**](RentalUnitsApi.md#get_rental_unit_notes) | **GET** /v1/rentals/units/{unitId}/notes | Retrieve all rental unit notes |
-| [**update_note_for_rental_unit**](RentalUnitsApi.md#update_note_for_rental_unit) | **PUT** /v1/rentals/units/{unitId}/notes/{noteId} | Update a rental unit note |
-| [**update_rental_unit**](RentalUnitsApi.md#update_rental_unit) | **PUT** /v1/rentals/units/{unitId} | Update a rental unit |
+| [**create_rental_unit**](RentalUnitsApi.md#create_rental_unit) | **POST** /v1/rentals/units | Create a unit |
+| [**create_rental_unit_note**](RentalUnitsApi.md#create_rental_unit_note) | **POST** /v1/rentals/units/{unitId}/notes | Create a note |
+| [**get_all_rental_units**](RentalUnitsApi.md#get_all_rental_units) | **GET** /v1/rentals/units | Retrieve all units |
+| [**get_features_for_rental_unit_by_id**](RentalUnitsApi.md#get_features_for_rental_unit_by_id) | **GET** /v1/rentals/units/{unitId}/amenities | Retrieve all amenities |
+| [**get_rental_unit_by_id**](RentalUnitsApi.md#get_rental_unit_by_id) | **GET** /v1/rentals/units/{unitId} | Retrieve a unit |
+| [**get_rental_unit_note_by_note_id**](RentalUnitsApi.md#get_rental_unit_note_by_note_id) | **GET** /v1/rentals/units/{unitId}/notes/{noteId} | Retrieve a note |
+| [**get_rental_unit_notes**](RentalUnitsApi.md#get_rental_unit_notes) | **GET** /v1/rentals/units/{unitId}/notes | Retrieve all notes |
+| [**update_note_for_rental_unit**](RentalUnitsApi.md#update_note_for_rental_unit) | **PUT** /v1/rentals/units/{unitId}/notes/{noteId} | Update a note |
+| [**update_rental_unit**](RentalUnitsApi.md#update_rental_unit) | **PUT** /v1/rentals/units/{unitId} | Update a unit |
+| [**update_rental_unit_features**](RentalUnitsApi.md#update_rental_unit_features) | **PUT** /v1/rentals/units/{unitId}/amenities | Update amenities |
 
 
 ## create_rental_unit
 
 > <RentalUnitMessage> create_rental_unit(rental_units_post_message)
 
-Create a rental unit
+Create a unit
 
 Creates a rental unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
 
@@ -44,7 +46,7 @@ api_instance = Buildium::RentalUnitsApi.new
 rental_units_post_message = Buildium::RentalUnitsPostMessage.new({unit_number: 'unit_number_example', property_id: 37, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # RentalUnitsPostMessage | 
 
 begin
-  # Create a rental unit
+  # Create a unit
   result = api_instance.create_rental_unit(rental_units_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -60,7 +62,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a rental unit
+  # Create a unit
   data, status_code, headers = api_instance.create_rental_unit_with_http_info(rental_units_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -94,7 +96,7 @@ end
 
 > <NoteMessage> create_rental_unit_note(unit_id, note_post_message)
 
-Create a rental unit note
+Create a note
 
 Creates a rental unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
 
@@ -121,7 +123,7 @@ unit_id = 56 # Integer |
 note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
 
 begin
-  # Create a rental unit note
+  # Create a note
   result = api_instance.create_rental_unit_note(unit_id, note_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -137,7 +139,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a rental unit note
+  # Create a note
   data, status_code, headers = api_instance.create_rental_unit_note_with_http_info(unit_id, note_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -172,7 +174,7 @@ end
 
 > <Array<RentalUnitMessage>> get_all_rental_units(opts)
 
-Retrieve all rental property units
+Retrieve all units
 
 Retrieves a list of rental property units.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
 
@@ -203,7 +205,7 @@ opts = {
 }
 
 begin
-  # Retrieve all rental property units
+  # Retrieve all units
   result = api_instance.get_all_rental_units(opts)
   p result
 rescue Buildium::ApiError => e
@@ -219,7 +221,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all rental property units
+  # Retrieve all units
   data, status_code, headers = api_instance.get_all_rental_units_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -252,11 +254,87 @@ end
 - **Accept**: application/json
 
 
+## get_features_for_rental_unit_by_id
+
+> <RentalUnitFeaturesMessage> get_features_for_rental_unit_by_id(unit_id)
+
+Retrieve all amenities
+
+Retrieves all amenities for a rental unit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalUnitsApi.new
+unit_id = 56 # Integer | 
+
+begin
+  # Retrieve all amenities
+  result = api_instance.get_features_for_rental_unit_by_id(unit_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalUnitsApi->get_features_for_rental_unit_by_id: #{e}"
+end
+```
+
+#### Using the get_features_for_rental_unit_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RentalUnitFeaturesMessage>, Integer, Hash)> get_features_for_rental_unit_by_id_with_http_info(unit_id)
+
+```ruby
+begin
+  # Retrieve all amenities
+  data, status_code, headers = api_instance.get_features_for_rental_unit_by_id_with_http_info(unit_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RentalUnitFeaturesMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalUnitsApi->get_features_for_rental_unit_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **unit_id** | **Integer** |  |  |
+
+### Return type
+
+[**RentalUnitFeaturesMessage**](RentalUnitFeaturesMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_rental_unit_by_id
 
 > <RentalUnitMessage> get_rental_unit_by_id(unit_id)
 
-Retrieve a rental property unit
+Retrieve a unit
 
 Retrieves a specific rental property unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
 
@@ -282,7 +360,7 @@ api_instance = Buildium::RentalUnitsApi.new
 unit_id = 56 # Integer | The rental unit identifier.
 
 begin
-  # Retrieve a rental property unit
+  # Retrieve a unit
   result = api_instance.get_rental_unit_by_id(unit_id)
   p result
 rescue Buildium::ApiError => e
@@ -298,7 +376,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a rental property unit
+  # Retrieve a unit
   data, status_code, headers = api_instance.get_rental_unit_by_id_with_http_info(unit_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -332,7 +410,7 @@ end
 
 > <NoteMessage> get_rental_unit_note_by_note_id(unit_id, note_id)
 
-Retrieve a rental unit note
+Retrieve a note
 
 Retrieves a rental unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
 
@@ -359,7 +437,7 @@ unit_id = 56 # Integer |
 note_id = 56 # Integer | 
 
 begin
-  # Retrieve a rental unit note
+  # Retrieve a note
   result = api_instance.get_rental_unit_note_by_note_id(unit_id, note_id)
   p result
 rescue Buildium::ApiError => e
@@ -375,7 +453,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a rental unit note
+  # Retrieve a note
   data, status_code, headers = api_instance.get_rental_unit_note_by_note_id_with_http_info(unit_id, note_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -410,7 +488,7 @@ end
 
 > <Array<NoteMessage>> get_rental_unit_notes(unit_id, opts)
 
-Retrieve all rental unit notes
+Retrieve all notes
 
 Retrieves all rental unit notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
 
@@ -444,7 +522,7 @@ opts = {
 }
 
 begin
-  # Retrieve all rental unit notes
+  # Retrieve all notes
   result = api_instance.get_rental_unit_notes(unit_id, opts)
   p result
 rescue Buildium::ApiError => e
@@ -460,7 +538,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all rental unit notes
+  # Retrieve all notes
   data, status_code, headers = api_instance.get_rental_unit_notes_with_http_info(unit_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -500,9 +578,9 @@ end
 
 > <NoteMessage> update_note_for_rental_unit(unit_id, note_id, note_put_message)
 
-Update a rental unit note
+Update a note
 
-Updates a rental unit note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+Updates a rental unit note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -528,7 +606,7 @@ note_id = 56 # Integer |
 note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
 
 begin
-  # Update a rental unit note
+  # Update a note
   result = api_instance.update_note_for_rental_unit(unit_id, note_id, note_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -544,7 +622,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a rental unit note
+  # Update a note
   data, status_code, headers = api_instance.update_note_for_rental_unit_with_http_info(unit_id, note_id, note_put_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -580,9 +658,9 @@ end
 
 > <RentalUnitMessage> update_rental_unit(unit_id, rental_unit_put_message)
 
-Update a rental unit
+Update a unit
 
-Updates a rental unit.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+Updates a rental unit.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -607,7 +685,7 @@ unit_id = 56 # Integer | The identifier of the unit to update.
 rental_unit_put_message = Buildium::RentalUnitPutMessage.new({unit_number: 'unit_number_example', address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # RentalUnitPutMessage | 
 
 begin
-  # Update a rental unit
+  # Update a unit
   result = api_instance.update_rental_unit(unit_id, rental_unit_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -623,7 +701,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Update a rental unit
+  # Update a unit
   data, status_code, headers = api_instance.update_rental_unit_with_http_info(unit_id, rental_unit_put_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -643,6 +721,84 @@ end
 ### Return type
 
 [**RentalUnitMessage**](RentalUnitMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_rental_unit_features
+
+> <RentalUnitFeaturesMessage> update_rental_unit_features(unit_id, rental_unit_features_put_message)
+
+Update amenities
+
+Updates the amenities for a rental unit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalUnitsApi.new
+unit_id = 56 # Integer | 
+rental_unit_features_put_message = Buildium::RentalUnitFeaturesPutMessage.new # RentalUnitFeaturesPutMessage | 
+
+begin
+  # Update amenities
+  result = api_instance.update_rental_unit_features(unit_id, rental_unit_features_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalUnitsApi->update_rental_unit_features: #{e}"
+end
+```
+
+#### Using the update_rental_unit_features_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RentalUnitFeaturesMessage>, Integer, Hash)> update_rental_unit_features_with_http_info(unit_id, rental_unit_features_put_message)
+
+```ruby
+begin
+  # Update amenities
+  data, status_code, headers = api_instance.update_rental_unit_features_with_http_info(unit_id, rental_unit_features_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RentalUnitFeaturesMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalUnitsApi->update_rental_unit_features_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **unit_id** | **Integer** |  |  |
+| **rental_unit_features_put_message** | [**RentalUnitFeaturesPutMessage**](RentalUnitFeaturesPutMessage.md) |  |  |
+
+### Return type
+
+[**RentalUnitFeaturesMessage**](RentalUnitFeaturesMessage.md)
 
 ### Authorization
 

@@ -44,7 +44,7 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::AccountingApi.new
-bill_post_message = Buildium::BillPostMessage.new({date: Date.today, due_date: Date.today, vendor_id: 37, lines: [Buildium::BillLineSaveMessage.new({accounting_entity: Buildium::BillAccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), gl_account_id: 37, amount: 3.56})]}) # BillPostMessage | 
+bill_post_message = Buildium::BillPostMessage.new({date: Date.today, due_date: Date.today, vendor_id: 37, lines: [Buildium::BillLinePostMessage.new({accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), gl_account_id: 37, amount: 3.56})]}) # BillPostMessage | 
 
 begin
   # Create a bill
@@ -631,7 +631,7 @@ end
 
 api_instance = Buildium::AccountingApi.new
 accountingbasis = 'Accrual' # String | The methodology in which revenues and expenses are recognized when calculating the balances. Specifying `Cash` calculates balances based on when money changes hands. Specifying `Accrual` calculates balances based on the period in which the transaction originally happened.
-asofdate = Date.parse('2013-10-20') # Date | 
+asofdate = Date.parse('2013-10-20') # Date | Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date.
 opts = {
   entitytype: 'Association', # String | Specifies the type of entity that `EntityId` field refers to.
   entityid: 56, # Integer | Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in `EntityType`.
@@ -673,7 +673,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **accountingbasis** | **String** | The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened. |  |
-| **asofdate** | **Date** |  |  |
+| **asofdate** | **Date** | Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date. |  |
 | **entitytype** | **String** | Specifies the type of entity that &#x60;EntityId&#x60; field refers to. | [optional] |
 | **entityid** | **Integer** | Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in &#x60;EntityType&#x60;. | [optional] |
 | **glaccountids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to the specified set of general ledger account identifiers. | [optional] |
@@ -853,7 +853,7 @@ end
 
 Update a bill
 
-Updates a bill.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+Use this operation to update any of the writable fields of an existing bill resource. When updating this resource keep the following in mind: <br /><ul><li>Writable fields omitted from the request or that do not have a value in the request message are set to `NULL`. If you do not want to update the field, submit the original field value.</li><li>When a bill has an existing payment any edits to the line items that change the total bill amount must result in the new total bill amount being equal to or greater than the amount paid.</li><li>When adding a new line item leave the `LineItem.Id` field empty.</li></ul><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
 
 ### Examples
 

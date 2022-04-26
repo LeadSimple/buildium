@@ -14,6 +14,7 @@
 | **emergency_contact** | [**SaveEmergencyContactMessage**](SaveEmergencyContactMessage.md) |  | [optional] |
 | **primary_address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  |  |
 | **alternate_address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  | [optional] |
+| **move_out_date** | **Date** | Move out date for the tenant. Must be formatted as &#x60;YYYY-MM-DD&#x60;. | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = Buildium::AssociationTenantPutMessage.new(
   comment: null,
   emergency_contact: null,
   primary_address: null,
-  alternate_address: null
+  alternate_address: null,
+  move_out_date: null
 )
 ```
 

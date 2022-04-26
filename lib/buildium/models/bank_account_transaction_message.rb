@@ -193,7 +193,7 @@ module Buildium
     def transaction_type=(transaction_type)
       validator = EnumAttributeValidator.new('String', ["Bill", "Check", "Charge", "Payment", "Credit", "Refund", "ApplyDeposit", "ElectronicFundsTransfer", "Other", "Deposit", "GeneralJournalEntry", "OwnerContribution", "ReversePayment", "ReverseElectronicFundsTransfer", "VendorCredit", "RentalApplicationFeePayment", "ReverseRentalApplicationFeePayment", "ReverseOwnerContribution", "VendorRefund", "UnreversedPayment", "UnreversedElectronicFundsTransfer", "UnreversedOwnerContribution", "UnreversedRentalApplicationFeePayment"])
       unless validator.valid?(transaction_type)
-        fail ArgumentError, "invalid value for \"transaction_type\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ transaction_type.inspect } for \"transaction_type\", must be one of #{validator.allowable_values}."
       end
       @transaction_type = transaction_type
     end
@@ -203,7 +203,7 @@ module Buildium
     def reconciliation_status=(reconciliation_status)
       validator = EnumAttributeValidator.new('String', ["UnReconciled", "Cleared", "Reconciled"])
       unless validator.valid?(reconciliation_status)
-        fail ArgumentError, "invalid value for \"reconciliation_status\", must be one of #{validator.allowable_values}."
+        fail ArgumentError, "invalid value #{ reconciliation_status.inspect } for \"reconciliation_status\", must be one of #{validator.allowable_values}."
       end
       @reconciliation_status = reconciliation_status
     end
@@ -356,5 +356,4 @@ module Buildium
     end
 
   end
-
 end

@@ -17,6 +17,7 @@
 | **ownership_accounts** | [**Array&lt;AssociationOwnershipAccountMessage&gt;**](AssociationOwnershipAccountMessage.md) | List of associated ownership accounts. | [optional] |
 | **move_in_date** | **Date** | Move in date for the tenant. | [optional] |
 | **move_out_date** | **Date** | Move out date for the tenant. | [optional] |
+| **created_date_time** | **Time** | Date and time the tenant was created. | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = Buildium::AssociationTenantMessage.new(
   emergency_contact: null,
   ownership_accounts: null,
   move_in_date: null,
-  move_out_date: null
+  move_out_date: null,
+  created_date_time: null
 )
 ```
 

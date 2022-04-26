@@ -20,6 +20,9 @@ sed -i "s/require 'buildium\/models\/api_error'//g" lib/buildium.rb
 mv README.md DOCS.md
 cp bin/README.md README.md
 
+# Also move the CUSTOMIZATIONS file to the root
+cp bin/CUSTOMIZATIONS.md CUSTOMIZATIONS.md
+
 # Remove final files that we don't need from the template
 rm .travis.yml
 rm git_push.sh

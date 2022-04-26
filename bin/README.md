@@ -8,13 +8,13 @@ A Ruby client library for interacting with the [Buildium API](https://developer.
 
 1. Add this gem to your dependencies
 
-    ```ruby
-    # In your .gemspec, if any
-    s.add_runtime_dependency "buildium", "~> 1.0.0"
+   ```ruby
+   # In your .gemspec, if any
+   s.add_runtime_dependency "buildium", "~> 1.0.0"
 
-    # In your Gemfile
-    gem "buildium", github: "leadsimple/buildium"
-    ```
+   # In your Gemfile
+   gem "buildium", github: "leadsimple/buildium"
+   ```
 
 2. Get a Buildium API client ID and secret from Buildium, [as described in their docs](https://developer.buildium.com/#section/Getting-Started).
 
@@ -23,6 +23,7 @@ A Ruby client library for interacting with the [Buildium API](https://developer.
 You can configure the gem in two ways.
 
 #### Global Configuration
+
 All requests will use a single API key. Use this when you only expect to make requests on behalf of one Buildium account.
 
 ```ruby
@@ -43,7 +44,7 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::AccountingApi.new
-bill_post_message = Buildium::BillPostMessage.new({date: Date.today, due_date: Date.today, vendor_id: 37, lines: [Buildium::BillLineSaveMessage.new({accounting_entity: Buildium::BillAccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), gl_account_id: 37, amount: 3.56})]}) # BillPostMessage | 
+bill_post_message = Buildium::BillPostMessage.new({date: Date.today, due_date: Date.today, vendor_id: 37, lines: [Buildium::BillLineSaveMessage.new({accounting_entity: Buildium::BillAccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), gl_account_id: 37, amount: 3.56})]}) # BillPostMessage |
 
 begin
   #Create a bill
@@ -55,6 +56,7 @@ end
 ```
 
 #### Per-Request Configuration
+
 If you need to make requests on behalf of several Buildium accounts, then you will want to configure each request individually. Here's an example of how to do that:
 
 ```ruby
@@ -79,7 +81,12 @@ rental_properties_api.get_all_rentals()
 ```
 
 ## Documentation
+
 Read the [generated docs here](/DOCS.md). They're actually pretty good!
+
+## Customizations
+
+Besides using OpenAPI Generator, we have some overrides to their templates, to make things easier in our side. You can find about them [here](./CUSTOMIZATIONS.md).
 
 ## How to Regenerate This Library
 

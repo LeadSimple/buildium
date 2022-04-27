@@ -11,5 +11,5 @@ OpenAPI Generator version: 5.3.1
 =end
 
 module Buildium
-  VERSION = '1.1.0'
+  VERSION = '1.2.0'
 end

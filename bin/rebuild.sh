@@ -10,6 +10,9 @@ sed -i 's/OwnershipAccountsLedgerExternalApi_CreateCharge/CreateOwnershipAccount
 # so that the generated code will be cleaner
 sed -i 's/: ".*ExternalApi_/: "/g' bin/swagger.json
 
+# Remove some enums where Buildium is returning invalid data
+jq 'del(.components.schemas.TenantMessage.properties.SMSOptInStatus.enum)' bin/swagger.json | sponge bin/swagger.json # See https://github.com/LeadSimple/LeadSimple/issues/11675
+
 # Generate the files using openapi-generator: https://openapi-generator.tech/
 npx @openapitools/openapi-generator-cli generate -i bin/swagger.json -g ruby -o . -c bin/config.yml --library=faraday -t ./.openapi-generator/templates/ruby-client
 

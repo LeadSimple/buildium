@@ -232,21 +232,9 @@ module Buildium
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      sms_opt_in_status_validator = EnumAttributeValidator.new('String', ["NotSet", "RequestSent", "OptedIn", "OptedOut"])
-      return false unless sms_opt_in_status_validator.valid?(@sms_opt_in_status)
       mailing_preference_validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
       return false unless mailing_preference_validator.valid?(@mailing_preference)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sms_opt_in_status Object to be assigned
-    def sms_opt_in_status=(sms_opt_in_status)
-      validator = EnumAttributeValidator.new('String', ["NotSet", "RequestSent", "OptedIn", "OptedOut"])
-      unless validator.valid?(sms_opt_in_status)
-        fail ArgumentError, "invalid value #{ sms_opt_in_status.inspect } for \"sms_opt_in_status\", must be one of #{validator.allowable_values}."
-      end
-      @sms_opt_in_status = sms_opt_in_status
     end
 
     # Custom attribute writer method checking allowed values (enum).

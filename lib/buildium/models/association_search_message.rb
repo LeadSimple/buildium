@@ -22,6 +22,12 @@ module Buildium
     # Filters results by the status of the association. If no status is specified both `active` and `inactive` associations will be returned.
     attr_accessor :status
 
+    # Filters results to any associations that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_from
+
+    # Filters results to any associations that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_to
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -48,7 +54,9 @@ module Buildium
     def self.attribute_map
       {
         :'location' => :'Location',
-        :'status' => :'Status'
+        :'status' => :'Status',
+        :'last_updated_from' => :'LastUpdatedFrom',
+        :'last_updated_to' => :'LastUpdatedTo'
       }
     end
 
@@ -61,7 +69,9 @@ module Buildium
     def self.openapi_types
       {
         :'location' => :'String',
-        :'status' => :'String'
+        :'status' => :'String',
+        :'last_updated_from' => :'Time',
+        :'last_updated_to' => :'Time'
       }
     end
 
@@ -92,6 +102,14 @@ module Buildium
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'last_updated_from')
+        self.last_updated_from = attributes[:'last_updated_from']
+      end
+
+      if attributes.key?(:'last_updated_to')
+        self.last_updated_to = attributes[:'last_updated_to']
       end
     end
 
@@ -126,7 +144,9 @@ module Buildium
       return true if self.equal?(o)
       self.class == o.class &&
           location == o.location &&
-          status == o.status
+          status == o.status &&
+          last_updated_from == o.last_updated_from &&
+          last_updated_to == o.last_updated_to
     end
 
     # @see the `==` method
@@ -138,7 +158,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [location, status].hash
+      [location, status, last_updated_from, last_updated_to].hash
     end
 
     # Builds the object from hash

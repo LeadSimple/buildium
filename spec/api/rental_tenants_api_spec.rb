@@ -87,6 +87,8 @@ describe 'RentalTenantsApi' do
   # @option opts [String] :email Filters results to any tenant whose email *contains* the specified value.
   # @option opts [Array<Integer>] :propertyids Filters results to tenants whose rental unit belongs to the specified set of property ids.
   # @option opts [Array<Integer>] :rentalownerids Filters results to tenants whose rental unit belongs to a property with a rental owner in the specified set of rental owner ids.
+  # @option opts [Time] :lastupdatedfrom Filters results to any rental tenants that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+  # @option opts [Time] :lastupdatedto Filters results to any rental tenants that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
   # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
   # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.

@@ -87,6 +87,74 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a budget
+    # Creates a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View` `Edit`
+    # @param budget_post_message [BudgetPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [BudgetMessage]
+    def create_budget(budget_post_message, opts = {})
+      data, _status_code, _headers = create_budget_with_http_info(budget_post_message, opts)
+      data
+    end
+
+    # Create a budget
+    # Creates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param budget_post_message [BudgetPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BudgetMessage, Integer, Hash)>] BudgetMessage data, response status code and response headers
+    def create_budget_with_http_info(budget_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.create_budget ...'
+      end
+      # verify the required parameter 'budget_post_message' is set
+      if @api_client.config.client_side_validation && budget_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'budget_post_message' when calling AccountingApi.create_budget"
+      end
+      # resource path
+      local_var_path = '/v1/budgets'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(budget_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BudgetMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.create_budget",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#create_budget\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all general ledger accounts
     # Retrieves a list of general ledger accounts.<br /><br />General ledger accounts are used to categorize transactions for accounting purposes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
     # @param [Hash] opts the optional parameters
@@ -556,6 +624,144 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve a budget
+    # Retrieves a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View`
+    # @param budget_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [BudgetMessage]
+    def get_budget_by_id(budget_id, opts = {})
+      data, _status_code, _headers = get_budget_by_id_with_http_info(budget_id, opts)
+      data
+    end
+
+    # Retrieve a budget
+    # Retrieves a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
+    # @param budget_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BudgetMessage, Integer, Hash)>] BudgetMessage data, response status code and response headers
+    def get_budget_by_id_with_http_info(budget_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.get_budget_by_id ...'
+      end
+      # verify the required parameter 'budget_id' is set
+      if @api_client.config.client_side_validation && budget_id.nil?
+        fail ArgumentError, "Missing the required parameter 'budget_id' when calling AccountingApi.get_budget_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/budgets/{budgetId}'.sub('{' + 'budgetId' + '}', CGI.escape(budget_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BudgetMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.get_budget_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#get_budget_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all budgets
+    # Retrieves all budgets.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View`
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :propertyids Filters results to any budget associated to any of the specified set of property ids.
+    # @option opts [Integer] :fiscalyear Filters results to any budgets that end in the given fiscal year. FiscalYear must be a positive number.
+    # @option opts [String] :name Filters results to any budgets whose name *contains* the specified value.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<BudgetMessage>]
+    def get_budgets(opts = {})
+      data, _status_code, _headers = get_budgets_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all budgets
+    # Retrieves all budgets.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :propertyids Filters results to any budget associated to any of the specified set of property ids.
+    # @option opts [Integer] :fiscalyear Filters results to any budgets that end in the given fiscal year. FiscalYear must be a positive number.
+    # @option opts [String] :name Filters results to any budgets whose name *contains* the specified value.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<BudgetMessage>, Integer, Hash)>] Array<BudgetMessage> data, response status code and response headers
+    def get_budgets_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.get_budgets ...'
+      end
+      # resource path
+      local_var_path = '/v1/budgets'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'propertyids'] = @api_client.build_collection_param(opts[:'propertyids'], :multi) if !opts[:'propertyids'].nil?
+      query_params[:'fiscalyear'] = opts[:'fiscalyear'] if !opts[:'fiscalyear'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<BudgetMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.get_budgets",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#get_budgets\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all general ledger account balances
     # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
     # @param accountingbasis [String] The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened.
@@ -850,6 +1056,80 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountingApi#update_bill\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a budget
+    # Updates a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View` `Edit`
+    # @param budget_id [Integer] 
+    # @param budget_put_message [BudgetPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [BudgetMessage]
+    def update_budget(budget_id, budget_put_message, opts = {})
+      data, _status_code, _headers = update_budget_with_http_info(budget_id, budget_put_message, opts)
+      data
+    end
+
+    # Update a budget
+    # Updates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param budget_id [Integer] 
+    # @param budget_put_message [BudgetPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BudgetMessage, Integer, Hash)>] BudgetMessage data, response status code and response headers
+    def update_budget_with_http_info(budget_id, budget_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.update_budget ...'
+      end
+      # verify the required parameter 'budget_id' is set
+      if @api_client.config.client_side_validation && budget_id.nil?
+        fail ArgumentError, "Missing the required parameter 'budget_id' when calling AccountingApi.update_budget"
+      end
+      # verify the required parameter 'budget_put_message' is set
+      if @api_client.config.client_side_validation && budget_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'budget_put_message' when calling AccountingApi.update_budget"
+      end
+      # resource path
+      local_var_path = '/v1/budgets/{budgetId}'.sub('{' + 'budgetId' + '}', CGI.escape(budget_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(budget_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BudgetMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.update_budget",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#update_budget\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -30,6 +30,9 @@ module Buildium
     # Filters results by the status of the association. If no status is specified, `active`, `past` and `future` associations will be returned.
     attr_accessor :status
 
+    # Filters results by the delinquency status of the ownership account. If no status is specified, ownership accounts of any delinquency status will be returned.
+    attr_accessor :delinquency_statuses
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -59,7 +62,8 @@ module Buildium
         :'unit_or_owner' => :'UnitOrOwner',
         :'date_from' => :'DateFrom',
         :'date_to' => :'DateTo',
-        :'status' => :'Status'
+        :'status' => :'Status',
+        :'delinquency_statuses' => :'DelinquencyStatuses'
       }
     end
 
@@ -75,7 +79,8 @@ module Buildium
         :'unit_or_owner' => :'String',
         :'date_from' => :'Date',
         :'date_to' => :'Date',
-        :'status' => :'Array<String>'
+        :'status' => :'Array<String>',
+        :'delinquency_statuses' => :'Array<String>'
       }
     end
 
@@ -123,6 +128,12 @@ module Buildium
           self.status = value
         end
       end
+
+      if attributes.key?(:'delinquency_statuses')
+        if (value = attributes[:'delinquency_statuses']).is_a?(Array)
+          self.delinquency_statuses = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -147,7 +158,8 @@ module Buildium
           unit_or_owner == o.unit_or_owner &&
           date_from == o.date_from &&
           date_to == o.date_to &&
-          status == o.status
+          status == o.status &&
+          delinquency_statuses == o.delinquency_statuses
     end
 
     # @see the `==` method
@@ -159,7 +171,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [association_ids, unit_or_owner, date_from, date_to, status].hash
+      [association_ids, unit_or_owner, date_from, date_to, status, delinquency_statuses].hash
     end
 
     # Builds the object from hash

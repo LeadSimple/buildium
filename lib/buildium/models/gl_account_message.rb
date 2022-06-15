@@ -19,6 +19,9 @@ module Buildium
     # General ledger account unique identifier.
     attr_accessor :id
 
+    # General ledger account number.
+    attr_accessor :account_number
+
     # Name of the general ledger account.
     attr_accessor :name
 
@@ -75,6 +78,7 @@ module Buildium
     def self.attribute_map
       {
         :'id' => :'Id',
+        :'account_number' => :'AccountNumber',
         :'name' => :'Name',
         :'description' => :'Description',
         :'type' => :'Type',
@@ -97,6 +101,7 @@ module Buildium
     def self.openapi_types
       {
         :'id' => :'Integer',
+        :'account_number' => :'String',
         :'name' => :'String',
         :'description' => :'String',
         :'type' => :'String',
@@ -133,6 +138,10 @@ module Buildium
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'account_number')
+        self.account_number = attributes[:'account_number']
       end
 
       if attributes.key?(:'name')
@@ -233,6 +242,7 @@ module Buildium
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
+          account_number == o.account_number &&
           name == o.name &&
           description == o.description &&
           type == o.type &&
@@ -254,7 +264,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, type, sub_type, is_default_gl_account, is_contra_account, is_bank_account, cash_flow_classification, exclude_from_cash_balances, sub_accounts].hash
+      [id, account_number, name, description, type, sub_type, is_default_gl_account, is_contra_account, is_bank_account, cash_flow_classification, exclude_from_cash_balances, sub_accounts].hash
     end
 
     # Builds the object from hash

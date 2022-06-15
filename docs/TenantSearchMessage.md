@@ -12,6 +12,8 @@
 | **email** | **String** | Filters results to any tenant whose email *contains* the specified value. | [optional] |
 | **property_ids** | **Array&lt;Integer&gt;** | Filters results to tenants whose rental unit belongs to the specified set of property ids. | [optional] |
 | **rental_owner_ids** | **Array&lt;Integer&gt;** | Filters results to tenants whose rental unit belongs to a property with a rental owner in the specified set of rental owner ids. | [optional] |
+| **last_updated_from** | **Time** | Filters results to any rental tenants that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
+| **last_updated_to** | **Time** | Filters results to any rental tenants that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
 
 ## Example
 
@@ -26,7 +28,9 @@ instance = Buildium::TenantSearchMessage.new(
   phone: null,
   email: null,
   property_ids: null,
-  rental_owner_ids: null
+  rental_owner_ids: null,
+  last_updated_from: null,
+  last_updated_to: null
 )
 ```
 

@@ -33,6 +33,12 @@ module Buildium
     # Filters results to only rental properties units whose Rental matches the specified Id.
     attr_accessor :property_ids
 
+    # Filters results to any rental properties that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_from
+
+    # Filters results to any rental properties that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_to
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -63,7 +69,9 @@ module Buildium
         :'sub_types' => :'SubTypes',
         :'status' => :'Status',
         :'rental_owner_ids' => :'RentalOwnerIds',
-        :'property_ids' => :'PropertyIds'
+        :'property_ids' => :'PropertyIds',
+        :'last_updated_from' => :'LastUpdatedFrom',
+        :'last_updated_to' => :'LastUpdatedTo'
       }
     end
 
@@ -80,7 +88,9 @@ module Buildium
         :'sub_types' => :'Array<String>',
         :'status' => :'String',
         :'rental_owner_ids' => :'Array<Integer>',
-        :'property_ids' => :'Array<Integer>'
+        :'property_ids' => :'Array<Integer>',
+        :'last_updated_from' => :'Time',
+        :'last_updated_to' => :'Time'
       }
     end
 
@@ -136,6 +146,14 @@ module Buildium
           self.property_ids = value
         end
       end
+
+      if attributes.key?(:'last_updated_from')
+        self.last_updated_from = attributes[:'last_updated_from']
+      end
+
+      if attributes.key?(:'last_updated_to')
+        self.last_updated_to = attributes[:'last_updated_to']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -173,7 +191,9 @@ module Buildium
           sub_types == o.sub_types &&
           status == o.status &&
           rental_owner_ids == o.rental_owner_ids &&
-          property_ids == o.property_ids
+          property_ids == o.property_ids &&
+          last_updated_from == o.last_updated_from &&
+          last_updated_to == o.last_updated_to
     end
 
     # @see the `==` method
@@ -185,7 +205,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [location, types, sub_types, status, rental_owner_ids, property_ids].hash
+      [location, types, sub_types, status, rental_owner_ids, property_ids, last_updated_from, last_updated_to].hash
     end
 
     # Builds the object from hash

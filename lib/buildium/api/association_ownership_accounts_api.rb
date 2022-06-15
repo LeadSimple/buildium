@@ -391,6 +391,7 @@ module Buildium
     # @option opts [Date] :datefrom Filters results to any ownership account whose start date is greater than or equal to the specified value.
     # @option opts [Date] :dateto Filters results to any ownership account whose start date is less than or equal to the specified value.
     # @option opts [Array<String>] :status Filters results by the status of the association. If no status is specified, &#x60;active&#x60;, &#x60;past&#x60; and &#x60;future&#x60; associations will be returned.
+    # @option opts [Array<String>] :delinquencystatuses Filters results by the delinquency status of the ownership account. If no status is specified, ownership accounts of any delinquency status will be returned.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -408,6 +409,7 @@ module Buildium
     # @option opts [Date] :datefrom Filters results to any ownership account whose start date is greater than or equal to the specified value.
     # @option opts [Date] :dateto Filters results to any ownership account whose start date is less than or equal to the specified value.
     # @option opts [Array<String>] :status Filters results by the status of the association. If no status is specified, &#x60;active&#x60;, &#x60;past&#x60; and &#x60;future&#x60; associations will be returned.
+    # @option opts [Array<String>] :delinquencystatuses Filters results by the delinquency status of the ownership account. If no status is specified, ownership accounts of any delinquency status will be returned.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -420,6 +422,10 @@ module Buildium
       if @api_client.config.client_side_validation && opts[:'status'] && !opts[:'status'].all? { |item| allowable_values.include?(item) }
         fail ArgumentError, "invalid value for \"status\", must include one of #{allowable_values}"
       end
+      allowable_values = ["NoDelinquency", "InCollections", "InForeclosure", "Foreclosed"]
+      if @api_client.config.client_side_validation && opts[:'delinquencystatuses'] && !opts[:'delinquencystatuses'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"delinquencystatuses\", must include one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts'
 
@@ -430,6 +436,7 @@ module Buildium
       query_params[:'datefrom'] = opts[:'datefrom'] if !opts[:'datefrom'].nil?
       query_params[:'dateto'] = opts[:'dateto'] if !opts[:'dateto'].nil?
       query_params[:'status'] = @api_client.build_collection_param(opts[:'status'], :multi) if !opts[:'status'].nil?
+      query_params[:'delinquencystatuses'] = @api_client.build_collection_param(opts[:'delinquencystatuses'], :multi) if !opts[:'delinquencystatuses'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?

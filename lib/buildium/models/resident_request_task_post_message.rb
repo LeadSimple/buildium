@@ -33,7 +33,7 @@ module Buildium
     # The unique identifier of the resident that submitted the request.
     attr_accessor :requested_by_entity_id
 
-    # The unique identifier of the staff user assigned to the request. The user must be a `Staff` user type.
+    # The unique identifier of the staff user assigned to the request. The user must be a `Staff` user type. If not provided, assignment rules in the resident center settings (if configured) will be used for assignment.
     attr_accessor :assigned_to_user_id
 
     # Request status.

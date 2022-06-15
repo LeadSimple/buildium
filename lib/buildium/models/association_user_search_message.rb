@@ -36,6 +36,12 @@ module Buildium
     # Filters results to only records that were created after this date. Must be formatted as `YYYY-MM-DD`.
     attr_accessor :created_date_time_from
 
+    # Filters results to any association owners that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_from
+
+    # Filters results to any association owners that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_to
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -67,7 +73,9 @@ module Buildium
         :'association_ids' => :'AssociationIds',
         :'statuses' => :'Statuses',
         :'created_date_time_to' => :'CreatedDateTimeTo',
-        :'created_date_time_from' => :'CreatedDateTimeFrom'
+        :'created_date_time_from' => :'CreatedDateTimeFrom',
+        :'last_updated_from' => :'LastUpdatedFrom',
+        :'last_updated_to' => :'LastUpdatedTo'
       }
     end
 
@@ -85,7 +93,9 @@ module Buildium
         :'association_ids' => :'Array<Integer>',
         :'statuses' => :'Array<String>',
         :'created_date_time_to' => :'Time',
-        :'created_date_time_from' => :'Time'
+        :'created_date_time_from' => :'Time',
+        :'last_updated_from' => :'Time',
+        :'last_updated_to' => :'Time'
       }
     end
 
@@ -141,6 +151,14 @@ module Buildium
       if attributes.key?(:'created_date_time_from')
         self.created_date_time_from = attributes[:'created_date_time_from']
       end
+
+      if attributes.key?(:'last_updated_from')
+        self.last_updated_from = attributes[:'last_updated_from']
+      end
+
+      if attributes.key?(:'last_updated_to')
+        self.last_updated_to = attributes[:'last_updated_to']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -167,7 +185,9 @@ module Buildium
           association_ids == o.association_ids &&
           statuses == o.statuses &&
           created_date_time_to == o.created_date_time_to &&
-          created_date_time_from == o.created_date_time_from
+          created_date_time_from == o.created_date_time_from &&
+          last_updated_from == o.last_updated_from &&
+          last_updated_to == o.last_updated_to
     end
 
     # @see the `==` method
@@ -179,7 +199,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, phone, email, association_ids, statuses, created_date_time_to, created_date_time_from].hash
+      [name, phone, email, association_ids, statuses, created_date_time_to, created_date_time_from, last_updated_from, last_updated_to].hash
     end
 
     # Builds the object from hash

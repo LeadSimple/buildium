@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | General ledger account unique identifier. | [optional] |
+| **account_number** | **String** | General ledger account number. | [optional] |
 | **name** | **String** | Name of the general ledger account. | [optional] |
 | **description** | **String** | Description of the general ledger account. | [optional] |
 | **type** | **String** | Describes the type of general ledger account. | [optional] |
@@ -23,6 +24,7 @@ require 'buildium'
 
 instance = Buildium::GLAccountMessage.new(
   id: null,
+  account_number: null,
   name: null,
   description: null,
   type: null,

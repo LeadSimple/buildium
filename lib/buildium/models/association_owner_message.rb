@@ -64,6 +64,9 @@ module Buildium
     # Taxpayer identification number. Examples of United States identification numbers are Social Security number or a Employer Identification Number.
     attr_accessor :tax_id
 
+    # Indicates the delinquency status of the association owner.
+    attr_accessor :delinquency_status
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -105,7 +108,8 @@ module Buildium
         :'occupies_unit' => :'OccupiesUnit',
         :'board_member_terms' => :'BoardMemberTerms',
         :'created_date_time' => :'CreatedDateTime',
-        :'tax_id' => :'TaxId'
+        :'tax_id' => :'TaxId',
+        :'delinquency_status' => :'DelinquencyStatus'
       }
     end
 
@@ -133,7 +137,8 @@ module Buildium
         :'occupies_unit' => :'Boolean',
         :'board_member_terms' => :'Array<AssociationOwnerBoardTermMessage>',
         :'created_date_time' => :'Time',
-        :'tax_id' => :'String'
+        :'tax_id' => :'String',
+        :'delinquency_status' => :'String'
       }
     end
 
@@ -233,6 +238,10 @@ module Buildium
       if attributes.key?(:'tax_id')
         self.tax_id = attributes[:'tax_id']
       end
+
+      if attributes.key?(:'delinquency_status')
+        self.delinquency_status = attributes[:'delinquency_status']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -247,6 +256,8 @@ module Buildium
     def valid?
       mailing_preference_validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
       return false unless mailing_preference_validator.valid?(@mailing_preference)
+      delinquency_status_validator = EnumAttributeValidator.new('String', ["NoDelinquency", "InCollections", "InForeclosure", "Foreclosed"])
+      return false unless delinquency_status_validator.valid?(@delinquency_status)
       true
     end
 
@@ -258,6 +269,16 @@ module Buildium
         fail ArgumentError, "invalid value #{ mailing_preference.inspect } for \"mailing_preference\", must be one of #{validator.allowable_values}."
       end
       @mailing_preference = mailing_preference
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] delinquency_status Object to be assigned
+    def delinquency_status=(delinquency_status)
+      validator = EnumAttributeValidator.new('String', ["NoDelinquency", "InCollections", "InForeclosure", "Foreclosed"])
+      unless validator.valid?(delinquency_status)
+        fail ArgumentError, "invalid value #{ delinquency_status.inspect } for \"delinquency_status\", must be one of #{validator.allowable_values}."
+      end
+      @delinquency_status = delinquency_status
     end
 
     # Checks equality by comparing each attribute.
@@ -281,7 +302,8 @@ module Buildium
           occupies_unit == o.occupies_unit &&
           board_member_terms == o.board_member_terms &&
           created_date_time == o.created_date_time &&
-          tax_id == o.tax_id
+          tax_id == o.tax_id &&
+          delinquency_status == o.delinquency_status
     end
 
     # @see the `==` method
@@ -293,7 +315,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, alternate_email, phone_numbers, primary_address, alternate_address, comment, emergency_contact, ownership_accounts, mailing_preference, vehicles, occupies_unit, board_member_terms, created_date_time, tax_id].hash
+      [id, first_name, last_name, email, alternate_email, phone_numbers, primary_address, alternate_address, comment, emergency_contact, ownership_accounts, mailing_preference, vehicles, occupies_unit, board_member_terms, created_date_time, tax_id, delinquency_status].hash
     end
 
     # Builds the object from hash

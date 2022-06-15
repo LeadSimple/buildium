@@ -18,10 +18,18 @@ module Buildium
     # Filters results to rental units that belong to the specified set of property ids.
     attr_accessor :property_ids
 
+    # Filters results to any rental units that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_from
+
+    # Filters results to any rental units that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_to
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'property_ids' => :'PropertyIds'
+        :'property_ids' => :'PropertyIds',
+        :'last_updated_from' => :'LastUpdatedFrom',
+        :'last_updated_to' => :'LastUpdatedTo'
       }
     end
 
@@ -33,7 +41,9 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'property_ids' => :'Array<Integer>'
+        :'property_ids' => :'Array<Integer>',
+        :'last_updated_from' => :'Time',
+        :'last_updated_to' => :'Time'
       }
     end
 
@@ -63,6 +73,14 @@ module Buildium
           self.property_ids = value
         end
       end
+
+      if attributes.key?(:'last_updated_from')
+        self.last_updated_from = attributes[:'last_updated_from']
+      end
+
+      if attributes.key?(:'last_updated_to')
+        self.last_updated_to = attributes[:'last_updated_to']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -83,7 +101,9 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          property_ids == o.property_ids
+          property_ids == o.property_ids &&
+          last_updated_from == o.last_updated_from &&
+          last_updated_to == o.last_updated_to
     end
 
     # @see the `==` method
@@ -95,7 +115,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [property_ids].hash
+      [property_ids, last_updated_from, last_updated_to].hash
     end
 
     # Builds the object from hash

@@ -21,6 +21,7 @@
 | **board_member_terms** | [**Array&lt;AssociationOwnerBoardTermMessage&gt;**](AssociationOwnerBoardTermMessage.md) | List of Board Member Terms for the given Association Owner(s) | [optional] |
 | **created_date_time** | **Time** | Date and time the association owner was created. | [optional] |
 | **tax_id** | **String** | Taxpayer identification number. Examples of United States identification numbers are Social Security number or a Employer Identification Number. | [optional] |
+| **delinquency_status** | **String** | Indicates the delinquency status of the association owner. | [optional] |
 
 ## Example
 
@@ -44,7 +45,8 @@ instance = Buildium::AssociationOwnerMessage.new(
   occupies_unit: null,
   board_member_terms: null,
   created_date_time: null,
-  tax_id: null
+  tax_id: null,
+  delinquency_status: null
 )
 ```
 

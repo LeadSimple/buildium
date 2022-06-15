@@ -40,6 +40,9 @@ module Buildium
     # Association owners associated with the ownership account
     attr_accessor :association_owner_ids
 
+    # Indicates the delinquency status of the ownership account
+    attr_accessor :delinquency_status
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -72,7 +75,8 @@ module Buildium
         :'date_of_purchase' => :'DateOfPurchase',
         :'date_of_sale' => :'DateOfSale',
         :'comments' => :'Comments',
-        :'association_owner_ids' => :'AssociationOwnerIds'
+        :'association_owner_ids' => :'AssociationOwnerIds',
+        :'delinquency_status' => :'DelinquencyStatus'
       }
     end
 
@@ -91,7 +95,8 @@ module Buildium
         :'date_of_purchase' => :'Date',
         :'date_of_sale' => :'Date',
         :'comments' => :'String',
-        :'association_owner_ids' => :'Array<Integer>'
+        :'association_owner_ids' => :'Array<Integer>',
+        :'delinquency_status' => :'String'
       }
     end
 
@@ -149,6 +154,10 @@ module Buildium
           self.association_owner_ids = value
         end
       end
+
+      if attributes.key?(:'delinquency_status')
+        self.delinquency_status = attributes[:'delinquency_status']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -163,6 +172,8 @@ module Buildium
     def valid?
       status_validator = EnumAttributeValidator.new('String', ["Active", "Past", "Future"])
       return false unless status_validator.valid?(@status)
+      delinquency_status_validator = EnumAttributeValidator.new('String', ["NoDelinquency", "InCollections", "InForeclosure", "Foreclosed"])
+      return false unless delinquency_status_validator.valid?(@delinquency_status)
       true
     end
 
@@ -174,6 +185,16 @@ module Buildium
         fail ArgumentError, "invalid value #{ status.inspect } for \"status\", must be one of #{validator.allowable_values}."
       end
       @status = status
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] delinquency_status Object to be assigned
+    def delinquency_status=(delinquency_status)
+      validator = EnumAttributeValidator.new('String', ["NoDelinquency", "InCollections", "InForeclosure", "Foreclosed"])
+      unless validator.valid?(delinquency_status)
+        fail ArgumentError, "invalid value #{ delinquency_status.inspect } for \"delinquency_status\", must be one of #{validator.allowable_values}."
+      end
+      @delinquency_status = delinquency_status
     end
 
     # Checks equality by comparing each attribute.
@@ -188,7 +209,8 @@ module Buildium
           date_of_purchase == o.date_of_purchase &&
           date_of_sale == o.date_of_sale &&
           comments == o.comments &&
-          association_owner_ids == o.association_owner_ids
+          association_owner_ids == o.association_owner_ids &&
+          delinquency_status == o.delinquency_status
     end
 
     # @see the `==` method
@@ -200,7 +222,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, association_id, unit_id, status, date_of_purchase, date_of_sale, comments, association_owner_ids].hash
+      [id, association_id, unit_id, status, date_of_purchase, date_of_sale, comments, association_owner_ids, delinquency_status].hash
     end
 
     # Builds the object from hash

@@ -12,6 +12,7 @@
 | **date_of_sale** | **Date** | Date the unit(s) where sold by the owner. | [optional] |
 | **comments** | **String** | Comments about the ownership account. | [optional] |
 | **association_owner_ids** | **Array&lt;Integer&gt;** | Association owners associated with the ownership account | [optional] |
+| **delinquency_status** | **String** | Indicates the delinquency status of the ownership account | [optional] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = Buildium::AssociationOwnershipAccountMessage.new(
   date_of_purchase: null,
   date_of_sale: null,
   comments: null,
-  association_owner_ids: null
+  association_owner_ids: null,
+  delinquency_status: null
 )
 ```
 

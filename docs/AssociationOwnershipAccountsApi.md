@@ -441,6 +441,7 @@ opts = {
   datefrom: Date.parse('2013-10-20'), # Date | Filters results to any ownership account whose start date is greater than or equal to the specified value.
   dateto: Date.parse('2013-10-20'), # Date | Filters results to any ownership account whose start date is less than or equal to the specified value.
   status: ['Active'], # Array<String> | Filters results by the status of the association. If no status is specified, `active`, `past` and `future` associations will be returned.
+  delinquencystatuses: ['NoDelinquency'], # Array<String> | Filters results by the delinquency status of the ownership account. If no status is specified, ownership accounts of any delinquency status will be returned.
   orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
   offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
   limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
@@ -482,6 +483,7 @@ end
 | **datefrom** | **Date** | Filters results to any ownership account whose start date is greater than or equal to the specified value. | [optional] |
 | **dateto** | **Date** | Filters results to any ownership account whose start date is less than or equal to the specified value. | [optional] |
 | **status** | [**Array&lt;String&gt;**](String.md) | Filters results by the status of the association. If no status is specified, &#x60;active&#x60;, &#x60;past&#x60; and &#x60;future&#x60; associations will be returned. | [optional] |
+| **delinquencystatuses** | [**Array&lt;String&gt;**](String.md) | Filters results by the delinquency status of the ownership account. If no status is specified, ownership accounts of any delinquency status will be returned. | [optional] |
 | **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
 | **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
 | **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |

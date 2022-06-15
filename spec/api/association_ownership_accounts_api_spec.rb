@@ -105,6 +105,7 @@ describe 'AssociationOwnershipAccountsApi' do
   # @option opts [Date] :datefrom Filters results to any ownership account whose start date is greater than or equal to the specified value.
   # @option opts [Date] :dateto Filters results to any ownership account whose start date is less than or equal to the specified value.
   # @option opts [Array<String>] :status Filters results by the status of the association. If no status is specified, &#x60;active&#x60;, &#x60;past&#x60; and &#x60;future&#x60; associations will be returned.
+  # @option opts [Array<String>] :delinquencystatuses Filters results by the delinquency status of the ownership account. If no status is specified, ownership accounts of any delinquency status will be returned.
   # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
   # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.

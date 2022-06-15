@@ -44,6 +44,18 @@ describe 'AccountingApi' do
     end
   end
 
+  # unit tests for create_budget
+  # Create a budget
+  # Creates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param budget_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [BudgetMessage]
+  describe 'create_budget test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_all_gl_accounts
   # Retrieve all general ledger accounts
   # Retrieves a list of general ledger accounts.&lt;br /&gt;&lt;br /&gt;General ledger accounts are used to categorize transactions for accounting purposes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
@@ -139,6 +151,35 @@ describe 'AccountingApi' do
     end
   end
 
+  # unit tests for get_budget_by_id
+  # Retrieve a budget
+  # Retrieves a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
+  # @param budget_id 
+  # @param [Hash] opts the optional parameters
+  # @return [BudgetMessage]
+  describe 'get_budget_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_budgets
+  # Retrieve all budgets
+  # Retrieves all budgets.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
+  # @param [Hash] opts the optional parameters
+  # @option opts [Array<Integer>] :propertyids Filters results to any budget associated to any of the specified set of property ids.
+  # @option opts [Integer] :fiscalyear Filters results to any budgets that end in the given fiscal year. FiscalYear must be a positive number.
+  # @option opts [String] :name Filters results to any budgets whose name *contains* the specified value.
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<BudgetMessage>]
+  describe 'get_budgets test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_gl_account_balances
   # Retrieve all general ledger account balances
   # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
@@ -190,6 +231,19 @@ describe 'AccountingApi' do
   # @param [Hash] opts the optional parameters
   # @return [BillMessage]
   describe 'update_bill test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_budget
+  # Update a budget
+  # Updates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param budget_id 
+  # @param budget_put_message 
+  # @param [Hash] opts the optional parameters
+  # @return [BudgetMessage]
+  describe 'update_budget test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

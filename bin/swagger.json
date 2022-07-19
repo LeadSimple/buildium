@@ -11,6 +11,14 @@
       "href": "https://www.buildium.com"
     }
   },
+  "security": [
+    {
+      "clientId": []
+    },
+    {
+      "clientSecret": []
+    }
+  ],
   "paths": {
     "/v1/associations": {
       "get": {
@@ -26724,6 +26732,26 @@
             }
           },
           {
+            "name": "lastupdatedfrom",
+            "in": "query",
+            "description": "Filters results to any vendors that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "lastupdatedto",
+            "in": "query",
+            "description": "Filters results to any vendors that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
             "name": "orderby",
             "in": "query",
             "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
@@ -26795,6 +26823,16 @@
           },
           "403": {
             "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
             "content": {
               "application/json": {
                 "schema": {
@@ -35415,6 +35453,10 @@
             "items": {
               "$ref": "#/components/schemas/GLAccountMessage"
             }
+          },
+          "IsActive": {
+            "description": "Indicates whether the account is active.",
+            "type": "boolean"
           }
         }
       },
@@ -41550,6 +41592,16 @@
           "Phone": {
             "description": "Filters results to any vendor who has a phone number that *contains* the specified value.",
             "type": "string"
+          },
+          "LastUpdatedFrom": {
+            "format": "date-time",
+            "description": "Filters results to any vendors that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
+            "type": "string"
+          },
+          "LastUpdatedTo": {
+            "format": "date-time",
+            "description": "Filters results to any vendors that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
+            "type": "string"
           }
         }
       },
@@ -42106,13 +42158,5 @@
         }
       }
     }
-  },
-  "security": [
-    {
-      "clientId": []
-    },
-    {
-      "clientSecret": []
-    }
-  ]
+  }
 }

@@ -33,6 +33,12 @@ module Buildium
     # Filters results to any vendor who has a phone number that *contains* the specified value.
     attr_accessor :phone
 
+    # Filters results to any vendors that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_from
+
+    # Filters results to any vendors that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_to
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -63,7 +69,9 @@ module Buildium
         :'website' => :'Website',
         :'name' => :'Name',
         :'insurance_expiration' => :'InsuranceExpiration',
-        :'phone' => :'Phone'
+        :'phone' => :'Phone',
+        :'last_updated_from' => :'LastUpdatedFrom',
+        :'last_updated_to' => :'LastUpdatedTo'
       }
     end
 
@@ -80,7 +88,9 @@ module Buildium
         :'website' => :'String',
         :'name' => :'String',
         :'insurance_expiration' => :'String',
-        :'phone' => :'String'
+        :'phone' => :'String',
+        :'last_updated_from' => :'Time',
+        :'last_updated_to' => :'Time'
       }
     end
 
@@ -127,6 +137,14 @@ module Buildium
 
       if attributes.key?(:'phone')
         self.phone = attributes[:'phone']
+      end
+
+      if attributes.key?(:'last_updated_from')
+        self.last_updated_from = attributes[:'last_updated_from']
+      end
+
+      if attributes.key?(:'last_updated_to')
+        self.last_updated_to = attributes[:'last_updated_to']
       end
     end
 
@@ -177,7 +195,9 @@ module Buildium
           website == o.website &&
           name == o.name &&
           insurance_expiration == o.insurance_expiration &&
-          phone == o.phone
+          phone == o.phone &&
+          last_updated_from == o.last_updated_from &&
+          last_updated_to == o.last_updated_to
     end
 
     # @see the `==` method
@@ -189,7 +209,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, email, website, name, insurance_expiration, phone].hash
+      [status, email, website, name, insurance_expiration, phone, last_updated_from, last_updated_to].hash
     end
 
     # Builds the object from hash

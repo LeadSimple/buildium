@@ -10,6 +10,8 @@
 | **name** | **String** | Filters results to any vendor whose name *contains* the specified value. | [optional] |
 | **insurance_expiration** | **String** | Filters results to any vendor whose insurance will expire in the specified date range. | [optional] |
 | **phone** | **String** | Filters results to any vendor who has a phone number that *contains* the specified value. | [optional] |
+| **last_updated_from** | **Time** | Filters results to any vendors that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
+| **last_updated_to** | **Time** | Filters results to any vendors that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
 
 ## Example
 
@@ -22,7 +24,9 @@ instance = Buildium::VendorSearchMessage.new(
   website: null,
   name: null,
   insurance_expiration: null,
-  phone: null
+  phone: null,
+  last_updated_from: null,
+  last_updated_to: null
 )
 ```
 

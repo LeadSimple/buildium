@@ -16,6 +16,7 @@
 | **cash_flow_classification** | **String** | Describes the cash flow classification for the general ledger account. | [optional] |
 | **exclude_from_cash_balances** | **Boolean** | Indicates whether transactions associated with the account should be excluded from cash balances. | [optional] |
 | **sub_accounts** | [**Array&lt;GLAccountMessage&gt;**](GLAccountMessage.md) | Children general ledger accounts. The relationship only goes one level deep. | [optional] |
+| **is_active** | **Boolean** | Indicates whether the account is active. | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = Buildium::GLAccountMessage.new(
   is_bank_account: null,
   cash_flow_classification: null,
   exclude_from_cash_balances: null,
-  sub_accounts: null
+  sub_accounts: null,
+  is_active: null
 )
 ```
 

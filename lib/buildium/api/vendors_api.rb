@@ -304,6 +304,8 @@ module Buildium
     # @option opts [String] :name Filters results to any vendor whose name *contains* the specified value.
     # @option opts [String] :insuranceexpiration Filters results to any vendor whose insurance will expire in the specified date range.
     # @option opts [String] :phone Filters results to any vendor who has a phone number that *contains* the specified value.
+    # @option opts [Time] :lastupdatedfrom Filters results to any vendors that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any vendors that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -322,6 +324,8 @@ module Buildium
     # @option opts [String] :name Filters results to any vendor whose name *contains* the specified value.
     # @option opts [String] :insuranceexpiration Filters results to any vendor whose insurance will expire in the specified date range.
     # @option opts [String] :phone Filters results to any vendor who has a phone number that *contains* the specified value.
+    # @option opts [Time] :lastupdatedfrom Filters results to any vendors that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any vendors that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -349,6 +353,8 @@ module Buildium
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'insuranceexpiration'] = opts[:'insuranceexpiration'] if !opts[:'insuranceexpiration'].nil?
       query_params[:'phone'] = opts[:'phone'] if !opts[:'phone'].nil?
+      query_params[:'lastupdatedfrom'] = opts[:'lastupdatedfrom'] if !opts[:'lastupdatedfrom'].nil?
+      query_params[:'lastupdatedto'] = opts[:'lastupdatedto'] if !opts[:'lastupdatedto'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?

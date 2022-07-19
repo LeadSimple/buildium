@@ -52,6 +52,9 @@ module Buildium
     # Children general ledger accounts. The relationship only goes one level deep.
     attr_accessor :sub_accounts
 
+    # Indicates whether the account is active.
+    attr_accessor :is_active
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -88,7 +91,8 @@ module Buildium
         :'is_bank_account' => :'IsBankAccount',
         :'cash_flow_classification' => :'CashFlowClassification',
         :'exclude_from_cash_balances' => :'ExcludeFromCashBalances',
-        :'sub_accounts' => :'SubAccounts'
+        :'sub_accounts' => :'SubAccounts',
+        :'is_active' => :'IsActive'
       }
     end
 
@@ -111,7 +115,8 @@ module Buildium
         :'is_bank_account' => :'Boolean',
         :'cash_flow_classification' => :'String',
         :'exclude_from_cash_balances' => :'Boolean',
-        :'sub_accounts' => :'Array<GLAccountMessage>'
+        :'sub_accounts' => :'Array<GLAccountMessage>',
+        :'is_active' => :'Boolean'
       }
     end
 
@@ -185,6 +190,10 @@ module Buildium
           self.sub_accounts = value
         end
       end
+
+      if attributes.key?(:'is_active')
+        self.is_active = attributes[:'is_active']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -252,7 +261,8 @@ module Buildium
           is_bank_account == o.is_bank_account &&
           cash_flow_classification == o.cash_flow_classification &&
           exclude_from_cash_balances == o.exclude_from_cash_balances &&
-          sub_accounts == o.sub_accounts
+          sub_accounts == o.sub_accounts &&
+          is_active == o.is_active
     end
 
     # @see the `==` method
@@ -264,7 +274,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_number, name, description, type, sub_type, is_default_gl_account, is_contra_account, is_bank_account, cash_flow_classification, exclude_from_cash_balances, sub_accounts].hash
+      [id, account_number, name, description, type, sub_type, is_default_gl_account, is_contra_account, is_bank_account, cash_flow_classification, exclude_from_cash_balances, sub_accounts, is_active].hash
     end
 
     # Builds the object from hash

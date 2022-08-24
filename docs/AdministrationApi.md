@@ -4,7 +4,7 @@ All URIs are relative to *https://api.buildium.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**get_account_info**](AdministrationApi.md#get_account_info) | **GET** /v1/administration/account | Retrieve Account Info |
+| [**get_account_info**](AdministrationApi.md#get_account_info) | **GET** /v1/administration/account | Retrieve account info |
 | [**get_all_user_roles**](AdministrationApi.md#get_all_user_roles) | **GET** /v1/userroles | Retrieve all user roles |
 | [**get_all_users**](AdministrationApi.md#get_all_users) | **GET** /v1/users | Retrieve all users |
 | [**get_user_by_id**](AdministrationApi.md#get_user_by_id) | **GET** /v1/users/{userId} | Retrieve a user |
@@ -15,9 +15,9 @@ All URIs are relative to *https://api.buildium.com*
 
 > <AccountInfoMessage> get_account_info
 
-Retrieve Account Info
+Retrieve account info
 
-Retrieves account info.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Account Information</span> - `View`
+Retrieves information related to the Buildium account.   <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Account Information</span> - `View`
 
 ### Examples
 
@@ -40,7 +40,7 @@ end
 api_instance = Buildium::AdministrationApi.new
 
 begin
-  # Retrieve Account Info
+  # Retrieve account info
   result = api_instance.get_account_info
   p result
 rescue Buildium::ApiError => e
@@ -56,7 +56,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve Account Info
+  # Retrieve account info
   data, status_code, headers = api_instance.get_account_info_with_http_info
   p status_code # => 2xx
   p headers # => { ... }

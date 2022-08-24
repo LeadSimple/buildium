@@ -7,15 +7,22 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_association_ownership_account**](AssociationOwnershipAccountsApi.md#create_association_ownership_account) | **POST** /v1/associations/ownershipaccounts | Create an ownership account |
 | [**create_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#create_association_ownership_account_note) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Create a note |
 | [**create_ownership_account_credit**](AssociationOwnershipAccountsApi.md#create_ownership_account_credit) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/credits | Create a ledger credit |
+| [**create_ownership_account_credit_recurring_transaction**](AssociationOwnershipAccountsApi.md#create_ownership_account_credit_recurring_transaction) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits | Create a recurring credit |
 | [**create_ownership_account_ledger_charge**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_charge) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/charges | Create a ledger charge |
 | [**create_ownership_account_ledger_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/payments | Create a ledger payment |
+| [**create_ownership_account_recurring_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_recurring_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments | Create a recurring payment |
+| [**create_ownership_accounts_charge_recurring_transaction**](AssociationOwnershipAccountsApi.md#create_ownership_accounts_charge_recurring_transaction) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcharges | Create a recurring charge |
 | [**get_all_ownership_accounts**](AssociationOwnershipAccountsApi.md#get_all_ownership_accounts) | **GET** /v1/associations/ownershipaccounts | Retrieve all ownership accounts |
 | [**get_association_ownership_account_note_by_note_id**](AssociationOwnershipAccountsApi.md#get_association_ownership_account_note_by_note_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Retrieve a note |
 | [**get_association_ownership_account_notes**](AssociationOwnershipAccountsApi.md#get_association_ownership_account_notes) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Retrieve all notes |
+| [**get_association_recurring_transaction**](AssociationOwnershipAccountsApi.md#get_association_recurring_transaction) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringtransactions | Retrieve all recurring transactions |
 | [**get_ownership_account_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId} | Retrieve an ownership account |
 | [**get_ownership_account_ledger**](AssociationOwnershipAccountsApi.md#get_ownership_account_ledger) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/transactions | Retrieve ownership account transactions |
 | [**get_ownership_account_outstanding_balances**](AssociationOwnershipAccountsApi.md#get_ownership_account_outstanding_balances) | **GET** /v1/associations/ownershipaccounts/outstandingbalances | Retrieve all outstanding balances |
+| [**get_ownership_account_recurring_credit_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_recurring_credit_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits/{transactionId} | Retrieve a recurring credit |
 | [**get_ownership_account_transaction_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_transaction_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/transactions/{transactionId} | Retrieve an ownership account transaction |
+| [**get_ownership_accounts_charge_recurring_transaction_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_accounts_charge_recurring_transaction_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcharges/{transactionId} | Retrieve a recurring charge |
+| [**get_recurring_ownership_account_payments_by_id**](AssociationOwnershipAccountsApi.md#get_recurring_ownership_account_payments_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments/{paymentId} | Retrieve a recurring payment |
 | [**update_association_ownership_account**](AssociationOwnershipAccountsApi.md#update_association_ownership_account) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId} | Update an ownership account |
 | [**update_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#update_association_ownership_account_note) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Update a note |
 
@@ -252,6 +259,84 @@ end
 - **Accept**: application/json
 
 
+## create_ownership_account_credit_recurring_transaction
+
+> <OwnershipAccountRecurringCreditMessage> create_ownership_account_credit_recurring_transaction(ownership_account_id, credit_recurring_transaction_post_message)
+
+Create a recurring credit
+
+Creates a recurring credit transaction that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+credit_recurring_transaction_post_message = Buildium::CreditRecurringTransactionPostMessage.new({credit_type: 'WaiveUnpaid', post_days_in_advance: 37, frequency: 'Monthly', first_occurrence_date: Date.today}) # CreditRecurringTransactionPostMessage | 
+
+begin
+  # Create a recurring credit
+  result = api_instance.create_ownership_account_credit_recurring_transaction(ownership_account_id, credit_recurring_transaction_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_credit_recurring_transaction: #{e}"
+end
+```
+
+#### Using the create_ownership_account_credit_recurring_transaction_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountRecurringCreditMessage>, Integer, Hash)> create_ownership_account_credit_recurring_transaction_with_http_info(ownership_account_id, credit_recurring_transaction_post_message)
+
+```ruby
+begin
+  # Create a recurring credit
+  data, status_code, headers = api_instance.create_ownership_account_credit_recurring_transaction_with_http_info(ownership_account_id, credit_recurring_transaction_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountRecurringCreditMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_credit_recurring_transaction_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **credit_recurring_transaction_post_message** | [**CreditRecurringTransactionPostMessage**](CreditRecurringTransactionPostMessage.md) |  |  |
+
+### Return type
+
+[**OwnershipAccountRecurringCreditMessage**](OwnershipAccountRecurringCreditMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_ownership_account_ledger_charge
 
 > <OwnershipAccountTransactionMessage> create_ownership_account_ledger_charge(ownership_account_id, ownership_account_ledger_charge_post_message)
@@ -397,6 +482,162 @@ end
 ### Return type
 
 [**OwnershipAccountTransactionMessage**](OwnershipAccountTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_ownership_account_recurring_payment
+
+> <OwnershipAccountRecurringPaymentMessage> create_ownership_account_recurring_payment(ownership_account_id, payment_recurring_transaction_post_message)
+
+Create a recurring payment
+
+Creates a recurring payment that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+payment_recurring_transaction_post_message = Buildium::PaymentRecurringTransactionPostMessage.new({payment_method: 'Check', first_occurrence_date: Date.today, post_days_in_advance: 37, frequency: 'Monthly'}) # PaymentRecurringTransactionPostMessage | 
+
+begin
+  # Create a recurring payment
+  result = api_instance.create_ownership_account_recurring_payment(ownership_account_id, payment_recurring_transaction_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_recurring_payment: #{e}"
+end
+```
+
+#### Using the create_ownership_account_recurring_payment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountRecurringPaymentMessage>, Integer, Hash)> create_ownership_account_recurring_payment_with_http_info(ownership_account_id, payment_recurring_transaction_post_message)
+
+```ruby
+begin
+  # Create a recurring payment
+  data, status_code, headers = api_instance.create_ownership_account_recurring_payment_with_http_info(ownership_account_id, payment_recurring_transaction_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountRecurringPaymentMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_recurring_payment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **payment_recurring_transaction_post_message** | [**PaymentRecurringTransactionPostMessage**](PaymentRecurringTransactionPostMessage.md) |  |  |
+
+### Return type
+
+[**OwnershipAccountRecurringPaymentMessage**](OwnershipAccountRecurringPaymentMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_ownership_accounts_charge_recurring_transaction
+
+> <OwnershipAccountChargeRecurringTransactionMessage> create_ownership_accounts_charge_recurring_transaction(ownership_account_id, charge_recurring_transaction_post_message)
+
+Create a recurring charge
+
+Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+charge_recurring_transaction_post_message = Buildium::ChargeRecurringTransactionPostMessage.new({gl_account_id: 37, amount: 3.56, first_occurrence_date: Date.today, post_days_in_advance: 37, frequency: 'Monthly'}) # ChargeRecurringTransactionPostMessage | 
+
+begin
+  # Create a recurring charge
+  result = api_instance.create_ownership_accounts_charge_recurring_transaction(ownership_account_id, charge_recurring_transaction_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_accounts_charge_recurring_transaction: #{e}"
+end
+```
+
+#### Using the create_ownership_accounts_charge_recurring_transaction_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountChargeRecurringTransactionMessage>, Integer, Hash)> create_ownership_accounts_charge_recurring_transaction_with_http_info(ownership_account_id, charge_recurring_transaction_post_message)
+
+```ruby
+begin
+  # Create a recurring charge
+  data, status_code, headers = api_instance.create_ownership_accounts_charge_recurring_transaction_with_http_info(ownership_account_id, charge_recurring_transaction_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountChargeRecurringTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_accounts_charge_recurring_transaction_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **charge_recurring_transaction_post_message** | [**ChargeRecurringTransactionPostMessage**](ChargeRecurringTransactionPostMessage.md) |  |  |
+
+### Return type
+
+[**OwnershipAccountChargeRecurringTransactionMessage**](OwnershipAccountChargeRecurringTransactionMessage.md)
 
 ### Authorization
 
@@ -670,6 +911,90 @@ end
 - **Accept**: application/json
 
 
+## get_association_recurring_transaction
+
+> <Array<RecurringTransactionMessage>> get_association_recurring_transaction(ownership_account_id, opts)
+
+Retrieve all recurring transactions
+
+Retrieves all recurring transactions for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all recurring transactions
+  result = api_instance.get_association_recurring_transaction(ownership_account_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_association_recurring_transaction: #{e}"
+end
+```
+
+#### Using the get_association_recurring_transaction_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<RecurringTransactionMessage>>, Integer, Hash)> get_association_recurring_transaction_with_http_info(ownership_account_id, opts)
+
+```ruby
+begin
+  # Retrieve all recurring transactions
+  data, status_code, headers = api_instance.get_association_recurring_transaction_with_http_info(ownership_account_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<RecurringTransactionMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_association_recurring_transaction_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;RecurringTransactionMessage&gt;**](RecurringTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_ownership_account_by_id
 
 > <AssociationOwnershipAccountMessage> get_ownership_account_by_id(ownership_account_id)
@@ -928,6 +1253,84 @@ end
 - **Accept**: application/json
 
 
+## get_ownership_account_recurring_credit_by_id
+
+> <OwnershipAccountRecurringCreditMessage> get_ownership_account_recurring_credit_by_id(ownership_account_id, transaction_id)
+
+Retrieve a recurring credit
+
+Retrieves a recurring credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+transaction_id = 56 # Integer | 
+
+begin
+  # Retrieve a recurring credit
+  result = api_instance.get_ownership_account_recurring_credit_by_id(ownership_account_id, transaction_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_ownership_account_recurring_credit_by_id: #{e}"
+end
+```
+
+#### Using the get_ownership_account_recurring_credit_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountRecurringCreditMessage>, Integer, Hash)> get_ownership_account_recurring_credit_by_id_with_http_info(ownership_account_id, transaction_id)
+
+```ruby
+begin
+  # Retrieve a recurring credit
+  data, status_code, headers = api_instance.get_ownership_account_recurring_credit_by_id_with_http_info(ownership_account_id, transaction_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountRecurringCreditMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_ownership_account_recurring_credit_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **transaction_id** | **Integer** |  |  |
+
+### Return type
+
+[**OwnershipAccountRecurringCreditMessage**](OwnershipAccountRecurringCreditMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_ownership_account_transaction_by_id
 
 > <OwnershipAccountTransactionMessage> get_ownership_account_transaction_by_id(ownership_account_id, transaction_id)
@@ -995,6 +1398,162 @@ end
 ### Return type
 
 [**OwnershipAccountTransactionMessage**](OwnershipAccountTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_ownership_accounts_charge_recurring_transaction_by_id
+
+> <OwnershipAccountChargeRecurringTransactionMessage> get_ownership_accounts_charge_recurring_transaction_by_id(ownership_account_id, transaction_id)
+
+Retrieve a recurring charge
+
+Retrieves a recurring charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+transaction_id = 56 # Integer | 
+
+begin
+  # Retrieve a recurring charge
+  result = api_instance.get_ownership_accounts_charge_recurring_transaction_by_id(ownership_account_id, transaction_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_ownership_accounts_charge_recurring_transaction_by_id: #{e}"
+end
+```
+
+#### Using the get_ownership_accounts_charge_recurring_transaction_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountChargeRecurringTransactionMessage>, Integer, Hash)> get_ownership_accounts_charge_recurring_transaction_by_id_with_http_info(ownership_account_id, transaction_id)
+
+```ruby
+begin
+  # Retrieve a recurring charge
+  data, status_code, headers = api_instance.get_ownership_accounts_charge_recurring_transaction_by_id_with_http_info(ownership_account_id, transaction_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountChargeRecurringTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_ownership_accounts_charge_recurring_transaction_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **transaction_id** | **Integer** |  |  |
+
+### Return type
+
+[**OwnershipAccountChargeRecurringTransactionMessage**](OwnershipAccountChargeRecurringTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_recurring_ownership_account_payments_by_id
+
+> <OwnershipAccountRecurringPaymentMessage> get_recurring_ownership_account_payments_by_id(ownership_account_id, payment_id)
+
+Retrieve a recurring payment
+
+Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+payment_id = 56 # Integer | 
+
+begin
+  # Retrieve a recurring payment
+  result = api_instance.get_recurring_ownership_account_payments_by_id(ownership_account_id, payment_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_recurring_ownership_account_payments_by_id: #{e}"
+end
+```
+
+#### Using the get_recurring_ownership_account_payments_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountRecurringPaymentMessage>, Integer, Hash)> get_recurring_ownership_account_payments_by_id_with_http_info(ownership_account_id, payment_id)
+
+```ruby
+begin
+  # Retrieve a recurring payment
+  data, status_code, headers = api_instance.get_recurring_ownership_account_payments_by_id_with_http_info(ownership_account_id, payment_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountRecurringPaymentMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_recurring_ownership_account_payments_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **payment_id** | **Integer** |  |  |
+
+### Return type
+
+[**OwnershipAccountRecurringPaymentMessage**](OwnershipAccountRecurringPaymentMessage.md)
 
 ### Authorization
 

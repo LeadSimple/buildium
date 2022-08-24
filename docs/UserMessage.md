@@ -5,17 +5,17 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | User unique identifier. | [optional] |
-| **user_types** | **Array&lt;String&gt;** | User Type. | [optional] |
-| **is_active** | **Boolean** | User status. | [optional] |
-| **last_login** | **Time** | Last Login. Null if no value. | [optional] |
-| **first_name** | **String** | First Name of User. | [optional] |
-| **last_name** | **String** | Last Name of User. | [optional] |
-| **company_name** | **String** | Company Name. | [optional] |
-| **email** | **String** | Email of User. | [optional] |
-| **alternate_email** | **String** | Alternate Email of User. | [optional] |
-| **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | List of phone numbers for the User. | [optional] |
+| **user_types** | **Array&lt;String&gt;** | The user type assigned to the user account. | [optional] |
+| **is_active** | **Boolean** | Indicates whether the user account is still active. | [optional] |
+| **last_login** | **Time** | Date and time the user last logged into Buildium. This value will be &#x60;NULL&#x60; if the user has never logged into Buildium. | [optional] |
+| **first_name** | **String** | First name of the user. | [optional] |
+| **last_name** | **String** | Last name of the user. | [optional] |
+| **company_name** | **String** | The company name. | [optional] |
+| **email** | **String** | Email address of the user. | [optional] |
+| **alternate_email** | **String** | Alternate email address of user. | [optional] |
+| **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | List of phone numbers for the user. | [optional] |
 | **user_role** | [**UserRoleMessage**](UserRoleMessage.md) |  | [optional] |
-| **is_company** | **Boolean** | Specifies whether or not it is a company. | [optional] |
+| **is_company** | **Boolean** | Indicates with the user account represents company versus a person. | [optional] |
 
 ## Example
 

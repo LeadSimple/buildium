@@ -3,7 +3,7 @@
   "info": {
     "version": "v1",
     "title": "Open API, powered by Buildium",
-    "description": "GetAllGLAccounts) response message now includes the property `IsBankAccount`. This is a boolean property that indicates whether the general ledger account is also a bank account.\r\n* A `Country` property has been added to all Address messages. This property contains an enumeration indicating the country of the address. \r\n\r\n",
+    "description": "GetAllGLAccounts) response message now includes the property `IsBankAccount`. This is a boolean property that indicates whether the general ledger account is also a bank account.\r\n* A `Country` property has been added to all Address messages. This property contains an enumeration indicating the country of the address. \r\n",
     "x-logo": {
       "url": "Buildium-RP-Color-Logo.png",
       "backgroundColor": "#FFFFFF",
@@ -2990,8 +2990,8 @@
         "tags": [
           "Administration"
         ],
-        "summary": "Retrieve Account Info",
-        "description": "Retrieves account info.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Account Information</span> - `View`",
+        "summary": "Retrieve account info",
+        "description": "Retrieves information related to the Buildium account. \r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Account Information</span> - `View`",
         "operationId": "GetAccountInfo",
         "responses": {
           "200": {
@@ -8582,6 +8582,685 @@
           },
           "415": {
             "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcharges": {
+      "post": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Create a recurring charge",
+        "description": "Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`",
+        "operationId": "CreateOwnershipAccountsChargeRecurringTransaction",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ChargeRecurringTransactionPostMessage"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountChargeRecurringTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcharges/{transactionId}": {
+      "get": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Retrieve a recurring charge",
+        "description": "Retrieves a recurring charge.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`",
+        "operationId": "GetOwnershipAccountsChargeRecurringTransactionById",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountChargeRecurringTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits": {
+      "post": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Create a recurring credit",
+        "description": "Creates a recurring credit transaction that will post automatically on the specified ownership account ledger.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`",
+        "operationId": "CreateOwnershipAccountCreditRecurringTransaction",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreditRecurringTransactionPostMessage"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountRecurringCreditMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits/{transactionId}": {
+      "get": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Retrieve a recurring credit",
+        "description": "Retrieves a recurring credit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`",
+        "operationId": "GetOwnershipAccountRecurringCreditById",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountRecurringCreditMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments": {
+      "post": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Create a recurring payment",
+        "description": "Creates a recurring payment that will post automatically on the specified ownership account ledger.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View` `Edit`",
+        "operationId": "CreateOwnershipAccountRecurringPayment",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PaymentRecurringTransactionPostMessage"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountRecurringPaymentMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments/{paymentId}": {
+      "get": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Retrieve a recurring payment",
+        "description": "Retrieves a recurring payment.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View`",
+        "operationId": "GetRecurringOwnershipAccountPaymentsById",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountRecurringPaymentMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringtransactions": {
+      "get": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Retrieve all recurring transactions",
+        "description": "Retrieves all recurring transactions for an ownership account.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`",
+        "operationId": "GetAssociationRecurringTransaction",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecurringTransactionMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17771,6 +18450,685 @@
           },
           "415": {
             "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/recurringcharges": {
+      "post": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Create a recurring charge",
+        "description": "Creates a recurring charge transaction that will post automatically on the specified lease ledger.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`",
+        "operationId": "CreateLeaseChargeRecurringTransaction",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ChargeRecurringTransactionPostMessage"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseChargeRecurringTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/recurringcharges/{transactionId}": {
+      "get": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Retrieve a recurring charge",
+        "description": "Retrieves a recurring charge.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`",
+        "operationId": "GetLeaseChargeRecurringTransactionById",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseChargeRecurringTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/recurringcredits": {
+      "post": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Create a recurring credit",
+        "description": "Creates a recurring credit transaction on the specified lease ledger. \r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`",
+        "operationId": "CreateLeaseCreditRecurringTransaction",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CreditRecurringTransactionPostMessage"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseRecurringCreditMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/recurringcredits/{transactionId}": {
+      "get": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Retrieve a recurring credit",
+        "description": "Retrieves a recurring credit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`",
+        "operationId": "GetLeaseRecurringCreditById",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "transactionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseRecurringCreditMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/recurringpayments": {
+      "post": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Create a recurring payment",
+        "description": "Creates a recurring payment that will post automatically on the specified lease ledger.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View` `Edit`",
+        "operationId": "CreateLeaseRecurringPayment",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PaymentRecurringTransactionPostMessage"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseRecurringPaymentMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/recurringpayments/{paymentId}": {
+      "get": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Retrieve a recurring payment",
+        "description": "Retrieves a recurring payment.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View`",
+        "operationId": "GetRecurringLeasePaymentsById",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseRecurringPaymentMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/recurringtransactions": {
+      "get": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Retrieve all recurring transactions",
+        "description": "Retrieves all recurring transactions.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`",
+        "operationId": "GetLeaseRecurringTransactions",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecurringTransactionMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -28597,11 +29955,31 @@
         },
         "required": true
       },
+      "PaymentRecurringTransactionPostMessage": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PaymentRecurringTransactionPostMessage"
+            }
+          }
+        },
+        "required": true
+      },
       "BankAccountWithdrawalSaveMessage": {
         "content": {
           "application/json": {
             "schema": {
               "$ref": "#/components/schemas/BankAccountWithdrawalSaveMessage"
+            }
+          }
+        },
+        "required": true
+      },
+      "CreditRecurringTransactionPostMessage": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CreditRecurringTransactionPostMessage"
             }
           }
         },
@@ -28637,6 +30015,16 @@
         },
         "required": true
       },
+      "ChargeRecurringTransactionPostMessage": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ChargeRecurringTransactionPostMessage"
+            }
+          }
+        },
+        "required": true
+      },
       "BankAccountQuickDepositSaveMessage": {
         "content": {
           "application/json": {
@@ -28663,8 +30051,17 @@
         "description": "This is an object that represents account info.",
         "type": "object",
         "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Account unique identifier.",
+            "type": "integer"
+          },
           "CompanyName": {
             "description": "Account company name.",
+            "type": "string"
+          },
+          "Url": {
+            "description": "Url for this account.",
             "type": "string"
           },
           "Contact": {
@@ -28766,7 +30163,7 @@
         }
       },
       "AddressMessage": {
-        "description": "This object represents an address.",
+        "description": "Address.",
         "type": "object",
         "properties": {
           "AddressLine1": {
@@ -33885,6 +35282,70 @@
           }
         }
       },
+      "ChargeRecurringTransactionPostMessage": {
+        "required": [
+          "GLAccountId",
+          "Amount",
+          "FirstOccurrenceDate",
+          "PostDaysInAdvance",
+          "Frequency"
+        ],
+        "type": "object",
+        "properties": {
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account unique identifier under which the charge amount will be recorded. The general ledger account can only be an income or liability account.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The amount to record when applying the charge to the lease ledger.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring charge. This value cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the charge will first be processed. This value along with the `Frequency` is also used as the basis for the date set on the transactions in future occurrences.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the charge will post on the lease ledger. This setting can be used to add the charge to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022. Note, the value must be between 0 to 45 or set to 60, 75 or 90.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Specifies the frequency at which the recurring charge will be processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring payment will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "UntilEndOfTerm",
+              "SpecificNumber"
+            ],
+            "type": "string"
+          },
+          "NumberOfOccurrences": {
+            "format": "int32",
+            "description": "Indicates the number of times the recurring transaction should be processed. This value is required if the `Duration` field is set to `SpecificNumber`. This value can not exceed 100.",
+            "type": "integer"
+          }
+        }
+      },
       "CheckPrintingInfoMessage": {
         "type": "object",
         "properties": {
@@ -34394,7 +35855,7 @@
         }
       },
       "ContactInfoMessage": {
-        "description": "This is an object that represents contact info.",
+        "description": "Contact information.",
         "type": "object",
         "properties": {
           "FirstName": {
@@ -34765,6 +36226,85 @@
               "PrimaryAddress",
               "AlternateAddress"
             ],
+            "type": "string"
+          }
+        }
+      },
+      "CreditRecurringTransactionPostMessage": {
+        "required": [
+          "CreditType",
+          "PostDaysInAdvance",
+          "Frequency",
+          "FirstOccurrenceDate"
+        ],
+        "type": "object",
+        "properties": {
+          "CreditType": {
+            "description": "Indicates how the credit will be applied.\r\n<ul><li>WaiveUnpaid - This credit type allows for reversing one or more charges without losing record of what has changed.</li><li>Exchange - This credit type allows for one of the following: 1) Reimburse a resident for a out-of-pocket expense, 2) Compensate for a service, 3) Write-off a resident balance considered uncollectable.</li><li>PreviouslyDeposited - This credit type allows for issuing a credit against payments that have already been deposited.</li></ul>",
+            "enum": [
+              "WaiveUnpaid",
+              "Exchange",
+              "PreviouslyDeposited"
+            ],
+            "type": "string"
+          },
+          "OffsettingGLAccountId": {
+            "format": "int32",
+            "description": "Sets the offsetting general ledger account identifier for the credit.\r\n<br />This value must be provided when the `CreditType` field is set to `Exchange` or `PreviouslyDeposited`.\r\n<br />When the `CreditType` is `Exchange` this must be an *expense* general ledger account type.\r\n<br />When the `CreditType` is `PreviouslyDeposited` this must be an *equity* general ledger account type.",
+            "type": "integer"
+          },
+          "PostingRuleGlAccountId": {
+            "format": "int32",
+            "description": "Indicates whether to apply a posting rule when processing the transaction that would only record the credit if a prior payment has been made.\r\n<br /><br />\r\nSet the field value to the <b>Rent Income</b> general ledger account identifier if the credit should only be recorded when a payment was made and applied to the <b>Rent Income</b> general ledger account.\r\n<br /><br />\r\nSet the field value to the <b>Accounts Receivable</b> general ledger account identifier if the credit should only be recorded when a payment was made and applied to *any* general ledger account.\r\n<br /><br />\r\nSet the field value to <b>null</b> to always record the credit.",
+            "type": "integer"
+          },
+          "Lines": {
+            "description": "Line items describing how the credit is to be allocated when the recurring credit is processed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecurringTransactionLinePostMessage"
+            }
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the credit will post on the lease ledger. This setting can be used to add the credit to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022. Note, the value must be between 0 to 45 or set to 60, 75 or 90.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Specifies the frequency at which the recurring credit will be processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring credit will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "UntilEndOfTerm",
+              "SpecificNumber"
+            ],
+            "type": "string"
+          },
+          "NumberOfOccurrences": {
+            "format": "int32",
+            "description": "Indicates the number of times the recurring credit should be processed. This value is required if the `Duration` field is set to `SpecificNumber`. This value can not exceed 100.",
+            "type": "integer"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the credit will first be processed. This value along with the `Frequency` is also used as the basis for the date set on the transactions in future occurrences.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring credit. This value cannot exceed 65 characters.",
             "type": "string"
           }
         }
@@ -35664,6 +37204,85 @@
           }
         }
       },
+      "LeaseChargeRecurringTransactionMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier of the recurring charge schedule.",
+            "type": "integer"
+          },
+          "LeaseId": {
+            "format": "int32",
+            "description": "The unique identifier of the lease that the recurring charge will be applied to.",
+            "type": "integer"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account unique identifier the recurring charge is applied to.",
+            "type": "integer"
+          },
+          "RentId": {
+            "format": "int32",
+            "description": "The unique identifier of the scheduled Rent entity. If the charge is not associated with a Rent entity then the value will be `NULL`.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The amount of the recurring charge.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring charge.",
+            "type": "string"
+          },
+          "OccurrencesRemaining": {
+            "format": "int32",
+            "description": "The number of remaining times this recurring charge will be processed.",
+            "type": "integer"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the first occurence this charge was processed.",
+            "type": "string"
+          },
+          "NextOccurrenceDate": {
+            "format": "date",
+            "description": "The next date the scheduled charge will be processed.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "The number of days ahead of the transaction date the charge will post on the lease ledger. This setting is used to add the charge to the ledger ahead of it's due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Specifies the frequency at which the recurring charge will be processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring charge will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "Unspecified",
+              "UntilEndOfTerm",
+              "SpecificNumber",
+              "SpecificDate"
+            ],
+            "type": "string"
+          }
+        }
+      },
       "LeaseCosignerPostMessage": {
         "description": "This object represents a rental lease cosigner.",
         "required": [
@@ -36302,6 +37921,195 @@
           "AutomaticallyMoveOutTenants": {
             "description": "Indicates whether to automatically move out all tenants assigned to the lease and set the lease status to past when the lease ends.",
             "type": "boolean"
+          }
+        }
+      },
+      "LeaseRecurringCreditMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier of the recurring credit schedule.",
+            "type": "integer"
+          },
+          "LeaseId": {
+            "format": "int32",
+            "description": "The unique identifier of the lease that the recurring credit will be applied to.",
+            "type": "integer"
+          },
+          "CreditType": {
+            "description": "Indicates how the credit will be applied.\r\n<ul><li>WaiveUnpaid - This credit type allows for reversing one or more charges without losing record of what has changed.</li><li>Exchange - This credit type allows for one of the following: 1) Reimburse a resident for a out-of-pocket expense, 2) Compensate for a service, 3) Write-off a resident balance considered uncollectable.</li><li>PreviouslyDeposited - This credit type allows for issuing a credit against payments that have already been deposited.</li></ul>",
+            "enum": [
+              "WaiveUnpaid",
+              "Exchange",
+              "PreviouslyDeposited"
+            ],
+            "type": "string"
+          },
+          "OffsettingGLAccountId": {
+            "format": "int32",
+            "description": "Offsetting general ledger account identifier. The offsetting general ledger account acts as the expense account.",
+            "type": "integer"
+          },
+          "PostingRuleGLAccountId": {
+            "format": "int32",
+            "description": "Indicates whether to apply a posting rule when processing the transaction that would only record the credit if a prior payment has been made.\r\n<br /><br />\r\nSet the field value to the <b>Rent Income</b> general ledger account identifier if the credit should only be recorded when a payment was made and applied to the <b>Rent Income</b> general ledger account.\r\n<br /><br />\r\nSet the field value to the <b>Accounts Receivable</b> general ledger account identifier if the credit should only be recorded when a payment was made and applied to *any* general ledger account.\r\n<br /><br />\r\nSet the field value to <b>null</b> to always record the credit.",
+            "type": "integer"
+          },
+          "Lines": {
+            "description": "Line items describing how the credit is to be allocated when the recurring transaction is processed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecurringTransactionLineMessage"
+            }
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The total amount of the recurring credit based on sum of the `Lines.Amount`.",
+            "type": "number"
+          },
+          "OccurrencesRemaining": {
+            "format": "int32",
+            "description": "The number of remaining times this recurring credit will be processed.",
+            "type": "integer"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the first occurrence this credit was processed.",
+            "type": "string"
+          },
+          "NextOccurrenceDate": {
+            "format": "date",
+            "description": "The next date the scheduled credit will be processed.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the credit will post on the lease ledger. This setting can be used to add the charge to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022.",
+            "type": "integer"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring credit.",
+            "type": "string"
+          },
+          "Frequency": {
+            "description": "Indicates the frequency at which the recurring credit is processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring payment will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "Unspecified",
+              "UntilEndOfTerm",
+              "SpecificNumber",
+              "SpecificDate"
+            ],
+            "type": "string"
+          }
+        }
+      },
+      "LeaseRecurringPaymentMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier for the recurring payment schedule.",
+            "type": "integer"
+          },
+          "LeaseId": {
+            "format": "int32",
+            "description": "The unique identifier of the lease that the recurring payment will be applied to.",
+            "type": "integer"
+          },
+          "Payer": {
+            "$ref": "#/components/schemas/PayeeMessage"
+          },
+          "PaymentMethod": {
+            "description": "The method of payment for the transaction.",
+            "enum": [
+              "None",
+              "Check",
+              "Cash",
+              "MoneyOrder",
+              "CashierCheck",
+              "DirectDeposit",
+              "CreditCard",
+              "ElectronicPayment",
+              "RetailCash"
+            ],
+            "type": "string"
+          },
+          "Lines": {
+            "description": "Line items describing how the payment is to be allocated when the recurring transaction is processed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecurringTransactionLineMessage"
+            }
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The total amount of the recurring payment based on sum of the `Lines.Amount`.",
+            "type": "number"
+          },
+          "OccurrencesRemaining": {
+            "format": "int32",
+            "description": "The number of remaining times this recurring payment will be processed.",
+            "type": "integer"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the first occurrence this payment was processed.",
+            "type": "string"
+          },
+          "NextOccurrenceDate": {
+            "format": "date",
+            "description": "The next date the scheduled payment will be processed.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the payment will post on the lease ledger. This setting can be used to add the charge to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Indicates the frequency at which the recurring payment is processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring payment will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "Unspecified",
+              "UntilEndOfTerm",
+              "SpecificNumber",
+              "SpecificDate"
+            ],
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring payment.",
+            "type": "string"
           }
         }
       },
@@ -37208,6 +39016,85 @@
           }
         }
       },
+      "OwnershipAccountChargeRecurringTransactionMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier of the recurring charge schedule.",
+            "type": "integer"
+          },
+          "OwnershipAccountId": {
+            "format": "int32",
+            "description": "The unique identifier of the ownership account that the recurring charge will be applied to.",
+            "type": "integer"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account unique identifier the recurring charge is applied to.",
+            "type": "integer"
+          },
+          "RentId": {
+            "format": "int32",
+            "description": "The unique identifier of the scheduled Rent entity. If the charge is not associated with a Rent entity then the value will be `NULL`.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The amount of the recurring charge.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring charge.",
+            "type": "string"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the first occurence this charge was processed.",
+            "type": "string"
+          },
+          "NextOccurrenceDate": {
+            "format": "date",
+            "description": "The next date the scheduled charge will be processed.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the charge will post on the lease ledger. This setting can be used to add the charge to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022.",
+            "type": "integer"
+          },
+          "OccurrencesRemaining": {
+            "format": "int32",
+            "description": "The number of remaining times this recurring charge will be processed.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Indicates the frequency at which the recurring charge is processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring charge will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "Unspecified",
+              "UntilEndOfTerm",
+              "SpecificNumber",
+              "SpecificDate"
+            ],
+            "type": "string"
+          }
+        }
+      },
       "OwnershipAccountCreditLinePostMessage": {
         "required": [
           "Amount",
@@ -37491,6 +39378,195 @@
           }
         }
       },
+      "OwnershipAccountRecurringCreditMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier of the recurring credit schedule.",
+            "type": "integer"
+          },
+          "OwnershipAccountId": {
+            "format": "int32",
+            "description": "The unique identifier of the ownership account that the recurring credit will be applied to.",
+            "type": "integer"
+          },
+          "CreditType": {
+            "description": "Indicates how the credit will be applied.\r\n<ul><li>WaiveUnpaid - This credit type allows for reversing one or more charges without losing record of what has changed.</li><li>Exchange - This credit type allows for one of the following: 1) Reimburse a resident for a out-of-pocket expense, 2) Compensate for a service, 3) Write-off a resident balance considered uncollectable.</li><li>PreviouslyDeposited - This credit type allows for issuing a credit against payments that have already been deposited.</li></ul>",
+            "enum": [
+              "WaiveUnpaid",
+              "Exchange",
+              "PreviouslyDeposited"
+            ],
+            "type": "string"
+          },
+          "OffsettingGLAccountId": {
+            "format": "int32",
+            "description": "Offsetting general ledger account identifier. The offsetting general ledger account acts as the expense account.",
+            "type": "integer"
+          },
+          "PostingRuleGLAccountId": {
+            "format": "int32",
+            "description": "Indicates whether to apply a posting rule when processing the transaction that would only record the credit if a prior payment has been made.\r\n<br /><br />\r\nSet the field value to the <b>Rent Income</b> general ledger account identifier if the credit should only be recorded when a payment was made and applied to the <b>Rent Income</b> general ledger account.\r\n<br /><br />\r\nSet the field value to the <b>Accounts Receivable</b> general ledger account identifier if the credit should only be recorded when a payment was made and applied to *any* general ledger account.\r\n<br /><br />\r\nSet the field value to <b>null</b> to always record the credit.",
+            "type": "integer"
+          },
+          "Lines": {
+            "description": "Line items describing how the credit is to be allocated when the recurring transaction is processed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecurringTransactionLineMessage"
+            }
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The total amount of the recurring credit based on sum of the `Lines.Amount`.",
+            "type": "number"
+          },
+          "OccurrencesRemaining": {
+            "format": "int32",
+            "description": "The number of remaining times this recurring credit will be processed.",
+            "type": "integer"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the first occurrence this credit was processed.",
+            "type": "string"
+          },
+          "NextOccurrenceDate": {
+            "format": "date",
+            "description": "The next date the scheduled credit will be processed.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the credit will post on the lease ledger. This setting can be used to add the credit to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022.",
+            "type": "integer"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring credit.",
+            "type": "string"
+          },
+          "Frequency": {
+            "description": "Indicates the frequency at which the recurring credit is processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring credit will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "Unspecified",
+              "UntilEndOfTerm",
+              "SpecificNumber",
+              "SpecificDate"
+            ],
+            "type": "string"
+          }
+        }
+      },
+      "OwnershipAccountRecurringPaymentMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier of the recurring payment schedule.",
+            "type": "integer"
+          },
+          "OwnershipAccountId": {
+            "format": "int32",
+            "description": "The unique identifier of the ownership account that the recurring payment will be applied to.",
+            "type": "integer"
+          },
+          "Payer": {
+            "$ref": "#/components/schemas/PayeeMessage"
+          },
+          "PaymentMethod": {
+            "description": "The method of payment for the transaction.",
+            "enum": [
+              "None",
+              "Check",
+              "Cash",
+              "MoneyOrder",
+              "CashierCheck",
+              "DirectDeposit",
+              "CreditCard",
+              "ElectronicPayment",
+              "RetailCash"
+            ],
+            "type": "string"
+          },
+          "Lines": {
+            "description": "Line items describing how the payment is to be allocated when the recurring transaction is processed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecurringTransactionLineMessage"
+            }
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The total amount of the recurring payment based on sum of the `Lines.Amount`.",
+            "type": "number"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the first occurence this payment was processed.",
+            "type": "string"
+          },
+          "NextOccurrenceDate": {
+            "format": "date",
+            "description": "The next date the scheduled payment will be processed.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the payment will post on the lease ledger. This setting can be used to add the payment to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Specifies the frequency at which the recurring payment will be processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring payment will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "Unspecified",
+              "UntilEndOfTerm",
+              "SpecificNumber",
+              "SpecificDate"
+            ],
+            "type": "string"
+          },
+          "OccurrencesRemaining": {
+            "format": "int32",
+            "description": "The number of remaining times this recurring payment will be processed.",
+            "type": "integer"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring payment.",
+            "type": "string"
+          }
+        }
+      },
       "OwnershipAccountTransactionMessage": {
         "description": "This is an object that represents a financial transaction",
         "type": "object",
@@ -37593,20 +39669,20 @@
         }
       },
       "PayeeMessage": {
-        "description": "This object represents a payee.",
+        "description": "The payer of the transaction.",
         "type": "object",
         "properties": {
           "Id": {
             "format": "int32",
-            "description": "The payee user unique identifier.",
+            "description": "The payer user unique identifier.",
             "type": "integer"
           },
           "Name": {
-            "description": "The name of the payee.",
+            "description": "The name of the payer.",
             "type": "string"
           },
           "Type": {
-            "description": "The payee entity type.",
+            "description": "The payer user entity type.",
             "enum": [
               "Tenant",
               "AssociationTenant",
@@ -37618,7 +39694,7 @@
             "type": "string"
           },
           "Href": {
-            "description": "A link to the resource endpoint associated with the payee.",
+            "description": "A link to the resource endpoint associated with the payer.",
             "type": "string"
           }
         }
@@ -37651,6 +39727,84 @@
           },
           "InternalTransactionStatus": {
             "$ref": "#/components/schemas/InternalTransactionStatusMessage"
+          }
+        }
+      },
+      "PaymentRecurringTransactionPostMessage": {
+        "required": [
+          "PaymentMethod",
+          "FirstOccurrenceDate",
+          "PostDaysInAdvance",
+          "Frequency"
+        ],
+        "type": "object",
+        "properties": {
+          "PayerUserId": {
+            "format": "int32",
+            "description": "The unique identifier of the user making the payment.",
+            "type": "integer"
+          },
+          "PaymentMethod": {
+            "description": "The payment method for the transaction.",
+            "enum": [
+              "Check",
+              "Cash",
+              "MoneyOrder",
+              "CashierCheck",
+              "DirectDeposit",
+              "CreditCard",
+              "ElectronicPayment"
+            ],
+            "type": "string"
+          },
+          "Lines": {
+            "description": "Line items describing how the payment is to be allocated when the payment is processed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecurringTransactionLinePostMessage"
+            }
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring payment. This value cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the payment will first be processed. This value along with the `Frequency` is also used as the basis for the date set on the transactions in future occurrences.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the payment will post on the lease ledger. This setting can be used to add the payment to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022. Note, the value must be between 0 to 45 or set to 60, 75 or 90.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Specifies the frequency at which the recurring payment will be processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring payment will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "UntilEndOfTerm",
+              "SpecificNumber"
+            ],
+            "type": "string"
+          },
+          "NumberOfOccurrences": {
+            "format": "int32",
+            "description": "Indicates the number of times the recurring payment should be processed. This value is required if the `Duration` field is set to `SpecificNumber`. This value can not exceed 100.",
+            "type": "integer"
           }
         }
       },
@@ -37960,6 +40114,144 @@
           },
           "Href": {
             "description": "A link to the property entity resource.",
+            "type": "string"
+          }
+        }
+      },
+      "RecurringTransactionLineMessage": {
+        "type": "object",
+        "properties": {
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account unique identifier the recurring transaction is related to.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the line item.",
+            "type": "number"
+          }
+        }
+      },
+      "RecurringTransactionLinePostMessage": {
+        "required": [
+          "GLAccountId",
+          "Amount"
+        ],
+        "type": "object",
+        "properties": {
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account identifier under which the line item amount will be recorded. The account must be a liability or income type.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Line item amount.",
+            "type": "number"
+          }
+        }
+      },
+      "RecurringTransactionMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier for the recurring transaction schedule.",
+            "type": "integer"
+          },
+          "TransactionType": {
+            "description": "Indicates the type of transaction to be applied to the ledger.",
+            "enum": [
+              "Bill",
+              "Check",
+              "Charge",
+              "Payment",
+              "Credit",
+              "Refund",
+              "ApplyDeposit",
+              "ElectronicFundsTransfer",
+              "Other",
+              "Deposit",
+              "GeneralJournalEntry",
+              "OwnerContribution",
+              "ReversePayment",
+              "ReverseElectronicFundsTransfer",
+              "VendorCredit",
+              "RentalApplicationFeePayment",
+              "ReverseRentalApplicationFeePayment",
+              "ReverseOwnerContribution",
+              "VendorRefund",
+              "UnreversedPayment",
+              "UnreversedElectronicFundsTransfer",
+              "UnreversedOwnerContribution",
+              "UnreversedRentalApplicationFeePayment"
+            ],
+            "type": "string"
+          },
+          "IsExpired": {
+            "description": "Indicates if the recurring transaction schedule has expired.",
+            "type": "boolean"
+          },
+          "RentId": {
+            "format": "int32",
+            "description": "The unique identifier of the scheduled Rent entity. This field is only applicable for `Charge` transaction types.",
+            "type": "integer"
+          },
+          "OffsettingGLAccountId": {
+            "format": "int32",
+            "description": "Offsetting general ledger account identifier. The offsetting general ledger account acts as the expense account. Note, this field is only applicable for `Credit` transaction types.",
+            "type": "integer"
+          },
+          "Lines": {
+            "description": "Line items describing how the transaction is to be allocated when it is processed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecurringTransactionLineMessage"
+            }
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Total amount of the recurring transaction.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring transaction.",
+            "type": "string"
+          },
+          "NextOccurrenceDate": {
+            "format": "date",
+            "description": "The next date the scheduled transaction will be processed.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "The number of days ahead of the transaction date the transaction will post on the lease ledger. This setting is used to add the transaction to the ledger ahead of it's due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Indicates the frequency at which the recurring transaction is processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring transaction will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "Unspecified",
+              "UntilEndOfTerm",
+              "SpecificNumber",
+              "SpecificDate"
+            ],
             "type": "string"
           }
         }
@@ -39927,6 +42219,18 @@
             "format": "date",
             "description": "Request due date. The date must be formatted as YYYY-MM-DD.",
             "type": "string"
+          },
+          "IsEntryPermittedByResident": {
+            "description": "Indicates whether the resident has explicitly granted permission to enter the unit. Set this value to null if the resident has not provided a response.",
+            "type": "boolean"
+          },
+          "DoesResidentHavePets": {
+            "description": "Indicates whether the resident has pets. Set this value to null if the resident has not provided a response.",
+            "type": "boolean"
+          },
+          "ResidentEntryNotes": {
+            "description": "Notes provided by the resident specific to entering the premises. The value cannot exceed 65535 characters.",
+            "type": "string"
           }
         }
       },
@@ -40078,7 +42382,7 @@
         }
       },
       "SaveAddressMessage": {
-        "description": "This object represents an address.",
+        "description": "Address.",
         "required": [
           "AddressLine1",
           "Country"
@@ -41123,7 +43427,7 @@
         }
       },
       "UserMessage": {
-        "description": "This object represents a User.",
+        "description": "Buildium user account.",
         "type": "object",
         "properties": {
           "Id": {
@@ -41132,7 +43436,7 @@
             "type": "integer"
           },
           "UserTypes": {
-            "description": "User Type.",
+            "description": "The user type assigned to the user account.",
             "type": "array",
             "items": {
               "enum": [
@@ -41144,36 +43448,36 @@
             }
           },
           "IsActive": {
-            "description": "User status.",
+            "description": "Indicates whether the user account is still active.",
             "type": "boolean"
           },
           "LastLogin": {
             "format": "date-time",
-            "description": "Last Login. Null if no value.",
+            "description": "Date and time the user last logged into Buildium. This value will be `NULL` if the user has never logged into Buildium.",
             "type": "string"
           },
           "FirstName": {
-            "description": "First Name of User.",
+            "description": "First name of the user.",
             "type": "string"
           },
           "LastName": {
-            "description": "Last Name of User.",
+            "description": "Last name of the user.",
             "type": "string"
           },
           "CompanyName": {
-            "description": "Company Name.",
+            "description": "The company name.",
             "type": "string"
           },
           "Email": {
-            "description": "Email of User.",
+            "description": "Email address of the user.",
             "type": "string"
           },
           "AlternateEmail": {
-            "description": "Alternate Email of User.",
+            "description": "Alternate email address of user.",
             "type": "string"
           },
           "PhoneNumbers": {
-            "description": "List of phone numbers for the User.",
+            "description": "List of phone numbers for the user.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PhoneNumberMessage"
@@ -41183,31 +43487,31 @@
             "$ref": "#/components/schemas/UserRoleMessage"
           },
           "IsCompany": {
-            "description": "Specifies whether or not it is a company.",
+            "description": "Indicates with the user account represents company versus a person.",
             "type": "boolean"
           }
         }
       },
       "UserRoleMessage": {
-        "description": "This object represents a user role.",
+        "description": "User role.",
         "type": "object",
         "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "User role unique identifier.",
+            "type": "integer"
+          },
           "Name": {
-            "description": "User Role Name.",
+            "description": "User role name.",
             "type": "string"
           },
           "Description": {
-            "description": "User Role Description.",
+            "description": "User role description.",
             "type": "string"
-          },
-          "Id": {
-            "format": "int32",
-            "description": "User Role unique identifier.",
-            "type": "integer"
           },
           "NumberOfUsers": {
             "format": "int64",
-            "description": "Number of Users under User Role Type.",
+            "description": "Number of users assigned to this user role.",
             "type": "integer"
           }
         }

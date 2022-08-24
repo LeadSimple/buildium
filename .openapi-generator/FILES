@@ -1,4 +1,5 @@
 .gitignore
+.gitlab-ci.yml
 .rspec
 .rubocop.yml
 .travis.yml
@@ -126,6 +127,7 @@ docs/BudgetMonthlyAmountsSaveMessage.md
 docs/BudgetPostMessage.md
 docs/BudgetPutMessage.md
 docs/BudgetSearchMessage.md
+docs/ChargeRecurringTransactionPostMessage.md
 docs/CheckPrintingInfoMessage.md
 docs/CheckPrintingInfoPostMessage.md
 docs/CheckPrintingInfoPutMessage.md
@@ -144,6 +146,7 @@ docs/ContactRequestTaskPostMessage.md
 docs/ContactRequestTaskPutMessage.md
 docs/ContactRequestTaskSearchMessage.md
 docs/CosignerMessage.md
+docs/CreditRecurringTransactionPostMessage.md
 docs/DepositDetailMessage.md
 docs/ElectronicPaymentsMessage.md
 docs/EmergencyContactMessage.md
@@ -175,6 +178,7 @@ docs/LastUpdatedByUserMessage.md
 docs/LeaseAccountDetailMessage.md
 docs/LeaseChargeLineMessage.md
 docs/LeaseChargeMessage.md
+docs/LeaseChargeRecurringTransactionMessage.md
 docs/LeaseCosignerPostMessage.md
 docs/LeaseLedgerCreditLinePostMessage.md
 docs/LeaseLedgerCreditPostMessage.md
@@ -190,6 +194,8 @@ docs/LeaseOutstandingBalanceMessage.md
 docs/LeaseOutstandingBalanceSearchMessage.md
 docs/LeasePostMessage.md
 docs/LeasePutMessage.md
+docs/LeaseRecurringCreditMessage.md
+docs/LeaseRecurringPaymentMessage.md
 docs/LeaseRentChargeMessage.md
 docs/LeaseRentChargePostMessage.md
 docs/LeaseRentMessage.md
@@ -215,6 +221,7 @@ docs/NotePostMessage.md
 docs/NotePutMessage.md
 docs/NoteSearchMessage.md
 docs/OutstandingBalancesLineMessage.md
+docs/OwnershipAccountChargeRecurringTransactionMessage.md
 docs/OwnershipAccountCreditLinePostMessage.md
 docs/OwnershipAccountCreditPostMessage.md
 docs/OwnershipAccountLedgerChargeLinesSaveMessage.md
@@ -223,12 +230,15 @@ docs/OwnershipAccountLedgerPaymentLineSaveMessage.md
 docs/OwnershipAccountLedgerPaymentPostMessage.md
 docs/OwnershipAccountOutstandingBalanceMessage.md
 docs/OwnershipAccountOutstandingBalanceSearchMessage.md
+docs/OwnershipAccountRecurringCreditMessage.md
+docs/OwnershipAccountRecurringPaymentMessage.md
 docs/OwnershipAccountTransactionMessage.md
 docs/PaidByMessage.md
 docs/ParticipantMessage.md
 docs/ParticipantResourceMessage.md
 docs/PayeeMessage.md
 docs/PaymentDetailMessage.md
+docs/PaymentRecurringTransactionPostMessage.md
 docs/PaymentTransactionsMessage.md
 docs/PhoneLogMessage.md
 docs/PhoneLogParticipantPostMessage.md
@@ -240,6 +250,9 @@ docs/PhoneNumberMessage.md
 docs/PhoneNumbersMessage.md
 docs/PropertyManagerMessage.md
 docs/PropertyMessage.md
+docs/RecurringTransactionLineMessage.md
+docs/RecurringTransactionLinePostMessage.md
+docs/RecurringTransactionMessage.md
 docs/RentalApplianceMessage.md
 docs/RentalAppliancePostMessage.md
 docs/RentalAppliancePutMessage.md
@@ -462,6 +475,7 @@ lib/buildium/models/budget_monthly_amounts_save_message.rb
 lib/buildium/models/budget_post_message.rb
 lib/buildium/models/budget_put_message.rb
 lib/buildium/models/budget_search_message.rb
+lib/buildium/models/charge_recurring_transaction_post_message.rb
 lib/buildium/models/check_printing_info_message.rb
 lib/buildium/models/check_printing_info_post_message.rb
 lib/buildium/models/check_printing_info_put_message.rb
@@ -478,6 +492,7 @@ lib/buildium/models/contact_request_task_post_message.rb
 lib/buildium/models/contact_request_task_put_message.rb
 lib/buildium/models/contact_request_task_search_message.rb
 lib/buildium/models/cosigner_message.rb
+lib/buildium/models/credit_recurring_transaction_post_message.rb
 lib/buildium/models/deposit_detail_message.rb
 lib/buildium/models/electronic_payments_message.rb
 lib/buildium/models/emergency_contact_message.rb
@@ -508,6 +523,7 @@ lib/buildium/models/last_updated_by_user_message.rb
 lib/buildium/models/lease_account_detail_message.rb
 lib/buildium/models/lease_charge_line_message.rb
 lib/buildium/models/lease_charge_message.rb
+lib/buildium/models/lease_charge_recurring_transaction_message.rb
 lib/buildium/models/lease_cosigner_post_message.rb
 lib/buildium/models/lease_ledger_credit_line_post_message.rb
 lib/buildium/models/lease_ledger_credit_post_message.rb
@@ -523,6 +539,8 @@ lib/buildium/models/lease_outstanding_balance_message.rb
 lib/buildium/models/lease_outstanding_balance_search_message.rb
 lib/buildium/models/lease_post_message.rb
 lib/buildium/models/lease_put_message.rb
+lib/buildium/models/lease_recurring_credit_message.rb
+lib/buildium/models/lease_recurring_payment_message.rb
 lib/buildium/models/lease_rent_charge_message.rb
 lib/buildium/models/lease_rent_charge_post_message.rb
 lib/buildium/models/lease_rent_message.rb
@@ -546,6 +564,7 @@ lib/buildium/models/note_post_message.rb
 lib/buildium/models/note_put_message.rb
 lib/buildium/models/note_search_message.rb
 lib/buildium/models/outstanding_balances_line_message.rb
+lib/buildium/models/ownership_account_charge_recurring_transaction_message.rb
 lib/buildium/models/ownership_account_credit_line_post_message.rb
 lib/buildium/models/ownership_account_credit_post_message.rb
 lib/buildium/models/ownership_account_ledger_charge_lines_save_message.rb
@@ -554,12 +573,15 @@ lib/buildium/models/ownership_account_ledger_payment_line_save_message.rb
 lib/buildium/models/ownership_account_ledger_payment_post_message.rb
 lib/buildium/models/ownership_account_outstanding_balance_message.rb
 lib/buildium/models/ownership_account_outstanding_balance_search_message.rb
+lib/buildium/models/ownership_account_recurring_credit_message.rb
+lib/buildium/models/ownership_account_recurring_payment_message.rb
 lib/buildium/models/ownership_account_transaction_message.rb
 lib/buildium/models/paid_by_message.rb
 lib/buildium/models/participant_message.rb
 lib/buildium/models/participant_resource_message.rb
 lib/buildium/models/payee_message.rb
 lib/buildium/models/payment_detail_message.rb
+lib/buildium/models/payment_recurring_transaction_post_message.rb
 lib/buildium/models/payment_transactions_message.rb
 lib/buildium/models/phone_log_message.rb
 lib/buildium/models/phone_log_participant_post_message.rb
@@ -571,6 +593,9 @@ lib/buildium/models/phone_number_message.rb
 lib/buildium/models/phone_numbers_message.rb
 lib/buildium/models/property_manager_message.rb
 lib/buildium/models/property_message.rb
+lib/buildium/models/recurring_transaction_line_message.rb
+lib/buildium/models/recurring_transaction_line_post_message.rb
+lib/buildium/models/recurring_transaction_message.rb
 lib/buildium/models/rental_appliance_message.rb
 lib/buildium/models/rental_appliance_post_message.rb
 lib/buildium/models/rental_appliance_put_message.rb
@@ -783,6 +808,7 @@ spec/models/budget_monthly_amounts_save_message_spec.rb
 spec/models/budget_post_message_spec.rb
 spec/models/budget_put_message_spec.rb
 spec/models/budget_search_message_spec.rb
+spec/models/charge_recurring_transaction_post_message_spec.rb
 spec/models/check_printing_info_message_spec.rb
 spec/models/check_printing_info_post_message_spec.rb
 spec/models/check_printing_info_put_message_spec.rb
@@ -799,6 +825,7 @@ spec/models/contact_request_task_post_message_spec.rb
 spec/models/contact_request_task_put_message_spec.rb
 spec/models/contact_request_task_search_message_spec.rb
 spec/models/cosigner_message_spec.rb
+spec/models/credit_recurring_transaction_post_message_spec.rb
 spec/models/deposit_detail_message_spec.rb
 spec/models/electronic_payments_message_spec.rb
 spec/models/emergency_contact_message_spec.rb
@@ -829,6 +856,7 @@ spec/models/last_updated_by_user_message_spec.rb
 spec/models/lease_account_detail_message_spec.rb
 spec/models/lease_charge_line_message_spec.rb
 spec/models/lease_charge_message_spec.rb
+spec/models/lease_charge_recurring_transaction_message_spec.rb
 spec/models/lease_cosigner_post_message_spec.rb
 spec/models/lease_ledger_credit_line_post_message_spec.rb
 spec/models/lease_ledger_credit_post_message_spec.rb
@@ -844,6 +872,8 @@ spec/models/lease_outstanding_balance_message_spec.rb
 spec/models/lease_outstanding_balance_search_message_spec.rb
 spec/models/lease_post_message_spec.rb
 spec/models/lease_put_message_spec.rb
+spec/models/lease_recurring_credit_message_spec.rb
+spec/models/lease_recurring_payment_message_spec.rb
 spec/models/lease_rent_charge_message_spec.rb
 spec/models/lease_rent_charge_post_message_spec.rb
 spec/models/lease_rent_message_spec.rb
@@ -867,6 +897,7 @@ spec/models/note_post_message_spec.rb
 spec/models/note_put_message_spec.rb
 spec/models/note_search_message_spec.rb
 spec/models/outstanding_balances_line_message_spec.rb
+spec/models/ownership_account_charge_recurring_transaction_message_spec.rb
 spec/models/ownership_account_credit_line_post_message_spec.rb
 spec/models/ownership_account_credit_post_message_spec.rb
 spec/models/ownership_account_ledger_charge_lines_save_message_spec.rb
@@ -875,12 +906,15 @@ spec/models/ownership_account_ledger_payment_line_save_message_spec.rb
 spec/models/ownership_account_ledger_payment_post_message_spec.rb
 spec/models/ownership_account_outstanding_balance_message_spec.rb
 spec/models/ownership_account_outstanding_balance_search_message_spec.rb
+spec/models/ownership_account_recurring_credit_message_spec.rb
+spec/models/ownership_account_recurring_payment_message_spec.rb
 spec/models/ownership_account_transaction_message_spec.rb
 spec/models/paid_by_message_spec.rb
 spec/models/participant_message_spec.rb
 spec/models/participant_resource_message_spec.rb
 spec/models/payee_message_spec.rb
 spec/models/payment_detail_message_spec.rb
+spec/models/payment_recurring_transaction_post_message_spec.rb
 spec/models/payment_transactions_message_spec.rb
 spec/models/phone_log_message_spec.rb
 spec/models/phone_log_participant_post_message_spec.rb
@@ -892,6 +926,9 @@ spec/models/phone_number_message_spec.rb
 spec/models/phone_numbers_message_spec.rb
 spec/models/property_manager_message_spec.rb
 spec/models/property_message_spec.rb
+spec/models/recurring_transaction_line_message_spec.rb
+spec/models/recurring_transaction_line_post_message_spec.rb
+spec/models/recurring_transaction_message_spec.rb
 spec/models/rental_appliance_message_spec.rb
 spec/models/rental_appliance_post_message_spec.rb
 spec/models/rental_appliance_put_message_spec.rb

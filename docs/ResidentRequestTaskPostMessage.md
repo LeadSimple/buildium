@@ -14,6 +14,9 @@
 | **task_status** | **String** | Request status. |  |
 | **priority** | **String** | Request priority. |  |
 | **due_date** | **Date** | Request due date. The date must be formatted as YYYY-MM-DD. | [optional] |
+| **is_entry_permitted_by_resident** | **Boolean** | Indicates whether the resident has explicitly granted permission to enter the unit. Set this value to null if the resident has not provided a response. | [optional] |
+| **does_resident_have_pets** | **Boolean** | Indicates whether the resident has pets. Set this value to null if the resident has not provided a response. | [optional] |
+| **resident_entry_notes** | **String** | Notes provided by the resident specific to entering the premises. The value cannot exceed 65535 characters. | [optional] |
 
 ## Example
 
@@ -30,7 +33,10 @@ instance = Buildium::ResidentRequestTaskPostMessage.new(
   assigned_to_user_id: null,
   task_status: null,
   priority: null,
-  due_date: null
+  due_date: null,
+  is_entry_permitted_by_resident: null,
+  does_resident_have_pets: null,
+  resident_entry_notes: null
 )
 ```
 

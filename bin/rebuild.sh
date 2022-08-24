@@ -31,6 +31,7 @@ cp bin/CUSTOMIZATIONS.md CUSTOMIZATIONS.md
 
 # Remove final files that we don't need from the template
 rm .travis.yml
+rm .gitlab-ci.yml
 rm git_push.sh
 
 # Make sure the lockfile was updated

@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** | User Role Name. | [optional] |
-| **description** | **String** | User Role Description. | [optional] |
-| **id** | **Integer** | User Role unique identifier. | [optional] |
-| **number_of_users** | **Integer** | Number of Users under User Role Type. | [optional] |
+| **id** | **Integer** | User role unique identifier. | [optional] |
+| **name** | **String** | User role name. | [optional] |
+| **description** | **String** | User role description. | [optional] |
+| **number_of_users** | **Integer** | Number of users assigned to this user role. | [optional] |
 
 ## Example
 
@@ -15,9 +15,9 @@
 require 'buildium'
 
 instance = Buildium::UserRoleMessage.new(
+  id: null,
   name: null,
   description: null,
-  id: null,
   number_of_users: null
 )
 ```

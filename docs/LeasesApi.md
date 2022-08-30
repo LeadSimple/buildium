@@ -5,13 +5,17 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_lease**](LeasesApi.md#create_lease) | **POST** /v1/leases | Create a lease |
+| [**create_lease_charge_recurring_transaction**](LeasesApi.md#create_lease_charge_recurring_transaction) | **POST** /v1/leases/{leaseId}/recurringcharges | Create a recurring charge |
 | [**create_lease_credit**](LeasesApi.md#create_lease_credit) | **POST** /v1/leases/{leaseId}/credits | Create a credit |
+| [**create_lease_credit_recurring_transaction**](LeasesApi.md#create_lease_credit_recurring_transaction) | **POST** /v1/leases/{leaseId}/recurringcredits | Create a recurring credit |
 | [**create_lease_ledger_charge**](LeasesApi.md#create_lease_ledger_charge) | **POST** /v1/leases/{leaseId}/charges | Create a charge |
 | [**create_lease_note**](LeasesApi.md#create_lease_note) | **POST** /v1/leases/{leaseId}/notes | Create a note |
+| [**create_lease_recurring_payment**](LeasesApi.md#create_lease_recurring_payment) | **POST** /v1/leases/{leaseId}/recurringpayments | Create a recurring payment |
 | [**create_lease_reverse_payment**](LeasesApi.md#create_lease_reverse_payment) | **POST** /v1/leases/{leaseId}/reversepayments | Create a payment reversal |
 | [**create_move_out_data**](LeasesApi.md#create_move_out_data) | **POST** /v1/leases/{leaseId}/moveouts | Create a move out |
 | [**create_payment**](LeasesApi.md#create_payment) | **POST** /v1/leases/{leaseId}/payments | Create a payment |
 | [**get_lease_by_id**](LeasesApi.md#get_lease_by_id) | **GET** /v1/leases/{leaseId} | Retrieve a lease |
+| [**get_lease_charge_recurring_transaction_by_id**](LeasesApi.md#get_lease_charge_recurring_transaction_by_id) | **GET** /v1/leases/{leaseId}/recurringcharges/{transactionId} | Retrieve a recurring charge |
 | [**get_lease_ledger_transaction_by_id**](LeasesApi.md#get_lease_ledger_transaction_by_id) | **GET** /v1/leases/{leaseId}/transactions/{transactionId} | Retrieve a lease transaction |
 | [**get_lease_ledgers**](LeasesApi.md#get_lease_ledgers) | **GET** /v1/leases/{leaseId}/transactions | Retrieve all lease transactions |
 | [**get_lease_move_out_data_by_tenant_id**](LeasesApi.md#get_lease_move_out_data_by_tenant_id) | **GET** /v1/leases/{leaseId}/moveouts/{tenantId} | Retrieve a move out |
@@ -19,7 +23,10 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_lease_note_by_note_id**](LeasesApi.md#get_lease_note_by_note_id) | **GET** /v1/leases/{leaseId}/notes/{noteId} | Retrieve a note |
 | [**get_lease_notes**](LeasesApi.md#get_lease_notes) | **GET** /v1/leases/{leaseId}/notes | Retrieve all notes |
 | [**get_lease_outstanding_balances**](LeasesApi.md#get_lease_outstanding_balances) | **GET** /v1/leases/outstandingbalances | Retrieve all outstanding balances |
+| [**get_lease_recurring_credit_by_id**](LeasesApi.md#get_lease_recurring_credit_by_id) | **GET** /v1/leases/{leaseId}/recurringcredits/{transactionId} | Retrieve a recurring credit |
+| [**get_lease_recurring_transactions**](LeasesApi.md#get_lease_recurring_transactions) | **GET** /v1/leases/{leaseId}/recurringtransactions | Retrieve all recurring transactions |
 | [**get_leases**](LeasesApi.md#get_leases) | **GET** /v1/leases | Retrieve all leases |
+| [**get_recurring_lease_payments_by_id**](LeasesApi.md#get_recurring_lease_payments_by_id) | **GET** /v1/leases/{leaseId}/recurringpayments/{paymentId} | Retrieve a recurring payment |
 | [**get_rent**](LeasesApi.md#get_rent) | **GET** /v1/leases/{leaseId}/rent | Retrieve all rent schedules |
 | [**get_rent_by_id**](LeasesApi.md#get_rent_by_id) | **GET** /v1/leases/{leaseId}/rent/{rentId} | Retrieve a rent schedule |
 | [**undo_tenant_moveout**](LeasesApi.md#undo_tenant_moveout) | **DELETE** /v1/leases/{leaseId}/moveouts/{tenantId} | Delete a move out |
@@ -103,6 +110,84 @@ end
 - **Accept**: application/json
 
 
+## create_lease_charge_recurring_transaction
+
+> <LeaseChargeRecurringTransactionMessage> create_lease_charge_recurring_transaction(lease_id, charge_recurring_transaction_post_message)
+
+Create a recurring charge
+
+Creates a recurring charge transaction that will post automatically on the specified lease ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+charge_recurring_transaction_post_message = Buildium::ChargeRecurringTransactionPostMessage.new({gl_account_id: 37, amount: 3.56, first_occurrence_date: Date.today, post_days_in_advance: 37, frequency: 'Monthly'}) # ChargeRecurringTransactionPostMessage | 
+
+begin
+  # Create a recurring charge
+  result = api_instance.create_lease_charge_recurring_transaction(lease_id, charge_recurring_transaction_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_charge_recurring_transaction: #{e}"
+end
+```
+
+#### Using the create_lease_charge_recurring_transaction_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseChargeRecurringTransactionMessage>, Integer, Hash)> create_lease_charge_recurring_transaction_with_http_info(lease_id, charge_recurring_transaction_post_message)
+
+```ruby
+begin
+  # Create a recurring charge
+  data, status_code, headers = api_instance.create_lease_charge_recurring_transaction_with_http_info(lease_id, charge_recurring_transaction_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseChargeRecurringTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_charge_recurring_transaction_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **charge_recurring_transaction_post_message** | [**ChargeRecurringTransactionPostMessage**](ChargeRecurringTransactionPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseChargeRecurringTransactionMessage**](LeaseChargeRecurringTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_lease_credit
 
 > <LeaseTransactionMessage> create_lease_credit(lease_id, lease_ledger_credit_post_message)
@@ -170,6 +255,84 @@ end
 ### Return type
 
 [**LeaseTransactionMessage**](LeaseTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_lease_credit_recurring_transaction
+
+> <LeaseRecurringCreditMessage> create_lease_credit_recurring_transaction(lease_id, credit_recurring_transaction_post_message)
+
+Create a recurring credit
+
+Creates a recurring credit transaction on the specified lease ledger.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+credit_recurring_transaction_post_message = Buildium::CreditRecurringTransactionPostMessage.new({credit_type: 'WaiveUnpaid', post_days_in_advance: 37, frequency: 'Monthly', first_occurrence_date: Date.today}) # CreditRecurringTransactionPostMessage | 
+
+begin
+  # Create a recurring credit
+  result = api_instance.create_lease_credit_recurring_transaction(lease_id, credit_recurring_transaction_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_credit_recurring_transaction: #{e}"
+end
+```
+
+#### Using the create_lease_credit_recurring_transaction_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseRecurringCreditMessage>, Integer, Hash)> create_lease_credit_recurring_transaction_with_http_info(lease_id, credit_recurring_transaction_post_message)
+
+```ruby
+begin
+  # Create a recurring credit
+  data, status_code, headers = api_instance.create_lease_credit_recurring_transaction_with_http_info(lease_id, credit_recurring_transaction_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseRecurringCreditMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_credit_recurring_transaction_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **credit_recurring_transaction_post_message** | [**CreditRecurringTransactionPostMessage**](CreditRecurringTransactionPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseRecurringCreditMessage**](LeaseRecurringCreditMessage.md)
 
 ### Authorization
 
@@ -326,6 +489,84 @@ end
 ### Return type
 
 [**NoteMessage**](NoteMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_lease_recurring_payment
+
+> <LeaseRecurringPaymentMessage> create_lease_recurring_payment(lease_id, payment_recurring_transaction_post_message)
+
+Create a recurring payment
+
+Creates a recurring payment that will post automatically on the specified lease ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+payment_recurring_transaction_post_message = Buildium::PaymentRecurringTransactionPostMessage.new({payment_method: 'Check', first_occurrence_date: Date.today, post_days_in_advance: 37, frequency: 'Monthly'}) # PaymentRecurringTransactionPostMessage | 
+
+begin
+  # Create a recurring payment
+  result = api_instance.create_lease_recurring_payment(lease_id, payment_recurring_transaction_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_recurring_payment: #{e}"
+end
+```
+
+#### Using the create_lease_recurring_payment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseRecurringPaymentMessage>, Integer, Hash)> create_lease_recurring_payment_with_http_info(lease_id, payment_recurring_transaction_post_message)
+
+```ruby
+begin
+  # Create a recurring payment
+  data, status_code, headers = api_instance.create_lease_recurring_payment_with_http_info(lease_id, payment_recurring_transaction_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseRecurringPaymentMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_recurring_payment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **payment_recurring_transaction_post_message** | [**PaymentRecurringTransactionPostMessage**](PaymentRecurringTransactionPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseRecurringPaymentMessage**](LeaseRecurringPaymentMessage.md)
 
 ### Authorization
 
@@ -636,6 +877,84 @@ end
 ### Return type
 
 [**LeaseMessage**](LeaseMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_lease_charge_recurring_transaction_by_id
+
+> <LeaseChargeRecurringTransactionMessage> get_lease_charge_recurring_transaction_by_id(lease_id, transaction_id)
+
+Retrieve a recurring charge
+
+Retrieves a recurring charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+transaction_id = 56 # Integer | 
+
+begin
+  # Retrieve a recurring charge
+  result = api_instance.get_lease_charge_recurring_transaction_by_id(lease_id, transaction_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_charge_recurring_transaction_by_id: #{e}"
+end
+```
+
+#### Using the get_lease_charge_recurring_transaction_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseChargeRecurringTransactionMessage>, Integer, Hash)> get_lease_charge_recurring_transaction_by_id_with_http_info(lease_id, transaction_id)
+
+```ruby
+begin
+  # Retrieve a recurring charge
+  data, status_code, headers = api_instance.get_lease_charge_recurring_transaction_by_id_with_http_info(lease_id, transaction_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseChargeRecurringTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_charge_recurring_transaction_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **transaction_id** | **Integer** |  |  |
+
+### Return type
+
+[**LeaseChargeRecurringTransactionMessage**](LeaseChargeRecurringTransactionMessage.md)
 
 ### Authorization
 
@@ -1241,6 +1560,168 @@ end
 - **Accept**: application/json
 
 
+## get_lease_recurring_credit_by_id
+
+> <LeaseRecurringCreditMessage> get_lease_recurring_credit_by_id(lease_id, transaction_id)
+
+Retrieve a recurring credit
+
+Retrieves a recurring credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+transaction_id = 56 # Integer | 
+
+begin
+  # Retrieve a recurring credit
+  result = api_instance.get_lease_recurring_credit_by_id(lease_id, transaction_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_recurring_credit_by_id: #{e}"
+end
+```
+
+#### Using the get_lease_recurring_credit_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseRecurringCreditMessage>, Integer, Hash)> get_lease_recurring_credit_by_id_with_http_info(lease_id, transaction_id)
+
+```ruby
+begin
+  # Retrieve a recurring credit
+  data, status_code, headers = api_instance.get_lease_recurring_credit_by_id_with_http_info(lease_id, transaction_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseRecurringCreditMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_recurring_credit_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **transaction_id** | **Integer** |  |  |
+
+### Return type
+
+[**LeaseRecurringCreditMessage**](LeaseRecurringCreditMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_lease_recurring_transactions
+
+> <Array<RecurringTransactionMessage>> get_lease_recurring_transactions(lease_id, opts)
+
+Retrieve all recurring transactions
+
+Retrieves all recurring transactions.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all recurring transactions
+  result = api_instance.get_lease_recurring_transactions(lease_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_recurring_transactions: #{e}"
+end
+```
+
+#### Using the get_lease_recurring_transactions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<RecurringTransactionMessage>>, Integer, Hash)> get_lease_recurring_transactions_with_http_info(lease_id, opts)
+
+```ruby
+begin
+  # Retrieve all recurring transactions
+  data, status_code, headers = api_instance.get_lease_recurring_transactions_with_http_info(lease_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<RecurringTransactionMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_recurring_transactions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;RecurringTransactionMessage&gt;**](RecurringTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_leases
 
 > <Array<LeaseMessage>> get_leases(opts)
@@ -1332,6 +1813,84 @@ end
 ### Return type
 
 [**Array&lt;LeaseMessage&gt;**](LeaseMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_recurring_lease_payments_by_id
+
+> <LeaseRecurringPaymentMessage> get_recurring_lease_payments_by_id(lease_id, payment_id)
+
+Retrieve a recurring payment
+
+Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+payment_id = 56 # Integer | 
+
+begin
+  # Retrieve a recurring payment
+  result = api_instance.get_recurring_lease_payments_by_id(lease_id, payment_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_recurring_lease_payments_by_id: #{e}"
+end
+```
+
+#### Using the get_recurring_lease_payments_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseRecurringPaymentMessage>, Integer, Hash)> get_recurring_lease_payments_by_id_with_http_info(lease_id, payment_id)
+
+```ruby
+begin
+  # Retrieve a recurring payment
+  data, status_code, headers = api_instance.get_recurring_lease_payments_by_id_with_http_info(lease_id, payment_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseRecurringPaymentMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_recurring_lease_payments_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **payment_id** | **Integer** |  |  |
+
+### Return type
+
+[**LeaseRecurringPaymentMessage**](LeaseRecurringPaymentMessage.md)
 
 ### Authorization
 

@@ -531,6 +531,80 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a refund
+    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # @param ownership_account_id [Integer] 
+    # @param ownership_account_refund_post_message [OwnershipAccountRefundPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [OwnershipAccountRefundMessage]
+    def create_ownership_account_refund(ownership_account_id, ownership_account_refund_post_message, opts = {})
+      data, _status_code, _headers = create_ownership_account_refund_with_http_info(ownership_account_id, ownership_account_refund_post_message, opts)
+      data
+    end
+
+    # Create a refund
+    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param ownership_account_refund_post_message [OwnershipAccountRefundPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OwnershipAccountRefundMessage, Integer, Hash)>] OwnershipAccountRefundMessage data, response status code and response headers
+    def create_ownership_account_refund_with_http_info(ownership_account_id, ownership_account_refund_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnershipAccountsApi.create_ownership_account_refund ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling AssociationOwnershipAccountsApi.create_ownership_account_refund"
+      end
+      # verify the required parameter 'ownership_account_refund_post_message' is set
+      if @api_client.config.client_side_validation && ownership_account_refund_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_refund_post_message' when calling AssociationOwnershipAccountsApi.create_ownership_account_refund"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/refunds'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_refund_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OwnershipAccountRefundMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnershipAccountsApi.create_ownership_account_refund",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#create_ownership_account_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a recurring charge
     # Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
@@ -1225,6 +1299,75 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#get_ownership_account_recurring_credit_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a refund
+    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # @param ownership_account_id [Integer] 
+    # @param refund_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [OwnershipAccountRefundMessage]
+    def get_ownership_account_refund_by_id(ownership_account_id, refund_id, opts = {})
+      data, _status_code, _headers = get_ownership_account_refund_by_id_with_http_info(ownership_account_id, refund_id, opts)
+      data
+    end
+
+    # Retrieve a refund
+    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param refund_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OwnershipAccountRefundMessage, Integer, Hash)>] OwnershipAccountRefundMessage data, response status code and response headers
+    def get_ownership_account_refund_by_id_with_http_info(ownership_account_id, refund_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnershipAccountsApi.get_ownership_account_refund_by_id ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling AssociationOwnershipAccountsApi.get_ownership_account_refund_by_id"
+      end
+      # verify the required parameter 'refund_id' is set
+      if @api_client.config.client_side_validation && refund_id.nil?
+        fail ArgumentError, "Missing the required parameter 'refund_id' when calling AssociationOwnershipAccountsApi.get_ownership_account_refund_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/refunds/{refundId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s)).sub('{' + 'refundId' + '}', CGI.escape(refund_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OwnershipAccountRefundMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnershipAccountsApi.get_ownership_account_refund_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#get_ownership_account_refund_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -96,6 +96,19 @@ describe 'LeasesApi' do
     end
   end
 
+  # unit tests for create_lease_ledger_refund
+  # Create a refund
+  # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param lease_id 
+  # @param lease_ledger_refund_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [LeaseLedgerRefundMessage]
+  describe 'create_lease_ledger_refund test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_lease_note
   # Create a note
   # Creates a lease note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
@@ -181,6 +194,19 @@ describe 'LeasesApi' do
   # @param [Hash] opts the optional parameters
   # @return [LeaseChargeRecurringTransactionMessage]
   describe 'get_lease_charge_recurring_transaction_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_lease_ledger_refund_by_id
+  # Retrieve a refund
+  # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+  # @param lease_id 
+  # @param refund_id 
+  # @param [Hash] opts the optional parameters
+  # @return [LeaseLedgerRefundMessage]
+  describe 'get_lease_ledger_refund_by_id test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

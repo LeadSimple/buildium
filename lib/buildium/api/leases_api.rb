@@ -383,6 +383,80 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a refund
+    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # @param lease_id [Integer] 
+    # @param lease_ledger_refund_post_message [LeaseLedgerRefundPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseLedgerRefundMessage]
+    def create_lease_ledger_refund(lease_id, lease_ledger_refund_post_message, opts = {})
+      data, _status_code, _headers = create_lease_ledger_refund_with_http_info(lease_id, lease_ledger_refund_post_message, opts)
+      data
+    end
+
+    # Create a refund
+    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param lease_id [Integer] 
+    # @param lease_ledger_refund_post_message [LeaseLedgerRefundPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseLedgerRefundMessage, Integer, Hash)>] LeaseLedgerRefundMessage data, response status code and response headers
+    def create_lease_ledger_refund_with_http_info(lease_id, lease_ledger_refund_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.create_lease_ledger_refund ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.create_lease_ledger_refund"
+      end
+      # verify the required parameter 'lease_ledger_refund_post_message' is set
+      if @api_client.config.client_side_validation && lease_ledger_refund_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_ledger_refund_post_message' when calling LeasesApi.create_lease_ledger_refund"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/refunds'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_refund_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseLedgerRefundMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.create_lease_ledger_refund",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#create_lease_ledger_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a note
     # Creates a lease note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
     # @param lease_id [Integer] 
@@ -881,6 +955,75 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: LeasesApi#get_lease_charge_recurring_transaction_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a refund
+    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # @param lease_id [Integer] 
+    # @param refund_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseLedgerRefundMessage]
+    def get_lease_ledger_refund_by_id(lease_id, refund_id, opts = {})
+      data, _status_code, _headers = get_lease_ledger_refund_by_id_with_http_info(lease_id, refund_id, opts)
+      data
+    end
+
+    # Retrieve a refund
+    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param refund_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseLedgerRefundMessage, Integer, Hash)>] LeaseLedgerRefundMessage data, response status code and response headers
+    def get_lease_ledger_refund_by_id_with_http_info(lease_id, refund_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.get_lease_ledger_refund_by_id ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.get_lease_ledger_refund_by_id"
+      end
+      # verify the required parameter 'refund_id' is set
+      if @api_client.config.client_side_validation && refund_id.nil?
+        fail ArgumentError, "Missing the required parameter 'refund_id' when calling LeasesApi.get_lease_ledger_refund_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/refunds/{refundId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'refundId' + '}', CGI.escape(refund_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseLedgerRefundMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.get_lease_ledger_refund_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#get_lease_ledger_refund_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

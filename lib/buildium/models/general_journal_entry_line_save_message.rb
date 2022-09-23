@@ -14,24 +14,18 @@ require 'date'
 require 'time'
 
 module Buildium
-  class FileUploadPostMessage
-    # Specifies the type of entity that `EntityId` refers to.
-    attr_accessor :entity_type
+  class GeneralJournalEntryLineSaveMessage
+    # GetAllGLAccounts\">Get All GLAccounts</a> for a listing of available accounts.
+    attr_accessor :gl_account_id
 
-    # Unique identified of the Entity Type.
-    attr_accessor :entity_id
+    # Memo for the line item.
+    attr_accessor :memo
 
-    # Name of file being uploaded.
-    attr_accessor :file_name
+    # The posting type for the line item.
+    attr_accessor :posting_type
 
-    # Title of file upload.
-    attr_accessor :title
-
-    # Description of file upload.
-    attr_accessor :description
-
-    # Unique identified of file category.
-    attr_accessor :category_id
+    # Amount of the line item.
+    attr_accessor :amount
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -58,12 +52,10 @@ module Buildium
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'entity_type' => :'EntityType',
-        :'entity_id' => :'EntityId',
-        :'file_name' => :'FileName',
-        :'title' => :'Title',
-        :'description' => :'Description',
-        :'category_id' => :'CategoryId'
+        :'gl_account_id' => :'GLAccountId',
+        :'memo' => :'Memo',
+        :'posting_type' => :'PostingType',
+        :'amount' => :'Amount'
       }
     end
 
@@ -75,12 +67,10 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'entity_type' => :'String',
-        :'entity_id' => :'Integer',
-        :'file_name' => :'String',
-        :'title' => :'String',
-        :'description' => :'String',
-        :'category_id' => :'Integer'
+        :'gl_account_id' => :'Integer',
+        :'memo' => :'String',
+        :'posting_type' => :'String',
+        :'amount' => :'Float'
       }
     end
 
@@ -94,39 +84,31 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::FileUploadPostMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::GeneralJournalEntryLineSaveMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::FileUploadPostMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::GeneralJournalEntryLineSaveMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'entity_type')
-        self.entity_type = attributes[:'entity_type']
+      if attributes.key?(:'gl_account_id')
+        self.gl_account_id = attributes[:'gl_account_id']
       end
 
-      if attributes.key?(:'entity_id')
-        self.entity_id = attributes[:'entity_id']
+      if attributes.key?(:'memo')
+        self.memo = attributes[:'memo']
       end
 
-      if attributes.key?(:'file_name')
-        self.file_name = attributes[:'file_name']
+      if attributes.key?(:'posting_type')
+        self.posting_type = attributes[:'posting_type']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'category_id')
-        self.category_id = attributes[:'category_id']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
     end
 
@@ -134,20 +116,16 @@ module Buildium
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @entity_type.nil?
-        invalid_properties.push('invalid value for "entity_type", entity_type cannot be nil.')
+      if @gl_account_id.nil?
+        invalid_properties.push('invalid value for "gl_account_id", gl_account_id cannot be nil.')
       end
 
-      if @file_name.nil?
-        invalid_properties.push('invalid value for "file_name", file_name cannot be nil.')
+      if @posting_type.nil?
+        invalid_properties.push('invalid value for "posting_type", posting_type cannot be nil.')
       end
 
-      if @title.nil?
-        invalid_properties.push('invalid value for "title", title cannot be nil.')
-      end
-
-      if @category_id.nil?
-        invalid_properties.push('invalid value for "category_id", category_id cannot be nil.')
+      if @amount.nil?
+        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
       end
 
       invalid_properties
@@ -156,23 +134,22 @@ module Buildium
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @entity_type.nil?
-      entity_type_validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      return false unless entity_type_validator.valid?(@entity_type)
-      return false if @file_name.nil?
-      return false if @title.nil?
-      return false if @category_id.nil?
+      return false if @gl_account_id.nil?
+      return false if @posting_type.nil?
+      posting_type_validator = EnumAttributeValidator.new('String', ["Credit", "Debit"])
+      return false unless posting_type_validator.valid?(@posting_type)
+      return false if @amount.nil?
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] entity_type Object to be assigned
-    def entity_type=(entity_type)
-      validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
+    # @param [Object] posting_type Object to be assigned
+    def posting_type=(posting_type)
+      validator = EnumAttributeValidator.new('String', ["Credit", "Debit"])
+      unless validator.valid?(posting_type)
+        fail ArgumentError, "invalid value #{ posting_type.inspect } for \"posting_type\", must be one of #{validator.allowable_values}."
       end
-      @entity_type = entity_type
+      @posting_type = posting_type
     end
 
     # Checks equality by comparing each attribute.
@@ -180,12 +157,10 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          entity_type == o.entity_type &&
-          entity_id == o.entity_id &&
-          file_name == o.file_name &&
-          title == o.title &&
-          description == o.description &&
-          category_id == o.category_id
+          gl_account_id == o.gl_account_id &&
+          memo == o.memo &&
+          posting_type == o.posting_type &&
+          amount == o.amount
     end
 
     # @see the `==` method
@@ -197,7 +172,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [entity_type, entity_id, file_name, title, description, category_id].hash
+      [gl_account_id, memo, posting_type, amount].hash
     end
 
     # Builds the object from hash

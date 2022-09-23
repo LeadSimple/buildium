@@ -167,6 +167,9 @@ docs/GLAccountBalanceSearchMessage.md
 docs/GLAccountMessage.md
 docs/GLAccountsSearchMessage.md
 docs/GLTransactionMessageV1.md
+docs/GeneralJournalEntryLineSaveMessage.md
+docs/GeneralJournalEntryPostMessage.md
+docs/GeneralJournalEntryPutMessage.md
 docs/GeneralLedgerJournalLineMessage.md
 docs/GeneralLedgerJournalMessage.md
 docs/GeneralLedgerTransactionMessage.md
@@ -184,6 +187,10 @@ docs/LeaseLedgerCreditLinePostMessage.md
 docs/LeaseLedgerCreditPostMessage.md
 docs/LeaseLedgerPaymentLineSaveMessage.md
 docs/LeaseLedgerPaymentPostMessage.md
+docs/LeaseLedgerRefundLineMessage.md
+docs/LeaseLedgerRefundLinePostMessage.md
+docs/LeaseLedgerRefundMessage.md
+docs/LeaseLedgerRefundPostMessage.md
 docs/LeaseLedgerReversePaymentNSFChargePostMessage.md
 docs/LeaseLedgerReversePaymentOtherBankChargePostMessage.md
 docs/LeaseLedgerReversePaymentPostMessage.md
@@ -232,6 +239,10 @@ docs/OwnershipAccountOutstandingBalanceMessage.md
 docs/OwnershipAccountOutstandingBalanceSearchMessage.md
 docs/OwnershipAccountRecurringCreditMessage.md
 docs/OwnershipAccountRecurringPaymentMessage.md
+docs/OwnershipAccountRefundLineMessage.md
+docs/OwnershipAccountRefundLinesPostMessage.md
+docs/OwnershipAccountRefundMessage.md
+docs/OwnershipAccountRefundPostMessage.md
 docs/OwnershipAccountTransactionMessage.md
 docs/PaidByMessage.md
 docs/ParticipantMessage.md
@@ -506,6 +517,9 @@ lib/buildium/models/file_put_message.rb
 lib/buildium/models/file_search_message.rb
 lib/buildium/models/file_upload_post_message.rb
 lib/buildium/models/file_upload_ticket_message.rb
+lib/buildium/models/general_journal_entry_line_save_message.rb
+lib/buildium/models/general_journal_entry_post_message.rb
+lib/buildium/models/general_journal_entry_put_message.rb
 lib/buildium/models/general_ledger_journal_line_message.rb
 lib/buildium/models/general_ledger_journal_message.rb
 lib/buildium/models/general_ledger_transaction_message.rb
@@ -529,6 +543,10 @@ lib/buildium/models/lease_ledger_credit_line_post_message.rb
 lib/buildium/models/lease_ledger_credit_post_message.rb
 lib/buildium/models/lease_ledger_payment_line_save_message.rb
 lib/buildium/models/lease_ledger_payment_post_message.rb
+lib/buildium/models/lease_ledger_refund_line_message.rb
+lib/buildium/models/lease_ledger_refund_line_post_message.rb
+lib/buildium/models/lease_ledger_refund_message.rb
+lib/buildium/models/lease_ledger_refund_post_message.rb
 lib/buildium/models/lease_ledger_reverse_payment_nsf_charge_post_message.rb
 lib/buildium/models/lease_ledger_reverse_payment_other_bank_charge_post_message.rb
 lib/buildium/models/lease_ledger_reverse_payment_post_message.rb
@@ -575,6 +593,10 @@ lib/buildium/models/ownership_account_outstanding_balance_message.rb
 lib/buildium/models/ownership_account_outstanding_balance_search_message.rb
 lib/buildium/models/ownership_account_recurring_credit_message.rb
 lib/buildium/models/ownership_account_recurring_payment_message.rb
+lib/buildium/models/ownership_account_refund_line_message.rb
+lib/buildium/models/ownership_account_refund_lines_post_message.rb
+lib/buildium/models/ownership_account_refund_message.rb
+lib/buildium/models/ownership_account_refund_post_message.rb
 lib/buildium/models/ownership_account_transaction_message.rb
 lib/buildium/models/paid_by_message.rb
 lib/buildium/models/participant_message.rb
@@ -839,6 +861,9 @@ spec/models/file_put_message_spec.rb
 spec/models/file_search_message_spec.rb
 spec/models/file_upload_post_message_spec.rb
 spec/models/file_upload_ticket_message_spec.rb
+spec/models/general_journal_entry_line_save_message_spec.rb
+spec/models/general_journal_entry_post_message_spec.rb
+spec/models/general_journal_entry_put_message_spec.rb
 spec/models/general_ledger_journal_line_message_spec.rb
 spec/models/general_ledger_journal_message_spec.rb
 spec/models/general_ledger_transaction_message_spec.rb
@@ -862,6 +887,10 @@ spec/models/lease_ledger_credit_line_post_message_spec.rb
 spec/models/lease_ledger_credit_post_message_spec.rb
 spec/models/lease_ledger_payment_line_save_message_spec.rb
 spec/models/lease_ledger_payment_post_message_spec.rb
+spec/models/lease_ledger_refund_line_message_spec.rb
+spec/models/lease_ledger_refund_line_post_message_spec.rb
+spec/models/lease_ledger_refund_message_spec.rb
+spec/models/lease_ledger_refund_post_message_spec.rb
 spec/models/lease_ledger_reverse_payment_nsf_charge_post_message_spec.rb
 spec/models/lease_ledger_reverse_payment_other_bank_charge_post_message_spec.rb
 spec/models/lease_ledger_reverse_payment_post_message_spec.rb
@@ -908,6 +937,10 @@ spec/models/ownership_account_outstanding_balance_message_spec.rb
 spec/models/ownership_account_outstanding_balance_search_message_spec.rb
 spec/models/ownership_account_recurring_credit_message_spec.rb
 spec/models/ownership_account_recurring_payment_message_spec.rb
+spec/models/ownership_account_refund_line_message_spec.rb
+spec/models/ownership_account_refund_lines_post_message_spec.rb
+spec/models/ownership_account_refund_message_spec.rb
+spec/models/ownership_account_refund_post_message_spec.rb
 spec/models/ownership_account_transaction_message_spec.rb
 spec/models/paid_by_message_spec.rb
 spec/models/participant_message_spec.rb

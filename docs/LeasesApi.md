@@ -9,6 +9,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_lease_credit**](LeasesApi.md#create_lease_credit) | **POST** /v1/leases/{leaseId}/credits | Create a credit |
 | [**create_lease_credit_recurring_transaction**](LeasesApi.md#create_lease_credit_recurring_transaction) | **POST** /v1/leases/{leaseId}/recurringcredits | Create a recurring credit |
 | [**create_lease_ledger_charge**](LeasesApi.md#create_lease_ledger_charge) | **POST** /v1/leases/{leaseId}/charges | Create a charge |
+| [**create_lease_ledger_refund**](LeasesApi.md#create_lease_ledger_refund) | **POST** /v1/leases/{leaseId}/refunds | Create a refund |
 | [**create_lease_note**](LeasesApi.md#create_lease_note) | **POST** /v1/leases/{leaseId}/notes | Create a note |
 | [**create_lease_recurring_payment**](LeasesApi.md#create_lease_recurring_payment) | **POST** /v1/leases/{leaseId}/recurringpayments | Create a recurring payment |
 | [**create_lease_reverse_payment**](LeasesApi.md#create_lease_reverse_payment) | **POST** /v1/leases/{leaseId}/reversepayments | Create a payment reversal |
@@ -16,6 +17,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_payment**](LeasesApi.md#create_payment) | **POST** /v1/leases/{leaseId}/payments | Create a payment |
 | [**get_lease_by_id**](LeasesApi.md#get_lease_by_id) | **GET** /v1/leases/{leaseId} | Retrieve a lease |
 | [**get_lease_charge_recurring_transaction_by_id**](LeasesApi.md#get_lease_charge_recurring_transaction_by_id) | **GET** /v1/leases/{leaseId}/recurringcharges/{transactionId} | Retrieve a recurring charge |
+| [**get_lease_ledger_refund_by_id**](LeasesApi.md#get_lease_ledger_refund_by_id) | **GET** /v1/leases/{leaseId}/refunds/{refundId} | Retrieve a refund |
 | [**get_lease_ledger_transaction_by_id**](LeasesApi.md#get_lease_ledger_transaction_by_id) | **GET** /v1/leases/{leaseId}/transactions/{transactionId} | Retrieve a lease transaction |
 | [**get_lease_ledgers**](LeasesApi.md#get_lease_ledgers) | **GET** /v1/leases/{leaseId}/transactions | Retrieve all lease transactions |
 | [**get_lease_move_out_data_by_tenant_id**](LeasesApi.md#get_lease_move_out_data_by_tenant_id) | **GET** /v1/leases/{leaseId}/moveouts/{tenantId} | Retrieve a move out |
@@ -411,6 +413,84 @@ end
 ### Return type
 
 [**Array&lt;LeaseTransactionMessage&gt;**](LeaseTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_lease_ledger_refund
+
+> <LeaseLedgerRefundMessage> create_lease_ledger_refund(lease_id, lease_ledger_refund_post_message)
+
+Create a refund
+
+Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+lease_ledger_refund_post_message = Buildium::LeaseLedgerRefundPostMessage.new({date: Date.today, payee_user_ids: [37], bank_account_id: 37, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'}), lines: [Buildium::LeaseLedgerRefundLinePostMessage.new({amount: 3.56, gl_account_id: 37})]}) # LeaseLedgerRefundPostMessage | 
+
+begin
+  # Create a refund
+  result = api_instance.create_lease_ledger_refund(lease_id, lease_ledger_refund_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_ledger_refund: #{e}"
+end
+```
+
+#### Using the create_lease_ledger_refund_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseLedgerRefundMessage>, Integer, Hash)> create_lease_ledger_refund_with_http_info(lease_id, lease_ledger_refund_post_message)
+
+```ruby
+begin
+  # Create a refund
+  data, status_code, headers = api_instance.create_lease_ledger_refund_with_http_info(lease_id, lease_ledger_refund_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseLedgerRefundMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_ledger_refund_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **lease_ledger_refund_post_message** | [**LeaseLedgerRefundPostMessage**](LeaseLedgerRefundPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseLedgerRefundMessage**](LeaseLedgerRefundMessage.md)
 
 ### Authorization
 
@@ -955,6 +1035,84 @@ end
 ### Return type
 
 [**LeaseChargeRecurringTransactionMessage**](LeaseChargeRecurringTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_lease_ledger_refund_by_id
+
+> <LeaseLedgerRefundMessage> get_lease_ledger_refund_by_id(lease_id, refund_id)
+
+Retrieve a refund
+
+Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+refund_id = 56 # Integer | 
+
+begin
+  # Retrieve a refund
+  result = api_instance.get_lease_ledger_refund_by_id(lease_id, refund_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_ledger_refund_by_id: #{e}"
+end
+```
+
+#### Using the get_lease_ledger_refund_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseLedgerRefundMessage>, Integer, Hash)> get_lease_ledger_refund_by_id_with_http_info(lease_id, refund_id)
+
+```ruby
+begin
+  # Retrieve a refund
+  data, status_code, headers = api_instance.get_lease_ledger_refund_by_id_with_http_info(lease_id, refund_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseLedgerRefundMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->get_lease_ledger_refund_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **refund_id** | **Integer** |  |  |
+
+### Return type
+
+[**LeaseLedgerRefundMessage**](LeaseLedgerRefundMessage.md)
 
 ### Authorization
 

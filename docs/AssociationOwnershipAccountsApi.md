@@ -11,6 +11,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_ownership_account_ledger_charge**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_charge) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/charges | Create a ledger charge |
 | [**create_ownership_account_ledger_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/payments | Create a ledger payment |
 | [**create_ownership_account_recurring_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_recurring_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments | Create a recurring payment |
+| [**create_ownership_account_refund**](AssociationOwnershipAccountsApi.md#create_ownership_account_refund) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/refunds | Create a refund |
 | [**create_ownership_accounts_charge_recurring_transaction**](AssociationOwnershipAccountsApi.md#create_ownership_accounts_charge_recurring_transaction) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcharges | Create a recurring charge |
 | [**get_all_ownership_accounts**](AssociationOwnershipAccountsApi.md#get_all_ownership_accounts) | **GET** /v1/associations/ownershipaccounts | Retrieve all ownership accounts |
 | [**get_association_ownership_account_note_by_note_id**](AssociationOwnershipAccountsApi.md#get_association_ownership_account_note_by_note_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Retrieve a note |
@@ -20,6 +21,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_ownership_account_ledger**](AssociationOwnershipAccountsApi.md#get_ownership_account_ledger) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/transactions | Retrieve ownership account transactions |
 | [**get_ownership_account_outstanding_balances**](AssociationOwnershipAccountsApi.md#get_ownership_account_outstanding_balances) | **GET** /v1/associations/ownershipaccounts/outstandingbalances | Retrieve all outstanding balances |
 | [**get_ownership_account_recurring_credit_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_recurring_credit_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits/{transactionId} | Retrieve a recurring credit |
+| [**get_ownership_account_refund_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_refund_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/refunds/{refundId} | Retrieve a refund |
 | [**get_ownership_account_transaction_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_account_transaction_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/transactions/{transactionId} | Retrieve an ownership account transaction |
 | [**get_ownership_accounts_charge_recurring_transaction_by_id**](AssociationOwnershipAccountsApi.md#get_ownership_accounts_charge_recurring_transaction_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcharges/{transactionId} | Retrieve a recurring charge |
 | [**get_recurring_ownership_account_payments_by_id**](AssociationOwnershipAccountsApi.md#get_recurring_ownership_account_payments_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments/{paymentId} | Retrieve a recurring payment |
@@ -560,6 +562,84 @@ end
 ### Return type
 
 [**OwnershipAccountRecurringPaymentMessage**](OwnershipAccountRecurringPaymentMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_ownership_account_refund
+
+> <OwnershipAccountRefundMessage> create_ownership_account_refund(ownership_account_id, ownership_account_refund_post_message)
+
+Create a refund
+
+Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+ownership_account_refund_post_message = Buildium::OwnershipAccountRefundPostMessage.new({date: Date.today, payee_user_ids: [37], bank_account_id: 37, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'}), lines: [Buildium::OwnershipAccountRefundLinesPostMessage.new({amount: 3.56, gl_account_id: 37})]}) # OwnershipAccountRefundPostMessage | 
+
+begin
+  # Create a refund
+  result = api_instance.create_ownership_account_refund(ownership_account_id, ownership_account_refund_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_refund: #{e}"
+end
+```
+
+#### Using the create_ownership_account_refund_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountRefundMessage>, Integer, Hash)> create_ownership_account_refund_with_http_info(ownership_account_id, ownership_account_refund_post_message)
+
+```ruby
+begin
+  # Create a refund
+  data, status_code, headers = api_instance.create_ownership_account_refund_with_http_info(ownership_account_id, ownership_account_refund_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountRefundMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_refund_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **ownership_account_refund_post_message** | [**OwnershipAccountRefundPostMessage**](OwnershipAccountRefundPostMessage.md) |  |  |
+
+### Return type
+
+[**OwnershipAccountRefundMessage**](OwnershipAccountRefundMessage.md)
 
 ### Authorization
 
@@ -1320,6 +1400,84 @@ end
 ### Return type
 
 [**OwnershipAccountRecurringCreditMessage**](OwnershipAccountRecurringCreditMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_ownership_account_refund_by_id
+
+> <OwnershipAccountRefundMessage> get_ownership_account_refund_by_id(ownership_account_id, refund_id)
+
+Retrieve a refund
+
+Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+refund_id = 56 # Integer | 
+
+begin
+  # Retrieve a refund
+  result = api_instance.get_ownership_account_refund_by_id(ownership_account_id, refund_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_ownership_account_refund_by_id: #{e}"
+end
+```
+
+#### Using the get_ownership_account_refund_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountRefundMessage>, Integer, Hash)> get_ownership_account_refund_by_id_with_http_info(ownership_account_id, refund_id)
+
+```ruby
+begin
+  # Retrieve a refund
+  data, status_code, headers = api_instance.get_ownership_account_refund_by_id_with_http_info(ownership_account_id, refund_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountRefundMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->get_ownership_account_refund_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **refund_id** | **Integer** |  |  |
+
+### Return type
+
+[**OwnershipAccountRefundMessage**](OwnershipAccountRefundMessage.md)
 
 ### Authorization
 

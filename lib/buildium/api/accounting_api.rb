@@ -155,6 +155,74 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a general journal entry
+    # Creates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
+    # @param general_journal_entry_post_message [GeneralJournalEntryPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [GeneralLedgerTransactionMessage]
+    def create_general_journal_entry(general_journal_entry_post_message, opts = {})
+      data, _status_code, _headers = create_general_journal_entry_with_http_info(general_journal_entry_post_message, opts)
+      data
+    end
+
+    # Create a general journal entry
+    # Creates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param general_journal_entry_post_message [GeneralJournalEntryPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GeneralLedgerTransactionMessage, Integer, Hash)>] GeneralLedgerTransactionMessage data, response status code and response headers
+    def create_general_journal_entry_with_http_info(general_journal_entry_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.create_general_journal_entry ...'
+      end
+      # verify the required parameter 'general_journal_entry_post_message' is set
+      if @api_client.config.client_side_validation && general_journal_entry_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'general_journal_entry_post_message' when calling AccountingApi.create_general_journal_entry"
+      end
+      # resource path
+      local_var_path = '/v1/generalledger/journalentries'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(general_journal_entry_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GeneralLedgerTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.create_general_journal_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#create_general_journal_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all general ledger accounts
     # Retrieves a list of general ledger accounts.<br /><br />General ledger accounts are used to categorize transactions for accounting purposes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
     # @param [Hash] opts the optional parameters
@@ -1130,6 +1198,80 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountingApi#update_budget\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a general journal entry
+    # Updates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
+    # @param journal_entry_id [Integer] 
+    # @param general_journal_entry_put_message [GeneralJournalEntryPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [GeneralLedgerTransactionMessage]
+    def update_general_journal_entry(journal_entry_id, general_journal_entry_put_message, opts = {})
+      data, _status_code, _headers = update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message, opts)
+      data
+    end
+
+    # Update a general journal entry
+    # Updates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param journal_entry_id [Integer] 
+    # @param general_journal_entry_put_message [GeneralJournalEntryPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GeneralLedgerTransactionMessage, Integer, Hash)>] GeneralLedgerTransactionMessage data, response status code and response headers
+    def update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.update_general_journal_entry ...'
+      end
+      # verify the required parameter 'journal_entry_id' is set
+      if @api_client.config.client_side_validation && journal_entry_id.nil?
+        fail ArgumentError, "Missing the required parameter 'journal_entry_id' when calling AccountingApi.update_general_journal_entry"
+      end
+      # verify the required parameter 'general_journal_entry_put_message' is set
+      if @api_client.config.client_side_validation && general_journal_entry_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'general_journal_entry_put_message' when calling AccountingApi.update_general_journal_entry"
+      end
+      # resource path
+      local_var_path = '/v1/generalledger/journalentries/{journalEntryId}'.sub('{' + 'journalEntryId' + '}', CGI.escape(journal_entry_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(general_journal_entry_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GeneralLedgerTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.update_general_journal_entry",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#update_general_journal_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

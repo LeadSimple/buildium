@@ -56,6 +56,18 @@ describe 'AccountingApi' do
     end
   end
 
+  # unit tests for create_general_journal_entry
+  # Create a general journal entry
+  # Creates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param general_journal_entry_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [GeneralLedgerTransactionMessage]
+  describe 'create_general_journal_entry test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_all_gl_accounts
   # Retrieve all general ledger accounts
   # Retrieves a list of general ledger accounts.&lt;br /&gt;&lt;br /&gt;General ledger accounts are used to categorize transactions for accounting purposes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
@@ -244,6 +256,19 @@ describe 'AccountingApi' do
   # @param [Hash] opts the optional parameters
   # @return [BudgetMessage]
   describe 'update_budget test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_general_journal_entry
+  # Update a general journal entry
+  # Updates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param journal_entry_id 
+  # @param general_journal_entry_put_message 
+  # @param [Hash] opts the optional parameters
+  # @return [GeneralLedgerTransactionMessage]
+  describe 'update_general_journal_entry test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

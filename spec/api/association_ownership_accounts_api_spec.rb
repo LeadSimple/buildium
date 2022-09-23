@@ -122,6 +122,19 @@ describe 'AssociationOwnershipAccountsApi' do
     end
   end
 
+  # unit tests for create_ownership_account_refund
+  # Create a refund
+  # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param ownership_account_id 
+  # @param ownership_account_refund_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [OwnershipAccountRefundMessage]
+  describe 'create_ownership_account_refund test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_ownership_accounts_charge_recurring_transaction
   # Create a recurring charge
   # Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
@@ -258,6 +271,19 @@ describe 'AssociationOwnershipAccountsApi' do
   # @param [Hash] opts the optional parameters
   # @return [OwnershipAccountRecurringCreditMessage]
   describe 'get_ownership_account_recurring_credit_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_ownership_account_refund_by_id
+  # Retrieve a refund
+  # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+  # @param ownership_account_id 
+  # @param refund_id 
+  # @param [Hash] opts the optional parameters
+  # @return [OwnershipAccountRefundMessage]
+  describe 'get_ownership_account_refund_by_id test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

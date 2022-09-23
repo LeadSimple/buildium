@@ -9282,6 +9282,199 @@
         }
       }
     },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/refunds": {
+      "post": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Create a refund",
+        "description": "Creates a refund.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`",
+        "operationId": "CreateOwnershipAccountRefund",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnershipAccountRefundPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountRefundMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/refunds/{refundId}": {
+      "get": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Retrieve a refund",
+        "description": "Retrieves a refund.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`",
+        "operationId": "GetOwnershipAccountRefundById",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "refundId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountRefundMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/associations/ownershipaccounts/{ownershipAccountId}/transactions": {
       "get": {
         "tags": [
@@ -16219,6 +16412,199 @@
         }
       }
     },
+    "/v1/generalledger/journalentries": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Create a general journal entry",
+        "description": "Creates a general journal entry.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`",
+        "operationId": "CreateGeneralJournalEntry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralJournalEntryPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralLedgerTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/generalledger/journalentries/{journalEntryId}": {
+      "put": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Update a general journal entry",
+        "description": "Updates a general journal entry.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`",
+        "operationId": "UpdateGeneralJournalEntry",
+        "parameters": [
+          {
+            "name": "journalEntryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneralJournalEntryPutMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GeneralLedgerTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/generalledger/transactions": {
       "get": {
         "tags": [
@@ -19139,6 +19525,199 @@
           },
           "422": {
             "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/refunds": {
+      "post": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Create a refund",
+        "description": "Creates a refund.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`",
+        "operationId": "CreateLeaseLedgerRefund",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeaseLedgerRefundPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseLedgerRefundMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/refunds/{refundId}": {
+      "get": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Retrieve a refund",
+        "description": "Retrieves a refund.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`",
+        "operationId": "GetLeaseLedgerRefundById",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "refundId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseLedgerRefundMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -36634,7 +37213,7 @@
             "type": "integer"
           },
           "FileName": {
-            "description": "Name of file upload.",
+            "description": "Name of file being uploaded.",
             "type": "string"
           },
           "Title": {
@@ -36669,6 +37248,96 @@
           "PhysicalFileName": {
             "description": "The physical file name.",
             "type": "string"
+          }
+        }
+      },
+      "GeneralJournalEntryLineSaveMessage": {
+        "required": [
+          "GLAccountId",
+          "PostingType",
+          "Amount"
+        ],
+        "type": "object",
+        "properties": {
+          "GLAccountId": {
+            "format": "int32",
+            "description": "GetAllGLAccounts\">Get All GLAccounts</a> for a listing of available accounts.",
+            "type": "integer"
+          },
+          "Memo": {
+            "description": "Memo for the line item.",
+            "type": "string"
+          },
+          "PostingType": {
+            "description": "The posting type for the line item.",
+            "enum": [
+              "Credit",
+              "Debit"
+            ],
+            "type": "string"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the line item.",
+            "type": "number"
+          }
+        }
+      },
+      "GeneralJournalEntryPostMessage": {
+        "required": [
+          "AccountingEntity",
+          "Date",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "AccountingEntity": {
+            "$ref": "#/components/schemas/AccountingEntitySaveMessage"
+          },
+          "Date": {
+            "format": "date",
+            "description": "Date of the general journal entry. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Description of the general journal entry. Must be no longer than 240 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A list of general journal entry lines. At least two lines are required. The total amount of the debit PostingType lines must equal the total of the credit PostingType lines.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneralJournalEntryLineSaveMessage"
+            }
+          }
+        }
+      },
+      "GeneralJournalEntryPutMessage": {
+        "required": [
+          "AccountingEntity",
+          "Date",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "AccountingEntity": {
+            "$ref": "#/components/schemas/AccountingEntitySaveMessage"
+          },
+          "Date": {
+            "format": "date",
+            "description": "Date of the general journal entry. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Description of the general journal entry. Must be no longer than 240 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A list of general journal entry lines. At least two lines are required. The total amount of the debit PostingType lines must equal the total of the credit PostingType lines.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GeneralJournalEntryLineSaveMessage"
+            }
           }
         }
       },
@@ -37456,6 +38125,138 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeaseLedgerPaymentLineSaveMessage"
+            }
+          }
+        }
+      },
+      "LeaseLedgerRefundLineMessage": {
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the line item.",
+            "type": "number"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the general ledger account associated with the refund.",
+            "type": "integer"
+          }
+        }
+      },
+      "LeaseLedgerRefundLinePostMessage": {
+        "required": [
+          "Amount",
+          "GLAccountId"
+        ],
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the line item.",
+            "type": "number"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the general ledger account associated with the refund.",
+            "type": "integer"
+          }
+        }
+      },
+      "LeaseLedgerRefundMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Refund unique identifier.",
+            "type": "integer"
+          },
+          "Date": {
+            "format": "date",
+            "description": "Date of the refund.",
+            "type": "string"
+          },
+          "Payees": {
+            "description": "List of payees being refunded.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PayeeMessage"
+            }
+          },
+          "Memo": {
+            "description": "Memo associated with the refund, if applicable.",
+            "type": "string"
+          },
+          "CheckNumber": {
+            "description": "Check number associated with the refund, if applicable.",
+            "type": "string"
+          },
+          "BankAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the bank account that the refund was made from.",
+            "type": "integer"
+          },
+          "Address": {
+            "$ref": "#/components/schemas/AddressMessage"
+          },
+          "TotalAmount": {
+            "format": "double",
+            "description": "Total amount of the refund.",
+            "type": "number"
+          },
+          "Lines": {
+            "description": "A collection of line items included in the refund.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaseLedgerRefundLineMessage"
+            }
+          }
+        }
+      },
+      "LeaseLedgerRefundPostMessage": {
+        "required": [
+          "Date",
+          "PayeeUserIds",
+          "BankAccountId",
+          "Address",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "Date": {
+            "format": "date",
+            "description": "The date of the refund. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "PayeeUserIds": {
+            "description": "Unique identifiers of the users receiving the refund.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "Memo": {
+            "description": "A brief note describing the reason for the refund. The value cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "CheckNumber": {
+            "description": "Check number associated with the refund, if applicable. The value cannot exceed 30 characters.",
+            "type": "string"
+          },
+          "BankAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the bank account the refund is issued from.",
+            "type": "integer"
+          },
+          "Address": {
+            "$ref": "#/components/schemas/SaveAddressMessage"
+          },
+          "Lines": {
+            "description": "A collection of line items included in the refund. At least one line item is required.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaseLedgerRefundLinePostMessage"
             }
           }
         }
@@ -39564,6 +40365,138 @@
           "Memo": {
             "description": "Memo associated with the recurring payment.",
             "type": "string"
+          }
+        }
+      },
+      "OwnershipAccountRefundLineMessage": {
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the account on the line item.",
+            "type": "number"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the general ledger account associated with the refund.",
+            "type": "integer"
+          }
+        }
+      },
+      "OwnershipAccountRefundLinesPostMessage": {
+        "required": [
+          "Amount",
+          "GLAccountId"
+        ],
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "format": "double",
+            "description": "Line item amount.",
+            "type": "number"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account identifier under which the line item amount will be recorded. The account must be a liability or income type.",
+            "type": "integer"
+          }
+        }
+      },
+      "OwnershipAccountRefundMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Refund unique identifier.",
+            "type": "integer"
+          },
+          "Date": {
+            "format": "date",
+            "description": "Date of the refund.",
+            "type": "string"
+          },
+          "Payees": {
+            "description": "List of payees being refunded.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PayeeMessage"
+            }
+          },
+          "Memo": {
+            "description": "Memo associated with the refund, if applicable.",
+            "type": "string"
+          },
+          "CheckNumber": {
+            "description": "Check number associated with the refund, if applicable.",
+            "type": "string"
+          },
+          "BankAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the bank account that the refund was made from.",
+            "type": "integer"
+          },
+          "Address": {
+            "$ref": "#/components/schemas/AddressMessage"
+          },
+          "TotalAmount": {
+            "format": "double",
+            "description": "Total amount of the refund.",
+            "type": "number"
+          },
+          "Lines": {
+            "description": "A collection of line items included in the refund.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnershipAccountRefundLineMessage"
+            }
+          }
+        }
+      },
+      "OwnershipAccountRefundPostMessage": {
+        "required": [
+          "Date",
+          "PayeeUserIds",
+          "BankAccountId",
+          "Address",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "Date": {
+            "format": "date",
+            "description": "The date of the refund. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "PayeeUserIds": {
+            "description": "Unique identifiers of the users receiving the refund.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "Memo": {
+            "description": "A brief note describing the reason for the refund. The value cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "CheckNumber": {
+            "description": "Check number associated with the refund, if applicable. The value cannot exceed 30 characters.",
+            "type": "string"
+          },
+          "BankAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the bank account the refund is issued from.",
+            "type": "integer"
+          },
+          "Address": {
+            "$ref": "#/components/schemas/SaveAddressMessage"
+          },
+          "Lines": {
+            "description": "A collection of line items included in the refund. At least one line item is required.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnershipAccountRefundLinesPostMessage"
+            }
           }
         }
       },

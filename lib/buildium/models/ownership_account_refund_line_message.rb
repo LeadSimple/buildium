@@ -14,56 +14,18 @@ require 'date'
 require 'time'
 
 module Buildium
-  class FileUploadPostMessage
-    # Specifies the type of entity that `EntityId` refers to.
-    attr_accessor :entity_type
+  class OwnershipAccountRefundLineMessage
+    # Amount of the account on the line item.
+    attr_accessor :amount
 
-    # Unique identified of the Entity Type.
-    attr_accessor :entity_id
-
-    # Name of file being uploaded.
-    attr_accessor :file_name
-
-    # Title of file upload.
-    attr_accessor :title
-
-    # Description of file upload.
-    attr_accessor :description
-
-    # Unique identified of file category.
-    attr_accessor :category_id
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # Unique identifier of the general ledger account associated with the refund.
+    attr_accessor :gl_account_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'entity_type' => :'EntityType',
-        :'entity_id' => :'EntityId',
-        :'file_name' => :'FileName',
-        :'title' => :'Title',
-        :'description' => :'Description',
-        :'category_id' => :'CategoryId'
+        :'amount' => :'Amount',
+        :'gl_account_id' => :'GLAccountId'
       }
     end
 
@@ -75,12 +37,8 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'entity_type' => :'String',
-        :'entity_id' => :'Integer',
-        :'file_name' => :'String',
-        :'title' => :'String',
-        :'description' => :'String',
-        :'category_id' => :'Integer'
+        :'amount' => :'Float',
+        :'gl_account_id' => :'Integer'
       }
     end
 
@@ -94,39 +52,23 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::FileUploadPostMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::OwnershipAccountRefundLineMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::FileUploadPostMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::OwnershipAccountRefundLineMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'entity_type')
-        self.entity_type = attributes[:'entity_type']
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'entity_id')
-        self.entity_id = attributes[:'entity_id']
-      end
-
-      if attributes.key?(:'file_name')
-        self.file_name = attributes[:'file_name']
-      end
-
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'category_id')
-        self.category_id = attributes[:'category_id']
+      if attributes.key?(:'gl_account_id')
+        self.gl_account_id = attributes[:'gl_account_id']
       end
     end
 
@@ -134,45 +76,13 @@ module Buildium
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @entity_type.nil?
-        invalid_properties.push('invalid value for "entity_type", entity_type cannot be nil.')
-      end
-
-      if @file_name.nil?
-        invalid_properties.push('invalid value for "file_name", file_name cannot be nil.')
-      end
-
-      if @title.nil?
-        invalid_properties.push('invalid value for "title", title cannot be nil.')
-      end
-
-      if @category_id.nil?
-        invalid_properties.push('invalid value for "category_id", category_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @entity_type.nil?
-      entity_type_validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      return false unless entity_type_validator.valid?(@entity_type)
-      return false if @file_name.nil?
-      return false if @title.nil?
-      return false if @category_id.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] entity_type Object to be assigned
-    def entity_type=(entity_type)
-      validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
-      end
-      @entity_type = entity_type
     end
 
     # Checks equality by comparing each attribute.
@@ -180,12 +90,8 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          entity_type == o.entity_type &&
-          entity_id == o.entity_id &&
-          file_name == o.file_name &&
-          title == o.title &&
-          description == o.description &&
-          category_id == o.category_id
+          amount == o.amount &&
+          gl_account_id == o.gl_account_id
     end
 
     # @see the `==` method
@@ -197,7 +103,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [entity_type, entity_id, file_name, title, description, category_id].hash
+      [amount, gl_account_id].hash
     end
 
     # Builds the object from hash

@@ -6,6 +6,7 @@ All URIs are relative to *https://api.buildium.com*
 | ------ | ------------ | ----------- |
 | [**create_bill**](AccountingApi.md#create_bill) | **POST** /v1/bills | Create a bill |
 | [**create_budget**](AccountingApi.md#create_budget) | **POST** /v1/budgets | Create a budget |
+| [**create_general_journal_entry**](AccountingApi.md#create_general_journal_entry) | **POST** /v1/generalledger/journalentries | Create a general journal entry |
 | [**get_all_gl_accounts**](AccountingApi.md#get_all_gl_accounts) | **GET** /v1/glaccounts | Retrieve all general ledger accounts |
 | [**get_all_transactions**](AccountingApi.md#get_all_transactions) | **GET** /v1/generalledger/transactions | Retrieve all general ledger transactions |
 | [**get_bill_by_id**](AccountingApi.md#get_bill_by_id) | **GET** /v1/bills/{billId} | Retrieve a bill |
@@ -19,6 +20,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_transaction_by_id**](AccountingApi.md#get_transaction_by_id) | **GET** /v1/generalledger/transactions/{transactionId} | Retrieve a general ledger transaction |
 | [**update_bill**](AccountingApi.md#update_bill) | **PUT** /v1/bills/{billId} | Update a bill |
 | [**update_budget**](AccountingApi.md#update_budget) | **PUT** /v1/budgets/{budgetId} | Update a budget |
+| [**update_general_journal_entry**](AccountingApi.md#update_general_journal_entry) | **PUT** /v1/generalledger/journalentries/{journalEntryId} | Update a general journal entry |
 
 
 ## create_bill
@@ -162,6 +164,82 @@ end
 ### Return type
 
 [**BudgetMessage**](BudgetMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_general_journal_entry
+
+> <GeneralLedgerTransactionMessage> create_general_journal_entry(general_journal_entry_post_message)
+
+Create a general journal entry
+
+Creates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AccountingApi.new
+general_journal_entry_post_message = Buildium::GeneralJournalEntryPostMessage.new({accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), date: Date.today, lines: [Buildium::GeneralJournalEntryLineSaveMessage.new({gl_account_id: 37, posting_type: 'Credit', amount: 3.56})]}) # GeneralJournalEntryPostMessage | 
+
+begin
+  # Create a general journal entry
+  result = api_instance.create_general_journal_entry(general_journal_entry_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AccountingApi->create_general_journal_entry: #{e}"
+end
+```
+
+#### Using the create_general_journal_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GeneralLedgerTransactionMessage>, Integer, Hash)> create_general_journal_entry_with_http_info(general_journal_entry_post_message)
+
+```ruby
+begin
+  # Create a general journal entry
+  data, status_code, headers = api_instance.create_general_journal_entry_with_http_info(general_journal_entry_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GeneralLedgerTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AccountingApi->create_general_journal_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **general_journal_entry_post_message** | [**GeneralJournalEntryPostMessage**](GeneralJournalEntryPostMessage.md) |  |  |
+
+### Return type
+
+[**GeneralLedgerTransactionMessage**](GeneralLedgerTransactionMessage.md)
 
 ### Authorization
 
@@ -1236,6 +1314,84 @@ end
 ### Return type
 
 [**BudgetMessage**](BudgetMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_general_journal_entry
+
+> <GeneralLedgerTransactionMessage> update_general_journal_entry(journal_entry_id, general_journal_entry_put_message)
+
+Update a general journal entry
+
+Updates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AccountingApi.new
+journal_entry_id = 56 # Integer | 
+general_journal_entry_put_message = Buildium::GeneralJournalEntryPutMessage.new({accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), date: Date.today, lines: [Buildium::GeneralJournalEntryLineSaveMessage.new({gl_account_id: 37, posting_type: 'Credit', amount: 3.56})]}) # GeneralJournalEntryPutMessage | 
+
+begin
+  # Update a general journal entry
+  result = api_instance.update_general_journal_entry(journal_entry_id, general_journal_entry_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AccountingApi->update_general_journal_entry: #{e}"
+end
+```
+
+#### Using the update_general_journal_entry_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GeneralLedgerTransactionMessage>, Integer, Hash)> update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message)
+
+```ruby
+begin
+  # Update a general journal entry
+  data, status_code, headers = api_instance.update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GeneralLedgerTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AccountingApi->update_general_journal_entry_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **journal_entry_id** | **Integer** |  |  |
+| **general_journal_entry_put_message** | [**GeneralJournalEntryPutMessage**](GeneralJournalEntryPutMessage.md) |  |  |
+
+### Return type
+
+[**GeneralLedgerTransactionMessage**](GeneralLedgerTransactionMessage.md)
 
 ### Authorization
 

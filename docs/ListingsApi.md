@@ -20,7 +20,7 @@ All URIs are relative to *https://api.buildium.com*
 
 Create a listing contact
 
-Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`
+Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`
 
 ### Examples
 
@@ -96,7 +96,7 @@ end
 
 Delete a listing
 
-Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Delete`
+Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit` `Delete`
 
 ### Examples
 
@@ -491,7 +491,7 @@ end
 
 Update a listing contact
 
-Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`
+Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`
 
 ### Examples
 
@@ -569,7 +569,7 @@ end
 
 Create a listing
 
-Listings will automatically pull in the information, features, and media that exists for the property and unit details.  <br /><br />  The listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours.  <br /><br />  Note, a unit can only ever have one active listing. When this endpoint is called if no listing exists one will be created, otherwise the existing listing will be updated.   <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `Edit`
+Listings will automatically pull in the information, features, and media that exists for the property and unit details.  <br /><br />  The listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours.  <br /><br />  Note, a unit can only ever have one active listing. When this endpoint is called if no listing exists one will be created, otherwise the existing listing will be updated.   <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 

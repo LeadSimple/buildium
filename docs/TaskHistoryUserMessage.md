@@ -1,0 +1,24 @@
+# Buildium::TaskHistoryUserMessage
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | User unique identifier. | [optional] |
+| **first_name** | **String** | First name of the user. | [optional] |
+| **last_name** | **String** | Last name of the user. | [optional] |
+| **href** | **String** | A link to the resource endpoint associated with the user. | [optional] |
+
+## Example
+
+```ruby
+require 'buildium'
+
+instance = Buildium::TaskHistoryUserMessage.new(
+  id: null,
+  first_name: null,
+  last_name: null,
+  href: null
+)
+```
+

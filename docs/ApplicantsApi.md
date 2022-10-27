@@ -1016,7 +1016,7 @@ end
 
 Retrieve an application
 
-Retrieves an application.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `Read`
+Retrieves an application.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
 
 ### Examples
 
@@ -1094,7 +1094,7 @@ end
 
 Retrieve all applications
 
-Retrieves all the applications for a given applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `Read`
+Retrieves all the applications for a given applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
 
 ### Examples
 
@@ -1334,7 +1334,7 @@ end
 
 Update an application
 
-Updates a rental application.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `Edit`
+Updates a rental application.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
 
 ### Examples
 

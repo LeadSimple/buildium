@@ -310,6 +310,11 @@ docs/TaskCategoryMessage.md
 docs/TaskCategoryPutMessage.md
 docs/TaskCategoryResponseMessage.md
 docs/TaskCategorySaveMessage.md
+docs/TaskHistoryFileMessage.md
+docs/TaskHistoryFileUploadPostMessage.md
+docs/TaskHistoryMessage.md
+docs/TaskHistoryPutMessage.md
+docs/TaskHistoryUserMessage.md
 docs/TaskSearchMessage.md
 docs/TaskSubCategoryMessage.md
 docs/TasksApi.md
@@ -659,6 +664,11 @@ lib/buildium/models/task_category_message.rb
 lib/buildium/models/task_category_put_message.rb
 lib/buildium/models/task_category_response_message.rb
 lib/buildium/models/task_category_save_message.rb
+lib/buildium/models/task_history_file_message.rb
+lib/buildium/models/task_history_file_upload_post_message.rb
+lib/buildium/models/task_history_message.rb
+lib/buildium/models/task_history_put_message.rb
+lib/buildium/models/task_history_user_message.rb
 lib/buildium/models/task_search_message.rb
 lib/buildium/models/task_sub_category_message.rb
 lib/buildium/models/tax_information_post_message.rb
@@ -1003,6 +1013,11 @@ spec/models/task_category_message_spec.rb
 spec/models/task_category_put_message_spec.rb
 spec/models/task_category_response_message_spec.rb
 spec/models/task_category_save_message_spec.rb
+spec/models/task_history_file_message_spec.rb
+spec/models/task_history_file_upload_post_message_spec.rb
+spec/models/task_history_message_spec.rb
+spec/models/task_history_put_message_spec.rb
+spec/models/task_history_user_message_spec.rb
 spec/models/task_search_message_spec.rb
 spec/models/task_sub_category_message_spec.rb
 spec/models/tax_information_post_message_spec.rb

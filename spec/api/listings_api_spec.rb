@@ -34,7 +34,7 @@ describe 'ListingsApi' do
 
   # unit tests for create_listing_contact
   # Create a listing contact
-  # Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;Edit&#x60;
+  # Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param listing_contact_save_message 
   # @param [Hash] opts the optional parameters
   # @return [ListingContactMessage]
@@ -46,7 +46,7 @@ describe 'ListingsApi' do
 
   # unit tests for delist_unit
   # Delete a listing
-  # Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.&lt;br /&gt;&lt;br /&gt;Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist&#39;s tools provided in your craigslist account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;Delete&#x60;
+  # Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.&lt;br /&gt;&lt;br /&gt;Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist&#39;s tools provided in your craigslist account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
   # @param unit_id The rental property unit identifier.
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -112,7 +112,7 @@ describe 'ListingsApi' do
 
   # unit tests for update_listing_contact
   # Update a listing contact
-  # Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;Edit&#x60;
+  # Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param listing_contact_id The listing contact identifier.
   # @param listing_contact_save_message 
   # @param [Hash] opts the optional parameters
@@ -125,7 +125,7 @@ describe 'ListingsApi' do
 
   # unit tests for upsert_listings_async
   # Create a listing
-  # Listings will automatically pull in the information, features, and media that exists for the property and unit details.  &lt;br /&gt;&lt;br /&gt;  The listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours.  &lt;br /&gt;&lt;br /&gt;  Note, a unit can only ever have one active listing. When this endpoint is called if no listing exists one will be created, otherwise the existing listing will be updated.   &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;Edit&#x60;
+  # Listings will automatically pull in the information, features, and media that exists for the property and unit details.  &lt;br /&gt;&lt;br /&gt;  The listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours.  &lt;br /&gt;&lt;br /&gt;  Note, a unit can only ever have one active listing. When this endpoint is called if no listing exists one will be created, otherwise the existing listing will be updated.   &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param unit_id 
   # @param listing_put_message 
   # @param [Hash] opts the optional parameters

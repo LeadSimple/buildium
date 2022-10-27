@@ -58,7 +58,7 @@ describe 'TasksApi' do
 
   # unit tests for create_resource
   # Create a resident request
-  # Creates a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
+  # Creates a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param resident_request_task_post_message 
   # @param [Hash] opts the optional parameters
   # @return [ResidentRequestTaskMessage]
@@ -70,7 +70,7 @@ describe 'TasksApi' do
 
   # unit tests for create_task_category
   # Create a task category
-  # Create a task category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
+  # Create a task category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param task_category_save_message 
   # @param [Hash] opts the optional parameters
   # @return [TaskCategoryMessage]
@@ -82,11 +82,39 @@ describe 'TasksApi' do
 
   # unit tests for create_to_do_task
   # Create a to do task
-  # Creates a to do task.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
+  # Creates a to do task.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param to_do_task_post_message 
   # @param [Hash] opts the optional parameters
   # @return [ToDoTaskMessage]
   describe 'create_to_do_task test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for create_upload_file_request_async
+  # Upload a task history file
+  # Uploads a file and associates it to the specified task history record.  &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.  &lt;br /&gt;&lt;br /&gt;Uploading a file requires making two API requests. Each step is outlined below.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 1 - Save file metadata&lt;/strong&gt;&lt;br /&gt;  The first step in the file upload process is to submit the file metadata to &#x60;/v1/tasks/{taskId}/history/{taskHistoryId}/uploadrequests&#x60;. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 2 - Upload the file binary&lt;/strong&gt;&lt;br /&gt;  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  &lt;br /&gt;  1. Form a POST request using the value of the &#x60;BucketUrl&#x60; property as the URL.   &lt;br /&gt;&lt;br /&gt;  2. Set the &#x60;Content-Type&#x60; header to &#x60;multipart/form-data&#x60;.  &lt;br /&gt;&lt;br /&gt;  3. Copy the fields from the &#x60;FormData&#x60;  property to this request as form-data key/value pairs.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; These values must added to the request form-data in the order they were received in the response.  &lt;br /&gt;&lt;br /&gt;  4. Lastly create a form-data key named &#x60;file&#x60; and set the value to the file binary.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This must be the last field in the form-data list.  &lt;br /&gt;&lt;br /&gt;This image shows what the POST request should look like if you&#39;re using Postman:  &lt;img src&#x3D;\&quot;file-upload-example.png\&quot; /&gt;&lt;br /&gt;&lt;br /&gt;  5. Send the POST request! A successful request will return with a &#x60;204 - NO CONTENT&#x60; HTTP response code. For any failure responses, please refer to &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\&quot;&gt;AWS documentation&lt;/a&gt; on REST error responses.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param task_id 
+  # @param task_history_id 
+  # @param task_history_file_upload_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [FileUploadTicketMessage]
+  describe 'create_upload_file_request_async test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for delete_task_history_file
+  # Delete task history file
+  # Deletes a specific file from a task history record. The file will be permanently deleted from the Buildium platform an can not be recovered. associated with a task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+  # @param task_id 
+  # @param task_history_id 
+  # @param file_id 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'delete_task_history_file test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -127,6 +155,22 @@ describe 'TasksApi' do
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
   # @return [Array<TaskCategoryMessage>]
   describe 'get_all_task_categories test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_all_task_history_files
+  # Retrieve all task history files
+  # Retrieves the metadata for all files associated with a task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+  # @param task_id 
+  # @param task_history_id 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<TaskHistoryFileMessage>]
+  describe 'get_all_task_history_files test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -193,6 +237,20 @@ describe 'TasksApi' do
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
   # @return [Array<ContactRequestTaskMessage>]
   describe 'get_contact_request_tasks test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_file_download_request
+  # Download a task history file
+  # Downloads a specific file associated to the task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+  # @param task_id 
+  # @param task_history_id 
+  # @param file_id 
+  # @param [Hash] opts the optional parameters
+  # @return [FileDownloadMessage]
+  describe 'get_file_download_request test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -273,6 +331,48 @@ describe 'TasksApi' do
     end
   end
 
+  # unit tests for get_task_histories
+  # Retrieve all task history
+  # Retrieves all task history records for a specific task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+  # @param task_id 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<TaskHistoryMessage>]
+  describe 'get_task_histories test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_task_history_by_id
+  # Retrieve a task history
+  # Retrieves a specific task history record for a task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+  # @param task_id 
+  # @param task_history_id 
+  # @param [Hash] opts the optional parameters
+  # @return [TaskHistoryMessage]
+  describe 'get_task_history_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_task_history_file_by_id
+  # Retrieve a task history file
+  # Retrieves the metadata for a specific file associated with a task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+  # @param task_id 
+  # @param task_history_id 
+  # @param file_id 
+  # @param [Hash] opts the optional parameters
+  # @return [TaskHistoryFileMessage]
+  describe 'get_task_history_file_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_to_do_task_by_id
   # Retrieve a to do task
   # Retrieves a to do task.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
@@ -339,7 +439,7 @@ describe 'TasksApi' do
 
   # unit tests for update_resource
   # Update a resident request
-  # Update a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
+  # Update a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param resident_request_task_id The resident request identifier.
   # @param resident_request_task_put_message 
   # @param [Hash] opts the optional parameters
@@ -351,8 +451,8 @@ describe 'TasksApi' do
   end
 
   # unit tests for update_task_category
-  # Updates a task category
-  # Updates a task category.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;Edit&#x60;
+  # Update a task category
+  # Updates a task category.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param task_category_id The task category identifier.
   # @param task_category_put_message 
   # @param [Hash] opts the optional parameters
@@ -363,8 +463,22 @@ describe 'TasksApi' do
     end
   end
 
+  # unit tests for update_task_history
+  # Update a task history
+  # Updates a specific task history record for a task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param task_id 
+  # @param task_history_id 
+  # @param task_history_put_message 
+  # @param [Hash] opts the optional parameters
+  # @return [TaskHistoryMessage]
+  describe 'update_task_history test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for update_to_do_task
-  # Updates a to do task
+  # Update a to do task
   # Updates a to do task  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param to_do_task_id The to do task identifier.
   # @param to_do_task_put_message 

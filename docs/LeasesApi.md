@@ -42,7 +42,7 @@ All URIs are relative to *https://api.buildium.com*
 
 Create a lease
 
-Creates a signed lease.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `Edit`
+Creates a signed lease.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
 
 ### Examples
 
@@ -2305,7 +2305,7 @@ nil (empty response body)
 
 Update a lease
 
-Update a signed lease.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`
+Update a signed lease.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
 
 ### Examples
 

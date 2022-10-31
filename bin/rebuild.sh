@@ -5,6 +5,7 @@ rm -rf lib/ spec/ docs/
 # artifact below. Without this, both operations will be named "CreateCharge" and conflict.
 sed -i 's/LeaseLedgerTransactionsExternalApi_CreateCharge/CreateLeaseLedgerCharge/g' bin/swagger.json
 sed -i 's/OwnershipAccountsLedgerExternalApi_CreateCharge/CreateOwnershipAccountLedgerCharge/g' bin/swagger.json
+sed -i '0,/CreateUploadFileRequestAsync/{s/CreateUploadFileRequestAsync/UploadFileRequestAsync/g}' bin/swagger.json
 
 # Replace the weird "ExternalApi" artifact in the operation names,
 # so that the generated code will be cleaner

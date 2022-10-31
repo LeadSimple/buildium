@@ -189,7 +189,7 @@ end
 
 Create a ledger credit
 
-Creates a new ownership account ledger credit.
+Creates a ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
 
 ### Examples
 
@@ -345,7 +345,7 @@ end
 
 Create a ledger charge
 
-Creates a new association ownership account ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`  <br />
+Creates a ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`  <br />
 
 ### Examples
 
@@ -423,7 +423,7 @@ end
 
 Create a ledger payment
 
-Creates a new ownership account ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `Edit`
+Creates a ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
 
 ### Examples
 
@@ -501,7 +501,7 @@ end
 
 Create a recurring payment
 
-Creates a recurring payment that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View` `Edit`
+Creates a recurring payment that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
 
 ### Examples
 
@@ -1651,7 +1651,7 @@ end
 
 Retrieve a recurring payment
 
-Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View`
+Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
 
 ### Examples
 

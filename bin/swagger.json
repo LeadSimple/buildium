@@ -637,7 +637,7 @@
           "Listings"
         ],
         "summary": "Create a listing",
-        "description": "Listings will automatically pull in the information, features, and media that exists for the property and unit details.\r\n<br /><br />\r\nThe listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours.\r\n<br /><br />\r\nNote, a unit can only ever have one active listing. When this endpoint is called if no listing exists one will be created, otherwise the existing listing will be updated. \r\n<br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`\r\n<br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `Edit`",
+        "description": "Listings will automatically pull in the information, features, and media that exists for the property and unit details.\r\n<br /><br />\r\nThe listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours.\r\n<br /><br />\r\nNote, a unit can only ever have one active listing. When this endpoint is called if no listing exists one will be created, otherwise the existing listing will be updated. \r\n<br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`\r\n<br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`",
         "operationId": "UpsertListingsAsync",
         "parameters": [
           {
@@ -756,7 +756,7 @@
           "Listings"
         ],
         "summary": "Delete a listing",
-        "description": "Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed\r\nfrom any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium\r\nguided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Delete`",
+        "description": "Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed\r\nfrom any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium\r\nguided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit` `Delete`",
         "operationId": "DelistUnit",
         "parameters": [
           {
@@ -1161,7 +1161,7 @@
           "Listings"
         ],
         "summary": "Create a listing contact",
-        "description": "Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`",
+        "description": "Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`",
         "operationId": "CreateListingContact",
         "requestBody": {
           "$ref": "#/components/requestBodies/ListingContactSaveMessage"
@@ -1486,7 +1486,7 @@
           "Listings"
         ],
         "summary": "Update a listing contact",
-        "description": "Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `Edit`",
+        "description": "Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`",
         "operationId": "UpdateListingContact",
         "parameters": [
           {
@@ -3514,7 +3514,7 @@
           "Applicants"
         ],
         "summary": "Retrieve all applications",
-        "description": "Retrieves all the applications for a given applicant.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `Read`",
+        "description": "Retrieves all the applications for a given applicant.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`",
         "operationId": "GetApplicationsForApplicant",
         "parameters": [
           {
@@ -3635,7 +3635,7 @@
           "Applicants"
         ],
         "summary": "Retrieve an application",
-        "description": "Retrieves an application.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `Read`",
+        "description": "Retrieves an application.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`",
         "operationId": "GetApplicationForApplicantById",
         "parameters": [
           {
@@ -3715,7 +3715,7 @@
           "Applicants"
         ],
         "summary": "Update an application",
-        "description": "Updates a rental application.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `Edit`",
+        "description": "Updates a rental application.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`",
         "operationId": "UpdateApplication",
         "parameters": [
           {
@@ -7837,7 +7837,7 @@
           "Association Ownership Accounts"
         ],
         "summary": "Create a ledger charge",
-        "description": "Creates a new association ownership account ledger charge.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`\r\n<br />",
+        "description": "Creates a ledger charge.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`\r\n<br />",
         "operationId": "CreateOwnershipAccountLedgerCharge",
         "parameters": [
           {
@@ -7949,7 +7949,7 @@
           "Association Ownership Accounts"
         ],
         "summary": "Create a ledger credit",
-        "description": "Creates a new ownership account ledger credit.",
+        "description": "Creates a ledger credit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`",
         "operationId": "CreateOwnershipAccountCredit",
         "parameters": [
           {
@@ -8498,7 +8498,7 @@
           "Association Ownership Accounts"
         ],
         "summary": "Create a ledger payment",
-        "description": "Creates a new ownership account ledger payment.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `Edit`",
+        "description": "Creates a ledger payment.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`",
         "operationId": "CreateOwnershipAccountLedgerPayment",
         "parameters": [
           {
@@ -8981,7 +8981,7 @@
           "Association Ownership Accounts"
         ],
         "summary": "Create a recurring payment",
-        "description": "Creates a recurring payment that will post automatically on the specified ownership account ledger.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View` `Edit`",
+        "description": "Creates a recurring payment that will post automatically on the specified ownership account ledger.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`",
         "operationId": "CreateOwnershipAccountRecurringPayment",
         "parameters": [
           {
@@ -9085,7 +9085,7 @@
           "Association Ownership Accounts"
         ],
         "summary": "Retrieve a recurring payment",
-        "description": "Retrieves a recurring payment.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View`",
+        "description": "Retrieves a recurring payment.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`",
         "operationId": "GetRecurringOwnershipAccountPaymentsById",
         "parameters": [
           {
@@ -12167,7 +12167,7 @@
           "Bank Accounts"
         ],
         "summary": "Create a quick deposit",
-        "description": "Creates a quick deposit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`",
+        "description": "Creates a quick deposit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View` `Edit`",
         "operationId": "CreateQuickDeposit",
         "parameters": [
           {
@@ -12351,7 +12351,7 @@
           "Bank Accounts"
         ],
         "summary": "Update a quick deposit",
-        "description": "Updates a quick deposit.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`",
+        "description": "Updates a quick deposit.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`",
         "operationId": "UpdateQuickDeposit",
         "parameters": [
           {
@@ -12843,7 +12843,7 @@
           "Bank Accounts"
         ],
         "summary": "Create a transfer",
-        "description": "Creates a bank account transfer.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`",
+        "description": "Creates a bank account transfer.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`",
         "operationId": "CreateBankAccountTransfer",
         "parameters": [
           {
@@ -13029,7 +13029,7 @@
           "Bank Accounts"
         ],
         "summary": "Update a transfer",
-        "description": "Updates a bank account transfer.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `Edit`",
+        "description": "Updates a bank account transfer.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`",
         "operationId": "UpdateBankAccountTransfer",
         "parameters": [
           {
@@ -16319,7 +16319,7 @@
         ],
         "summary": "Upload a file",
         "description": "Uploading a file requires making two API requests. Each step is outlined below.\r\n<br /><br /><strong>Step 1 - Save file metadata</strong><br />\r\nThe first step in the file upload process is to submit the file metadata to `/v1/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.\r\n<br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.\r\n<br /><br /><strong>Step 2 - Upload the file binary</strong><br />\r\nUploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:\r\n<br />\r\n1. Form a POST request using the value of the `BucketUrl` property as the URL. \r\n<br /><br />\r\n2. Set the `Content-Type` header to `multipart/form-data`.\r\n<br /><br />\r\n3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.\r\n<br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.\r\n<br /><br />\r\n4. Lastly create a form-data key named `file` and set the value to the file binary.\r\n<br /><strong>NOTE:</strong> This must be the last field in the form-data list.\r\n<br /><br />This image shows what the POST request should look like if you're using Postman:\r\n<img src=\"file-upload-example.png\" /><br /><br />\r\n5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`",
-        "operationId": "CreateUploadFileRequestAsync",
+        "operationId": "UploadFileRequestAsync",
         "requestBody": {
           "content": {
             "application/json": {
@@ -17417,7 +17417,7 @@
           "Leases"
         ],
         "summary": "Create a lease",
-        "description": "Creates a signed lease.\r\n<br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`\r\n<br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `Edit`\r\n<br /><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `Edit`",
+        "description": "Creates a signed lease.\r\n<br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`\r\n<br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`\r\n<br /><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`",
         "operationId": "CreateLease",
         "requestBody": {
           "content": {
@@ -17589,7 +17589,7 @@
           "Leases"
         ],
         "summary": "Update a lease",
-        "description": "Update a signed lease.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `Edit`",
+        "description": "Update a signed lease.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`",
         "operationId": "UpdateLease",
         "parameters": [
           {
@@ -25794,6 +25794,861 @@
         }
       }
     },
+    "/v1/tasks/{taskId}/history": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Retrieve all task history",
+        "description": "Retrieves all task history records for a specific task.\r\n            <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`",
+        "operationId": "GetTaskHistories",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskHistoryMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{taskId}/history/{taskHistoryId}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Retrieve a task history",
+        "description": "Retrieves a specific task history record for a task.\r\n            <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`",
+        "operationId": "GetTaskHistoryById",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taskHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskHistoryMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Update a task history",
+        "description": "Updates a specific task history record for a task.\r\n            <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
+        "operationId": "UpdateTaskHistory",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taskHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskHistoryPutMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskHistoryMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{taskId}/history/{taskHistoryId}/files": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Retrieve all task history files",
+        "description": "Retrieves the metadata for all files associated with a task history record.\r\n            <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`",
+        "operationId": "GetAllTaskHistoryFiles",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taskHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskHistoryFileMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Retrieve a task history file",
+        "description": "Retrieves the metadata for a specific file associated with a task history record.\r\n            <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`",
+        "operationId": "GetTaskHistoryFileById",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taskHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskHistoryFileMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Delete task history file",
+        "description": "Deletes a specific file from a task history record. The file will be permanently deleted from the Buildium platform an can not be recovered. associated with a task history record.\r\n            <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit` `Delete`",
+        "operationId": "DeleteTaskHistoryFile",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taskHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK - No Content."
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId}/downloadrequest": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Download a task history file",
+        "description": "Downloads a specific file associated to the task history record.\r\n            <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`",
+        "operationId": "GetFileDownloadRequest",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taskHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDownloadMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The file download service is currently unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Upload a task history file",
+        "description": "Uploads a file and associates it to the specified task history record.\r\n<br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n<br /><br />Uploading a file requires making two API requests. Each step is outlined below.\r\n<br /><br /><strong>Step 1 - Save file metadata</strong><br />\r\nThe first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.\r\n<br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.\r\n<br /><br /><strong>Step 2 - Upload the file binary</strong><br />\r\nUploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:\r\n<br />\r\n1. Form a POST request using the value of the `BucketUrl` property as the URL. \r\n<br /><br />\r\n2. Set the `Content-Type` header to `multipart/form-data`.\r\n<br /><br />\r\n3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.\r\n<br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.\r\n<br /><br />\r\n4. Lastly create a form-data key named `file` and set the value to the file binary.\r\n<br /><strong>NOTE:</strong> This must be the last field in the form-data list.\r\n<br /><br />This image shows what the POST request should look like if you're using Postman:\r\n<img src=\"file-upload-example.png\" /><br /><br />\r\n5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
+        "operationId": "CreateUploadFileRequestAsync",
+        "parameters": [
+          {
+            "name": "taskId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "taskHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskHistoryFileUploadPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileUploadTicketMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tasks/categories": {
       "get": {
         "tags": [
@@ -25890,7 +26745,7 @@
           "Tasks"
         ],
         "summary": "Create a task category",
-        "description": "Create a task category.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`",
+        "description": "Create a task category.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
         "operationId": "CreateTaskCategory",
         "requestBody": {
           "content": {
@@ -26051,8 +26906,8 @@
         "tags": [
           "Tasks"
         ],
-        "summary": "Updates a task category",
-        "description": "Updates a task category.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`",
+        "summary": "Update a task category",
+        "description": "Updates a task category.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
         "operationId": "UpdateTaskCategory",
         "parameters": [
           {
@@ -27431,7 +28286,7 @@
           "Tasks"
         ],
         "summary": "Create a resident request",
-        "description": "Creates a resident request.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`",
+        "description": "Creates a resident request.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
         "operationId": "CreateResource",
         "requestBody": {
           "content": {
@@ -27593,7 +28448,7 @@
           "Tasks"
         ],
         "summary": "Update a resident request",
-        "description": "Update a resident request.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`",
+        "description": "Update a resident request.\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
         "operationId": "UpdateResource",
         "parameters": [
           {
@@ -27938,7 +28793,7 @@
           "Tasks"
         ],
         "summary": "Create a to do task",
-        "description": "Creates a to do task.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`",
+        "description": "Creates a to do task.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
         "operationId": "CreateToDoTask",
         "requestBody": {
           "content": {
@@ -28099,7 +28954,7 @@
         "tags": [
           "Tasks"
         ],
-        "summary": "Updates a to do task",
+        "summary": "Update a to do task",
         "description": "Updates a to do task\r\n<br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
         "operationId": "UpdateToDoTask",
         "parameters": [
@@ -28785,7 +29640,7 @@
           "Vendors"
         ],
         "summary": "Create a vendor",
-        "description": "Creates a vendor.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`",
+        "description": "Creates a vendor.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`",
         "operationId": "CreateVendor",
         "requestBody": {
           "content": {
@@ -28947,7 +29802,7 @@
           "Vendors"
         ],
         "summary": "Update a vendor",
-        "description": "Updates a vendor.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`",
+        "description": "Updates a vendor.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`",
         "operationId": "UpdateVendor",
         "parameters": [
           {
@@ -29578,7 +30433,7 @@
           "Vendors"
         ],
         "summary": "Create a vendor category",
-        "description": "Creates a vendor category.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`",
+        "description": "Creates a vendor category.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`",
         "operationId": "CreateVendorCategory",
         "requestBody": {
           "$ref": "#/components/requestBodies/VendorCategorySaveMessage"
@@ -29733,7 +30588,7 @@
           "Vendors"
         ],
         "summary": "Update a vendor category",
-        "description": "Updates a vendor category.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `Edit`",
+        "description": "Updates a vendor category.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`",
         "operationId": "UpdateVendorCategory",
         "parameters": [
           {
@@ -29829,7 +30684,7 @@
           "Work Orders"
         ],
         "summary": "Retrieve all work orders",
-        "description": "Retrieves a list of work orders.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `Read`",
+        "description": "Retrieves a list of work orders.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View`",
         "operationId": "GetAllWorkOrders",
         "parameters": [
           {
@@ -30152,7 +31007,7 @@
           "Work Orders"
         ],
         "summary": "Create a work order",
-        "description": "Creates a work order.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `Edit`",
+        "description": "Creates a work order.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View` `Edit`",
         "operationId": "CreateWorkOrder",
         "requestBody": {
           "content": {
@@ -30242,7 +31097,7 @@
           "Work Orders"
         ],
         "summary": "Retrieve a work order",
-        "description": "Retrieves a specific work order.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `Read`",
+        "description": "Retrieves a specific work order.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View`",
         "operationId": "GetWorkOrderById",
         "parameters": [
           {
@@ -30313,7 +31168,7 @@
           "Work Orders"
         ],
         "summary": "Update a work order",
-        "description": "Updates a work order.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `Edit`",
+        "description": "Updates a work order.\r\n            <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View` `Edit`",
         "operationId": "UpdateWorkOrder",
         "parameters": [
           {
@@ -37213,15 +38068,15 @@
             "type": "integer"
           },
           "FileName": {
-            "description": "Name of file being uploaded.",
+            "description": "Name of file being uploaded. The value can not exceed 255 characters.",
             "type": "string"
           },
           "Title": {
-            "description": "Title of file upload.",
+            "description": "Title of file upload. The value can not exceed 255 characters.",
             "type": "string"
           },
           "Description": {
-            "description": "Description of file upload.",
+            "description": "Description of file upload. The value can not exceed 1000 characters.",
             "type": "string"
           },
           "CategoryId": {
@@ -43702,6 +44557,165 @@
         "properties": {
           "Name": {
             "description": "Name of the task category.",
+            "type": "string"
+          }
+        }
+      },
+      "TaskHistoryFileMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "File unique identifier.",
+            "type": "integer"
+          },
+          "Title": {
+            "description": "The title of the file.",
+            "type": "string"
+          },
+          "PhysicalFileName": {
+            "description": "Physical name of the file on the server.",
+            "type": "string"
+          },
+          "Size": {
+            "format": "int64",
+            "description": "Size of the file, in kilobytes.",
+            "type": "integer"
+          },
+          "ContentType": {
+            "description": "MIME type of the file.",
+            "type": "string"
+          },
+          "UploadedDateTime": {
+            "format": "date-time",
+            "description": "Date and time the file was uploaded.",
+            "type": "string"
+          }
+        }
+      },
+      "TaskHistoryFileUploadPostMessage": {
+        "required": [
+          "FileName"
+        ],
+        "type": "object",
+        "properties": {
+          "FileName": {
+            "description": "Name of file being uploaded. The value can not exceed 255 characters.",
+            "type": "string"
+          }
+        }
+      },
+      "TaskHistoryMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Task history unique identifier.",
+            "type": "integer"
+          },
+          "Priority": {
+            "description": "Task priority.",
+            "enum": [
+              "Low",
+              "Normal",
+              "High"
+            ],
+            "type": "string"
+          },
+          "TaskStatus": {
+            "description": "Task status.",
+            "enum": [
+              "New",
+              "InProgress",
+              "Completed",
+              "Deferred",
+              "Closed"
+            ],
+            "type": "string"
+          },
+          "AssignedToUserId": {
+            "format": "int32",
+            "description": "The unique identifier of the staff user assigned to the task.",
+            "type": "integer"
+          },
+          "DueDate": {
+            "format": "date",
+            "description": "Task due date.",
+            "type": "string"
+          },
+          "Message": {
+            "description": "Description of the task update.",
+            "type": "string"
+          },
+          "SharedWith": {
+            "description": "Indicates the who the task update was shared with.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "Residents",
+                "RentalOwners",
+                "AssociationBoardMembers"
+              ],
+              "type": "string"
+            }
+          },
+          "FileIds": {
+            "description": "List of file unique identifiers associated with the task history. These identifiers can be used to retrieve the file metadata and/or download the files.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "CreatedDateTIme": {
+            "format": "date-time",
+            "description": "The date and time the task history was created.",
+            "type": "string"
+          },
+          "CreatedByUser": {
+            "$ref": "#/components/schemas/TaskHistoryUserMessage"
+          },
+          "LastUpdatedDateTime": {
+            "format": "date-time",
+            "description": "The date and time the task was last updated.",
+            "type": "string"
+          },
+          "LastUpdatedByUser": {
+            "$ref": "#/components/schemas/TaskHistoryUserMessage"
+          }
+        }
+      },
+      "TaskHistoryPutMessage": {
+        "required": [
+          "Message"
+        ],
+        "type": "object",
+        "properties": {
+          "Message": {
+            "description": "A message to include with the task update. The value can not exceed 65500 characters.",
+            "type": "string"
+          }
+        }
+      },
+      "TaskHistoryUserMessage": {
+        "description": "User information.",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "User unique identifier.",
+            "type": "integer"
+          },
+          "FirstName": {
+            "description": "First name of the user.",
+            "type": "string"
+          },
+          "LastName": {
+            "description": "Last name of the user.",
+            "type": "string"
+          },
+          "Href": {
+            "description": "A link to the resource endpoint associated with the user.",
             "type": "string"
           }
         }

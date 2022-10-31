@@ -14,56 +14,34 @@ require 'date'
 require 'time'
 
 module Buildium
-  class FileUploadPostMessage
-    # Specifies the type of entity that `EntityId` refers to.
-    attr_accessor :entity_type
+  class TaskHistoryFileMessage
+    # File unique identifier.
+    attr_accessor :id
 
-    # Unique identified of the Entity Type.
-    attr_accessor :entity_id
-
-    # Name of file being uploaded. The value can not exceed 255 characters.
-    attr_accessor :file_name
-
-    # Title of file upload. The value can not exceed 255 characters.
+    # The title of the file.
     attr_accessor :title
 
-    # Description of file upload. The value can not exceed 1000 characters.
-    attr_accessor :description
+    # Physical name of the file on the server.
+    attr_accessor :physical_file_name
 
-    # Unique identified of file category.
-    attr_accessor :category_id
+    # Size of the file, in kilobytes.
+    attr_accessor :size
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    # MIME type of the file.
+    attr_accessor :content_type
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # Date and time the file was uploaded.
+    attr_accessor :uploaded_date_time
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'entity_type' => :'EntityType',
-        :'entity_id' => :'EntityId',
-        :'file_name' => :'FileName',
+        :'id' => :'Id',
         :'title' => :'Title',
-        :'description' => :'Description',
-        :'category_id' => :'CategoryId'
+        :'physical_file_name' => :'PhysicalFileName',
+        :'size' => :'Size',
+        :'content_type' => :'ContentType',
+        :'uploaded_date_time' => :'UploadedDateTime'
       }
     end
 
@@ -75,12 +53,12 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'entity_type' => :'String',
-        :'entity_id' => :'Integer',
-        :'file_name' => :'String',
+        :'id' => :'Integer',
         :'title' => :'String',
-        :'description' => :'String',
-        :'category_id' => :'Integer'
+        :'physical_file_name' => :'String',
+        :'size' => :'Integer',
+        :'content_type' => :'String',
+        :'uploaded_date_time' => :'Time'
       }
     end
 
@@ -94,39 +72,39 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::FileUploadPostMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::TaskHistoryFileMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::FileUploadPostMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::TaskHistoryFileMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'entity_type')
-        self.entity_type = attributes[:'entity_type']
-      end
-
-      if attributes.key?(:'entity_id')
-        self.entity_id = attributes[:'entity_id']
-      end
-
-      if attributes.key?(:'file_name')
-        self.file_name = attributes[:'file_name']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
       if attributes.key?(:'title')
         self.title = attributes[:'title']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'physical_file_name')
+        self.physical_file_name = attributes[:'physical_file_name']
       end
 
-      if attributes.key?(:'category_id')
-        self.category_id = attributes[:'category_id']
+      if attributes.key?(:'size')
+        self.size = attributes[:'size']
+      end
+
+      if attributes.key?(:'content_type')
+        self.content_type = attributes[:'content_type']
+      end
+
+      if attributes.key?(:'uploaded_date_time')
+        self.uploaded_date_time = attributes[:'uploaded_date_time']
       end
     end
 
@@ -134,45 +112,13 @@ module Buildium
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @entity_type.nil?
-        invalid_properties.push('invalid value for "entity_type", entity_type cannot be nil.')
-      end
-
-      if @file_name.nil?
-        invalid_properties.push('invalid value for "file_name", file_name cannot be nil.')
-      end
-
-      if @title.nil?
-        invalid_properties.push('invalid value for "title", title cannot be nil.')
-      end
-
-      if @category_id.nil?
-        invalid_properties.push('invalid value for "category_id", category_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @entity_type.nil?
-      entity_type_validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      return false unless entity_type_validator.valid?(@entity_type)
-      return false if @file_name.nil?
-      return false if @title.nil?
-      return false if @category_id.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] entity_type Object to be assigned
-    def entity_type=(entity_type)
-      validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
-      end
-      @entity_type = entity_type
     end
 
     # Checks equality by comparing each attribute.
@@ -180,12 +126,12 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          entity_type == o.entity_type &&
-          entity_id == o.entity_id &&
-          file_name == o.file_name &&
+          id == o.id &&
           title == o.title &&
-          description == o.description &&
-          category_id == o.category_id
+          physical_file_name == o.physical_file_name &&
+          size == o.size &&
+          content_type == o.content_type &&
+          uploaded_date_time == o.uploaded_date_time
     end
 
     # @see the `==` method
@@ -197,7 +143,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [entity_type, entity_id, file_name, title, description, category_id].hash
+      [id, title, physical_file_name, size, content_type, uploaded_date_time].hash
     end
 
     # Builds the object from hash

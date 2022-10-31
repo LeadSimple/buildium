@@ -14,24 +14,40 @@ require 'date'
 require 'time'
 
 module Buildium
-  class FileUploadPostMessage
-    # Specifies the type of entity that `EntityId` refers to.
-    attr_accessor :entity_type
+  class TaskHistoryMessage
+    # Task history unique identifier.
+    attr_accessor :id
 
-    # Unique identified of the Entity Type.
-    attr_accessor :entity_id
+    # Task priority.
+    attr_accessor :priority
 
-    # Name of file being uploaded. The value can not exceed 255 characters.
-    attr_accessor :file_name
+    # Task status.
+    attr_accessor :task_status
 
-    # Title of file upload. The value can not exceed 255 characters.
-    attr_accessor :title
+    # The unique identifier of the staff user assigned to the task.
+    attr_accessor :assigned_to_user_id
 
-    # Description of file upload. The value can not exceed 1000 characters.
-    attr_accessor :description
+    # Task due date.
+    attr_accessor :due_date
 
-    # Unique identified of file category.
-    attr_accessor :category_id
+    # Description of the task update.
+    attr_accessor :message
+
+    # Indicates the who the task update was shared with.
+    attr_accessor :shared_with
+
+    # List of file unique identifiers associated with the task history. These identifiers can be used to retrieve the file metadata and/or download the files.
+    attr_accessor :file_ids
+
+    # The date and time the task history was created.
+    attr_accessor :created_date_t_ime
+
+    attr_accessor :created_by_user
+
+    # The date and time the task was last updated.
+    attr_accessor :last_updated_date_time
+
+    attr_accessor :last_updated_by_user
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -58,12 +74,18 @@ module Buildium
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'entity_type' => :'EntityType',
-        :'entity_id' => :'EntityId',
-        :'file_name' => :'FileName',
-        :'title' => :'Title',
-        :'description' => :'Description',
-        :'category_id' => :'CategoryId'
+        :'id' => :'Id',
+        :'priority' => :'Priority',
+        :'task_status' => :'TaskStatus',
+        :'assigned_to_user_id' => :'AssignedToUserId',
+        :'due_date' => :'DueDate',
+        :'message' => :'Message',
+        :'shared_with' => :'SharedWith',
+        :'file_ids' => :'FileIds',
+        :'created_date_t_ime' => :'CreatedDateTIme',
+        :'created_by_user' => :'CreatedByUser',
+        :'last_updated_date_time' => :'LastUpdatedDateTime',
+        :'last_updated_by_user' => :'LastUpdatedByUser'
       }
     end
 
@@ -75,12 +97,18 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'entity_type' => :'String',
-        :'entity_id' => :'Integer',
-        :'file_name' => :'String',
-        :'title' => :'String',
-        :'description' => :'String',
-        :'category_id' => :'Integer'
+        :'id' => :'Integer',
+        :'priority' => :'String',
+        :'task_status' => :'String',
+        :'assigned_to_user_id' => :'Integer',
+        :'due_date' => :'Date',
+        :'message' => :'String',
+        :'shared_with' => :'Array<String>',
+        :'file_ids' => :'Array<Integer>',
+        :'created_date_t_ime' => :'Time',
+        :'created_by_user' => :'TaskHistoryUserMessage',
+        :'last_updated_date_time' => :'Time',
+        :'last_updated_by_user' => :'TaskHistoryUserMessage'
       }
     end
 
@@ -94,39 +122,67 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::FileUploadPostMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::TaskHistoryMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::FileUploadPostMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::TaskHistoryMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'entity_type')
-        self.entity_type = attributes[:'entity_type']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'entity_id')
-        self.entity_id = attributes[:'entity_id']
+      if attributes.key?(:'priority')
+        self.priority = attributes[:'priority']
       end
 
-      if attributes.key?(:'file_name')
-        self.file_name = attributes[:'file_name']
+      if attributes.key?(:'task_status')
+        self.task_status = attributes[:'task_status']
       end
 
-      if attributes.key?(:'title')
-        self.title = attributes[:'title']
+      if attributes.key?(:'assigned_to_user_id')
+        self.assigned_to_user_id = attributes[:'assigned_to_user_id']
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'due_date')
+        self.due_date = attributes[:'due_date']
       end
 
-      if attributes.key?(:'category_id')
-        self.category_id = attributes[:'category_id']
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
+      end
+
+      if attributes.key?(:'shared_with')
+        if (value = attributes[:'shared_with']).is_a?(Array)
+          self.shared_with = value
+        end
+      end
+
+      if attributes.key?(:'file_ids')
+        if (value = attributes[:'file_ids']).is_a?(Array)
+          self.file_ids = value
+        end
+      end
+
+      if attributes.key?(:'created_date_t_ime')
+        self.created_date_t_ime = attributes[:'created_date_t_ime']
+      end
+
+      if attributes.key?(:'created_by_user')
+        self.created_by_user = attributes[:'created_by_user']
+      end
+
+      if attributes.key?(:'last_updated_date_time')
+        self.last_updated_date_time = attributes[:'last_updated_date_time']
+      end
+
+      if attributes.key?(:'last_updated_by_user')
+        self.last_updated_by_user = attributes[:'last_updated_by_user']
       end
     end
 
@@ -134,45 +190,37 @@ module Buildium
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @entity_type.nil?
-        invalid_properties.push('invalid value for "entity_type", entity_type cannot be nil.')
-      end
-
-      if @file_name.nil?
-        invalid_properties.push('invalid value for "file_name", file_name cannot be nil.')
-      end
-
-      if @title.nil?
-        invalid_properties.push('invalid value for "title", title cannot be nil.')
-      end
-
-      if @category_id.nil?
-        invalid_properties.push('invalid value for "category_id", category_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @entity_type.nil?
-      entity_type_validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      return false unless entity_type_validator.valid?(@entity_type)
-      return false if @file_name.nil?
-      return false if @title.nil?
-      return false if @category_id.nil?
+      priority_validator = EnumAttributeValidator.new('String', ["Low", "Normal", "High"])
+      return false unless priority_validator.valid?(@priority)
+      task_status_validator = EnumAttributeValidator.new('String', ["New", "InProgress", "Completed", "Deferred", "Closed"])
+      return false unless task_status_validator.valid?(@task_status)
       true
     end
 
     # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] entity_type Object to be assigned
-    def entity_type=(entity_type)
-      validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
-      unless validator.valid?(entity_type)
-        fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
+    # @param [Object] priority Object to be assigned
+    def priority=(priority)
+      validator = EnumAttributeValidator.new('String', ["Low", "Normal", "High"])
+      unless validator.valid?(priority)
+        fail ArgumentError, "invalid value #{ priority.inspect } for \"priority\", must be one of #{validator.allowable_values}."
       end
-      @entity_type = entity_type
+      @priority = priority
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] task_status Object to be assigned
+    def task_status=(task_status)
+      validator = EnumAttributeValidator.new('String', ["New", "InProgress", "Completed", "Deferred", "Closed"])
+      unless validator.valid?(task_status)
+        fail ArgumentError, "invalid value #{ task_status.inspect } for \"task_status\", must be one of #{validator.allowable_values}."
+      end
+      @task_status = task_status
     end
 
     # Checks equality by comparing each attribute.
@@ -180,12 +228,18 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          entity_type == o.entity_type &&
-          entity_id == o.entity_id &&
-          file_name == o.file_name &&
-          title == o.title &&
-          description == o.description &&
-          category_id == o.category_id
+          id == o.id &&
+          priority == o.priority &&
+          task_status == o.task_status &&
+          assigned_to_user_id == o.assigned_to_user_id &&
+          due_date == o.due_date &&
+          message == o.message &&
+          shared_with == o.shared_with &&
+          file_ids == o.file_ids &&
+          created_date_t_ime == o.created_date_t_ime &&
+          created_by_user == o.created_by_user &&
+          last_updated_date_time == o.last_updated_date_time &&
+          last_updated_by_user == o.last_updated_by_user
     end
 
     # @see the `==` method
@@ -197,7 +251,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [entity_type, entity_id, file_name, title, description, category_id].hash
+      [id, priority, task_status, assigned_to_user_id, due_date, message, shared_with, file_ids, created_date_t_ime, created_by_user, last_updated_date_time, last_updated_by_user].hash
     end
 
     # Builds the object from hash

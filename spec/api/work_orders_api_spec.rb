@@ -34,7 +34,7 @@ describe 'WorkOrdersApi' do
 
   # unit tests for create_work_order
   # Create a work order
-  # Creates a work order.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;Edit&#x60;
+  # Creates a work order.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param work_order_post_message 
   # @param [Hash] opts the optional parameters
   # @return [WorkOrderMessage]
@@ -46,7 +46,7 @@ describe 'WorkOrdersApi' do
 
   # unit tests for get_all_work_orders
   # Retrieve all work orders
-  # Retrieves a list of work orders.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;Read&#x60;
+  # Retrieves a list of work orders.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;View&#x60;
   # @param [Hash] opts the optional parameters
   # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
   # @option opts [Integer] :entityid Filters results to any work order associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -79,7 +79,7 @@ describe 'WorkOrdersApi' do
 
   # unit tests for get_work_order_by_id
   # Retrieve a work order
-  # Retrieves a specific work order.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;Read&#x60;
+  # Retrieves a specific work order.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;View&#x60;
   # @param work_order_id 
   # @param [Hash] opts the optional parameters
   # @return [WorkOrderMessage]
@@ -91,7 +91,7 @@ describe 'WorkOrdersApi' do
 
   # unit tests for update_work_order
   # Update a work order
-  # Updates a work order.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;Edit&#x60;
+  # Updates a work order.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Work Orders&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param work_order_id 
   # @param work_order_put_message 
   # @param [Hash] opts the optional parameters

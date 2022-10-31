@@ -162,7 +162,7 @@ module Buildium
     end
 
     # Create a ledger credit
-    # Creates a new ownership account ledger credit.
+    # Creates a ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
     # @param ownership_account_credit_post_message [OwnershipAccountCreditPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -173,7 +173,7 @@ module Buildium
     end
 
     # Create a ledger credit
-    # Creates a new ownership account ledger credit.
+    # Creates a ledger credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
     # @param ownership_account_credit_post_message [OwnershipAccountCreditPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -310,7 +310,7 @@ module Buildium
     end
 
     # Create a ledger charge
-    # Creates a new association ownership account ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`  <br />
+    # Creates a ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`  <br />
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param ownership_account_ledger_charge_post_message [OwnershipAccountLedgerChargePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -321,7 +321,7 @@ module Buildium
     end
 
     # Create a ledger charge
-    # Creates a new association ownership account ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;
+    # Creates a ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param ownership_account_ledger_charge_post_message [OwnershipAccountLedgerChargePostMessage] 
     # @param [Hash] opts the optional parameters
@@ -384,7 +384,7 @@ module Buildium
     end
 
     # Create a ledger payment
-    # Creates a new ownership account ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `Edit`
+    # Creates a ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
     # @param ownership_account_ledger_payment_post_message [OwnershipAccountLedgerPaymentPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -395,7 +395,7 @@ module Buildium
     end
 
     # Create a ledger payment
-    # Creates a new ownership account ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;Edit&#x60;
+    # Creates a ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
     # @param ownership_account_ledger_payment_post_message [OwnershipAccountLedgerPaymentPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -458,7 +458,7 @@ module Buildium
     end
 
     # Create a recurring payment
-    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View` `Edit`
+    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
     # @param payment_recurring_transaction_post_message [PaymentRecurringTransactionPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -469,7 +469,7 @@ module Buildium
     end
 
     # Create a recurring payment
-    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Account Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
     # @param payment_recurring_transaction_post_message [PaymentRecurringTransactionPostMessage] 
     # @param [Hash] opts the optional parameters
@@ -1511,7 +1511,7 @@ module Buildium
     end
 
     # Retrieve a recurring payment
-    # Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Account Transactions</span> - `View`
+    # Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param payment_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1522,7 +1522,7 @@ module Buildium
     end
 
     # Retrieve a recurring payment
-    # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Account Transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param payment_id [Integer] 
     # @param [Hash] opts the optional parameters

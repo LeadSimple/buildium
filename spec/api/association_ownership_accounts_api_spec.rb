@@ -59,7 +59,7 @@ describe 'AssociationOwnershipAccountsApi' do
 
   # unit tests for create_ownership_account_credit
   # Create a ledger credit
-  # Creates a new ownership account ledger credit.
+  # Creates a ledger credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param ownership_account_id 
   # @param ownership_account_credit_post_message 
   # @param [Hash] opts the optional parameters
@@ -85,7 +85,7 @@ describe 'AssociationOwnershipAccountsApi' do
 
   # unit tests for create_ownership_account_ledger_charge
   # Create a ledger charge
-  # Creates a new association ownership account ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;
+  # Creates a ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;
   # @param ownership_account_id The ownership account identifier.
   # @param ownership_account_ledger_charge_post_message 
   # @param [Hash] opts the optional parameters
@@ -98,7 +98,7 @@ describe 'AssociationOwnershipAccountsApi' do
 
   # unit tests for create_ownership_account_ledger_payment
   # Create a ledger payment
-  # Creates a new ownership account ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;Edit&#x60;
+  # Creates a ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param ownership_account_id 
   # @param ownership_account_ledger_payment_post_message 
   # @param [Hash] opts the optional parameters
@@ -111,7 +111,7 @@ describe 'AssociationOwnershipAccountsApi' do
 
   # unit tests for create_ownership_account_recurring_payment
   # Create a recurring payment
-  # Creates a recurring payment that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Account Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # Creates a recurring payment that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param ownership_account_id 
   # @param payment_recurring_transaction_post_message 
   # @param [Hash] opts the optional parameters
@@ -317,7 +317,7 @@ describe 'AssociationOwnershipAccountsApi' do
 
   # unit tests for get_recurring_ownership_account_payments_by_id
   # Retrieve a recurring payment
-  # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Account Transactions&lt;/span&gt; - &#x60;View&#x60;
+  # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
   # @param ownership_account_id 
   # @param payment_id 
   # @param [Hash] opts the optional parameters

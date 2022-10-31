@@ -9,23 +9,31 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_resource**](TasksApi.md#create_resource) | **POST** /v1/tasks/residentrequests | Create a resident request |
 | [**create_task_category**](TasksApi.md#create_task_category) | **POST** /v1/tasks/categories | Create a task category |
 | [**create_to_do_task**](TasksApi.md#create_to_do_task) | **POST** /v1/tasks/todorequests | Create a to do task |
+| [**create_upload_file_request_async**](TasksApi.md#create_upload_file_request_async) | **POST** /v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests | Upload a task history file |
+| [**delete_task_history_file**](TasksApi.md#delete_task_history_file) | **DELETE** /v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId} | Delete task history file |
 | [**get_all_rental_owner_request_tasks**](TasksApi.md#get_all_rental_owner_request_tasks) | **GET** /v1/tasks/rentalownerrequests | Retrieve all rental owner requests |
 | [**get_all_task_categories**](TasksApi.md#get_all_task_categories) | **GET** /v1/tasks/categories | Retrieve all task categories |
+| [**get_all_task_history_files**](TasksApi.md#get_all_task_history_files) | **GET** /v1/tasks/{taskId}/history/{taskHistoryId}/files | Retrieve all task history files |
 | [**get_all_tasks**](TasksApi.md#get_all_tasks) | **GET** /v1/tasks | Retrieve all tasks |
 | [**get_contact_request_task_by_id**](TasksApi.md#get_contact_request_task_by_id) | **GET** /v1/tasks/contactrequests/{contactRequestTaskId} | Retrieve a contact request |
 | [**get_contact_request_tasks**](TasksApi.md#get_contact_request_tasks) | **GET** /v1/tasks/contactrequests | Retrieve all contact requests |
+| [**get_file_download_request**](TasksApi.md#get_file_download_request) | **POST** /v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId}/downloadrequest | Download a task history file |
 | [**get_rental_owner_request_task_by_id**](TasksApi.md#get_rental_owner_request_task_by_id) | **GET** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId} | Retrieve a rental owner request |
 | [**get_resident_request_task**](TasksApi.md#get_resident_request_task) | **GET** /v1/tasks/residentrequests/{residentRequestTaskId} | Retrieve a resident request |
 | [**get_resident_request_tasks**](TasksApi.md#get_resident_request_tasks) | **GET** /v1/tasks/residentrequests | Retrieve all resident requests |
 | [**get_task_by_id**](TasksApi.md#get_task_by_id) | **GET** /v1/tasks/{taskId} | Retrieve a task |
 | [**get_task_category_by_id**](TasksApi.md#get_task_category_by_id) | **GET** /v1/tasks/categories/{taskCategoryId} | Retrieve a task category |
+| [**get_task_histories**](TasksApi.md#get_task_histories) | **GET** /v1/tasks/{taskId}/history | Retrieve all task history |
+| [**get_task_history_by_id**](TasksApi.md#get_task_history_by_id) | **GET** /v1/tasks/{taskId}/history/{taskHistoryId} | Retrieve a task history |
+| [**get_task_history_file_by_id**](TasksApi.md#get_task_history_file_by_id) | **GET** /v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId} | Retrieve a task history file |
 | [**get_to_do_task_by_id**](TasksApi.md#get_to_do_task_by_id) | **GET** /v1/tasks/todorequests/{toDoTaskId} | Retrieve a to do task |
 | [**get_to_do_tasks**](TasksApi.md#get_to_do_tasks) | **GET** /v1/tasks/todorequests | Retrieve all to do tasks |
 | [**update_contact_request_task**](TasksApi.md#update_contact_request_task) | **PUT** /v1/tasks/contactrequests/{contactRequestTaskId} | Update a contact request |
 | [**update_rental_owner_request_task**](TasksApi.md#update_rental_owner_request_task) | **PUT** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId} | Update a rental owner request |
 | [**update_resource**](TasksApi.md#update_resource) | **PUT** /v1/tasks/residentrequests/{residentRequestTaskId} | Update a resident request |
-| [**update_task_category**](TasksApi.md#update_task_category) | **PUT** /v1/tasks/categories/{taskCategoryId} | Updates a task category |
-| [**update_to_do_task**](TasksApi.md#update_to_do_task) | **PUT** /v1/tasks/todorequests/{toDoTaskId} | Updates a to do task |
+| [**update_task_category**](TasksApi.md#update_task_category) | **PUT** /v1/tasks/categories/{taskCategoryId} | Update a task category |
+| [**update_task_history**](TasksApi.md#update_task_history) | **PUT** /v1/tasks/{taskId}/history/{taskHistoryId} | Update a task history |
+| [**update_to_do_task**](TasksApi.md#update_to_do_task) | **PUT** /v1/tasks/todorequests/{toDoTaskId} | Update a to do task |
 
 
 ## create_contact_request_task
@@ -186,7 +194,7 @@ end
 
 Create a resident request
 
-Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
+Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -262,7 +270,7 @@ end
 
 Create a task category
 
-Create a task category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
+Create a task category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -338,7 +346,7 @@ end
 
 Create a to do task
 
-Creates a to do task.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
+Creates a to do task.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -405,6 +413,165 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_upload_file_request_async
+
+> <FileUploadTicketMessage> create_upload_file_request_async(task_id, task_history_id, task_history_file_upload_post_message)
+
+Upload a task history file
+
+Uploads a file and associates it to the specified task history record.  <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+task_history_file_upload_post_message = Buildium::TaskHistoryFileUploadPostMessage.new({file_name: 'file_name_example'}) # TaskHistoryFileUploadPostMessage | 
+
+begin
+  # Upload a task history file
+  result = api_instance.create_upload_file_request_async(task_id, task_history_id, task_history_file_upload_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->create_upload_file_request_async: #{e}"
+end
+```
+
+#### Using the create_upload_file_request_async_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_upload_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message)
+
+```ruby
+begin
+  # Upload a task history file
+  data, status_code, headers = api_instance.create_upload_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileUploadTicketMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->create_upload_file_request_async_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+| **task_history_file_upload_post_message** | [**TaskHistoryFileUploadPostMessage**](TaskHistoryFileUploadPostMessage.md) |  |  |
+
+### Return type
+
+[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## delete_task_history_file
+
+> delete_task_history_file(task_id, task_history_id, file_id)
+
+Delete task history file
+
+Deletes a specific file from a task history record. The file will be permanently deleted from the Buildium platform an can not be recovered. associated with a task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit` `Delete`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+file_id = 56 # Integer | 
+
+begin
+  # Delete task history file
+  api_instance.delete_task_history_file(task_id, task_history_id, file_id)
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->delete_task_history_file: #{e}"
+end
+```
+
+#### Using the delete_task_history_file_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_task_history_file_with_http_info(task_id, task_history_id, file_id)
+
+```ruby
+begin
+  # Delete task history file
+  data, status_code, headers = api_instance.delete_task_history_file_with_http_info(task_id, task_history_id, file_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->delete_task_history_file_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+| **file_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -585,6 +752,92 @@ end
 ### Return type
 
 [**Array&lt;TaskCategoryMessage&gt;**](TaskCategoryMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_all_task_history_files
+
+> <Array<TaskHistoryFileMessage>> get_all_task_history_files(task_id, task_history_id, opts)
+
+Retrieve all task history files
+
+Retrieves the metadata for all files associated with a task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all task history files
+  result = api_instance.get_all_task_history_files(task_id, task_history_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_all_task_history_files: #{e}"
+end
+```
+
+#### Using the get_all_task_history_files_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<TaskHistoryFileMessage>>, Integer, Hash)> get_all_task_history_files_with_http_info(task_id, task_history_id, opts)
+
+```ruby
+begin
+  # Retrieve all task history files
+  data, status_code, headers = api_instance.get_all_task_history_files_with_http_info(task_id, task_history_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<TaskHistoryFileMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_all_task_history_files_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;TaskHistoryFileMessage&gt;**](TaskHistoryFileMessage.md)
 
 ### Authorization
 
@@ -877,6 +1130,86 @@ end
 ### Return type
 
 [**Array&lt;ContactRequestTaskMessage&gt;**](ContactRequestTaskMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_file_download_request
+
+> <FileDownloadMessage> get_file_download_request(task_id, task_history_id, file_id)
+
+Download a task history file
+
+Downloads a specific file associated to the task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+file_id = 56 # Integer | 
+
+begin
+  # Download a task history file
+  result = api_instance.get_file_download_request(task_id, task_history_id, file_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_file_download_request: #{e}"
+end
+```
+
+#### Using the get_file_download_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileDownloadMessage>, Integer, Hash)> get_file_download_request_with_http_info(task_id, task_history_id, file_id)
+
+```ruby
+begin
+  # Download a task history file
+  data, status_code, headers = api_instance.get_file_download_request_with_http_info(task_id, task_history_id, file_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileDownloadMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_file_download_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+| **file_id** | **Integer** |  |  |
+
+### Return type
+
+[**FileDownloadMessage**](FileDownloadMessage.md)
 
 ### Authorization
 
@@ -1300,6 +1633,248 @@ end
 - **Accept**: application/json
 
 
+## get_task_histories
+
+> <Array<TaskHistoryMessage>> get_task_histories(task_id, opts)
+
+Retrieve all task history
+
+Retrieves all task history records for a specific task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all task history
+  result = api_instance.get_task_histories(task_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_task_histories: #{e}"
+end
+```
+
+#### Using the get_task_histories_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<TaskHistoryMessage>>, Integer, Hash)> get_task_histories_with_http_info(task_id, opts)
+
+```ruby
+begin
+  # Retrieve all task history
+  data, status_code, headers = api_instance.get_task_histories_with_http_info(task_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<TaskHistoryMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_task_histories_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;TaskHistoryMessage&gt;**](TaskHistoryMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_task_history_by_id
+
+> <TaskHistoryMessage> get_task_history_by_id(task_id, task_history_id)
+
+Retrieve a task history
+
+Retrieves a specific task history record for a task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+
+begin
+  # Retrieve a task history
+  result = api_instance.get_task_history_by_id(task_id, task_history_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_task_history_by_id: #{e}"
+end
+```
+
+#### Using the get_task_history_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaskHistoryMessage>, Integer, Hash)> get_task_history_by_id_with_http_info(task_id, task_history_id)
+
+```ruby
+begin
+  # Retrieve a task history
+  data, status_code, headers = api_instance.get_task_history_by_id_with_http_info(task_id, task_history_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaskHistoryMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_task_history_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+
+### Return type
+
+[**TaskHistoryMessage**](TaskHistoryMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_task_history_file_by_id
+
+> <TaskHistoryFileMessage> get_task_history_file_by_id(task_id, task_history_id, file_id)
+
+Retrieve a task history file
+
+Retrieves the metadata for a specific file associated with a task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+file_id = 56 # Integer | 
+
+begin
+  # Retrieve a task history file
+  result = api_instance.get_task_history_file_by_id(task_id, task_history_id, file_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_task_history_file_by_id: #{e}"
+end
+```
+
+#### Using the get_task_history_file_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaskHistoryFileMessage>, Integer, Hash)> get_task_history_file_by_id_with_http_info(task_id, task_history_id, file_id)
+
+```ruby
+begin
+  # Retrieve a task history file
+  data, status_code, headers = api_instance.get_task_history_file_by_id_with_http_info(task_id, task_history_id, file_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaskHistoryFileMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_task_history_file_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+| **file_id** | **Integer** |  |  |
+
+### Return type
+
+[**TaskHistoryFileMessage**](TaskHistoryFileMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_to_do_task_by_id
 
 > <ToDoTaskMessage> get_to_do_task_by_id(to_do_task_id)
@@ -1644,7 +2219,7 @@ end
 
 Update a resident request
 
-Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
+Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -1720,9 +2295,9 @@ end
 
 > <TaskCategoryMessage> update_task_category(task_category_id, task_category_put_message)
 
-Updates a task category
+Update a task category
 
-Updates a task category.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `Edit`
+Updates a task category.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -1747,7 +2322,7 @@ task_category_id = 56 # Integer | The task category identifier.
 task_category_put_message = Buildium::TaskCategoryPutMessage.new({name: 'name_example'}) # TaskCategoryPutMessage | 
 
 begin
-  # Updates a task category
+  # Update a task category
   result = api_instance.update_task_category(task_category_id, task_category_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -1763,7 +2338,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Updates a task category
+  # Update a task category
   data, status_code, headers = api_instance.update_task_category_with_http_info(task_category_id, task_category_put_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -1794,11 +2369,91 @@ end
 - **Accept**: application/json
 
 
+## update_task_history
+
+> <TaskHistoryMessage> update_task_history(task_id, task_history_id, task_history_put_message)
+
+Update a task history
+
+Updates a specific task history record for a task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+task_history_put_message = Buildium::TaskHistoryPutMessage.new({message: 'message_example'}) # TaskHistoryPutMessage | 
+
+begin
+  # Update a task history
+  result = api_instance.update_task_history(task_id, task_history_id, task_history_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->update_task_history: #{e}"
+end
+```
+
+#### Using the update_task_history_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TaskHistoryMessage>, Integer, Hash)> update_task_history_with_http_info(task_id, task_history_id, task_history_put_message)
+
+```ruby
+begin
+  # Update a task history
+  data, status_code, headers = api_instance.update_task_history_with_http_info(task_id, task_history_id, task_history_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TaskHistoryMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->update_task_history_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+| **task_history_put_message** | [**TaskHistoryPutMessage**](TaskHistoryPutMessage.md) |  |  |
+
+### Return type
+
+[**TaskHistoryMessage**](TaskHistoryMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_to_do_task
 
 > <ToDoTaskMessage> update_to_do_task(to_do_task_id, to_do_task_put_message)
 
-Updates a to do task
+Update a to do task
 
 Updates a to do task  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
 
@@ -1825,7 +2480,7 @@ to_do_task_id = 56 # Integer | The to do task identifier.
 to_do_task_put_message = Buildium::ToDoTaskPutMessage.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low'}) # ToDoTaskPutMessage | 
 
 begin
-  # Updates a to do task
+  # Update a to do task
   result = api_instance.update_to_do_task(to_do_task_id, to_do_task_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -1841,7 +2496,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Updates a to do task
+  # Update a to do task
   data, status_code, headers = api_instance.update_to_do_task_with_http_info(to_do_task_id, to_do_task_put_message)
   p status_code # => 2xx
   p headers # => { ... }

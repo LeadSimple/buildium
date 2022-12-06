@@ -17,6 +17,7 @@
 | **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  |  |
 | **comment** | **String** | Comments about the rental owner. The comments cannot exceed 65,535 characters. | [optional] |
 | **property_ids** | **Array&lt;Integer&gt;** | A list of rental property ID&#39;s to associate with this rental owner. At least one property ID must be provided. |  |
+| **tax_information** | [**TaxInformationPostMessage**](TaxInformationPostMessage.md) |  | [optional] |
 
 ## Example
 
@@ -36,7 +37,8 @@ instance = Buildium::RentalOwnerPostMessage.new(
   phone_numbers: null,
   address: null,
   comment: null,
-  property_ids: null
+  property_ids: null,
+  tax_information: null
 )
 ```
 

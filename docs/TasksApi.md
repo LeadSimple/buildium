@@ -9,7 +9,6 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_resource**](TasksApi.md#create_resource) | **POST** /v1/tasks/residentrequests | Create a resident request |
 | [**create_task_category**](TasksApi.md#create_task_category) | **POST** /v1/tasks/categories | Create a task category |
 | [**create_to_do_task**](TasksApi.md#create_to_do_task) | **POST** /v1/tasks/todorequests | Create a to do task |
-| [**create_upload_file_request_async**](TasksApi.md#create_upload_file_request_async) | **POST** /v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests | Upload a task history file |
 | [**delete_task_history_file**](TasksApi.md#delete_task_history_file) | **DELETE** /v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId} | Delete task history file |
 | [**get_all_rental_owner_request_tasks**](TasksApi.md#get_all_rental_owner_request_tasks) | **GET** /v1/tasks/rentalownerrequests | Retrieve all rental owner requests |
 | [**get_all_task_categories**](TasksApi.md#get_all_task_categories) | **GET** /v1/tasks/categories | Retrieve all task categories |
@@ -34,6 +33,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**update_task_category**](TasksApi.md#update_task_category) | **PUT** /v1/tasks/categories/{taskCategoryId} | Update a task category |
 | [**update_task_history**](TasksApi.md#update_task_history) | **PUT** /v1/tasks/{taskId}/history/{taskHistoryId} | Update a task history |
 | [**update_to_do_task**](TasksApi.md#update_to_do_task) | **PUT** /v1/tasks/todorequests/{toDoTaskId} | Update a to do task |
+| [**upload_task_history_file_request_async**](TasksApi.md#upload_task_history_file_request_async) | **POST** /v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests | Upload a task history file |
 
 
 ## create_contact_request_task
@@ -405,86 +405,6 @@ end
 ### Return type
 
 [**ToDoTaskMessage**](ToDoTaskMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## create_upload_file_request_async
-
-> <FileUploadTicketMessage> create_upload_file_request_async(task_id, task_history_id, task_history_file_upload_post_message)
-
-Upload a task history file
-
-Uploads a file and associates it to the specified task history record.  <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::TasksApi.new
-task_id = 56 # Integer | 
-task_history_id = 56 # Integer | 
-task_history_file_upload_post_message = Buildium::TaskHistoryFileUploadPostMessage.new({file_name: 'file_name_example'}) # TaskHistoryFileUploadPostMessage | 
-
-begin
-  # Upload a task history file
-  result = api_instance.create_upload_file_request_async(task_id, task_history_id, task_history_file_upload_post_message)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling TasksApi->create_upload_file_request_async: #{e}"
-end
-```
-
-#### Using the create_upload_file_request_async_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_upload_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message)
-
-```ruby
-begin
-  # Upload a task history file
-  data, status_code, headers = api_instance.create_upload_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <FileUploadTicketMessage>
-rescue Buildium::ApiError => e
-  puts "Error when calling TasksApi->create_upload_file_request_async_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **task_id** | **Integer** |  |  |
-| **task_history_id** | **Integer** |  |  |
-| **task_history_file_upload_post_message** | [**TaskHistoryFileUploadPostMessage**](TaskHistoryFileUploadPostMessage.md) |  |  |
-
-### Return type
-
-[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
 
 ### Authorization
 
@@ -2516,6 +2436,86 @@ end
 ### Return type
 
 [**ToDoTaskMessage**](ToDoTaskMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## upload_task_history_file_request_async
+
+> <FileUploadTicketMessage> upload_task_history_file_request_async(task_id, task_history_id, task_history_file_upload_post_message)
+
+Upload a task history file
+
+Uploads a file and associates it to the specified task history record.  <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+task_id = 56 # Integer | 
+task_history_id = 56 # Integer | 
+task_history_file_upload_post_message = Buildium::TaskHistoryFileUploadPostMessage.new({file_name: 'file_name_example'}) # TaskHistoryFileUploadPostMessage | 
+
+begin
+  # Upload a task history file
+  result = api_instance.upload_task_history_file_request_async(task_id, task_history_id, task_history_file_upload_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->upload_task_history_file_request_async: #{e}"
+end
+```
+
+#### Using the upload_task_history_file_request_async_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileUploadTicketMessage>, Integer, Hash)> upload_task_history_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message)
+
+```ruby
+begin
+  # Upload a task history file
+  data, status_code, headers = api_instance.upload_task_history_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileUploadTicketMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->upload_task_history_file_request_async_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **task_id** | **Integer** |  |  |
+| **task_history_id** | **Integer** |  |  |
+| **task_history_file_upload_post_message** | [**TaskHistoryFileUploadPostMessage**](TaskHistoryFileUploadPostMessage.md) |  |  |
+
+### Return type
+
+[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
 
 ### Authorization
 

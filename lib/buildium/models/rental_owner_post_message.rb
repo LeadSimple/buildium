@@ -53,6 +53,8 @@ module Buildium
     # A list of rental property ID's to associate with this rental owner. At least one property ID must be provided.
     attr_accessor :property_ids
 
+    attr_accessor :tax_information
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -68,7 +70,8 @@ module Buildium
         :'phone_numbers' => :'PhoneNumbers',
         :'address' => :'Address',
         :'comment' => :'Comment',
-        :'property_ids' => :'PropertyIds'
+        :'property_ids' => :'PropertyIds',
+        :'tax_information' => :'TaxInformation'
       }
     end
 
@@ -92,7 +95,8 @@ module Buildium
         :'phone_numbers' => :'PhoneNumbersMessage',
         :'address' => :'SaveAddressMessage',
         :'comment' => :'String',
-        :'property_ids' => :'Array<Integer>'
+        :'property_ids' => :'Array<Integer>',
+        :'tax_information' => :'TaxInformationPostMessage'
       }
     end
 
@@ -170,6 +174,10 @@ module Buildium
           self.property_ids = value
         end
       end
+
+      if attributes.key?(:'tax_information')
+        self.tax_information = attributes[:'tax_information']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -217,7 +225,8 @@ module Buildium
           phone_numbers == o.phone_numbers &&
           address == o.address &&
           comment == o.comment &&
-          property_ids == o.property_ids
+          property_ids == o.property_ids &&
+          tax_information == o.tax_information
     end
 
     # @see the `==` method
@@ -229,7 +238,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [first_name, last_name, is_company, company_name, date_of_birth, management_agreement_start_date, management_agreement_end_date, email, alternate_email, phone_numbers, address, comment, property_ids].hash
+      [first_name, last_name, is_company, company_name, date_of_birth, management_agreement_start_date, management_agreement_end_date, email, alternate_email, phone_numbers, address, comment, property_ids, tax_information].hash
     end
 
     # Builds the object from hash
@@ -243,7 +252,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return nil unless attributes.is_a?(Hash)
+      return unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -350,6 +359,5 @@ module Buildium
         value
       end
     end
-
   end
 end

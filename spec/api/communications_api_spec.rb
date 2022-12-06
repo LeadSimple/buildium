@@ -32,6 +32,18 @@ describe 'CommunicationsApi' do
     end
   end
 
+  # unit tests for create_announcement
+  # Create an announcement
+  # Creates and publishes an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param announcement_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [AnnouncementMessage]
+  describe 'create_announcement test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_phone_log
   # Create a phone log
   # Creates a phone log.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
@@ -39,6 +51,64 @@ describe 'CommunicationsApi' do
   # @param [Hash] opts the optional parameters
   # @return [PhoneLogMessage]
   describe 'create_phone_log test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for expire_announcement
+  # Expire an announcement
+  # Removes the announcement from the Resident Center immediately.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param announcement_id 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'expire_announcement test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_all_announcements
+  # Retrieve all announcements
+  # Retrieves all announcements.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+  # @param [Hash] opts the optional parameters
+  # @option opts [Date] :announcementdatefrom Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.
+  # @option opts [Date] :announcementdateto Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.
+  # @option opts [Integer] :entityid Filters results to any announcement associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
+  # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is provided.
+  # @option opts [Integer] :senderid Unique identifier of the user that published the announcement.
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<AnnouncementMessage>]
+  describe 'get_all_announcements test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_announcement_by_id
+  # Retrieve an announcement
+  # Retrieves an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+  # @param announcement_id 
+  # @param [Hash] opts the optional parameters
+  # @return [AnnouncementMessage]
+  describe 'get_announcement_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_announcement_properties
+  # Retrieve all announcement properties
+  # Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+  # @param announcement_id 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<PropertyMessage>]
+  describe 'get_announcement_properties test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -1,4 +1,7 @@
 additionalProperties:
   moduleName: Buildium
+  gemAuthor: LeadSimple
+  gemHomepage: https://github.com/LeadSimple/buildium
   gemDescription: API client library for Buildium
-  gemVersion: 1.6.0
+  gemRequiredRubyVersion: "> 2.6.0"
+  gemVersion: 1.7.0

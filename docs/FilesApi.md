@@ -5,6 +5,7 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_file_category**](FilesApi.md#create_file_category) | **POST** /v1/files/categories | Create a category |
+| [**create_upload_file_request_async**](FilesApi.md#create_upload_file_request_async) | **POST** /v1/files/uploadrequests | Upload a file |
 | [**get_file_by_id**](FilesApi.md#get_file_by_id) | **GET** /v1/files/{fileId} | Retrieve a file |
 | [**get_file_categories**](FilesApi.md#get_file_categories) | **GET** /v1/files/categories | Retrieve all categories |
 | [**get_file_category_by_id**](FilesApi.md#get_file_category_by_id) | **GET** /v1/files/categories/{fileCategoryId} | Retrieve a category |
@@ -12,7 +13,6 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_files**](FilesApi.md#get_files) | **GET** /v1/files | Retrieve all files |
 | [**update_file**](FilesApi.md#update_file) | **PUT** /v1/files/{fileId} | Update a file |
 | [**update_file_category**](FilesApi.md#update_file_category) | **PUT** /v1/files/categories/{fileCategoryId} | Update a category |
-| [**upload_file_request_async**](FilesApi.md#upload_file_request_async) | **POST** /v1/files/uploadrequests | Upload a file |
 
 
 ## create_file_category
@@ -80,6 +80,82 @@ end
 ### Return type
 
 [**FileCategoryMessage**](FileCategoryMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_upload_file_request_async
+
+> <FileUploadTicketMessage> create_upload_file_request_async(file_upload_post_message)
+
+Upload a file
+
+Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::FilesApi.new
+file_upload_post_message = Buildium::FileUploadPostMessage.new({entity_type: 'Account', file_name: 'file_name_example', title: 'title_example', category_id: 37}) # FileUploadPostMessage | 
+
+begin
+  # Upload a file
+  result = api_instance.create_upload_file_request_async(file_upload_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling FilesApi->create_upload_file_request_async: #{e}"
+end
+```
+
+#### Using the create_upload_file_request_async_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_upload_file_request_async_with_http_info(file_upload_post_message)
+
+```ruby
+begin
+  # Upload a file
+  data, status_code, headers = api_instance.create_upload_file_request_async_with_http_info(file_upload_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileUploadTicketMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling FilesApi->create_upload_file_request_async_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **file_upload_post_message** | [**FileUploadPostMessage**](FileUploadPostMessage.md) |  |  |
+
+### Return type
+
+[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
 
 ### Authorization
 
@@ -642,82 +718,6 @@ end
 ### Return type
 
 [**FileCategoryMessage**](FileCategoryMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## upload_file_request_async
-
-> <FileUploadTicketMessage> upload_file_request_async(file_upload_post_message)
-
-Upload a file
-
-Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::FilesApi.new
-file_upload_post_message = Buildium::FileUploadPostMessage.new({entity_type: 'Account', file_name: 'file_name_example', title: 'title_example', category_id: 37}) # FileUploadPostMessage | 
-
-begin
-  # Upload a file
-  result = api_instance.upload_file_request_async(file_upload_post_message)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling FilesApi->upload_file_request_async: #{e}"
-end
-```
-
-#### Using the upload_file_request_async_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<FileUploadTicketMessage>, Integer, Hash)> upload_file_request_async_with_http_info(file_upload_post_message)
-
-```ruby
-begin
-  # Upload a file
-  data, status_code, headers = api_instance.upload_file_request_async_with_http_info(file_upload_post_message)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <FileUploadTicketMessage>
-rescue Buildium::ApiError => e
-  puts "Error when calling FilesApi->upload_file_request_async_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **file_upload_post_message** | [**FileUploadPostMessage**](FileUploadPostMessage.md) |  |  |
-
-### Return type
-
-[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
 
 ### Authorization
 

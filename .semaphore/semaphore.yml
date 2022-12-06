@@ -11,9 +11,11 @@ blocks:
         - name: bundle install
           commands:
             - checkout
-            - sem-version ruby 2.6.0
+            - sem-version ruby 2.6.6
             - cache restore
             - gem install bundler:2.2.29
-            - bundle install --deployment --path vendor/bundle
+            - bundle config set --local deployment 'true'
+            - bundle config set --local path 'vendor/bundle'
+            - bundle instal
             - bundle exec rspec
             - cache store

@@ -15,6 +15,10 @@ docs/AccountingSettingsMessage.md
 docs/AddressMessage.md
 docs/AdministrationApi.md
 docs/AllTasksMessage.md
+docs/AnnouncementMessage.md
+docs/AnnouncementPostMessage.md
+docs/AnnouncementSearchMessage.md
+docs/AnnouncementSenderMessage.md
 docs/ApiError.md
 docs/ApiErrorResponse.md
 docs/ApplianceMessage.md
@@ -281,6 +285,7 @@ docs/RentalOwnerRequestTaskMessage.md
 docs/RentalOwnerRequestTaskPostMessage.md
 docs/RentalOwnerRequestTaskPutMessage.md
 docs/RentalOwnerRequestTaskSearchMessage.md
+docs/RentalOwnerTaxInformationMessage.md
 docs/RentalOwnersApi.md
 docs/RentalOwnersSearchMessage.md
 docs/RentalPreferredVendorMessage.md
@@ -387,6 +392,10 @@ lib/buildium/models/accounting_entity_save_message.rb
 lib/buildium/models/accounting_settings_message.rb
 lib/buildium/models/address_message.rb
 lib/buildium/models/all_tasks_message.rb
+lib/buildium/models/announcement_message.rb
+lib/buildium/models/announcement_post_message.rb
+lib/buildium/models/announcement_search_message.rb
+lib/buildium/models/announcement_sender_message.rb
 lib/buildium/models/api_error.rb
 lib/buildium/models/api_error_response.rb
 lib/buildium/models/appliance_message.rb
@@ -639,6 +648,7 @@ lib/buildium/models/rental_owner_request_task_message.rb
 lib/buildium/models/rental_owner_request_task_post_message.rb
 lib/buildium/models/rental_owner_request_task_put_message.rb
 lib/buildium/models/rental_owner_request_task_search_message.rb
+lib/buildium/models/rental_owner_tax_information_message.rb
 lib/buildium/models/rental_owners_search_message.rb
 lib/buildium/models/rental_preferred_vendor_message.rb
 lib/buildium/models/rental_preferred_vendor_put_message.rb
@@ -736,6 +746,10 @@ spec/models/accounting_entity_save_message_spec.rb
 spec/models/accounting_settings_message_spec.rb
 spec/models/address_message_spec.rb
 spec/models/all_tasks_message_spec.rb
+spec/models/announcement_message_spec.rb
+spec/models/announcement_post_message_spec.rb
+spec/models/announcement_search_message_spec.rb
+spec/models/announcement_sender_message_spec.rb
 spec/models/api_error_response_spec.rb
 spec/models/api_error_spec.rb
 spec/models/appliance_message_spec.rb
@@ -988,6 +1002,7 @@ spec/models/rental_owner_request_task_message_spec.rb
 spec/models/rental_owner_request_task_post_message_spec.rb
 spec/models/rental_owner_request_task_put_message_spec.rb
 spec/models/rental_owner_request_task_search_message_spec.rb
+spec/models/rental_owner_tax_information_message_spec.rb
 spec/models/rental_owners_search_message_spec.rb
 spec/models/rental_preferred_vendor_message_spec.rb
 spec/models/rental_preferred_vendor_put_message_spec.rb

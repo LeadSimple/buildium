@@ -1,11 +1,16 @@
+#!/bin/bash
+
+set -e
+
 # Delete old files
 rm -rf lib/ spec/ docs/
+rm ".openapi-generator/FILES"
 
 # Rename operations that have duplicated names after we remove the "ExternalApi"
-# artifact below. Without this, both operations will be named "CreateCharge" and conflict.
+# artifact below. Without this, both operations will be named the same and conflict.
 sed -i 's/LeaseLedgerTransactionsExternalApi_CreateCharge/CreateLeaseLedgerCharge/g' bin/swagger.json
 sed -i 's/OwnershipAccountsLedgerExternalApi_CreateCharge/CreateOwnershipAccountLedgerCharge/g' bin/swagger.json
-sed -i '0,/CreateUploadFileRequestAsync/{s/CreateUploadFileRequestAsync/UploadFileRequestAsync/g}' bin/swagger.json
+sed -i 's/TaskHistoryFileUploadsExternalApi_CreateUploadFileRequestAsync/UploadTaskHistoryFileRequestAsync/g' bin/swagger.json
 
 # Replace the weird "ExternalApi" artifact in the operation names,
 # so that the generated code will be cleaner
@@ -21,6 +26,11 @@ npx @openapitools/openapi-generator-cli generate -i bin/swagger.json -g ruby -o 
 rm lib/buildium/models/api_error.rb
 rm spec/models/api_error_spec.rb
 sed -i "s/require 'buildium\/models\/api_error'//g" lib/buildium.rb
+
+# Run rubocop in these files if it exists, else fail and ask to install it
+command -v rubocop >/dev/null 2>&1 || { echo "I require rubocop to be installed, but it couldn't be find in your PATH.  Aborting." >&2; exit 1; }
+rubocop -a lib/
+rubocop -a spec/
 
 # Move the READMEs around so that we can customize them
 # The real readme for the project is in bin/README.md

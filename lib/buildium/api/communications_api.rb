@@ -19,6 +19,74 @@ module Buildium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Create an announcement
+    # Creates and publishes an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
+    # @param announcement_post_message [AnnouncementPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [AnnouncementMessage]
+    def create_announcement(announcement_post_message, opts = {})
+      data, _status_code, _headers = create_announcement_with_http_info(announcement_post_message, opts)
+      data
+    end
+
+    # Create an announcement
+    # Creates and publishes an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param announcement_post_message [AnnouncementPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AnnouncementMessage, Integer, Hash)>] AnnouncementMessage data, response status code and response headers
+    def create_announcement_with_http_info(announcement_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.create_announcement ...'
+      end
+      # verify the required parameter 'announcement_post_message' is set
+      if @api_client.config.client_side_validation && announcement_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'announcement_post_message' when calling CommunicationsApi.create_announcement"
+      end
+      # resource path
+      local_var_path = '/v1/communications/announcements'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(announcement_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AnnouncementMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.create_announcement",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#create_announcement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a phone log
     # Creates a phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View` `Edit`
     # @param phone_log_post_message [PhoneLogPostMessage] 
@@ -55,7 +123,7 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-          header_params['Content-Type'] = content_type
+        header_params['Content-Type'] = content_type
       end
 
       # form parameters
@@ -83,6 +151,289 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CommunicationsApi#create_phone_log\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Expire an announcement
+    # Removes the announcement from the Resident Center immediately.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
+    # @param announcement_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def expire_announcement(announcement_id, opts = {})
+      expire_announcement_with_http_info(announcement_id, opts)
+      nil
+    end
+
+    # Expire an announcement
+    # Removes the announcement from the Resident Center immediately.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param announcement_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def expire_announcement_with_http_info(announcement_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.expire_announcement ...'
+      end
+      # verify the required parameter 'announcement_id' is set
+      if @api_client.config.client_side_validation && announcement_id.nil?
+        fail ArgumentError, "Missing the required parameter 'announcement_id' when calling CommunicationsApi.expire_announcement"
+      end
+      # resource path
+      local_var_path = '/v1/communications/announcements/{announcementId}/expirationrequest'.sub('{' + 'announcementId' + '}', CGI.escape(announcement_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.expire_announcement",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#expire_announcement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all announcements
+    # Retrieves all announcements.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :announcementdatefrom Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.
+    # @option opts [Date] :announcementdateto Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.
+    # @option opts [Integer] :entityid Filters results to any announcement associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
+    # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is provided.
+    # @option opts [Integer] :senderid Unique identifier of the user that published the announcement.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<AnnouncementMessage>]
+    def get_all_announcements(opts = {})
+      data, _status_code, _headers = get_all_announcements_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all announcements
+    # Retrieves all announcements.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :announcementdatefrom Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.
+    # @option opts [Date] :announcementdateto Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.
+    # @option opts [Integer] :entityid Filters results to any announcement associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
+    # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is provided.
+    # @option opts [Integer] :senderid Unique identifier of the user that published the announcement.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<AnnouncementMessage>, Integer, Hash)>] Array<AnnouncementMessage> data, response status code and response headers
+    def get_all_announcements_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_all_announcements ...'
+      end
+      allowable_values = ["Rental", "RentalOwner", "Association"]
+      if @api_client.config.client_side_validation && opts[:'entitytype'] && !allowable_values.include?(opts[:'entitytype'])
+        fail ArgumentError, "invalid value for \"entitytype\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/v1/communications/announcements'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'announcementdatefrom'] = opts[:'announcementdatefrom'] if !opts[:'announcementdatefrom'].nil?
+      query_params[:'announcementdateto'] = opts[:'announcementdateto'] if !opts[:'announcementdateto'].nil?
+      query_params[:'entityid'] = opts[:'entityid'] if !opts[:'entityid'].nil?
+      query_params[:'entitytype'] = opts[:'entitytype'] if !opts[:'entitytype'].nil?
+      query_params[:'senderid'] = opts[:'senderid'] if !opts[:'senderid'].nil?
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<AnnouncementMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_all_announcements",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_all_announcements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an announcement
+    # Retrieves an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+    # @param announcement_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [AnnouncementMessage]
+    def get_announcement_by_id(announcement_id, opts = {})
+      data, _status_code, _headers = get_announcement_by_id_with_http_info(announcement_id, opts)
+      data
+    end
+
+    # Retrieve an announcement
+    # Retrieves an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+    # @param announcement_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AnnouncementMessage, Integer, Hash)>] AnnouncementMessage data, response status code and response headers
+    def get_announcement_by_id_with_http_info(announcement_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_announcement_by_id ...'
+      end
+      # verify the required parameter 'announcement_id' is set
+      if @api_client.config.client_side_validation && announcement_id.nil?
+        fail ArgumentError, "Missing the required parameter 'announcement_id' when calling CommunicationsApi.get_announcement_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/communications/announcements/{announcementId}'.sub('{' + 'announcementId' + '}', CGI.escape(announcement_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AnnouncementMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_announcement_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_announcement_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all announcement properties
+    # Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+    # @param announcement_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<PropertyMessage>]
+    def get_announcement_properties(announcement_id, opts = {})
+      data, _status_code, _headers = get_announcement_properties_with_http_info(announcement_id, opts)
+      data
+    end
+
+    # Retrieve all announcement properties
+    # Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+    # @param announcement_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<PropertyMessage>, Integer, Hash)>] Array<PropertyMessage> data, response status code and response headers
+    def get_announcement_properties_with_http_info(announcement_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_announcement_properties ...'
+      end
+      # verify the required parameter 'announcement_id' is set
+      if @api_client.config.client_side_validation && announcement_id.nil?
+        fail ArgumentError, "Missing the required parameter 'announcement_id' when calling CommunicationsApi.get_announcement_properties"
+      end
+      # resource path
+      local_var_path = '/v1/communications/announcements/{announcementId}/properties'.sub('{' + 'announcementId' + '}', CGI.escape(announcement_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<PropertyMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_announcement_properties",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_announcement_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -290,7 +641,7 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-          header_params['Content-Type'] = content_type
+        header_params['Content-Type'] = content_type
       end
 
       # form parameters

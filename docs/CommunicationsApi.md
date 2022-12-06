@@ -4,10 +4,91 @@ All URIs are relative to *https://api.buildium.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**create_announcement**](CommunicationsApi.md#create_announcement) | **POST** /v1/communications/announcements | Create an announcement |
 | [**create_phone_log**](CommunicationsApi.md#create_phone_log) | **POST** /v1/communications/phonelogs | Create a phone log |
+| [**expire_announcement**](CommunicationsApi.md#expire_announcement) | **POST** /v1/communications/announcements/{announcementId}/expirationrequest | Expire an announcement |
+| [**get_all_announcements**](CommunicationsApi.md#get_all_announcements) | **GET** /v1/communications/announcements | Retrieve all announcements |
+| [**get_announcement_by_id**](CommunicationsApi.md#get_announcement_by_id) | **GET** /v1/communications/announcements/{announcementId} | Retrieve an announcement |
+| [**get_announcement_properties**](CommunicationsApi.md#get_announcement_properties) | **GET** /v1/communications/announcements/{announcementId}/properties | Retrieve all announcement properties |
 | [**get_phone_log_by_id**](CommunicationsApi.md#get_phone_log_by_id) | **GET** /v1/communications/phonelogs/{phoneLogId} | Retrieve a phone log |
 | [**get_phone_logs**](CommunicationsApi.md#get_phone_logs) | **GET** /v1/communications/phonelogs | Retrieve all phone logs |
 | [**update_phone_log**](CommunicationsApi.md#update_phone_log) | **PUT** /v1/communications/phonelogs/{phoneLogId} | Update a phone log |
+
+
+## create_announcement
+
+> <AnnouncementMessage> create_announcement(announcement_post_message)
+
+Create an announcement
+
+Creates and publishes an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+announcement_post_message = Buildium::AnnouncementPostMessage.new({subject: 'subject_example', body: 'body_example', notify_association_tenants: false, include_alternate_email: false, property_ids: [37]}) # AnnouncementPostMessage | 
+
+begin
+  # Create an announcement
+  result = api_instance.create_announcement(announcement_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->create_announcement: #{e}"
+end
+```
+
+#### Using the create_announcement_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AnnouncementMessage>, Integer, Hash)> create_announcement_with_http_info(announcement_post_message)
+
+```ruby
+begin
+  # Create an announcement
+  data, status_code, headers = api_instance.create_announcement_with_http_info(announcement_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AnnouncementMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->create_announcement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **announcement_post_message** | [**AnnouncementPostMessage**](AnnouncementPostMessage.md) |  |  |
+
+### Return type
+
+[**AnnouncementMessage**](AnnouncementMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## create_phone_log
@@ -83,6 +164,333 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## expire_announcement
+
+> expire_announcement(announcement_id)
+
+Expire an announcement
+
+Removes the announcement from the Resident Center immediately.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+announcement_id = 56 # Integer | 
+
+begin
+  # Expire an announcement
+  api_instance.expire_announcement(announcement_id)
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->expire_announcement: #{e}"
+end
+```
+
+#### Using the expire_announcement_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> expire_announcement_with_http_info(announcement_id)
+
+```ruby
+begin
+  # Expire an announcement
+  data, status_code, headers = api_instance.expire_announcement_with_http_info(announcement_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->expire_announcement_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **announcement_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_all_announcements
+
+> <Array<AnnouncementMessage>> get_all_announcements(opts)
+
+Retrieve all announcements
+
+Retrieves all announcements.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+opts = {
+  announcementdatefrom: Date.parse('2013-10-20'), # Date | Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.
+  announcementdateto: Date.parse('2013-10-20'), # Date | Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.
+  entityid: 56, # Integer | Filters results to any announcement associated with the specified entity id value. The value must be of the type specified in the `EntityType` field.
+  entitytype: 'Rental', # String | Specifies the type of entity that the `EntityId` field refers to. This field is required if the `EntityId` field is provided.
+  senderid: 56, # Integer | Unique identifier of the user that published the announcement.
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all announcements
+  result = api_instance.get_all_announcements(opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_all_announcements: #{e}"
+end
+```
+
+#### Using the get_all_announcements_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<AnnouncementMessage>>, Integer, Hash)> get_all_announcements_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve all announcements
+  data, status_code, headers = api_instance.get_all_announcements_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<AnnouncementMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_all_announcements_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **announcementdatefrom** | **Date** | Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD. | [optional] |
+| **announcementdateto** | **Date** | Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD. | [optional] |
+| **entityid** | **Integer** | Filters results to any announcement associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field. | [optional] |
+| **entitytype** | **String** | Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is provided. | [optional] |
+| **senderid** | **Integer** | Unique identifier of the user that published the announcement. | [optional] |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;AnnouncementMessage&gt;**](AnnouncementMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_announcement_by_id
+
+> <AnnouncementMessage> get_announcement_by_id(announcement_id)
+
+Retrieve an announcement
+
+Retrieves an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+announcement_id = 56 # Integer | 
+
+begin
+  # Retrieve an announcement
+  result = api_instance.get_announcement_by_id(announcement_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_announcement_by_id: #{e}"
+end
+```
+
+#### Using the get_announcement_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AnnouncementMessage>, Integer, Hash)> get_announcement_by_id_with_http_info(announcement_id)
+
+```ruby
+begin
+  # Retrieve an announcement
+  data, status_code, headers = api_instance.get_announcement_by_id_with_http_info(announcement_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AnnouncementMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_announcement_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **announcement_id** | **Integer** |  |  |
+
+### Return type
+
+[**AnnouncementMessage**](AnnouncementMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_announcement_properties
+
+> <Array<PropertyMessage>> get_announcement_properties(announcement_id, opts)
+
+Retrieve all announcement properties
+
+Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+announcement_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all announcement properties
+  result = api_instance.get_announcement_properties(announcement_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_announcement_properties: #{e}"
+end
+```
+
+#### Using the get_announcement_properties_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<PropertyMessage>>, Integer, Hash)> get_announcement_properties_with_http_info(announcement_id, opts)
+
+```ruby
+begin
+  # Retrieve all announcement properties
+  data, status_code, headers = api_instance.get_announcement_properties_with_http_info(announcement_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<PropertyMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_announcement_properties_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **announcement_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;PropertyMessage&gt;**](PropertyMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 

@@ -19,13 +19,13 @@ Gem::Specification.new do |s|
   s.name        = "buildium"
   s.version     = Buildium::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["OpenAPI-Generator"]
+  s.authors     = ["LeadSimple"]
   s.email       = [""]
-  s.homepage    = "https://openapi-generator.tech"
+  s.homepage    = "https://github.com/LeadSimple/buildium"
   s.summary     = "Open API, powered by Buildium Ruby Gem"
   s.description = "API client library for Buildium"
   s.license     = "Unlicense"
-  s.required_ruby_version = ">= 2.4"
+  s.required_ruby_version = "> 2.6.0"
 
   s.add_runtime_dependency 'faraday', '>= 1.0.1', '< 3.0'
   s.add_runtime_dependency 'faraday-multipart'

@@ -18,6 +18,7 @@
 | **management_agreement_end_date** | **Date** | End date of the management agreement with the rental owner. Null if value is not set. | [optional] |
 | **company_name** | **String** | Company name of the rental owner. Empty if &#x60;IsCompany&#x60; is &#x60;false&#x60;. | [optional] |
 | **property_ids** | **Array&lt;Integer&gt;** | A list of rental property ID&#39;s associated with this rental owner. | [optional] |
+| **tax_information** | [**RentalOwnerTaxInformationMessage**](RentalOwnerTaxInformationMessage.md) |  | [optional] |
 
 ## Example
 
@@ -38,7 +39,8 @@ instance = Buildium::RentalOwnerMessage.new(
   management_agreement_start_date: null,
   management_agreement_end_date: null,
   company_name: null,
-  property_ids: null
+  property_ids: null,
+  tax_information: null
 )
 ```
 

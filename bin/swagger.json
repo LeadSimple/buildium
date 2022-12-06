@@ -15019,6 +15019,520 @@
         }
       }
     },
+    "/v1/communications/announcements": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve all announcements",
+        "description": "Retrieves all announcements.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`",
+        "operationId": "GetAllAnnouncements",
+        "parameters": [
+          {
+            "name": "announcementdatefrom",
+            "in": "query",
+            "description": "Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "announcementdateto",
+            "in": "query",
+            "description": "Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "entityid",
+            "in": "query",
+            "description": "Filters results to any announcement associated with the specified entity id value. The value must be of the type specified in the `EntityType` field.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "entitytype",
+            "in": "query",
+            "description": "Specifies the type of entity that the `EntityId` field refers to. This field is required if the `EntityId` field is provided.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Rental",
+                "RentalOwner",
+                "Association"
+              ]
+            }
+          },
+          {
+            "name": "senderid",
+            "in": "query",
+            "description": "Unique identifier of the user that published the announcement.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnnouncementMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Create an announcement",
+        "description": "Creates and publishes an announcement.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`",
+        "operationId": "CreateAnnouncement",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnnouncementPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnnouncementMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/announcements/{announcementId}": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve an announcement",
+        "description": "Retrieves an announcement.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`",
+        "operationId": "GetAnnouncementById",
+        "parameters": [
+          {
+            "name": "announcementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnnouncementMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/announcements/{announcementId}/expirationrequest": {
+      "post": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Expire an announcement",
+        "description": "Removes the announcement from the Resident Center immediately.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`",
+        "operationId": "ExpireAnnouncement",
+        "parameters": [
+          {
+            "name": "announcementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "NoContent"
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/announcements/{announcementId}/properties": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve all announcement properties",
+        "description": "Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`",
+        "operationId": "GetAnnouncementProperties",
+        "parameters": [
+          {
+            "name": "announcementId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PropertyMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/communications/phonelogs": {
       "get": {
         "tags": [
@@ -16319,7 +16833,7 @@
         ],
         "summary": "Upload a file",
         "description": "Uploading a file requires making two API requests. Each step is outlined below.\r\n<br /><br /><strong>Step 1 - Save file metadata</strong><br />\r\nThe first step in the file upload process is to submit the file metadata to `/v1/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.\r\n<br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.\r\n<br /><br /><strong>Step 2 - Upload the file binary</strong><br />\r\nUploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:\r\n<br />\r\n1. Form a POST request using the value of the `BucketUrl` property as the URL. \r\n<br /><br />\r\n2. Set the `Content-Type` header to `multipart/form-data`.\r\n<br /><br />\r\n3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.\r\n<br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.\r\n<br /><br />\r\n4. Lastly create a form-data key named `file` and set the value to the file binary.\r\n<br /><strong>NOTE:</strong> This must be the last field in the form-data list.\r\n<br /><br />This image shows what the POST request should look like if you're using Postman:\r\n<img src=\"file-upload-example.png\" /><br /><br />\r\n5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`",
-        "operationId": "UploadFileRequestAsync",
+        "operationId": "CreateUploadFileRequestAsync",
         "requestBody": {
           "content": {
             "application/json": {
@@ -26536,7 +27050,7 @@
         ],
         "summary": "Upload a task history file",
         "description": "Uploads a file and associates it to the specified task history record.\r\n<br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.\r\n<br /><br />Uploading a file requires making two API requests. Each step is outlined below.\r\n<br /><br /><strong>Step 1 - Save file metadata</strong><br />\r\nThe first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.\r\n<br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.\r\n<br /><br /><strong>Step 2 - Upload the file binary</strong><br />\r\nUploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:\r\n<br />\r\n1. Form a POST request using the value of the `BucketUrl` property as the URL. \r\n<br /><br />\r\n2. Set the `Content-Type` header to `multipart/form-data`.\r\n<br /><br />\r\n3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.\r\n<br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.\r\n<br /><br />\r\n4. Lastly create a form-data key named `file` and set the value to the file binary.\r\n<br /><strong>NOTE:</strong> This must be the last field in the form-data list.\r\n<br /><br />This image shows what the POST request should look like if you're using Postman:\r\n<img src=\"file-upload-example.png\" /><br /><br />\r\n5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`",
-        "operationId": "CreateUploadFileRequestAsync",
+        "operationId": "UploadTaskHistoryFileRequestAsync",
         "parameters": [
           {
             "name": "taskId",
@@ -31971,6 +32485,144 @@
           "LastUpdatedDateTime": {
             "format": "date-time",
             "description": "The date and time the task was last updated.",
+            "type": "string"
+          }
+        }
+      },
+      "AnnouncementMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Unique identifier of the announcement.",
+            "type": "integer"
+          },
+          "Subject": {
+            "description": "Subject line of the announcement.",
+            "type": "string"
+          },
+          "Body": {
+            "description": "Content of the announcement.",
+            "type": "string"
+          },
+          "AnnouncementDate": {
+            "format": "date",
+            "description": "Date the announcement was published.",
+            "type": "string"
+          },
+          "ExpirationDate": {
+            "format": "date",
+            "description": "Indicates the date on which the announcement will be removed from the Resident Center.",
+            "type": "string"
+          },
+          "Channels": {
+            "description": "List of the distribution channels the announcement was sent through.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "None",
+                "ResidentCenter",
+                "Email",
+                "Sms"
+              ],
+              "type": "string"
+            }
+          },
+          "Sender": {
+            "$ref": "#/components/schemas/AnnouncementSenderMessage"
+          }
+        }
+      },
+      "AnnouncementPostMessage": {
+        "required": [
+          "Subject",
+          "Body",
+          "NotifyAssociationTenants",
+          "IncludeAlternateEmail",
+          "PropertyIds"
+        ],
+        "type": "object",
+        "properties": {
+          "Subject": {
+            "description": "The subject of the announcement. Note, this will only show up in announcements sent via email and in the Resident Center. The value cannot exceed 100 characters.",
+            "type": "string"
+          },
+          "Body": {
+            "description": "The content of the announcement. The value cannot exceed 65535 characters. Note: if your message is over 140 characters, the announcement will not be sent via SMS. Announcement texts are available for US numbers only.",
+            "type": "string"
+          },
+          "ExpirationDate": {
+            "format": "date",
+            "description": "Optional date that indicates when the announcement should be removed from the Resident Center. If no date is provided the announcement will appear indefinitely The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "NotifyAssociationTenants": {
+            "description": "Indicates whether to include notifying the association tenants in addition to the association owners when publishing the announcement. Note this is only pertains to announcements sent to residents of `Association` properties.",
+            "type": "boolean"
+          },
+          "IncludeAlternateEmail": {
+            "description": "Indicates whether to send the announcement to alternate emails in addition to the main email addresses when publishing the announcement.",
+            "type": "boolean"
+          },
+          "PropertyIds": {
+            "description": "A list of association and/or rental property unique identifiers whose residents should receive the announcement.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "AnnouncementSearchMessage": {
+        "type": "object",
+        "properties": {
+          "AnnouncementDateFrom": {
+            "format": "date",
+            "description": "Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "AnnouncementDateTo": {
+            "format": "date",
+            "description": "Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "EntityId": {
+            "format": "int32",
+            "description": "Filters results to any announcement associated with the specified entity id value. The value must be of the type specified in the `EntityType` field.",
+            "type": "integer"
+          },
+          "EntityType": {
+            "description": "Specifies the type of entity that the `EntityId` field refers to. This field is required if the `EntityId` field is provided.",
+            "enum": [
+              "Rental",
+              "RentalOwner",
+              "Association"
+            ],
+            "type": "string"
+          },
+          "SenderId": {
+            "format": "int32",
+            "description": "Unique identifier of the user that published the announcement.",
+            "type": "integer"
+          }
+        }
+      },
+      "AnnouncementSenderMessage": {
+        "description": "The Buildium user who published the announcement.",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Unique identifier of the user who sent the announcement.",
+            "type": "integer"
+          },
+          "DisplayName": {
+            "description": "Display name of the user who sent the announcement.",
+            "type": "string"
+          },
+          "Href": {
+            "description": "A link to the user resource.",
             "type": "string"
           }
         }
@@ -42578,6 +43230,9 @@
               "format": "int32",
               "type": "integer"
             }
+          },
+          "TaxInformation": {
+            "$ref": "#/components/schemas/RentalOwnerTaxInformationMessage"
           }
         }
       },
@@ -42646,6 +43301,9 @@
               "format": "int32",
               "type": "integer"
             }
+          },
+          "TaxInformation": {
+            "$ref": "#/components/schemas/TaxInformationPostMessage"
           }
         }
       },
@@ -43056,6 +43714,39 @@
             "format": "date-time",
             "description": "Filters results to any rental owners that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
             "type": "string"
+          }
+        }
+      },
+      "RentalOwnerTaxInformationMessage": {
+        "description": "Rental owner tax information.",
+        "type": "object",
+        "properties": {
+          "TaxPayerIdType": {
+            "description": "Indicates the type of tax payer id being specified in the request.",
+            "enum": [
+              "SSN",
+              "EIN"
+            ],
+            "type": "string"
+          },
+          "TaxPayerId": {
+            "description": "The tax payer identifier.",
+            "type": "string"
+          },
+          "TaxPayerName1": {
+            "description": "Tax payer name line 1.",
+            "type": "string"
+          },
+          "TaxPayerName2": {
+            "description": "Tax payer name line 2.",
+            "type": "string"
+          },
+          "IncludeIn1099": {
+            "description": "Indicates whether the rental owner should be included in 1099 form generation.",
+            "type": "boolean"
+          },
+          "Address": {
+            "$ref": "#/components/schemas/AddressMessage"
           }
         }
       },

@@ -223,6 +223,74 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a general ledger account
+    # Creates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`
+    # @param gl_account_post_message [GLAccountPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [GLAccountMessage]
+    def create_general_ledger_account(gl_account_post_message, opts = {})
+      data, _status_code, _headers = create_general_ledger_account_with_http_info(gl_account_post_message, opts)
+      data
+    end
+
+    # Create a general ledger account
+    # Creates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param gl_account_post_message [GLAccountPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GLAccountMessage, Integer, Hash)>] GLAccountMessage data, response status code and response headers
+    def create_general_ledger_account_with_http_info(gl_account_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.create_general_ledger_account ...'
+      end
+      # verify the required parameter 'gl_account_post_message' is set
+      if @api_client.config.client_side_validation && gl_account_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'gl_account_post_message' when calling AccountingApi.create_general_ledger_account"
+      end
+      # resource path
+      local_var_path = '/v1/glaccounts'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(gl_account_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GLAccountMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.create_general_ledger_account",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#create_general_ledger_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all general ledger accounts
     # Retrieves a list of general ledger accounts.<br /><br />General ledger accounts are used to categorize transactions for accounting purposes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
     # @param [Hash] opts the optional parameters
@@ -1272,6 +1340,80 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountingApi#update_general_journal_entry\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a general ledger account
+    # Updates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`
+    # @param gl_account_id [Integer] 
+    # @param gl_account_put_message [GLAccountPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [GLAccountMessage]
+    def update_gl_account(gl_account_id, gl_account_put_message, opts = {})
+      data, _status_code, _headers = update_gl_account_with_http_info(gl_account_id, gl_account_put_message, opts)
+      data
+    end
+
+    # Update a general ledger account
+    # Updates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param gl_account_id [Integer] 
+    # @param gl_account_put_message [GLAccountPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GLAccountMessage, Integer, Hash)>] GLAccountMessage data, response status code and response headers
+    def update_gl_account_with_http_info(gl_account_id, gl_account_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.update_gl_account ...'
+      end
+      # verify the required parameter 'gl_account_id' is set
+      if @api_client.config.client_side_validation && gl_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'gl_account_id' when calling AccountingApi.update_gl_account"
+      end
+      # verify the required parameter 'gl_account_put_message' is set
+      if @api_client.config.client_side_validation && gl_account_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'gl_account_put_message' when calling AccountingApi.update_gl_account"
+      end
+      # resource path
+      local_var_path = '/v1/glaccounts/{glAccountId}'.sub('{' + 'glAccountId' + '}', CGI.escape(gl_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(gl_account_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GLAccountMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.update_gl_account",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#update_gl_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

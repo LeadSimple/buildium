@@ -21,6 +21,7 @@
 | **cosigners** | [**Array&lt;CosignerMessage&gt;**](CosignerMessage.md) | List of the cosigners on the lease. | [optional] |
 | **automatically_move_out_tenants** | **Boolean** | Indicates whether to automatically move out all tenants assigned to the lease and set the lease status to past when the lease ends. | [optional] |
 | **created_date_time** | **Time** | Date and time the lease was created. | [optional] |
+| **last_updated_date_time** | **Time** | The date and time the lease was last updated. | [optional] |
 | **move_out_data** | [**Array&lt;LeaseMoveOutDataMessage&gt;**](LeaseMoveOutDataMessage.md) | Move out data of lease | [optional] |
 | **payment_due_day** | **Integer** | Day of the month payment is due. | [optional] |
 
@@ -47,6 +48,7 @@ instance = Buildium::LeaseMessage.new(
   cosigners: null,
   automatically_move_out_tenants: null,
   created_date_time: null,
+  last_updated_date_time: null,
   move_out_data: null,
   payment_due_day: null
 )

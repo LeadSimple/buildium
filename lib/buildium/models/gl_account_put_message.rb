@@ -14,52 +14,30 @@ require 'date'
 require 'time'
 
 module Buildium
-  # A message that represents a general ledger account.
-  class GLAccountMessage
-    # General ledger account unique identifier.
-    attr_accessor :id
-
-    # General ledger account number.
-    attr_accessor :account_number
-
-    # Name of the general ledger account.
+  class GLAccountPutMessage
+    # Name of the general ledger account. The name cannot exceed 50 characters and must be unique across all general ledger accounts.
     attr_accessor :name
-
-    # Description of the general ledger account.
-    attr_accessor :description
-
-    # Describes the type of general ledger account.
-    attr_accessor :type
 
     # Describes the subtype of the general ledger account.
     attr_accessor :sub_type
 
-    # Indicates if the general ledger account is a default for auto populating fields.
-    attr_accessor :is_default_gl_account
+    # Unique identifier of the parent general ledger account. Indicates if this is a sub general ledger account.
+    attr_accessor :parent_gl_account_id
 
-    # Indicates the original name of the general ledger account if it is a default account.
-    attr_accessor :default_account_name
+    # Indicates if an account is a Cash Asset. Can only have a value if SubType is `CurrentAsset`
+    attr_accessor :is_cash_asset
 
-    # Indicates whether the account is a contra account.
+    # General ledger account number. The account number cannot exceed 12 characters and must be unique across all general ledger accounts.
+    attr_accessor :account_number
+
+    # Description of the general ledger account. The description cannot exceed 250 characters.
+    attr_accessor :description
+
+    # Indicates whether the account is a contra account. Must be null if `IsCashAsset` field is set to true.
     attr_accessor :is_contra_account
 
-    # Indicates whether the account is a bank account.
-    attr_accessor :is_bank_account
-
-    # Describes the cash flow classification for the general ledger account.
+    # Describes the cash flow classification for the general ledger account. Must be null if `IsCashAsset` field is set to true.
     attr_accessor :cash_flow_classification
-
-    # Indicates whether transactions associated with the account should be excluded from cash balances.
-    attr_accessor :exclude_from_cash_balances
-
-    # Children general ledger accounts. The relationship only goes one level deep.
-    attr_accessor :sub_accounts
-
-    # Indicates whether the account is active.
-    attr_accessor :is_active
-
-    # Unique identifier of the parent general ledger account, if applicable.
-    attr_accessor :parent_gl_account_id
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -86,21 +64,14 @@ module Buildium
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'Id',
-        :'account_number' => :'AccountNumber',
         :'name' => :'Name',
-        :'description' => :'Description',
-        :'type' => :'Type',
         :'sub_type' => :'SubType',
-        :'is_default_gl_account' => :'IsDefaultGLAccount',
-        :'default_account_name' => :'DefaultAccountName',
+        :'parent_gl_account_id' => :'ParentGLAccountId',
+        :'is_cash_asset' => :'IsCashAsset',
+        :'account_number' => :'AccountNumber',
+        :'description' => :'Description',
         :'is_contra_account' => :'IsContraAccount',
-        :'is_bank_account' => :'IsBankAccount',
-        :'cash_flow_classification' => :'CashFlowClassification',
-        :'exclude_from_cash_balances' => :'ExcludeFromCashBalances',
-        :'sub_accounts' => :'SubAccounts',
-        :'is_active' => :'IsActive',
-        :'parent_gl_account_id' => :'ParentGLAccountId'
+        :'cash_flow_classification' => :'CashFlowClassification'
       }
     end
 
@@ -112,21 +83,14 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'account_number' => :'String',
         :'name' => :'String',
-        :'description' => :'String',
-        :'type' => :'String',
         :'sub_type' => :'String',
-        :'is_default_gl_account' => :'Boolean',
-        :'default_account_name' => :'String',
+        :'parent_gl_account_id' => :'Integer',
+        :'is_cash_asset' => :'Boolean',
+        :'account_number' => :'String',
+        :'description' => :'String',
         :'is_contra_account' => :'Boolean',
-        :'is_bank_account' => :'Boolean',
-        :'cash_flow_classification' => :'String',
-        :'exclude_from_cash_balances' => :'Boolean',
-        :'sub_accounts' => :'Array<GLAccountMessage>',
-        :'is_active' => :'Boolean',
-        :'parent_gl_account_id' => :'Integer'
+        :'cash_flow_classification' => :'String'
       }
     end
 
@@ -140,77 +104,47 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::GLAccountMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::GLAccountPutMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::GLAccountMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::GLAccountPutMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'account_number')
-        self.account_number = attributes[:'account_number']
-      end
-
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
       end
 
       if attributes.key?(:'sub_type')
         self.sub_type = attributes[:'sub_type']
       end
 
-      if attributes.key?(:'is_default_gl_account')
-        self.is_default_gl_account = attributes[:'is_default_gl_account']
+      if attributes.key?(:'parent_gl_account_id')
+        self.parent_gl_account_id = attributes[:'parent_gl_account_id']
       end
 
-      if attributes.key?(:'default_account_name')
-        self.default_account_name = attributes[:'default_account_name']
+      if attributes.key?(:'is_cash_asset')
+        self.is_cash_asset = attributes[:'is_cash_asset']
+      end
+
+      if attributes.key?(:'account_number')
+        self.account_number = attributes[:'account_number']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
       if attributes.key?(:'is_contra_account')
         self.is_contra_account = attributes[:'is_contra_account']
       end
 
-      if attributes.key?(:'is_bank_account')
-        self.is_bank_account = attributes[:'is_bank_account']
-      end
-
       if attributes.key?(:'cash_flow_classification')
         self.cash_flow_classification = attributes[:'cash_flow_classification']
-      end
-
-      if attributes.key?(:'exclude_from_cash_balances')
-        self.exclude_from_cash_balances = attributes[:'exclude_from_cash_balances']
-      end
-
-      if attributes.key?(:'sub_accounts')
-        if (value = attributes[:'sub_accounts']).is_a?(Array)
-          self.sub_accounts = value
-        end
-      end
-
-      if attributes.key?(:'is_active')
-        self.is_active = attributes[:'is_active']
-      end
-
-      if attributes.key?(:'parent_gl_account_id')
-        self.parent_gl_account_id = attributes[:'parent_gl_account_id']
       end
     end
 
@@ -218,29 +152,27 @@ module Buildium
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @sub_type.nil?
+        invalid_properties.push('invalid value for "sub_type", sub_type cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["Asset", "Liability", "Equity", "Income", "Expense"])
-      return false unless type_validator.valid?(@type)
+      return false if @name.nil?
+      return false if @sub_type.nil?
       sub_type_validator = EnumAttributeValidator.new('String', ["CurrentAsset", "FixedAsset", "CurrentLiability", "LongTermLiability", "Equity", "Income", "NonOperatingIncome", "OperatingExpenses", "NonOperatingExpenses"])
       return false unless sub_type_validator.valid?(@sub_type)
       cash_flow_classification_validator = EnumAttributeValidator.new('String', ["OperatingActivities", "InvestingActivities", "FinancingActivities"])
       return false unless cash_flow_classification_validator.valid?(@cash_flow_classification)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["Asset", "Liability", "Equity", "Income", "Expense"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value #{ type.inspect } for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -268,21 +200,14 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          account_number == o.account_number &&
           name == o.name &&
-          description == o.description &&
-          type == o.type &&
           sub_type == o.sub_type &&
-          is_default_gl_account == o.is_default_gl_account &&
-          default_account_name == o.default_account_name &&
+          parent_gl_account_id == o.parent_gl_account_id &&
+          is_cash_asset == o.is_cash_asset &&
+          account_number == o.account_number &&
+          description == o.description &&
           is_contra_account == o.is_contra_account &&
-          is_bank_account == o.is_bank_account &&
-          cash_flow_classification == o.cash_flow_classification &&
-          exclude_from_cash_balances == o.exclude_from_cash_balances &&
-          sub_accounts == o.sub_accounts &&
-          is_active == o.is_active &&
-          parent_gl_account_id == o.parent_gl_account_id
+          cash_flow_classification == o.cash_flow_classification
     end
 
     # @see the `==` method
@@ -294,7 +219,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, account_number, name, description, type, sub_type, is_default_gl_account, default_account_name, is_contra_account, is_bank_account, cash_flow_classification, exclude_from_cash_balances, sub_accounts, is_active, parent_gl_account_id].hash
+      [name, sub_type, parent_gl_account_id, is_cash_asset, account_number, description, is_contra_account, cash_flow_classification].hash
     end
 
     # Builds the object from hash

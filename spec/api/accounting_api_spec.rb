@@ -68,6 +68,18 @@ describe 'AccountingApi' do
     end
   end
 
+  # unit tests for create_general_ledger_account
+  # Create a general ledger account
+  # Creates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param gl_account_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [GLAccountMessage]
+  describe 'create_general_ledger_account test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_all_gl_accounts
   # Retrieve all general ledger accounts
   # Retrieves a list of general ledger accounts.&lt;br /&gt;&lt;br /&gt;General ledger accounts are used to categorize transactions for accounting purposes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
@@ -269,6 +281,19 @@ describe 'AccountingApi' do
   # @param [Hash] opts the optional parameters
   # @return [GeneralLedgerTransactionMessage]
   describe 'update_general_journal_entry test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_gl_account
+  # Update a general ledger account
+  # Updates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param gl_account_id 
+  # @param gl_account_put_message 
+  # @param [Hash] opts the optional parameters
+  # @return [GLAccountMessage]
+  describe 'update_gl_account test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

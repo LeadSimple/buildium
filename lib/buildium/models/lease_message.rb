@@ -66,6 +66,9 @@ module Buildium
     # Date and time the lease was created.
     attr_accessor :created_date_time
 
+    # The date and time the lease was last updated.
+    attr_accessor :last_updated_date_time
+
     # Move out data of lease
     attr_accessor :move_out_data
 
@@ -114,6 +117,7 @@ module Buildium
         :'cosigners' => :'Cosigners',
         :'automatically_move_out_tenants' => :'AutomaticallyMoveOutTenants',
         :'created_date_time' => :'CreatedDateTime',
+        :'last_updated_date_time' => :'LastUpdatedDateTime',
         :'move_out_data' => :'MoveOutData',
         :'payment_due_day' => :'PaymentDueDay'
       }
@@ -144,6 +148,7 @@ module Buildium
         :'cosigners' => :'Array<CosignerMessage>',
         :'automatically_move_out_tenants' => :'Boolean',
         :'created_date_time' => :'Time',
+        :'last_updated_date_time' => :'Time',
         :'move_out_data' => :'Array<LeaseMoveOutDataMessage>',
         :'payment_due_day' => :'Integer'
       }
@@ -242,6 +247,10 @@ module Buildium
         self.created_date_time = attributes[:'created_date_time']
       end
 
+      if attributes.key?(:'last_updated_date_time')
+        self.last_updated_date_time = attributes[:'last_updated_date_time']
+      end
+
       if attributes.key?(:'move_out_data')
         if (value = attributes[:'move_out_data']).is_a?(Array)
           self.move_out_data = value
@@ -336,6 +345,7 @@ module Buildium
           cosigners == o.cosigners &&
           automatically_move_out_tenants == o.automatically_move_out_tenants &&
           created_date_time == o.created_date_time &&
+          last_updated_date_time == o.last_updated_date_time &&
           move_out_data == o.move_out_data &&
           payment_due_day == o.payment_due_day
     end
@@ -349,7 +359,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, property_id, unit_id, unit_number, lease_from_date, lease_to_date, lease_type, lease_status, is_eviction_pending, term_type, renewal_offer_status, current_tenants, current_number_of_occupants, account_details, cosigners, automatically_move_out_tenants, created_date_time, move_out_data, payment_due_day].hash
+      [id, property_id, unit_id, unit_number, lease_from_date, lease_to_date, lease_type, lease_status, is_eviction_pending, term_type, renewal_offer_status, current_tenants, current_number_of_occupants, account_details, cosigners, automatically_move_out_tenants, created_date_time, last_updated_date_time, move_out_data, payment_due_day].hash
     end
 
     # Builds the object from hash

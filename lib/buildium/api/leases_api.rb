@@ -1734,6 +1734,8 @@ module Buildium
     # @option opts [Array<String>] :leasestatuses Filters results to any lease whose lease term matches the specified status. If no status is specified, leases with any lease term status will be returned.
     # @option opts [Time] :createddatetimefrom Filters results to any lease whose created date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
     # @option opts [Time] :createddatetimeto Filters results to any lease whose created date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
+    # @option opts [Time] :lastupdatedfrom Filters results to any leases that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any leases that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -1756,6 +1758,8 @@ module Buildium
     # @option opts [Array<String>] :leasestatuses Filters results to any lease whose lease term matches the specified status. If no status is specified, leases with any lease term status will be returned.
     # @option opts [Time] :createddatetimefrom Filters results to any lease whose created date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
     # @option opts [Time] :createddatetimeto Filters results to any lease whose created date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
+    # @option opts [Time] :lastupdatedfrom Filters results to any leases that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any leases that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -1787,6 +1791,8 @@ module Buildium
       query_params[:'leasestatuses'] = @api_client.build_collection_param(opts[:'leasestatuses'], :multi) if !opts[:'leasestatuses'].nil?
       query_params[:'createddatetimefrom'] = opts[:'createddatetimefrom'] if !opts[:'createddatetimefrom'].nil?
       query_params[:'createddatetimeto'] = opts[:'createddatetimeto'] if !opts[:'createddatetimeto'].nil?
+      query_params[:'lastupdatedfrom'] = opts[:'lastupdatedfrom'] if !opts[:'lastupdatedfrom'].nil?
+      query_params[:'lastupdatedto'] = opts[:'lastupdatedto'] if !opts[:'lastupdatedto'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?

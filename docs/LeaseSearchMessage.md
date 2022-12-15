@@ -14,6 +14,8 @@
 | **lease_statuses** | **Array&lt;String&gt;** | Filters results to any lease whose lease term matches the specified status. If no status is specified, leases with any lease term status will be returned. | [optional] |
 | **created_date_time_from** | **Time** | Filters results to any lease whose created date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS. | [optional] |
 | **created_date_time_to** | **Time** | Filters results to any lease whose created date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS. | [optional] |
+| **last_updated_from** | **Time** | Filters results to any leases that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
+| **last_updated_to** | **Time** | Filters results to any leases that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
 
 ## Example
 
@@ -30,7 +32,9 @@ instance = Buildium::LeaseSearchMessage.new(
   lease_types: null,
   lease_statuses: null,
   created_date_time_from: null,
-  created_date_time_to: null
+  created_date_time_to: null,
+  last_updated_from: null,
+  last_updated_to: null
 )
 ```
 

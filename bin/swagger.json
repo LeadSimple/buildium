@@ -17463,6 +17463,94 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Create a general ledger account",
+        "description": "Creates a general ledger account.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`",
+        "operationId": "CreateGeneralLedgerAccount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GLAccountPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GLAccountMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v1/glaccounts/{glAccountId}": {
@@ -17528,6 +17616,107 @@
           },
           "404": {
             "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Update a general ledger account",
+        "description": "Updates a general ledger account.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`",
+        "operationId": "UpdateGLAccount",
+        "parameters": [
+          {
+            "name": "glAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GLAccountPutMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GLAccountMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17828,6 +18017,26 @@
             "name": "createddatetimeto",
             "in": "query",
             "description": "Filters results to any lease whose created date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "lastupdatedfrom",
+            "in": "query",
+            "description": "Filters results to any leases that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "lastupdatedto",
+            "in": "query",
+            "description": "Filters results to any leases that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
             "required": false,
             "schema": {
               "type": "string",
@@ -39142,6 +39351,10 @@
             "description": "Indicates if the general ledger account is a default for auto populating fields.",
             "type": "boolean"
           },
+          "DefaultAccountName": {
+            "description": "Indicates the original name of the general ledger account if it is a default account.",
+            "type": "string"
+          },
           "IsContraAccount": {
             "description": "Indicates whether the account is a contra account.",
             "type": "boolean"
@@ -39173,6 +39386,128 @@
           "IsActive": {
             "description": "Indicates whether the account is active.",
             "type": "boolean"
+          },
+          "ParentGLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the parent general ledger account, if applicable.",
+            "type": "integer"
+          }
+        }
+      },
+      "GLAccountPostMessage": {
+        "required": [
+          "SubType",
+          "Name",
+          "AccountNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "SubType": {
+            "description": "Describes the subtype of the general ledger account.",
+            "enum": [
+              "CurrentAsset",
+              "FixedAsset",
+              "CurrentLiability",
+              "LongTermLiability",
+              "Equity",
+              "Income",
+              "NonOperatingIncome",
+              "OperatingExpenses",
+              "NonOperatingExpenses"
+            ],
+            "type": "string"
+          },
+          "IsCashAsset": {
+            "description": "Indicates if an account is a Cash Asset. Can only have a value if SubType is `CurrentAsset`",
+            "type": "boolean"
+          },
+          "Name": {
+            "description": "Name of the general ledger account. The name cannot exceed 50 characters and must be unique across all general ledger accounts.",
+            "type": "string"
+          },
+          "AccountNumber": {
+            "description": "General ledger account number. The account number cannot exceed 12 characters and must be unique across all general ledger accounts.",
+            "type": "string"
+          },
+          "Description": {
+            "description": "Description of the general ledger account. The description cannot exceed 250 characters.",
+            "type": "string"
+          },
+          "IsContraAccount": {
+            "description": "Indicates whether the account is a contra account. Must be null if `IsCashAsset` field is set to true.",
+            "type": "boolean"
+          },
+          "CashFlowClassification": {
+            "description": "Describes the cash flow classification for the general ledger account. Must be null if `IsCashAsset` field is set to true.",
+            "enum": [
+              "OperatingActivities",
+              "InvestingActivities",
+              "FinancingActivities"
+            ],
+            "type": "string"
+          },
+          "ParentGLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the parent general ledger account. Indicates if this is a sub general ledger account.",
+            "type": "integer"
+          }
+        }
+      },
+      "GLAccountPutMessage": {
+        "required": [
+          "Name",
+          "SubType"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "description": "Name of the general ledger account. The name cannot exceed 50 characters and must be unique across all general ledger accounts.",
+            "type": "string"
+          },
+          "SubType": {
+            "description": "Describes the subtype of the general ledger account.",
+            "enum": [
+              "CurrentAsset",
+              "FixedAsset",
+              "CurrentLiability",
+              "LongTermLiability",
+              "Equity",
+              "Income",
+              "NonOperatingIncome",
+              "OperatingExpenses",
+              "NonOperatingExpenses"
+            ],
+            "type": "string"
+          },
+          "ParentGLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the parent general ledger account. Indicates if this is a sub general ledger account.",
+            "type": "integer"
+          },
+          "IsCashAsset": {
+            "description": "Indicates if an account is a Cash Asset. Can only have a value if SubType is `CurrentAsset`",
+            "type": "boolean"
+          },
+          "AccountNumber": {
+            "description": "General ledger account number. The account number cannot exceed 12 characters and must be unique across all general ledger accounts.",
+            "type": "string"
+          },
+          "Description": {
+            "description": "Description of the general ledger account. The description cannot exceed 250 characters.",
+            "type": "string"
+          },
+          "IsContraAccount": {
+            "description": "Indicates whether the account is a contra account. Must be null if `IsCashAsset` field is set to true.",
+            "type": "boolean"
+          },
+          "CashFlowClassification": {
+            "description": "Describes the cash flow classification for the general ledger account. Must be null if `IsCashAsset` field is set to true.",
+            "enum": [
+              "OperatingActivities",
+              "InvestingActivities",
+              "FinancingActivities"
+            ],
+            "type": "string"
           }
         }
       },
@@ -39947,6 +40282,11 @@
             "description": "Date and time the lease was created.",
             "type": "string"
           },
+          "LastUpdatedDateTime": {
+            "format": "date-time",
+            "description": "The date and time the lease was last updated.",
+            "type": "string"
+          },
           "MoveOutData": {
             "description": "Move out data of lease",
             "type": "array",
@@ -40654,6 +40994,16 @@
           "CreatedDateTimeTo": {
             "format": "date-time",
             "description": "Filters results to any lease whose created date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.",
+            "type": "string"
+          },
+          "LastUpdatedFrom": {
+            "format": "date-time",
+            "description": "Filters results to any leases that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
+            "type": "string"
+          },
+          "LastUpdatedTo": {
+            "format": "date-time",
+            "description": "Filters results to any leases that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.",
             "type": "string"
           }
         }

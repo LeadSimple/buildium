@@ -46,6 +46,12 @@ module Buildium
     # Filters results to any lease whose created date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
     attr_accessor :created_date_time_to
 
+    # Filters results to any leases that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_from
+
+    # Filters results to any leases that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    attr_accessor :last_updated_to
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -80,7 +86,9 @@ module Buildium
         :'lease_types' => :'LeaseTypes',
         :'lease_statuses' => :'LeaseStatuses',
         :'created_date_time_from' => :'CreatedDateTimeFrom',
-        :'created_date_time_to' => :'CreatedDateTimeTo'
+        :'created_date_time_to' => :'CreatedDateTimeTo',
+        :'last_updated_from' => :'LastUpdatedFrom',
+        :'last_updated_to' => :'LastUpdatedTo'
       }
     end
 
@@ -101,7 +109,9 @@ module Buildium
         :'lease_types' => :'Array<String>',
         :'lease_statuses' => :'Array<String>',
         :'created_date_time_from' => :'Time',
-        :'created_date_time_to' => :'Time'
+        :'created_date_time_to' => :'Time',
+        :'last_updated_from' => :'Time',
+        :'last_updated_to' => :'Time'
       }
     end
 
@@ -173,6 +183,14 @@ module Buildium
       if attributes.key?(:'created_date_time_to')
         self.created_date_time_to = attributes[:'created_date_time_to']
       end
+
+      if attributes.key?(:'last_updated_from')
+        self.last_updated_from = attributes[:'last_updated_from']
+      end
+
+      if attributes.key?(:'last_updated_to')
+        self.last_updated_to = attributes[:'last_updated_to']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -202,7 +220,9 @@ module Buildium
           lease_types == o.lease_types &&
           lease_statuses == o.lease_statuses &&
           created_date_time_from == o.created_date_time_from &&
-          created_date_time_to == o.created_date_time_to
+          created_date_time_to == o.created_date_time_to &&
+          last_updated_from == o.last_updated_from &&
+          last_updated_to == o.last_updated_to
     end
 
     # @see the `==` method
@@ -214,7 +234,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [property_ids, rental_owner_ids, unit_number, tenant_name, lease_date_from, lease_date_to, lease_types, lease_statuses, created_date_time_from, created_date_time_to].hash
+      [property_ids, rental_owner_ids, unit_number, tenant_name, lease_date_from, lease_date_to, lease_types, lease_statuses, created_date_time_from, created_date_time_to, last_updated_from, last_updated_to].hash
     end
 
     # Builds the object from hash

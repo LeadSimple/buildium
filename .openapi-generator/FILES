@@ -169,6 +169,8 @@ docs/GLAccountBalanceItemMessage.md
 docs/GLAccountBalanceMessage.md
 docs/GLAccountBalanceSearchMessage.md
 docs/GLAccountMessage.md
+docs/GLAccountPostMessage.md
+docs/GLAccountPutMessage.md
 docs/GLAccountsSearchMessage.md
 docs/GLTransactionMessageV1.md
 docs/GeneralJournalEntryLineSaveMessage.md
@@ -542,6 +544,8 @@ lib/buildium/models/gl_account_balance_item_message.rb
 lib/buildium/models/gl_account_balance_message.rb
 lib/buildium/models/gl_account_balance_search_message.rb
 lib/buildium/models/gl_account_message.rb
+lib/buildium/models/gl_account_post_message.rb
+lib/buildium/models/gl_account_put_message.rb
 lib/buildium/models/gl_accounts_search_message.rb
 lib/buildium/models/gl_transaction_message_v1.rb
 lib/buildium/models/internal_transaction_status_message.rb
@@ -896,6 +900,8 @@ spec/models/gl_account_balance_item_message_spec.rb
 spec/models/gl_account_balance_message_spec.rb
 spec/models/gl_account_balance_search_message_spec.rb
 spec/models/gl_account_message_spec.rb
+spec/models/gl_account_post_message_spec.rb
+spec/models/gl_account_put_message_spec.rb
 spec/models/gl_accounts_search_message_spec.rb
 spec/models/gl_transaction_message_v1_spec.rb
 spec/models/internal_transaction_status_message_spec.rb

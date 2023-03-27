@@ -75,4 +75,14 @@ describe Buildium::BillSearchMessage do
     end
   end
 
+  describe 'test attribute "approval_statuses"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('Array<String>', ["NotNeeded", "ApprovalRequired", "Approved", "Pending", "Rejected"])
+      # validator.allowable_values.each do |value|
+      #   expect { instance.approval_statuses = value }.not_to raise_error
+      # end
+    end
+  end
+
 end

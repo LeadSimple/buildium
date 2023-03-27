@@ -11212,6 +11212,33 @@
               "type": "string",
               "format": "date"
             }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -13764,6 +13791,26 @@
             }
           },
           {
+            "name": "approvalstatuses",
+            "in": "query",
+            "description": "Filters the results to bills matching the specified approval statuses. If no approval status is specified, bills with any status will be returned.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "NotNeeded",
+                  "ApprovalRequired",
+                  "Approved",
+                  "Pending",
+                  "Rejected"
+                ]
+              }
+            }
+          },
+          {
             "name": "orderby",
             "in": "query",
             "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
@@ -14128,6 +14175,523 @@
         }
       }
     },
+    "/v1/bills/{billId}/files": {
+      "get": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Retrieve all files for a bill",
+        "description": "Retrieves the metadata for all files associated to the specified bill.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`",
+        "operationId": "GetAllFilesForBill",
+        "parameters": [
+          {
+            "name": "billId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BillFileMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bills/{billId}/files/{fileId}": {
+      "get": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Retrieve a file for a bill",
+        "description": "Retrieves the metadata for a specific file associated with the specified bill.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`",
+        "operationId": "GetBillFileById",
+        "parameters": [
+          {
+            "name": "billId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillFileMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Delete a bill file",
+        "description": "Deletes the specified file from a bill. The file will be permanently deleted from the Buildium platform and can not be recovered.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit` `Delete`",
+        "operationId": "DeleteBillFile",
+        "parameters": [
+          {
+            "name": "billId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK - No Content."
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bills/{billId}/files/{fileId}/downloadrequest": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Download a bill file",
+        "description": "Downloads a specific file associated to the bill.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`",
+        "operationId": "DownloadBillFile",
+        "parameters": [
+          {
+            "name": "billId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileDownloadMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/bills/{billId}/files/uploadrequests": {
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Upload a bill file",
+        "description": "Uploads a file and associates it to the specified bill record.\r\n<br /><br />Uploading a file requires making two API requests. Each step is outlined below.\r\n<br /><br /><strong>Step 1 - Save file metadata</strong><br />\r\nThe first step in the file upload process is to submit the file metadata to `/v1/bills/{billId:int}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.\r\n<br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.\r\n<br /><br /><strong>Step 2 - Upload the file binary</strong><br />\r\nUploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:\r\n<br />\r\n1. Form a POST request using the value of the `BucketUrl` property as the URL. \r\n<br /><br />\r\n2. Set the `Content-Type` header to `multipart/form-data`.\r\n<br /><br />\r\n3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.\r\n<br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.\r\n<br /><br />\r\n4. Lastly create a form-data key named `file` and set the value to the file binary.\r\n<br /><strong>NOTE:</strong> This must be the last field in the form-data list.\r\n<br /><br />This image shows what the POST request should look like if you're using Postman:\r\n<img src=\"file-upload-example.png\" /><br /><br />\r\n5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`",
+        "operationId": "CreateUploadFileRequest",
+        "parameters": [
+          {
+            "name": "billId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileNamePostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileUploadTicketMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "There is a request conflict with the current state of the target resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/bills/{billId}/payments": {
       "get": {
         "tags": [
@@ -14228,6 +14792,125 @@
           },
           "404": {
             "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Accounting"
+        ],
+        "summary": "Create a bill payment",
+        "description": "Creates a bill payment.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`\r\n            <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`",
+        "operationId": "CreateBillPayment",
+        "parameters": [
+          {
+            "name": "billId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillPaymentPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillPaymentMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "There is a request conflict with the current state of the target resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
             "content": {
               "application/json": {
                 "schema": {
@@ -18432,7 +19115,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeaseChargeMessage"
+                "$ref": "#/components/schemas/LeaseChargePostMessage"
               }
             }
           },
@@ -20452,6 +21135,318 @@
         }
       }
     },
+    "/v1/leases/{leaseId}/renewals": {
+      "get": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Retrieve all lease renewals",
+        "description": "Retrieves all lease renewals.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`",
+        "operationId": "LeaseRenewalsExternalApiRead_GetAllLeaseRenewals",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LeaseRenewalMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Create a lease renewal",
+        "description": "Creates a lease renewal.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`",
+        "operationId": "LeaseRenewalsExternalApiWrite_CreateLeaseRenewal",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeaseRenewalPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseRenewalMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "There is a request conflict with the current state of the target resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/renewals/{renewalId}": {
+      "get": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Retrieve a lease renewal",
+        "description": "Retrieves a lease renewal.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`",
+        "operationId": "LeaseRenewalsExternalApiRead_GetLeaseRenewalById",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "renewalId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseRenewalMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/leases/{leaseId}/rent": {
       "get": {
         "tags": [
@@ -22153,6 +23148,393 @@
         }
       }
     },
+    "/v1/propertygroups": {
+      "get": {
+        "tags": [
+          "Property Groups"
+        ],
+        "summary": "Retrieve all property groups",
+        "description": "Retrieves all property groups.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`\r\n            <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`",
+        "operationId": "GetPropertyGroups",
+        "parameters": [
+          {
+            "name": "propertyids",
+            "in": "query",
+            "description": "Filters results to property groups that contain any of the specified property ids.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          {
+            "name": "nameordescription",
+            "in": "query",
+            "description": "Filters results to any property group whose name or description contains the specified value.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PropertyGroupMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Property Groups"
+        ],
+        "summary": "Create a property group",
+        "description": "Creates a property group.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View` `Edit`\r\n            <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`",
+        "operationId": "CreatePropertyGroup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PropertyGroupPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyGroupMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/propertygroups/{propertyGroupId}": {
+      "get": {
+        "tags": [
+          "Property Groups"
+        ],
+        "summary": "Retrieve a property group",
+        "description": "Retrieves a property group.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`\r\n            <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`",
+        "operationId": "GetPropertyGroupById",
+        "parameters": [
+          {
+            "name": "propertyGroupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyGroupMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Property Groups"
+        ],
+        "summary": "Update a property group",
+        "description": "Updates a property group.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View` `Edit`\r\n            <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`",
+        "operationId": "UpdatePropertyGroup",
+        "parameters": [
+          {
+            "name": "propertyGroupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PropertyGroupPutMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyGroupMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/rentals": {
       "get": {
         "tags": [
@@ -22388,6 +23770,12 @@
             "headers": {
               "Location": {
                 "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Link": {
+                "description": "Contains the location of the unit created for the rental property.",
                 "schema": {
                   "type": "string"
                 }
@@ -32081,6 +33469,10 @@
     {
       "name": "Files",
       "description": ""
+    },
+    {
+      "name": "Property Groups",
+      "description": ""
     }
   ],
   "servers": [
@@ -36859,6 +38251,38 @@
           }
         }
       },
+      "BillFileMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "File unique identifier.",
+            "type": "integer"
+          },
+          "Title": {
+            "description": "The title of the file.",
+            "type": "string"
+          },
+          "PhysicalFileName": {
+            "description": "Physical name of the file on the server.",
+            "type": "string"
+          },
+          "Size": {
+            "format": "int64",
+            "description": "Size of the file, in kilobytes.",
+            "type": "integer"
+          },
+          "ContentType": {
+            "description": "MIME type of the file.",
+            "type": "string"
+          },
+          "UploadedDateTime": {
+            "format": "date-time",
+            "description": "Date and time the file was uploaded.",
+            "type": "string"
+          }
+        }
+      },
       "BillLineMessage": {
         "description": "Bill line items.",
         "type": "object",
@@ -37038,6 +38462,17 @@
             "description": "The invoice or reference number that the vendor assigned to the invoice.",
             "type": "string"
           },
+          "ApprovalStatus": {
+            "description": "The current approval status for the bill.",
+            "enum": [
+              "NotNeeded",
+              "ApprovalRequired",
+              "Approved",
+              "Pending",
+              "Rejected"
+            ],
+            "type": "string"
+          },
           "Lines": {
             "description": "A collection of line items associated with the bill.",
             "type": "array",
@@ -37051,6 +38486,11 @@
         "description": "The accounting entity associated with the payment line item.",
         "type": "object",
         "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The accounting entity unique identifier.",
+            "type": "integer"
+          },
           "AccountingEntityType": {
             "description": "Indicates the type of the accounting entity.",
             "enum": [
@@ -37059,11 +38499,6 @@
               "Company"
             ],
             "type": "string"
-          },
-          "Id": {
-            "format": "int32",
-            "description": "The accounting entity unique identifier.",
-            "type": "integer"
           }
         }
       },
@@ -37082,6 +38517,25 @@
           "Amount": {
             "format": "double",
             "description": "Line item amount.",
+            "type": "number"
+          }
+        }
+      },
+      "BillPaymentLinePostMessage": {
+        "required": [
+          "BillLineId",
+          "Amount"
+        ],
+        "type": "object",
+        "properties": {
+          "BillLineId": {
+            "format": "int32",
+            "description": "The unique identifier of the bill line item toward which the payment is being made.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The amount that is being paid toward the bill line item.",
             "type": "number"
           }
         }
@@ -37117,6 +38571,41 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/BillPaymentLineMessage"
+            }
+          }
+        }
+      },
+      "BillPaymentPostMessage": {
+        "required": [
+          "BankAccountId",
+          "EntryDate",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "BankAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the bank account that the payment was made from.",
+            "type": "integer"
+          },
+          "EntryDate": {
+            "format": "date",
+            "description": "Date the payment was made.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "A high-level description of the payment. The value cannot exceed 240 characters.",
+            "type": "string"
+          },
+          "CheckNumber": {
+            "description": "Number of the check used to make the payment. The value cannot exceed 30 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A collection of payment line items.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BillPaymentLinePostMessage"
             }
           }
         }
@@ -37253,6 +38742,20 @@
             "format": "date",
             "description": "Filters results to any bill whose paid date is less than or equal to the specified value.",
             "type": "string"
+          },
+          "ApprovalStatuses": {
+            "description": "Filters the results to bills matching the specified approval statuses. If no approval status is specified, bills with any status will be returned.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "NotNeeded",
+                "ApprovalRequired",
+                "Approved",
+                "Pending",
+                "Rejected"
+              ],
+              "type": "string"
+            }
           }
         }
       },
@@ -37587,6 +39090,76 @@
         ],
         "type": "object",
         "properties": {
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account unique identifier under which the charge amount will be recorded. The general ledger account can only be an income or liability account.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "The amount to record when applying the charge to the lease ledger.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo associated with the recurring charge. This value cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "FirstOccurrenceDate": {
+            "format": "date",
+            "description": "The date the charge will first be processed. This value along with the `Frequency` is also used as the basis for the date set on the transactions in future occurrences.",
+            "type": "string"
+          },
+          "PostDaysInAdvance": {
+            "format": "int32",
+            "description": "Specifies the number of days ahead of the transaction date the charge will post on the lease ledger. This setting can be used to add the charge to the ledger ahead of the due date for visibility. For example, if the `FirstOccurrenceDate` is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022. Note, the value must be between 0 to 45 or set to 60, 75 or 90.",
+            "type": "integer"
+          },
+          "Frequency": {
+            "description": "Specifies the frequency at which the recurring charge will be processed.",
+            "enum": [
+              "Monthly",
+              "Weekly",
+              "Every2Weeks",
+              "Quarterly",
+              "Yearly",
+              "Every2Months",
+              "Daily",
+              "Every6Months",
+              "OneTime"
+            ],
+            "type": "string"
+          },
+          "Duration": {
+            "description": "Specifies the period of time/occurrences the recurring payment will be processed. Note, if the `Frequency` field is set to `OneTime` this field should be set to `NULL` as any submitted value will be ignored.",
+            "enum": [
+              "UntilEndOfTerm",
+              "SpecificNumber"
+            ],
+            "type": "string"
+          },
+          "NumberOfOccurrences": {
+            "format": "int32",
+            "description": "Indicates the number of times the recurring transaction should be processed. This value is required if the `Duration` field is set to `SpecificNumber`. This value can not exceed 100.",
+            "type": "integer"
+          }
+        }
+      },
+      "ChargeRecurringTransactionPutMessage": {
+        "required": [
+          "Id",
+          "GLAccountId",
+          "Amount",
+          "FirstOccurrenceDate",
+          "PostDaysInAdvance",
+          "Frequency"
+        ],
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "The unique identifier for the charge.",
+            "type": "integer"
+          },
           "GLAccountId": {
             "format": "int32",
             "description": "The general ledger account unique identifier under which the charge amount will be recorded. The general ledger account can only be an income or liability account.",
@@ -38525,6 +40098,28 @@
           }
         }
       },
+      "CreatedByUserMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "User unique identifier.",
+            "type": "integer"
+          },
+          "FirstName": {
+            "description": "First name of the user.",
+            "type": "string"
+          },
+          "LastName": {
+            "description": "Last name of the user.",
+            "type": "string"
+          },
+          "Href": {
+            "description": "A link to the user resource.",
+            "type": "string"
+          }
+        }
+      },
       "CreditRecurringTransactionPostMessage": {
         "required": [
           "CreditType",
@@ -38815,6 +40410,18 @@
           "UploadedDateTime": {
             "format": "date-time",
             "description": "Date the file was uploaded.",
+            "type": "string"
+          }
+        }
+      },
+      "FileNamePostMessage": {
+        "required": [
+          "FileName"
+        ],
+        "type": "object",
+        "properties": {
+          "FileName": {
+            "description": "Name of file being uploaded. The value can not exceed 255 characters.",
             "type": "string"
           }
         }
@@ -39669,7 +41276,7 @@
           }
         }
       },
-      "LeaseChargeLineMessage": {
+      "LeaseChargeLineSaveMessage": {
         "description": "This is an object that represents a line item on a lease charge",
         "required": [
           "Amount",
@@ -39693,7 +41300,7 @@
           }
         }
       },
-      "LeaseChargeMessage": {
+      "LeaseChargePostMessage": {
         "description": "This is an object that represents a charge related to a lease",
         "type": "object",
         "properties": {
@@ -39710,7 +41317,7 @@
             "description": "A collection of line items included in the charge. At least one line item is required.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/LeaseChargeLineMessage"
+              "$ref": "#/components/schemas/LeaseChargeLineSaveMessage"
             }
           }
         }
@@ -40298,6 +41905,13 @@
             "format": "int32",
             "description": "Day of the month payment is due.",
             "type": "integer"
+          },
+          "Tenants": {
+            "description": "List of all tenants ever associated with the lease",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaseTenantMessage"
+            }
           }
         }
       },
@@ -40761,6 +42375,142 @@
           }
         }
       },
+      "LeaseRenewalMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Lease renewal unique identifier.",
+            "type": "integer"
+          },
+          "LeaseStatus": {
+            "description": "Indicates the status of the lease.",
+            "enum": [
+              "Active",
+              "Past",
+              "Future"
+            ],
+            "type": "string"
+          },
+          "LeaseFromDate": {
+            "format": "date",
+            "description": "Start date of the lease.",
+            "type": "string"
+          },
+          "LeaseToDate": {
+            "format": "date",
+            "description": "End date of the lease.",
+            "type": "string"
+          },
+          "LeaseType": {
+            "description": "Describes the type of lease.",
+            "enum": [
+              "None",
+              "Fixed",
+              "FixedWithRollover",
+              "AtWill"
+            ],
+            "type": "string"
+          },
+          "Rent": {
+            "format": "double",
+            "description": "Rent for the lease.",
+            "type": "number"
+          },
+          "RentId": {
+            "format": "int32",
+            "description": "The unique identifier of the scheduled Rent entity. If the renewal is not associated with a Rent entity then the value will be `NULL`.",
+            "type": "integer"
+          },
+          "TenantIds": {
+            "description": "Unique identifiers of tenants on the lease.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "LeaseRenewalPostMessage": {
+        "required": [
+          "LeaseType",
+          "Rent",
+          "SendWelcomeEmail"
+        ],
+        "type": "object",
+        "properties": {
+          "LeaseType": {
+            "description": "Describes the type of lease.",
+            "enum": [
+              "Fixed",
+              "FixedWithRollover",
+              "AtWill"
+            ],
+            "type": "string"
+          },
+          "LeaseToDate": {
+            "format": "date",
+            "description": "End date of the lease. This is required if `LeaseType` is `Fixed` or `FixedWithRollover`",
+            "type": "string"
+          },
+          "AutomaticallyMoveOutTenants": {
+            "description": "Indicates whether to automatically move out all tenants assigned to the lease and set the lease status to past when the lease ends.",
+            "type": "boolean"
+          },
+          "Rent": {
+            "$ref": "#/components/schemas/LeaseRentPostMessage"
+          },
+          "Cosigners": {
+            "description": "List of the cosigners to create on the lease.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaseCosignerPostMessage"
+            }
+          },
+          "TenantIds": {
+            "description": "Unique identifiers of existing tenants to include on the lease. The request must include at least one tenant in this property OR the `Tenants` property.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "Tenants": {
+            "description": "List of new tenants to create on the lease. The request must include at least one tenant in this property OR the `TenantIds` property.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RentalTenantRenewalPostMessage"
+            }
+          },
+          "SendWelcomeEmail": {
+            "description": "Indicates whether to send a welcome email to all tenants on the lease inviting them to the resident center website.",
+            "type": "boolean"
+          },
+          "RecurringChargesToStop": {
+            "description": "Unique identifiers of existing recurring charges on the lease to stop.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "RecurringChargesToCreate": {
+            "description": "List of new recurring charges to create.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChargeRecurringTransactionPostMessage"
+            }
+          },
+          "RecurringChargesToUpdate": {
+            "description": "List of existing recurring charges to update.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChargeRecurringTransactionPutMessage"
+            }
+          }
+        }
+      },
       "LeaseRentChargeMessage": {
         "type": "object",
         "properties": {
@@ -41025,6 +42775,25 @@
             "format": "double",
             "description": "Security deposit amount.",
             "type": "number"
+          }
+        }
+      },
+      "LeaseTenantMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Tenant unique identifier.",
+            "type": "integer"
+          },
+          "Status": {
+            "description": "Indicates the tenant's current status in relation to the lease.",
+            "enum": [
+              "MovedOut",
+              "Current",
+              "Future"
+            ],
+            "type": "string"
           }
         }
       },
@@ -42843,6 +44612,101 @@
           }
         }
       },
+      "PropertyGroupMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Property group unique identifier.",
+            "type": "integer"
+          },
+          "Name": {
+            "description": "Property group name.",
+            "type": "string"
+          },
+          "Description": {
+            "description": "Property group description.",
+            "type": "string"
+          },
+          "Properties": {
+            "description": "A list of association and/or rental property unique identifiers assigned to the property group.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PropertyMessage"
+            }
+          },
+          "CreatedByUser": {
+            "$ref": "#/components/schemas/CreatedByUserMessage"
+          }
+        }
+      },
+      "PropertyGroupPostMessage": {
+        "required": [
+          "Name",
+          "PropertyIds"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "description": "Property group name. The name can not exceed 127 characters.",
+            "type": "string"
+          },
+          "Description": {
+            "description": "Description of the property group. The description can not exceed 1000 characters.",
+            "type": "string"
+          },
+          "PropertyIds": {
+            "description": "A list of association and/or rental property unique identifiers to assign to the property group. Property groups cannot be created using inactive associations and/or rental properties.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "PropertyGroupPutMessage": {
+        "required": [
+          "Name",
+          "PropertyIds"
+        ],
+        "type": "object",
+        "properties": {
+          "Name": {
+            "description": "Property group name. The name can not exceed 127 characters.",
+            "type": "string"
+          },
+          "Description": {
+            "description": "Description of the property group. The description can not exceed 1000 characters.",
+            "type": "string"
+          },
+          "PropertyIds": {
+            "description": "A list of association and/or rental property unique identifiers to assign to the property group. Property groups cannot be updated using inactive associations and/or rental properties.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "PropertyGroupSearchMessage": {
+        "type": "object",
+        "properties": {
+          "PropertyIds": {
+            "description": "Filters results to property groups that contain any of the specified property ids.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "NameOrDescription": {
+            "description": "Filters results to any property group whose name or description contains the specified value.",
+            "type": "string"
+          }
+        }
+      },
       "PropertyManagerMessage": {
         "description": "This is an object that represents a property manager.",
         "type": "object",
@@ -44223,6 +46087,13 @@
             "format": "int32",
             "description": "Indicates the year the rental property was built. If provided this value must be a four digit integer between 1000 and the current year.",
             "type": "integer"
+          },
+          "Units": {
+            "description": "CreateRentalUnit\">Create a unit</a> endpoint to create the additional units once the property has been created.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RentalPropertyUnitPostMessage"
+            }
           }
         }
       },
@@ -44280,6 +46151,70 @@
             "format": "int32",
             "description": "Indicates the year the rental property was built. If provided this value must be a four digit integer between 1000 and the current year.",
             "type": "integer"
+          }
+        }
+      },
+      "RentalPropertyUnitPostMessage": {
+        "required": [
+          "UnitNumber",
+          "Address"
+        ],
+        "type": "object",
+        "properties": {
+          "UnitNumber": {
+            "description": "Unit number. Must be unique within the rental property and cannot exceed 30 characters.",
+            "type": "string"
+          },
+          "UnitSize": {
+            "format": "int32",
+            "description": "Size of the unit.",
+            "type": "integer"
+          },
+          "MarketRent": {
+            "format": "double",
+            "description": "Market rent of the unit. This value is separate from the lease rent and is typically used for rental listings.",
+            "type": "number"
+          },
+          "Address": {
+            "$ref": "#/components/schemas/SaveAddressMessage"
+          },
+          "UnitBedrooms": {
+            "description": "Number of bedrooms in the unit.",
+            "enum": [
+              "NotSet",
+              "Studio",
+              "OneBed",
+              "TwoBed",
+              "ThreeBed",
+              "FourBed",
+              "FiveBed",
+              "SixBed",
+              "SevenBed",
+              "EightBed",
+              "NineBedPlus"
+            ],
+            "type": "string"
+          },
+          "UnitBathrooms": {
+            "description": "Number of bathrooms in the unit.",
+            "enum": [
+              "NotSet",
+              "OneBath",
+              "OnePointFiveBath",
+              "TwoBath",
+              "TwoPointFiveBath",
+              "ThreeBath",
+              "FourBath",
+              "FiveBath",
+              "FivePlusBath",
+              "ThreePointFiveBath",
+              "FourPointFiveBath"
+            ],
+            "type": "string"
+          },
+          "Description": {
+            "description": "Description of the unit. The description cannot exceed 65,535 characters.",
+            "type": "string"
           }
         }
       },
@@ -44421,6 +46356,65 @@
         }
       },
       "RentalTenantPutMessage": {
+        "required": [
+          "FirstName",
+          "LastName",
+          "Address"
+        ],
+        "type": "object",
+        "properties": {
+          "FirstName": {
+            "description": "First name of the tenant. The value cannot exceed 127 characters.",
+            "type": "string"
+          },
+          "LastName": {
+            "description": "Last name of the tenant. The value cannot exceed 127 characters.",
+            "type": "string"
+          },
+          "Email": {
+            "description": "Email of the tenant.",
+            "type": "string"
+          },
+          "AlternateEmail": {
+            "description": "Alternate email of the tenant.",
+            "type": "string"
+          },
+          "PhoneNumbers": {
+            "$ref": "#/components/schemas/PhoneNumbersMessage"
+          },
+          "DateOfBirth": {
+            "format": "date",
+            "description": "Date of birth for the tenant. Must be formatted as `YYYY-MM-DD`.",
+            "type": "string"
+          },
+          "Comment": {
+            "description": "Comments about the tenant. The value cannot exceed 65,535 characters.",
+            "type": "string"
+          },
+          "TaxId": {
+            "description": "Tax identifier of the tenant. Valid formats are: `12-1234567`, `123-12-1234`, `123456789`",
+            "type": "string"
+          },
+          "EmergencyContact": {
+            "$ref": "#/components/schemas/SaveEmergencyContactMessage"
+          },
+          "Address": {
+            "$ref": "#/components/schemas/SaveAddressMessage"
+          },
+          "AlternateAddress": {
+            "$ref": "#/components/schemas/SaveAddressMessage"
+          },
+          "MailingPreference": {
+            "description": "Mailing preference for the tenant. If an alternate address exists and this value is not provided then the primary address will be set as the preferred address.",
+            "enum": [
+              "PrimaryAddress",
+              "AlternateAddress"
+            ],
+            "type": "string"
+          }
+        }
+      },
+      "RentalTenantRenewalPostMessage": {
         "required": [
           "FirstName",
           "LastName",

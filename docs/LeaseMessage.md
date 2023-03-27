@@ -24,6 +24,7 @@
 | **last_updated_date_time** | **Time** | The date and time the lease was last updated. | [optional] |
 | **move_out_data** | [**Array&lt;LeaseMoveOutDataMessage&gt;**](LeaseMoveOutDataMessage.md) | Move out data of lease | [optional] |
 | **payment_due_day** | **Integer** | Day of the month payment is due. | [optional] |
+| **tenants** | [**Array&lt;LeaseTenantMessage&gt;**](LeaseTenantMessage.md) | List of all tenants ever associated with the lease | [optional] |
 
 ## Example
 
@@ -50,7 +51,8 @@ instance = Buildium::LeaseMessage.new(
   created_date_time: null,
   last_updated_date_time: null,
   move_out_data: null,
-  payment_due_day: null
+  payment_due_day: null,
+  tenants: null
 )
 ```
 

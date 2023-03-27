@@ -11,6 +11,7 @@
 | **paid_status** | **String** | Filters results by the bill&#39;s paid status. If no status is specified, bills with any status will be returned. | [optional] |
 | **from_paid_date** | **Date** | Filters results to any bill whose paid date is greater than or equal to the specified value. | [optional] |
 | **to_paid_date** | **Date** | Filters results to any bill whose paid date is less than or equal to the specified value. | [optional] |
+| **approval_statuses** | **Array&lt;String&gt;** | Filters the results to bills matching the specified approval statuses. If no approval status is specified, bills with any status will be returned. | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = Buildium::BillSearchMessage.new(
   reference_number: null,
   paid_status: null,
   from_paid_date: null,
-  to_paid_date: null
+  to_paid_date: null,
+  approval_statuses: null
 )
 ```
 

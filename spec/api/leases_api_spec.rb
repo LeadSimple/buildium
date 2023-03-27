@@ -87,7 +87,7 @@ describe 'LeasesApi' do
   # Create a charge
   # Creates a charge transaction on a specific lease ledger.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
   # @param lease_id 
-  # @param lease_charge_message 
+  # @param lease_charge_post_message 
   # @param [Hash] opts the optional parameters
   # @return [Array<LeaseTransactionMessage>]
   describe 'create_lease_ledger_charge test' do
@@ -413,6 +413,47 @@ describe 'LeasesApi' do
   # @param [Hash] opts the optional parameters
   # @return [LeaseRentMessage]
   describe 'get_rent_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for lease_renewals_external_api_read_get_all_lease_renewals
+  # Retrieve all lease renewals
+  # Retrieves all lease renewals.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;
+  # @param lease_id 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<LeaseRenewalMessage>]
+  describe 'lease_renewals_external_api_read_get_all_lease_renewals test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for lease_renewals_external_api_read_get_lease_renewal_by_id
+  # Retrieve a lease renewal
+  # Retrieves a lease renewal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;
+  # @param lease_id 
+  # @param renewal_id 
+  # @param [Hash] opts the optional parameters
+  # @return [LeaseRenewalMessage]
+  describe 'lease_renewals_external_api_read_get_lease_renewal_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for lease_renewals_external_api_write_create_lease_renewal
+  # Create a lease renewal
+  # Creates a lease renewal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param lease_id 
+  # @param lease_renewal_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [LeaseRenewalMessage]
+  describe 'lease_renewals_external_api_write_create_lease_renewal test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

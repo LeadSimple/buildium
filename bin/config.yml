@@ -4,4 +4,4 @@ additionalProperties:
   gemHomepage: https://github.com/LeadSimple/buildium
   gemDescription: API client library for Buildium
   gemRequiredRubyVersion: "> 2.6.0"
-  gemVersion: 1.8.0
+  gemVersion: 1.9.0

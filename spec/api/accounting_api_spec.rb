@@ -44,6 +44,19 @@ describe 'AccountingApi' do
     end
   end
 
+  # unit tests for create_bill_payment
+  # Create a bill payment
+  # Creates a bill payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param bill_id 
+  # @param bill_payment_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [BillPaymentMessage]
+  describe 'create_bill_payment test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_budget
   # Create a budget
   # Creates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
@@ -75,6 +88,60 @@ describe 'AccountingApi' do
   # @param [Hash] opts the optional parameters
   # @return [GLAccountMessage]
   describe 'create_general_ledger_account test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for create_upload_file_request
+  # Upload a bill file
+  # Uploads a file and associates it to the specified bill record.  &lt;br /&gt;&lt;br /&gt;Uploading a file requires making two API requests. Each step is outlined below.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 1 - Save file metadata&lt;/strong&gt;&lt;br /&gt;  The first step in the file upload process is to submit the file metadata to &#x60;/v1/bills/{billId:int}/files/uploadrequests&#x60;. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 2 - Upload the file binary&lt;/strong&gt;&lt;br /&gt;  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  &lt;br /&gt;  1. Form a POST request using the value of the &#x60;BucketUrl&#x60; property as the URL.   &lt;br /&gt;&lt;br /&gt;  2. Set the &#x60;Content-Type&#x60; header to &#x60;multipart/form-data&#x60;.  &lt;br /&gt;&lt;br /&gt;  3. Copy the fields from the &#x60;FormData&#x60;  property to this request as form-data key/value pairs.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; These values must added to the request form-data in the order they were received in the response.  &lt;br /&gt;&lt;br /&gt;  4. Lastly create a form-data key named &#x60;file&#x60; and set the value to the file binary.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This must be the last field in the form-data list.  &lt;br /&gt;&lt;br /&gt;This image shows what the POST request should look like if you&#39;re using Postman:  &lt;img src&#x3D;\&quot;file-upload-example.png\&quot; /&gt;&lt;br /&gt;&lt;br /&gt;  5. Send the POST request! A successful request will return with a &#x60;204 - NO CONTENT&#x60; HTTP response code. For any failure responses, please refer to &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\&quot;&gt;AWS documentation&lt;/a&gt; on REST error responses.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param bill_id 
+  # @param file_name_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [FileUploadTicketMessage]
+  describe 'create_upload_file_request test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for delete_bill_file
+  # Delete a bill file
+  # Deletes the specified file from a bill. The file will be permanently deleted from the Buildium platform and can not be recovered.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+  # @param bill_id 
+  # @param file_id 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'delete_bill_file test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for download_bill_file
+  # Download a bill file
+  # Downloads a specific file associated to the bill.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+  # @param bill_id 
+  # @param file_id 
+  # @param [Hash] opts the optional parameters
+  # @return [FileDownloadMessage]
+  describe 'download_bill_file test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_all_files_for_bill
+  # Retrieve all files for a bill
+  # Retrieves the metadata for all files associated to the specified bill.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+  # @param bill_id 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<BillFileMessage>]
+  describe 'get_all_files_for_bill test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -126,6 +193,19 @@ describe 'AccountingApi' do
     end
   end
 
+  # unit tests for get_bill_file_by_id
+  # Retrieve a file for a bill
+  # Retrieves the metadata for a specific file associated with the specified bill.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+  # @param bill_id 
+  # @param file_id 
+  # @param [Hash] opts the optional parameters
+  # @return [BillFileMessage]
+  describe 'get_bill_file_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_bill_payment_by_id
   # Retrieve a bill payment
   # Retrieves specific bill payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
@@ -165,6 +245,7 @@ describe 'AccountingApi' do
   # @option opts [String] :paidstatus Filters results by the bill&#39;s paid status. If no status is specified, bills with any status will be returned.
   # @option opts [Date] :frompaiddate Filters results to any bill whose paid date is greater than or equal to the specified value.
   # @option opts [Date] :topaiddate Filters results to any bill whose paid date is less than or equal to the specified value.
+  # @option opts [Array<String>] :approvalstatuses Filters the results to bills matching the specified approval statuses. If no approval status is specified, bills with any status will be returned.
   # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
   # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.

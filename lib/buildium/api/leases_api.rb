@@ -312,21 +312,21 @@ module Buildium
     # Create a charge
     # Creates a charge transaction on a specific lease ledger.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] 
-    # @param lease_charge_message [LeaseChargeMessage] 
+    # @param lease_charge_post_message [LeaseChargePostMessage] 
     # @param [Hash] opts the optional parameters
     # @return [Array<LeaseTransactionMessage>]
-    def create_lease_ledger_charge(lease_id, lease_charge_message, opts = {})
-      data, _status_code, _headers = create_lease_ledger_charge_with_http_info(lease_id, lease_charge_message, opts)
+    def create_lease_ledger_charge(lease_id, lease_charge_post_message, opts = {})
+      data, _status_code, _headers = create_lease_ledger_charge_with_http_info(lease_id, lease_charge_post_message, opts)
       data
     end
 
     # Create a charge
     # Creates a charge transaction on a specific lease ledger.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
-    # @param lease_charge_message [LeaseChargeMessage] 
+    # @param lease_charge_post_message [LeaseChargePostMessage] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<LeaseTransactionMessage>, Integer, Hash)>] Array<LeaseTransactionMessage> data, response status code and response headers
-    def create_lease_ledger_charge_with_http_info(lease_id, lease_charge_message, opts = {})
+    def create_lease_ledger_charge_with_http_info(lease_id, lease_charge_post_message, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeasesApi.create_lease_ledger_charge ...'
       end
@@ -334,9 +334,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.create_lease_ledger_charge"
       end
-      # verify the required parameter 'lease_charge_message' is set
-      if @api_client.config.client_side_validation && lease_charge_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_charge_message' when calling LeasesApi.create_lease_ledger_charge"
+      # verify the required parameter 'lease_charge_post_message' is set
+      if @api_client.config.client_side_validation && lease_charge_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_charge_post_message' when calling LeasesApi.create_lease_ledger_charge"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/charges'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -358,7 +358,7 @@ module Buildium
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_charge_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_charge_post_message)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Array<LeaseTransactionMessage>'
@@ -2037,6 +2037,221 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: LeasesApi#get_rent_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all lease renewals
+    # Retrieves all lease renewals.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<LeaseRenewalMessage>]
+    def lease_renewals_external_api_read_get_all_lease_renewals(lease_id, opts = {})
+      data, _status_code, _headers = lease_renewals_external_api_read_get_all_lease_renewals_with_http_info(lease_id, opts)
+      data
+    end
+
+    # Retrieve all lease renewals
+    # Retrieves all lease renewals.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<LeaseRenewalMessage>, Integer, Hash)>] Array<LeaseRenewalMessage> data, response status code and response headers
+    def lease_renewals_external_api_read_get_all_lease_renewals_with_http_info(lease_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.lease_renewals_external_api_read_get_all_lease_renewals ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.lease_renewals_external_api_read_get_all_lease_renewals"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/renewals'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<LeaseRenewalMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.lease_renewals_external_api_read_get_all_lease_renewals",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#lease_renewals_external_api_read_get_all_lease_renewals\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a lease renewal
+    # Retrieves a lease renewal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
+    # @param lease_id [Integer] 
+    # @param renewal_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseRenewalMessage]
+    def lease_renewals_external_api_read_get_lease_renewal_by_id(lease_id, renewal_id, opts = {})
+      data, _status_code, _headers = lease_renewals_external_api_read_get_lease_renewal_by_id_with_http_info(lease_id, renewal_id, opts)
+      data
+    end
+
+    # Retrieve a lease renewal
+    # Retrieves a lease renewal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param renewal_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseRenewalMessage, Integer, Hash)>] LeaseRenewalMessage data, response status code and response headers
+    def lease_renewals_external_api_read_get_lease_renewal_by_id_with_http_info(lease_id, renewal_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.lease_renewals_external_api_read_get_lease_renewal_by_id ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.lease_renewals_external_api_read_get_lease_renewal_by_id"
+      end
+      # verify the required parameter 'renewal_id' is set
+      if @api_client.config.client_side_validation && renewal_id.nil?
+        fail ArgumentError, "Missing the required parameter 'renewal_id' when calling LeasesApi.lease_renewals_external_api_read_get_lease_renewal_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/renewals/{renewalId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'renewalId' + '}', CGI.escape(renewal_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseRenewalMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.lease_renewals_external_api_read_get_lease_renewal_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#lease_renewals_external_api_read_get_lease_renewal_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a lease renewal
+    # Creates a lease renewal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
+    # @param lease_id [Integer] 
+    # @param lease_renewal_post_message [LeaseRenewalPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseRenewalMessage]
+    def lease_renewals_external_api_write_create_lease_renewal(lease_id, lease_renewal_post_message, opts = {})
+      data, _status_code, _headers = lease_renewals_external_api_write_create_lease_renewal_with_http_info(lease_id, lease_renewal_post_message, opts)
+      data
+    end
+
+    # Create a lease renewal
+    # Creates a lease renewal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param lease_id [Integer] 
+    # @param lease_renewal_post_message [LeaseRenewalPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseRenewalMessage, Integer, Hash)>] LeaseRenewalMessage data, response status code and response headers
+    def lease_renewals_external_api_write_create_lease_renewal_with_http_info(lease_id, lease_renewal_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.lease_renewals_external_api_write_create_lease_renewal ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.lease_renewals_external_api_write_create_lease_renewal"
+      end
+      # verify the required parameter 'lease_renewal_post_message' is set
+      if @api_client.config.client_side_validation && lease_renewal_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_renewal_post_message' when calling LeasesApi.lease_renewals_external_api_write_create_lease_renewal"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/renewals'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_renewal_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseRenewalMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.lease_renewals_external_api_write_create_lease_renewal",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#lease_renewals_external_api_write_create_lease_renewal\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

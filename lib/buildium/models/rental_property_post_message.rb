@@ -41,6 +41,9 @@ module Buildium
     # Indicates the year the rental property was built. If provided this value must be a four digit integer between 1000 and the current year.
     attr_accessor :year_built
 
+    # CreateRentalUnit\">Create a unit</a> endpoint to create the additional units once the property has been created.
+    attr_accessor :units
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -74,7 +77,8 @@ module Buildium
         :'operating_bank_account_id' => :'OperatingBankAccountId',
         :'property_manager_id' => :'PropertyManagerId',
         :'reserve' => :'Reserve',
-        :'year_built' => :'YearBuilt'
+        :'year_built' => :'YearBuilt',
+        :'units' => :'Units'
       }
     end
 
@@ -94,7 +98,8 @@ module Buildium
         :'operating_bank_account_id' => :'Integer',
         :'property_manager_id' => :'Integer',
         :'reserve' => :'Float',
-        :'year_built' => :'Integer'
+        :'year_built' => :'Integer',
+        :'units' => :'Array<RentalPropertyUnitPostMessage>'
       }
     end
 
@@ -156,6 +161,12 @@ module Buildium
       if attributes.key?(:'year_built')
         self.year_built = attributes[:'year_built']
       end
+
+      if attributes.key?(:'units')
+        if (value = attributes[:'units']).is_a?(Array)
+          self.units = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -216,7 +227,8 @@ module Buildium
           operating_bank_account_id == o.operating_bank_account_id &&
           property_manager_id == o.property_manager_id &&
           reserve == o.reserve &&
-          year_built == o.year_built
+          year_built == o.year_built &&
+          units == o.units
     end
 
     # @see the `==` method
@@ -228,7 +240,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, structure_description, address, rental_sub_type, rental_owner_ids, operating_bank_account_id, property_manager_id, reserve, year_built].hash
+      [name, structure_description, address, rental_sub_type, rental_owner_ids, operating_bank_account_id, property_manager_id, reserve, year_built, units].hash
     end
 
     # Builds the object from hash

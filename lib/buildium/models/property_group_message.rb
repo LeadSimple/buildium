@@ -14,23 +14,29 @@ require 'date'
 require 'time'
 
 module Buildium
-  # This is an object that represents a line item on a lease charge
-  class LeaseChargeLineMessage
-    # Line item amount.
-    attr_accessor :amount
+  class PropertyGroupMessage
+    # Property group unique identifier.
+    attr_accessor :id
 
-    # The general ledger account identifier under which the line item amount will be recorded.
-    attr_accessor :gl_account_id
+    # Property group name.
+    attr_accessor :name
 
-    # Reference number for the line item. The value cannot exceed 30 characters.
-    attr_accessor :reference_number
+    # Property group description.
+    attr_accessor :description
+
+    # A list of association and/or rental property unique identifiers assigned to the property group.
+    attr_accessor :properties
+
+    attr_accessor :created_by_user
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'amount' => :'Amount',
-        :'gl_account_id' => :'GLAccountId',
-        :'reference_number' => :'ReferenceNumber'
+        :'id' => :'Id',
+        :'name' => :'Name',
+        :'description' => :'Description',
+        :'properties' => :'Properties',
+        :'created_by_user' => :'CreatedByUser'
       }
     end
 
@@ -42,9 +48,11 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'amount' => :'Float',
-        :'gl_account_id' => :'Integer',
-        :'reference_number' => :'String'
+        :'id' => :'Integer',
+        :'name' => :'String',
+        :'description' => :'String',
+        :'properties' => :'Array<PropertyMessage>',
+        :'created_by_user' => :'CreatedByUserMessage'
       }
     end
 
@@ -58,27 +66,37 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::LeaseChargeLineMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::PropertyGroupMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::LeaseChargeLineMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::PropertyGroupMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'gl_account_id')
-        self.gl_account_id = attributes[:'gl_account_id']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'reference_number')
-        self.reference_number = attributes[:'reference_number']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'properties')
+        if (value = attributes[:'properties']).is_a?(Array)
+          self.properties = value
+        end
+      end
+
+      if attributes.key?(:'created_by_user')
+        self.created_by_user = attributes[:'created_by_user']
       end
     end
 
@@ -86,22 +104,12 @@ module Buildium
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @amount.nil?
-        invalid_properties.push('invalid value for "amount", amount cannot be nil.')
-      end
-
-      if @gl_account_id.nil?
-        invalid_properties.push('invalid value for "gl_account_id", gl_account_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @amount.nil?
-      return false if @gl_account_id.nil?
       true
     end
 
@@ -110,9 +118,11 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          amount == o.amount &&
-          gl_account_id == o.gl_account_id &&
-          reference_number == o.reference_number
+          id == o.id &&
+          name == o.name &&
+          description == o.description &&
+          properties == o.properties &&
+          created_by_user == o.created_by_user
     end
 
     # @see the `==` method
@@ -124,7 +134,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [amount, gl_account_id, reference_number].hash
+      [id, name, description, properties, created_by_user].hash
     end
 
     # Builds the object from hash

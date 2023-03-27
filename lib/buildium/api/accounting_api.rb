@@ -87,6 +87,80 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a bill payment
+    # Creates a bill payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # @param bill_id [Integer] 
+    # @param bill_payment_post_message [BillPaymentPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [BillPaymentMessage]
+    def create_bill_payment(bill_id, bill_payment_post_message, opts = {})
+      data, _status_code, _headers = create_bill_payment_with_http_info(bill_id, bill_payment_post_message, opts)
+      data
+    end
+
+    # Create a bill payment
+    # Creates a bill payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bill_id [Integer] 
+    # @param bill_payment_post_message [BillPaymentPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BillPaymentMessage, Integer, Hash)>] BillPaymentMessage data, response status code and response headers
+    def create_bill_payment_with_http_info(bill_id, bill_payment_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.create_bill_payment ...'
+      end
+      # verify the required parameter 'bill_id' is set
+      if @api_client.config.client_side_validation && bill_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bill_id' when calling AccountingApi.create_bill_payment"
+      end
+      # verify the required parameter 'bill_payment_post_message' is set
+      if @api_client.config.client_side_validation && bill_payment_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'bill_payment_post_message' when calling AccountingApi.create_bill_payment"
+      end
+      # resource path
+      local_var_path = '/v1/bills/{billId}/payments'.sub('{' + 'billId' + '}', CGI.escape(bill_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(bill_payment_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BillPaymentMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.create_bill_payment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#create_bill_payment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a budget
     # Creates a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View` `Edit`
     # @param budget_post_message [BudgetPostMessage] 
@@ -287,6 +361,290 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountingApi#create_general_ledger_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Upload a bill file
+    # Uploads a file and associates it to the specified bill record.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/bills/{billId:int}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+    # @param bill_id [Integer] 
+    # @param file_name_post_message [FileNamePostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [FileUploadTicketMessage]
+    def create_upload_file_request(bill_id, file_name_post_message, opts = {})
+      data, _status_code, _headers = create_upload_file_request_with_http_info(bill_id, file_name_post_message, opts)
+      data
+    end
+
+    # Upload a bill file
+    # Uploads a file and associates it to the specified bill record.  &lt;br /&gt;&lt;br /&gt;Uploading a file requires making two API requests. Each step is outlined below.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 1 - Save file metadata&lt;/strong&gt;&lt;br /&gt;  The first step in the file upload process is to submit the file metadata to &#x60;/v1/bills/{billId:int}/files/uploadrequests&#x60;. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 2 - Upload the file binary&lt;/strong&gt;&lt;br /&gt;  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  &lt;br /&gt;  1. Form a POST request using the value of the &#x60;BucketUrl&#x60; property as the URL.   &lt;br /&gt;&lt;br /&gt;  2. Set the &#x60;Content-Type&#x60; header to &#x60;multipart/form-data&#x60;.  &lt;br /&gt;&lt;br /&gt;  3. Copy the fields from the &#x60;FormData&#x60;  property to this request as form-data key/value pairs.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; These values must added to the request form-data in the order they were received in the response.  &lt;br /&gt;&lt;br /&gt;  4. Lastly create a form-data key named &#x60;file&#x60; and set the value to the file binary.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This must be the last field in the form-data list.  &lt;br /&gt;&lt;br /&gt;This image shows what the POST request should look like if you&#39;re using Postman:  &lt;img src&#x3D;\&quot;file-upload-example.png\&quot; /&gt;&lt;br /&gt;&lt;br /&gt;  5. Send the POST request! A successful request will return with a &#x60;204 - NO CONTENT&#x60; HTTP response code. For any failure responses, please refer to &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\&quot;&gt;AWS documentation&lt;/a&gt; on REST error responses.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bill_id [Integer] 
+    # @param file_name_post_message [FileNamePostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FileUploadTicketMessage, Integer, Hash)>] FileUploadTicketMessage data, response status code and response headers
+    def create_upload_file_request_with_http_info(bill_id, file_name_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.create_upload_file_request ...'
+      end
+      # verify the required parameter 'bill_id' is set
+      if @api_client.config.client_side_validation && bill_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bill_id' when calling AccountingApi.create_upload_file_request"
+      end
+      # verify the required parameter 'file_name_post_message' is set
+      if @api_client.config.client_side_validation && file_name_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'file_name_post_message' when calling AccountingApi.create_upload_file_request"
+      end
+      # resource path
+      local_var_path = '/v1/bills/{billId}/files/uploadrequests'.sub('{' + 'billId' + '}', CGI.escape(bill_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(file_name_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FileUploadTicketMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.create_upload_file_request",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#create_upload_file_request\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete a bill file
+    # Deletes the specified file from a bill. The file will be permanently deleted from the Buildium platform and can not be recovered.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit` `Delete`
+    # @param bill_id [Integer] 
+    # @param file_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def delete_bill_file(bill_id, file_id, opts = {})
+      delete_bill_file_with_http_info(bill_id, file_id, opts)
+      nil
+    end
+
+    # Delete a bill file
+    # Deletes the specified file from a bill. The file will be permanently deleted from the Buildium platform and can not be recovered.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+    # @param bill_id [Integer] 
+    # @param file_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def delete_bill_file_with_http_info(bill_id, file_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.delete_bill_file ...'
+      end
+      # verify the required parameter 'bill_id' is set
+      if @api_client.config.client_side_validation && bill_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bill_id' when calling AccountingApi.delete_bill_file"
+      end
+      # verify the required parameter 'file_id' is set
+      if @api_client.config.client_side_validation && file_id.nil?
+        fail ArgumentError, "Missing the required parameter 'file_id' when calling AccountingApi.delete_bill_file"
+      end
+      # resource path
+      local_var_path = '/v1/bills/{billId}/files/{fileId}'.sub('{' + 'billId' + '}', CGI.escape(bill_id.to_s)).sub('{' + 'fileId' + '}', CGI.escape(file_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.delete_bill_file",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#delete_bill_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Download a bill file
+    # Downloads a specific file associated to the bill.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+    # @param bill_id [Integer] 
+    # @param file_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [FileDownloadMessage]
+    def download_bill_file(bill_id, file_id, opts = {})
+      data, _status_code, _headers = download_bill_file_with_http_info(bill_id, file_id, opts)
+      data
+    end
+
+    # Download a bill file
+    # Downloads a specific file associated to the bill.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+    # @param bill_id [Integer] 
+    # @param file_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(FileDownloadMessage, Integer, Hash)>] FileDownloadMessage data, response status code and response headers
+    def download_bill_file_with_http_info(bill_id, file_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.download_bill_file ...'
+      end
+      # verify the required parameter 'bill_id' is set
+      if @api_client.config.client_side_validation && bill_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bill_id' when calling AccountingApi.download_bill_file"
+      end
+      # verify the required parameter 'file_id' is set
+      if @api_client.config.client_side_validation && file_id.nil?
+        fail ArgumentError, "Missing the required parameter 'file_id' when calling AccountingApi.download_bill_file"
+      end
+      # resource path
+      local_var_path = '/v1/bills/{billId}/files/{fileId}/downloadrequest'.sub('{' + 'billId' + '}', CGI.escape(bill_id.to_s)).sub('{' + 'fileId' + '}', CGI.escape(file_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FileDownloadMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.download_bill_file",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#download_bill_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all files for a bill
+    # Retrieves the metadata for all files associated to the specified bill.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+    # @param bill_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<BillFileMessage>]
+    def get_all_files_for_bill(bill_id, opts = {})
+      data, _status_code, _headers = get_all_files_for_bill_with_http_info(bill_id, opts)
+      data
+    end
+
+    # Retrieve all files for a bill
+    # Retrieves the metadata for all files associated to the specified bill.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+    # @param bill_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<BillFileMessage>, Integer, Hash)>] Array<BillFileMessage> data, response status code and response headers
+    def get_all_files_for_bill_with_http_info(bill_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.get_all_files_for_bill ...'
+      end
+      # verify the required parameter 'bill_id' is set
+      if @api_client.config.client_side_validation && bill_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bill_id' when calling AccountingApi.get_all_files_for_bill"
+      end
+      # resource path
+      local_var_path = '/v1/bills/{billId}/files'.sub('{' + 'billId' + '}', CGI.escape(bill_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<BillFileMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.get_all_files_for_bill",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#get_all_files_for_bill\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -524,6 +882,75 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve a file for a bill
+    # Retrieves the metadata for a specific file associated with the specified bill.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+    # @param bill_id [Integer] 
+    # @param file_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [BillFileMessage]
+    def get_bill_file_by_id(bill_id, file_id, opts = {})
+      data, _status_code, _headers = get_bill_file_by_id_with_http_info(bill_id, file_id, opts)
+      data
+    end
+
+    # Retrieve a file for a bill
+    # Retrieves the metadata for a specific file associated with the specified bill.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+    # @param bill_id [Integer] 
+    # @param file_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BillFileMessage, Integer, Hash)>] BillFileMessage data, response status code and response headers
+    def get_bill_file_by_id_with_http_info(bill_id, file_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AccountingApi.get_bill_file_by_id ...'
+      end
+      # verify the required parameter 'bill_id' is set
+      if @api_client.config.client_side_validation && bill_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bill_id' when calling AccountingApi.get_bill_file_by_id"
+      end
+      # verify the required parameter 'file_id' is set
+      if @api_client.config.client_side_validation && file_id.nil?
+        fail ArgumentError, "Missing the required parameter 'file_id' when calling AccountingApi.get_bill_file_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/bills/{billId}/files/{fileId}'.sub('{' + 'billId' + '}', CGI.escape(bill_id.to_s)).sub('{' + 'fileId' + '}', CGI.escape(file_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BillFileMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AccountingApi.get_bill_file_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AccountingApi#get_bill_file_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a bill payment
     # Retrieves specific bill payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
     # @param bill_id [Integer] 
@@ -675,6 +1102,7 @@ module Buildium
     # @option opts [String] :paidstatus Filters results by the bill&#39;s paid status. If no status is specified, bills with any status will be returned.
     # @option opts [Date] :frompaiddate Filters results to any bill whose paid date is greater than or equal to the specified value.
     # @option opts [Date] :topaiddate Filters results to any bill whose paid date is less than or equal to the specified value.
+    # @option opts [Array<String>] :approvalstatuses Filters the results to bills matching the specified approval statuses. If no approval status is specified, bills with any status will be returned.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -694,6 +1122,7 @@ module Buildium
     # @option opts [String] :paidstatus Filters results by the bill&#39;s paid status. If no status is specified, bills with any status will be returned.
     # @option opts [Date] :frompaiddate Filters results to any bill whose paid date is greater than or equal to the specified value.
     # @option opts [Date] :topaiddate Filters results to any bill whose paid date is less than or equal to the specified value.
+    # @option opts [Array<String>] :approvalstatuses Filters the results to bills matching the specified approval statuses. If no approval status is specified, bills with any status will be returned.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -710,6 +1139,10 @@ module Buildium
       if @api_client.config.client_side_validation && opts[:'paidstatus'] && !allowable_values.include?(opts[:'paidstatus'])
         fail ArgumentError, "invalid value for \"paidstatus\", must be one of #{allowable_values}"
       end
+      allowable_values = ["NotNeeded", "ApprovalRequired", "Approved", "Pending", "Rejected"]
+      if @api_client.config.client_side_validation && opts[:'approvalstatuses'] && !opts[:'approvalstatuses'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"approvalstatuses\", must include one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/v1/bills'
 
@@ -722,6 +1155,7 @@ module Buildium
       query_params[:'paidstatus'] = opts[:'paidstatus'] if !opts[:'paidstatus'].nil?
       query_params[:'frompaiddate'] = opts[:'frompaiddate'] if !opts[:'frompaiddate'].nil?
       query_params[:'topaiddate'] = opts[:'topaiddate'] if !opts[:'topaiddate'].nil?
+      query_params[:'approvalstatuses'] = @api_client.build_collection_param(opts[:'approvalstatuses'], :multi) if !opts[:'approvalstatuses'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?

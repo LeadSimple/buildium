@@ -161,6 +161,9 @@ describe 'BankAccountsApi' do
   # @param startdate Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
   # @param enddate Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
   # @return [Array<BankAccountCheckMessage>]
   describe 'get_bank_account_checks test' do
     it 'should work' do

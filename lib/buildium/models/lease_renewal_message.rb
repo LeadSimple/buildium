@@ -14,23 +14,64 @@ require 'date'
 require 'time'
 
 module Buildium
-  # This is an object that represents a charge related to a lease
-  class LeaseChargeMessage
-    # Date of the charge. The date must be formatted as YYYY-MM-DD.
-    attr_accessor :date
+  class LeaseRenewalMessage
+    # Lease renewal unique identifier.
+    attr_accessor :id
 
-    # Memo associated with the charge. The value cannot exceed 65 characters.
-    attr_accessor :memo
+    # Indicates the status of the lease.
+    attr_accessor :lease_status
 
-    # A collection of line items included in the charge. At least one line item is required.
-    attr_accessor :lines
+    # Start date of the lease.
+    attr_accessor :lease_from_date
+
+    # End date of the lease.
+    attr_accessor :lease_to_date
+
+    # Describes the type of lease.
+    attr_accessor :lease_type
+
+    # Rent for the lease.
+    attr_accessor :rent
+
+    # The unique identifier of the scheduled Rent entity. If the renewal is not associated with a Rent entity then the value will be `NULL`.
+    attr_accessor :rent_id
+
+    # Unique identifiers of tenants on the lease.
+    attr_accessor :tenant_ids
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'date' => :'Date',
-        :'memo' => :'Memo',
-        :'lines' => :'Lines'
+        :'id' => :'Id',
+        :'lease_status' => :'LeaseStatus',
+        :'lease_from_date' => :'LeaseFromDate',
+        :'lease_to_date' => :'LeaseToDate',
+        :'lease_type' => :'LeaseType',
+        :'rent' => :'Rent',
+        :'rent_id' => :'RentId',
+        :'tenant_ids' => :'TenantIds'
       }
     end
 
@@ -42,9 +83,14 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'date' => :'Date',
-        :'memo' => :'String',
-        :'lines' => :'Array<LeaseChargeLineMessage>'
+        :'id' => :'Integer',
+        :'lease_status' => :'String',
+        :'lease_from_date' => :'Date',
+        :'lease_to_date' => :'Date',
+        :'lease_type' => :'String',
+        :'rent' => :'Float',
+        :'rent_id' => :'Integer',
+        :'tenant_ids' => :'Array<Integer>'
       }
     end
 
@@ -58,28 +104,48 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::LeaseChargeMessage` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Buildium::LeaseRenewalMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::LeaseChargeMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Buildium::LeaseRenewalMessage`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'date')
-        self.date = attributes[:'date']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'memo')
-        self.memo = attributes[:'memo']
+      if attributes.key?(:'lease_status')
+        self.lease_status = attributes[:'lease_status']
       end
 
-      if attributes.key?(:'lines')
-        if (value = attributes[:'lines']).is_a?(Array)
-          self.lines = value
+      if attributes.key?(:'lease_from_date')
+        self.lease_from_date = attributes[:'lease_from_date']
+      end
+
+      if attributes.key?(:'lease_to_date')
+        self.lease_to_date = attributes[:'lease_to_date']
+      end
+
+      if attributes.key?(:'lease_type')
+        self.lease_type = attributes[:'lease_type']
+      end
+
+      if attributes.key?(:'rent')
+        self.rent = attributes[:'rent']
+      end
+
+      if attributes.key?(:'rent_id')
+        self.rent_id = attributes[:'rent_id']
+      end
+
+      if attributes.key?(:'tenant_ids')
+        if (value = attributes[:'tenant_ids']).is_a?(Array)
+          self.tenant_ids = value
         end
       end
     end
@@ -94,7 +160,31 @@ module Buildium
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      lease_status_validator = EnumAttributeValidator.new('String', ["Active", "Past", "Future"])
+      return false unless lease_status_validator.valid?(@lease_status)
+      lease_type_validator = EnumAttributeValidator.new('String', ["None", "Fixed", "FixedWithRollover", "AtWill"])
+      return false unless lease_type_validator.valid?(@lease_type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] lease_status Object to be assigned
+    def lease_status=(lease_status)
+      validator = EnumAttributeValidator.new('String', ["Active", "Past", "Future"])
+      unless validator.valid?(lease_status)
+        fail ArgumentError, "invalid value #{ lease_status.inspect } for \"lease_status\", must be one of #{validator.allowable_values}."
+      end
+      @lease_status = lease_status
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] lease_type Object to be assigned
+    def lease_type=(lease_type)
+      validator = EnumAttributeValidator.new('String', ["None", "Fixed", "FixedWithRollover", "AtWill"])
+      unless validator.valid?(lease_type)
+        fail ArgumentError, "invalid value #{ lease_type.inspect } for \"lease_type\", must be one of #{validator.allowable_values}."
+      end
+      @lease_type = lease_type
     end
 
     # Checks equality by comparing each attribute.
@@ -102,9 +192,14 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          date == o.date &&
-          memo == o.memo &&
-          lines == o.lines
+          id == o.id &&
+          lease_status == o.lease_status &&
+          lease_from_date == o.lease_from_date &&
+          lease_to_date == o.lease_to_date &&
+          lease_type == o.lease_type &&
+          rent == o.rent &&
+          rent_id == o.rent_id &&
+          tenant_ids == o.tenant_ids
     end
 
     # @see the `==` method
@@ -116,7 +211,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [date, memo, lines].hash
+      [id, lease_status, lease_from_date, lease_to_date, lease_type, rent, rent_id, tenant_ids].hash
     end
 
     # Builds the object from hash

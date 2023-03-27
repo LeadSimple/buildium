@@ -688,6 +688,9 @@ module Buildium
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
     # @return [Array<BankAccountCheckMessage>]
     def get_bank_account_checks(bank_account_id, startdate, enddate, opts = {})
       data, _status_code, _headers = get_bank_account_checks_with_http_info(bank_account_id, startdate, enddate, opts)
@@ -700,6 +703,9 @@ module Buildium
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
     # @return [Array<(Array<BankAccountCheckMessage>, Integer, Hash)>] Array<BankAccountCheckMessage> data, response status code and response headers
     def get_bank_account_checks_with_http_info(bank_account_id, startdate, enddate, opts = {})
       if @api_client.config.debugging
@@ -724,6 +730,9 @@ module Buildium
       query_params = opts[:query_params] || {}
       query_params[:'startdate'] = startdate
       query_params[:'enddate'] = enddate
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

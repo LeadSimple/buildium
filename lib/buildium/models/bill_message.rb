@@ -39,8 +39,33 @@ module Buildium
     # The invoice or reference number that the vendor assigned to the invoice.
     attr_accessor :reference_number
 
+    # The current approval status for the bill.
+    attr_accessor :approval_status
+
     # A collection of line items associated with the bill.
     attr_accessor :lines
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -53,6 +78,7 @@ module Buildium
         :'vendor_id' => :'VendorId',
         :'work_order_id' => :'WorkOrderId',
         :'reference_number' => :'ReferenceNumber',
+        :'approval_status' => :'ApprovalStatus',
         :'lines' => :'Lines'
       }
     end
@@ -73,6 +99,7 @@ module Buildium
         :'vendor_id' => :'Integer',
         :'work_order_id' => :'Integer',
         :'reference_number' => :'String',
+        :'approval_status' => :'String',
         :'lines' => :'Array<BillLineMessage>'
       }
     end
@@ -130,6 +157,10 @@ module Buildium
         self.reference_number = attributes[:'reference_number']
       end
 
+      if attributes.key?(:'approval_status')
+        self.approval_status = attributes[:'approval_status']
+      end
+
       if attributes.key?(:'lines')
         if (value = attributes[:'lines']).is_a?(Array)
           self.lines = value
@@ -147,7 +178,19 @@ module Buildium
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      approval_status_validator = EnumAttributeValidator.new('String', ["NotNeeded", "ApprovalRequired", "Approved", "Pending", "Rejected"])
+      return false unless approval_status_validator.valid?(@approval_status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] approval_status Object to be assigned
+    def approval_status=(approval_status)
+      validator = EnumAttributeValidator.new('String', ["NotNeeded", "ApprovalRequired", "Approved", "Pending", "Rejected"])
+      unless validator.valid?(approval_status)
+        fail ArgumentError, "invalid value #{ approval_status.inspect } for \"approval_status\", must be one of #{validator.allowable_values}."
+      end
+      @approval_status = approval_status
     end
 
     # Checks equality by comparing each attribute.
@@ -163,6 +206,7 @@ module Buildium
           vendor_id == o.vendor_id &&
           work_order_id == o.work_order_id &&
           reference_number == o.reference_number &&
+          approval_status == o.approval_status &&
           lines == o.lines
     end
 
@@ -175,7 +219,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, date, due_date, paid_date, memo, vendor_id, work_order_id, reference_number, lines].hash
+      [id, date, due_date, paid_date, memo, vendor_id, work_order_id, reference_number, approval_status, lines].hash
     end
 
     # Builds the object from hash

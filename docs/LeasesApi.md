@@ -31,6 +31,9 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_recurring_lease_payments_by_id**](LeasesApi.md#get_recurring_lease_payments_by_id) | **GET** /v1/leases/{leaseId}/recurringpayments/{paymentId} | Retrieve a recurring payment |
 | [**get_rent**](LeasesApi.md#get_rent) | **GET** /v1/leases/{leaseId}/rent | Retrieve all rent schedules |
 | [**get_rent_by_id**](LeasesApi.md#get_rent_by_id) | **GET** /v1/leases/{leaseId}/rent/{rentId} | Retrieve a rent schedule |
+| [**lease_renewals_external_api_read_get_all_lease_renewals**](LeasesApi.md#lease_renewals_external_api_read_get_all_lease_renewals) | **GET** /v1/leases/{leaseId}/renewals | Retrieve all lease renewals |
+| [**lease_renewals_external_api_read_get_lease_renewal_by_id**](LeasesApi.md#lease_renewals_external_api_read_get_lease_renewal_by_id) | **GET** /v1/leases/{leaseId}/renewals/{renewalId} | Retrieve a lease renewal |
+| [**lease_renewals_external_api_write_create_lease_renewal**](LeasesApi.md#lease_renewals_external_api_write_create_lease_renewal) | **POST** /v1/leases/{leaseId}/renewals | Create a lease renewal |
 | [**undo_tenant_moveout**](LeasesApi.md#undo_tenant_moveout) | **DELETE** /v1/leases/{leaseId}/moveouts/{tenantId} | Delete a move out |
 | [**update_lease**](LeasesApi.md#update_lease) | **PUT** /v1/leases/{leaseId} | Update a lease |
 | [**update_lease_note**](LeasesApi.md#update_lease_note) | **PUT** /v1/leases/{leaseId}/notes/{noteId} | Update a note |
@@ -348,7 +351,7 @@ end
 
 ## create_lease_ledger_charge
 
-> <Array<LeaseTransactionMessage>> create_lease_ledger_charge(lease_id, lease_charge_message)
+> <Array<LeaseTransactionMessage>> create_lease_ledger_charge(lease_id, lease_charge_post_message)
 
 Create a charge
 
@@ -374,11 +377,11 @@ end
 
 api_instance = Buildium::LeasesApi.new
 lease_id = 56 # Integer | 
-lease_charge_message = Buildium::LeaseChargeMessage.new # LeaseChargeMessage | 
+lease_charge_post_message = Buildium::LeaseChargePostMessage.new # LeaseChargePostMessage | 
 
 begin
   # Create a charge
-  result = api_instance.create_lease_ledger_charge(lease_id, lease_charge_message)
+  result = api_instance.create_lease_ledger_charge(lease_id, lease_charge_post_message)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling LeasesApi->create_lease_ledger_charge: #{e}"
@@ -389,12 +392,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<LeaseTransactionMessage>>, Integer, Hash)> create_lease_ledger_charge_with_http_info(lease_id, lease_charge_message)
+> <Array(<Array<LeaseTransactionMessage>>, Integer, Hash)> create_lease_ledger_charge_with_http_info(lease_id, lease_charge_post_message)
 
 ```ruby
 begin
   # Create a charge
-  data, status_code, headers = api_instance.create_lease_ledger_charge_with_http_info(lease_id, lease_charge_message)
+  data, status_code, headers = api_instance.create_lease_ledger_charge_with_http_info(lease_id, lease_charge_post_message)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<LeaseTransactionMessage>>
@@ -408,7 +411,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **lease_id** | **Integer** |  |  |
-| **lease_charge_message** | [**LeaseChargeMessage**](LeaseChargeMessage.md) |  |  |
+| **lease_charge_post_message** | [**LeaseChargePostMessage**](LeaseChargePostMessage.md) |  |  |
 
 ### Return type
 
@@ -2223,6 +2226,246 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lease_renewals_external_api_read_get_all_lease_renewals
+
+> <Array<LeaseRenewalMessage>> lease_renewals_external_api_read_get_all_lease_renewals(lease_id, opts)
+
+Retrieve all lease renewals
+
+Retrieves all lease renewals.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all lease renewals
+  result = api_instance.lease_renewals_external_api_read_get_all_lease_renewals(lease_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->lease_renewals_external_api_read_get_all_lease_renewals: #{e}"
+end
+```
+
+#### Using the lease_renewals_external_api_read_get_all_lease_renewals_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<LeaseRenewalMessage>>, Integer, Hash)> lease_renewals_external_api_read_get_all_lease_renewals_with_http_info(lease_id, opts)
+
+```ruby
+begin
+  # Retrieve all lease renewals
+  data, status_code, headers = api_instance.lease_renewals_external_api_read_get_all_lease_renewals_with_http_info(lease_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<LeaseRenewalMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->lease_renewals_external_api_read_get_all_lease_renewals_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;LeaseRenewalMessage&gt;**](LeaseRenewalMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lease_renewals_external_api_read_get_lease_renewal_by_id
+
+> <LeaseRenewalMessage> lease_renewals_external_api_read_get_lease_renewal_by_id(lease_id, renewal_id)
+
+Retrieve a lease renewal
+
+Retrieves a lease renewal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+renewal_id = 56 # Integer | 
+
+begin
+  # Retrieve a lease renewal
+  result = api_instance.lease_renewals_external_api_read_get_lease_renewal_by_id(lease_id, renewal_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->lease_renewals_external_api_read_get_lease_renewal_by_id: #{e}"
+end
+```
+
+#### Using the lease_renewals_external_api_read_get_lease_renewal_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseRenewalMessage>, Integer, Hash)> lease_renewals_external_api_read_get_lease_renewal_by_id_with_http_info(lease_id, renewal_id)
+
+```ruby
+begin
+  # Retrieve a lease renewal
+  data, status_code, headers = api_instance.lease_renewals_external_api_read_get_lease_renewal_by_id_with_http_info(lease_id, renewal_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseRenewalMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->lease_renewals_external_api_read_get_lease_renewal_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **renewal_id** | **Integer** |  |  |
+
+### Return type
+
+[**LeaseRenewalMessage**](LeaseRenewalMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lease_renewals_external_api_write_create_lease_renewal
+
+> <LeaseRenewalMessage> lease_renewals_external_api_write_create_lease_renewal(lease_id, lease_renewal_post_message)
+
+Create a lease renewal
+
+Creates a lease renewal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+lease_renewal_post_message = Buildium::LeaseRenewalPostMessage.new({lease_type: 'Fixed', rent: Buildium::LeaseRentPostMessage.new({cycle: 'Monthly', charges: [Buildium::LeaseRentChargePostMessage.new({amount: 3.56, gl_account_id: 37, next_due_date: Date.today})]}), send_welcome_email: false}) # LeaseRenewalPostMessage | 
+
+begin
+  # Create a lease renewal
+  result = api_instance.lease_renewals_external_api_write_create_lease_renewal(lease_id, lease_renewal_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->lease_renewals_external_api_write_create_lease_renewal: #{e}"
+end
+```
+
+#### Using the lease_renewals_external_api_write_create_lease_renewal_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseRenewalMessage>, Integer, Hash)> lease_renewals_external_api_write_create_lease_renewal_with_http_info(lease_id, lease_renewal_post_message)
+
+```ruby
+begin
+  # Create a lease renewal
+  data, status_code, headers = api_instance.lease_renewals_external_api_write_create_lease_renewal_with_http_info(lease_id, lease_renewal_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseRenewalMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->lease_renewals_external_api_write_create_lease_renewal_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **lease_renewal_post_message** | [**LeaseRenewalPostMessage**](LeaseRenewalPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseRenewalMessage**](LeaseRenewalMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

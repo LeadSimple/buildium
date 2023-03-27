@@ -25,6 +25,12 @@ describe Buildium::BillPaymentAccountingEntityMessage do
       expect(instance).to be_instance_of(Buildium::BillPaymentAccountingEntityMessage)
     end
   end
+  describe 'test attribute "id"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "accounting_entity_type"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -32,12 +38,6 @@ describe Buildium::BillPaymentAccountingEntityMessage do
       # validator.allowable_values.each do |value|
       #   expect { instance.accounting_entity_type = value }.not_to raise_error
       # end
-    end
-  end
-
-  describe 'test attribute "id"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 

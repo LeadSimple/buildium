@@ -12,6 +12,7 @@
 | **vendor_id** | **Integer** | Unique identifier of the vendor who submitted the bill. | [optional] |
 | **work_order_id** | **Integer** | Unique identifier of the work order associated with this bill. | [optional] |
 | **reference_number** | **String** | The invoice or reference number that the vendor assigned to the invoice. | [optional] |
+| **approval_status** | **String** | The current approval status for the bill. | [optional] |
 | **lines** | [**Array&lt;BillLineMessage&gt;**](BillLineMessage.md) | A collection of line items associated with the bill. | [optional] |
 
 ## Example
@@ -28,6 +29,7 @@ instance = Buildium::BillMessage.new(
   vendor_id: null,
   work_order_id: null,
   reference_number: null,
+  approval_status: null,
   lines: null
 )
 ```

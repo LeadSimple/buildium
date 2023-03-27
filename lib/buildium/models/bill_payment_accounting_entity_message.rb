@@ -16,11 +16,11 @@ require 'time'
 module Buildium
   # The accounting entity associated with the payment line item.
   class BillPaymentAccountingEntityMessage
-    # Indicates the type of the accounting entity.
-    attr_accessor :accounting_entity_type
-
     # The accounting entity unique identifier.
     attr_accessor :id
+
+    # Indicates the type of the accounting entity.
+    attr_accessor :accounting_entity_type
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -47,8 +47,8 @@ module Buildium
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'accounting_entity_type' => :'AccountingEntityType',
-        :'id' => :'Id'
+        :'id' => :'Id',
+        :'accounting_entity_type' => :'AccountingEntityType'
       }
     end
 
@@ -60,8 +60,8 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'accounting_entity_type' => :'String',
-        :'id' => :'Integer'
+        :'id' => :'Integer',
+        :'accounting_entity_type' => :'String'
       }
     end
 
@@ -86,12 +86,12 @@ module Buildium
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'accounting_entity_type')
-        self.accounting_entity_type = attributes[:'accounting_entity_type']
-      end
-
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'accounting_entity_type')
+        self.accounting_entity_type = attributes[:'accounting_entity_type']
       end
     end
 
@@ -125,8 +125,8 @@ module Buildium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          accounting_entity_type == o.accounting_entity_type &&
-          id == o.id
+          id == o.id &&
+          accounting_entity_type == o.accounting_entity_type
     end
 
     # @see the `==` method
@@ -138,7 +138,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [accounting_entity_type, id].hash
+      [id, accounting_entity_type].hash
     end
 
     # Builds the object from hash

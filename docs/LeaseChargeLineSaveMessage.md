@@ -1,4 +1,4 @@
-# Buildium::LeaseChargeLineMessage
+# Buildium::LeaseChargeLineSaveMessage
 
 ## Properties
 
@@ -13,7 +13,7 @@
 ```ruby
 require 'buildium'
 
-instance = Buildium::LeaseChargeLineMessage.new(
+instance = Buildium::LeaseChargeLineSaveMessage.new(
   amount: null,
   gl_account_id: null,
   reference_number: null

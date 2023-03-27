@@ -751,7 +751,7 @@ end
 
 ## get_bank_account_checks
 
-> <Array<BankAccountCheckMessage>> get_bank_account_checks(bank_account_id, startdate, enddate)
+> <Array<BankAccountCheckMessage>> get_bank_account_checks(bank_account_id, startdate, enddate, opts)
 
 Retrieve all checks
 
@@ -779,10 +779,15 @@ api_instance = Buildium::BankAccountsApi.new
 bank_account_id = 56 # Integer | 
 startdate = Date.parse('2013-10-20') # Date | Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
 enddate = Date.parse('2013-10-20') # Date | Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
 
 begin
   # Retrieve all checks
-  result = api_instance.get_bank_account_checks(bank_account_id, startdate, enddate)
+  result = api_instance.get_bank_account_checks(bank_account_id, startdate, enddate, opts)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling BankAccountsApi->get_bank_account_checks: #{e}"
@@ -793,12 +798,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<BankAccountCheckMessage>>, Integer, Hash)> get_bank_account_checks_with_http_info(bank_account_id, startdate, enddate)
+> <Array(<Array<BankAccountCheckMessage>>, Integer, Hash)> get_bank_account_checks_with_http_info(bank_account_id, startdate, enddate, opts)
 
 ```ruby
 begin
   # Retrieve all checks
-  data, status_code, headers = api_instance.get_bank_account_checks_with_http_info(bank_account_id, startdate, enddate)
+  data, status_code, headers = api_instance.get_bank_account_checks_with_http_info(bank_account_id, startdate, enddate, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<BankAccountCheckMessage>>
@@ -814,6 +819,9 @@ end
 | **bank_account_id** | **Integer** |  |  |
 | **startdate** | **Date** | Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD. |  |
 | **enddate** | **Date** | Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD. |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
 
 ### Return type
 

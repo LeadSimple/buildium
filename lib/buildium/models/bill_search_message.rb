@@ -36,6 +36,9 @@ module Buildium
     # Filters results to any bill whose paid date is less than or equal to the specified value.
     attr_accessor :to_paid_date
 
+    # Filters the results to bills matching the specified approval statuses. If no approval status is specified, bills with any status will be returned.
+    attr_accessor :approval_statuses
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -67,7 +70,8 @@ module Buildium
         :'reference_number' => :'ReferenceNumber',
         :'paid_status' => :'PaidStatus',
         :'from_paid_date' => :'FromPaidDate',
-        :'to_paid_date' => :'ToPaidDate'
+        :'to_paid_date' => :'ToPaidDate',
+        :'approval_statuses' => :'ApprovalStatuses'
       }
     end
 
@@ -85,7 +89,8 @@ module Buildium
         :'reference_number' => :'String',
         :'paid_status' => :'String',
         :'from_paid_date' => :'Date',
-        :'to_paid_date' => :'Date'
+        :'to_paid_date' => :'Date',
+        :'approval_statuses' => :'Array<String>'
       }
     end
 
@@ -137,6 +142,12 @@ module Buildium
       if attributes.key?(:'to_paid_date')
         self.to_paid_date = attributes[:'to_paid_date']
       end
+
+      if attributes.key?(:'approval_statuses')
+        if (value = attributes[:'approval_statuses']).is_a?(Array)
+          self.approval_statuses = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -187,7 +198,8 @@ module Buildium
           reference_number == o.reference_number &&
           paid_status == o.paid_status &&
           from_paid_date == o.from_paid_date &&
-          to_paid_date == o.to_paid_date
+          to_paid_date == o.to_paid_date &&
+          approval_statuses == o.approval_statuses
     end
 
     # @see the `==` method
@@ -199,7 +211,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [entity_id, entity_type, vendor_id, reference_number, paid_status, from_paid_date, to_paid_date].hash
+      [entity_id, entity_type, vendor_id, reference_number, paid_status, from_paid_date, to_paid_date, approval_statuses].hash
     end
 
     # Builds the object from hash

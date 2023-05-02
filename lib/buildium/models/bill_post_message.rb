@@ -16,7 +16,7 @@ require 'time'
 module Buildium
   # This object represents a bill.
   class BillPostMessage
-    # The date that an bill was received. This date typically corresponds with a Bill Received Date, Invoice Date, or Invoice Received Date from an invoice. The date must be formatted as YYYY-MM-DD.
+    # The date that the bill was received. This date typically corresponds with a Bill Received Date, Invoice Date, or Invoice Received Date from an invoice. The date must be formatted as YYYY-MM-DD.
     attr_accessor :date
 
     # The date that payment is due to the vendor. The due date must be after the value in the `Date` field. The date must be formatted as YYYY-MM-DD.

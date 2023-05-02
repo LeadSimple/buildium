@@ -3037,6 +3037,58 @@
         }
       }
     },
+    "/v1/administration/accountinglockperiod": {
+      "get": {
+        "tags": [
+          "Administration"
+        ],
+        "summary": "Retrieve accounting lock periods",
+        "description": "Retrieves accounting lock periods.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Application Settings</span> - `View`",
+        "operationId": "GetAccountingLockPeriodSettings",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountingLockPeriodMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/applicants": {
       "get": {
         "tags": [
@@ -7831,6 +7883,117 @@
         }
       }
     },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/applieddeposits": {
+      "post": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Create a deposit withholding",
+        "description": "Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`\r\n            <span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`",
+        "operationId": "CreateOwnershipAccountDepositWithholding",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnershipAccountDepositWithholdingPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/associations/ownershipaccounts/{ownershipAccountId}/charges": {
       "post": {
         "tags": [
@@ -7872,6 +8035,120 @@
                 }
               }
             },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnershipAccountTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/associations/ownershipaccounts/{ownershipAccountId}/charges/{chargeId}": {
+      "put": {
+        "tags": [
+          "Association Ownership Accounts"
+        ],
+        "summary": "Update a charge",
+        "description": "Updates a charge.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`\r\n            <br />",
+        "operationId": "UpdateOwnershipAccountCharge",
+        "parameters": [
+          {
+            "name": "ownershipAccountId",
+            "in": "path",
+            "description": "The ownership account identifier.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chargeId",
+            "in": "path",
+            "description": "The charge identifier.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OwnershipAccountLedgerChargePutMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -11181,7 +11458,7 @@
           "Bank Accounts"
         ],
         "summary": "Retrieve all checks",
-        "description": "Retrieves all bank account checks.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`",
+        "description": "Retrieves all bank account checks.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>",
         "operationId": "GetBankAccountChecks",
         "parameters": [
           {
@@ -11431,7 +11708,7 @@
           "Bank Accounts"
         ],
         "summary": "Retrieve a check",
-        "description": "Retrieves a bank account check.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`",
+        "description": "Retrieves a bank account check.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>",
         "operationId": "GetCheckForBankAccount",
         "parameters": [
           {
@@ -11623,7 +11900,7 @@
           "Bank Accounts"
         ],
         "summary": "Retrieve all deposits",
-        "description": "Retrieves all bank account deposits.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`",
+        "description": "Retrieves all bank account deposits.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>",
         "operationId": "GetBankAccountDeposits",
         "parameters": [
           {
@@ -11727,6 +12004,16 @@
           },
           "403": {
             "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -11863,7 +12150,7 @@
           "Bank Accounts"
         ],
         "summary": "Retrieve a deposit",
-        "description": "Retrieves a bank account deposit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`",
+        "description": "Retrieves a bank account deposit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>",
         "operationId": "GetBankAccountDepositById",
         "parameters": [
           {
@@ -16216,6 +16503,423 @@
         }
       }
     },
+    "/v1/communications/emails": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve all emails",
+        "description": "Retrieves all emails.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View`",
+        "operationId": "GetEmails",
+        "parameters": [
+          {
+            "name": "sentdatetimefrom",
+            "in": "query",
+            "description": "Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "sentdatetimeto",
+            "in": "query",
+            "description": "Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "Filters results to any email whose subject *contains* the specified value.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "recipientnameoremail",
+            "in": "query",
+            "description": "Filters results to any email with a recipient whose name or email address *contains* the specified value.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "senderuserid",
+            "in": "query",
+            "description": "Filters results to only emails that were sent by the specified user identifier.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmailMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Create an email.",
+        "description": "Creates an email\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`",
+        "operationId": "EmailsExternalApiWrite_CreateEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Sent email."
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/emails/{emailId}": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve an email",
+        "description": "Retrieves an email. \r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Emails</span> - `View`",
+        "operationId": "GetEmailById",
+        "parameters": [
+          {
+            "name": "emailId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmailMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/emails/{emailId}/recipients": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve all email recipients",
+        "description": "Retrieves all email recipients.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Email</span> - `View`\r\n            <br /><h4>Optional Permissions:</h4><br />\r\n            The following permissions are optional, but results with a missing permission will be filtered out.\r\n            <span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` In order to retrieve recipients that are Vendors, you must have this permission.\r\n            <span class=\"permissionBlock\">Administration &gt; Users</span> - `View` In order to see recipients that are Staff, you must have this permission.",
+        "operationId": "GetEmailRecipients",
+        "parameters": [
+          {
+            "name": "emailId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EmailRecipientMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/communications/phonelogs": {
       "get": {
         "tags": [
@@ -16682,6 +17386,181 @@
           },
           "422": {
             "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/templates": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve all communication templates",
+        "description": "Retrieves all mailing and email templates.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`\r\n            <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`",
+        "operationId": "GetMailingTemplates",
+        "parameters": [
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MailingTemplateMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/communications/templates/{templateId}": {
+      "get": {
+        "tags": [
+          "Communications"
+        ],
+        "summary": "Retrieve a communication template",
+        "description": "Retrieves a communication template.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`\r\n            <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`",
+        "operationId": "GetMailingTemplatesById",
+        "parameters": [
+          {
+            "name": "templateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MailingTemplateMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -19092,6 +19971,117 @@
         }
       }
     },
+    "/v1/leases/{leaseId}/applieddeposits": {
+      "post": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Create a deposit withholding",
+        "description": "Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).\r\n           <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Ledger</span> - `View` `Edit`\r\n           <span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`",
+        "operationId": "CreateLeaseLedgerDepositWithholding",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeaseLedgerDepositWithholdingPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/leases/{leaseId}/charges": {
       "post": {
         "tags": [
@@ -19175,6 +20165,118 @@
           },
           "404": {
             "description": "Lease not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/leases/{leaseId}/charges/{chargeId}": {
+      "put": {
+        "tags": [
+          "Leases"
+        ],
+        "summary": "Update a charge",
+        "description": "Updates a charge.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`",
+        "operationId": "UpdateLeaseCharge",
+        "parameters": [
+          {
+            "name": "leaseId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "chargeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LeaseChargePutMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LeaseTransactionMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -27563,6 +28665,182 @@
         }
       }
     },
+    "/v1/residentCenterUsers": {
+      "get": {
+        "tags": [
+          "Resident Center"
+        ],
+        "summary": "Retrieve all resident center users",
+        "description": "Retrieves all resident center users for both rentals and associations.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Resident Center Users</span> - `View`\r\n            <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` is required to retrieve resident center users that are tenants.\r\n            <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` is required to retrieve resident center users that are association owners.",
+        "operationId": "GetResidentCenterUsers",
+        "parameters": [
+          {
+            "name": "unitagreementids",
+            "in": "query",
+            "description": "Filters results to any resident center user who is associated with the specified lease and/or association ownership account identifiers.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          {
+            "name": "userids",
+            "in": "query",
+            "description": "Filters results to any resident center user with the specified tenant and/or association owner identifiers.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          {
+            "name": "usertypes",
+            "in": "query",
+            "description": "Filters results to any resident center user with the specified types.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Tenant",
+                  "AssociationOwner"
+                ]
+              }
+            }
+          },
+          {
+            "name": "residentcenteruserstatuses",
+            "in": "query",
+            "description": "Filters results to any resident center user with the specified resident center user statuses.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "AccountExistsButNoEmailSent",
+                  "PasswordSent",
+                  "EmailFailed",
+                  "SignedIn",
+                  "Blocked"
+                ]
+              }
+            }
+          },
+          {
+            "name": "isautopayenabled",
+            "in": "query",
+            "description": "If true, filters results to any resident center users who have automatic payments scheduled for the future. If false, filters results to any resident center users\r\nwho do not have automatic payments scheduled for the future. If not provided, will not filter results based on automatic payments.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ResidentCenterUserMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/tasks": {
       "get": {
         "tags": [
@@ -32010,6 +33288,199 @@
         }
       }
     },
+    "/v1/vendors/{vendorId}/credits": {
+      "post": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "Create a credit",
+        "description": "Creates a credit.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`",
+        "operationId": "CreateVendorCredit",
+        "parameters": [
+          {
+            "name": "vendorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorCreditPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendorCreditMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/vendors/{vendorId}/credits/{vendorCreditId}": {
+      "get": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "Retrieve a credit",
+        "description": "Retrieves a credit.\r\n             <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`",
+        "operationId": "GetVendorCredit",
+        "parameters": [
+          {
+            "name": "vendorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "vendorCreditId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendorCreditMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/vendors/{vendorId}/notes": {
       "get": {
         "tags": [
@@ -32427,6 +33898,396 @@
           },
           "415": {
             "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/vendors/{vendorId}/refunds": {
+      "post": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "Create a refund",
+        "description": "Creates a refund.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`\r\n            <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`",
+        "operationId": "CreateVendorRefund",
+        "parameters": [
+          {
+            "name": "vendorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VendorRefundPostMessage"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "The location to retrieve the created resource.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendorRefundMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "The Content-Type header on the request is missing or contains an unsupported value.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request data could not be used to fulfill the request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/vendors/{vendorId}/refunds/{vendorRefundId}": {
+      "get": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "Retrieve a refund",
+        "description": "Retrieves a refund.\r\n            <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`",
+        "operationId": "GetVendorRefund",
+        "parameters": [
+          {
+            "name": "vendorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "vendorRefundId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VendorCreditMessage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/vendors/{vendorId}/transactions": {
+      "get": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "Retrieve all transactions",
+        "description": "Retrieves all transactions.\r\n<br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`\r\n<br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`",
+        "operationId": "GetAllVendorTransactions",
+        "parameters": [
+          {
+            "name": "vendorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "transactiondatefrom",
+            "in": "query",
+            "description": "Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "transactiondateto",
+            "in": "query",
+            "description": "Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "transactiontypes",
+            "in": "query",
+            "description": "Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.",
+            "required": false,
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "Bill",
+                  "Check",
+                  "Charge",
+                  "Payment",
+                  "Credit",
+                  "Refund",
+                  "ApplyDeposit",
+                  "ElectronicFundsTransfer",
+                  "Other",
+                  "Deposit",
+                  "GeneralJournalEntry",
+                  "OwnerContribution",
+                  "ReversePayment",
+                  "ReverseElectronicFundsTransfer",
+                  "VendorCredit",
+                  "RentalApplicationFeePayment",
+                  "ReverseRentalApplicationFeePayment",
+                  "ReverseOwnerContribution",
+                  "VendorRefund",
+                  "UnreversedPayment",
+                  "UnreversedElectronicFundsTransfer",
+                  "UnreversedOwnerContribution",
+                  "UnreversedRentalApplicationFeePayment"
+                ]
+              }
+            }
+          },
+          {
+            "name": "referencenumber",
+            "in": "query",
+            "description": "Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "memo",
+            "in": "query",
+            "description": "Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "orderby",
+            "in": "query",
+            "description": "`orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "`offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "`limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Total-Count": {
+                "description": "The total number of records available in the overall result set of the request.",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VendorTransactionMessage"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unable to process the request due to malformed request syntax or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The API key couldn't be authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The supplied credentials don't have permissions to access the resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found.",
             "content": {
               "application/json": {
                 "schema": {
@@ -33473,6 +35334,10 @@
     {
       "name": "Property Groups",
       "description": ""
+    },
+    {
+      "name": "Resident Center",
+      "description": "GetResidentCenterUsers\">users</a>."
     }
   ],
   "servers": [
@@ -33666,6 +35531,30 @@
               "Company"
             ],
             "type": "string"
+          }
+        }
+      },
+      "AccountingLockPeriodMessage": {
+        "description": "Accounting lock period settings.",
+        "type": "object",
+        "properties": {
+          "Global": {
+            "$ref": "#/components/schemas/LockPeriodSettingsGlobalMessage"
+          },
+          "Overrides": {
+            "description": "Settings overrides for specific properties.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LockPeriodSettingsOverridesMessage"
+            }
+          },
+          "FinancialAdministratorUserIds": {
+            "description": "A collection of identifiers for users that have been designated financial administrators. These users will have permission to add, edit, and delete transactions during a locked period. This won't conflict with any property-level permissions for this account. By default, account administrators have permission to add, edit, and delete transactions within a locked period.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
           }
         }
       },
@@ -38622,7 +40511,7 @@
         "properties": {
           "Date": {
             "format": "date",
-            "description": "The date that an bill was received. This date typically corresponds with a Bill Received Date, Invoice Date, or Invoice Received Date from an invoice. The date must be formatted as YYYY-MM-DD.",
+            "description": "The date that the bill was received. This date typically corresponds with a Bill Received Date, Invoice Date, or Invoice Received Date from an invoice. The date must be formatted as YYYY-MM-DD.",
             "type": "string"
           },
           "DueDate": {
@@ -40261,6 +42150,166 @@
           }
         }
       },
+      "EmailMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Email unique identifier.",
+            "type": "integer"
+          },
+          "SentDateTime": {
+            "format": "date-time",
+            "description": "The date and time the email was sent.",
+            "type": "string"
+          },
+          "Subject": {
+            "description": "Email subject.",
+            "type": "string"
+          },
+          "Sender": {
+            "$ref": "#/components/schemas/EmailSenderMessage"
+          }
+        }
+      },
+      "EmailPostMessage": {
+        "required": [
+          "TemplateId",
+          "Subject",
+          "IncludeAlternateEmails",
+          "ExcludeDelinquentRecipients",
+          "IncludeAssociationTenants"
+        ],
+        "type": "object",
+        "properties": {
+          "TemplateId": {
+            "format": "int32",
+            "description": "Unique identifier of the email template to use for the body of the email. Any tokens present in the template will be replaced based on the recipient(s) of the email.",
+            "type": "integer"
+          },
+          "Subject": {
+            "description": "Email subject.",
+            "type": "string"
+          },
+          "IncludeAlternateEmails": {
+            "description": "Indicates whether to send the email to the recipient's primary and alternate email addresses.",
+            "type": "boolean"
+          },
+          "ExcludeDelinquentRecipients": {
+            "description": "Indicates whether to exclude sending emails to association owners that are flagged as delinquent. This only applies to association recipients.",
+            "type": "boolean"
+          },
+          "IncludeAssociationTenants": {
+            "description": "Indicates whether to include association tenants. Only applies to association properties.",
+            "type": "boolean"
+          },
+          "PropertyIds": {
+            "description": "A list of association and/or rental property unique identifiers to send the email to. Cannot be populated if 'RecipientIds' is present.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "RecipientIds": {
+            "description": "A list of individual unique identifiers to send the email to. Cannot be populated if 'PropertyIds' is present.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "EmailRecipientMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Recipient unique identifier.",
+            "type": "integer"
+          },
+          "Name": {
+            "description": "Name of the recipient.",
+            "type": "string"
+          },
+          "Email": {
+            "description": "Email address of the recipient.",
+            "type": "string"
+          },
+          "RecipientType": {
+            "description": "The type of recipient.",
+            "enum": [
+              "Tenant",
+              "AssociationOwner",
+              "RentalOwner",
+              "AssociationTenant",
+              "Applicant",
+              "Vendor",
+              "Staff"
+            ],
+            "type": "string"
+          },
+          "Href": {
+            "description": "A link to the resource associated with the recipient.",
+            "type": "string"
+          }
+        }
+      },
+      "EmailSearchMessage": {
+        "required": [
+          "SentDateTimeFrom",
+          "SentDateTimeTo"
+        ],
+        "type": "object",
+        "properties": {
+          "SentDateTimeFrom": {
+            "format": "date-time",
+            "description": "Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.",
+            "type": "string"
+          },
+          "SentDateTimeTo": {
+            "format": "date-time",
+            "description": "Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.",
+            "type": "string"
+          },
+          "Subject": {
+            "description": "Filters results to any email whose subject *contains* the specified value.",
+            "type": "string"
+          },
+          "RecipientNameOrEmail": {
+            "description": "Filters results to any email with a recipient whose name or email address *contains* the specified value.",
+            "type": "string"
+          },
+          "SenderUserId": {
+            "format": "int32",
+            "description": "Filters results to only emails that were sent by the specified user identifier.",
+            "type": "integer"
+          }
+        }
+      },
+      "EmailSenderMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "User unique identifier.",
+            "type": "integer"
+          },
+          "FirstName": {
+            "description": "First name of the user.",
+            "type": "string"
+          },
+          "LastName": {
+            "description": "Last name of the user.",
+            "type": "string"
+          },
+          "Href": {
+            "description": "A link to the user resource.",
+            "type": "string"
+          }
+        }
+      },
       "EmergencyContactMessage": {
         "description": "This is an object that represents an emergency contact.",
         "type": "object",
@@ -41322,6 +43371,31 @@
           }
         }
       },
+      "LeaseChargePutMessage": {
+        "required": [
+          "Date",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "Date": {
+            "format": "date",
+            "description": "Date of the charge. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo associated with the charge. The value cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "Collection of line items to be included in the charge. All existing line items will be deleted and replaced with the line items in this request. At least 1 line item is required.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaseChargeLineSaveMessage"
+            }
+          }
+        }
+      },
       "LeaseChargeRecurringTransactionMessage": {
         "type": "object",
         "properties": {
@@ -41500,6 +43574,55 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LeaseLedgerCreditLinePostMessage"
+            }
+          }
+        }
+      },
+      "LeaseLedgerDepositWithholdingLinePostMessage": {
+        "required": [
+          "Amount",
+          "GLAccountId"
+        ],
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "format": "double",
+            "description": "Line item amount.",
+            "type": "number"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "General ledger account identifier under which the line item amount will be recorded. Must be an Income account.",
+            "type": "integer"
+          }
+        }
+      },
+      "LeaseLedgerDepositWithholdingPostMessage": {
+        "required": [
+          "EntryDate",
+          "DepositLiabilityGLAccountId"
+        ],
+        "type": "object",
+        "properties": {
+          "EntryDate": {
+            "format": "date",
+            "description": "Date of the deposit withholding. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "DepositLiabilityGLAccountId": {
+            "format": "int32",
+            "description": "The identifier of the liability general ledger account from which to withhold the funds. Note, the specified liability account must have a positive balance.",
+            "type": "integer"
+          },
+          "Memo": {
+            "description": "Memo associated with the withholding. Memo cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "Line items specifying the income accounts the deposit will be applied to. The total amount of the line items can not exceed the balance of the liability account.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LeaseLedgerDepositWithholdingLinePostMessage"
             }
           }
         }
@@ -42140,6 +44263,16 @@
           },
           "SecurityDeposit": {
             "$ref": "#/components/schemas/LeaseSecurityDepositPostMessage"
+          },
+          "ProratedFirstMonthRent": {
+            "format": "double",
+            "description": "Prorated rent charged for the first month of the lease. Must be null if the lease begins on the first day of a month.",
+            "type": "number"
+          },
+          "ProratedLastMonthRent": {
+            "format": "double",
+            "description": "Prorated rent charged for the last month of the lease. Must be null if the lease ends on the last day of a month.",
+            "type": "number"
           }
         }
       },
@@ -43332,6 +45465,29 @@
           }
         }
       },
+      "LockPeriodSettingsGlobalMessage": {
+        "type": "object",
+        "properties": {
+          "LockDate": {
+            "format": "date",
+            "description": "Financial transactions on or prior to this date will be locked.",
+            "type": "string"
+          }
+        }
+      },
+      "LockPeriodSettingsOverridesMessage": {
+        "type": "object",
+        "properties": {
+          "Property": {
+            "$ref": "#/components/schemas/PropertyMessage"
+          },
+          "LockDate": {
+            "format": "date",
+            "description": "Accounting transactions related to the property specified in the Property field on or prior to this date will be locked.",
+            "type": "string"
+          }
+        }
+      },
       "LoggedByStaffUserMessage": {
         "description": "The staff member that logged the call.",
         "type": "object",
@@ -43363,6 +45519,35 @@
             "type": "integer"
           },
           "Name": {
+            "type": "string"
+          }
+        }
+      },
+      "MailingTemplateMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Unique identifier of the mailing template.",
+            "type": "integer"
+          },
+          "Name": {
+            "description": "Name of the mailing template.",
+            "type": "string"
+          },
+          "Description": {
+            "description": "Description of the mailing template.",
+            "type": "string"
+          },
+          "RecipientType": {
+            "description": "Intended recipient type for mailings using the template.",
+            "enum": [
+              "Tenants",
+              "AssociationOwners",
+              "RentalOwners",
+              "Vendors",
+              "Applicants"
+            ],
             "type": "string"
           }
         }
@@ -43581,6 +45766,78 @@
           }
         }
       },
+      "OwnershipAccountDepositWithholdingLinePostMessage": {
+        "required": [
+          "Amount",
+          "GLAccountId"
+        ],
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "format": "double",
+            "description": "Line item amount.",
+            "type": "number"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "General Ledger Account identifier under which the line item amount will be recorded. Must be an Income account.",
+            "type": "integer"
+          }
+        }
+      },
+      "OwnershipAccountDepositWithholdingPostMessage": {
+        "required": [
+          "EntryDate",
+          "DepositLiabilityGLAccountId"
+        ],
+        "type": "object",
+        "properties": {
+          "EntryDate": {
+            "format": "date",
+            "description": "Date of the deposit withholding. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "DepositLiabilityGLAccountId": {
+            "format": "int32",
+            "description": "General Ledger Account identifier to record the deposit withholding under.",
+            "type": "integer"
+          },
+          "Memo": {
+            "description": "Memo associated with the withholding. Memo cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "Collection of line items included in this deposit withholding. At least one line item is required.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnershipAccountDepositWithholdingLinePostMessage"
+            }
+          }
+        }
+      },
+      "OwnershipAccountLedgerChargeLinesPutMessage": {
+        "required": [
+          "Amount",
+          "GLAccountId"
+        ],
+        "type": "object",
+        "properties": {
+          "Amount": {
+            "format": "double",
+            "description": "Line item amount.",
+            "type": "number"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "The general ledger account identifier under which the line item amount will be recorded. The account must be a liability or income type.",
+            "type": "integer"
+          },
+          "ReferenceNumber": {
+            "description": "Reference number associated with the charge. The value cannot exceed 30 characters.",
+            "type": "string"
+          }
+        }
+      },
       "OwnershipAccountLedgerChargeLinesSaveMessage": {
         "required": [
           "Amount",
@@ -43617,10 +45874,35 @@
             "type": "string"
           },
           "Lines": {
-            "description": "A collection of line items included in the charge. At least one line item is required.",
+            "description": "Collection of line items to be included in the charge. All existing line items will be deleted and replaced with the line items in this request. At least 1 line item is required.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OwnershipAccountLedgerChargeLinesSaveMessage"
+            }
+          }
+        }
+      },
+      "OwnershipAccountLedgerChargePutMessage": {
+        "required": [
+          "Date",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "Date": {
+            "format": "date",
+            "description": "Date of the charge. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo associated with the charge. The value cannot exceed 65 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A collection of line items included in the charge. At least one line item is required.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OwnershipAccountLedgerChargeLinesPutMessage"
             }
           }
         }
@@ -46885,6 +49167,112 @@
           }
         }
       },
+      "ResidentCenterUserMessage": {
+        "type": "object",
+        "properties": {
+          "UnitAgreement": {
+            "$ref": "#/components/schemas/UnitAgreementMessage"
+          },
+          "User": {
+            "$ref": "#/components/schemas/ResidentCenterUserReferenceMessage"
+          },
+          "ResidentCenterUserStatus": {
+            "description": "Resident center status for the user.",
+            "enum": [
+              "AccountExistsButNoEmailSent",
+              "PasswordSent",
+              "EmailFailed",
+              "SignedIn",
+              "Blocked"
+            ],
+            "type": "string"
+          },
+          "IsAutoPayEnabled": {
+            "description": "Indicates if the user has an automatic payment scheduled for the future.",
+            "type": "boolean"
+          }
+        }
+      },
+      "ResidentCenterUserReferenceMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Resident center user unique identifier.",
+            "type": "integer"
+          },
+          "FirstName": {
+            "description": "First name of the resident center user.",
+            "type": "string"
+          },
+          "LastName": {
+            "description": "Last name of the resident center user.",
+            "type": "string"
+          },
+          "UserType": {
+            "description": "Indicates if the resident center user is a tenant or association owner",
+            "enum": [
+              "Tenant",
+              "AssociationOwner"
+            ],
+            "type": "string"
+          },
+          "Href": {
+            "description": "A link to the user resource.",
+            "type": "string"
+          }
+        }
+      },
+      "ResidentCenterUserSearchMessage": {
+        "type": "object",
+        "properties": {
+          "UnitAgreementIds": {
+            "description": "Filters results to any resident center user who is associated with the specified lease and/or association ownership account identifiers.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "UserIds": {
+            "description": "Filters results to any resident center user with the specified tenant and/or association owner identifiers.",
+            "type": "array",
+            "items": {
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "UserTypes": {
+            "description": "Filters results to any resident center user with the specified types.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "Tenant",
+                "AssociationOwner"
+              ],
+              "type": "string"
+            }
+          },
+          "ResidentCenterUserStatuses": {
+            "description": "Filters results to any resident center user with the specified resident center user statuses.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "AccountExistsButNoEmailSent",
+                "PasswordSent",
+                "EmailFailed",
+                "SignedIn",
+                "Blocked"
+              ],
+              "type": "string"
+            }
+          },
+          "IsAutoPayEnabled": {
+            "description": "If true, filters results to any resident center users who have automatic payments scheduled for the future. If false, filters results to any resident center users\r\nwho do not have automatic payments scheduled for the future. If not provided, will not filter results based on automatic payments.",
+            "type": "boolean"
+          }
+        }
+      },
       "ResidentRequestTaskMessage": {
         "type": "object",
         "properties": {
@@ -48593,6 +50981,119 @@
           }
         }
       },
+      "VendorCreditLineItemMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Vendor credit line item unique identifier.",
+            "type": "integer"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the general ledger account associated with the vendor credit.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the vendor credit line item.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo for the vendor credit line item.",
+            "type": "string"
+          },
+          "AccountingEntity": {
+            "$ref": "#/components/schemas/AccountingEntityMessage"
+          }
+        }
+      },
+      "VendorCreditLineItemPostMessage": {
+        "required": [
+          "GLAccountId",
+          "Amount",
+          "AccountingEntity"
+        ],
+        "type": "object",
+        "properties": {
+          "GLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the general ledger account associated with the vendor credit. The account cannot be a bank account.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the vendor credit line item. Must be between 0.01 and 9999999.99.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo for the vendor credit line item. Cannot exceed 240 characters.",
+            "type": "string"
+          },
+          "AccountingEntity": {
+            "$ref": "#/components/schemas/AccountingEntitySaveMessage"
+          }
+        }
+      },
+      "VendorCreditMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Vendor credit unique identifier.",
+            "type": "integer"
+          },
+          "EntryDate": {
+            "format": "date",
+            "description": "Date the vendor credit was made.",
+            "type": "string"
+          },
+          "ReferenceNumber": {
+            "description": "The invoice or reference number that the vendor assigned to the credit.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo associated with the vendor credit, if applicable.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A collection of line items associated with the vendor credit.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VendorCreditLineItemMessage"
+            }
+          }
+        }
+      },
+      "VendorCreditPostMessage": {
+        "required": [
+          "EntryDate",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "EntryDate": {
+            "format": "date",
+            "description": "Date the vendor credit was made. The date must be formatted as YYYY-MM-DD.",
+            "type": "string"
+          },
+          "ReferenceNumber": {
+            "description": "The invoice or reference number that the vendor assigned to the credit. The value cannot exceed 40 characters.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo associated with the vendor credit, if applicable. The value cannot exceed 40 characters.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A collection of line items associated with the vendor credit. At least one line item is required and cannot exceed 100 line items.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VendorCreditLineItemPostMessage"
+            }
+          }
+        }
+      },
       "VendorInsuranceMessage": {
         "description": "Vendor insurance information.",
         "type": "object",
@@ -48840,6 +51341,159 @@
           }
         }
       },
+      "VendorRefundLineMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Vendor refund line item unique identifier.",
+            "type": "integer"
+          },
+          "AccountingEntity": {
+            "$ref": "#/components/schemas/AccountingEntityMessage"
+          },
+          "GLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the general ledger account associated with the vendor refund.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the vendor refund line item.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo for the vendor refund line item.",
+            "type": "string"
+          }
+        }
+      },
+      "VendorRefundLinePostMessage": {
+        "required": [
+          "GLAccountId",
+          "Amount",
+          "AccountingEntity"
+        ],
+        "type": "object",
+        "properties": {
+          "GLAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the general ledger account associated with the vendor refund.",
+            "type": "integer"
+          },
+          "Amount": {
+            "format": "double",
+            "description": "Amount of the vendor refund line item.",
+            "type": "number"
+          },
+          "Memo": {
+            "description": "Memo for the vendor refund line item. Memo cannot exceed 215 characters.",
+            "type": "string"
+          },
+          "AccountingEntity": {
+            "$ref": "#/components/schemas/AccountingEntitySaveMessage"
+          }
+        }
+      },
+      "VendorRefundMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Transaction unique identifier.",
+            "type": "integer"
+          },
+          "EntryDate": {
+            "format": "date",
+            "description": "Date the refund was recorded.",
+            "type": "string"
+          },
+          "BankAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the bank account that the refund was deposited into.",
+            "type": "integer"
+          },
+          "PaymentMethod": {
+            "description": "The payment method used for the vendor refund.",
+            "enum": [
+              "None",
+              "Check",
+              "Cash",
+              "MoneyOrder",
+              "CashierCheck",
+              "DirectDeposit",
+              "CreditCard",
+              "ElectronicPayment",
+              "RetailCash"
+            ],
+            "type": "string"
+          },
+          "ReferenceNumber": {
+            "description": "Reference number for the vendor refund.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo for the vendor refund.",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A collection of line items associated with the vendor refund.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VendorRefundLineMessage"
+            }
+          }
+        }
+      },
+      "VendorRefundPostMessage": {
+        "required": [
+          "EntryDate",
+          "BankAccountId",
+          "PaymentMethod",
+          "Lines"
+        ],
+        "type": "object",
+        "properties": {
+          "EntryDate": {
+            "format": "date",
+            "description": "Date the vendor refund was made.",
+            "type": "string"
+          },
+          "BankAccountId": {
+            "format": "int32",
+            "description": "Unique identifier of the bank account that the refund was deposited into.",
+            "type": "integer"
+          },
+          "PaymentMethod": {
+            "description": "The payment method used for the refund.",
+            "enum": [
+              "Check",
+              "Cash",
+              "MoneyOrder",
+              "CashierCheck",
+              "DirectDeposit",
+              "CreditCard",
+              "ElectronicPayment"
+            ],
+            "type": "string"
+          },
+          "ReferenceNumber": {
+            "description": "The invoice or reference number that the vendor assigned to the refund. Reference number cannot exceed 45 characters.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo associated with the vendor refund, if applicable. Memo cannot exceed 65 characters",
+            "type": "string"
+          },
+          "Lines": {
+            "description": "A collection of line items associated with the vendor refund.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VendorRefundLinePostMessage"
+            }
+          }
+        }
+      },
       "VendorSearchMessage": {
         "type": "object",
         "properties": {
@@ -48921,6 +51575,122 @@
           },
           "Address": {
             "$ref": "#/components/schemas/AddressMessage"
+          }
+        }
+      },
+      "VendorTransactionMessage": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int32",
+            "description": "Transaction unique identifier.",
+            "type": "integer"
+          },
+          "Date": {
+            "format": "date",
+            "description": "Date of the transaction.",
+            "type": "string"
+          },
+          "TotalAmount": {
+            "format": "double",
+            "description": "Total amount of the transaction.",
+            "type": "number"
+          },
+          "TransactionType": {
+            "description": "Type of transaction.",
+            "enum": [
+              "Bill",
+              "Check",
+              "Charge",
+              "Payment",
+              "Credit",
+              "Refund",
+              "ApplyDeposit",
+              "ElectronicFundsTransfer",
+              "Other",
+              "Deposit",
+              "GeneralJournalEntry",
+              "OwnerContribution",
+              "ReversePayment",
+              "ReverseElectronicFundsTransfer",
+              "VendorCredit",
+              "RentalApplicationFeePayment",
+              "ReverseRentalApplicationFeePayment",
+              "ReverseOwnerContribution",
+              "VendorRefund",
+              "UnreversedPayment",
+              "UnreversedElectronicFundsTransfer",
+              "UnreversedOwnerContribution",
+              "UnreversedRentalApplicationFeePayment"
+            ],
+            "type": "string"
+          },
+          "ReferenceNumber": {
+            "description": "Reference number for the transaction.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Memo for the transaction.",
+            "type": "string"
+          }
+        }
+      },
+      "VendorTransactionSearchMessage": {
+        "required": [
+          "TransactionDateFrom",
+          "TransactionDateTo"
+        ],
+        "type": "object",
+        "properties": {
+          "TransactionDateFrom": {
+            "format": "date",
+            "description": "Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.",
+            "type": "string"
+          },
+          "TransactionDateTo": {
+            "format": "date",
+            "description": "Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.",
+            "type": "string"
+          },
+          "TransactionTypes": {
+            "description": "Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "Bill",
+                "Check",
+                "Charge",
+                "Payment",
+                "Credit",
+                "Refund",
+                "ApplyDeposit",
+                "ElectronicFundsTransfer",
+                "Other",
+                "Deposit",
+                "GeneralJournalEntry",
+                "OwnerContribution",
+                "ReversePayment",
+                "ReverseElectronicFundsTransfer",
+                "VendorCredit",
+                "RentalApplicationFeePayment",
+                "ReverseRentalApplicationFeePayment",
+                "ReverseOwnerContribution",
+                "VendorRefund",
+                "UnreversedPayment",
+                "UnreversedElectronicFundsTransfer",
+                "UnreversedOwnerContribution",
+                "UnreversedRentalApplicationFeePayment"
+              ],
+              "type": "string"
+            }
+          },
+          "ReferenceNumber": {
+            "description": "Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.",
+            "type": "string"
+          },
+          "Memo": {
+            "description": "Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters.",
+            "type": "string"
           }
         }
       },

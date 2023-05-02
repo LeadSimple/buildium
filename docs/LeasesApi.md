@@ -9,6 +9,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_lease_credit**](LeasesApi.md#create_lease_credit) | **POST** /v1/leases/{leaseId}/credits | Create a credit |
 | [**create_lease_credit_recurring_transaction**](LeasesApi.md#create_lease_credit_recurring_transaction) | **POST** /v1/leases/{leaseId}/recurringcredits | Create a recurring credit |
 | [**create_lease_ledger_charge**](LeasesApi.md#create_lease_ledger_charge) | **POST** /v1/leases/{leaseId}/charges | Create a charge |
+| [**create_lease_ledger_deposit_withholding**](LeasesApi.md#create_lease_ledger_deposit_withholding) | **POST** /v1/leases/{leaseId}/applieddeposits | Create a deposit withholding |
 | [**create_lease_ledger_refund**](LeasesApi.md#create_lease_ledger_refund) | **POST** /v1/leases/{leaseId}/refunds | Create a refund |
 | [**create_lease_note**](LeasesApi.md#create_lease_note) | **POST** /v1/leases/{leaseId}/notes | Create a note |
 | [**create_lease_recurring_payment**](LeasesApi.md#create_lease_recurring_payment) | **POST** /v1/leases/{leaseId}/recurringpayments | Create a recurring payment |
@@ -36,6 +37,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**lease_renewals_external_api_write_create_lease_renewal**](LeasesApi.md#lease_renewals_external_api_write_create_lease_renewal) | **POST** /v1/leases/{leaseId}/renewals | Create a lease renewal |
 | [**undo_tenant_moveout**](LeasesApi.md#undo_tenant_moveout) | **DELETE** /v1/leases/{leaseId}/moveouts/{tenantId} | Delete a move out |
 | [**update_lease**](LeasesApi.md#update_lease) | **PUT** /v1/leases/{leaseId} | Update a lease |
+| [**update_lease_charge**](LeasesApi.md#update_lease_charge) | **PUT** /v1/leases/{leaseId}/charges/{chargeId} | Update a charge |
 | [**update_lease_note**](LeasesApi.md#update_lease_note) | **PUT** /v1/leases/{leaseId}/notes/{noteId} | Update a note |
 
 
@@ -416,6 +418,84 @@ end
 ### Return type
 
 [**Array&lt;LeaseTransactionMessage&gt;**](LeaseTransactionMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_lease_ledger_deposit_withholding
+
+> <LeaseTransactionMessage> create_lease_ledger_deposit_withholding(lease_id, lease_ledger_deposit_withholding_post_message)
+
+Create a deposit withholding
+
+Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Ledger</span> - `View` `Edit`             <span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+lease_ledger_deposit_withholding_post_message = Buildium::LeaseLedgerDepositWithholdingPostMessage.new({entry_date: Date.today, deposit_liability_gl_account_id: 37}) # LeaseLedgerDepositWithholdingPostMessage | 
+
+begin
+  # Create a deposit withholding
+  result = api_instance.create_lease_ledger_deposit_withholding(lease_id, lease_ledger_deposit_withholding_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_ledger_deposit_withholding: #{e}"
+end
+```
+
+#### Using the create_lease_ledger_deposit_withholding_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseTransactionMessage>, Integer, Hash)> create_lease_ledger_deposit_withholding_with_http_info(lease_id, lease_ledger_deposit_withholding_post_message)
+
+```ruby
+begin
+  # Create a deposit withholding
+  data, status_code, headers = api_instance.create_lease_ledger_deposit_withholding_with_http_info(lease_id, lease_ledger_deposit_withholding_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->create_lease_ledger_deposit_withholding_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **lease_ledger_deposit_withholding_post_message** | [**LeaseLedgerDepositWithholdingPostMessage**](LeaseLedgerDepositWithholdingPostMessage.md) |  |  |
+
+### Return type
+
+[**LeaseTransactionMessage**](LeaseTransactionMessage.md)
 
 ### Authorization
 
@@ -2613,6 +2693,86 @@ end
 ### Return type
 
 [**LeaseMessage**](LeaseMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_lease_charge
+
+> <LeaseTransactionMessage> update_lease_charge(lease_id, charge_id, lease_charge_put_message)
+
+Update a charge
+
+Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::LeasesApi.new
+lease_id = 56 # Integer | 
+charge_id = 56 # Integer | 
+lease_charge_put_message = Buildium::LeaseChargePutMessage.new({date: Date.today, lines: [Buildium::LeaseChargeLineSaveMessage.new({amount: 3.56, gl_account_id: 37})]}) # LeaseChargePutMessage | 
+
+begin
+  # Update a charge
+  result = api_instance.update_lease_charge(lease_id, charge_id, lease_charge_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->update_lease_charge: #{e}"
+end
+```
+
+#### Using the update_lease_charge_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LeaseTransactionMessage>, Integer, Hash)> update_lease_charge_with_http_info(lease_id, charge_id, lease_charge_put_message)
+
+```ruby
+begin
+  # Update a charge
+  data, status_code, headers = api_instance.update_lease_charge_with_http_info(lease_id, charge_id, lease_charge_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LeaseTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling LeasesApi->update_lease_charge_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lease_id** | **Integer** |  |  |
+| **charge_id** | **Integer** |  |  |
+| **lease_charge_put_message** | [**LeaseChargePutMessage**](LeaseChargePutMessage.md) |  |  |
+
+### Return type
+
+[**LeaseTransactionMessage**](LeaseTransactionMessage.md)
 
 ### Authorization
 

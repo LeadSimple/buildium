@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **date** | **Date** | The date that an bill was received. This date typically corresponds with a Bill Received Date, Invoice Date, or Invoice Received Date from an invoice. The date must be formatted as YYYY-MM-DD. |  |
+| **date** | **Date** | The date that the bill was received. This date typically corresponds with a Bill Received Date, Invoice Date, or Invoice Received Date from an invoice. The date must be formatted as YYYY-MM-DD. |  |
 | **due_date** | **Date** | The date that payment is due to the vendor. The due date must be after the value in the &#x60;Date&#x60; field. The date must be formatted as YYYY-MM-DD. |  |
 | **memo** | **String** | A description of what the invoice was for. The value cannot exceed 245 characters. | [optional] |
 | **vendor_id** | **Integer** | The unique identifier of the vendor or supplier who sent you an invoice. |  |

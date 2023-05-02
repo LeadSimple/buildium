@@ -5,6 +5,7 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**get_account_info**](AdministrationApi.md#get_account_info) | **GET** /v1/administration/account | Retrieve account info |
+| [**get_accounting_lock_period_settings**](AdministrationApi.md#get_accounting_lock_period_settings) | **GET** /v1/administration/accountinglockperiod | Retrieve accounting lock periods |
 | [**get_all_user_roles**](AdministrationApi.md#get_all_user_roles) | **GET** /v1/userroles | Retrieve all user roles |
 | [**get_all_users**](AdministrationApi.md#get_all_users) | **GET** /v1/users | Retrieve all users |
 | [**get_user_by_id**](AdministrationApi.md#get_user_by_id) | **GET** /v1/users/{userId} | Retrieve a user |
@@ -73,6 +74,79 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**AccountInfoMessage**](AccountInfoMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_accounting_lock_period_settings
+
+> <AccountingLockPeriodMessage> get_accounting_lock_period_settings
+
+Retrieve accounting lock periods
+
+Retrieves accounting lock periods.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Application Settings</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AdministrationApi.new
+
+begin
+  # Retrieve accounting lock periods
+  result = api_instance.get_accounting_lock_period_settings
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AdministrationApi->get_accounting_lock_period_settings: #{e}"
+end
+```
+
+#### Using the get_accounting_lock_period_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountingLockPeriodMessage>, Integer, Hash)> get_accounting_lock_period_settings_with_http_info
+
+```ruby
+begin
+  # Retrieve accounting lock periods
+  data, status_code, headers = api_instance.get_accounting_lock_period_settings_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountingLockPeriodMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AdministrationApi->get_accounting_lock_period_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AccountingLockPeriodMessage**](AccountingLockPeriodMessage.md)
 
 ### Authorization
 

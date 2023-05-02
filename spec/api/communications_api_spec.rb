@@ -56,6 +56,18 @@ describe 'CommunicationsApi' do
     end
   end
 
+  # unit tests for emails_external_api_write_create_email
+  # Create an email.
+  # Creates an email              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param email_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'emails_external_api_write_create_email test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for expire_announcement
   # Expire an announcement
   # Removes the announcement from the Resident Center immediately.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
@@ -109,6 +121,78 @@ describe 'CommunicationsApi' do
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
   # @return [Array<PropertyMessage>]
   describe 'get_announcement_properties test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_email_by_id
+  # Retrieve an email
+  # Retrieves an email.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60;
+  # @param email_id 
+  # @param [Hash] opts the optional parameters
+  # @return [EmailMessage]
+  describe 'get_email_by_id test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_email_recipients
+  # Retrieve all email recipients
+  # Retrieves all email recipients.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Email&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;br /&gt;              The following permissions are optional, but results with a missing permission will be filtered out.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; In order to retrieve recipients that are Vendors, you must have this permission.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Users&lt;/span&gt; - &#x60;View&#x60; In order to see recipients that are Staff, you must have this permission.
+  # @param email_id 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<EmailRecipientMessage>]
+  describe 'get_email_recipients test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_emails
+  # Retrieve all emails
+  # Retrieves all emails.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60;
+  # @param sentdatetimefrom Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+  # @param sentdatetimeto Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :subject Filters results to any email whose subject *contains* the specified value.
+  # @option opts [String] :recipientnameoremail Filters results to any email with a recipient whose name or email address *contains* the specified value.
+  # @option opts [Integer] :senderuserid Filters results to only emails that were sent by the specified user identifier.
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<EmailMessage>]
+  describe 'get_emails test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_mailing_templates
+  # Retrieve all communication templates
+  # Retrieves all mailing and email templates.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<MailingTemplateMessage>]
+  describe 'get_mailing_templates test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_mailing_templates_by_id
+  # Retrieve a communication template
+  # Retrieves a communication template.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+  # @param template_id 
+  # @param [Hash] opts the optional parameters
+  # @return [MailingTemplateMessage]
+  describe 'get_mailing_templates_by_id test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

@@ -156,7 +156,7 @@ describe 'BankAccountsApi' do
 
   # unit tests for get_bank_account_checks
   # Retrieve all checks
-  # Retrieves all bank account checks.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+  # Retrieves all bank account checks.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
   # @param bank_account_id 
   # @param startdate Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
   # @param enddate Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -173,7 +173,7 @@ describe 'BankAccountsApi' do
 
   # unit tests for get_bank_account_deposit_by_id
   # Retrieve a deposit
-  # Retrieves a bank account deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+  # Retrieves a bank account deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
   # @param bank_account_id 
   # @param deposit_id 
   # @param [Hash] opts the optional parameters
@@ -186,7 +186,7 @@ describe 'BankAccountsApi' do
 
   # unit tests for get_bank_account_deposits
   # Retrieve all deposits
-  # Retrieves all bank account deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+  # Retrieves all bank account deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
   # @param bank_account_id 
   # @param startdate Filters results to any deposits that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
   # @param enddate Filters results to any deposits that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -295,7 +295,7 @@ describe 'BankAccountsApi' do
 
   # unit tests for get_check_for_bank_account
   # Retrieve a check
-  # Retrieves a bank account check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+  # Retrieves a bank account check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
   # @param bank_account_id 
   # @param check_id 
   # @param [Hash] opts the optional parameters

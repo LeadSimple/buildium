@@ -155,6 +155,74 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create an email.
+    # Creates an email              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
+    # @param email_post_message [EmailPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def emails_external_api_write_create_email(email_post_message, opts = {})
+      emails_external_api_write_create_email_with_http_info(email_post_message, opts)
+      nil
+    end
+
+    # Create an email.
+    # Creates an email              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param email_post_message [EmailPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def emails_external_api_write_create_email_with_http_info(email_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.emails_external_api_write_create_email ...'
+      end
+      # verify the required parameter 'email_post_message' is set
+      if @api_client.config.client_side_validation && email_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'email_post_message' when calling CommunicationsApi.emails_external_api_write_create_email"
+      end
+      # resource path
+      local_var_path = '/v1/communications/emails'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(email_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.emails_external_api_write_create_email",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#emails_external_api_write_create_email\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Expire an announcement
     # Removes the announcement from the Resident Center immediately.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
     # @param announcement_id [Integer] 
@@ -434,6 +502,359 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CommunicationsApi#get_announcement_properties\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve an email
+    # Retrieves an email.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Emails</span> - `View`
+    # @param email_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [EmailMessage]
+    def get_email_by_id(email_id, opts = {})
+      data, _status_code, _headers = get_email_by_id_with_http_info(email_id, opts)
+      data
+    end
+
+    # Retrieve an email
+    # Retrieves an email.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60;
+    # @param email_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailMessage, Integer, Hash)>] EmailMessage data, response status code and response headers
+    def get_email_by_id_with_http_info(email_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_email_by_id ...'
+      end
+      # verify the required parameter 'email_id' is set
+      if @api_client.config.client_side_validation && email_id.nil?
+        fail ArgumentError, "Missing the required parameter 'email_id' when calling CommunicationsApi.get_email_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/communications/emails/{emailId}'.sub('{' + 'emailId' + '}', CGI.escape(email_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_email_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_email_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all email recipients
+    # Retrieves all email recipients.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Email</span> - `View`              <br /><h4>Optional Permissions:</h4><br />              The following permissions are optional, but results with a missing permission will be filtered out.              <span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` In order to retrieve recipients that are Vendors, you must have this permission.              <span class=\"permissionBlock\">Administration &gt; Users</span> - `View` In order to see recipients that are Staff, you must have this permission.
+    # @param email_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<EmailRecipientMessage>]
+    def get_email_recipients(email_id, opts = {})
+      data, _status_code, _headers = get_email_recipients_with_http_info(email_id, opts)
+      data
+    end
+
+    # Retrieve all email recipients
+    # Retrieves all email recipients.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Email&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;br /&gt;              The following permissions are optional, but results with a missing permission will be filtered out.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; In order to retrieve recipients that are Vendors, you must have this permission.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Users&lt;/span&gt; - &#x60;View&#x60; In order to see recipients that are Staff, you must have this permission.
+    # @param email_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<EmailRecipientMessage>, Integer, Hash)>] Array<EmailRecipientMessage> data, response status code and response headers
+    def get_email_recipients_with_http_info(email_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_email_recipients ...'
+      end
+      # verify the required parameter 'email_id' is set
+      if @api_client.config.client_side_validation && email_id.nil?
+        fail ArgumentError, "Missing the required parameter 'email_id' when calling CommunicationsApi.get_email_recipients"
+      end
+      # resource path
+      local_var_path = '/v1/communications/emails/{emailId}/recipients'.sub('{' + 'emailId' + '}', CGI.escape(email_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<EmailRecipientMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_email_recipients",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_email_recipients\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all emails
+    # Retrieves all emails.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View`
+    # @param sentdatetimefrom [Time] Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+    # @param sentdatetimeto [Time] Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :subject Filters results to any email whose subject *contains* the specified value.
+    # @option opts [String] :recipientnameoremail Filters results to any email with a recipient whose name or email address *contains* the specified value.
+    # @option opts [Integer] :senderuserid Filters results to only emails that were sent by the specified user identifier.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<EmailMessage>]
+    def get_emails(sentdatetimefrom, sentdatetimeto, opts = {})
+      data, _status_code, _headers = get_emails_with_http_info(sentdatetimefrom, sentdatetimeto, opts)
+      data
+    end
+
+    # Retrieve all emails
+    # Retrieves all emails.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60;
+    # @param sentdatetimefrom [Time] Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+    # @param sentdatetimeto [Time] Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :subject Filters results to any email whose subject *contains* the specified value.
+    # @option opts [String] :recipientnameoremail Filters results to any email with a recipient whose name or email address *contains* the specified value.
+    # @option opts [Integer] :senderuserid Filters results to only emails that were sent by the specified user identifier.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<EmailMessage>, Integer, Hash)>] Array<EmailMessage> data, response status code and response headers
+    def get_emails_with_http_info(sentdatetimefrom, sentdatetimeto, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_emails ...'
+      end
+      # verify the required parameter 'sentdatetimefrom' is set
+      if @api_client.config.client_side_validation && sentdatetimefrom.nil?
+        fail ArgumentError, "Missing the required parameter 'sentdatetimefrom' when calling CommunicationsApi.get_emails"
+      end
+      # verify the required parameter 'sentdatetimeto' is set
+      if @api_client.config.client_side_validation && sentdatetimeto.nil?
+        fail ArgumentError, "Missing the required parameter 'sentdatetimeto' when calling CommunicationsApi.get_emails"
+      end
+      # resource path
+      local_var_path = '/v1/communications/emails'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'sentdatetimefrom'] = sentdatetimefrom
+      query_params[:'sentdatetimeto'] = sentdatetimeto
+      query_params[:'subject'] = opts[:'subject'] if !opts[:'subject'].nil?
+      query_params[:'recipientnameoremail'] = opts[:'recipientnameoremail'] if !opts[:'recipientnameoremail'].nil?
+      query_params[:'senderuserid'] = opts[:'senderuserid'] if !opts[:'senderuserid'].nil?
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<EmailMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_emails",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_emails\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all communication templates
+    # Retrieves all mailing and email templates.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<MailingTemplateMessage>]
+    def get_mailing_templates(opts = {})
+      data, _status_code, _headers = get_mailing_templates_with_http_info(opts)
+      data
+    end
+
+    # Retrieve all communication templates
+    # Retrieves all mailing and email templates.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<MailingTemplateMessage>, Integer, Hash)>] Array<MailingTemplateMessage> data, response status code and response headers
+    def get_mailing_templates_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_mailing_templates ...'
+      end
+      # resource path
+      local_var_path = '/v1/communications/templates'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<MailingTemplateMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_mailing_templates",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_mailing_templates\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a communication template
+    # Retrieves a communication template.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # @param template_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [MailingTemplateMessage]
+    def get_mailing_templates_by_id(template_id, opts = {})
+      data, _status_code, _headers = get_mailing_templates_by_id_with_http_info(template_id, opts)
+      data
+    end
+
+    # Retrieve a communication template
+    # Retrieves a communication template.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # @param template_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MailingTemplateMessage, Integer, Hash)>] MailingTemplateMessage data, response status code and response headers
+    def get_mailing_templates_by_id_with_http_info(template_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CommunicationsApi.get_mailing_templates_by_id ...'
+      end
+      # verify the required parameter 'template_id' is set
+      if @api_client.config.client_side_validation && template_id.nil?
+        fail ArgumentError, "Missing the required parameter 'template_id' when calling CommunicationsApi.get_mailing_templates_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/communications/templates/{templateId}'.sub('{' + 'templateId' + '}', CGI.escape(template_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'MailingTemplateMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"CommunicationsApi.get_mailing_templates_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CommunicationsApi#get_mailing_templates_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -155,6 +155,80 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a credit
+    # Creates a credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+    # @param vendor_id [Integer] 
+    # @param vendor_credit_post_message [VendorCreditPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [VendorCreditMessage]
+    def create_vendor_credit(vendor_id, vendor_credit_post_message, opts = {})
+      data, _status_code, _headers = create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message, opts)
+      data
+    end
+
+    # Create a credit
+    # Creates a credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param vendor_id [Integer] 
+    # @param vendor_credit_post_message [VendorCreditPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VendorCreditMessage, Integer, Hash)>] VendorCreditMessage data, response status code and response headers
+    def create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VendorsApi.create_vendor_credit ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.create_vendor_credit"
+      end
+      # verify the required parameter 'vendor_credit_post_message' is set
+      if @api_client.config.client_side_validation && vendor_credit_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_credit_post_message' when calling VendorsApi.create_vendor_credit"
+      end
+      # resource path
+      local_var_path = '/v1/vendors/{vendorId}/credits'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_credit_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'VendorCreditMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"VendorsApi.create_vendor_credit",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VendorsApi#create_vendor_credit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a note
     # Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
     # @param vendor_id [Integer] 
@@ -229,6 +303,80 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a refund
+    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # @param vendor_id [Integer] 
+    # @param vendor_refund_post_message [VendorRefundPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [VendorRefundMessage]
+    def create_vendor_refund(vendor_id, vendor_refund_post_message, opts = {})
+      data, _status_code, _headers = create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message, opts)
+      data
+    end
+
+    # Create a refund
+    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param vendor_id [Integer] 
+    # @param vendor_refund_post_message [VendorRefundPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VendorRefundMessage, Integer, Hash)>] VendorRefundMessage data, response status code and response headers
+    def create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VendorsApi.create_vendor_refund ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.create_vendor_refund"
+      end
+      # verify the required parameter 'vendor_refund_post_message' is set
+      if @api_client.config.client_side_validation && vendor_refund_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_refund_post_message' when calling VendorsApi.create_vendor_refund"
+      end
+      # resource path
+      local_var_path = '/v1/vendors/{vendorId}/refunds'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_refund_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'VendorRefundMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"VendorsApi.create_vendor_refund",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VendorsApi#create_vendor_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all vendor categories
     # Retrieves a list of vendor categories.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
     # @param [Hash] opts the optional parameters
@@ -291,6 +439,105 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: VendorsApi#get_all_vendor_categories\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all transactions
+    # Retrieves all transactions.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`  <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+    # @param vendor_id [Integer] 
+    # @param transactiondatefrom [Date] Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.
+    # @param transactiondateto [Date] Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :transactiontypes Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.
+    # @option opts [String] :referencenumber Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.
+    # @option opts [String] :memo Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<VendorTransactionMessage>]
+    def get_all_vendor_transactions(vendor_id, transactiondatefrom, transactiondateto, opts = {})
+      data, _status_code, _headers = get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts)
+      data
+    end
+
+    # Retrieve all transactions
+    # Retrieves all transactions.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
+    # @param vendor_id [Integer] 
+    # @param transactiondatefrom [Date] Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.
+    # @param transactiondateto [Date] Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :transactiontypes Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.
+    # @option opts [String] :referencenumber Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.
+    # @option opts [String] :memo Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<VendorTransactionMessage>, Integer, Hash)>] Array<VendorTransactionMessage> data, response status code and response headers
+    def get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VendorsApi.get_all_vendor_transactions ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.get_all_vendor_transactions"
+      end
+      # verify the required parameter 'transactiondatefrom' is set
+      if @api_client.config.client_side_validation && transactiondatefrom.nil?
+        fail ArgumentError, "Missing the required parameter 'transactiondatefrom' when calling VendorsApi.get_all_vendor_transactions"
+      end
+      # verify the required parameter 'transactiondateto' is set
+      if @api_client.config.client_side_validation && transactiondateto.nil?
+        fail ArgumentError, "Missing the required parameter 'transactiondateto' when calling VendorsApi.get_all_vendor_transactions"
+      end
+      allowable_values = ["Bill", "Check", "Charge", "Payment", "Credit", "Refund", "ApplyDeposit", "ElectronicFundsTransfer", "Other", "Deposit", "GeneralJournalEntry", "OwnerContribution", "ReversePayment", "ReverseElectronicFundsTransfer", "VendorCredit", "RentalApplicationFeePayment", "ReverseRentalApplicationFeePayment", "ReverseOwnerContribution", "VendorRefund", "UnreversedPayment", "UnreversedElectronicFundsTransfer", "UnreversedOwnerContribution", "UnreversedRentalApplicationFeePayment"]
+      if @api_client.config.client_side_validation && opts[:'transactiontypes'] && !opts[:'transactiontypes'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"transactiontypes\", must include one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/v1/vendors/{vendorId}/transactions'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'transactiondatefrom'] = transactiondatefrom
+      query_params[:'transactiondateto'] = transactiondateto
+      query_params[:'transactiontypes'] = @api_client.build_collection_param(opts[:'transactiontypes'], :multi) if !opts[:'transactiontypes'].nil?
+      query_params[:'referencenumber'] = opts[:'referencenumber'] if !opts[:'referencenumber'].nil?
+      query_params[:'memo'] = opts[:'memo'] if !opts[:'memo'].nil?
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<VendorTransactionMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"VendorsApi.get_all_vendor_transactions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VendorsApi#get_all_vendor_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -519,6 +766,75 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve a credit
+    # Retrieves a credit.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+    # @param vendor_id [Integer] 
+    # @param vendor_credit_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [VendorCreditMessage]
+    def get_vendor_credit(vendor_id, vendor_credit_id, opts = {})
+      data, _status_code, _headers = get_vendor_credit_with_http_info(vendor_id, vendor_credit_id, opts)
+      data
+    end
+
+    # Retrieve a credit
+    # Retrieves a credit.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+    # @param vendor_id [Integer] 
+    # @param vendor_credit_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VendorCreditMessage, Integer, Hash)>] VendorCreditMessage data, response status code and response headers
+    def get_vendor_credit_with_http_info(vendor_id, vendor_credit_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VendorsApi.get_vendor_credit ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.get_vendor_credit"
+      end
+      # verify the required parameter 'vendor_credit_id' is set
+      if @api_client.config.client_side_validation && vendor_credit_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_credit_id' when calling VendorsApi.get_vendor_credit"
+      end
+      # resource path
+      local_var_path = '/v1/vendors/{vendorId}/credits/{vendorCreditId}'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s)).sub('{' + 'vendorCreditId' + '}', CGI.escape(vendor_credit_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'VendorCreditMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"VendorsApi.get_vendor_credit",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VendorsApi#get_vendor_credit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a note
     # Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
     # @param vendor_id [Integer] 
@@ -665,6 +981,75 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: VendorsApi#get_vendor_notes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a refund
+    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # @param vendor_id [Integer] 
+    # @param vendor_refund_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [VendorCreditMessage]
+    def get_vendor_refund(vendor_id, vendor_refund_id, opts = {})
+      data, _status_code, _headers = get_vendor_refund_with_http_info(vendor_id, vendor_refund_id, opts)
+      data
+    end
+
+    # Retrieve a refund
+    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # @param vendor_id [Integer] 
+    # @param vendor_refund_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VendorCreditMessage, Integer, Hash)>] VendorCreditMessage data, response status code and response headers
+    def get_vendor_refund_with_http_info(vendor_id, vendor_refund_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VendorsApi.get_vendor_refund ...'
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.get_vendor_refund"
+      end
+      # verify the required parameter 'vendor_refund_id' is set
+      if @api_client.config.client_side_validation && vendor_refund_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_refund_id' when calling VendorsApi.get_vendor_refund"
+      end
+      # resource path
+      local_var_path = '/v1/vendors/{vendorId}/refunds/{vendorRefundId}'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s)).sub('{' + 'vendorRefundId' + '}', CGI.escape(vendor_refund_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'VendorCreditMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"VendorsApi.get_vendor_refund",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VendorsApi#get_vendor_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

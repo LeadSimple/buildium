@@ -83,6 +83,19 @@ describe 'AssociationOwnershipAccountsApi' do
     end
   end
 
+  # unit tests for create_ownership_account_deposit_withholding
+  # Create a deposit withholding
+  # Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+  # @param ownership_account_id 
+  # @param ownership_account_deposit_withholding_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [OwnershipAccountTransactionMessage]
+  describe 'create_ownership_account_deposit_withholding test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_ownership_account_ledger_charge
   # Create a ledger charge
   # Creates a ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;
@@ -350,6 +363,20 @@ describe 'AssociationOwnershipAccountsApi' do
   # @param [Hash] opts the optional parameters
   # @return [NoteMessage]
   describe 'update_association_ownership_account_note test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_ownership_account_charge
+  # Update a charge
+  # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;
+  # @param ownership_account_id The ownership account identifier.
+  # @param charge_id The charge identifier.
+  # @param ownership_account_ledger_charge_put_message 
+  # @param [Hash] opts the optional parameters
+  # @return [OwnershipAccountTransactionMessage]
+  describe 'update_ownership_account_charge test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

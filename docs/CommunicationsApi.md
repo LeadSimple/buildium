@@ -6,10 +6,16 @@ All URIs are relative to *https://api.buildium.com*
 | ------ | ------------ | ----------- |
 | [**create_announcement**](CommunicationsApi.md#create_announcement) | **POST** /v1/communications/announcements | Create an announcement |
 | [**create_phone_log**](CommunicationsApi.md#create_phone_log) | **POST** /v1/communications/phonelogs | Create a phone log |
+| [**emails_external_api_write_create_email**](CommunicationsApi.md#emails_external_api_write_create_email) | **POST** /v1/communications/emails | Create an email. |
 | [**expire_announcement**](CommunicationsApi.md#expire_announcement) | **POST** /v1/communications/announcements/{announcementId}/expirationrequest | Expire an announcement |
 | [**get_all_announcements**](CommunicationsApi.md#get_all_announcements) | **GET** /v1/communications/announcements | Retrieve all announcements |
 | [**get_announcement_by_id**](CommunicationsApi.md#get_announcement_by_id) | **GET** /v1/communications/announcements/{announcementId} | Retrieve an announcement |
 | [**get_announcement_properties**](CommunicationsApi.md#get_announcement_properties) | **GET** /v1/communications/announcements/{announcementId}/properties | Retrieve all announcement properties |
+| [**get_email_by_id**](CommunicationsApi.md#get_email_by_id) | **GET** /v1/communications/emails/{emailId} | Retrieve an email |
+| [**get_email_recipients**](CommunicationsApi.md#get_email_recipients) | **GET** /v1/communications/emails/{emailId}/recipients | Retrieve all email recipients |
+| [**get_emails**](CommunicationsApi.md#get_emails) | **GET** /v1/communications/emails | Retrieve all emails |
+| [**get_mailing_templates**](CommunicationsApi.md#get_mailing_templates) | **GET** /v1/communications/templates | Retrieve all communication templates |
+| [**get_mailing_templates_by_id**](CommunicationsApi.md#get_mailing_templates_by_id) | **GET** /v1/communications/templates/{templateId} | Retrieve a communication template |
 | [**get_phone_log_by_id**](CommunicationsApi.md#get_phone_log_by_id) | **GET** /v1/communications/phonelogs/{phoneLogId} | Retrieve a phone log |
 | [**get_phone_logs**](CommunicationsApi.md#get_phone_logs) | **GET** /v1/communications/phonelogs | Retrieve all phone logs |
 | [**update_phone_log**](CommunicationsApi.md#update_phone_log) | **PUT** /v1/communications/phonelogs/{phoneLogId} | Update a phone log |
@@ -156,6 +162,81 @@ end
 ### Return type
 
 [**PhoneLogMessage**](PhoneLogMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## emails_external_api_write_create_email
+
+> emails_external_api_write_create_email(email_post_message)
+
+Create an email.
+
+Creates an email              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+email_post_message = Buildium::EmailPostMessage.new({template_id: 37, subject: 'subject_example', include_alternate_emails: false, exclude_delinquent_recipients: false, include_association_tenants: false}) # EmailPostMessage | 
+
+begin
+  # Create an email.
+  api_instance.emails_external_api_write_create_email(email_post_message)
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->emails_external_api_write_create_email: #{e}"
+end
+```
+
+#### Using the emails_external_api_write_create_email_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> emails_external_api_write_create_email_with_http_info(email_post_message)
+
+```ruby
+begin
+  # Create an email.
+  data, status_code, headers = api_instance.emails_external_api_write_create_email_with_http_info(email_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->emails_external_api_write_create_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **email_post_message** | [**EmailPostMessage**](EmailPostMessage.md) |  |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -483,6 +564,416 @@ end
 ### Return type
 
 [**Array&lt;PropertyMessage&gt;**](PropertyMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_by_id
+
+> <EmailMessage> get_email_by_id(email_id)
+
+Retrieve an email
+
+Retrieves an email.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Emails</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+email_id = 56 # Integer | 
+
+begin
+  # Retrieve an email
+  result = api_instance.get_email_by_id(email_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_email_by_id: #{e}"
+end
+```
+
+#### Using the get_email_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailMessage>, Integer, Hash)> get_email_by_id_with_http_info(email_id)
+
+```ruby
+begin
+  # Retrieve an email
+  data, status_code, headers = api_instance.get_email_by_id_with_http_info(email_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_email_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **email_id** | **Integer** |  |  |
+
+### Return type
+
+[**EmailMessage**](EmailMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_recipients
+
+> <Array<EmailRecipientMessage>> get_email_recipients(email_id, opts)
+
+Retrieve all email recipients
+
+Retrieves all email recipients.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Email</span> - `View`              <br /><h4>Optional Permissions:</h4><br />              The following permissions are optional, but results with a missing permission will be filtered out.              <span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` In order to retrieve recipients that are Vendors, you must have this permission.              <span class=\"permissionBlock\">Administration &gt; Users</span> - `View` In order to see recipients that are Staff, you must have this permission.
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+email_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all email recipients
+  result = api_instance.get_email_recipients(email_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_email_recipients: #{e}"
+end
+```
+
+#### Using the get_email_recipients_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<EmailRecipientMessage>>, Integer, Hash)> get_email_recipients_with_http_info(email_id, opts)
+
+```ruby
+begin
+  # Retrieve all email recipients
+  data, status_code, headers = api_instance.get_email_recipients_with_http_info(email_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<EmailRecipientMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_email_recipients_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **email_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;EmailRecipientMessage&gt;**](EmailRecipientMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_emails
+
+> <Array<EmailMessage>> get_emails(sentdatetimefrom, sentdatetimeto, opts)
+
+Retrieve all emails
+
+Retrieves all emails.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+sentdatetimefrom = Time.parse('2013-10-20T19:20:30+01:00') # Time | Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+sentdatetimeto = Time.parse('2013-10-20T19:20:30+01:00') # Time | Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
+opts = {
+  subject: 'subject_example', # String | Filters results to any email whose subject *contains* the specified value.
+  recipientnameoremail: 'recipientnameoremail_example', # String | Filters results to any email with a recipient whose name or email address *contains* the specified value.
+  senderuserid: 56, # Integer | Filters results to only emails that were sent by the specified user identifier.
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all emails
+  result = api_instance.get_emails(sentdatetimefrom, sentdatetimeto, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_emails: #{e}"
+end
+```
+
+#### Using the get_emails_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<EmailMessage>>, Integer, Hash)> get_emails_with_http_info(sentdatetimefrom, sentdatetimeto, opts)
+
+```ruby
+begin
+  # Retrieve all emails
+  data, status_code, headers = api_instance.get_emails_with_http_info(sentdatetimefrom, sentdatetimeto, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<EmailMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_emails_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **sentdatetimefrom** | **Time** | Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days. |  |
+| **sentdatetimeto** | **Time** | Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days. |  |
+| **subject** | **String** | Filters results to any email whose subject *contains* the specified value. | [optional] |
+| **recipientnameoremail** | **String** | Filters results to any email with a recipient whose name or email address *contains* the specified value. | [optional] |
+| **senderuserid** | **Integer** | Filters results to only emails that were sent by the specified user identifier. | [optional] |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;EmailMessage&gt;**](EmailMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_mailing_templates
+
+> <Array<MailingTemplateMessage>> get_mailing_templates(opts)
+
+Retrieve all communication templates
+
+Retrieves all mailing and email templates.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all communication templates
+  result = api_instance.get_mailing_templates(opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_mailing_templates: #{e}"
+end
+```
+
+#### Using the get_mailing_templates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<MailingTemplateMessage>>, Integer, Hash)> get_mailing_templates_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve all communication templates
+  data, status_code, headers = api_instance.get_mailing_templates_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<MailingTemplateMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_mailing_templates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;MailingTemplateMessage&gt;**](MailingTemplateMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_mailing_templates_by_id
+
+> <MailingTemplateMessage> get_mailing_templates_by_id(template_id)
+
+Retrieve a communication template
+
+Retrieves a communication template.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+template_id = 56 # Integer | 
+
+begin
+  # Retrieve a communication template
+  result = api_instance.get_mailing_templates_by_id(template_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_mailing_templates_by_id: #{e}"
+end
+```
+
+#### Using the get_mailing_templates_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MailingTemplateMessage>, Integer, Hash)> get_mailing_templates_by_id_with_http_info(template_id)
+
+```ruby
+begin
+  # Retrieve a communication template
+  data, status_code, headers = api_instance.get_mailing_templates_by_id_with_http_info(template_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MailingTemplateMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->get_mailing_templates_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **template_id** | **Integer** |  |  |
+
+### Return type
+
+[**MailingTemplateMessage**](MailingTemplateMessage.md)
 
 ### Authorization
 

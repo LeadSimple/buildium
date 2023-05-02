@@ -83,4 +83,16 @@ describe Buildium::LeasePostMessage do
     end
   end
 
+  describe 'test attribute "prorated_first_month_rent"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "prorated_last_month_rent"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

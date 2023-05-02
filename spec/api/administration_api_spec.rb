@@ -43,6 +43,17 @@ describe 'AdministrationApi' do
     end
   end
 
+  # unit tests for get_accounting_lock_period_settings
+  # Retrieve accounting lock periods
+  # Retrieves accounting lock periods.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Application Settings&lt;/span&gt; - &#x60;View&#x60;
+  # @param [Hash] opts the optional parameters
+  # @return [AccountingLockPeriodMessage]
+  describe 'get_accounting_lock_period_settings test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_all_user_roles
   # Retrieve all user roles
   # Retrieves a list of user roles.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; User Roles&lt;/span&gt; - &#x60;View&#x60;

@@ -21,7 +21,7 @@ module Buildium
     # Memo associated with the charge. The value cannot exceed 65 characters.
     attr_accessor :memo
 
-    # A collection of line items included in the charge. At least one line item is required.
+    # Collection of line items to be included in the charge. All existing line items will be deleted and replaced with the line items in this request. At least 1 line item is required.
     attr_accessor :lines
 
     # Attribute mapping from ruby-style variable name to JSON key.

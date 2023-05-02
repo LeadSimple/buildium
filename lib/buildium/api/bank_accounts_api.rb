@@ -683,7 +683,7 @@ module Buildium
     end
 
     # Retrieve all checks
-    # Retrieves all bank account checks.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves all bank account checks.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -698,7 +698,7 @@ module Buildium
     end
 
     # Retrieve all checks
-    # Retrieves all bank account checks.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all bank account checks.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -769,7 +769,7 @@ module Buildium
     end
 
     # Retrieve a deposit
-    # Retrieves a bank account deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`
+    # Retrieves a bank account deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -780,7 +780,7 @@ module Buildium
     end
 
     # Retrieve a deposit
-    # Retrieves a bank account deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a bank account deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -838,7 +838,7 @@ module Buildium
     end
 
     # Retrieve all deposits
-    # Retrieves all bank account deposits.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`
+    # Retrieves all bank account deposits.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any deposits that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any deposits that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -853,7 +853,7 @@ module Buildium
     end
 
     # Retrieve all deposits
-    # Retrieves all bank account deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all bank account deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any deposits that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any deposits that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1399,7 +1399,7 @@ module Buildium
     end
 
     # Retrieve a check
-    # Retrieves a bank account check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves a bank account check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1410,7 +1410,7 @@ module Buildium
     end
 
     # Retrieve a check
-    # Retrieves a bank account check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a bank account check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param [Hash] opts the optional parameters

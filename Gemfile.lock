@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    buildium (1.9.0)
+    buildium (1.10.0)
       faraday (>= 1.0.1, < 3.0)
       faraday-multipart
 

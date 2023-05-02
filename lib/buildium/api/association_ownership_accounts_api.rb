@@ -309,6 +309,80 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a deposit withholding
+    # Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+    # @param ownership_account_id [Integer] 
+    # @param ownership_account_deposit_withholding_post_message [OwnershipAccountDepositWithholdingPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [OwnershipAccountTransactionMessage]
+    def create_ownership_account_deposit_withholding(ownership_account_id, ownership_account_deposit_withholding_post_message, opts = {})
+      data, _status_code, _headers = create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, ownership_account_deposit_withholding_post_message, opts)
+      data
+    end
+
+    # Create a deposit withholding
+    # Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param ownership_account_deposit_withholding_post_message [OwnershipAccountDepositWithholdingPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
+    def create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, ownership_account_deposit_withholding_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnershipAccountsApi.create_ownership_account_deposit_withholding ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling AssociationOwnershipAccountsApi.create_ownership_account_deposit_withholding"
+      end
+      # verify the required parameter 'ownership_account_deposit_withholding_post_message' is set
+      if @api_client.config.client_side_validation && ownership_account_deposit_withholding_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_deposit_withholding_post_message' when calling AssociationOwnershipAccountsApi.create_ownership_account_deposit_withholding"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/applieddeposits'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_deposit_withholding_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnershipAccountsApi.create_ownership_account_deposit_withholding",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#create_ownership_account_deposit_withholding\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a ledger charge
     # Creates a ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`  <br />
     # @param ownership_account_id [Integer] The ownership account identifier.
@@ -1729,6 +1803,86 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#update_association_ownership_account_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a charge
+    # Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`              <br />
+    # @param ownership_account_id [Integer] The ownership account identifier.
+    # @param charge_id [Integer] The charge identifier.
+    # @param ownership_account_ledger_charge_put_message [OwnershipAccountLedgerChargePutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [OwnershipAccountTransactionMessage]
+    def update_ownership_account_charge(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message, opts = {})
+      data, _status_code, _headers = update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message, opts)
+      data
+    end
+
+    # Update a charge
+    # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;
+    # @param ownership_account_id [Integer] The ownership account identifier.
+    # @param charge_id [Integer] The charge identifier.
+    # @param ownership_account_ledger_charge_put_message [OwnershipAccountLedgerChargePutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
+    def update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnershipAccountsApi.update_ownership_account_charge ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling AssociationOwnershipAccountsApi.update_ownership_account_charge"
+      end
+      # verify the required parameter 'charge_id' is set
+      if @api_client.config.client_side_validation && charge_id.nil?
+        fail ArgumentError, "Missing the required parameter 'charge_id' when calling AssociationOwnershipAccountsApi.update_ownership_account_charge"
+      end
+      # verify the required parameter 'ownership_account_ledger_charge_put_message' is set
+      if @api_client.config.client_side_validation && ownership_account_ledger_charge_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_ledger_charge_put_message' when calling AssociationOwnershipAccountsApi.update_ownership_account_charge"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/charges/{chargeId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s)).sub('{' + 'chargeId' + '}', CGI.escape(charge_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_ledger_charge_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnershipAccountsApi.update_ownership_account_charge",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#update_ownership_account_charge\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

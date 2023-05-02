@@ -6,13 +6,18 @@ All URIs are relative to *https://api.buildium.com*
 | ------ | ------------ | ----------- |
 | [**create_vendor**](VendorsApi.md#create_vendor) | **POST** /v1/vendors | Create a vendor |
 | [**create_vendor_category**](VendorsApi.md#create_vendor_category) | **POST** /v1/vendors/categories | Create a vendor category |
+| [**create_vendor_credit**](VendorsApi.md#create_vendor_credit) | **POST** /v1/vendors/{vendorId}/credits | Create a credit |
 | [**create_vendor_note**](VendorsApi.md#create_vendor_note) | **POST** /v1/vendors/{vendorId}/notes | Create a note |
+| [**create_vendor_refund**](VendorsApi.md#create_vendor_refund) | **POST** /v1/vendors/{vendorId}/refunds | Create a refund |
 | [**get_all_vendor_categories**](VendorsApi.md#get_all_vendor_categories) | **GET** /v1/vendors/categories | Retrieve all vendor categories |
+| [**get_all_vendor_transactions**](VendorsApi.md#get_all_vendor_transactions) | **GET** /v1/vendors/{vendorId}/transactions | Retrieve all transactions |
 | [**get_all_vendors**](VendorsApi.md#get_all_vendors) | **GET** /v1/vendors | Retrieve all vendors |
 | [**get_vendor_by_id**](VendorsApi.md#get_vendor_by_id) | **GET** /v1/vendors/{vendorId} | Retrieve a vendor |
 | [**get_vendor_category_by_id**](VendorsApi.md#get_vendor_category_by_id) | **GET** /v1/vendors/categories/{vendorCategoryId} | Retrieve a vendor category |
+| [**get_vendor_credit**](VendorsApi.md#get_vendor_credit) | **GET** /v1/vendors/{vendorId}/credits/{vendorCreditId} | Retrieve a credit |
 | [**get_vendor_note_by_note_id**](VendorsApi.md#get_vendor_note_by_note_id) | **GET** /v1/vendors/{vendorId}/notes/{noteId} | Retrieve a note |
 | [**get_vendor_notes**](VendorsApi.md#get_vendor_notes) | **GET** /v1/vendors/{vendorId}/notes | Retrieve all notes |
+| [**get_vendor_refund**](VendorsApi.md#get_vendor_refund) | **GET** /v1/vendors/{vendorId}/refunds/{vendorRefundId} | Retrieve a refund |
 | [**update_vendor**](VendorsApi.md#update_vendor) | **PUT** /v1/vendors/{vendorId} | Update a vendor |
 | [**update_vendor_category**](VendorsApi.md#update_vendor_category) | **PUT** /v1/vendors/categories/{vendorCategoryId} | Update a vendor category |
 | [**update_vendor_note**](VendorsApi.md#update_vendor_note) | **PUT** /v1/vendors/{vendorId}/notes/{noteId} | Update a note |
@@ -170,6 +175,84 @@ end
 - **Accept**: application/json
 
 
+## create_vendor_credit
+
+> <VendorCreditMessage> create_vendor_credit(vendor_id, vendor_credit_post_message)
+
+Create a credit
+
+Creates a credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::VendorsApi.new
+vendor_id = 56 # Integer | 
+vendor_credit_post_message = Buildium::VendorCreditPostMessage.new({entry_date: Date.today, lines: [Buildium::VendorCreditLineItemPostMessage.new({gl_account_id: 37, amount: 3.56, accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'})})]}) # VendorCreditPostMessage | 
+
+begin
+  # Create a credit
+  result = api_instance.create_vendor_credit(vendor_id, vendor_credit_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->create_vendor_credit: #{e}"
+end
+```
+
+#### Using the create_vendor_credit_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VendorCreditMessage>, Integer, Hash)> create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message)
+
+```ruby
+begin
+  # Create a credit
+  data, status_code, headers = api_instance.create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VendorCreditMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->create_vendor_credit_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **vendor_credit_post_message** | [**VendorCreditPostMessage**](VendorCreditPostMessage.md) |  |  |
+
+### Return type
+
+[**VendorCreditMessage**](VendorCreditMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_vendor_note
 
 > <NoteMessage> create_vendor_note(vendor_id, note_post_message)
@@ -237,6 +320,84 @@ end
 ### Return type
 
 [**NoteMessage**](NoteMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_vendor_refund
+
+> <VendorRefundMessage> create_vendor_refund(vendor_id, vendor_refund_post_message)
+
+Create a refund
+
+Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::VendorsApi.new
+vendor_id = 56 # Integer | 
+vendor_refund_post_message = Buildium::VendorRefundPostMessage.new({entry_date: Date.today, bank_account_id: 37, payment_method: 'Check', lines: [Buildium::VendorRefundLinePostMessage.new({gl_account_id: 37, amount: 3.56, accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'})})]}) # VendorRefundPostMessage | 
+
+begin
+  # Create a refund
+  result = api_instance.create_vendor_refund(vendor_id, vendor_refund_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->create_vendor_refund: #{e}"
+end
+```
+
+#### Using the create_vendor_refund_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VendorRefundMessage>, Integer, Hash)> create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message)
+
+```ruby
+begin
+  # Create a refund
+  data, status_code, headers = api_instance.create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VendorRefundMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->create_vendor_refund_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **vendor_refund_post_message** | [**VendorRefundPostMessage**](VendorRefundPostMessage.md) |  |  |
+
+### Return type
+
+[**VendorRefundMessage**](VendorRefundMessage.md)
 
 ### Authorization
 
@@ -319,6 +480,100 @@ end
 ### Return type
 
 [**Array&lt;VendorCategoryMessage&gt;**](VendorCategoryMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_all_vendor_transactions
+
+> <Array<VendorTransactionMessage>> get_all_vendor_transactions(vendor_id, transactiondatefrom, transactiondateto, opts)
+
+Retrieve all transactions
+
+Retrieves all transactions.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`  <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::VendorsApi.new
+vendor_id = 56 # Integer | 
+transactiondatefrom = Date.parse('2013-10-20') # Date | Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.
+transactiondateto = Date.parse('2013-10-20') # Date | Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.
+opts = {
+  transactiontypes: ['Bill'], # Array<String> | Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.
+  referencenumber: 'referencenumber_example', # String | Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.
+  memo: 'memo_example', # String | Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters.
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all transactions
+  result = api_instance.get_all_vendor_transactions(vendor_id, transactiondatefrom, transactiondateto, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->get_all_vendor_transactions: #{e}"
+end
+```
+
+#### Using the get_all_vendor_transactions_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<VendorTransactionMessage>>, Integer, Hash)> get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts)
+
+```ruby
+begin
+  # Retrieve all transactions
+  data, status_code, headers = api_instance.get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<VendorTransactionMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->get_all_vendor_transactions_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **transactiondatefrom** | **Date** | Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days. |  |
+| **transactiondateto** | **Date** | Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days. |  |
+| **transactiontypes** | [**Array&lt;String&gt;**](String.md) | Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned. | [optional] |
+| **referencenumber** | **String** | Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters. | [optional] |
+| **memo** | **String** | Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters. | [optional] |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;VendorTransactionMessage&gt;**](VendorTransactionMessage.md)
 
 ### Authorization
 
@@ -580,6 +835,84 @@ end
 - **Accept**: application/json
 
 
+## get_vendor_credit
+
+> <VendorCreditMessage> get_vendor_credit(vendor_id, vendor_credit_id)
+
+Retrieve a credit
+
+Retrieves a credit.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::VendorsApi.new
+vendor_id = 56 # Integer | 
+vendor_credit_id = 56 # Integer | 
+
+begin
+  # Retrieve a credit
+  result = api_instance.get_vendor_credit(vendor_id, vendor_credit_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->get_vendor_credit: #{e}"
+end
+```
+
+#### Using the get_vendor_credit_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VendorCreditMessage>, Integer, Hash)> get_vendor_credit_with_http_info(vendor_id, vendor_credit_id)
+
+```ruby
+begin
+  # Retrieve a credit
+  data, status_code, headers = api_instance.get_vendor_credit_with_http_info(vendor_id, vendor_credit_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VendorCreditMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->get_vendor_credit_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **vendor_credit_id** | **Integer** |  |  |
+
+### Return type
+
+[**VendorCreditMessage**](VendorCreditMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_vendor_note_by_note_id
 
 > <NoteMessage> get_vendor_note_by_note_id(vendor_id, note_id)
@@ -737,6 +1070,84 @@ end
 ### Return type
 
 [**Array&lt;NoteMessage&gt;**](NoteMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_vendor_refund
+
+> <VendorCreditMessage> get_vendor_refund(vendor_id, vendor_refund_id)
+
+Retrieve a refund
+
+Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::VendorsApi.new
+vendor_id = 56 # Integer | 
+vendor_refund_id = 56 # Integer | 
+
+begin
+  # Retrieve a refund
+  result = api_instance.get_vendor_refund(vendor_id, vendor_refund_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->get_vendor_refund: #{e}"
+end
+```
+
+#### Using the get_vendor_refund_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<VendorCreditMessage>, Integer, Hash)> get_vendor_refund_with_http_info(vendor_id, vendor_refund_id)
+
+```ruby
+begin
+  # Retrieve a refund
+  data, status_code, headers = api_instance.get_vendor_refund_with_http_info(vendor_id, vendor_refund_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <VendorCreditMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling VendorsApi->get_vendor_refund_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **vendor_id** | **Integer** |  |  |
+| **vendor_refund_id** | **Integer** |  |  |
+
+### Return type
+
+[**VendorCreditMessage**](VendorCreditMessage.md)
 
 ### Authorization
 

@@ -383,6 +383,80 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Create a deposit withholding
+    # Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Ledger</span> - `View` `Edit`             <span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+    # @param lease_id [Integer] 
+    # @param lease_ledger_deposit_withholding_post_message [LeaseLedgerDepositWithholdingPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseTransactionMessage]
+    def create_lease_ledger_deposit_withholding(lease_id, lease_ledger_deposit_withholding_post_message, opts = {})
+      data, _status_code, _headers = create_lease_ledger_deposit_withholding_with_http_info(lease_id, lease_ledger_deposit_withholding_post_message, opts)
+      data
+    end
+
+    # Create a deposit withholding
+    # Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease Ledger&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;             &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param lease_ledger_deposit_withholding_post_message [LeaseLedgerDepositWithholdingPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
+    def create_lease_ledger_deposit_withholding_with_http_info(lease_id, lease_ledger_deposit_withholding_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.create_lease_ledger_deposit_withholding ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.create_lease_ledger_deposit_withholding"
+      end
+      # verify the required parameter 'lease_ledger_deposit_withholding_post_message' is set
+      if @api_client.config.client_side_validation && lease_ledger_deposit_withholding_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_ledger_deposit_withholding_post_message' when calling LeasesApi.create_lease_ledger_deposit_withholding"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/applieddeposits'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_deposit_withholding_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.create_lease_ledger_deposit_withholding",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#create_lease_ledger_deposit_withholding\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a refund
     # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
     # @param lease_id [Integer] 
@@ -2395,6 +2469,86 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: LeasesApi#update_lease\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a charge
+    # Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # @param lease_id [Integer] 
+    # @param charge_id [Integer] 
+    # @param lease_charge_put_message [LeaseChargePutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseTransactionMessage]
+    def update_lease_charge(lease_id, charge_id, lease_charge_put_message, opts = {})
+      data, _status_code, _headers = update_lease_charge_with_http_info(lease_id, charge_id, lease_charge_put_message, opts)
+      data
+    end
+
+    # Update a charge
+    # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param lease_id [Integer] 
+    # @param charge_id [Integer] 
+    # @param lease_charge_put_message [LeaseChargePutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
+    def update_lease_charge_with_http_info(lease_id, charge_id, lease_charge_put_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeasesApi.update_lease_charge ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeasesApi.update_lease_charge"
+      end
+      # verify the required parameter 'charge_id' is set
+      if @api_client.config.client_side_validation && charge_id.nil?
+        fail ArgumentError, "Missing the required parameter 'charge_id' when calling LeasesApi.update_lease_charge"
+      end
+      # verify the required parameter 'lease_charge_put_message' is set
+      if @api_client.config.client_side_validation && lease_charge_put_message.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_charge_put_message' when calling LeasesApi.update_lease_charge"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/charges/{chargeId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'chargeId' + '}', CGI.escape(charge_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_charge_put_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeasesApi.update_lease_charge",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeasesApi#update_lease_charge\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

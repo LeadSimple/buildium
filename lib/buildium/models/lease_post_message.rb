@@ -40,6 +40,12 @@ module Buildium
 
     attr_accessor :security_deposit
 
+    # Prorated rent charged for the first month of the lease. Must be null if the lease begins on the first day of a month.
+    attr_accessor :prorated_first_month_rent
+
+    # Prorated rent charged for the last month of the lease. Must be null if the lease ends on the last day of a month.
+    attr_accessor :prorated_last_month_rent
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -73,7 +79,9 @@ module Buildium
         :'tenants' => :'Tenants',
         :'cosigners' => :'Cosigners',
         :'rent' => :'Rent',
-        :'security_deposit' => :'SecurityDeposit'
+        :'security_deposit' => :'SecurityDeposit',
+        :'prorated_first_month_rent' => :'ProratedFirstMonthRent',
+        :'prorated_last_month_rent' => :'ProratedLastMonthRent'
       }
     end
 
@@ -93,7 +101,9 @@ module Buildium
         :'tenants' => :'Array<RentalTenantPutMessage>',
         :'cosigners' => :'Array<LeaseCosignerPostMessage>',
         :'rent' => :'LeaseRentPostMessage',
-        :'security_deposit' => :'LeaseSecurityDepositPostMessage'
+        :'security_deposit' => :'LeaseSecurityDepositPostMessage',
+        :'prorated_first_month_rent' => :'Float',
+        :'prorated_last_month_rent' => :'Float'
       }
     end
 
@@ -156,6 +166,14 @@ module Buildium
 
       if attributes.key?(:'security_deposit')
         self.security_deposit = attributes[:'security_deposit']
+      end
+
+      if attributes.key?(:'prorated_first_month_rent')
+        self.prorated_first_month_rent = attributes[:'prorated_first_month_rent']
+      end
+
+      if attributes.key?(:'prorated_last_month_rent')
+        self.prorated_last_month_rent = attributes[:'prorated_last_month_rent']
       end
     end
 
@@ -222,7 +240,9 @@ module Buildium
           tenants == o.tenants &&
           cosigners == o.cosigners &&
           rent == o.rent &&
-          security_deposit == o.security_deposit
+          security_deposit == o.security_deposit &&
+          prorated_first_month_rent == o.prorated_first_month_rent &&
+          prorated_last_month_rent == o.prorated_last_month_rent
     end
 
     # @see the `==` method
@@ -234,7 +254,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [lease_type, unit_id, lease_from_date, lease_to_date, send_welcome_email, tenants, cosigners, rent, security_deposit].hash
+      [lease_type, unit_id, lease_from_date, lease_to_date, send_welcome_email, tenants, cosigners, rent, security_deposit, prorated_first_month_rent, prorated_last_month_rent].hash
     end
 
     # Builds the object from hash

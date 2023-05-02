@@ -96,6 +96,19 @@ describe 'LeasesApi' do
     end
   end
 
+  # unit tests for create_lease_ledger_deposit_withholding
+  # Create a deposit withholding
+  # Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease Ledger&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;             &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+  # @param lease_id 
+  # @param lease_ledger_deposit_withholding_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [LeaseTransactionMessage]
+  describe 'create_lease_ledger_deposit_withholding test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_lease_ledger_refund
   # Create a refund
   # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
@@ -480,6 +493,20 @@ describe 'LeasesApi' do
   # @param [Hash] opts the optional parameters
   # @return [LeaseMessage]
   describe 'update_lease test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_lease_charge
+  # Update a charge
+  # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param lease_id 
+  # @param charge_id 
+  # @param lease_charge_put_message 
+  # @param [Hash] opts the optional parameters
+  # @return [LeaseTransactionMessage]
+  describe 'update_lease_charge test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

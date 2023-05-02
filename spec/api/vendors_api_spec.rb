@@ -56,6 +56,19 @@ describe 'VendorsApi' do
     end
   end
 
+  # unit tests for create_vendor_credit
+  # Create a credit
+  # Creates a credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+  # @param vendor_id 
+  # @param vendor_credit_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [VendorCreditMessage]
+  describe 'create_vendor_credit test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_vendor_note
   # Create a note
   # Creates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
@@ -64,6 +77,19 @@ describe 'VendorsApi' do
   # @param [Hash] opts the optional parameters
   # @return [NoteMessage]
   describe 'create_vendor_note test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for create_vendor_refund
+  # Create a refund
+  # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+  # @param vendor_id 
+  # @param vendor_refund_post_message 
+  # @param [Hash] opts the optional parameters
+  # @return [VendorRefundMessage]
+  describe 'create_vendor_refund test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -78,6 +104,26 @@ describe 'VendorsApi' do
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
   # @return [Array<VendorCategoryMessage>]
   describe 'get_all_vendor_categories test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_all_vendor_transactions
+  # Retrieve all transactions
+  # Retrieves all transactions.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
+  # @param vendor_id 
+  # @param transactiondatefrom Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.
+  # @param transactiondateto Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Array<String>] :transactiontypes Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.
+  # @option opts [String] :referencenumber Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.
+  # @option opts [String] :memo Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters.
+  # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+  # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+  # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+  # @return [Array<VendorTransactionMessage>]
+  describe 'get_all_vendor_transactions test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -129,6 +175,19 @@ describe 'VendorsApi' do
     end
   end
 
+  # unit tests for get_vendor_credit
+  # Retrieve a credit
+  # Retrieves a credit.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+  # @param vendor_id 
+  # @param vendor_credit_id 
+  # @param [Hash] opts the optional parameters
+  # @return [VendorCreditMessage]
+  describe 'get_vendor_credit test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_vendor_note_by_note_id
   # Retrieve a note
   # Retrieves a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
@@ -155,6 +214,19 @@ describe 'VendorsApi' do
   # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
   # @return [Array<NoteMessage>]
   describe 'get_vendor_notes test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_vendor_refund
+  # Retrieve a refund
+  # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+  # @param vendor_id 
+  # @param vendor_refund_id 
+  # @param [Hash] opts the optional parameters
+  # @return [VendorCreditMessage]
+  describe 'get_vendor_refund test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

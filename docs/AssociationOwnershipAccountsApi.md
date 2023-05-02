@@ -8,6 +8,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**create_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#create_association_ownership_account_note) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Create a note |
 | [**create_ownership_account_credit**](AssociationOwnershipAccountsApi.md#create_ownership_account_credit) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/credits | Create a ledger credit |
 | [**create_ownership_account_credit_recurring_transaction**](AssociationOwnershipAccountsApi.md#create_ownership_account_credit_recurring_transaction) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits | Create a recurring credit |
+| [**create_ownership_account_deposit_withholding**](AssociationOwnershipAccountsApi.md#create_ownership_account_deposit_withholding) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/applieddeposits | Create a deposit withholding |
 | [**create_ownership_account_ledger_charge**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_charge) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/charges | Create a ledger charge |
 | [**create_ownership_account_ledger_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_ledger_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/payments | Create a ledger payment |
 | [**create_ownership_account_recurring_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_recurring_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments | Create a recurring payment |
@@ -27,6 +28,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_recurring_ownership_account_payments_by_id**](AssociationOwnershipAccountsApi.md#get_recurring_ownership_account_payments_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments/{paymentId} | Retrieve a recurring payment |
 | [**update_association_ownership_account**](AssociationOwnershipAccountsApi.md#update_association_ownership_account) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId} | Update an ownership account |
 | [**update_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#update_association_ownership_account_note) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Update a note |
+| [**update_ownership_account_charge**](AssociationOwnershipAccountsApi.md#update_ownership_account_charge) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId}/charges/{chargeId} | Update a charge |
 
 
 ## create_association_ownership_account
@@ -328,6 +330,84 @@ end
 ### Return type
 
 [**OwnershipAccountRecurringCreditMessage**](OwnershipAccountRecurringCreditMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_ownership_account_deposit_withholding
+
+> <OwnershipAccountTransactionMessage> create_ownership_account_deposit_withholding(ownership_account_id, ownership_account_deposit_withholding_post_message)
+
+Create a deposit withholding
+
+Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+ownership_account_deposit_withholding_post_message = Buildium::OwnershipAccountDepositWithholdingPostMessage.new({entry_date: Date.today, deposit_liability_gl_account_id: 37}) # OwnershipAccountDepositWithholdingPostMessage | 
+
+begin
+  # Create a deposit withholding
+  result = api_instance.create_ownership_account_deposit_withholding(ownership_account_id, ownership_account_deposit_withholding_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_deposit_withholding: #{e}"
+end
+```
+
+#### Using the create_ownership_account_deposit_withholding_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountTransactionMessage>, Integer, Hash)> create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, ownership_account_deposit_withholding_post_message)
+
+```ruby
+begin
+  # Create a deposit withholding
+  data, status_code, headers = api_instance.create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, ownership_account_deposit_withholding_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_deposit_withholding_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **ownership_account_deposit_withholding_post_message** | [**OwnershipAccountDepositWithholdingPostMessage**](OwnershipAccountDepositWithholdingPostMessage.md) |  |  |
+
+### Return type
+
+[**OwnershipAccountTransactionMessage**](OwnershipAccountTransactionMessage.md)
 
 ### Authorization
 
@@ -1870,6 +1950,86 @@ end
 ### Return type
 
 [**NoteMessage**](NoteMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_ownership_account_charge
+
+> <OwnershipAccountTransactionMessage> update_ownership_account_charge(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message)
+
+Update a charge
+
+Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`              <br />
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | The ownership account identifier.
+charge_id = 56 # Integer | The charge identifier.
+ownership_account_ledger_charge_put_message = Buildium::OwnershipAccountLedgerChargePutMessage.new({date: Date.today, lines: [Buildium::OwnershipAccountLedgerChargeLinesPutMessage.new({amount: 3.56, gl_account_id: 37})]}) # OwnershipAccountLedgerChargePutMessage | 
+
+begin
+  # Update a charge
+  result = api_instance.update_ownership_account_charge(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->update_ownership_account_charge: #{e}"
+end
+```
+
+#### Using the update_ownership_account_charge_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountTransactionMessage>, Integer, Hash)> update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message)
+
+```ruby
+begin
+  # Update a charge
+  data, status_code, headers = api_instance.update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->update_ownership_account_charge_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** | The ownership account identifier. |  |
+| **charge_id** | **Integer** | The charge identifier. |  |
+| **ownership_account_ledger_charge_put_message** | [**OwnershipAccountLedgerChargePutMessage**](OwnershipAccountLedgerChargePutMessage.md) |  |  |
+
+### Return type
+
+[**OwnershipAccountTransactionMessage**](OwnershipAccountTransactionMessage.md)
 
 ### Authorization
 

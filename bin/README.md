@@ -10,10 +10,10 @@ A Ruby client library for interacting with the [Buildium API](https://developer.
 
    ```ruby
    # In your .gemspec, if any
-   s.add_runtime_dependency "buildium", "~> 1.0.0"
+   s.add_runtime_dependency "buildium-ruby", "~> 2.0.0"
 
    # In your Gemfile
-   gem "buildium", github: "leadsimple/buildium"
+   gem "buildium-ruby"
    ```
 
 2. Get a Buildium API client ID and secret from Buildium, [as described in their docs](https://developer.buildium.com/#section/Getting-Started).

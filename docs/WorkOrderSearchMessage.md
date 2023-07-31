@@ -27,7 +27,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::WorkOrderSearchMessage.new(
   entity_type: null,

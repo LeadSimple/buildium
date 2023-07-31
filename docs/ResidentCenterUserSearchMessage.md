@@ -13,7 +13,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ResidentCenterUserSearchMessage.new(
   unit_agreement_ids: null,

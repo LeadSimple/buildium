@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::LeaseLedgerDepositWithholdingPostMessage.new(
   entry_date: null,

@@ -11,7 +11,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::LeaseMoveOutDataPostMessage.new(
   tenant_id: null,

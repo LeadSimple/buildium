@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::AddressMessage.new(
   address_line1: null,

@@ -24,7 +24,7 @@ Retrieves information related to the Buildium account.   <br /><br /><h4>Require
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -97,7 +97,7 @@ Retrieves accounting lock periods.              <br /><br /><h4>Required permiss
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -170,7 +170,7 @@ Retrieves a list of user roles.  <br /><br /><h4>Required permission(s):</h4><sp
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -252,7 +252,7 @@ Retrieves a list of users.  <br /><br /><h4>Required permission(s):</h4><span cl
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -344,7 +344,7 @@ Retrieve a specific user.  <br /><br /><h4>Required permission(s):</h4><span cla
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -420,7 +420,7 @@ Retrieve a specific user role.  <br /><br /><h4>Required permission(s):</h4><spa
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

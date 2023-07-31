@@ -20,7 +20,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::RecurringTransactionMessage.new(
   id: null,

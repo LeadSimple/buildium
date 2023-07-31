@@ -26,7 +26,7 @@ Creates a rental owner.  <br /><br /><h4>Required permission(s):</h4><span class
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -102,7 +102,7 @@ Creates a new Rental Owner note.  <br /><br /><h4>Required permission(s):</h4><s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -180,7 +180,7 @@ Retrieves a specific rental owner.  <br /><br /><h4>Required permission(s):</h4>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -256,7 +256,7 @@ Retrieves a rental owner note.              <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -334,7 +334,7 @@ Retrieves all rental owner notes.              <br /><br /><h4>Required permissi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -424,7 +424,7 @@ Retrieves a list of rental owners.  <br /><br /><h4>Required permission(s):</h4>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -520,7 +520,7 @@ Updates a rental owner.  <br /><br /><strong>NOTE:</strong> Any field not includ
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -598,7 +598,7 @@ Updates a Rental Owner note.              <br /><br /><strong>NOTE:</strong> Any
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

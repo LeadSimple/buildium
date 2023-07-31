@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ListingContactSaveMessage.new(
   name: null,

@@ -23,7 +23,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::RentalOwnerMessage.new(
   id: null,

@@ -35,7 +35,7 @@ Creates a vendor.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -111,7 +111,7 @@ Creates a vendor category.              <br /><br /><h4>Required permission(s):<
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -187,7 +187,7 @@ Creates a credit.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -265,7 +265,7 @@ Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -343,7 +343,7 @@ Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -421,7 +421,7 @@ Retrieves a list of vendor categories.  <br /><br /><h4>Required permission(s):<
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -503,7 +503,7 @@ Retrieves all transactions.  <br /><br /><h4>Required permission(s):</h4><span c
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -597,7 +597,7 @@ Retrieves a list of vendors.  <br /><br /><h4>Required permission(s):</h4><span 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -695,7 +695,7 @@ Retrieve a specific vendor.  <br /><br /><h4>Required permission(s):</h4><span c
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -771,7 +771,7 @@ Retrieves a specific vendor category.  <br /><br /><h4>Required permission(s):</
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -847,7 +847,7 @@ Retrieves a credit.               <br /><br /><h4>Required permission(s):</h4><s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -925,7 +925,7 @@ Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1003,7 +1003,7 @@ Retrieves all vendor notes.              <br /><br /><h4>Required permission(s):
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1093,7 +1093,7 @@ Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><sp
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1171,7 +1171,7 @@ Updates a vendor.              <br /><br /><strong>NOTE:</strong> Any field not 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1249,7 +1249,7 @@ Updates a vendor category.              <br /><br /><strong>NOTE:</strong> Any f
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1327,7 +1327,7 @@ Updates a vendor note.              <br /><br /><strong>NOTE:</strong> Any field
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

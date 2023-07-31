@@ -16,7 +16,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::PhoneLogSearchMessage.new(
   from_date: null,

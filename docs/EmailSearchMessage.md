@@ -13,7 +13,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::EmailSearchMessage.new(
   sent_date_time_from: null,

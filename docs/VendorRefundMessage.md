@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::VendorRefundMessage.new(
   id: null,

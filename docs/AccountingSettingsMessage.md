@@ -14,7 +14,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::AccountingSettingsMessage.new(
   accounting_book_id: null,

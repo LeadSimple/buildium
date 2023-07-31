@@ -48,7 +48,7 @@ Creates a contact request.  <br /><br /><h4>Required permission(s):</h4><span cl
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -124,7 +124,7 @@ Creates a rental owner request.  <br /><br /><h4>Required permission(s):</h4><sp
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -200,7 +200,7 @@ Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span c
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -276,7 +276,7 @@ Create a task category.  <br /><br /><h4>Required permission(s):</h4><span class
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -352,7 +352,7 @@ Creates a to do task.  <br /><br /><h4>Required permission(s):</h4><span class=\
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -428,7 +428,7 @@ Deletes a specific file from a task history record. The file will be permanently
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -507,7 +507,7 @@ Retrieves all rental owner requests.  <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -613,7 +613,7 @@ Retrieves a list of task categories.  <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -695,7 +695,7 @@ Retrieves the metadata for all files associated with a task history record.     
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -781,7 +781,7 @@ Retrieves a list of tasks.  <br /><br /><h4>Required permission(s):</h4><span cl
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -891,7 +891,7 @@ Retrieves a contact request.  <br /><br /><h4>Required permission(s):</h4><span 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -967,7 +967,7 @@ Retrieves a list of contact requests.  <br /><br /><h4>Required permission(s):</
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1073,7 +1073,7 @@ Downloads a specific file associated to the task history record.              <b
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1153,7 +1153,7 @@ Retrieves a specific rental owner request.  <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1229,7 +1229,7 @@ Retrieves a specific resident request.              <br /><br /><h4>Required per
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1305,7 +1305,7 @@ Retrieves a list of resident requests.              <br /><br /><h4>Required per
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1413,7 +1413,7 @@ Retrieves a specific task.  <br /><br /><h4>Required permission(s):</h4><span cl
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1489,7 +1489,7 @@ Retrieves a specific task category.  <br /><br /><h4>Required permission(s):</h4
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1565,7 +1565,7 @@ Retrieves all task history records for a specific task.              <br /><br /
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1649,7 +1649,7 @@ Retrieves a specific task history record for a task.              <br /><br />Th
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1727,7 +1727,7 @@ Retrieves the metadata for a specific file associated with a task history record
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1807,7 +1807,7 @@ Retrieves a to do task.  <br /><br /><h4>Required permission(s):</h4><span class
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1883,7 +1883,7 @@ Retrieves a list of to do tasks.  <br /><br /><h4>Required permission(s):</h4><s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1989,7 +1989,7 @@ Updates a contact request.              <br /><br /><strong>NOTE:</strong> Any f
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2067,7 +2067,7 @@ Updates a rental owner request.  <br /><br /><strong>NOTE:</strong> Any field no
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2145,7 +2145,7 @@ Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not inc
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2223,7 +2223,7 @@ Updates a task category.  <br /><br /><strong>NOTE:</strong> Any field not inclu
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2301,7 +2301,7 @@ Updates a specific task history record for a task.              <br /><br />This
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2381,7 +2381,7 @@ Updates a to do task  <br /><br /><strong>NOTE:</strong> Any field not included 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2459,7 +2459,7 @@ Uploads a file and associates it to the specified task history record.  <br /><b
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

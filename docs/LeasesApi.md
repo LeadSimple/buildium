@@ -53,7 +53,7 @@ Creates a signed lease.  <br /><br /><span class=\"permissionBlock\">Rentals &gt
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -129,7 +129,7 @@ Creates a recurring charge transaction that will post automatically on the speci
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -207,7 +207,7 @@ Creates a lease ledger credit.              <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -285,7 +285,7 @@ Creates a recurring credit transaction on the specified lease ledger.           
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -363,7 +363,7 @@ Creates a charge transaction on a specific lease ledger.  <br /><br /><h4>Requir
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -441,7 +441,7 @@ Withholds a resident deposit by reallocating the funds from a liability account 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -519,7 +519,7 @@ Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -597,7 +597,7 @@ Creates a lease note.              <br /><br /><h4>Required permission(s):</h4><
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -675,7 +675,7 @@ Creates a recurring payment that will post automatically on the specified lease 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -753,7 +753,7 @@ Reverses a lease ledger payment. Note, this action can only be taken on a paymen
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -831,7 +831,7 @@ Creates move out data for a single tenant on a given lease.              <br /><
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -909,7 +909,7 @@ Creates a lease ledger payment.              <br /><br /><h4>Required permission
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -987,7 +987,7 @@ Retrieves a specific lease.  <br /><br /><span class=\"permissionBlock\">Rentals
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1063,7 +1063,7 @@ Retrieves a recurring charge.              <br /><br /><h4>Required permission(s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1141,7 +1141,7 @@ Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><sp
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1219,7 +1219,7 @@ Retrieves a specific lease transaction.              <br /><br /><h4>Required pe
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1297,7 +1297,7 @@ Retrieves all the transactions for a specific lease.  <br /><br /><h4>Required p
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1387,7 +1387,7 @@ Retrieves move out data for a single tenant on a given lease.              <br /
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1465,7 +1465,7 @@ Retrieves a list of move out dates for a given lease.              <br /><br /><
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1549,7 +1549,7 @@ Retrieves a lease note.              <br /><br /><h4>Required permission(s):</h4
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1627,7 +1627,7 @@ Retrieves all lease notes.              <br /><br /><h4>Required permission(s):<
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1717,7 +1717,7 @@ Retrieves a list of lease outstanding balances.              <br /><br /><h4>Req
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1813,7 +1813,7 @@ Retrieves a recurring credit.              <br /><br /><h4>Required permission(s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1891,7 +1891,7 @@ Retrieves all recurring transactions.              <br /><br /><h4>Required perm
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1975,7 +1975,7 @@ Retrieves a list of leases.  <br /><br /><span class=\"permissionBlock\">Rentals
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2081,7 +2081,7 @@ Retrieves a recurring payment.              <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2159,7 +2159,7 @@ The rent schedule provides details (dollar amount, day of the month, etc) of the
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2243,7 +2243,7 @@ Retrieves a specific rent schedule for a lease. The rent schedule provides detai
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2321,7 +2321,7 @@ Retrieves all lease renewals.              <br /><br /><h4>Required permission(s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2405,7 +2405,7 @@ Retrieves a lease renewal.              <br /><br /><h4>Required permission(s):<
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2483,7 +2483,7 @@ Creates a lease renewal.              <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2561,7 +2561,7 @@ Deletes move out data for a tenant on a given lease.              <br /><br /><h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2638,7 +2638,7 @@ Update a signed lease.  <br /><br /><strong>NOTE:</strong> Any field not include
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2716,7 +2716,7 @@ Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2796,7 +2796,7 @@ Updates a lease note.              <br /><br /><strong>NOTE:</strong> Any field 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

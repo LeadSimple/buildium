@@ -9,7 +9,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ApplicationPutMessage.new(
   application_status: null

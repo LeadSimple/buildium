@@ -28,7 +28,7 @@ Creates a rental unit.  <br /><br /><h4>Required permission(s):</h4><span class=
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -104,7 +104,7 @@ Creates a rental unit note.              <br /><br /><h4>Required permission(s):
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -182,7 +182,7 @@ Retrieves a list of rental property units.  <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -270,7 +270,7 @@ Retrieves all amenities for a rental unit.              <br /><br /><h4>Required
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -346,7 +346,7 @@ Retrieves a specific rental property unit.  <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -422,7 +422,7 @@ Retrieves a rental unit note.              <br /><br /><h4>Required permission(s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -500,7 +500,7 @@ Retrieves all rental unit notes.              <br /><br /><h4>Required permissio
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -590,7 +590,7 @@ Updates a rental unit note.              <br /><br /><strong>NOTE:</strong> Any 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -670,7 +670,7 @@ Updates a rental unit.  <br /><br /><strong>NOTE:</strong> Any field not include
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -748,7 +748,7 @@ Updates the amenities for a rental unit.              <br /><br /><strong>NOTE:<
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

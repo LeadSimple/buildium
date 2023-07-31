@@ -43,7 +43,7 @@ Creates a bill.              <br /><br /><h4>Required permission(s):</h4><span c
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -119,7 +119,7 @@ Creates a bill payment.              <br /><br /><h4>Required permission(s):</h4
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -197,7 +197,7 @@ Creates a budget.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -273,7 +273,7 @@ Creates a general journal entry.              <br /><br /><h4>Required permissio
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -349,7 +349,7 @@ Creates a general ledger account.              <br /><br /><h4>Required permissi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -425,7 +425,7 @@ Uploads a file and associates it to the specified bill record.  <br /><br />Uplo
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -503,7 +503,7 @@ Deletes the specified file from a bill. The file will be permanently deleted fro
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -580,7 +580,7 @@ Downloads a specific file associated to the bill.              <br /><br /><h4>R
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -658,7 +658,7 @@ Retrieves the metadata for all files associated to the specified bill.          
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -742,7 +742,7 @@ Retrieves a list of general ledger accounts.<br /><br />General ledger accounts 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -826,7 +826,7 @@ Retrieves a list of general ledger transactions.  <br /><br /><h4>Required permi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -918,7 +918,7 @@ Retrieves a single bill.              <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -994,7 +994,7 @@ Retrieves the metadata for a specific file associated with the specified bill.  
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1072,7 +1072,7 @@ Retrieves specific bill payment.              <br /><br /><h4>Required permissio
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1150,7 +1150,7 @@ Retrieves a list of bill payments for a specific bill.              <br /><br />
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1234,7 +1234,7 @@ Retrieves a list of bills.              <br /><br /><h4>Required permission(s):<
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1332,7 +1332,7 @@ Retrieves a budget.              <br /><br /><h4>Required permission(s):</h4><sp
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1408,7 +1408,7 @@ Retrieves all budgets.              <br /><br /><h4>Required permission(s):</h4>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1496,7 +1496,7 @@ Retrieves all general ledger account balances as of a given date. The response i
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1588,7 +1588,7 @@ Retrieves a specific general ledger account.  <br /><br /><h4>Required permissio
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1664,7 +1664,7 @@ Retrieves a specific general ledger transaction.  <br /><br /><h4>Required permi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1740,7 +1740,7 @@ Use this operation to update any of the writable fields of an existing bill reso
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1818,7 +1818,7 @@ Updates a budget.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1896,7 +1896,7 @@ Updates a general journal entry.              <br /><br /><h4>Required permissio
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1974,7 +1974,7 @@ Updates a general ledger account.              <br /><br /><h4>Required permissi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

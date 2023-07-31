@@ -16,7 +16,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ApplicantSearchMessage.new(
   entity_id: null,

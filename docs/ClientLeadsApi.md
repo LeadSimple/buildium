@@ -20,7 +20,7 @@ Retrieves all client leads              <br /><br />              Note: When usi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -112,7 +112,7 @@ Retrieves a specific client lead              <br /><br /><h4>Required permissio
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

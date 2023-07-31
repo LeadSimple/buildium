@@ -10,7 +10,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::RecurringTransactionLineMessage.new(
   gl_account_id: null,

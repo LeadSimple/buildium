@@ -14,7 +14,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::FileUploadPostMessage.new(
   entity_type: null,

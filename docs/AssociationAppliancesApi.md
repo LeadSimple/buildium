@@ -26,7 +26,7 @@ Creates an association appliance.              <br /><br /><h4>Required permissi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -102,7 +102,7 @@ Creates a service history for an appliance.              <br /><br /><h4>Require
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -180,7 +180,7 @@ Deletes an associations appliance.              <br /><br /><h4>Required permiss
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -255,7 +255,7 @@ Retrieves all of the service history records for an appliance.              <br 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -339,7 +339,7 @@ Retrieves an association appliance by id.              <br /><br /><h4>Required 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -415,7 +415,7 @@ Retrieves a specific service history record for a given appliance.              
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -493,7 +493,7 @@ Retrieves all association appliances.              <br /><br /><h4>Required perm
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -579,7 +579,7 @@ Updates an association appliance.              <br /><br /><strong>NOTE:</strong
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

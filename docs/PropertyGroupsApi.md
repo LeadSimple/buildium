@@ -22,7 +22,7 @@ Creates a property group.              <br /><br /><h4>Required permission(s):</
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -98,7 +98,7 @@ Retrieves a property group.              <br /><br /><h4>Required permission(s):
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -174,7 +174,7 @@ Retrieves all property groups.              <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -260,7 +260,7 @@ Updates a property group.              <br /><br /><h4>Required permission(s):</
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

@@ -19,7 +19,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ContactRequestTaskPutMessage.new(
   title: null,

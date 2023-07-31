@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ClientLeadCreditRequestMessage.new(
   credit_status: null,

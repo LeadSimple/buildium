@@ -16,7 +16,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ChargeRecurringTransactionPostMessage.new(
   gl_account_id: null,

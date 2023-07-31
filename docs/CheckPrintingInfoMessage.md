@@ -23,7 +23,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::CheckPrintingInfoMessage.new(
   enable_remote_check_printing: null,

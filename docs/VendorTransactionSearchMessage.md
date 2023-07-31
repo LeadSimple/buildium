@@ -13,7 +13,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::VendorTransactionSearchMessage.new(
   transaction_date_from: null,

@@ -22,7 +22,7 @@ Creates a work order.              <br /><br /><h4>Required permission(s):</h4><
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -98,7 +98,7 @@ Retrieves a list of work orders.  <br /><br /><h4>Required permission(s):</h4><s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -218,7 +218,7 @@ Retrieves a specific work order.  <br /><br /><h4>Required permission(s):</h4><s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -294,7 +294,7 @@ Updates a work order.              <br /><br /><strong>NOTE:</strong> Any field 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

@@ -19,7 +19,7 @@ Retrieves all resident center users for both rentals and associations.          
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

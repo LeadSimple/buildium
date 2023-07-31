@@ -43,7 +43,7 @@ Creates an ownership account.  <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -119,7 +119,7 @@ Creates a new ownership account note.  <br /><br /><h4>Required permission(s):</
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -197,7 +197,7 @@ Creates a ledger credit.              <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -275,7 +275,7 @@ Creates a recurring credit transaction that will post automatically on the speci
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -353,7 +353,7 @@ Withholds an association owner deposit by reallocating the funds from a liabilit
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -431,7 +431,7 @@ Creates a ledger charge.  <br /><br /><h4>Required permission(s):</h4><span clas
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -509,7 +509,7 @@ Creates a ledger payment.              <br /><br /><h4>Required permission(s):</
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -587,7 +587,7 @@ Creates a recurring payment that will post automatically on the specified owners
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -665,7 +665,7 @@ Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -743,7 +743,7 @@ Creates a recurring charge transaction that will post automatically on the speci
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -821,7 +821,7 @@ Retrieves a list of ownership accounts.  <br /><br /><h4>Required permission(s):
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -915,7 +915,7 @@ Retrieves an ownership account note.              <br /><br /><h4>Required permi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -993,7 +993,7 @@ Retrieves notes for an ownership account.              <br /><br /><h4>Required 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1083,7 +1083,7 @@ Retrieves all recurring transactions for an ownership account.              <br 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1167,7 +1167,7 @@ Retrieves a specific ownership account.  <br /><br /><h4>Required permission(s):
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1243,7 +1243,7 @@ Retrieves all transactions for a specific ownership account.  <br /><br /><h4>Re
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1333,7 +1333,7 @@ Retrieves a list of ownership account outstanding balances.              <br /><
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1425,7 +1425,7 @@ Retrieves a recurring credit.              <br /><br /><h4>Required permission(s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1503,7 +1503,7 @@ Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><sp
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1581,7 +1581,7 @@ Retrieves a single ownership account transaction.  <br /><br /><h4>Required perm
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1659,7 +1659,7 @@ Retrieves a recurring charge.              <br /><br /><h4>Required permission(s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1737,7 +1737,7 @@ Retrieves a recurring payment.              <br /><br /><h4>Required permission(
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1815,7 +1815,7 @@ Updates an ownership account.              <br /><br /><strong>NOTE:</strong> An
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1893,7 +1893,7 @@ Updates an association ownership account note.              <br /><br /><strong>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1973,7 +1973,7 @@ Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

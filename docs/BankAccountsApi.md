@@ -45,7 +45,7 @@ Creates a bank account.              <br /><br /><h4>Required permission(s):</h4
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -121,7 +121,7 @@ Creates a check.              <br /><br /><h4>Required permission(s):</h4><span 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -199,7 +199,7 @@ Creates a deposit.              <br /><br /><h4>Required permission(s):</h4><spa
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -277,7 +277,7 @@ Creates a bank account transfer.              <br /><br /><h4>Required permissio
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -355,7 +355,7 @@ Creates a quick deposit.              <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -433,7 +433,7 @@ Creates a bank account withdrawal.              <br /><br /><h4>Required permiss
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -511,7 +511,7 @@ Retrieves a list of bank accounts.  <br /><br /><h4>Required permission(s):</h4>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -597,7 +597,7 @@ Retrieves all quick deposits.              <br /><br /><h4>Required permission(s
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -685,7 +685,7 @@ Retrieves a specific bank account.  <br /><br /><h4>Required permission(s):</h4>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -761,7 +761,7 @@ Retrieves all bank account checks.              <br /><br /><h4>Required permiss
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -849,7 +849,7 @@ Retrieves a bank account deposit.              <br /><br /><h4>Required permissi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -927,7 +927,7 @@ Retrieves all bank account deposits.              <br /><br /><h4>Required permi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1015,7 +1015,7 @@ Retrieves a specific bank account transaction.              <br /><br /><h4>Requ
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1093,7 +1093,7 @@ Retrieves all bank account transactions.              <br /><br />              
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1185,7 +1185,7 @@ Retrieves a bank account transfer.  <br /><br /><h4>Required permission(s):</h4>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1263,7 +1263,7 @@ Retrieves all bank account transfers.              <br /><br /><h4>Required perm
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1351,7 +1351,7 @@ Retrieves a bank account withdrawal.              <br /><br /><h4>Required permi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1429,7 +1429,7 @@ Retrieves all bank account withdrawals.              <br /><br /><h4>Required pe
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1517,7 +1517,7 @@ Retrieves a bank account check.              <br /><br /><h4>Required permission
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1595,7 +1595,7 @@ Retrieves a quick deposit.              <br /><br /><h4>Required permission(s):<
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1673,7 +1673,7 @@ Retrieve all bank account undeposited funds.              <br /><br /><h4>Requir
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1757,7 +1757,7 @@ Updates a bank account.              <br /><br /><strong>NOTE:</strong> Any fiel
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1835,7 +1835,7 @@ Updates a deposit.              <br /><br /><strong>NOTE:</strong> Any field not
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1915,7 +1915,7 @@ Updates a bank account transfer.              <br /><br /><strong>NOTE:</strong>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -1995,7 +1995,7 @@ Updates a bank account withdrawal.              <br /><br /><strong>NOTE:</stron
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2075,7 +2075,7 @@ Updates a check.              <br /><br /><strong>NOTE:</strong> Any field not i
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -2155,7 +2155,7 @@ Updates a quick deposit.              <br /><br /><strong>NOTE:</strong> Any fie
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

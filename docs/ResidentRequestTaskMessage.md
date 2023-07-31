@@ -26,7 +26,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ResidentRequestTaskMessage.new(
   id: null,

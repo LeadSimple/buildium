@@ -13,14 +13,14 @@ OpenAPI Generator version: 6.0.1
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "buildium/version"
+require "buildium-ruby/version"
 
 Gem::Specification.new do |s|
-  s.name        = "buildium"
+  s.name        = "buildium-ruby"
   s.version     = Buildium::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["LeadSimple"]
-  s.email       = [""]
+  s.email       = ["engineering+buildium.gem@leadsimple.com"]
   s.homepage    = "https://github.com/LeadSimple/buildium"
   s.summary     = "Open API, powered by Buildium Ruby Gem"
   s.description = "API client library for Buildium"

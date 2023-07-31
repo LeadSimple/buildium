@@ -15,7 +15,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::RentalUnitPutMessage.new(
   unit_number: null,

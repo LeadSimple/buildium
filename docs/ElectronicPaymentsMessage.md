@@ -16,7 +16,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ElectronicPaymentsMessage.new(
   debit_transaction_limit: null,

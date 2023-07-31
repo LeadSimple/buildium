@@ -18,7 +18,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::ListingMessage.new(
   listing_date: null,

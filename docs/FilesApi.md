@@ -27,7 +27,7 @@ Creates a file category.              <br /><br /><h4>Required permission(s):</h
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -103,7 +103,7 @@ Uploading a file requires making two API requests. Each step is outlined below. 
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -179,7 +179,7 @@ GetFileDownloadUrlAsync\">Download File endpoint.</a><br /><br /><h4>Required pe
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -255,7 +255,7 @@ Retrieves a list of file categories.              <br /><br /><h4>Required permi
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -337,7 +337,7 @@ Retrieves a specific file category.              <br /><br /><h4>Required permis
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -413,7 +413,7 @@ Downloading a file requires making two API requests. The first request to `/v1/f
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -489,7 +489,7 @@ GetFileDownloadUrlAsync\">Download File</a> endpoint.               <br /><br />
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -585,7 +585,7 @@ Updates a metadata of the file.               <br /><br /><strong>NOTE:</strong>
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId
@@ -663,7 +663,7 @@ Updates a file category. Note that file categories where `IsEditable` is `false`
 
 ```ruby
 require 'time'
-require 'buildium'
+require 'buildium-ruby'
 # setup authorization
 Buildium.configure do |config|
   # Configure API key authorization: clientId

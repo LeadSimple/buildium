@@ -4,7 +4,7 @@ set -e
 
 # Delete old files
 rm -rf lib/ spec/ docs/
-rm ".openapi-generator/FILES"
+rm -rf ".openapi-generator/FILES"
 
 # Rename operations that have duplicated names after we remove the "ExternalApi"
 # artifact below. Without this, both operations will be named the same and conflict.
@@ -23,9 +23,9 @@ jq 'del(.components.schemas.TenantMessage.properties.SMSOptInStatus.enum)' bin/s
 npx @openapitools/openapi-generator-cli generate -i bin/swagger.json -g ruby -o . -c bin/config.yml --library=faraday -t ./.openapi-generator/templates/ruby-client
 
 # Remove the ApiError model: it is not used and conflicts with the ApiError exception class
-rm lib/buildium/models/api_error.rb
-rm spec/models/api_error_spec.rb
-sed -i "s/require 'buildium\/models\/api_error'//g" lib/buildium.rb
+rm -rf lib/buildium-ruby/models/api_error.rb
+rm -rf spec/models/api_error_spec.rb
+sed -i "s/require 'buildium-ruby\/models\/api_error'//g" lib/buildium-ruby.rb
 
 # Run rubocop in these files if it exists, else fail and ask to install it
 command -v rubocop >/dev/null 2>&1 || { echo "I require rubocop to be installed, but it couldn't be find in your PATH.  Aborting." >&2; exit 1; }

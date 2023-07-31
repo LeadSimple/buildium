@@ -12,7 +12,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::VendorCreditLineItemPostMessage.new(
   gl_account_id: null,

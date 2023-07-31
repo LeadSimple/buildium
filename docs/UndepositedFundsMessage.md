@@ -9,7 +9,7 @@
 ## Example
 
 ```ruby
-require 'buildium'
+require 'buildium-ruby'
 
 instance = Buildium::UndepositedFundsMessage.new(
   general_ledger_transaction: null

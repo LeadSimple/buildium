@@ -13,7 +13,7 @@
 | **property_manager_id** | **Integer** | Indicates the staff member identifier that acts as the property manager for this rental property. Note, the staff member must have permissions to this rental to be assigned as the property manager.  Set this field to null if you don&#39;t want to assign a staff member to the rental property. | [optional] |
 | **reserve** | **Float** | A property reserve is cash that a property manager keeps on hand in case of unexpected expenses. It is available cash that isn&#39;t disbursed in an owner draw. | [optional] |
 | **year_built** | **Integer** | Indicates the year the rental property was built. If provided this value must be a four digit integer between 1000 and the current year. | [optional] |
-| **units** | [**Array&lt;RentalPropertyUnitPostMessage&gt;**](RentalPropertyUnitPostMessage.md) | CreateRentalUnit\&quot;&gt;Create a unit&lt;/a&gt; endpoint to create the additional units once the property has been created. | [optional] |
+| **units** | [**Array&lt;RentalPropertyUnitPostMessage&gt;**](RentalPropertyUnitPostMessage.md) | Units of the rental property. If no values are provided, a default unit will be created for the property. The number of units cannot exceed 100. If you need to create more than 100 units for the property, use the &lt;a href&#x3D;\&quot;#operation/RentalUnitsCreateRentalUnit\&quot;&gt;Create a unit&lt;/a&gt; endpoint to create the additional units once the property has been created. | [optional] |
 
 ## Example
 

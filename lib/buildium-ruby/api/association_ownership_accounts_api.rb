@@ -1,7 +1,7 @@
 =begin
 #Open API, powered by Buildium
 
-#GetAllGLAccounts) response message now includes the property `IsBankAccount`. This is a boolean property that indicates whether the general ledger account is also a bank account.  * A `Country` property has been added to all Address messages. This property contains an enumeration indicating the country of the address.   
+#  # Introduction  ### Welcome!    Welcome to Buildium’s API—a powerful, RESTful programming interface that lets you leverage valuable Buildium data.    Using HTTP requests, you can create integrations with applications that specialize in accounting, lead tracking, and more. Enjoy greater flexibility, transparency, and control over your business!      ### What's in this Guide?    This guide is full of simple, easy-to-follow instructions that’ll help you use Buildium’s API like a pro.    Topics include:    * choosing the right resources for your use case  * making HTTP requests to any resource  * understanding data and response codes    <br />    # Getting Started  Excited to get going? We’ll walk you through the setup process.  >  **Note:** To take advantage of the Buildium Open API you must have a <a target=\"_blank\" href=\"https://www.buildium.com/pricing/\">**Premium Subscription**</a>.    ## Account Configuration  Before you can use Buildium’s API, you’ll need to make some tweaks to your account settings.    <br />    ### Enabling the API  In order to start creating your keys and making requests, you’ll need to enable the API.      >  **Tip:** You’ll need an administrator user role with access to ***Application settings*** to set things up properly.    <br />    ​ **Let's Begin!**    1. Sign in to your [Buildium](https://signin.managebuilding.com/manager/public/authentication/login?ReturnUrl=%2Fmanager%2F) account from your browser.    2. Open the ***Settings*** menu and click ***Application settings***.    3. Under ***System preferences***, click ***Api settings***. A modal will appear.    4. Click the ***Open API*** toggle to turn it on. Then click ***Save***.    <kbd><img src=\"app_settings.gif\" class=\"example_screen\" /></kbd>      Congratulations! Your account's enabled. Now, you’re ready to start managing API keys.  <br />  <br />  If you are having issues enabling the API within your account you can submit a [Support](#section/API-Overview/Support) request for assistance.    <br />      ## API Keys  Account-level API keys authenticate every request and keep things secure.    API keys have two components: a “client ID” and a “secret”.    * **Client IDs** are similar to usernames. They’re used to identify your Buildium account and are safe to share.  * **Secrets** are similar to passwords. They must be kept confidential.    Whenever you make a request, you’ll need the API key’s client ID and secret. If you forget it, make a mistake, or try to use information that’s linked to a deleted key, the API will return a `401` response code.    >  **Tip:** We compiled a list of best practices that detail how securely store API keys. [Give it a read](#section/Getting-Started/Keeping-API-Keys-Safe)!    ## Creating API Keys  Now that the Open APi is enabled, you’ll be able to create API keys. You’re almost there!    >  **Tip:** You’ll need an administrator user role to complete this step, too.    <br />    **How to create an API key**    1. Sign in to your [Buildium](https://signin.managebuilding.com/manager/public/authentication/login?ReturnUrl=%2Fmanager%2F) account from your browser.    2. Open the ***Settings*** menu and click ***API Keys***. The page will open automatically.    3. Click ***Create API Key***. A modal will appear.    4. Enter a clear, memorable name and description for your API key. It’ll make it easier to locate the right key when you make a request. Once finished, click **Next**.    5. Now, choose which pieces of Buildium data you want this API key to have access to by marking the corresponding checkboxes. Once finished, click **Next**.    6. You successfully created an API key!    > **Important:** This is your only chance to record the secret. Make sure it’s stored somewhere secure! If it’s forgotten, you’ll need to delete this key and start from scratch.    <br />    <kbd><img src=\"key_gen.gif\" class=\"example_screen\" /></kbd>    <br />    You have now successfully created an API key and have everything you need to  send requests to the Buildium API!    Before moving on to [making your first request](#section/Getting-Started/How-to-Make-a-Request) please review [Keeping your Keys Safe](#section/Getting-Started/Keeping-your-Keys-Safe) for an overview on securely storing your API keys.    <br />  If you are having issues creating API keys you can submit a [Support](#section/API-Overview/Support) request for assistance.  <br />      ## Keeping API Keys Safe    Based on their permissions, API keys could have full access to your account’s Buildium data. It’s important that you only grant access to trusted applications, securely record secrets, and consider a password manager to stay organized.      ### Recommended Practices    - Avoid hard-coding client IDs and secrets inside source files.  - Avoid storing client IDs and secrets in any files that may be committed to source control, particularly cloud-based source control platforms.  - Apply restrictions to client IDs and secrets shared with your staff. You can restrict a key to particular Buildium entities or to read-only access (GET resources only).  - Avoid sharing client IDs and secrets across public, insecure platforms.  - Establish a process to regularly recreate your client IDs and secrets from your Buildium account.    <br />    <br />    ## How to Make a Request    You’ve done a great job setting up your account, Now, we’ll walk you through how to access your data. It’s very straightforward and should only take a few minutes!      > **Tip:** Looking for the right HTTP client? If you’re just getting started, we recommend Postman.      <br />    ### Let's Get Started!    #### Step 1: Get Your API Key    If you haven't yet done so, obtain your API key client ID and secret from your Buildium account. Your API key is how the Buildium API authenticates requests and ensures only you can access your data.    See [Getting Started](#section/Getting-Started) for a deeper dive into enabling the API and creating keys.    #### Step 2: Install a HTTP client  The Buildium API supports any standard HTTP client. If you're looking for a user-friendly HTTP client application, we recommend [Postman](https://www.postman.com/product/api-client) – it allows you to access the Buildium API without writing code. We’ll use Postman for our example below to demonstrate sending an API request.      #### Step 3: Make a Sample Request    Let's dive in and make a simple request to get all the [Rental Properties](#operation/RentalsGetAllGLAccounts) response message now includes the property `IsBankAccount`. This is a boolean property that indicates whether the general ledger account is also a bank account.  * A `Country` property has been added to all Address messages. This property contains an enumeration indicating the country of the address.   
 
 The version of the OpenAPI document: v1
 
@@ -157,6 +157,80 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#create_association_ownership_account_note\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create an ownership account ledger payment with automatic allocations
+    # Creates a payment on the ownership account ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &gt; Application Settings &gt; Residents page in your account. If you'd like to specify the GL accounts the payment should apply to, please use the <a href=\"#operation/CreateOwnershipAccountLedgerPayment\">Create a ledger payment</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # @param ownership_account_id [Integer] 
+    # @param ownership_account_auto_allocated_payment_post_message [OwnershipAccountAutoAllocatedPaymentPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [OwnershipAccountTransactionMessage]
+    def create_ownership_account_auto_allocated_payment(ownership_account_id, ownership_account_auto_allocated_payment_post_message, opts = {})
+      data, _status_code, _headers = create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, ownership_account_auto_allocated_payment_post_message, opts)
+      data
+    end
+
+    # Create an ownership account ledger payment with automatic allocations
+    # Creates a payment on the ownership account ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &amp;gt; Application Settings &amp;gt; Residents page in your account. If you&#39;d like to specify the GL accounts the payment should apply to, please use the &lt;a href&#x3D;\&quot;#operation/CreateOwnershipAccountLedgerPayment\&quot;&gt;Create a ledger payment&lt;/a&gt; endpoint.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param ownership_account_auto_allocated_payment_post_message [OwnershipAccountAutoAllocatedPaymentPostMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
+    def create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, ownership_account_auto_allocated_payment_post_message, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AssociationOwnershipAccountsApi.create_ownership_account_auto_allocated_payment ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling AssociationOwnershipAccountsApi.create_ownership_account_auto_allocated_payment"
+      end
+      # verify the required parameter 'ownership_account_auto_allocated_payment_post_message' is set
+      if @api_client.config.client_side_validation && ownership_account_auto_allocated_payment_post_message.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_auto_allocated_payment_post_message' when calling AssociationOwnershipAccountsApi.create_ownership_account_auto_allocated_payment"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/autoallocatedpayments'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+        header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_auto_allocated_payment_post_message)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AssociationOwnershipAccountsApi.create_ownership_account_auto_allocated_payment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AssociationOwnershipAccountsApi#create_ownership_account_auto_allocated_payment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -756,6 +830,7 @@ module Buildium
     # Retrieve all ownership accounts
     # Retrieves a list of ownership accounts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View`
     # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :ids Filters results to the specified set of ids.
     # @option opts [Array<Integer>] :associationids Filters results to any ownership accounts who belong to the specified set of association ids.
     # @option opts [String] :unitorowner Filters results to any association whose unit or owner *contains* the specified value.
     # @option opts [Date] :datefrom Filters results to any ownership account whose start date is greater than or equal to the specified value.
@@ -774,6 +849,7 @@ module Buildium
     # Retrieve all ownership accounts
     # Retrieves a list of ownership accounts.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
+    # @option opts [Array<Integer>] :ids Filters results to the specified set of ids.
     # @option opts [Array<Integer>] :associationids Filters results to any ownership accounts who belong to the specified set of association ids.
     # @option opts [String] :unitorowner Filters results to any association whose unit or owner *contains* the specified value.
     # @option opts [Date] :datefrom Filters results to any ownership account whose start date is greater than or equal to the specified value.
@@ -801,6 +877,7 @@ module Buildium
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'ids'] = @api_client.build_collection_param(opts[:'ids'], :multi) if !opts[:'ids'].nil?
       query_params[:'associationids'] = @api_client.build_collection_param(opts[:'associationids'], :multi) if !opts[:'associationids'].nil?
       query_params[:'unitorowner'] = opts[:'unitorowner'] if !opts[:'unitorowner'].nil?
       query_params[:'datefrom'] = opts[:'datefrom'] if !opts[:'datefrom'].nil?

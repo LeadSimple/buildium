@@ -8,13 +8,16 @@ rm -rf ".openapi-generator/FILES"
 
 # Rename operations that have duplicated names after we remove the "ExternalApi"
 # artifact below. Without this, both operations will be named the same and conflict.
-sed -i 's/LeaseLedgerTransactionsExternalApi_CreateCharge/CreateLeaseLedgerCharge/g' bin/swagger.json
-sed -i 's/OwnershipAccountsLedgerExternalApi_CreateCharge/CreateOwnershipAccountLedgerCharge/g' bin/swagger.json
-sed -i 's/TaskHistoryFileUploadsExternalApi_CreateUploadFileRequestAsync/UploadTaskHistoryFileRequestAsync/g' bin/swagger.json
+sed -i 's/ExternalApiFilesUploads_CreateUploadFileRequestAsync/CreateUploadFileRequestAsync/g' bin/swagger.json
+sed -i 's/ExternalApiRentalImageUploadRequests_CreateUploadFileRequestAsync/CreateRentalImageUploadFileRequestAsync/g' bin/swagger.json
+sed -i 's/ExternalApiRentalUnitImageUploadRequests_CreateUploadFileRequestAsync/CreateRentalUnitImageUploadFileRequestAsync/g' bin/swagger.json
+sed -i 's/ExternalApiLeaseLedgerChargesWrite_CreateCharge/CreateLeaseLedgerCharge/g' bin/swagger.json
+sed -i 's/ExternalApiOwnershipAccountLedgerCharges_CreateCharge/CreateOwnershipAccountLedgerCharge/g' bin/swagger.json
+sed -i 's/ExternalApiTaskHistoryFileUploads_CreateUploadFileRequestAsync/UploadTaskHistoryFileRequestAsync/g' bin/swagger.json
 
-# Replace the weird "ExternalApi" artifact in the operation names,
+# Replace the weird "ExternalApiSomething" artifact in the operation names,
 # so that the generated code will be cleaner
-sed -i 's/: ".*ExternalApi_/: "/g' bin/swagger.json
+sed -i 's/ExternalApi.*_//g' bin/swagger.json
 
 # Remove some enums where Buildium is returning invalid data
 jq 'del(.components.schemas.TenantMessage.properties.SMSOptInStatus.enum)' bin/swagger.json | sponge bin/swagger.json # See https://github.com/LeadSimple/LeadSimple/issues/11675

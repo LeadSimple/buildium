@@ -14,8 +14,8 @@
 | **unit_bedrooms** | **String** | Number of bedrooms in the unit. Null if no value is set. | [optional] |
 | **unit_bathrooms** | **String** | Number of bathrooms in the unit. Null if no value is set. | [optional] |
 | **unit_size** | **Integer** | Size of the unit. Null if no value is set. | [optional] |
-| **is_unit_listed** | **Boolean** | Whether the unit is currently listed for rent. | [optional] |
-| **is_unit_occupied** | **Boolean** | Whether the unit is currently being rented by a tenent. | [optional] |
+| **is_unit_listed** | **Boolean** | Whether the unit is currently listed for rent.                Note: this value is transient and determined at query time based on whether an active listing exists for the unit. Because this value is not persisted in the database, changes to value are not reflected in the last updated date for the unit. | [optional] |
+| **is_unit_occupied** | **Boolean** | Whether the unit is currently being rented by a tenent.                Note: this value is transient and determined at query time based on whether an active lease exists for the unit. Because this value is not persisted in the database, changes to value are not reflected in the last updated date for the unit. | [optional] |
 
 ## Example
 

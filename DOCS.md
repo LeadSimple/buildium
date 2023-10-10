@@ -2,14 +2,161 @@
 
 Buildium - the Ruby gem for the Open API, powered by Buildium
 
-GetAllGLAccounts) response message now includes the property `IsBankAccount`. This is a boolean property that indicates whether the general ledger account is also a bank account.
+
+# Introduction
+### Welcome!
+
+Welcome to Buildium’s API—a powerful, RESTful programming interface that lets you leverage valuable Buildium data.
+
+Using HTTP requests, you can create integrations with applications that specialize in accounting, lead tracking, and more. Enjoy greater flexibility, transparency, and control over your business!
+
+
+### What's in this Guide?
+
+This guide is full of simple, easy-to-follow instructions that’ll help you use Buildium’s API like a pro.
+
+Topics include:
+
+* choosing the right resources for your use case
+* making HTTP requests to any resource
+* understanding data and response codes
+
+<br />
+
+# Getting Started
+Excited to get going? We’ll walk you through the setup process.
+>  **Note:** To take advantage of the Buildium Open API you must have a <a target=\"_blank\" href=\"https://www.buildium.com/pricing/\">**Premium Subscription**</a>.
+
+## Account Configuration
+Before you can use Buildium’s API, you’ll need to make some tweaks to your account settings.
+
+<br />
+
+### Enabling the API
+In order to start creating your keys and making requests, you’ll need to enable the API.
+
+
+>  **Tip:** You’ll need an administrator user role with access to ***Application settings*** to set things up properly.
+
+<br />
+
+​ **Let's Begin!**
+
+1. Sign in to your [Buildium](https://signin.managebuilding.com/manager/public/authentication/login?ReturnUrl=%2Fmanager%2F) account from your browser.
+
+2. Open the ***Settings*** menu and click ***Application settings***.
+
+3. Under ***System preferences***, click ***Api settings***. A modal will appear.
+
+4. Click the ***Open API*** toggle to turn it on. Then click ***Save***.
+
+<kbd><img src=\"app_settings.gif\" class=\"example_screen\" /></kbd>
+
+
+Congratulations! Your account's enabled. Now, you’re ready to start managing API keys.
+<br />
+<br />
+If you are having issues enabling the API within your account you can submit a [Support](#section/API-Overview/Support) request for assistance.
+
+<br />
+
+
+## API Keys
+Account-level API keys authenticate every request and keep things secure.
+
+API keys have two components: a “client ID” and a “secret”.
+
+* **Client IDs** are similar to usernames. They’re used to identify your Buildium account and are safe to share.
+* **Secrets** are similar to passwords. They must be kept confidential.
+
+Whenever you make a request, you’ll need the API key’s client ID and secret. If you forget it, make a mistake, or try to use information that’s linked to a deleted key, the API will return a `401` response code.
+
+>  **Tip:** We compiled a list of best practices that detail how securely store API keys. [Give it a read](#section/Getting-Started/Keeping-API-Keys-Safe)!
+
+## Creating API Keys
+Now that the Open APi is enabled, you’ll be able to create API keys. You’re almost there!
+
+>  **Tip:** You’ll need an administrator user role to complete this step, too.
+
+<br />
+
+**How to create an API key**
+
+1. Sign in to your [Buildium](https://signin.managebuilding.com/manager/public/authentication/login?ReturnUrl=%2Fmanager%2F) account from your browser.
+
+2. Open the ***Settings*** menu and click ***API Keys***. The page will open automatically.
+
+3. Click ***Create API Key***. A modal will appear.
+
+4. Enter a clear, memorable name and description for your API key. It’ll make it easier to locate the right key when you make a request. Once finished, click **Next**.
+
+5. Now, choose which pieces of Buildium data you want this API key to have access to by marking the corresponding checkboxes. Once finished, click **Next**.
+
+6. You successfully created an API key!
+
+> **Important:** This is your only chance to record the secret. Make sure it’s stored somewhere secure! If it’s forgotten, you’ll need to delete this key and start from scratch.
+
+<br />
+
+<kbd><img src=\"key_gen.gif\" class=\"example_screen\" /></kbd>
+
+<br />
+
+You have now successfully created an API key and have everything you need to  send requests to the Buildium API!
+
+Before moving on to [making your first request](#section/Getting-Started/How-to-Make-a-Request) please review [Keeping your Keys Safe](#section/Getting-Started/Keeping-your-Keys-Safe) for an overview on securely storing your API keys.  
+<br />
+If you are having issues creating API keys you can submit a [Support](#section/API-Overview/Support) request for assistance.
+<br />
+
+
+## Keeping API Keys Safe
+
+Based on their permissions, API keys could have full access to your account’s Buildium data. It’s important that you only grant access to trusted applications, securely record secrets, and consider a password manager to stay organized.
+
+
+### Recommended Practices
+
+- Avoid hard-coding client IDs and secrets inside source files.
+- Avoid storing client IDs and secrets in any files that may be committed to source control, particularly cloud-based source control platforms.
+- Apply restrictions to client IDs and secrets shared with your staff. You can restrict a key to particular Buildium entities or to read-only access (GET resources only).
+- Avoid sharing client IDs and secrets across public, insecure platforms.
+- Establish a process to regularly recreate your client IDs and secrets from your Buildium account.
+  <br />
+  <br />
+
+## How to Make a Request
+
+You’ve done a great job setting up your account, Now, we’ll walk you through how to access your data. It’s very straightforward and should only take a few minutes!
+
+
+> **Tip:** Looking for the right HTTP client? If you’re just getting started, we recommend Postman.
+
+
+<br />
+
+### Let's Get Started!
+
+#### Step 1: Get Your API Key
+
+If you haven't yet done so, obtain your API key client ID and secret from your Buildium account. Your API key is how the Buildium API authenticates requests and ensures only you can access your data.
+
+See [Getting Started](#section/Getting-Started) for a deeper dive into enabling the API and creating keys.
+
+#### Step 2: Install a HTTP client
+The Buildium API supports any standard HTTP client. If you're looking for a user-friendly HTTP client application, we recommend [Postman](https://www.postman.com/product/api-client) – it allows you to access the Buildium API without writing code. We’ll use Postman for our example below to demonstrate sending an API request.
+
+
+#### Step 3: Make a Sample Request
+
+Let's dive in and make a simple request to get all the [Rental Properties](#operation/RentalsGetAllGLAccounts) response message now includes the property `IsBankAccount`. This is a boolean property that indicates whether the general ledger account is also a bank account.
 * A `Country` property has been added to all Address messages. This property contains an enumeration indicating the country of the address. 
 
 
 This SDK is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: v1
-- Package version: 2.0.1
+- Package version: 2.1.0
 - Build package: org.openapitools.codegen.languages.RubyClientCodegen
 
 ## Installation
@@ -25,16 +172,16 @@ gem build buildium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./buildium-ruby-2.0.1.gem
+gem install ./buildium-ruby-2.1.0.gem
 ```
 
-(for development, run `gem install --dev ./buildium-ruby-2.0.1.gem` to install the development dependencies)
+(for development, run `gem install --dev ./buildium-ruby-2.1.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'buildium-ruby', '~> 2.0.1'
+    gem 'buildium-ruby', '~> 2.1.0'
 
 ### Install from Git
 
@@ -72,14 +219,14 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::AccountingApi.new
-bill_post_message = Buildium::BillPostMessage.new({date: Date.today, due_date: Date.today, vendor_id: 37, lines: [Buildium::BillLinePostMessage.new({accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), gl_account_id: 37, amount: 3.56})]}) # BillPostMessage | 
+budget_post_message = Buildium::BudgetPostMessage.new({name: 'name_example', property_id: 37, start_month: 'January', fiscal_year: 37, details: [Buildium::BudgetDetailsSaveMessage.new({gl_account_id: 37, monthly_amounts: Buildium::BudgetMonthlyAmountsSaveMessage.new({january: 3.56, february: 3.56, march: 3.56, april: 3.56, may: 3.56, june: 3.56, july: 3.56, august: 3.56, september: 3.56, october: 3.56, november: 3.56, december: 3.56})})]}) # BudgetPostMessage | 
 
 begin
-  #Create a bill
-  result = api_instance.create_bill(bill_post_message)
+  #Create a budget
+  result = api_instance.create_budget(budget_post_message)
   p result
 rescue Buildium::ApiError => e
-  puts "Exception when calling AccountingApi->create_bill: #{e}"
+  puts "Exception when calling AccountingApi->create_budget: #{e}"
 end
 
 ```
@@ -90,28 +237,17 @@ All URIs are relative to *https://api.buildium.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*Buildium::AccountingApi* | [**create_bill**](docs/AccountingApi.md#create_bill) | **POST** /v1/bills | Create a bill
-*Buildium::AccountingApi* | [**create_bill_payment**](docs/AccountingApi.md#create_bill_payment) | **POST** /v1/bills/{billId}/payments | Create a bill payment
 *Buildium::AccountingApi* | [**create_budget**](docs/AccountingApi.md#create_budget) | **POST** /v1/budgets | Create a budget
 *Buildium::AccountingApi* | [**create_general_journal_entry**](docs/AccountingApi.md#create_general_journal_entry) | **POST** /v1/generalledger/journalentries | Create a general journal entry
 *Buildium::AccountingApi* | [**create_general_ledger_account**](docs/AccountingApi.md#create_general_ledger_account) | **POST** /v1/glaccounts | Create a general ledger account
-*Buildium::AccountingApi* | [**create_upload_file_request**](docs/AccountingApi.md#create_upload_file_request) | **POST** /v1/bills/{billId}/files/uploadrequests | Upload a bill file
-*Buildium::AccountingApi* | [**delete_bill_file**](docs/AccountingApi.md#delete_bill_file) | **DELETE** /v1/bills/{billId}/files/{fileId} | Delete a bill file
-*Buildium::AccountingApi* | [**download_bill_file**](docs/AccountingApi.md#download_bill_file) | **POST** /v1/bills/{billId}/files/{fileId}/downloadrequest | Download a bill file
-*Buildium::AccountingApi* | [**get_all_files_for_bill**](docs/AccountingApi.md#get_all_files_for_bill) | **GET** /v1/bills/{billId}/files | Retrieve all files for a bill
 *Buildium::AccountingApi* | [**get_all_gl_accounts**](docs/AccountingApi.md#get_all_gl_accounts) | **GET** /v1/glaccounts | Retrieve all general ledger accounts
 *Buildium::AccountingApi* | [**get_all_transactions**](docs/AccountingApi.md#get_all_transactions) | **GET** /v1/generalledger/transactions | Retrieve all general ledger transactions
-*Buildium::AccountingApi* | [**get_bill_by_id**](docs/AccountingApi.md#get_bill_by_id) | **GET** /v1/bills/{billId} | Retrieve a bill
-*Buildium::AccountingApi* | [**get_bill_file_by_id**](docs/AccountingApi.md#get_bill_file_by_id) | **GET** /v1/bills/{billId}/files/{fileId} | Retrieve a file for a bill
-*Buildium::AccountingApi* | [**get_bill_payment_by_id**](docs/AccountingApi.md#get_bill_payment_by_id) | **GET** /v1/bills/{billId}/payments/{paymentId} | Retrieve a bill payment
-*Buildium::AccountingApi* | [**get_bill_payments**](docs/AccountingApi.md#get_bill_payments) | **GET** /v1/bills/{billId}/payments | Retrieve all bill payments
-*Buildium::AccountingApi* | [**get_bills_async**](docs/AccountingApi.md#get_bills_async) | **GET** /v1/bills | Retrieve all bills
 *Buildium::AccountingApi* | [**get_budget_by_id**](docs/AccountingApi.md#get_budget_by_id) | **GET** /v1/budgets/{budgetId} | Retrieve a budget
 *Buildium::AccountingApi* | [**get_budgets**](docs/AccountingApi.md#get_budgets) | **GET** /v1/budgets | Retrieve all budgets
+*Buildium::AccountingApi* | [**get_general_ledger_entries**](docs/AccountingApi.md#get_general_ledger_entries) | **GET** /v1/generalledger | Retrieve all general ledger entries
 *Buildium::AccountingApi* | [**get_gl_account_balances**](docs/AccountingApi.md#get_gl_account_balances) | **GET** /v1/glaccounts/balances | Retrieve all general ledger account balances
 *Buildium::AccountingApi* | [**get_gl_account_by_id**](docs/AccountingApi.md#get_gl_account_by_id) | **GET** /v1/glaccounts/{glAccountId} | Retrieve a general ledger account
 *Buildium::AccountingApi* | [**get_transaction_by_id**](docs/AccountingApi.md#get_transaction_by_id) | **GET** /v1/generalledger/transactions/{transactionId} | Retrieve a general ledger transaction
-*Buildium::AccountingApi* | [**update_bill**](docs/AccountingApi.md#update_bill) | **PUT** /v1/bills/{billId} | Update a bill
 *Buildium::AccountingApi* | [**update_budget**](docs/AccountingApi.md#update_budget) | **PUT** /v1/budgets/{budgetId} | Update a budget
 *Buildium::AccountingApi* | [**update_general_journal_entry**](docs/AccountingApi.md#update_general_journal_entry) | **PUT** /v1/generalledger/journalentries/{journalEntryId} | Update a general journal entry
 *Buildium::AccountingApi* | [**update_gl_account**](docs/AccountingApi.md#update_gl_account) | **PUT** /v1/glaccounts/{glAccountId} | Update a general ledger account
@@ -153,13 +289,11 @@ Class | Method | HTTP request | Description
 *Buildium::AssociationOwnersApi* | [**get_association_owner_by_id**](docs/AssociationOwnersApi.md#get_association_owner_by_id) | **GET** /v1/associations/owners/{ownerId} | Retrieve an owner
 *Buildium::AssociationOwnersApi* | [**get_association_owner_note_by_note_id**](docs/AssociationOwnersApi.md#get_association_owner_note_by_note_id) | **GET** /v1/associations/owners/{ownerId}/notes/{noteId} | Retrieve a note
 *Buildium::AssociationOwnersApi* | [**get_association_owner_notes**](docs/AssociationOwnersApi.md#get_association_owner_notes) | **GET** /v1/associations/owners/{ownerId}/notes | Retrieve all notes
-*Buildium::AssociationOwnersApi* | [**get_unit_occupancy_statuses_by_id_for_association_owner**](docs/AssociationOwnersApi.md#get_unit_occupancy_statuses_by_id_for_association_owner) | **GET** /v1/associations/owners/{ownerId}/units/{unitId} | Retrieve an occupancy status
-*Buildium::AssociationOwnersApi* | [**get_unit_occupancy_statuses_for_association_owner**](docs/AssociationOwnersApi.md#get_unit_occupancy_statuses_for_association_owner) | **GET** /v1/associations/owners/{ownerId}/units | Retrieve all occupancy statuses
 *Buildium::AssociationOwnersApi* | [**update_association_owner**](docs/AssociationOwnersApi.md#update_association_owner) | **PUT** /v1/associations/owners/{ownerId} | Update an owner
 *Buildium::AssociationOwnersApi* | [**update_association_owner_note**](docs/AssociationOwnersApi.md#update_association_owner_note) | **PUT** /v1/associations/owners/{ownerId}/notes/{noteId} | Update a note
-*Buildium::AssociationOwnersApi* | [**update_association_owner_occupancy_status**](docs/AssociationOwnersApi.md#update_association_owner_occupancy_status) | **PUT** /v1/associations/owners/{ownerId}/units/{unitId} | Update occupancy status
 *Buildium::AssociationOwnershipAccountsApi* | [**create_association_ownership_account**](docs/AssociationOwnershipAccountsApi.md#create_association_ownership_account) | **POST** /v1/associations/ownershipaccounts | Create an ownership account
 *Buildium::AssociationOwnershipAccountsApi* | [**create_association_ownership_account_note**](docs/AssociationOwnershipAccountsApi.md#create_association_ownership_account_note) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Create a note
+*Buildium::AssociationOwnershipAccountsApi* | [**create_ownership_account_auto_allocated_payment**](docs/AssociationOwnershipAccountsApi.md#create_ownership_account_auto_allocated_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/autoallocatedpayments | Create an ownership account ledger payment with automatic allocations
 *Buildium::AssociationOwnershipAccountsApi* | [**create_ownership_account_credit**](docs/AssociationOwnershipAccountsApi.md#create_ownership_account_credit) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/credits | Create a ledger credit
 *Buildium::AssociationOwnershipAccountsApi* | [**create_ownership_account_credit_recurring_transaction**](docs/AssociationOwnershipAccountsApi.md#create_ownership_account_credit_recurring_transaction) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits | Create a recurring credit
 *Buildium::AssociationOwnershipAccountsApi* | [**create_ownership_account_deposit_withholding**](docs/AssociationOwnershipAccountsApi.md#create_ownership_account_deposit_withholding) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/applieddeposits | Create a deposit withholding
@@ -210,10 +344,18 @@ Class | Method | HTTP request | Description
 *Buildium::AssociationsApi* | [**get_association_notes**](docs/AssociationsApi.md#get_association_notes) | **GET** /v1/associations/{associationId}/notes | Retrieve all notes
 *Buildium::AssociationsApi* | [**get_association_preferred_vendors**](docs/AssociationsApi.md#get_association_preferred_vendors) | **GET** /v1/associations/{associationId}/vendors | Retrieve all preferred vendors
 *Buildium::AssociationsApi* | [**get_associations**](docs/AssociationsApi.md#get_associations) | **GET** /v1/associations | Retrieve all associations
+*Buildium::AssociationsApi* | [**get_bank_lock_box_data**](docs/AssociationsApi.md#get_bank_lock_box_data) | **GET** /v1/associations/banklockboxdata | Retrieve all association bank lockbox data
+*Buildium::AssociationsApi* | [**get_e_pay_settings_for_association_by_id**](docs/AssociationsApi.md#get_e_pay_settings_for_association_by_id) | **GET** /v1/associations/{associationId}/epaysettings | Retrieve ePay settings
+*Buildium::AssociationsApi* | [**get_unit_occupancy_statuses_by_id_for_association_owner**](docs/AssociationsApi.md#get_unit_occupancy_statuses_by_id_for_association_owner) | **GET** /v1/associations/owners/{ownerId}/units/{unitId} | Retrieve an occupancy status
+*Buildium::AssociationsApi* | [**get_unit_occupancy_statuses_for_association_owner**](docs/AssociationsApi.md#get_unit_occupancy_statuses_for_association_owner) | **GET** /v1/associations/owners/{ownerId}/units | Retrieve all occupancy statuses
+*Buildium::AssociationsApi* | [**inactivate_association**](docs/AssociationsApi.md#inactivate_association) | **POST** /v1/associations/{associationId}/inactivationrequest | Inactivate an association
+*Buildium::AssociationsApi* | [**reactivate_association**](docs/AssociationsApi.md#reactivate_association) | **POST** /v1/associations/{associationId}/reactivationrequest | Reactivate an association
 *Buildium::AssociationsApi* | [**update_association**](docs/AssociationsApi.md#update_association) | **PUT** /v1/associations/{associationId} | Update an association
 *Buildium::AssociationsApi* | [**update_association_note**](docs/AssociationsApi.md#update_association_note) | **PUT** /v1/associations/{associationId}/notes/{noteId} | Update a note
+*Buildium::AssociationsApi* | [**update_association_owner_occupancy_status**](docs/AssociationsApi.md#update_association_owner_occupancy_status) | **PUT** /v1/associations/owners/{ownerId}/units/{unitId} | Update occupancy status
 *Buildium::AssociationsApi* | [**update_association_preferred_vendors**](docs/AssociationsApi.md#update_association_preferred_vendors) | **PUT** /v1/associations/{associationId}/vendors | Update preferred vendors
 *Buildium::AssociationsApi* | [**update_board_member**](docs/AssociationsApi.md#update_board_member) | **PUT** /v1/associations/{associationId}/boardmembers/{boardMemberId} | Update a board member
+*Buildium::AssociationsApi* | [**update_e_pay_settings_for_association**](docs/AssociationsApi.md#update_e_pay_settings_for_association) | **PUT** /v1/associations/{associationId}/epaysettings | Update ePay settings
 *Buildium::BankAccountsApi* | [**create_bank_account**](docs/BankAccountsApi.md#create_bank_account) | **POST** /v1/bankaccounts | Create a bank account
 *Buildium::BankAccountsApi* | [**create_bank_account_check**](docs/BankAccountsApi.md#create_bank_account_check) | **POST** /v1/bankaccounts/{bankAccountId}/checks | Create a check
 *Buildium::BankAccountsApi* | [**create_bank_account_deposit**](docs/BankAccountsApi.md#create_bank_account_deposit) | **POST** /v1/bankaccounts/{bankAccountId}/deposits | Create a deposit
@@ -241,11 +383,23 @@ Class | Method | HTTP request | Description
 *Buildium::BankAccountsApi* | [**update_bank_account_withdrawal**](docs/BankAccountsApi.md#update_bank_account_withdrawal) | **PUT** /v1/bankaccounts/{bankAccountId}/withdrawals/{withdrawalId} | Update a withdrawal
 *Buildium::BankAccountsApi* | [**update_check_for_bank_account**](docs/BankAccountsApi.md#update_check_for_bank_account) | **PUT** /v1/bankaccounts/{bankAccountId}/checks/{checkId} | Update a check
 *Buildium::BankAccountsApi* | [**update_quick_deposit**](docs/BankAccountsApi.md#update_quick_deposit) | **PUT** /v1/bankaccounts/{bankAccountId}/quickdeposits/{quickDepositId} | Update a quick deposit
+*Buildium::BillsApi* | [**create_bill**](docs/BillsApi.md#create_bill) | **POST** /v1/bills | Create a bill
+*Buildium::BillsApi* | [**create_bill_payment**](docs/BillsApi.md#create_bill_payment) | **POST** /v1/bills/{billId}/payments | Create a bill payment
+*Buildium::BillsApi* | [**create_upload_file_request**](docs/BillsApi.md#create_upload_file_request) | **POST** /v1/bills/{billId}/files/uploadrequests | Upload a bill file
+*Buildium::BillsApi* | [**delete_bill_file**](docs/BillsApi.md#delete_bill_file) | **DELETE** /v1/bills/{billId}/files/{fileId} | Delete a bill file
+*Buildium::BillsApi* | [**download_bill_file**](docs/BillsApi.md#download_bill_file) | **POST** /v1/bills/{billId}/files/{fileId}/downloadrequest | Download a bill file
+*Buildium::BillsApi* | [**get_all_files_for_bill**](docs/BillsApi.md#get_all_files_for_bill) | **GET** /v1/bills/{billId}/files | Retrieve all files for a bill
+*Buildium::BillsApi* | [**get_bill_by_id**](docs/BillsApi.md#get_bill_by_id) | **GET** /v1/bills/{billId} | Retrieve a bill
+*Buildium::BillsApi* | [**get_bill_file_by_id**](docs/BillsApi.md#get_bill_file_by_id) | **GET** /v1/bills/{billId}/files/{fileId} | Retrieve a file for a bill
+*Buildium::BillsApi* | [**get_bill_payment_by_id**](docs/BillsApi.md#get_bill_payment_by_id) | **GET** /v1/bills/{billId}/payments/{paymentId} | Retrieve a bill payment
+*Buildium::BillsApi* | [**get_bill_payments**](docs/BillsApi.md#get_bill_payments) | **GET** /v1/bills/{billId}/payments | Retrieve all bill payments
+*Buildium::BillsApi* | [**get_bills_async**](docs/BillsApi.md#get_bills_async) | **GET** /v1/bills | Retrieve all bills
+*Buildium::BillsApi* | [**update_bill**](docs/BillsApi.md#update_bill) | **PUT** /v1/bills/{billId} | Update a bill
 *Buildium::ClientLeadsApi* | [**get_client_leads**](docs/ClientLeadsApi.md#get_client_leads) | **GET** /v1/clientleads | Retrieve all client leads
 *Buildium::ClientLeadsApi* | [**get_prospective_client**](docs/ClientLeadsApi.md#get_prospective_client) | **GET** /v1/clientleads/{clientLeadId} | Retrieve a client lead
 *Buildium::CommunicationsApi* | [**create_announcement**](docs/CommunicationsApi.md#create_announcement) | **POST** /v1/communications/announcements | Create an announcement
+*Buildium::CommunicationsApi* | [**create_email**](docs/CommunicationsApi.md#create_email) | **POST** /v1/communications/emails | Create an email.
 *Buildium::CommunicationsApi* | [**create_phone_log**](docs/CommunicationsApi.md#create_phone_log) | **POST** /v1/communications/phonelogs | Create a phone log
-*Buildium::CommunicationsApi* | [**emails_external_api_write_create_email**](docs/CommunicationsApi.md#emails_external_api_write_create_email) | **POST** /v1/communications/emails | Create an email.
 *Buildium::CommunicationsApi* | [**expire_announcement**](docs/CommunicationsApi.md#expire_announcement) | **POST** /v1/communications/announcements/{announcementId}/expirationrequest | Expire an announcement
 *Buildium::CommunicationsApi* | [**get_all_announcements**](docs/CommunicationsApi.md#get_all_announcements) | **GET** /v1/communications/announcements | Retrieve all announcements
 *Buildium::CommunicationsApi* | [**get_announcement_by_id**](docs/CommunicationsApi.md#get_announcement_by_id) | **GET** /v1/communications/announcements/{announcementId} | Retrieve an announcement
@@ -268,6 +422,7 @@ Class | Method | HTTP request | Description
 *Buildium::FilesApi* | [**update_file**](docs/FilesApi.md#update_file) | **PUT** /v1/files/{fileId} | Update a file
 *Buildium::FilesApi* | [**update_file_category**](docs/FilesApi.md#update_file_category) | **PUT** /v1/files/categories/{fileCategoryId} | Update a category
 *Buildium::LeasesApi* | [**create_lease**](docs/LeasesApi.md#create_lease) | **POST** /v1/leases | Create a lease
+*Buildium::LeasesApi* | [**create_lease_auto_allocated_payment**](docs/LeasesApi.md#create_lease_auto_allocated_payment) | **POST** /v1/leases/{leaseId}/autoallocatedpayments | Create a lease ledger payment with automatic allocations
 *Buildium::LeasesApi* | [**create_lease_charge_recurring_transaction**](docs/LeasesApi.md#create_lease_charge_recurring_transaction) | **POST** /v1/leases/{leaseId}/recurringcharges | Create a recurring charge
 *Buildium::LeasesApi* | [**create_lease_credit**](docs/LeasesApi.md#create_lease_credit) | **POST** /v1/leases/{leaseId}/credits | Create a credit
 *Buildium::LeasesApi* | [**create_lease_credit_recurring_transaction**](docs/LeasesApi.md#create_lease_credit_recurring_transaction) | **POST** /v1/leases/{leaseId}/recurringcredits | Create a recurring credit
@@ -276,11 +431,15 @@ Class | Method | HTTP request | Description
 *Buildium::LeasesApi* | [**create_lease_ledger_refund**](docs/LeasesApi.md#create_lease_ledger_refund) | **POST** /v1/leases/{leaseId}/refunds | Create a refund
 *Buildium::LeasesApi* | [**create_lease_note**](docs/LeasesApi.md#create_lease_note) | **POST** /v1/leases/{leaseId}/notes | Create a note
 *Buildium::LeasesApi* | [**create_lease_recurring_payment**](docs/LeasesApi.md#create_lease_recurring_payment) | **POST** /v1/leases/{leaseId}/recurringpayments | Create a recurring payment
+*Buildium::LeasesApi* | [**create_lease_renewal**](docs/LeasesApi.md#create_lease_renewal) | **POST** /v1/leases/{leaseId}/renewals | Create a lease renewal
 *Buildium::LeasesApi* | [**create_lease_reverse_payment**](docs/LeasesApi.md#create_lease_reverse_payment) | **POST** /v1/leases/{leaseId}/reversepayments | Create a payment reversal
 *Buildium::LeasesApi* | [**create_move_out_data**](docs/LeasesApi.md#create_move_out_data) | **POST** /v1/leases/{leaseId}/moveouts | Create a move out
 *Buildium::LeasesApi* | [**create_payment**](docs/LeasesApi.md#create_payment) | **POST** /v1/leases/{leaseId}/payments | Create a payment
+*Buildium::LeasesApi* | [**get_all_lease_renewals**](docs/LeasesApi.md#get_all_lease_renewals) | **GET** /v1/leases/{leaseId}/renewals | Retrieve renewal history for a lease.
+*Buildium::LeasesApi* | [**get_all_lease_renewals_for_all_properties**](docs/LeasesApi.md#get_all_lease_renewals_for_all_properties) | **GET** /v1/leases/renewals | Retrieve all lease renewals
 *Buildium::LeasesApi* | [**get_lease_by_id**](docs/LeasesApi.md#get_lease_by_id) | **GET** /v1/leases/{leaseId} | Retrieve a lease
 *Buildium::LeasesApi* | [**get_lease_charge_recurring_transaction_by_id**](docs/LeasesApi.md#get_lease_charge_recurring_transaction_by_id) | **GET** /v1/leases/{leaseId}/recurringcharges/{transactionId} | Retrieve a recurring charge
+*Buildium::LeasesApi* | [**get_lease_epay_settings_by_id**](docs/LeasesApi.md#get_lease_epay_settings_by_id) | **GET** /v1/leases/{leaseId}/epaysettings | Retrieve ePay settings
 *Buildium::LeasesApi* | [**get_lease_ledger_refund_by_id**](docs/LeasesApi.md#get_lease_ledger_refund_by_id) | **GET** /v1/leases/{leaseId}/refunds/{refundId} | Retrieve a refund
 *Buildium::LeasesApi* | [**get_lease_ledger_transaction_by_id**](docs/LeasesApi.md#get_lease_ledger_transaction_by_id) | **GET** /v1/leases/{leaseId}/transactions/{transactionId} | Retrieve a lease transaction
 *Buildium::LeasesApi* | [**get_lease_ledgers**](docs/LeasesApi.md#get_lease_ledgers) | **GET** /v1/leases/{leaseId}/transactions | Retrieve all lease transactions
@@ -291,16 +450,17 @@ Class | Method | HTTP request | Description
 *Buildium::LeasesApi* | [**get_lease_outstanding_balances**](docs/LeasesApi.md#get_lease_outstanding_balances) | **GET** /v1/leases/outstandingbalances | Retrieve all outstanding balances
 *Buildium::LeasesApi* | [**get_lease_recurring_credit_by_id**](docs/LeasesApi.md#get_lease_recurring_credit_by_id) | **GET** /v1/leases/{leaseId}/recurringcredits/{transactionId} | Retrieve a recurring credit
 *Buildium::LeasesApi* | [**get_lease_recurring_transactions**](docs/LeasesApi.md#get_lease_recurring_transactions) | **GET** /v1/leases/{leaseId}/recurringtransactions | Retrieve all recurring transactions
+*Buildium::LeasesApi* | [**get_lease_renewal_by_id**](docs/LeasesApi.md#get_lease_renewal_by_id) | **GET** /v1/leases/{leaseId}/renewals/{renewalId} | Retrieve a renewal history item for a lease.
 *Buildium::LeasesApi* | [**get_leases**](docs/LeasesApi.md#get_leases) | **GET** /v1/leases | Retrieve all leases
 *Buildium::LeasesApi* | [**get_recurring_lease_payments_by_id**](docs/LeasesApi.md#get_recurring_lease_payments_by_id) | **GET** /v1/leases/{leaseId}/recurringpayments/{paymentId} | Retrieve a recurring payment
 *Buildium::LeasesApi* | [**get_rent**](docs/LeasesApi.md#get_rent) | **GET** /v1/leases/{leaseId}/rent | Retrieve all rent schedules
 *Buildium::LeasesApi* | [**get_rent_by_id**](docs/LeasesApi.md#get_rent_by_id) | **GET** /v1/leases/{leaseId}/rent/{rentId} | Retrieve a rent schedule
-*Buildium::LeasesApi* | [**lease_renewals_external_api_read_get_all_lease_renewals**](docs/LeasesApi.md#lease_renewals_external_api_read_get_all_lease_renewals) | **GET** /v1/leases/{leaseId}/renewals | Retrieve all lease renewals
-*Buildium::LeasesApi* | [**lease_renewals_external_api_read_get_lease_renewal_by_id**](docs/LeasesApi.md#lease_renewals_external_api_read_get_lease_renewal_by_id) | **GET** /v1/leases/{leaseId}/renewals/{renewalId} | Retrieve a lease renewal
-*Buildium::LeasesApi* | [**lease_renewals_external_api_write_create_lease_renewal**](docs/LeasesApi.md#lease_renewals_external_api_write_create_lease_renewal) | **POST** /v1/leases/{leaseId}/renewals | Create a lease renewal
+*Buildium::LeasesApi* | [**get_renters_insurance_policies**](docs/LeasesApi.md#get_renters_insurance_policies) | **GET** /v1/leases/{leaseId}/rentersinsurance | Retrieve all insurance policies
+*Buildium::LeasesApi* | [**get_renters_insurance_policy_by_id**](docs/LeasesApi.md#get_renters_insurance_policy_by_id) | **GET** /v1/leases/{leaseId}/rentersinsurance/{policyId} | Retrieve an insurance policy
 *Buildium::LeasesApi* | [**undo_tenant_moveout**](docs/LeasesApi.md#undo_tenant_moveout) | **DELETE** /v1/leases/{leaseId}/moveouts/{tenantId} | Delete a move out
 *Buildium::LeasesApi* | [**update_lease**](docs/LeasesApi.md#update_lease) | **PUT** /v1/leases/{leaseId} | Update a lease
 *Buildium::LeasesApi* | [**update_lease_charge**](docs/LeasesApi.md#update_lease_charge) | **PUT** /v1/leases/{leaseId}/charges/{chargeId} | Update a charge
+*Buildium::LeasesApi* | [**update_lease_epay_settings**](docs/LeasesApi.md#update_lease_epay_settings) | **PUT** /v1/leases/{leaseId}/epaysettings | Update ePay settings
 *Buildium::LeasesApi* | [**update_lease_note**](docs/LeasesApi.md#update_lease_note) | **PUT** /v1/leases/{leaseId}/notes/{noteId} | Update a note
 *Buildium::ListingsApi* | [**create_listing_contact**](docs/ListingsApi.md#create_listing_contact) | **POST** /v1/rentals/units/listingcontacts | Create a listing contact
 *Buildium::ListingsApi* | [**delist_unit**](docs/ListingsApi.md#delist_unit) | **DELETE** /v1/rentals/units/{unitId}/listing | Delete a listing
@@ -330,15 +490,28 @@ Class | Method | HTTP request | Description
 *Buildium::RentalOwnersApi* | [**get_rental_owners**](docs/RentalOwnersApi.md#get_rental_owners) | **GET** /v1/rentals/owners | Retrieve all owners
 *Buildium::RentalOwnersApi* | [**update_rental_owner**](docs/RentalOwnersApi.md#update_rental_owner) | **PUT** /v1/rentals/owners/{rentalOwnerId} | Update an owner
 *Buildium::RentalOwnersApi* | [**update_rental_owner_note**](docs/RentalOwnersApi.md#update_rental_owner_note) | **PUT** /v1/rentals/owners/{rentalOwnerId}/notes/{noteId} | Update a note
+*Buildium::RentalPropertiesApi* | [**create_rental_image_upload_file_request_async**](docs/RentalPropertiesApi.md#create_rental_image_upload_file_request_async) | **POST** /v1/rentals/{propertyId}/images/uploadrequests | Upload a rental image
 *Buildium::RentalPropertiesApi* | [**create_rental_property**](docs/RentalPropertiesApi.md#create_rental_property) | **POST** /v1/rentals | Create a property
 *Buildium::RentalPropertiesApi* | [**create_rental_property_note**](docs/RentalPropertiesApi.md#create_rental_property_note) | **POST** /v1/rentals/{propertyId}/notes | Create a note
+*Buildium::RentalPropertiesApi* | [**create_rental_unit_image_upload_file_request_async**](docs/RentalPropertiesApi.md#create_rental_unit_image_upload_file_request_async) | **POST** /v1/rentals/units/{unitId}/images/uploadrequests | Upload a unit image
+*Buildium::RentalPropertiesApi* | [**create_video_link_request**](docs/RentalPropertiesApi.md#create_video_link_request) | **POST** /v1/rentals/{propertyId}/images/videolinkrequests | Create an image for a rental using a video link
+*Buildium::RentalPropertiesApi* | [**delete_rental_image**](docs/RentalPropertiesApi.md#delete_rental_image) | **DELETE** /v1/rentals/{propertyId}/images/{imageId} | Delete a rental image
 *Buildium::RentalPropertiesApi* | [**get_all_rentals**](docs/RentalPropertiesApi.md#get_all_rentals) | **GET** /v1/rentals | Retrieve all properties
+*Buildium::RentalPropertiesApi* | [**get_e_pay_settings_for_rental_property**](docs/RentalPropertiesApi.md#get_e_pay_settings_for_rental_property) | **GET** /v1/rentals/{propertyId}/epaysettings | Retrieve ePay settings
 *Buildium::RentalPropertiesApi* | [**get_features_by_rental_property_id**](docs/RentalPropertiesApi.md#get_features_by_rental_property_id) | **GET** /v1/rentals/{propertyId}/amenities | Retrieve all amenities
 *Buildium::RentalPropertiesApi* | [**get_rental_by_id**](docs/RentalPropertiesApi.md#get_rental_by_id) | **GET** /v1/rentals/{propertyId} | Retrieve a property
+*Buildium::RentalPropertiesApi* | [**get_rental_image_by_id**](docs/RentalPropertiesApi.md#get_rental_image_by_id) | **GET** /v1/rentals/{propertyId}/images/{imageId} | Retrieve a rental image
+*Buildium::RentalPropertiesApi* | [**get_rental_image_download_url_by_id**](docs/RentalPropertiesApi.md#get_rental_image_download_url_by_id) | **POST** /v1/rentals/{propertyId}/images/{imageId}/downloadrequests | Retrieve a rental image download link
+*Buildium::RentalPropertiesApi* | [**get_rental_images**](docs/RentalPropertiesApi.md#get_rental_images) | **GET** /v1/rentals/{propertyId}/images | Retrieve all images for a rental
 *Buildium::RentalPropertiesApi* | [**get_rental_note_by_note_id**](docs/RentalPropertiesApi.md#get_rental_note_by_note_id) | **GET** /v1/rentals/{propertyId}/notes/{noteId} | Retrieve a note
 *Buildium::RentalPropertiesApi* | [**get_rental_notes**](docs/RentalPropertiesApi.md#get_rental_notes) | **GET** /v1/rentals/{propertyId}/notes | Retrieve all notes
 *Buildium::RentalPropertiesApi* | [**get_rental_preferred_vendors**](docs/RentalPropertiesApi.md#get_rental_preferred_vendors) | **GET** /v1/rentals/{propertyId}/vendors | Retrieve all preferred vendors
+*Buildium::RentalPropertiesApi* | [**inactivate_rental_property**](docs/RentalPropertiesApi.md#inactivate_rental_property) | **POST** /v1/rentals/{propertyId}/inactivationrequest | Inactivate a property
+*Buildium::RentalPropertiesApi* | [**reactivate_rental_property**](docs/RentalPropertiesApi.md#reactivate_rental_property) | **POST** /v1/rentals/{propertyId}/reactivationrequest | Reactivate a property
+*Buildium::RentalPropertiesApi* | [**reorder_rental_images**](docs/RentalPropertiesApi.md#reorder_rental_images) | **PUT** /v1/rentals/{propertyId}/images/order | Reorder rental images
+*Buildium::RentalPropertiesApi* | [**update_e_pay_settings_for_rental**](docs/RentalPropertiesApi.md#update_e_pay_settings_for_rental) | **PUT** /v1/rentals/{propertyId}/epaysettings | Update ePay settings
 *Buildium::RentalPropertiesApi* | [**update_rental_features**](docs/RentalPropertiesApi.md#update_rental_features) | **PUT** /v1/rentals/{propertyId}/amenities | Update amenities
+*Buildium::RentalPropertiesApi* | [**update_rental_image**](docs/RentalPropertiesApi.md#update_rental_image) | **PUT** /v1/rentals/{propertyId}/images/{imageId} | Update a rental image
 *Buildium::RentalPropertiesApi* | [**update_rental_preferred_vendors**](docs/RentalPropertiesApi.md#update_rental_preferred_vendors) | **PUT** /v1/rentals/{propertyId}/vendors | Update preferred vendors
 *Buildium::RentalPropertiesApi* | [**update_rental_property**](docs/RentalPropertiesApi.md#update_rental_property) | **PUT** /v1/rentals/{propertyId} | Update a property
 *Buildium::RentalPropertiesApi* | [**update_rental_property_note**](docs/RentalPropertiesApi.md#update_rental_property_note) | **PUT** /v1/rentals/{propertyId}/notes/{noteId} | Update a note
@@ -352,15 +525,25 @@ Class | Method | HTTP request | Description
 *Buildium::RentalTenantsApi* | [**update_rental_tenant**](docs/RentalTenantsApi.md#update_rental_tenant) | **PUT** /v1/leases/tenants/{tenantId} | Update a tenant
 *Buildium::RentalUnitsApi* | [**create_rental_unit**](docs/RentalUnitsApi.md#create_rental_unit) | **POST** /v1/rentals/units | Create a unit
 *Buildium::RentalUnitsApi* | [**create_rental_unit_note**](docs/RentalUnitsApi.md#create_rental_unit_note) | **POST** /v1/rentals/units/{unitId}/notes | Create a note
+*Buildium::RentalUnitsApi* | [**create_unit_video_link_request**](docs/RentalUnitsApi.md#create_unit_video_link_request) | **POST** /v1/rentals/units/{unitId}/images/videolinkrequests | Create an image for a rental unit using a video link
+*Buildium::RentalUnitsApi* | [**delete_rental_unit_image**](docs/RentalUnitsApi.md#delete_rental_unit_image) | **DELETE** /v1/rentals/units/{unitId}/images/{imageId} | Delete a rental unit image
 *Buildium::RentalUnitsApi* | [**get_all_rental_units**](docs/RentalUnitsApi.md#get_all_rental_units) | **GET** /v1/rentals/units | Retrieve all units
 *Buildium::RentalUnitsApi* | [**get_features_for_rental_unit_by_id**](docs/RentalUnitsApi.md#get_features_for_rental_unit_by_id) | **GET** /v1/rentals/units/{unitId}/amenities | Retrieve all amenities
 *Buildium::RentalUnitsApi* | [**get_rental_unit_by_id**](docs/RentalUnitsApi.md#get_rental_unit_by_id) | **GET** /v1/rentals/units/{unitId} | Retrieve a unit
+*Buildium::RentalUnitsApi* | [**get_rental_unit_image_by_id**](docs/RentalUnitsApi.md#get_rental_unit_image_by_id) | **GET** /v1/rentals/units/{unitId}/images/{imageId} | Retrieve a unit image
+*Buildium::RentalUnitsApi* | [**get_rental_unit_image_download_url_by_id**](docs/RentalUnitsApi.md#get_rental_unit_image_download_url_by_id) | **POST** /v1/rentals/units/{unitId}/images/{imageId}/downloadrequests | Retrieve a rental unit image download link
+*Buildium::RentalUnitsApi* | [**get_rental_unit_images**](docs/RentalUnitsApi.md#get_rental_unit_images) | **GET** /v1/rentals/units/{unitId}/images | Retrieve all images for a unit
 *Buildium::RentalUnitsApi* | [**get_rental_unit_note_by_note_id**](docs/RentalUnitsApi.md#get_rental_unit_note_by_note_id) | **GET** /v1/rentals/units/{unitId}/notes/{noteId} | Retrieve a note
 *Buildium::RentalUnitsApi* | [**get_rental_unit_notes**](docs/RentalUnitsApi.md#get_rental_unit_notes) | **GET** /v1/rentals/units/{unitId}/notes | Retrieve all notes
+*Buildium::RentalUnitsApi* | [**reorder_rental_unit_images**](docs/RentalUnitsApi.md#reorder_rental_unit_images) | **PUT** /v1/rentals/units/{unitId}/images/order | Reorder rental unit images
 *Buildium::RentalUnitsApi* | [**update_note_for_rental_unit**](docs/RentalUnitsApi.md#update_note_for_rental_unit) | **PUT** /v1/rentals/units/{unitId}/notes/{noteId} | Update a note
 *Buildium::RentalUnitsApi* | [**update_rental_unit**](docs/RentalUnitsApi.md#update_rental_unit) | **PUT** /v1/rentals/units/{unitId} | Update a unit
 *Buildium::RentalUnitsApi* | [**update_rental_unit_features**](docs/RentalUnitsApi.md#update_rental_unit_features) | **PUT** /v1/rentals/units/{unitId}/amenities | Update amenities
+*Buildium::RentalUnitsApi* | [**update_rental_unit_image**](docs/RentalUnitsApi.md#update_rental_unit_image) | **PUT** /v1/rentals/units/{unitId}/images/{imageId} | Update a unit image
 *Buildium::ResidentCenterApi* | [**get_resident_center_users**](docs/ResidentCenterApi.md#get_resident_center_users) | **GET** /v1/residentCenterUsers | Retrieve all resident center users
+*Buildium::ResidentCenterApi* | [**get_retail_cash_user**](docs/ResidentCenterApi.md#get_retail_cash_user) | **GET** /v1/retailcashusers/{userId}/{unitAgreementId} | Retrieve a retail cash user
+*Buildium::ResidentCenterApi* | [**get_retail_cash_users**](docs/ResidentCenterApi.md#get_retail_cash_users) | **GET** /v1/retailcashusers | Retrieve all retail cash users
+*Buildium::ResidentCenterApi* | [**update_retail_cash_user**](docs/ResidentCenterApi.md#update_retail_cash_user) | **PUT** /v1/retailcashusers/{userId}/{unitAgreementId} | Update a retail cash user
 *Buildium::TasksApi* | [**create_contact_request_task**](docs/TasksApi.md#create_contact_request_task) | **POST** /v1/tasks/contactrequests | Create a contact request
 *Buildium::TasksApi* | [**create_rental_owner_request_task**](docs/TasksApi.md#create_rental_owner_request_task) | **POST** /v1/tasks/rentalownerrequests | Create a rental owner request
 *Buildium::TasksApi* | [**create_resource**](docs/TasksApi.md#create_resource) | **POST** /v1/tasks/residentrequests | Create a resident request
@@ -375,6 +558,7 @@ Class | Method | HTTP request | Description
 *Buildium::TasksApi* | [**get_contact_request_tasks**](docs/TasksApi.md#get_contact_request_tasks) | **GET** /v1/tasks/contactrequests | Retrieve all contact requests
 *Buildium::TasksApi* | [**get_file_download_request**](docs/TasksApi.md#get_file_download_request) | **POST** /v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId}/downloadrequest | Download a task history file
 *Buildium::TasksApi* | [**get_rental_owner_request_task_by_id**](docs/TasksApi.md#get_rental_owner_request_task_by_id) | **GET** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId} | Retrieve a rental owner request
+*Buildium::TasksApi* | [**get_rental_owner_request_task_contribution_data**](docs/TasksApi.md#get_rental_owner_request_task_contribution_data) | **GET** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId}/contributiondata | Retrieve contribution details included for a rental owner contribution request
 *Buildium::TasksApi* | [**get_resident_request_task**](docs/TasksApi.md#get_resident_request_task) | **GET** /v1/tasks/residentrequests/{residentRequestTaskId} | Retrieve a resident request
 *Buildium::TasksApi* | [**get_resident_request_tasks**](docs/TasksApi.md#get_resident_request_tasks) | **GET** /v1/tasks/residentrequests | Retrieve all resident requests
 *Buildium::TasksApi* | [**get_task_by_id**](docs/TasksApi.md#get_task_by_id) | **GET** /v1/tasks/{taskId} | Retrieve a task
@@ -386,6 +570,7 @@ Class | Method | HTTP request | Description
 *Buildium::TasksApi* | [**get_to_do_tasks**](docs/TasksApi.md#get_to_do_tasks) | **GET** /v1/tasks/todorequests | Retrieve all to do tasks
 *Buildium::TasksApi* | [**update_contact_request_task**](docs/TasksApi.md#update_contact_request_task) | **PUT** /v1/tasks/contactrequests/{contactRequestTaskId} | Update a contact request
 *Buildium::TasksApi* | [**update_rental_owner_request_task**](docs/TasksApi.md#update_rental_owner_request_task) | **PUT** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId} | Update a rental owner request
+*Buildium::TasksApi* | [**update_rental_owner_request_task_contribution_data**](docs/TasksApi.md#update_rental_owner_request_task_contribution_data) | **PUT** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId}/contributiondata | Update contribution details included for a rental owner contribution request
 *Buildium::TasksApi* | [**update_resource**](docs/TasksApi.md#update_resource) | **PUT** /v1/tasks/residentrequests/{residentRequestTaskId} | Update a resident request
 *Buildium::TasksApi* | [**update_task_category**](docs/TasksApi.md#update_task_category) | **PUT** /v1/tasks/categories/{taskCategoryId} | Update a task category
 *Buildium::TasksApi* | [**update_task_history**](docs/TasksApi.md#update_task_history) | **PUT** /v1/tasks/{taskId}/history/{taskHistoryId} | Update a task history
@@ -472,6 +657,7 @@ Class | Method | HTTP request | Description
  - [Buildium::AssociationPreferredVendorPutMessage](docs/AssociationPreferredVendorPutMessage.md)
  - [Buildium::AssociationPutMessage](docs/AssociationPutMessage.md)
  - [Buildium::AssociationSearchMessage](docs/AssociationSearchMessage.md)
+ - [Buildium::AssociationTaxInformationMessage](docs/AssociationTaxInformationMessage.md)
  - [Buildium::AssociationTenantMessage](docs/AssociationTenantMessage.md)
  - [Buildium::AssociationTenantPostMessage](docs/AssociationTenantPostMessage.md)
  - [Buildium::AssociationTenantPutMessage](docs/AssociationTenantPutMessage.md)
@@ -511,6 +697,11 @@ Class | Method | HTTP request | Description
  - [Buildium::BankAccountWithdrawalMessage](docs/BankAccountWithdrawalMessage.md)
  - [Buildium::BankAccountWithdrawalSaveMessage](docs/BankAccountWithdrawalSaveMessage.md)
  - [Buildium::BankAccountWithdrawalSearchMessage](docs/BankAccountWithdrawalSearchMessage.md)
+ - [Buildium::BankLockboxDataAssociationMessage](docs/BankLockboxDataAssociationMessage.md)
+ - [Buildium::BankLockboxDataAssociationOwnerMessage](docs/BankLockboxDataAssociationOwnerMessage.md)
+ - [Buildium::BankLockboxDataMessage](docs/BankLockboxDataMessage.md)
+ - [Buildium::BankLockboxDataOwnershipAccountMessage](docs/BankLockboxDataOwnershipAccountMessage.md)
+ - [Buildium::BankLockboxDataSearchMessage](docs/BankLockboxDataSearchMessage.md)
  - [Buildium::BillFileMessage](docs/BillFileMessage.md)
  - [Buildium::BillLineMessage](docs/BillLineMessage.md)
  - [Buildium::BillLinePostMessage](docs/BillLinePostMessage.md)
@@ -534,6 +725,8 @@ Class | Method | HTTP request | Description
  - [Buildium::BudgetPostMessage](docs/BudgetPostMessage.md)
  - [Buildium::BudgetPutMessage](docs/BudgetPutMessage.md)
  - [Buildium::BudgetSearchMessage](docs/BudgetSearchMessage.md)
+ - [Buildium::CCPaymentsMessage](docs/CCPaymentsMessage.md)
+ - [Buildium::CCPaymentsPutMessage](docs/CCPaymentsPutMessage.md)
  - [Buildium::ChargeRecurringTransactionPostMessage](docs/ChargeRecurringTransactionPostMessage.md)
  - [Buildium::ChargeRecurringTransactionPutMessage](docs/ChargeRecurringTransactionPutMessage.md)
  - [Buildium::CheckPrintingInfoMessage](docs/CheckPrintingInfoMessage.md)
@@ -555,6 +748,10 @@ Class | Method | HTTP request | Description
  - [Buildium::CreatedByUserMessage](docs/CreatedByUserMessage.md)
  - [Buildium::CreditRecurringTransactionPostMessage](docs/CreditRecurringTransactionPostMessage.md)
  - [Buildium::DepositDetailMessage](docs/DepositDetailMessage.md)
+ - [Buildium::EFTPaymentsMessage](docs/EFTPaymentsMessage.md)
+ - [Buildium::EFTPaymentsPutMessage](docs/EFTPaymentsPutMessage.md)
+ - [Buildium::EPaySettingsMessage](docs/EPaySettingsMessage.md)
+ - [Buildium::EPaySettingsPutMessage](docs/EPaySettingsPutMessage.md)
  - [Buildium::ElectronicPaymentsMessage](docs/ElectronicPaymentsMessage.md)
  - [Buildium::EmailMessage](docs/EmailMessage.md)
  - [Buildium::EmailPostMessage](docs/EmailPostMessage.md)
@@ -584,15 +781,21 @@ Class | Method | HTTP request | Description
  - [Buildium::GeneralJournalEntryLineSaveMessage](docs/GeneralJournalEntryLineSaveMessage.md)
  - [Buildium::GeneralJournalEntryPostMessage](docs/GeneralJournalEntryPostMessage.md)
  - [Buildium::GeneralJournalEntryPutMessage](docs/GeneralJournalEntryPutMessage.md)
+ - [Buildium::GeneralLedgerEntryMessage](docs/GeneralLedgerEntryMessage.md)
  - [Buildium::GeneralLedgerJournalLineMessage](docs/GeneralLedgerJournalLineMessage.md)
  - [Buildium::GeneralLedgerJournalMessage](docs/GeneralLedgerJournalMessage.md)
+ - [Buildium::GeneralLedgerMessage](docs/GeneralLedgerMessage.md)
+ - [Buildium::GeneralLedgerSearchMessage](docs/GeneralLedgerSearchMessage.md)
  - [Buildium::GeneralLedgerTransactionMessage](docs/GeneralLedgerTransactionMessage.md)
  - [Buildium::GeneralLedgerTransactionSearchMessage](docs/GeneralLedgerTransactionSearchMessage.md)
+ - [Buildium::ImageReorderRequestPutMessage](docs/ImageReorderRequestPutMessage.md)
+ - [Buildium::InsuredTenantMessage](docs/InsuredTenantMessage.md)
  - [Buildium::InternalTransactionStatusMessage](docs/InternalTransactionStatusMessage.md)
  - [Buildium::JournalLineMessage](docs/JournalLineMessage.md)
  - [Buildium::JournalMessage](docs/JournalMessage.md)
  - [Buildium::LastUpdatedByUserMessage](docs/LastUpdatedByUserMessage.md)
  - [Buildium::LeaseAccountDetailMessage](docs/LeaseAccountDetailMessage.md)
+ - [Buildium::LeaseAutoAllocatedPaymentPostMessage](docs/LeaseAutoAllocatedPaymentPostMessage.md)
  - [Buildium::LeaseChargeLineSaveMessage](docs/LeaseChargeLineSaveMessage.md)
  - [Buildium::LeaseChargePostMessage](docs/LeaseChargePostMessage.md)
  - [Buildium::LeaseChargePutMessage](docs/LeaseChargePutMessage.md)
@@ -622,6 +825,7 @@ Class | Method | HTTP request | Description
  - [Buildium::LeaseRecurringPaymentMessage](docs/LeaseRecurringPaymentMessage.md)
  - [Buildium::LeaseRenewalMessage](docs/LeaseRenewalMessage.md)
  - [Buildium::LeaseRenewalPostMessage](docs/LeaseRenewalPostMessage.md)
+ - [Buildium::LeaseRenewalSearchMessage](docs/LeaseRenewalSearchMessage.md)
  - [Buildium::LeaseRentChargeMessage](docs/LeaseRentChargeMessage.md)
  - [Buildium::LeaseRentChargePostMessage](docs/LeaseRentChargePostMessage.md)
  - [Buildium::LeaseRentMessage](docs/LeaseRentMessage.md)
@@ -633,6 +837,7 @@ Class | Method | HTTP request | Description
  - [Buildium::LeaseTransactionSearchMessage](docs/LeaseTransactionSearchMessage.md)
  - [Buildium::ListingContactMessage](docs/ListingContactMessage.md)
  - [Buildium::ListingContactSaveMessage](docs/ListingContactSaveMessage.md)
+ - [Buildium::ListingEntityFilePostMessage](docs/ListingEntityFilePostMessage.md)
  - [Buildium::ListingFileMessage](docs/ListingFileMessage.md)
  - [Buildium::ListingMessage](docs/ListingMessage.md)
  - [Buildium::ListingPropertyMessage](docs/ListingPropertyMessage.md)
@@ -648,7 +853,10 @@ Class | Method | HTTP request | Description
  - [Buildium::NotePostMessage](docs/NotePostMessage.md)
  - [Buildium::NotePutMessage](docs/NotePutMessage.md)
  - [Buildium::NoteSearchMessage](docs/NoteSearchMessage.md)
+ - [Buildium::OfflinePaymentsMessage](docs/OfflinePaymentsMessage.md)
+ - [Buildium::OfflinePaymentsPutMessage](docs/OfflinePaymentsPutMessage.md)
  - [Buildium::OutstandingBalancesLineMessage](docs/OutstandingBalancesLineMessage.md)
+ - [Buildium::OwnershipAccountAutoAllocatedPaymentPostMessage](docs/OwnershipAccountAutoAllocatedPaymentPostMessage.md)
  - [Buildium::OwnershipAccountChargeRecurringTransactionMessage](docs/OwnershipAccountChargeRecurringTransactionMessage.md)
  - [Buildium::OwnershipAccountCreditLinePostMessage](docs/OwnershipAccountCreditLinePostMessage.md)
  - [Buildium::OwnershipAccountCreditPostMessage](docs/OwnershipAccountCreditPostMessage.md)
@@ -701,7 +909,15 @@ Class | Method | HTTP request | Description
  - [Buildium::RentalApplianceServiceHistoryPostMessage](docs/RentalApplianceServiceHistoryPostMessage.md)
  - [Buildium::RentalFeaturesMessage](docs/RentalFeaturesMessage.md)
  - [Buildium::RentalFeaturesPutMessage](docs/RentalFeaturesPutMessage.md)
+ - [Buildium::RentalImageMessage](docs/RentalImageMessage.md)
+ - [Buildium::RentalImagePutMessage](docs/RentalImagePutMessage.md)
  - [Buildium::RentalMessage](docs/RentalMessage.md)
+ - [Buildium::RentalOwnerContributionDataMessage](docs/RentalOwnerContributionDataMessage.md)
+ - [Buildium::RentalOwnerContributionDataPutMessage](docs/RentalOwnerContributionDataPutMessage.md)
+ - [Buildium::RentalOwnerContributionMessage](docs/RentalOwnerContributionMessage.md)
+ - [Buildium::RentalOwnerContributionPutMessage](docs/RentalOwnerContributionPutMessage.md)
+ - [Buildium::RentalOwnerContributionReminderMessage](docs/RentalOwnerContributionReminderMessage.md)
+ - [Buildium::RentalOwnerContributionReminderPutMessage](docs/RentalOwnerContributionReminderPutMessage.md)
  - [Buildium::RentalOwnerMessage](docs/RentalOwnerMessage.md)
  - [Buildium::RentalOwnerPostMessage](docs/RentalOwnerPostMessage.md)
  - [Buildium::RentalOwnerPutMessage](docs/RentalOwnerPutMessage.md)
@@ -722,10 +938,13 @@ Class | Method | HTTP request | Description
  - [Buildium::RentalTenantRenewalPostMessage](docs/RentalTenantRenewalPostMessage.md)
  - [Buildium::RentalUnitFeaturesMessage](docs/RentalUnitFeaturesMessage.md)
  - [Buildium::RentalUnitFeaturesPutMessage](docs/RentalUnitFeaturesPutMessage.md)
+ - [Buildium::RentalUnitImageMessage](docs/RentalUnitImageMessage.md)
+ - [Buildium::RentalUnitImagePutMessage](docs/RentalUnitImagePutMessage.md)
  - [Buildium::RentalUnitMessage](docs/RentalUnitMessage.md)
  - [Buildium::RentalUnitPutMessage](docs/RentalUnitPutMessage.md)
  - [Buildium::RentalUnitSearchMessage](docs/RentalUnitSearchMessage.md)
  - [Buildium::RentalUnitsPostMessage](docs/RentalUnitsPostMessage.md)
+ - [Buildium::RentersInsurancePolicyMessage](docs/RentersInsurancePolicyMessage.md)
  - [Buildium::RequestedByUserEntityMessage](docs/RequestedByUserEntityMessage.md)
  - [Buildium::ResidentCenterUserMessage](docs/ResidentCenterUserMessage.md)
  - [Buildium::ResidentCenterUserReferenceMessage](docs/ResidentCenterUserReferenceMessage.md)
@@ -734,6 +953,12 @@ Class | Method | HTTP request | Description
  - [Buildium::ResidentRequestTaskPostMessage](docs/ResidentRequestTaskPostMessage.md)
  - [Buildium::ResidentRequestTaskPutMessage](docs/ResidentRequestTaskPutMessage.md)
  - [Buildium::ResidentRequestTaskSearchMessage](docs/ResidentRequestTaskSearchMessage.md)
+ - [Buildium::RetailCashPropertyMessage](docs/RetailCashPropertyMessage.md)
+ - [Buildium::RetailCashUnitMessage](docs/RetailCashUnitMessage.md)
+ - [Buildium::RetailCashUserDataMessage](docs/RetailCashUserDataMessage.md)
+ - [Buildium::RetailCashUserMessage](docs/RetailCashUserMessage.md)
+ - [Buildium::RetailCashUserPutMessage](docs/RetailCashUserPutMessage.md)
+ - [Buildium::RetailCashUsersSearchMessage](docs/RetailCashUsersSearchMessage.md)
  - [Buildium::SaveAddressMessage](docs/SaveAddressMessage.md)
  - [Buildium::SaveEmergencyContactMessage](docs/SaveEmergencyContactMessage.md)
  - [Buildium::TaskCategoryMessage](docs/TaskCategoryMessage.md)
@@ -780,6 +1005,7 @@ Class | Method | HTTP request | Description
  - [Buildium::VendorTaxInformationMessage](docs/VendorTaxInformationMessage.md)
  - [Buildium::VendorTransactionMessage](docs/VendorTransactionMessage.md)
  - [Buildium::VendorTransactionSearchMessage](docs/VendorTransactionSearchMessage.md)
+ - [Buildium::VideoLinkRequestPostMessage](docs/VideoLinkRequestPostMessage.md)
  - [Buildium::WorkOrderEntryContactMessage](docs/WorkOrderEntryContactMessage.md)
  - [Buildium::WorkOrderEntryContactResourceMessage](docs/WorkOrderEntryContactResourceMessage.md)
  - [Buildium::WorkOrderLineItemMessage](docs/WorkOrderLineItemMessage.md)

@@ -18,6 +18,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_contact_request_tasks**](TasksApi.md#get_contact_request_tasks) | **GET** /v1/tasks/contactrequests | Retrieve all contact requests |
 | [**get_file_download_request**](TasksApi.md#get_file_download_request) | **POST** /v1/tasks/{taskId}/history/{taskHistoryId}/files/{fileId}/downloadrequest | Download a task history file |
 | [**get_rental_owner_request_task_by_id**](TasksApi.md#get_rental_owner_request_task_by_id) | **GET** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId} | Retrieve a rental owner request |
+| [**get_rental_owner_request_task_contribution_data**](TasksApi.md#get_rental_owner_request_task_contribution_data) | **GET** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId}/contributiondata | Retrieve contribution details included for a rental owner contribution request |
 | [**get_resident_request_task**](TasksApi.md#get_resident_request_task) | **GET** /v1/tasks/residentrequests/{residentRequestTaskId} | Retrieve a resident request |
 | [**get_resident_request_tasks**](TasksApi.md#get_resident_request_tasks) | **GET** /v1/tasks/residentrequests | Retrieve all resident requests |
 | [**get_task_by_id**](TasksApi.md#get_task_by_id) | **GET** /v1/tasks/{taskId} | Retrieve a task |
@@ -29,6 +30,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_to_do_tasks**](TasksApi.md#get_to_do_tasks) | **GET** /v1/tasks/todorequests | Retrieve all to do tasks |
 | [**update_contact_request_task**](TasksApi.md#update_contact_request_task) | **PUT** /v1/tasks/contactrequests/{contactRequestTaskId} | Update a contact request |
 | [**update_rental_owner_request_task**](TasksApi.md#update_rental_owner_request_task) | **PUT** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId} | Update a rental owner request |
+| [**update_rental_owner_request_task_contribution_data**](TasksApi.md#update_rental_owner_request_task_contribution_data) | **PUT** /v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId}/contributiondata | Update contribution details included for a rental owner contribution request |
 | [**update_resource**](TasksApi.md#update_resource) | **PUT** /v1/tasks/residentrequests/{residentRequestTaskId} | Update a resident request |
 | [**update_task_category**](TasksApi.md#update_task_category) | **PUT** /v1/tasks/categories/{taskCategoryId} | Update a task category |
 | [**update_task_history**](TasksApi.md#update_task_history) | **PUT** /v1/tasks/{taskId}/history/{taskHistoryId} | Update a task history |
@@ -1217,6 +1219,82 @@ end
 - **Accept**: application/json
 
 
+## get_rental_owner_request_task_contribution_data
+
+> <RentalOwnerContributionDataMessage> get_rental_owner_request_task_contribution_data(rental_owner_request_task_id)
+
+Retrieve contribution details included for a rental owner contribution request
+
+Retrieves the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+rental_owner_request_task_id = 56 # Integer | The rental owner request identifier.
+
+begin
+  # Retrieve contribution details included for a rental owner contribution request
+  result = api_instance.get_rental_owner_request_task_contribution_data(rental_owner_request_task_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_rental_owner_request_task_contribution_data: #{e}"
+end
+```
+
+#### Using the get_rental_owner_request_task_contribution_data_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RentalOwnerContributionDataMessage>, Integer, Hash)> get_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id)
+
+```ruby
+begin
+  # Retrieve contribution details included for a rental owner contribution request
+  data, status_code, headers = api_instance.get_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RentalOwnerContributionDataMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->get_rental_owner_request_task_contribution_data_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **rental_owner_request_task_id** | **Integer** | The rental owner request identifier. |  |
+
+### Return type
+
+[**RentalOwnerContributionDataMessage**](RentalOwnerContributionDataMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_resident_request_task
 
 > <ResidentRequestTaskMessage> get_resident_request_task(resident_request_task_id)
@@ -2133,6 +2211,84 @@ end
 - **Accept**: application/json
 
 
+## update_rental_owner_request_task_contribution_data
+
+> <RentalOwnerContributionDataMessage> update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+
+Update contribution details included for a rental owner contribution request
+
+Updates the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::TasksApi.new
+rental_owner_request_task_id = 56 # Integer | The rental owner request identifier.
+rental_owner_contribution_data_put_message = Buildium::RentalOwnerContributionDataPutMessage.new # RentalOwnerContributionDataPutMessage | 
+
+begin
+  # Update contribution details included for a rental owner contribution request
+  result = api_instance.update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->update_rental_owner_request_task_contribution_data: #{e}"
+end
+```
+
+#### Using the update_rental_owner_request_task_contribution_data_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RentalOwnerContributionDataMessage>, Integer, Hash)> update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+
+```ruby
+begin
+  # Update contribution details included for a rental owner contribution request
+  data, status_code, headers = api_instance.update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RentalOwnerContributionDataMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling TasksApi->update_rental_owner_request_task_contribution_data_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **rental_owner_request_task_id** | **Integer** | The rental owner request identifier. |  |
+| **rental_owner_contribution_data_put_message** | [**RentalOwnerContributionDataPutMessage**](RentalOwnerContributionDataPutMessage.md) |  |  |
+
+### Return type
+
+[**RentalOwnerContributionDataMessage**](RentalOwnerContributionDataMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_resource
 
 > <ResidentRequestTaskMessage> update_resource(resident_request_task_id, resident_request_task_put_message)
@@ -2453,7 +2609,7 @@ end
 
 Upload a task history file
 
-Uploads a file and associates it to the specified task history record.  <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Uploads a file and associates it to the specified task history record.  <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
 
 ### Examples
 

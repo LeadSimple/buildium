@@ -4,18 +4,109 @@ All URIs are relative to *https://api.buildium.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**create_rental_image_upload_file_request_async**](RentalPropertiesApi.md#create_rental_image_upload_file_request_async) | **POST** /v1/rentals/{propertyId}/images/uploadrequests | Upload a rental image |
 | [**create_rental_property**](RentalPropertiesApi.md#create_rental_property) | **POST** /v1/rentals | Create a property |
 | [**create_rental_property_note**](RentalPropertiesApi.md#create_rental_property_note) | **POST** /v1/rentals/{propertyId}/notes | Create a note |
+| [**create_rental_unit_image_upload_file_request_async**](RentalPropertiesApi.md#create_rental_unit_image_upload_file_request_async) | **POST** /v1/rentals/units/{unitId}/images/uploadrequests | Upload a unit image |
+| [**create_video_link_request**](RentalPropertiesApi.md#create_video_link_request) | **POST** /v1/rentals/{propertyId}/images/videolinkrequests | Create an image for a rental using a video link |
+| [**delete_rental_image**](RentalPropertiesApi.md#delete_rental_image) | **DELETE** /v1/rentals/{propertyId}/images/{imageId} | Delete a rental image |
 | [**get_all_rentals**](RentalPropertiesApi.md#get_all_rentals) | **GET** /v1/rentals | Retrieve all properties |
+| [**get_e_pay_settings_for_rental_property**](RentalPropertiesApi.md#get_e_pay_settings_for_rental_property) | **GET** /v1/rentals/{propertyId}/epaysettings | Retrieve ePay settings |
 | [**get_features_by_rental_property_id**](RentalPropertiesApi.md#get_features_by_rental_property_id) | **GET** /v1/rentals/{propertyId}/amenities | Retrieve all amenities |
 | [**get_rental_by_id**](RentalPropertiesApi.md#get_rental_by_id) | **GET** /v1/rentals/{propertyId} | Retrieve a property |
+| [**get_rental_image_by_id**](RentalPropertiesApi.md#get_rental_image_by_id) | **GET** /v1/rentals/{propertyId}/images/{imageId} | Retrieve a rental image |
+| [**get_rental_image_download_url_by_id**](RentalPropertiesApi.md#get_rental_image_download_url_by_id) | **POST** /v1/rentals/{propertyId}/images/{imageId}/downloadrequests | Retrieve a rental image download link |
+| [**get_rental_images**](RentalPropertiesApi.md#get_rental_images) | **GET** /v1/rentals/{propertyId}/images | Retrieve all images for a rental |
 | [**get_rental_note_by_note_id**](RentalPropertiesApi.md#get_rental_note_by_note_id) | **GET** /v1/rentals/{propertyId}/notes/{noteId} | Retrieve a note |
 | [**get_rental_notes**](RentalPropertiesApi.md#get_rental_notes) | **GET** /v1/rentals/{propertyId}/notes | Retrieve all notes |
 | [**get_rental_preferred_vendors**](RentalPropertiesApi.md#get_rental_preferred_vendors) | **GET** /v1/rentals/{propertyId}/vendors | Retrieve all preferred vendors |
+| [**inactivate_rental_property**](RentalPropertiesApi.md#inactivate_rental_property) | **POST** /v1/rentals/{propertyId}/inactivationrequest | Inactivate a property |
+| [**reactivate_rental_property**](RentalPropertiesApi.md#reactivate_rental_property) | **POST** /v1/rentals/{propertyId}/reactivationrequest | Reactivate a property |
+| [**reorder_rental_images**](RentalPropertiesApi.md#reorder_rental_images) | **PUT** /v1/rentals/{propertyId}/images/order | Reorder rental images |
+| [**update_e_pay_settings_for_rental**](RentalPropertiesApi.md#update_e_pay_settings_for_rental) | **PUT** /v1/rentals/{propertyId}/epaysettings | Update ePay settings |
 | [**update_rental_features**](RentalPropertiesApi.md#update_rental_features) | **PUT** /v1/rentals/{propertyId}/amenities | Update amenities |
+| [**update_rental_image**](RentalPropertiesApi.md#update_rental_image) | **PUT** /v1/rentals/{propertyId}/images/{imageId} | Update a rental image |
 | [**update_rental_preferred_vendors**](RentalPropertiesApi.md#update_rental_preferred_vendors) | **PUT** /v1/rentals/{propertyId}/vendors | Update preferred vendors |
 | [**update_rental_property**](RentalPropertiesApi.md#update_rental_property) | **PUT** /v1/rentals/{propertyId} | Update a property |
 | [**update_rental_property_note**](RentalPropertiesApi.md#update_rental_property_note) | **PUT** /v1/rentals/{propertyId}/notes/{noteId} | Update a note |
+
+
+## create_rental_image_upload_file_request_async
+
+> <FileUploadTicketMessage> create_rental_image_upload_file_request_async(property_id, listing_entity_file_post_message)
+
+Upload a rental image
+
+Uploads an image and associates it to the specified rental record.              <br /><br />Uploading a file requires making two API requests. Each step is outlined below.              <br /><br /><strong>Step 1 - Save file metadata</strong><br />              The first step in the file upload process is to submit the file metadata to `/v1/rentals/{rentalId}/images/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.              <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.              <br /><br /><strong>Step 2 - Upload the file binary</strong><br />              Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:              <br />              1. Form a POST request using the value of the `BucketUrl` property as the URL.               <br /><br />              2. Set the `Content-Type` header to `multipart/form-data`.              <br /><br />              3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.              <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.              <br /><br />              4. Lastly create a form-data key named `file` and set the value to the file binary.              <br /><strong>NOTE:</strong> This must be the last field in the form-data list.              <br /><br />This image shows what the POST request should look like if you're using Postman:              <img src=\"file-upload-example.png\" /><br /><br />              5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.              <br /><br /><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+listing_entity_file_post_message = Buildium::ListingEntityFilePostMessage.new({file_name: 'file_name_example', show_in_listing: false}) # ListingEntityFilePostMessage | 
+
+begin
+  # Upload a rental image
+  result = api_instance.create_rental_image_upload_file_request_async(property_id, listing_entity_file_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->create_rental_image_upload_file_request_async: #{e}"
+end
+```
+
+#### Using the create_rental_image_upload_file_request_async_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_rental_image_upload_file_request_async_with_http_info(property_id, listing_entity_file_post_message)
+
+```ruby
+begin
+  # Upload a rental image
+  data, status_code, headers = api_instance.create_rental_image_upload_file_request_async_with_http_info(property_id, listing_entity_file_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileUploadTicketMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->create_rental_image_upload_file_request_async_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **listing_entity_file_post_message** | [**ListingEntityFilePostMessage**](ListingEntityFilePostMessage.md) |  |  |
+
+### Return type
+
+[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## create_rental_property
@@ -172,6 +263,239 @@ end
 - **Accept**: application/json
 
 
+## create_rental_unit_image_upload_file_request_async
+
+> <FileUploadTicketMessage> create_rental_unit_image_upload_file_request_async(unit_id, listing_entity_file_post_message)
+
+Upload a unit image
+
+Uploads an image and associates it to the specified unit record.              <br /><br />Uploading a file requires making two API requests. Each step is outlined below.              <br /><br /><strong>Step 1 - Save file metadata</strong><br />              The first step in the file upload process is to submit the file metadata to `/v1/rentals/units/{unitId:int}/images/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.              <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.              <br /><br /><strong>Step 2 - Upload the file binary</strong><br />              Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:              <br />              1. Form a POST request using the value of the `BucketUrl` property as the URL.               <br /><br />              2. Set the `Content-Type` header to `multipart/form-data`.              <br /><br />              3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.              <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.              <br /><br />              4. Lastly create a form-data key named `file` and set the value to the file binary.              <br /><strong>NOTE:</strong> This must be the last field in the form-data list.              <br /><br />This image shows what the POST request should look like if you're using Postman:              <img src=\"file-upload-example.png\" /><br /><br />              5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.              <br /><br /><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+unit_id = 56 # Integer | 
+listing_entity_file_post_message = Buildium::ListingEntityFilePostMessage.new({file_name: 'file_name_example', show_in_listing: false}) # ListingEntityFilePostMessage | 
+
+begin
+  # Upload a unit image
+  result = api_instance.create_rental_unit_image_upload_file_request_async(unit_id, listing_entity_file_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->create_rental_unit_image_upload_file_request_async: #{e}"
+end
+```
+
+#### Using the create_rental_unit_image_upload_file_request_async_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_rental_unit_image_upload_file_request_async_with_http_info(unit_id, listing_entity_file_post_message)
+
+```ruby
+begin
+  # Upload a unit image
+  data, status_code, headers = api_instance.create_rental_unit_image_upload_file_request_async_with_http_info(unit_id, listing_entity_file_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileUploadTicketMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->create_rental_unit_image_upload_file_request_async_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **unit_id** | **Integer** |  |  |
+| **listing_entity_file_post_message** | [**ListingEntityFilePostMessage**](ListingEntityFilePostMessage.md) |  |  |
+
+### Return type
+
+[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_video_link_request
+
+> <RentalImageMessage> create_video_link_request(property_id, video_link_request_post_message)
+
+Create an image for a rental using a video link
+
+Creates an image for a rental using a video link.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+video_link_request_post_message = Buildium::VideoLinkRequestPostMessage.new({video_url: 'video_url_example', show_in_listing: false}) # VideoLinkRequestPostMessage | 
+
+begin
+  # Create an image for a rental using a video link
+  result = api_instance.create_video_link_request(property_id, video_link_request_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->create_video_link_request: #{e}"
+end
+```
+
+#### Using the create_video_link_request_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RentalImageMessage>, Integer, Hash)> create_video_link_request_with_http_info(property_id, video_link_request_post_message)
+
+```ruby
+begin
+  # Create an image for a rental using a video link
+  data, status_code, headers = api_instance.create_video_link_request_with_http_info(property_id, video_link_request_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RentalImageMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->create_video_link_request_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **video_link_request_post_message** | [**VideoLinkRequestPostMessage**](VideoLinkRequestPostMessage.md) |  |  |
+
+### Return type
+
+[**RentalImageMessage**](RentalImageMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## delete_rental_image
+
+> delete_rental_image(property_id, image_id)
+
+Delete a rental image
+
+Deletes a rental image.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit` `Delete`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+image_id = 56 # Integer | 
+
+begin
+  # Delete a rental image
+  api_instance.delete_rental_image(property_id, image_id)
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->delete_rental_image: #{e}"
+end
+```
+
+#### Using the delete_rental_image_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> delete_rental_image_with_http_info(property_id, image_id)
+
+```ruby
+begin
+  # Delete a rental image
+  data, status_code, headers = api_instance.delete_rental_image_with_http_info(property_id, image_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->delete_rental_image_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **image_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_all_rentals
 
 > <Array<RentalMessage>> get_all_rentals(opts)
@@ -259,6 +583,82 @@ end
 ### Return type
 
 [**Array&lt;RentalMessage&gt;**](RentalMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_e_pay_settings_for_rental_property
+
+> <EPaySettingsMessage> get_e_pay_settings_for_rental_property(property_id)
+
+Retrieve ePay settings
+
+Retrieves ePay settings for a rental property.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+
+begin
+  # Retrieve ePay settings
+  result = api_instance.get_e_pay_settings_for_rental_property(property_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_e_pay_settings_for_rental_property: #{e}"
+end
+```
+
+#### Using the get_e_pay_settings_for_rental_property_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EPaySettingsMessage>, Integer, Hash)> get_e_pay_settings_for_rental_property_with_http_info(property_id)
+
+```ruby
+begin
+  # Retrieve ePay settings
+  data, status_code, headers = api_instance.get_e_pay_settings_for_rental_property_with_http_info(property_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EPaySettingsMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_e_pay_settings_for_rental_property_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+
+### Return type
+
+[**EPaySettingsMessage**](EPaySettingsMessage.md)
 
 ### Authorization
 
@@ -411,6 +811,246 @@ end
 ### Return type
 
 [**RentalMessage**](RentalMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_rental_image_by_id
+
+> <RentalImageMessage> get_rental_image_by_id(property_id, image_id)
+
+Retrieve a rental image
+
+Retrieves a rental image.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+image_id = 56 # Integer | 
+
+begin
+  # Retrieve a rental image
+  result = api_instance.get_rental_image_by_id(property_id, image_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_rental_image_by_id: #{e}"
+end
+```
+
+#### Using the get_rental_image_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RentalImageMessage>, Integer, Hash)> get_rental_image_by_id_with_http_info(property_id, image_id)
+
+```ruby
+begin
+  # Retrieve a rental image
+  data, status_code, headers = api_instance.get_rental_image_by_id_with_http_info(property_id, image_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RentalImageMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_rental_image_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **image_id** | **Integer** |  |  |
+
+### Return type
+
+[**RentalImageMessage**](RentalImageMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_rental_image_download_url_by_id
+
+> <FileDownloadMessage> get_rental_image_download_url_by_id(property_id, image_id)
+
+Retrieve a rental image download link
+
+Retrieves a rental image download link.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+image_id = 56 # Integer | 
+
+begin
+  # Retrieve a rental image download link
+  result = api_instance.get_rental_image_download_url_by_id(property_id, image_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_rental_image_download_url_by_id: #{e}"
+end
+```
+
+#### Using the get_rental_image_download_url_by_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileDownloadMessage>, Integer, Hash)> get_rental_image_download_url_by_id_with_http_info(property_id, image_id)
+
+```ruby
+begin
+  # Retrieve a rental image download link
+  data, status_code, headers = api_instance.get_rental_image_download_url_by_id_with_http_info(property_id, image_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileDownloadMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_rental_image_download_url_by_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **image_id** | **Integer** |  |  |
+
+### Return type
+
+[**FileDownloadMessage**](FileDownloadMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_rental_images
+
+> <Array<RentalImageMessage>> get_rental_images(property_id, opts)
+
+Retrieve all images for a rental
+
+Retrieves all images for a rental.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+opts = {
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all images for a rental
+  result = api_instance.get_rental_images(property_id, opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_rental_images: #{e}"
+end
+```
+
+#### Using the get_rental_images_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<RentalImageMessage>>, Integer, Hash)> get_rental_images_with_http_info(property_id, opts)
+
+```ruby
+begin
+  # Retrieve all images for a rental
+  data, status_code, headers = api_instance.get_rental_images_with_http_info(property_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<RentalImageMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->get_rental_images_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;RentalImageMessage&gt;**](RentalImageMessage.md)
 
 ### Authorization
 
@@ -674,6 +1314,312 @@ end
 - **Accept**: application/json
 
 
+## inactivate_rental_property
+
+> inactivate_rental_property(property_id)
+
+Inactivate a property
+
+Inactivates a rental property and all associated units. Any associated property's owners that have no remaining active properties will be inactivated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+
+begin
+  # Inactivate a property
+  api_instance.inactivate_rental_property(property_id)
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->inactivate_rental_property: #{e}"
+end
+```
+
+#### Using the inactivate_rental_property_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> inactivate_rental_property_with_http_info(property_id)
+
+```ruby
+begin
+  # Inactivate a property
+  data, status_code, headers = api_instance.inactivate_rental_property_with_http_info(property_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->inactivate_rental_property_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## reactivate_rental_property
+
+> reactivate_rental_property(property_id)
+
+Reactivate a property
+
+Reactivates a rental property and all associated units. Any inactive rental owners assigned to this property will also be reactivated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+
+begin
+  # Reactivate a property
+  api_instance.reactivate_rental_property(property_id)
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->reactivate_rental_property: #{e}"
+end
+```
+
+#### Using the reactivate_rental_property_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> reactivate_rental_property_with_http_info(property_id)
+
+```ruby
+begin
+  # Reactivate a property
+  data, status_code, headers = api_instance.reactivate_rental_property_with_http_info(property_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->reactivate_rental_property_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## reorder_rental_images
+
+> <Array<RentalImageMessage>> reorder_rental_images(property_id, image_reorder_request_put_message)
+
+Reorder rental images
+
+Reorders rental images.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+image_reorder_request_put_message = Buildium::ImageReorderRequestPutMessage.new({ids: [37]}) # ImageReorderRequestPutMessage | 
+
+begin
+  # Reorder rental images
+  result = api_instance.reorder_rental_images(property_id, image_reorder_request_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->reorder_rental_images: #{e}"
+end
+```
+
+#### Using the reorder_rental_images_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<RentalImageMessage>>, Integer, Hash)> reorder_rental_images_with_http_info(property_id, image_reorder_request_put_message)
+
+```ruby
+begin
+  # Reorder rental images
+  data, status_code, headers = api_instance.reorder_rental_images_with_http_info(property_id, image_reorder_request_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<RentalImageMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->reorder_rental_images_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **image_reorder_request_put_message** | [**ImageReorderRequestPutMessage**](ImageReorderRequestPutMessage.md) |  |  |
+
+### Return type
+
+[**Array&lt;RentalImageMessage&gt;**](RentalImageMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_e_pay_settings_for_rental
+
+> <EPaySettingsMessage> update_e_pay_settings_for_rental(property_id, e_pay_settings_put_message)
+
+Update ePay settings
+
+Updates ePay settings for a rental property.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+e_pay_settings_put_message = Buildium::EPaySettingsPutMessage.new({eft_payments: Buildium::EFTPaymentsPutMessage.new({payments_enabled: false}), credit_card_payments: Buildium::CCPaymentsPutMessage.new({payments_enabled: false}), offline_payments: Buildium::OfflinePaymentsPutMessage.new({display_info_in_resident_center: false, display_company_address: false})}) # EPaySettingsPutMessage | 
+
+begin
+  # Update ePay settings
+  result = api_instance.update_e_pay_settings_for_rental(property_id, e_pay_settings_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->update_e_pay_settings_for_rental: #{e}"
+end
+```
+
+#### Using the update_e_pay_settings_for_rental_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EPaySettingsMessage>, Integer, Hash)> update_e_pay_settings_for_rental_with_http_info(property_id, e_pay_settings_put_message)
+
+```ruby
+begin
+  # Update ePay settings
+  data, status_code, headers = api_instance.update_e_pay_settings_for_rental_with_http_info(property_id, e_pay_settings_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EPaySettingsMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->update_e_pay_settings_for_rental_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **e_pay_settings_put_message** | [**EPaySettingsPutMessage**](EPaySettingsPutMessage.md) |  |  |
+
+### Return type
+
+[**EPaySettingsMessage**](EPaySettingsMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_rental_features
 
 > <RentalFeaturesMessage> update_rental_features(property_id, rental_features_put_message)
@@ -741,6 +1687,86 @@ end
 ### Return type
 
 [**RentalFeaturesMessage**](RentalFeaturesMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_rental_image
+
+> <RentalImageMessage> update_rental_image(property_id, image_id, rental_image_put_message)
+
+Update a rental image
+
+Updates a rental image.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalPropertiesApi.new
+property_id = 56 # Integer | 
+image_id = 56 # Integer | 
+rental_image_put_message = Buildium::RentalImagePutMessage.new({show_in_listing: false}) # RentalImagePutMessage | 
+
+begin
+  # Update a rental image
+  result = api_instance.update_rental_image(property_id, image_id, rental_image_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->update_rental_image: #{e}"
+end
+```
+
+#### Using the update_rental_image_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<RentalImageMessage>, Integer, Hash)> update_rental_image_with_http_info(property_id, image_id, rental_image_put_message)
+
+```ruby
+begin
+  # Update a rental image
+  data, status_code, headers = api_instance.update_rental_image_with_http_info(property_id, image_id, rental_image_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <RentalImageMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalPropertiesApi->update_rental_image_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **property_id** | **Integer** |  |  |
+| **image_id** | **Integer** |  |  |
+| **rental_image_put_message** | [**RentalImagePutMessage**](RentalImagePutMessage.md) |  |  |
+
+### Return type
+
+[**RentalImageMessage**](RentalImageMessage.md)
 
 ### Authorization
 

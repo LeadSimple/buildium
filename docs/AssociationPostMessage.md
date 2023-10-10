@@ -12,6 +12,7 @@
 | **description** | **String** | Description of the association. The description cannot exceed 65,535 characters. | [optional] |
 | **year_built** | **Integer** | Indicates the year the association was established. If provided this value must be a four digit integer between 1000 and the current year. | [optional] |
 | **property_manager_id** | **Integer** | Indicates the staff member identifier that acts as the property manager for this association. Note, the staff member must have permissions to this association to be assigned as the property manager.  Leave this field null if you don&#39;t want to assign a staff member to the association. | [optional] |
+| **tax_information** | [**TaxInformationPostMessage**](TaxInformationPostMessage.md) |  | [optional] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = Buildium::AssociationPostMessage.new(
   reserve: null,
   description: null,
   year_built: null,
-  property_manager_id: null
+  property_manager_id: null,
+  tax_information: null
 )
 ```
 

@@ -6,6 +6,7 @@ All URIs are relative to *https://api.buildium.com*
 | ------ | ------------ | ----------- |
 | [**create_association_ownership_account**](AssociationOwnershipAccountsApi.md#create_association_ownership_account) | **POST** /v1/associations/ownershipaccounts | Create an ownership account |
 | [**create_association_ownership_account_note**](AssociationOwnershipAccountsApi.md#create_association_ownership_account_note) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Create a note |
+| [**create_ownership_account_auto_allocated_payment**](AssociationOwnershipAccountsApi.md#create_ownership_account_auto_allocated_payment) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/autoallocatedpayments | Create an ownership account ledger payment with automatic allocations |
 | [**create_ownership_account_credit**](AssociationOwnershipAccountsApi.md#create_ownership_account_credit) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/credits | Create a ledger credit |
 | [**create_ownership_account_credit_recurring_transaction**](AssociationOwnershipAccountsApi.md#create_ownership_account_credit_recurring_transaction) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits | Create a recurring credit |
 | [**create_ownership_account_deposit_withholding**](AssociationOwnershipAccountsApi.md#create_ownership_account_deposit_withholding) | **POST** /v1/associations/ownershipaccounts/{ownershipAccountId}/applieddeposits | Create a deposit withholding |
@@ -174,6 +175,84 @@ end
 ### Return type
 
 [**NoteMessage**](NoteMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_ownership_account_auto_allocated_payment
+
+> <OwnershipAccountTransactionMessage> create_ownership_account_auto_allocated_payment(ownership_account_id, ownership_account_auto_allocated_payment_post_message)
+
+Create an ownership account ledger payment with automatic allocations
+
+Creates a payment on the ownership account ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &gt; Application Settings &gt; Residents page in your account. If you'd like to specify the GL accounts the payment should apply to, please use the <a href=\"#operation/CreateOwnershipAccountLedgerPayment\">Create a ledger payment</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AssociationOwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+ownership_account_auto_allocated_payment_post_message = Buildium::OwnershipAccountAutoAllocatedPaymentPostMessage.new({date: Date.today, payment_method: 'Check', send_email_receipt: false, total_amount: 3.56}) # OwnershipAccountAutoAllocatedPaymentPostMessage | 
+
+begin
+  # Create an ownership account ledger payment with automatic allocations
+  result = api_instance.create_ownership_account_auto_allocated_payment(ownership_account_id, ownership_account_auto_allocated_payment_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_auto_allocated_payment: #{e}"
+end
+```
+
+#### Using the create_ownership_account_auto_allocated_payment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OwnershipAccountTransactionMessage>, Integer, Hash)> create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, ownership_account_auto_allocated_payment_post_message)
+
+```ruby
+begin
+  # Create an ownership account ledger payment with automatic allocations
+  data, status_code, headers = api_instance.create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, ownership_account_auto_allocated_payment_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OwnershipAccountTransactionMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AssociationOwnershipAccountsApi->create_ownership_account_auto_allocated_payment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **ownership_account_auto_allocated_payment_post_message** | [**OwnershipAccountAutoAllocatedPaymentPostMessage**](OwnershipAccountAutoAllocatedPaymentPostMessage.md) |  |  |
+
+### Return type
+
+[**OwnershipAccountTransactionMessage**](OwnershipAccountTransactionMessage.md)
 
 ### Authorization
 
@@ -837,6 +916,7 @@ end
 
 api_instance = Buildium::AssociationOwnershipAccountsApi.new
 opts = {
+  ids: [37], # Array<Integer> | Filters results to the specified set of ids.
   associationids: [37], # Array<Integer> | Filters results to any ownership accounts who belong to the specified set of association ids.
   unitorowner: 'unitorowner_example', # String | Filters results to any association whose unit or owner *contains* the specified value.
   datefrom: Date.parse('2013-10-20'), # Date | Filters results to any ownership account whose start date is greater than or equal to the specified value.
@@ -879,6 +959,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to the specified set of ids. | [optional] |
 | **associationids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to any ownership accounts who belong to the specified set of association ids. | [optional] |
 | **unitorowner** | **String** | Filters results to any association whose unit or owner *contains* the specified value. | [optional] |
 | **datefrom** | **Date** | Filters results to any ownership account whose start date is greater than or equal to the specified value. | [optional] |

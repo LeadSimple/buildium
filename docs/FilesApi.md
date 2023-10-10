@@ -173,7 +173,7 @@ end
 
 Retrieve a file
 
-GetFileDownloadUrlAsync\">Download File endpoint.</a><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Retrieves the file metadata for a specific file. Note this endpoint will only return file metadata. To download files make requests to the <a href=\"#operation/FileDownloadGetFileDownloadUrlAsync\">Download File endpoint.</a><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
 
 ### Examples
 
@@ -483,7 +483,7 @@ end
 
 Retrieve all files
 
-GetFileDownloadUrlAsync\">Download File</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Retrieves a list of files that exist within the customer account. Note this endpoint will only return file metadata. To download files make requests to the <a href=\"#operation/FileDownloadGetFileDownloadUrlAsync\">Download File</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
 
 ### Examples
 

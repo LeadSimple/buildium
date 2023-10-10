@@ -9,7 +9,9 @@
 | **lease_from_date** | **Date** | Start date of the lease. |  |
 | **lease_to_date** | **Date** | End date of the lease. | [optional] |
 | **send_welcome_email** | **Boolean** | Indicates whether to send a welcome email to all tenants on the lease inviting them to the resident center website. |  |
-| **tenants** | [**Array&lt;RentalTenantPutMessage&gt;**](RentalTenantPutMessage.md) | List of the tenants on the lease. |  |
+| **tenants** | [**Array&lt;RentalTenantPutMessage&gt;**](RentalTenantPutMessage.md) | List of new tenants to add to the lease. The list cannot exceed five tenants. | [optional] |
+| **tenant_ids** | **Array&lt;Integer&gt;** | List of identifiers for existing tenants to add to the lease. The list cannot exceed five tenants. | [optional] |
+| **applicant_ids** | **Array&lt;Integer&gt;** | List of identifiers for applicants to become tenants on the lease. Identifiers must refer to applicants with a Status of &#x60;Approved&#x60;. The list cannot exceed five applicants. | [optional] |
 | **cosigners** | [**Array&lt;LeaseCosignerPostMessage&gt;**](LeaseCosignerPostMessage.md) | List of the cosigners on the lease. | [optional] |
 | **rent** | [**LeaseRentPostMessage**](LeaseRentPostMessage.md) |  | [optional] |
 | **security_deposit** | [**LeaseSecurityDepositPostMessage**](LeaseSecurityDepositPostMessage.md) |  | [optional] |
@@ -28,6 +30,8 @@ instance = Buildium::LeasePostMessage.new(
   lease_to_date: null,
   send_welcome_email: null,
   tenants: null,
+  tenant_ids: null,
+  applicant_ids: null,
   cosigners: null,
   rent: null,
   security_deposit: null,

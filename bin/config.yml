@@ -6,4 +6,4 @@ additionalProperties:
   gemDescription: API client library for Buildium
   gemRequiredRubyVersion: "> 2.6.0"
   gemName: buildium-ruby
-  gemVersion: 2.0.1
+  gemVersion: 2.1.0

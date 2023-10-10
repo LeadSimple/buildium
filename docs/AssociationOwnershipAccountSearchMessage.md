@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **ids** | **Array&lt;Integer&gt;** | Filters results to the specified set of ids. | [optional] |
 | **association_ids** | **Array&lt;Integer&gt;** | Filters results to any ownership accounts who belong to the specified set of association ids. | [optional] |
 | **unit_or_owner** | **String** | Filters results to any association whose unit or owner *contains* the specified value. | [optional] |
 | **date_from** | **Date** | Filters results to any ownership account whose start date is greater than or equal to the specified value. | [optional] |
@@ -17,6 +18,7 @@
 require 'buildium-ruby'
 
 instance = Buildium::AssociationOwnershipAccountSearchMessage.new(
+  ids: null,
   association_ids: null,
   unit_or_owner: null,
   date_from: null,

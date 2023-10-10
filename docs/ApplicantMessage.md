@@ -13,6 +13,7 @@
 | **last_name** | **String** | Applicant last name. | [optional] |
 | **email** | **String** | Applicant email address. | [optional] |
 | **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | Applicant phone numbers. | [optional] |
+| **status** | **String** | Applicant status. | [optional] |
 | **applications** | [**Array&lt;ApplicantApplicationMessage&gt;**](ApplicantApplicationMessage.md) | A collection of applications associated with the applicant. | [optional] |
 
 ## Example
@@ -30,6 +31,7 @@ instance = Buildium::ApplicantMessage.new(
   last_name: null,
   email: null,
   phone_numbers: null,
+  status: null,
   applications: null
 )
 ```

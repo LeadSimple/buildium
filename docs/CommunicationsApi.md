@@ -5,8 +5,8 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_announcement**](CommunicationsApi.md#create_announcement) | **POST** /v1/communications/announcements | Create an announcement |
+| [**create_email**](CommunicationsApi.md#create_email) | **POST** /v1/communications/emails | Create an email. |
 | [**create_phone_log**](CommunicationsApi.md#create_phone_log) | **POST** /v1/communications/phonelogs | Create a phone log |
-| [**emails_external_api_write_create_email**](CommunicationsApi.md#emails_external_api_write_create_email) | **POST** /v1/communications/emails | Create an email. |
 | [**expire_announcement**](CommunicationsApi.md#expire_announcement) | **POST** /v1/communications/announcements/{announcementId}/expirationrequest | Expire an announcement |
 | [**get_all_announcements**](CommunicationsApi.md#get_all_announcements) | **GET** /v1/communications/announcements | Retrieve all announcements |
 | [**get_announcement_by_id**](CommunicationsApi.md#get_announcement_by_id) | **GET** /v1/communications/announcements/{announcementId} | Retrieve an announcement |
@@ -97,6 +97,81 @@ end
 - **Accept**: application/json
 
 
+## create_email
+
+> create_email(email_post_message)
+
+Create an email.
+
+Creates an email              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::CommunicationsApi.new
+email_post_message = Buildium::EmailPostMessage.new({template_id: 37, subject: 'subject_example', include_alternate_emails: false, exclude_delinquent_recipients: false, include_association_tenants: false}) # EmailPostMessage | 
+
+begin
+  # Create an email.
+  api_instance.create_email(email_post_message)
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->create_email: #{e}"
+end
+```
+
+#### Using the create_email_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> create_email_with_http_info(email_post_message)
+
+```ruby
+begin
+  # Create an email.
+  data, status_code, headers = api_instance.create_email_with_http_info(email_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Buildium::ApiError => e
+  puts "Error when calling CommunicationsApi->create_email_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **email_post_message** | [**EmailPostMessage**](EmailPostMessage.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_phone_log
 
 > <PhoneLogMessage> create_phone_log(phone_log_post_message)
@@ -162,81 +237,6 @@ end
 ### Return type
 
 [**PhoneLogMessage**](PhoneLogMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## emails_external_api_write_create_email
-
-> emails_external_api_write_create_email(email_post_message)
-
-Create an email.
-
-Creates an email              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::CommunicationsApi.new
-email_post_message = Buildium::EmailPostMessage.new({template_id: 37, subject: 'subject_example', include_alternate_emails: false, exclude_delinquent_recipients: false, include_association_tenants: false}) # EmailPostMessage | 
-
-begin
-  # Create an email.
-  api_instance.emails_external_api_write_create_email(email_post_message)
-rescue Buildium::ApiError => e
-  puts "Error when calling CommunicationsApi->emails_external_api_write_create_email: #{e}"
-end
-```
-
-#### Using the emails_external_api_write_create_email_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> emails_external_api_write_create_email_with_http_info(email_post_message)
-
-```ruby
-begin
-  # Create an email.
-  data, status_code, headers = api_instance.emails_external_api_write_create_email_with_http_info(email_post_message)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Buildium::ApiError => e
-  puts "Error when calling CommunicationsApi->emails_external_api_write_create_email_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **email_post_message** | [**EmailPostMessage**](EmailPostMessage.md) |  |  |
-
-### Return type
-
-nil (empty response body)
 
 ### Authorization
 

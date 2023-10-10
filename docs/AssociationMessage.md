@@ -16,6 +16,7 @@
 | **association_manager** | [**PropertyManagerMessage**](PropertyManagerMessage.md) |  | [optional] |
 | **fiscal_year_end_day** | **Integer** | The day the fiscal year ends for the association. | [optional] |
 | **fiscal_year_end_month** | **Integer** | The month the fiscal year ends for the association. | [optional] |
+| **tax_information** | [**AssociationTaxInformationMessage**](AssociationTaxInformationMessage.md) |  | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = Buildium::AssociationMessage.new(
   address: null,
   association_manager: null,
   fiscal_year_end_day: null,
-  fiscal_year_end_month: null
+  fiscal_year_end_month: null,
+  tax_information: null
 )
 ```
 

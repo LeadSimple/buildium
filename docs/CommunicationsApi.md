@@ -5,7 +5,7 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_announcement**](CommunicationsApi.md#create_announcement) | **POST** /v1/communications/announcements | Create an announcement |
-| [**create_email**](CommunicationsApi.md#create_email) | **POST** /v1/communications/emails | Create an email. |
+| [**create_email**](CommunicationsApi.md#create_email) | **POST** /v1/communications/emails | Send an email |
 | [**create_phone_log**](CommunicationsApi.md#create_phone_log) | **POST** /v1/communications/phonelogs | Create a phone log |
 | [**expire_announcement**](CommunicationsApi.md#expire_announcement) | **POST** /v1/communications/announcements/{announcementId}/expirationrequest | Expire an announcement |
 | [**get_all_announcements**](CommunicationsApi.md#get_all_announcements) | **GET** /v1/communications/announcements | Retrieve all announcements |
@@ -101,9 +101,9 @@ end
 
 > create_email(email_post_message)
 
-Create an email.
+Send an email
 
-Creates an email              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
+Sends an email to one or more recipients using the specified email template.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
 
 ### Examples
 
@@ -127,7 +127,7 @@ api_instance = Buildium::CommunicationsApi.new
 email_post_message = Buildium::EmailPostMessage.new({template_id: 37, subject: 'subject_example', include_alternate_emails: false, exclude_delinquent_recipients: false, include_association_tenants: false}) # EmailPostMessage | 
 
 begin
-  # Create an email.
+  # Send an email
   api_instance.create_email(email_post_message)
 rescue Buildium::ApiError => e
   puts "Error when calling CommunicationsApi->create_email: #{e}"
@@ -142,7 +142,7 @@ This returns an Array which contains the response data (`nil` in this case), sta
 
 ```ruby
 begin
-  # Create an email.
+  # Send an email
   data, status_code, headers = api_instance.create_email_with_http_info(email_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -581,7 +581,7 @@ end
 
 Retrieve an email
 
-Retrieves an email.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Emails</span> - `View`
+Retrieves the content of an email. To retrieve the recipients of the email see the [Retrieve all email recipients](#tag/Communications/operation/GetEmailRecipients) endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Emails</span> - `View`
 
 ### Examples
 
@@ -833,7 +833,7 @@ end
 
 Retrieve all communication templates
 
-Retrieves all mailing and email templates.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves all mailing and email templates. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
 
 ### Examples
 
@@ -915,7 +915,7 @@ end
 
 Retrieve a communication template
 
-Retrieves a communication template.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves a communication template. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
 
 ### Examples
 

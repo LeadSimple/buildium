@@ -168,7 +168,7 @@ end
 
 Retrieve all property groups
 
-Retrieves all property groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`              <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all property groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
 
 ### Examples
 

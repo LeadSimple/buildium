@@ -1,0 +1,349 @@
+# Buildium::ResidentRequestsApi
+
+All URIs are relative to *https://api.buildium.com*
+
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**create_resource**](ResidentRequestsApi.md#create_resource) | **POST** /v1/tasks/residentrequests | Create a resident request |
+| [**get_resident_request_task**](ResidentRequestsApi.md#get_resident_request_task) | **GET** /v1/tasks/residentrequests/{residentRequestTaskId} | Retrieve a resident request |
+| [**get_resident_request_tasks**](ResidentRequestsApi.md#get_resident_request_tasks) | **GET** /v1/tasks/residentrequests | Retrieve all resident requests |
+| [**update_resource**](ResidentRequestsApi.md#update_resource) | **PUT** /v1/tasks/residentrequests/{residentRequestTaskId} | Update a resident request |
+
+
+## create_resource
+
+> <ResidentRequestTaskMessage> create_resource(resident_request_task_post_message)
+
+Create a resident request
+
+Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::ResidentRequestsApi.new
+resident_request_task_post_message = Buildium::ResidentRequestTaskPostMessage.new({title: 'title_example', unit_agreement_id: 37, requested_by_entity_id: 37, task_status: 'New', priority: 'Low'}) # ResidentRequestTaskPostMessage | 
+
+begin
+  # Create a resident request
+  result = api_instance.create_resource(resident_request_task_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->create_resource: #{e}"
+end
+```
+
+#### Using the create_resource_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResidentRequestTaskMessage>, Integer, Hash)> create_resource_with_http_info(resident_request_task_post_message)
+
+```ruby
+begin
+  # Create a resident request
+  data, status_code, headers = api_instance.create_resource_with_http_info(resident_request_task_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResidentRequestTaskMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->create_resource_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **resident_request_task_post_message** | [**ResidentRequestTaskPostMessage**](ResidentRequestTaskPostMessage.md) |  |  |
+
+### Return type
+
+[**ResidentRequestTaskMessage**](ResidentRequestTaskMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## get_resident_request_task
+
+> <ResidentRequestTaskMessage> get_resident_request_task(resident_request_task_id)
+
+Retrieve a resident request
+
+Retrieves a specific resident request.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::ResidentRequestsApi.new
+resident_request_task_id = 56 # Integer | The resident request identifier.
+
+begin
+  # Retrieve a resident request
+  result = api_instance.get_resident_request_task(resident_request_task_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->get_resident_request_task: #{e}"
+end
+```
+
+#### Using the get_resident_request_task_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResidentRequestTaskMessage>, Integer, Hash)> get_resident_request_task_with_http_info(resident_request_task_id)
+
+```ruby
+begin
+  # Retrieve a resident request
+  data, status_code, headers = api_instance.get_resident_request_task_with_http_info(resident_request_task_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResidentRequestTaskMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->get_resident_request_task_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **resident_request_task_id** | **Integer** | The resident request identifier. |  |
+
+### Return type
+
+[**ResidentRequestTaskMessage**](ResidentRequestTaskMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_resident_request_tasks
+
+> <Array<ResidentRequestTaskMessage>> get_resident_request_tasks(opts)
+
+Retrieve all resident requests
+
+Retrieves a list of resident requests.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::ResidentRequestsApi.new
+opts = {
+  entitytype: 'Rental', # String | Specifies the type of entity that the `EntityId` field refers to. This field is required if the `EntityId` field is populated.
+  entityid: 56, # Integer | Filters results to any task associated with the specified entity id value. The value must be of the type specified in the `EntityType` field.
+  statuses: ['New'], # Array<String> | Filters results by the status of the task. If no status is specified, tasks with any status will be returned.
+  unitid: 56, # Integer | Filters results to any task associated with the unit identifier.
+  unitagreementid: 56, # Integer | Filters results to any task associated with the unit agreement identifier specified.
+  lastupdatedfrom: Date.parse('2013-10-20'), # Date | Filters results to any tasks were updated on or after the specified date. The value must be formatted as YYYY-MM-DD.
+  lastupdatedto: Date.parse('2013-10-20'), # Date | Filters results to any tasks were updated on or before the specified date. The value must be formatted as YYYY-MM-DD.
+  duedatefrom: Date.parse('2013-10-20'), # Date | Filters results to any tasks with a due date on or after the specified date. The value must be formatted as YYYY-MM-DD.
+  duedateto: Date.parse('2013-10-20'), # Date | Filters results to any tasks with a due date on or before the specified date. The value must be formatted as YYYY-MM-DD.
+  taskcategoryid: 56, # Integer | Filters results to any tasks with the specified category identifier.
+  priorities: ['Low'], # Array<String> | Filters results to any tasks whose priority matches the specified values. If no priority is specified, tasks with any priority will be returned.
+  assignedtoid: 56, # Integer | Filters results to any tasks that have been assigned to the specified staff user identifier.
+  tasktitle: 'tasktitle_example', # String | Filters results to any task whose title *contains* the specified value.
+  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
+  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
+  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+}
+
+begin
+  # Retrieve all resident requests
+  result = api_instance.get_resident_request_tasks(opts)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->get_resident_request_tasks: #{e}"
+end
+```
+
+#### Using the get_resident_request_tasks_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<ResidentRequestTaskMessage>>, Integer, Hash)> get_resident_request_tasks_with_http_info(opts)
+
+```ruby
+begin
+  # Retrieve all resident requests
+  data, status_code, headers = api_instance.get_resident_request_tasks_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<ResidentRequestTaskMessage>>
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->get_resident_request_tasks_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **entitytype** | **String** | Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated. | [optional] |
+| **entityid** | **Integer** | Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field. | [optional] |
+| **statuses** | [**Array&lt;String&gt;**](String.md) | Filters results by the status of the task. If no status is specified, tasks with any status will be returned. | [optional] |
+| **unitid** | **Integer** | Filters results to any task associated with the unit identifier. | [optional] |
+| **unitagreementid** | **Integer** | Filters results to any task associated with the unit agreement identifier specified. | [optional] |
+| **lastupdatedfrom** | **Date** | Filters results to any tasks were updated on or after the specified date. The value must be formatted as YYYY-MM-DD. | [optional] |
+| **lastupdatedto** | **Date** | Filters results to any tasks were updated on or before the specified date. The value must be formatted as YYYY-MM-DD. | [optional] |
+| **duedatefrom** | **Date** | Filters results to any tasks with a due date on or after the specified date. The value must be formatted as YYYY-MM-DD. | [optional] |
+| **duedateto** | **Date** | Filters results to any tasks with a due date on or before the specified date. The value must be formatted as YYYY-MM-DD. | [optional] |
+| **taskcategoryid** | **Integer** | Filters results to any tasks with the specified category identifier. | [optional] |
+| **priorities** | [**Array&lt;String&gt;**](String.md) | Filters results to any tasks whose priority matches the specified values. If no priority is specified, tasks with any priority will be returned. | [optional] |
+| **assignedtoid** | **Integer** | Filters results to any tasks that have been assigned to the specified staff user identifier. | [optional] |
+| **tasktitle** | **String** | Filters results to any task whose title *contains* the specified value. | [optional] |
+| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
+| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
+| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
+
+### Return type
+
+[**Array&lt;ResidentRequestTaskMessage&gt;**](ResidentRequestTaskMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_resource
+
+> <ResidentRequestTaskMessage> update_resource(resident_request_task_id, resident_request_task_put_message)
+
+Update a resident request
+
+Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::ResidentRequestsApi.new
+resident_request_task_id = 56 # Integer | The resident request identifier.
+resident_request_task_put_message = Buildium::ResidentRequestTaskPutMessage.new({title: 'title_example', task_status: 'New', priority: 'Low'}) # ResidentRequestTaskPutMessage | 
+
+begin
+  # Update a resident request
+  result = api_instance.update_resource(resident_request_task_id, resident_request_task_put_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->update_resource: #{e}"
+end
+```
+
+#### Using the update_resource_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ResidentRequestTaskMessage>, Integer, Hash)> update_resource_with_http_info(resident_request_task_id, resident_request_task_put_message)
+
+```ruby
+begin
+  # Update a resident request
+  data, status_code, headers = api_instance.update_resource_with_http_info(resident_request_task_id, resident_request_task_put_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ResidentRequestTaskMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling ResidentRequestsApi->update_resource_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **resident_request_task_id** | **Integer** | The resident request identifier. |  |
+| **resident_request_task_put_message** | [**ResidentRequestTaskPutMessage**](ResidentRequestTaskPutMessage.md) |  |  |
+
+### Return type
+
+[**ResidentRequestTaskMessage**](ResidentRequestTaskMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+

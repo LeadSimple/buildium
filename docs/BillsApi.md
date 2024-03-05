@@ -6,6 +6,7 @@ All URIs are relative to *https://api.buildium.com*
 | ------ | ------------ | ----------- |
 | [**create_bill**](BillsApi.md#create_bill) | **POST** /v1/bills | Create a bill |
 | [**create_bill_payment**](BillsApi.md#create_bill_payment) | **POST** /v1/bills/{billId}/payments | Create a bill payment |
+| [**create_multiple_bill_payments**](BillsApi.md#create_multiple_bill_payments) | **POST** /v1/bills/payments | Create a payment for multiple bills with one check |
 | [**create_upload_file_request**](BillsApi.md#create_upload_file_request) | **POST** /v1/bills/{billId}/files/uploadrequests | Upload a bill file |
 | [**delete_bill_file**](BillsApi.md#delete_bill_file) | **DELETE** /v1/bills/{billId}/files/{fileId} | Delete a bill file |
 | [**download_bill_file**](BillsApi.md#download_bill_file) | **POST** /v1/bills/{billId}/files/{fileId}/downloadrequest | Download a bill file |
@@ -172,13 +173,89 @@ end
 - **Accept**: application/json
 
 
+## create_multiple_bill_payments
+
+> <BillPaymentMessage> create_multiple_bill_payments(multiple_bill_payments_post_message)
+
+Create a payment for multiple bills with one check
+
+Creates a payment for multiple bills with one check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::BillsApi.new
+multiple_bill_payments_post_message = Buildium::MultipleBillPaymentsPostMessage.new({bank_account_id: 37, entry_date: Date.today, bill_ids: [37]}) # MultipleBillPaymentsPostMessage | 
+
+begin
+  # Create a payment for multiple bills with one check
+  result = api_instance.create_multiple_bill_payments(multiple_bill_payments_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling BillsApi->create_multiple_bill_payments: #{e}"
+end
+```
+
+#### Using the create_multiple_bill_payments_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BillPaymentMessage>, Integer, Hash)> create_multiple_bill_payments_with_http_info(multiple_bill_payments_post_message)
+
+```ruby
+begin
+  # Create a payment for multiple bills with one check
+  data, status_code, headers = api_instance.create_multiple_bill_payments_with_http_info(multiple_bill_payments_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BillPaymentMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling BillsApi->create_multiple_bill_payments_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **multiple_bill_payments_post_message** | [**MultipleBillPaymentsPostMessage**](MultipleBillPaymentsPostMessage.md) |  |  |
+
+### Return type
+
+[**BillPaymentMessage**](BillPaymentMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_upload_file_request
 
 > <FileUploadTicketMessage> create_upload_file_request(bill_id, file_name_post_message)
 
 Upload a bill file
 
-Uploads a file and associates it to the specified bill record.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/bills/{billId:int}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+Uploads a file and associates it to the specified bill record.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/bills/{billId:int}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
 
 ### Examples
 
@@ -411,7 +488,7 @@ end
 
 Retrieve all files for a bill
 
-Retrieves the metadata for all files associated to the specified bill.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+Retrieves the metadata for all files associated to the specified bill. To download the actual file view the [Download a bill file](#tag/Bills/operation/DownloadBillFile).              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
 
 ### Examples
 

@@ -16,6 +16,7 @@
 | **routing_number** | **String** | Bank routing number. | [optional] |
 | **is_active** | **Boolean** | Bank Account Status | [optional] |
 | **balance** | **Float** | Bank Account balance | [optional] |
+| **account_number_unmasked** | **String** | Unmasked bank account number | [optional] |
 
 ## Example
 
@@ -34,7 +35,8 @@ instance = Buildium::BankAccountMessage.new(
   account_number: null,
   routing_number: null,
   is_active: null,
-  balance: null
+  balance: null,
+  account_number_unmasked: null
 )
 ```
 

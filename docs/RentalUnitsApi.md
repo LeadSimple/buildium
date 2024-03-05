@@ -5,18 +5,19 @@ All URIs are relative to *https://api.buildium.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**create_rental_unit**](RentalUnitsApi.md#create_rental_unit) | **POST** /v1/rentals/units | Create a unit |
+| [**create_rental_unit_image_upload_file_request_async**](RentalUnitsApi.md#create_rental_unit_image_upload_file_request_async) | **POST** /v1/rentals/units/{unitId}/images/uploadrequests | Upload a unit image |
 | [**create_rental_unit_note**](RentalUnitsApi.md#create_rental_unit_note) | **POST** /v1/rentals/units/{unitId}/notes | Create a note |
-| [**create_unit_video_link_request**](RentalUnitsApi.md#create_unit_video_link_request) | **POST** /v1/rentals/units/{unitId}/images/videolinkrequests | Create an image for a rental unit using a video link |
-| [**delete_rental_unit_image**](RentalUnitsApi.md#delete_rental_unit_image) | **DELETE** /v1/rentals/units/{unitId}/images/{imageId} | Delete a rental unit image |
+| [**create_unit_video_link_request**](RentalUnitsApi.md#create_unit_video_link_request) | **POST** /v1/rentals/units/{unitId}/images/videolinkrequests | Create an image for a unit using a video link |
+| [**delete_rental_unit_image**](RentalUnitsApi.md#delete_rental_unit_image) | **DELETE** /v1/rentals/units/{unitId}/images/{imageId} | Delete a unit image |
 | [**get_all_rental_units**](RentalUnitsApi.md#get_all_rental_units) | **GET** /v1/rentals/units | Retrieve all units |
 | [**get_features_for_rental_unit_by_id**](RentalUnitsApi.md#get_features_for_rental_unit_by_id) | **GET** /v1/rentals/units/{unitId}/amenities | Retrieve all amenities |
 | [**get_rental_unit_by_id**](RentalUnitsApi.md#get_rental_unit_by_id) | **GET** /v1/rentals/units/{unitId} | Retrieve a unit |
 | [**get_rental_unit_image_by_id**](RentalUnitsApi.md#get_rental_unit_image_by_id) | **GET** /v1/rentals/units/{unitId}/images/{imageId} | Retrieve a unit image |
-| [**get_rental_unit_image_download_url_by_id**](RentalUnitsApi.md#get_rental_unit_image_download_url_by_id) | **POST** /v1/rentals/units/{unitId}/images/{imageId}/downloadrequests | Retrieve a rental unit image download link |
-| [**get_rental_unit_images**](RentalUnitsApi.md#get_rental_unit_images) | **GET** /v1/rentals/units/{unitId}/images | Retrieve all images for a unit |
+| [**get_rental_unit_image_download_url_by_id**](RentalUnitsApi.md#get_rental_unit_image_download_url_by_id) | **POST** /v1/rentals/units/{unitId}/images/{imageId}/downloadrequests | Download a unit image |
+| [**get_rental_unit_images**](RentalUnitsApi.md#get_rental_unit_images) | **GET** /v1/rentals/units/{unitId}/images | Retrieve all unit images |
 | [**get_rental_unit_note_by_note_id**](RentalUnitsApi.md#get_rental_unit_note_by_note_id) | **GET** /v1/rentals/units/{unitId}/notes/{noteId} | Retrieve a note |
 | [**get_rental_unit_notes**](RentalUnitsApi.md#get_rental_unit_notes) | **GET** /v1/rentals/units/{unitId}/notes | Retrieve all notes |
-| [**reorder_rental_unit_images**](RentalUnitsApi.md#reorder_rental_unit_images) | **PUT** /v1/rentals/units/{unitId}/images/order | Reorder rental unit images |
+| [**reorder_rental_unit_images**](RentalUnitsApi.md#reorder_rental_unit_images) | **PUT** /v1/rentals/units/{unitId}/images/order | Update unit image order |
 | [**update_note_for_rental_unit**](RentalUnitsApi.md#update_note_for_rental_unit) | **PUT** /v1/rentals/units/{unitId}/notes/{noteId} | Update a note |
 | [**update_rental_unit**](RentalUnitsApi.md#update_rental_unit) | **PUT** /v1/rentals/units/{unitId} | Update a unit |
 | [**update_rental_unit_features**](RentalUnitsApi.md#update_rental_unit_features) | **PUT** /v1/rentals/units/{unitId}/amenities | Update amenities |
@@ -88,6 +89,84 @@ end
 ### Return type
 
 [**RentalUnitMessage**](RentalUnitMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_rental_unit_image_upload_file_request_async
+
+> <FileUploadTicketMessage> create_rental_unit_image_upload_file_request_async(unit_id, listing_entity_file_post_message)
+
+Upload a unit image
+
+Uploads an image and associates it to the specified unit record.              <br /><br />Uploading a file requires making two API requests. Each step is outlined below.              <br /><br /><strong>Step 1 - Save file metadata</strong><br />              The first step in the file upload process is to submit the file metadata to `/v1/rentals/units/{unitId:int}/images/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.              <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.              <br /><br /><strong>Step 2 - Upload the file binary</strong><br />              Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:              <br />              1. Form a POST request using the value of the `BucketUrl` property as the URL.               <br /><br />              2. Set the `Content-Type` header to `multipart/form-data`.              <br /><br />              3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.              <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.              <br /><br />              4. Lastly create a form-data key named `file` and set the value to the file binary.              <br /><strong>NOTE:</strong> This must be the last field in the form-data list.              <br /><br />This image shows what the POST request should look like if you're using Postman:              <img src=\"file-upload-example.png\" /><br /><br />              5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.              <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::RentalUnitsApi.new
+unit_id = 56 # Integer | 
+listing_entity_file_post_message = Buildium::ListingEntityFilePostMessage.new({file_name: 'file_name_example', show_in_listing: false}) # ListingEntityFilePostMessage | 
+
+begin
+  # Upload a unit image
+  result = api_instance.create_rental_unit_image_upload_file_request_async(unit_id, listing_entity_file_post_message)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalUnitsApi->create_rental_unit_image_upload_file_request_async: #{e}"
+end
+```
+
+#### Using the create_rental_unit_image_upload_file_request_async_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_rental_unit_image_upload_file_request_async_with_http_info(unit_id, listing_entity_file_post_message)
+
+```ruby
+begin
+  # Upload a unit image
+  data, status_code, headers = api_instance.create_rental_unit_image_upload_file_request_async_with_http_info(unit_id, listing_entity_file_post_message)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FileUploadTicketMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling RentalUnitsApi->create_rental_unit_image_upload_file_request_async_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **unit_id** | **Integer** |  |  |
+| **listing_entity_file_post_message** | [**ListingEntityFilePostMessage**](ListingEntityFilePostMessage.md) |  |  |
+
+### Return type
+
+[**FileUploadTicketMessage**](FileUploadTicketMessage.md)
 
 ### Authorization
 
@@ -181,7 +260,7 @@ end
 
 > <RentalUnitImageMessage> create_unit_video_link_request(unit_id, video_link_request_post_message)
 
-Create an image for a rental unit using a video link
+Create an image for a unit using a video link
 
 Creates an image for a rental unit using a video link.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Properties and units</span> - `View` `Edit`
 
@@ -208,7 +287,7 @@ unit_id = 56 # Integer |
 video_link_request_post_message = Buildium::VideoLinkRequestPostMessage.new({video_url: 'video_url_example', show_in_listing: false}) # VideoLinkRequestPostMessage | 
 
 begin
-  # Create an image for a rental unit using a video link
+  # Create an image for a unit using a video link
   result = api_instance.create_unit_video_link_request(unit_id, video_link_request_post_message)
   p result
 rescue Buildium::ApiError => e
@@ -224,7 +303,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create an image for a rental unit using a video link
+  # Create an image for a unit using a video link
   data, status_code, headers = api_instance.create_unit_video_link_request_with_http_info(unit_id, video_link_request_post_message)
   p status_code # => 2xx
   p headers # => { ... }
@@ -259,7 +338,7 @@ end
 
 > delete_rental_unit_image(unit_id, image_id)
 
-Delete a rental unit image
+Delete a unit image
 
 Deletes a unit image.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit` `Delete`
 
@@ -286,7 +365,7 @@ unit_id = 56 # Integer |
 image_id = 56 # Integer | 
 
 begin
-  # Delete a rental unit image
+  # Delete a unit image
   api_instance.delete_rental_unit_image(unit_id, image_id)
 rescue Buildium::ApiError => e
   puts "Error when calling RentalUnitsApi->delete_rental_unit_image: #{e}"
@@ -301,7 +380,7 @@ This returns an Array which contains the response data (`nil` in this case), sta
 
 ```ruby
 begin
-  # Delete a rental unit image
+  # Delete a unit image
   data, status_code, headers = api_instance.delete_rental_unit_image_with_http_info(unit_id, image_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -654,9 +733,9 @@ end
 
 > <FileDownloadMessage> get_rental_unit_image_download_url_by_id(unit_id, image_id)
 
-Retrieve a rental unit image download link
+Download a unit image
 
-Retrieves a rental unit image download link.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Use this endpoint to create a temporary URL that can be used to download a unit image. This URL expires after 5 minutes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -681,7 +760,7 @@ unit_id = 56 # Integer |
 image_id = 56 # Integer | 
 
 begin
-  # Retrieve a rental unit image download link
+  # Download a unit image
   result = api_instance.get_rental_unit_image_download_url_by_id(unit_id, image_id)
   p result
 rescue Buildium::ApiError => e
@@ -697,7 +776,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve a rental unit image download link
+  # Download a unit image
   data, status_code, headers = api_instance.get_rental_unit_image_download_url_by_id_with_http_info(unit_id, image_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -732,9 +811,9 @@ end
 
 > <Array<RentalUnitImageMessage>> get_rental_unit_images(unit_id, opts)
 
-Retrieve all images for a unit
+Retrieve all unit images
 
-Retrieves all images for a unit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Retrieves all images for a unit. Note this endpoint will only return file metadata such as file names and descriptions. To download files make requests to the [Download File](#tag/Rental-Units/operation/GetRentalUnitImageDownloadUrlById) endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -763,7 +842,7 @@ opts = {
 }
 
 begin
-  # Retrieve all images for a unit
+  # Retrieve all unit images
   result = api_instance.get_rental_unit_images(unit_id, opts)
   p result
 rescue Buildium::ApiError => e
@@ -779,7 +858,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Retrieve all images for a unit
+  # Retrieve all unit images
   data, status_code, headers = api_instance.get_rental_unit_images_with_http_info(unit_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -984,9 +1063,9 @@ end
 
 > <Array<RentalUnitImageMessage>> reorder_rental_unit_images(unit_id, image_reorder_request_put_message)
 
-Reorder rental unit images
+Update unit image order
 
-Reorders rental unit images.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+Updates the image display order within the Buildium web application and in any associated rental listings.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -1011,7 +1090,7 @@ unit_id = 56 # Integer |
 image_reorder_request_put_message = Buildium::ImageReorderRequestPutMessage.new({ids: [37]}) # ImageReorderRequestPutMessage | 
 
 begin
-  # Reorder rental unit images
+  # Update unit image order
   result = api_instance.reorder_rental_unit_images(unit_id, image_reorder_request_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -1027,7 +1106,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Reorder rental unit images
+  # Update unit image order
   data, status_code, headers = api_instance.reorder_rental_unit_images_with_http_info(unit_id, image_reorder_request_put_message)
   p status_code # => 2xx
   p headers # => { ... }

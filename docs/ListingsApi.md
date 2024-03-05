@@ -11,7 +11,7 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_listing_for_unit_async**](ListingsApi.md#get_listing_for_unit_async) | **GET** /v1/rentals/units/{unitId}/listing | Retrieve a listing |
 | [**get_listings_async**](ListingsApi.md#get_listings_async) | **GET** /v1/rentals/units/listings | Retrieve all listings |
 | [**update_listing_contact**](ListingsApi.md#update_listing_contact) | **PUT** /v1/rentals/units/listingcontacts/{listingContactId} | Update a listing contact |
-| [**upsert_listings_async**](ListingsApi.md#upsert_listings_async) | **PUT** /v1/rentals/units/{unitId}/listing | Create a listing |
+| [**upsert_listings_async**](ListingsApi.md#upsert_listings_async) | **PUT** /v1/rentals/units/{unitId}/listing | Create/Update a listing |
 
 
 ## create_listing_contact
@@ -567,9 +567,9 @@ end
 
 > <ListingMessage> upsert_listings_async(unit_id, listing_put_message)
 
-Create a listing
+Create/Update a listing
 
-Listings will automatically pull in the information, features, and media that exists for the property and unit details.  <br /><br />  The listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours.  <br /><br />  Note, a unit can only ever have one active listing. When this endpoint is called if no listing exists one will be created, otherwise the existing listing will be updated.   <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+This endpoint can be used to both *create* and *update* a listing. If no listing exists for the unit one will be created, otherwise the existing listing will be updated. A unit can only ever have one active listing.    <br /><br />  Upon creation the listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours. Updates to the listing will appear immediately in your Buildium public website and propagated to syndicated sites within 24-48 hours.   <br /><br />  Note, the listing will automatically pull in the information, features, and media that exists for the property and unit details.   <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -594,7 +594,7 @@ unit_id = 56 # Integer |
 listing_put_message = Buildium::ListingPutMessage.new({rent: 3.56, available_date: Date.today, is_managed_externally: false}) # ListingPutMessage | 
 
 begin
-  # Create a listing
+  # Create/Update a listing
   result = api_instance.upsert_listings_async(unit_id, listing_put_message)
   p result
 rescue Buildium::ApiError => e
@@ -610,7 +610,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Create a listing
+  # Create/Update a listing
   data, status_code, headers = api_instance.upsert_listings_async_with_http_info(unit_id, listing_put_message)
   p status_code # => 2xx
   p headers # => { ... }

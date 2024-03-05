@@ -6,10 +6,6 @@ All URIs are relative to *https://api.buildium.com*
 | ------ | ------------ | ----------- |
 | [**create_association**](AssociationsApi.md#create_association) | **POST** /v1/associations | Create an association |
 | [**create_association_note**](AssociationsApi.md#create_association_note) | **POST** /v1/associations/{associationId}/notes | Create a note |
-| [**create_board_member**](AssociationsApi.md#create_board_member) | **POST** /v1/associations/{associationId}/boardmembers | Create a board member |
-| [**delete_board_member**](AssociationsApi.md#delete_board_member) | **DELETE** /v1/associations/{associationId}/boardmembers/{boardMemberId} | Delete a board member |
-| [**get_all_association_board_members**](AssociationsApi.md#get_all_association_board_members) | **GET** /v1/associations/{associationId}/boardmembers | Retrieve all board members |
-| [**get_association_board_member_by_id**](AssociationsApi.md#get_association_board_member_by_id) | **GET** /v1/associations/{associationId}/boardmembers/{boardMemberId} | Retrieve a board member |
 | [**get_association_by_id**](AssociationsApi.md#get_association_by_id) | **GET** /v1/associations/{associationId} | Retrieve an association |
 | [**get_association_note_by_note_id**](AssociationsApi.md#get_association_note_by_note_id) | **GET** /v1/associations/{associationId}/notes/{noteId} | Retrieve a note |
 | [**get_association_notes**](AssociationsApi.md#get_association_notes) | **GET** /v1/associations/{associationId}/notes | Retrieve all notes |
@@ -17,15 +13,11 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_associations**](AssociationsApi.md#get_associations) | **GET** /v1/associations | Retrieve all associations |
 | [**get_bank_lock_box_data**](AssociationsApi.md#get_bank_lock_box_data) | **GET** /v1/associations/banklockboxdata | Retrieve all association bank lockbox data |
 | [**get_e_pay_settings_for_association_by_id**](AssociationsApi.md#get_e_pay_settings_for_association_by_id) | **GET** /v1/associations/{associationId}/epaysettings | Retrieve ePay settings |
-| [**get_unit_occupancy_statuses_by_id_for_association_owner**](AssociationsApi.md#get_unit_occupancy_statuses_by_id_for_association_owner) | **GET** /v1/associations/owners/{ownerId}/units/{unitId} | Retrieve an occupancy status |
-| [**get_unit_occupancy_statuses_for_association_owner**](AssociationsApi.md#get_unit_occupancy_statuses_for_association_owner) | **GET** /v1/associations/owners/{ownerId}/units | Retrieve all occupancy statuses |
 | [**inactivate_association**](AssociationsApi.md#inactivate_association) | **POST** /v1/associations/{associationId}/inactivationrequest | Inactivate an association |
 | [**reactivate_association**](AssociationsApi.md#reactivate_association) | **POST** /v1/associations/{associationId}/reactivationrequest | Reactivate an association |
 | [**update_association**](AssociationsApi.md#update_association) | **PUT** /v1/associations/{associationId} | Update an association |
 | [**update_association_note**](AssociationsApi.md#update_association_note) | **PUT** /v1/associations/{associationId}/notes/{noteId} | Update a note |
-| [**update_association_owner_occupancy_status**](AssociationsApi.md#update_association_owner_occupancy_status) | **PUT** /v1/associations/owners/{ownerId}/units/{unitId} | Update occupancy status |
 | [**update_association_preferred_vendors**](AssociationsApi.md#update_association_preferred_vendors) | **PUT** /v1/associations/{associationId}/vendors | Update preferred vendors |
-| [**update_board_member**](AssociationsApi.md#update_board_member) | **PUT** /v1/associations/{associationId}/boardmembers/{boardMemberId} | Update a board member |
 | [**update_e_pay_settings_for_association**](AssociationsApi.md#update_e_pay_settings_for_association) | **PUT** /v1/associations/{associationId}/epaysettings | Update ePay settings |
 
 
@@ -180,331 +172,6 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## create_board_member
-
-> <AssociationBoardMemberMessage> create_board_member(association_id, association_board_member_post_message)
-
-Create a board member
-
-Creates a board member for a given association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-association_id = 56 # Integer | 
-association_board_member_post_message = Buildium::AssociationBoardMemberPostMessage.new({association_owner_id: 37, board_position_type: 'President'}) # AssociationBoardMemberPostMessage | 
-
-begin
-  # Create a board member
-  result = api_instance.create_board_member(association_id, association_board_member_post_message)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->create_board_member: #{e}"
-end
-```
-
-#### Using the create_board_member_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AssociationBoardMemberMessage>, Integer, Hash)> create_board_member_with_http_info(association_id, association_board_member_post_message)
-
-```ruby
-begin
-  # Create a board member
-  data, status_code, headers = api_instance.create_board_member_with_http_info(association_id, association_board_member_post_message)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AssociationBoardMemberMessage>
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->create_board_member_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **association_id** | **Integer** |  |  |
-| **association_board_member_post_message** | [**AssociationBoardMemberPostMessage**](AssociationBoardMemberPostMessage.md) |  |  |
-
-### Return type
-
-[**AssociationBoardMemberMessage**](AssociationBoardMemberMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## delete_board_member
-
-> delete_board_member(association_id, board_member_id)
-
-Delete a board member
-
-Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit` `Delete`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-association_id = 56 # Integer | 
-board_member_id = 56 # Integer | 
-
-begin
-  # Delete a board member
-  api_instance.delete_board_member(association_id, board_member_id)
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->delete_board_member: #{e}"
-end
-```
-
-#### Using the delete_board_member_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> delete_board_member_with_http_info(association_id, board_member_id)
-
-```ruby
-begin
-  # Delete a board member
-  data, status_code, headers = api_instance.delete_board_member_with_http_info(association_id, board_member_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->delete_board_member_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **association_id** | **Integer** |  |  |
-| **board_member_id** | **Integer** |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_all_association_board_members
-
-> <Array<AssociationBoardMemberMessage>> get_all_association_board_members(association_id, opts)
-
-Retrieve all board members
-
-Retrieves all association board members.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-association_id = 56 # Integer | 
-opts = {
-  statuses: ['Current'], # Array<String> | Filters results to only records whose status is equal to the specified values.
-  boardpositiontypes: ['President'], # Array<String> | Filters results to only records whose board position type is equal to the specified values.
-  createddatetimeto: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to only records that were created before this date. Must be formatted as `YYYY-MM-DD`.
-  createddatetimefrom: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to only records that were created after this date. Must be formatted as `YYYY-MM-DD`.
-  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
-  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
-  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
-}
-
-begin
-  # Retrieve all board members
-  result = api_instance.get_all_association_board_members(association_id, opts)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_all_association_board_members: #{e}"
-end
-```
-
-#### Using the get_all_association_board_members_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<AssociationBoardMemberMessage>>, Integer, Hash)> get_all_association_board_members_with_http_info(association_id, opts)
-
-```ruby
-begin
-  # Retrieve all board members
-  data, status_code, headers = api_instance.get_all_association_board_members_with_http_info(association_id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<AssociationBoardMemberMessage>>
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_all_association_board_members_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **association_id** | **Integer** |  |  |
-| **statuses** | [**Array&lt;String&gt;**](String.md) | Filters results to only records whose status is equal to the specified values. | [optional] |
-| **boardpositiontypes** | [**Array&lt;String&gt;**](String.md) | Filters results to only records whose board position type is equal to the specified values. | [optional] |
-| **createddatetimeto** | **Time** | Filters results to only records that were created before this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;. | [optional] |
-| **createddatetimefrom** | **Time** | Filters results to only records that were created after this date. Must be formatted as &#x60;YYYY-MM-DD&#x60;. | [optional] |
-| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
-| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
-| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
-
-### Return type
-
-[**Array&lt;AssociationBoardMemberMessage&gt;**](AssociationBoardMemberMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_association_board_member_by_id
-
-> <AssociationBoardMemberMessage> get_association_board_member_by_id(association_id, board_member_id)
-
-Retrieve a board member
-
-Retrieves an association board member.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-association_id = 56 # Integer | 
-board_member_id = 56 # Integer | 
-
-begin
-  # Retrieve a board member
-  result = api_instance.get_association_board_member_by_id(association_id, board_member_id)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_association_board_member_by_id: #{e}"
-end
-```
-
-#### Using the get_association_board_member_by_id_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AssociationBoardMemberMessage>, Integer, Hash)> get_association_board_member_by_id_with_http_info(association_id, board_member_id)
-
-```ruby
-begin
-  # Retrieve a board member
-  data, status_code, headers = api_instance.get_association_board_member_by_id_with_http_info(association_id, board_member_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AssociationBoardMemberMessage>
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_association_board_member_by_id_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **association_id** | **Integer** |  |  |
-| **board_member_id** | **Integer** |  |  |
-
-### Return type
-
-[**AssociationBoardMemberMessage**](AssociationBoardMemberMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -869,6 +536,7 @@ opts = {
   status: 'Active', # String | Filters results by the status of the association. If no status is specified both `active` and `inactive` associations will be returned.
   lastupdatedfrom: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any associations that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
   lastupdatedto: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any associations that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+  operatingbankaccountids: [37], # Array<Integer> | Filters results to any associations associated to any of the specified set of operating bank account ids.
   orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
   offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
   limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
@@ -910,6 +578,7 @@ end
 | **status** | **String** | Filters results by the status of the association. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; associations will be returned. | [optional] |
 | **lastupdatedfrom** | **Time** | Filters results to any associations that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
 | **lastupdatedto** | **Time** | Filters results to any associations that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
+| **operatingbankaccountids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to any associations associated to any of the specified set of operating bank account ids. | [optional] |
 | **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
 | **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
 | **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
@@ -1018,7 +687,7 @@ end
 
 Retrieve ePay settings
 
-Retrieves ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations</span> - `View`
+Retrieves ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
 
 ### Examples
 
@@ -1088,175 +757,13 @@ end
 - **Accept**: application/json
 
 
-## get_unit_occupancy_statuses_by_id_for_association_owner
-
-> <AssociationOwnerUnitOccupancyStatusMessage> get_unit_occupancy_statuses_by_id_for_association_owner(owner_id, unit_id)
-
-Retrieve an occupancy status
-
-Retrieves the owner occupancy status for an association unit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-owner_id = 56 # Integer | 
-unit_id = 56 # Integer | 
-
-begin
-  # Retrieve an occupancy status
-  result = api_instance.get_unit_occupancy_statuses_by_id_for_association_owner(owner_id, unit_id)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_unit_occupancy_statuses_by_id_for_association_owner: #{e}"
-end
-```
-
-#### Using the get_unit_occupancy_statuses_by_id_for_association_owner_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AssociationOwnerUnitOccupancyStatusMessage>, Integer, Hash)> get_unit_occupancy_statuses_by_id_for_association_owner_with_http_info(owner_id, unit_id)
-
-```ruby
-begin
-  # Retrieve an occupancy status
-  data, status_code, headers = api_instance.get_unit_occupancy_statuses_by_id_for_association_owner_with_http_info(owner_id, unit_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AssociationOwnerUnitOccupancyStatusMessage>
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_unit_occupancy_statuses_by_id_for_association_owner_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **owner_id** | **Integer** |  |  |
-| **unit_id** | **Integer** |  |  |
-
-### Return type
-
-[**AssociationOwnerUnitOccupancyStatusMessage**](AssociationOwnerUnitOccupancyStatusMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_unit_occupancy_statuses_for_association_owner
-
-> <Array<AssociationOwnerUnitOccupancyStatusMessage>> get_unit_occupancy_statuses_for_association_owner(owner_id, opts)
-
-Retrieve all occupancy statuses
-
-Retrieves the occupancy status for all of the units owned by the association owner.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-owner_id = 56 # Integer | 
-opts = {
-  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
-  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
-  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
-}
-
-begin
-  # Retrieve all occupancy statuses
-  result = api_instance.get_unit_occupancy_statuses_for_association_owner(owner_id, opts)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_unit_occupancy_statuses_for_association_owner: #{e}"
-end
-```
-
-#### Using the get_unit_occupancy_statuses_for_association_owner_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<AssociationOwnerUnitOccupancyStatusMessage>>, Integer, Hash)> get_unit_occupancy_statuses_for_association_owner_with_http_info(owner_id, opts)
-
-```ruby
-begin
-  # Retrieve all occupancy statuses
-  data, status_code, headers = api_instance.get_unit_occupancy_statuses_for_association_owner_with_http_info(owner_id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<AssociationOwnerUnitOccupancyStatusMessage>>
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->get_unit_occupancy_statuses_for_association_owner_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **owner_id** | **Integer** |  |  |
-| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
-| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
-| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
-
-### Return type
-
-[**Array&lt;AssociationOwnerUnitOccupancyStatusMessage&gt;**](AssociationOwnerUnitOccupancyStatusMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## inactivate_association
 
 > inactivate_association(association_id)
 
 Inactivate an association
 
-Inactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association properties and units</span> - `View` `Edit`
+Inactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -1331,7 +838,7 @@ nil (empty response body)
 
 Reactivate an association
 
-Reactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association properties and units</span> - `View` `Edit`
+Reactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -1406,7 +913,7 @@ nil (empty response body)
 
 Update an association
 
-Updates an association.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates an association.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -1558,93 +1065,13 @@ end
 - **Accept**: application/json
 
 
-## update_association_owner_occupancy_status
-
-> <AssociationOwnerUnitOccupancyStatusMessage> update_association_owner_occupancy_status(owner_id, unit_id, association_owner_unit_occupancy_put_message)
-
-Update occupancy status
-
-Updates whether a unit is occupied by the association owner.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-owner_id = 56 # Integer | 
-unit_id = 56 # Integer | 
-association_owner_unit_occupancy_put_message = Buildium::AssociationOwnerUnitOccupancyPutMessage.new({is_occupied: false}) # AssociationOwnerUnitOccupancyPutMessage | 
-
-begin
-  # Update occupancy status
-  result = api_instance.update_association_owner_occupancy_status(owner_id, unit_id, association_owner_unit_occupancy_put_message)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->update_association_owner_occupancy_status: #{e}"
-end
-```
-
-#### Using the update_association_owner_occupancy_status_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AssociationOwnerUnitOccupancyStatusMessage>, Integer, Hash)> update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, association_owner_unit_occupancy_put_message)
-
-```ruby
-begin
-  # Update occupancy status
-  data, status_code, headers = api_instance.update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, association_owner_unit_occupancy_put_message)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AssociationOwnerUnitOccupancyStatusMessage>
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->update_association_owner_occupancy_status_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **owner_id** | **Integer** |  |  |
-| **unit_id** | **Integer** |  |  |
-| **association_owner_unit_occupancy_put_message** | [**AssociationOwnerUnitOccupancyPutMessage**](AssociationOwnerUnitOccupancyPutMessage.md) |  |  |
-
-### Return type
-
-[**AssociationOwnerUnitOccupancyStatusMessage**](AssociationOwnerUnitOccupancyStatusMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## update_association_preferred_vendors
 
 > <Array<AssociationPreferredVendorMessage>> update_association_preferred_vendors(association_id, association_preferred_vendor_put_message)
 
 Update preferred vendors
 
-Updates preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Updates preferred vendors.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -1716,93 +1143,13 @@ end
 - **Accept**: application/json
 
 
-## update_board_member
-
-> <AssociationBoardMemberMessage> update_board_member(association_id, board_member_id, association_board_member_put_message)
-
-Update a board member
-
-Updates a board member for a given association.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
-
-### Examples
-
-```ruby
-require 'time'
-require 'buildium-ruby'
-# setup authorization
-Buildium.configure do |config|
-  # Configure API key authorization: clientId
-  config.api_key['clientId'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientId'] = 'Bearer'
-
-  # Configure API key authorization: clientSecret
-  config.api_key['clientSecret'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  # config.api_key_prefix['clientSecret'] = 'Bearer'
-end
-
-api_instance = Buildium::AssociationsApi.new
-association_id = 56 # Integer | 
-board_member_id = 56 # Integer | 
-association_board_member_put_message = Buildium::AssociationBoardMemberPutMessage.new({board_position_type: 'President'}) # AssociationBoardMemberPutMessage | 
-
-begin
-  # Update a board member
-  result = api_instance.update_board_member(association_id, board_member_id, association_board_member_put_message)
-  p result
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->update_board_member: #{e}"
-end
-```
-
-#### Using the update_board_member_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<AssociationBoardMemberMessage>, Integer, Hash)> update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message)
-
-```ruby
-begin
-  # Update a board member
-  data, status_code, headers = api_instance.update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <AssociationBoardMemberMessage>
-rescue Buildium::ApiError => e
-  puts "Error when calling AssociationsApi->update_board_member_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **association_id** | **Integer** |  |  |
-| **board_member_id** | **Integer** |  |  |
-| **association_board_member_put_message** | [**AssociationBoardMemberPutMessage**](AssociationBoardMemberPutMessage.md) |  |  |
-
-### Return type
-
-[**AssociationBoardMemberMessage**](AssociationBoardMemberMessage.md)
-
-### Authorization
-
-[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## update_e_pay_settings_for_association
 
 > <EPaySettingsMessage> update_e_pay_settings_for_association(association_id, e_pay_settings_put_message)
 
 Update ePay settings
 
-Updates ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations</span> - `View` `Edit`
+Updates ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
 
 ### Examples
 

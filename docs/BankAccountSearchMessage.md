@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **bank_account_status** | **String** | Filters results by the status of the bank account. If no status is specified, bank accounts with any status will be returned. | [optional] |
 | **bank_name** | **String** | Filters results to any bank account whose name *contains* the specified value. | [optional] |
+| **routing_numbers** | **Array&lt;String&gt;** | Filters results to any bank accounts whose routing number *contains* the specified value. | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'buildium-ruby'
 
 instance = Buildium::BankAccountSearchMessage.new(
   bank_account_status: null,
-  bank_name: null
+  bank_name: null,
+  routing_numbers: null
 )
 ```
 

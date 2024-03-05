@@ -10,6 +10,7 @@
 | **reference_number** | **String** | Reference number for the line item. | [optional] |
 | **memo** | **String** | Memo for the line item. | [optional] |
 | **property_id** | **Integer** | PropertyId associated with the line item. | [optional] |
+| **unit_id** | **Integer** | UnitId associated with the line item. | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = Buildium::JournalLineMessage.new(
   is_cash_posting: null,
   reference_number: null,
   memo: null,
-  property_id: null
+  property_id: null,
+  unit_id: null
 )
 ```
 

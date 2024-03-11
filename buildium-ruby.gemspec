@@ -25,12 +25,10 @@ Gem::Specification.new do |s|
   s.summary     = "Open API, powered by Buildium Ruby Gem"
   s.description = "API client library for Buildium"
   s.license     = "Unlicense"
-  s.required_ruby_version = "> 2.6.0"
+  s.required_ruby_version = "> 3.0.0"
 
   s.add_runtime_dependency 'faraday', '>= 1.0.1', '< 3.0'
   s.add_runtime_dependency 'faraday-multipart'
-
-  s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
 
   s.files         = `git ls-files`.split("\n").uniq.sort.select { |f| !f.empty? }
   s.test_files    = `git ls-files spec/*`.split("\n")

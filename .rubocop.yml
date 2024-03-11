@@ -3,7 +3,7 @@
 # If you want to update these configurations,
 # change it on `.openapi-generator/templates/ruby-client/rubocop.mustache` instead
 AllCops:
-  TargetRubyVersion: 2.6.6
+  TargetRubyVersion: 3.0.0
   # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
   # to ignore them, so only the ones explicitly set in this file are enabled.
   DisabledByDefault: true

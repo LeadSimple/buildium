@@ -18,11 +18,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_general_journal_entry
 
-> <GeneralLedgerTransactionMessage> create_general_journal_entry(general_journal_entry_post_message)
+> <GeneralLedgerTransactionMessage> create_general_journal_entry(create_general_journal_entry_request)
 
 Create a general journal entry
 
-Creates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
+Creates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` `Edit`
 
 ### Examples
 
@@ -43,11 +43,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::GeneralLedgerApi.new
-general_journal_entry_post_message = Buildium::GeneralJournalEntryPostMessage.new({accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), date: Date.today, lines: [Buildium::GeneralJournalEntryLineSaveMessage.new({gl_account_id: 37, posting_type: 'Credit', amount: 3.56})]}) # GeneralJournalEntryPostMessage | 
+create_general_journal_entry_request = Buildium::CreateGeneralJournalEntryRequest.new({accounting_entity: Buildium::GeneralJournalEntryPostMessageAccountingEntity.new({id: 37, accounting_entity_type: 'Association'}), date: Date.today, lines: [Buildium::GeneralJournalEntryLineSaveMessage.new({gl_account_id: 37, posting_type: 'Credit', amount: 3.56})]}) # CreateGeneralJournalEntryRequest | 
 
 begin
   # Create a general journal entry
-  result = api_instance.create_general_journal_entry(general_journal_entry_post_message)
+  result = api_instance.create_general_journal_entry(create_general_journal_entry_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling GeneralLedgerApi->create_general_journal_entry: #{e}"
@@ -58,12 +58,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<GeneralLedgerTransactionMessage>, Integer, Hash)> create_general_journal_entry_with_http_info(general_journal_entry_post_message)
+> <Array(<GeneralLedgerTransactionMessage>, Integer, Hash)> create_general_journal_entry_with_http_info(create_general_journal_entry_request)
 
 ```ruby
 begin
   # Create a general journal entry
-  data, status_code, headers = api_instance.create_general_journal_entry_with_http_info(general_journal_entry_post_message)
+  data, status_code, headers = api_instance.create_general_journal_entry_with_http_info(create_general_journal_entry_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <GeneralLedgerTransactionMessage>
@@ -76,7 +76,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **general_journal_entry_post_message** | [**GeneralJournalEntryPostMessage**](GeneralJournalEntryPostMessage.md) |  |  |
+| **create_general_journal_entry_request** | [**CreateGeneralJournalEntryRequest**](CreateGeneralJournalEntryRequest.md) |  |  |
 
 ### Return type
 
@@ -94,11 +94,11 @@ end
 
 ## create_general_ledger_account
 
-> <GLAccountMessage> create_general_ledger_account(gl_account_post_message)
+> <GLAccountMessage> create_general_ledger_account(create_general_ledger_account_request)
 
 Create a general ledger account
 
-Creates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`
+Creates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -119,11 +119,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::GeneralLedgerApi.new
-gl_account_post_message = Buildium::GLAccountPostMessage.new({sub_type: 'CurrentAsset', name: 'name_example', account_number: 'account_number_example'}) # GLAccountPostMessage | 
+create_general_ledger_account_request = Buildium::CreateGeneralLedgerAccountRequest.new({sub_type: 'CurrentAsset', name: 'name_example', account_number: 'account_number_example'}) # CreateGeneralLedgerAccountRequest | 
 
 begin
   # Create a general ledger account
-  result = api_instance.create_general_ledger_account(gl_account_post_message)
+  result = api_instance.create_general_ledger_account(create_general_ledger_account_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling GeneralLedgerApi->create_general_ledger_account: #{e}"
@@ -134,12 +134,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<GLAccountMessage>, Integer, Hash)> create_general_ledger_account_with_http_info(gl_account_post_message)
+> <Array(<GLAccountMessage>, Integer, Hash)> create_general_ledger_account_with_http_info(create_general_ledger_account_request)
 
 ```ruby
 begin
   # Create a general ledger account
-  data, status_code, headers = api_instance.create_general_ledger_account_with_http_info(gl_account_post_message)
+  data, status_code, headers = api_instance.create_general_ledger_account_with_http_info(create_general_ledger_account_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <GLAccountMessage>
@@ -152,7 +152,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **gl_account_post_message** | [**GLAccountPostMessage**](GLAccountPostMessage.md) |  |  |
+| **create_general_ledger_account_request** | [**CreateGeneralLedgerAccountRequest**](CreateGeneralLedgerAccountRequest.md) |  |  |
 
 ### Return type
 
@@ -174,7 +174,7 @@ end
 
 Retrieve all general ledger accounts
 
-Retrieves a list of general ledger accounts.<br /><br />General ledger accounts are used to categorize transactions for accounting purposes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+Retrieves a list of general ledger accounts.<br /><br />General ledger accounts are used to categorize transactions for accounting purposes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
 
 ### Examples
 
@@ -258,7 +258,7 @@ end
 
 Retrieve all general ledger transactions
 
-Retrieves a list of general ledger transactions.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+Retrieves a list of general ledger transactions.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
 
 ### Examples
 
@@ -285,6 +285,9 @@ glaccountids = [37] # Array<Integer> | Filters results to transactions whose gen
 opts = {
   selectionentityid: 56, # Integer | Filters results to any transaction containing journal lines for an entity associated with the specified entity id value. The id must be of the type specified in SelectionEntityType.
   selectionentitytype: 'Rental', # String | Specifies the type of entity that SelectionEntityId refers to.
+  selectionentityunitid: 56, # Integer | Filters results to any transaction containing journal lines for the unitId specified. Only applicable when the SelectionEntityType is Rentals or Associations.
+  lastupdatedfrom: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any transactions that were updated on or after the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
+  lastupdatedto: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any transactions that were updated on or before the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
   orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
   offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
   limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
@@ -326,6 +329,9 @@ end
 | **glaccountids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to transactions whose general ledger account belongs to the specified set of general ledger account ids. |  |
 | **selectionentityid** | **Integer** | Filters results to any transaction containing journal lines for an entity associated with the specified entity id value. The id must be of the type specified in SelectionEntityType. | [optional] |
 | **selectionentitytype** | **String** | Specifies the type of entity that SelectionEntityId refers to. | [optional] |
+| **selectionentityunitid** | **Integer** | Filters results to any transaction containing journal lines for the unitId specified. Only applicable when the SelectionEntityType is Rentals or Associations. | [optional] |
+| **lastupdatedfrom** | **Time** | Filters results to any transactions that were updated on or after the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
+| **lastupdatedto** | **Time** | Filters results to any transactions that were updated on or before the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
 | **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
 | **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
 | **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
@@ -350,7 +356,7 @@ end
 
 Retrieve all general ledger entries
 
-Retrieves all general ledger entries              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+Retrieves all general ledger entries              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
 
 ### Examples
 
@@ -444,7 +450,7 @@ end
 
 Retrieve all general ledger account balances
 
-Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
 
 ### Examples
 
@@ -471,6 +477,7 @@ opts = {
   entitytype: 'Association', # String | Specifies the type of entity that `EntityId` field refers to.
   entityid: 56, # Integer | Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in `EntityType`.
   glaccountids: [37], # Array<Integer> | Filters results to the specified set of general ledger account identifiers.
+  aggregatebalancesbyunitid: true, # Boolean | Indicates whether to aggregate the AccountingEntityBalances by unit identifier in the response. If the value is set to true the AccountingEntityBalances will be aggregated by AccountingEntity.Unit.Id otherwise the response will have the balances aggregated by AccountingEntity.Id.
   orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
   offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
   limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
@@ -512,6 +519,7 @@ end
 | **entitytype** | **String** | Specifies the type of entity that &#x60;EntityId&#x60; field refers to. | [optional] |
 | **entityid** | **Integer** | Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in &#x60;EntityType&#x60;. | [optional] |
 | **glaccountids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to the specified set of general ledger account identifiers. | [optional] |
+| **aggregatebalancesbyunitid** | **Boolean** | Indicates whether to aggregate the AccountingEntityBalances by unit identifier in the response. If the value is set to true the AccountingEntityBalances will be aggregated by AccountingEntity.Unit.Id otherwise the response will have the balances aggregated by AccountingEntity.Id. | [optional] |
 | **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
 | **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
 | **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
@@ -536,7 +544,7 @@ end
 
 Retrieve a general ledger account
 
-Retrieves a specific general ledger account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+Retrieves a specific general ledger account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
 
 ### Examples
 
@@ -612,7 +620,7 @@ end
 
 Retrieve a general ledger transaction
 
-Retrieves a specific general ledger transaction.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+Retrieves a specific general ledger transaction.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
 
 ### Examples
 
@@ -684,11 +692,11 @@ end
 
 ## update_general_journal_entry
 
-> <GeneralLedgerTransactionMessage> update_general_journal_entry(journal_entry_id, general_journal_entry_put_message)
+> <GeneralLedgerTransactionMessage> update_general_journal_entry(journal_entry_id, update_general_journal_entry_request)
 
 Update a general journal entry
 
-Updates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
+Updates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` `Edit`
 
 ### Examples
 
@@ -710,11 +718,11 @@ end
 
 api_instance = Buildium::GeneralLedgerApi.new
 journal_entry_id = 56 # Integer | 
-general_journal_entry_put_message = Buildium::GeneralJournalEntryPutMessage.new({accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'}), date: Date.today, lines: [Buildium::GeneralJournalEntryLineSaveMessage.new({gl_account_id: 37, posting_type: 'Credit', amount: 3.56})]}) # GeneralJournalEntryPutMessage | 
+update_general_journal_entry_request = Buildium::UpdateGeneralJournalEntryRequest.new({accounting_entity: Buildium::GeneralJournalEntryPostMessageAccountingEntity.new({id: 37, accounting_entity_type: 'Association'}), date: Date.today, lines: [Buildium::GeneralJournalEntryLineSaveMessage.new({gl_account_id: 37, posting_type: 'Credit', amount: 3.56})]}) # UpdateGeneralJournalEntryRequest | 
 
 begin
   # Update a general journal entry
-  result = api_instance.update_general_journal_entry(journal_entry_id, general_journal_entry_put_message)
+  result = api_instance.update_general_journal_entry(journal_entry_id, update_general_journal_entry_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling GeneralLedgerApi->update_general_journal_entry: #{e}"
@@ -725,12 +733,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<GeneralLedgerTransactionMessage>, Integer, Hash)> update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message)
+> <Array(<GeneralLedgerTransactionMessage>, Integer, Hash)> update_general_journal_entry_with_http_info(journal_entry_id, update_general_journal_entry_request)
 
 ```ruby
 begin
   # Update a general journal entry
-  data, status_code, headers = api_instance.update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message)
+  data, status_code, headers = api_instance.update_general_journal_entry_with_http_info(journal_entry_id, update_general_journal_entry_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <GeneralLedgerTransactionMessage>
@@ -744,7 +752,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **journal_entry_id** | **Integer** |  |  |
-| **general_journal_entry_put_message** | [**GeneralJournalEntryPutMessage**](GeneralJournalEntryPutMessage.md) |  |  |
+| **update_general_journal_entry_request** | [**UpdateGeneralJournalEntryRequest**](UpdateGeneralJournalEntryRequest.md) |  |  |
 
 ### Return type
 
@@ -762,11 +770,11 @@ end
 
 ## update_gl_account
 
-> <GLAccountMessage> update_gl_account(gl_account_id, gl_account_put_message)
+> <GLAccountMessage> update_gl_account(gl_account_id, update_gl_account_request)
 
 Update a general ledger account
 
-Updates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`
+Updates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -788,11 +796,11 @@ end
 
 api_instance = Buildium::GeneralLedgerApi.new
 gl_account_id = 56 # Integer | 
-gl_account_put_message = Buildium::GLAccountPutMessage.new({name: 'name_example', sub_type: 'CurrentAsset'}) # GLAccountPutMessage | 
+update_gl_account_request = Buildium::UpdateGLAccountRequest.new({name: 'name_example', sub_type: 'CurrentAsset'}) # UpdateGLAccountRequest | 
 
 begin
   # Update a general ledger account
-  result = api_instance.update_gl_account(gl_account_id, gl_account_put_message)
+  result = api_instance.update_gl_account(gl_account_id, update_gl_account_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling GeneralLedgerApi->update_gl_account: #{e}"
@@ -803,12 +811,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<GLAccountMessage>, Integer, Hash)> update_gl_account_with_http_info(gl_account_id, gl_account_put_message)
+> <Array(<GLAccountMessage>, Integer, Hash)> update_gl_account_with_http_info(gl_account_id, update_gl_account_request)
 
 ```ruby
 begin
   # Update a general ledger account
-  data, status_code, headers = api_instance.update_gl_account_with_http_info(gl_account_id, gl_account_put_message)
+  data, status_code, headers = api_instance.update_gl_account_with_http_info(gl_account_id, update_gl_account_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <GLAccountMessage>
@@ -822,7 +830,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **gl_account_id** | **Integer** |  |  |
-| **gl_account_put_message** | [**GLAccountPutMessage**](GLAccountPutMessage.md) |  |  |
+| **update_gl_account_request** | [**UpdateGLAccountRequest**](UpdateGLAccountRequest.md) |  |  |
 
 ### Return type
 

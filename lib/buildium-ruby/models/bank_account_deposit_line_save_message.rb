@@ -49,7 +49,7 @@ module Buildium
     def self.openapi_types
       {
         :'gl_account_id' => :'Integer',
-        :'accounting_entity' => :'AccountingEntitySaveMessage',
+        :'accounting_entity' => :'BankAccountDepositLineSaveMessageAccountingEntity',
         :'memo' => :'String',
         :'reference_number' => :'String',
         :'amount' => :'Float'
@@ -146,7 +146,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -253,5 +253,6 @@ module Buildium
         value
       end
     end
+
   end
 end

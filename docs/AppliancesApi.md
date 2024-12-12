@@ -16,11 +16,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_association_appliance
 
-> <AssociationApplianceMessage> create_association_appliance(association_appliance_post_message)
+> <AssociationApplianceMessage> create_association_appliance(create_association_appliance_request)
 
 Create an appliance
 
-Creates an association appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Creates an association appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -41,11 +41,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::AppliancesApi.new
-association_appliance_post_message = Buildium::AssociationAppliancePostMessage.new({association_id: 37, name: 'name_example'}) # AssociationAppliancePostMessage | 
+create_association_appliance_request = Buildium::CreateAssociationApplianceRequest.new({association_id: 37, name: 'name_example'}) # CreateAssociationApplianceRequest | 
 
 begin
   # Create an appliance
-  result = api_instance.create_association_appliance(association_appliance_post_message)
+  result = api_instance.create_association_appliance(create_association_appliance_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AppliancesApi->create_association_appliance: #{e}"
@@ -56,12 +56,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationApplianceMessage>, Integer, Hash)> create_association_appliance_with_http_info(association_appliance_post_message)
+> <Array(<AssociationApplianceMessage>, Integer, Hash)> create_association_appliance_with_http_info(create_association_appliance_request)
 
 ```ruby
 begin
   # Create an appliance
-  data, status_code, headers = api_instance.create_association_appliance_with_http_info(association_appliance_post_message)
+  data, status_code, headers = api_instance.create_association_appliance_with_http_info(create_association_appliance_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationApplianceMessage>
@@ -74,7 +74,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **association_appliance_post_message** | [**AssociationAppliancePostMessage**](AssociationAppliancePostMessage.md) |  |  |
+| **create_association_appliance_request** | [**CreateAssociationApplianceRequest**](CreateAssociationApplianceRequest.md) |  |  |
 
 ### Return type
 
@@ -92,11 +92,11 @@ end
 
 ## create_association_appliance_service_history
 
-> <AssociationApplianceServiceHistoryMessage> create_association_appliance_service_history(appliance_id, association_appliance_service_history_post_message)
+> <AssociationApplianceServiceHistoryMessage> create_association_appliance_service_history(appliance_id, create_association_appliance_service_history_request)
 
 Create a service history
 
-Creates a service history for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Creates a service history for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -118,11 +118,11 @@ end
 
 api_instance = Buildium::AppliancesApi.new
 appliance_id = 56 # Integer | 
-association_appliance_service_history_post_message = Buildium::AssociationApplianceServiceHistoryPostMessage.new({service_type: 'Installed', date: Date.today}) # AssociationApplianceServiceHistoryPostMessage | 
+create_association_appliance_service_history_request = Buildium::CreateAssociationApplianceServiceHistoryRequest.new({service_type: 'Installed', date: Date.today}) # CreateAssociationApplianceServiceHistoryRequest | 
 
 begin
   # Create a service history
-  result = api_instance.create_association_appliance_service_history(appliance_id, association_appliance_service_history_post_message)
+  result = api_instance.create_association_appliance_service_history(appliance_id, create_association_appliance_service_history_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AppliancesApi->create_association_appliance_service_history: #{e}"
@@ -133,12 +133,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationApplianceServiceHistoryMessage>, Integer, Hash)> create_association_appliance_service_history_with_http_info(appliance_id, association_appliance_service_history_post_message)
+> <Array(<AssociationApplianceServiceHistoryMessage>, Integer, Hash)> create_association_appliance_service_history_with_http_info(appliance_id, create_association_appliance_service_history_request)
 
 ```ruby
 begin
   # Create a service history
-  data, status_code, headers = api_instance.create_association_appliance_service_history_with_http_info(appliance_id, association_appliance_service_history_post_message)
+  data, status_code, headers = api_instance.create_association_appliance_service_history_with_http_info(appliance_id, create_association_appliance_service_history_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationApplianceServiceHistoryMessage>
@@ -152,7 +152,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **appliance_id** | **Integer** |  |  |
-| **association_appliance_service_history_post_message** | [**AssociationApplianceServiceHistoryPostMessage**](AssociationApplianceServiceHistoryPostMessage.md) |  |  |
+| **create_association_appliance_service_history_request** | [**CreateAssociationApplianceServiceHistoryRequest**](CreateAssociationApplianceServiceHistoryRequest.md) |  |  |
 
 ### Return type
 
@@ -174,7 +174,7 @@ end
 
 Delete an appliance
 
-Deletes an associations appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Deletes an associations appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -249,7 +249,7 @@ nil (empty response body)
 
 Retrieve all service history
 
-Retrieves all of the service history records for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all of the service history records for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -333,7 +333,7 @@ end
 
 Retrieve an appliance
 
-Retrieves an association appliance by id.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves an association appliance by id.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -409,7 +409,7 @@ end
 
 Retrieve a service history
 
-Retrieves a specific service history record for a given appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves a specific service history record for a given appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -487,7 +487,7 @@ end
 
 Retrieve all appliances
 
-Retrieves all association appliances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all association appliances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -569,11 +569,11 @@ end
 
 ## update_association_appliance
 
-> <AssociationApplianceMessage> update_association_appliance(appliance_id, association_appliance_put_message)
+> <AssociationApplianceMessage> update_association_appliance(appliance_id, update_association_appliance_request)
 
 Update an appliance
 
-Updates an association appliance.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates an association appliance.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -595,11 +595,11 @@ end
 
 api_instance = Buildium::AppliancesApi.new
 appliance_id = 56 # Integer | 
-association_appliance_put_message = Buildium::AssociationAppliancePutMessage.new({name: 'name_example'}) # AssociationAppliancePutMessage | 
+update_association_appliance_request = Buildium::UpdateAssociationApplianceRequest.new({name: 'name_example'}) # UpdateAssociationApplianceRequest | 
 
 begin
   # Update an appliance
-  result = api_instance.update_association_appliance(appliance_id, association_appliance_put_message)
+  result = api_instance.update_association_appliance(appliance_id, update_association_appliance_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AppliancesApi->update_association_appliance: #{e}"
@@ -610,12 +610,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationApplianceMessage>, Integer, Hash)> update_association_appliance_with_http_info(appliance_id, association_appliance_put_message)
+> <Array(<AssociationApplianceMessage>, Integer, Hash)> update_association_appliance_with_http_info(appliance_id, update_association_appliance_request)
 
 ```ruby
 begin
   # Update an appliance
-  data, status_code, headers = api_instance.update_association_appliance_with_http_info(appliance_id, association_appliance_put_message)
+  data, status_code, headers = api_instance.update_association_appliance_with_http_info(appliance_id, update_association_appliance_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationApplianceMessage>
@@ -629,7 +629,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **appliance_id** | **Integer** |  |  |
-| **association_appliance_put_message** | [**AssociationAppliancePutMessage**](AssociationAppliancePutMessage.md) |  |  |
+| **update_association_appliance_request** | [**UpdateAssociationApplianceRequest**](UpdateAssociationApplianceRequest.md) |  |  |
 
 ### Return type
 

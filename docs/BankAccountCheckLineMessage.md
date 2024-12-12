@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | The unique identifier of the line item. | [optional] |
 | **gl_account_id** | **Integer** | General ledger account unique identifier the line item is related to. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**BankAccountCheckLineMessageAccountingEntity**](BankAccountCheckLineMessageAccountingEntity.md) |  | [optional] |
 | **memo** | **String** | Memo for the line item. | [optional] |
 | **reference_number** | **String** | Reference number for the line item. | [optional] |
 | **amount** | **Float** | Amount of the line item. | [optional] |

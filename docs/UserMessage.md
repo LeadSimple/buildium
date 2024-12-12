@@ -14,7 +14,7 @@
 | **email** | **String** | Email address of the user. | [optional] |
 | **alternate_email** | **String** | Alternate email address of user. | [optional] |
 | **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | List of phone numbers for the user. | [optional] |
-| **user_role** | [**UserRoleMessage**](UserRoleMessage.md) |  | [optional] |
+| **user_role** | [**UserMessageUserRole**](UserMessageUserRole.md) |  | [optional] |
 | **is_company** | **Boolean** | Indicates with the user account represents company versus a person. | [optional] |
 
 ## Example

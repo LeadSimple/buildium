@@ -8,7 +8,7 @@
 | **gl_account_id** | **Integer** | Unique identifier of the general ledger account associated with the vendor credit. | [optional] |
 | **amount** | **Float** | Amount of the vendor credit line item. | [optional] |
 | **memo** | **String** | Memo for the vendor credit line item. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**VendorCreditLineItemMessageAccountingEntity**](VendorCreditLineItemMessageAccountingEntity.md) |  | [optional] |
 
 ## Example
 

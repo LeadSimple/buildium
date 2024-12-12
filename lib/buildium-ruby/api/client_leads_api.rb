@@ -20,7 +20,7 @@ module Buildium
       @api_client = api_client
     end
     # Retrieve all client leads
-    # Retrieves all client leads              <br /><br />              Note: When using the `orderby` query string parameter, the only supported options are DateReceived.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; All Property Management</span> - `View`
+    # Retrieves all client leads              <br /><br />              Note: When using the `orderby` query string parameter, the only supported options are DateReceived.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > All Property Management</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :leadstatuses Filters results to any client leads that are in one of the given statuses.
     # @option opts [Array<String>] :propertytypes Filters results to any client leads that have a property in one of the given property types.
@@ -37,7 +37,7 @@ module Buildium
     end
 
     # Retrieve all client leads
-    # Retrieves all client leads              &lt;br /&gt;&lt;br /&gt;              Note: When using the &#x60;orderby&#x60; query string parameter, the only supported options are DateReceived.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; All Property Management&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all client leads              &lt;br /&gt;&lt;br /&gt;              Note: When using the &#x60;orderby&#x60; query string parameter, the only supported options are DateReceived.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; All Property Management&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :leadstatuses Filters results to any client leads that are in one of the given statuses.
     # @option opts [Array<String>] :propertytypes Filters results to any client leads that have a property in one of the given property types.
@@ -109,7 +109,7 @@ module Buildium
     end
 
     # Retrieve a client lead
-    # Retrieves a specific client lead              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; All Property Management</span> - `View`
+    # Retrieves a specific client lead              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > All Property Management</span> - `View`
     # @param client_lead_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [ClientLeadMessage]
@@ -119,7 +119,7 @@ module Buildium
     end
 
     # Retrieve a client lead
-    # Retrieves a specific client lead              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; All Property Management&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific client lead              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; All Property Management&lt;/span&gt; - &#x60;View&#x60;
     # @param client_lead_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ClientLeadMessage, Integer, Hash)>] ClientLeadMessage data, response status code and response headers

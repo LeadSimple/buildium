@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a vendor
-    # Creates a vendor.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
-    # @param vendor_post_message [VendorPostMessage] 
+    # Creates a vendor.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
+    # @param create_vendor_request [CreateVendorRequest] 
     # @param [Hash] opts the optional parameters
     # @return [VendorMessage]
-    def create_vendor(vendor_post_message, opts = {})
-      data, _status_code, _headers = create_vendor_with_http_info(vendor_post_message, opts)
+    def create_vendor(create_vendor_request, opts = {})
+      data, _status_code, _headers = create_vendor_with_http_info(create_vendor_request, opts)
       data
     end
 
     # Create a vendor
-    # Creates a vendor.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param vendor_post_message [VendorPostMessage] 
+    # Creates a vendor.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_vendor_request [CreateVendorRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorMessage, Integer, Hash)>] VendorMessage data, response status code and response headers
-    def create_vendor_with_http_info(vendor_post_message, opts = {})
+    def create_vendor_with_http_info(create_vendor_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.create_vendor ...'
       end
-      # verify the required parameter 'vendor_post_message' is set
-      if @api_client.config.client_side_validation && vendor_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'vendor_post_message' when calling VendorsApi.create_vendor"
+      # verify the required parameter 'create_vendor_request' is set
+      if @api_client.config.client_side_validation && create_vendor_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_vendor_request' when calling VendorsApi.create_vendor"
       end
       # resource path
       local_var_path = '/v1/vendors'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_vendor_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'VendorMessage'
@@ -88,27 +88,27 @@ module Buildium
     end
 
     # Create a vendor category
-    # Creates a vendor category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
-    # @param vendor_category_save_message [VendorCategorySaveMessage] 
+    # Creates a vendor category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
+    # @param create_vendor_category_request [CreateVendorCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [VendorCategoryMessage]
-    def create_vendor_category(vendor_category_save_message, opts = {})
-      data, _status_code, _headers = create_vendor_category_with_http_info(vendor_category_save_message, opts)
+    def create_vendor_category(create_vendor_category_request, opts = {})
+      data, _status_code, _headers = create_vendor_category_with_http_info(create_vendor_category_request, opts)
       data
     end
 
     # Create a vendor category
-    # Creates a vendor category.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param vendor_category_save_message [VendorCategorySaveMessage] 
+    # Creates a vendor category.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_vendor_category_request [CreateVendorCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorCategoryMessage, Integer, Hash)>] VendorCategoryMessage data, response status code and response headers
-    def create_vendor_category_with_http_info(vendor_category_save_message, opts = {})
+    def create_vendor_category_with_http_info(create_vendor_category_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.create_vendor_category ...'
       end
-      # verify the required parameter 'vendor_category_save_message' is set
-      if @api_client.config.client_side_validation && vendor_category_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'vendor_category_save_message' when calling VendorsApi.create_vendor_category"
+      # verify the required parameter 'create_vendor_category_request' is set
+      if @api_client.config.client_side_validation && create_vendor_category_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_vendor_category_request' when calling VendorsApi.create_vendor_category"
       end
       # resource path
       local_var_path = '/v1/vendors/categories'
@@ -123,14 +123,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_category_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_vendor_category_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'VendorCategoryMessage'
@@ -156,23 +156,23 @@ module Buildium
     end
 
     # Create a credit
-    # Creates a credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+    # Creates a credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bills</span> - `View` `Edit`
     # @param vendor_id [Integer] 
-    # @param vendor_credit_post_message [VendorCreditPostMessage] 
+    # @param create_vendor_credit_request [CreateVendorCreditRequest] 
     # @param [Hash] opts the optional parameters
     # @return [VendorCreditMessage]
-    def create_vendor_credit(vendor_id, vendor_credit_post_message, opts = {})
-      data, _status_code, _headers = create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message, opts)
+    def create_vendor_credit(vendor_id, create_vendor_credit_request, opts = {})
+      data, _status_code, _headers = create_vendor_credit_with_http_info(vendor_id, create_vendor_credit_request, opts)
       data
     end
 
     # Create a credit
-    # Creates a credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param vendor_id [Integer] 
-    # @param vendor_credit_post_message [VendorCreditPostMessage] 
+    # @param create_vendor_credit_request [CreateVendorCreditRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorCreditMessage, Integer, Hash)>] VendorCreditMessage data, response status code and response headers
-    def create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message, opts = {})
+    def create_vendor_credit_with_http_info(vendor_id, create_vendor_credit_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.create_vendor_credit ...'
       end
@@ -180,9 +180,9 @@ module Buildium
       if @api_client.config.client_side_validation && vendor_id.nil?
         fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.create_vendor_credit"
       end
-      # verify the required parameter 'vendor_credit_post_message' is set
-      if @api_client.config.client_side_validation && vendor_credit_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'vendor_credit_post_message' when calling VendorsApi.create_vendor_credit"
+      # verify the required parameter 'create_vendor_credit_request' is set
+      if @api_client.config.client_side_validation && create_vendor_credit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_vendor_credit_request' when calling VendorsApi.create_vendor_credit"
       end
       # resource path
       local_var_path = '/v1/vendors/{vendorId}/credits'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s))
@@ -197,14 +197,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_credit_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_vendor_credit_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'VendorCreditMessage'
@@ -230,23 +230,23 @@ module Buildium
     end
 
     # Create a note
-    # Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
     # @param vendor_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def create_vendor_note(vendor_id, note_post_message, opts = {})
-      data, _status_code, _headers = create_vendor_note_with_http_info(vendor_id, note_post_message, opts)
+    def create_vendor_note(vendor_id, create_lease_note_request, opts = {})
+      data, _status_code, _headers = create_vendor_note_with_http_info(vendor_id, create_lease_note_request, opts)
       data
     end
 
     # Create a note
-    # Creates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param vendor_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def create_vendor_note_with_http_info(vendor_id, note_post_message, opts = {})
+    def create_vendor_note_with_http_info(vendor_id, create_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.create_vendor_note ...'
       end
@@ -254,9 +254,9 @@ module Buildium
       if @api_client.config.client_side_validation && vendor_id.nil?
         fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.create_vendor_note"
       end
-      # verify the required parameter 'note_post_message' is set
-      if @api_client.config.client_side_validation && note_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_post_message' when calling VendorsApi.create_vendor_note"
+      # verify the required parameter 'create_lease_note_request' is set
+      if @api_client.config.client_side_validation && create_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_note_request' when calling VendorsApi.create_vendor_note"
       end
       # resource path
       local_var_path = '/v1/vendors/{vendorId}/notes'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s))
@@ -271,14 +271,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -304,23 +304,23 @@ module Buildium
     end
 
     # Create a refund
-    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param vendor_id [Integer] 
-    # @param vendor_refund_post_message [VendorRefundPostMessage] 
+    # @param create_vendor_refund_request [CreateVendorRefundRequest] 
     # @param [Hash] opts the optional parameters
     # @return [VendorRefundMessage]
-    def create_vendor_refund(vendor_id, vendor_refund_post_message, opts = {})
-      data, _status_code, _headers = create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message, opts)
+    def create_vendor_refund(vendor_id, create_vendor_refund_request, opts = {})
+      data, _status_code, _headers = create_vendor_refund_with_http_info(vendor_id, create_vendor_refund_request, opts)
       data
     end
 
     # Create a refund
-    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] 
-    # @param vendor_refund_post_message [VendorRefundPostMessage] 
+    # @param create_vendor_refund_request [CreateVendorRefundRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorRefundMessage, Integer, Hash)>] VendorRefundMessage data, response status code and response headers
-    def create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message, opts = {})
+    def create_vendor_refund_with_http_info(vendor_id, create_vendor_refund_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.create_vendor_refund ...'
       end
@@ -328,9 +328,9 @@ module Buildium
       if @api_client.config.client_side_validation && vendor_id.nil?
         fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.create_vendor_refund"
       end
-      # verify the required parameter 'vendor_refund_post_message' is set
-      if @api_client.config.client_side_validation && vendor_refund_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'vendor_refund_post_message' when calling VendorsApi.create_vendor_refund"
+      # verify the required parameter 'create_vendor_refund_request' is set
+      if @api_client.config.client_side_validation && create_vendor_refund_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_vendor_refund_request' when calling VendorsApi.create_vendor_refund"
       end
       # resource path
       local_var_path = '/v1/vendors/{vendorId}/refunds'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s))
@@ -345,14 +345,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_refund_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_vendor_refund_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'VendorRefundMessage'
@@ -378,7 +378,7 @@ module Buildium
     end
 
     # Retrieve all vendor categories
-    # Retrieves a list of vendor categories.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieves a list of vendor categories.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -390,7 +390,7 @@ module Buildium
     end
 
     # Retrieve all vendor categories
-    # Retrieves a list of vendor categories.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of vendor categories.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -444,10 +444,10 @@ module Buildium
     end
 
     # Retrieve all transactions
-    # Retrieves all transactions for a given vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`  <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
-    # @param vendor_id [Integer] 
+    # Retrieves all transactions for a given vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`  <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
     # @param transactiondatefrom [Date] Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.
     # @param transactiondateto [Date] Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.
+    # @param vendor_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :transactiontypes Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.
     # @option opts [String] :referencenumber Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.
@@ -456,16 +456,16 @@ module Buildium
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
     # @return [Array<VendorTransactionMessage>]
-    def get_all_vendor_transactions(vendor_id, transactiondatefrom, transactiondateto, opts = {})
-      data, _status_code, _headers = get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts)
+    def get_all_vendor_transactions(transactiondatefrom, transactiondateto, vendor_id, opts = {})
+      data, _status_code, _headers = get_all_vendor_transactions_with_http_info(transactiondatefrom, transactiondateto, vendor_id, opts)
       data
     end
 
     # Retrieve all transactions
-    # Retrieves all transactions for a given vendor.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
-    # @param vendor_id [Integer] 
+    # Retrieves all transactions for a given vendor.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param transactiondatefrom [Date] Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.
     # @param transactiondateto [Date] Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.
+    # @param vendor_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :transactiontypes Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.
     # @option opts [String] :referencenumber Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.
@@ -474,13 +474,9 @@ module Buildium
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
     # @return [Array<(Array<VendorTransactionMessage>, Integer, Hash)>] Array<VendorTransactionMessage> data, response status code and response headers
-    def get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts = {})
+    def get_all_vendor_transactions_with_http_info(transactiondatefrom, transactiondateto, vendor_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.get_all_vendor_transactions ...'
-      end
-      # verify the required parameter 'vendor_id' is set
-      if @api_client.config.client_side_validation && vendor_id.nil?
-        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.get_all_vendor_transactions"
       end
       # verify the required parameter 'transactiondatefrom' is set
       if @api_client.config.client_side_validation && transactiondatefrom.nil?
@@ -489,6 +485,10 @@ module Buildium
       # verify the required parameter 'transactiondateto' is set
       if @api_client.config.client_side_validation && transactiondateto.nil?
         fail ArgumentError, "Missing the required parameter 'transactiondateto' when calling VendorsApi.get_all_vendor_transactions"
+      end
+      # verify the required parameter 'vendor_id' is set
+      if @api_client.config.client_side_validation && vendor_id.nil?
+        fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.get_all_vendor_transactions"
       end
       allowable_values = ["Bill", "Check", "Charge", "Payment", "Credit", "Refund", "ApplyDeposit", "ElectronicFundsTransfer", "Other", "Deposit", "GeneralJournalEntry", "OwnerContribution", "ReversePayment", "ReverseElectronicFundsTransfer", "VendorCredit", "RentalApplicationFeePayment", "ReverseRentalApplicationFeePayment", "ReverseOwnerContribution", "VendorRefund", "UnreversedPayment", "UnreversedElectronicFundsTransfer", "UnreversedOwnerContribution", "UnreversedRentalApplicationFeePayment"]
       if @api_client.config.client_side_validation && opts[:'transactiontypes'] && !opts[:'transactiontypes'].all? { |item| allowable_values.include?(item) }
@@ -543,7 +543,7 @@ module Buildium
     end
 
     # Retrieve all vendors
-    # Retrieves a list of vendors.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieves a list of vendors.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :status Filters results by the status of the vendor. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; vendors will be returned.
     # @option opts [String] :email Filters results to any vendor whose email *contains* the specified value.
@@ -563,7 +563,7 @@ module Buildium
     end
 
     # Retrieve all vendors
-    # Retrieves a list of vendors.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of vendors.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :status Filters results by the status of the vendor. If no status is specified both &#x60;active&#x60; and &#x60;inactive&#x60; vendors will be returned.
     # @option opts [String] :email Filters results to any vendor whose email *contains* the specified value.
@@ -585,7 +585,7 @@ module Buildium
       if @api_client.config.client_side_validation && opts[:'status'] && !allowable_values.include?(opts[:'status'])
         fail ArgumentError, "invalid value for \"status\", must be one of #{allowable_values}"
       end
-      allowable_values = ["None", "Any", "Expired", "ThirtyDaysOrLess", "SixtyDaysOrLess", "NinetyDaysOrLess"]
+      allowable_values = ["Expired", "ThirtyDaysOrLess", "SixtyDaysOrLess", "NinetyDaysOrLess", "None", "Any"]
       if @api_client.config.client_side_validation && opts[:'insuranceexpiration'] && !allowable_values.include?(opts[:'insuranceexpiration'])
         fail ArgumentError, "invalid value for \"insuranceexpiration\", must be one of #{allowable_values}"
       end
@@ -641,7 +641,7 @@ module Buildium
     end
 
     # Retrieve a vendor
-    # Retrieve a specific vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieve a specific vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param vendor_id [Integer] The vendor identifier.
     # @param [Hash] opts the optional parameters
     # @return [VendorMessage]
@@ -651,7 +651,7 @@ module Buildium
     end
 
     # Retrieve a vendor
-    # Retrieve a specific vendor.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve a specific vendor.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] The vendor identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorMessage, Integer, Hash)>] VendorMessage data, response status code and response headers
@@ -704,7 +704,7 @@ module Buildium
     end
 
     # Retrieve a vendor category
-    # Retrieves a specific vendor category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieves a specific vendor category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param vendor_category_id [Integer] The vendor category identifier.
     # @param [Hash] opts the optional parameters
     # @return [VendorCategoryMessage]
@@ -714,7 +714,7 @@ module Buildium
     end
 
     # Retrieve a vendor category
-    # Retrieves a specific vendor category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific vendor category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_category_id [Integer] The vendor category identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorCategoryMessage, Integer, Hash)>] VendorCategoryMessage data, response status code and response headers
@@ -767,7 +767,7 @@ module Buildium
     end
 
     # Retrieve a credit
-    # Retrieves a credit.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+    # Retrieves a credit.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bills</span> - `View`
     # @param vendor_id [Integer] 
     # @param vendor_credit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -778,7 +778,7 @@ module Buildium
     end
 
     # Retrieve a credit
-    # Retrieves a credit.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bills&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a credit.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bills&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] 
     # @param vendor_credit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -836,7 +836,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -847,7 +847,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -905,7 +905,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all vendor notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieves all vendor notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param vendor_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -921,7 +921,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all vendor notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all vendor notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -986,22 +986,22 @@ module Buildium
     end
 
     # Retrieve a refund
-    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param vendor_id [Integer] 
     # @param vendor_refund_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [VendorCreditMessage]
+    # @return [VendorRefundMessage]
     def get_vendor_refund(vendor_id, vendor_refund_id, opts = {})
       data, _status_code, _headers = get_vendor_refund_with_http_info(vendor_id, vendor_refund_id, opts)
       data
     end
 
     # Retrieve a refund
-    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param vendor_id [Integer] 
     # @param vendor_refund_id [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(VendorCreditMessage, Integer, Hash)>] VendorCreditMessage data, response status code and response headers
+    # @return [Array<(VendorRefundMessage, Integer, Hash)>] VendorRefundMessage data, response status code and response headers
     def get_vendor_refund_with_http_info(vendor_id, vendor_refund_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.get_vendor_refund ...'
@@ -1032,7 +1032,7 @@ module Buildium
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'VendorCreditMessage'
+      return_type = opts[:debug_return_type] || 'VendorRefundMessage'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
@@ -1055,23 +1055,23 @@ module Buildium
     end
 
     # Update a vendor
-    # Updates a vendor.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # Updates a vendor.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
     # @param vendor_id [Integer] 
-    # @param vendor_put_message [VendorPutMessage] 
+    # @param update_vendor_request [UpdateVendorRequest] 
     # @param [Hash] opts the optional parameters
     # @return [VendorMessage]
-    def update_vendor(vendor_id, vendor_put_message, opts = {})
-      data, _status_code, _headers = update_vendor_with_http_info(vendor_id, vendor_put_message, opts)
+    def update_vendor(vendor_id, update_vendor_request, opts = {})
+      data, _status_code, _headers = update_vendor_with_http_info(vendor_id, update_vendor_request, opts)
       data
     end
 
     # Update a vendor
-    # Updates a vendor.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a vendor.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param vendor_id [Integer] 
-    # @param vendor_put_message [VendorPutMessage] 
+    # @param update_vendor_request [UpdateVendorRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorMessage, Integer, Hash)>] VendorMessage data, response status code and response headers
-    def update_vendor_with_http_info(vendor_id, vendor_put_message, opts = {})
+    def update_vendor_with_http_info(vendor_id, update_vendor_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.update_vendor ...'
       end
@@ -1079,9 +1079,9 @@ module Buildium
       if @api_client.config.client_side_validation && vendor_id.nil?
         fail ArgumentError, "Missing the required parameter 'vendor_id' when calling VendorsApi.update_vendor"
       end
-      # verify the required parameter 'vendor_put_message' is set
-      if @api_client.config.client_side_validation && vendor_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'vendor_put_message' when calling VendorsApi.update_vendor"
+      # verify the required parameter 'update_vendor_request' is set
+      if @api_client.config.client_side_validation && update_vendor_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_vendor_request' when calling VendorsApi.update_vendor"
       end
       # resource path
       local_var_path = '/v1/vendors/{vendorId}'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s))
@@ -1096,14 +1096,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_vendor_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'VendorMessage'
@@ -1129,23 +1129,23 @@ module Buildium
     end
 
     # Update a vendor category
-    # Updates a vendor category.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # Updates a vendor category.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
     # @param vendor_category_id [Integer] 
-    # @param vendor_category_save_message [VendorCategorySaveMessage] 
+    # @param create_vendor_category_request [CreateVendorCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [VendorCategoryMessage]
-    def update_vendor_category(vendor_category_id, vendor_category_save_message, opts = {})
-      data, _status_code, _headers = update_vendor_category_with_http_info(vendor_category_id, vendor_category_save_message, opts)
+    def update_vendor_category(vendor_category_id, create_vendor_category_request, opts = {})
+      data, _status_code, _headers = update_vendor_category_with_http_info(vendor_category_id, create_vendor_category_request, opts)
       data
     end
 
     # Update a vendor category
-    # Updates a vendor category.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a vendor category.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param vendor_category_id [Integer] 
-    # @param vendor_category_save_message [VendorCategorySaveMessage] 
+    # @param create_vendor_category_request [CreateVendorCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(VendorCategoryMessage, Integer, Hash)>] VendorCategoryMessage data, response status code and response headers
-    def update_vendor_category_with_http_info(vendor_category_id, vendor_category_save_message, opts = {})
+    def update_vendor_category_with_http_info(vendor_category_id, create_vendor_category_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.update_vendor_category ...'
       end
@@ -1153,9 +1153,9 @@ module Buildium
       if @api_client.config.client_side_validation && vendor_category_id.nil?
         fail ArgumentError, "Missing the required parameter 'vendor_category_id' when calling VendorsApi.update_vendor_category"
       end
-      # verify the required parameter 'vendor_category_save_message' is set
-      if @api_client.config.client_side_validation && vendor_category_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'vendor_category_save_message' when calling VendorsApi.update_vendor_category"
+      # verify the required parameter 'create_vendor_category_request' is set
+      if @api_client.config.client_side_validation && create_vendor_category_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_vendor_category_request' when calling VendorsApi.update_vendor_category"
       end
       # resource path
       local_var_path = '/v1/vendors/categories/{vendorCategoryId}'.sub('{' + 'vendorCategoryId' + '}', CGI.escape(vendor_category_id.to_s))
@@ -1170,14 +1170,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(vendor_category_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_vendor_category_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'VendorCategoryMessage'
@@ -1203,25 +1203,25 @@ module Buildium
     end
 
     # Update a note
-    # Updates a vendor note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # Updates a vendor note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def update_vendor_note(vendor_id, note_id, note_put_message, opts = {})
-      data, _status_code, _headers = update_vendor_note_with_http_info(vendor_id, note_id, note_put_message, opts)
+    def update_vendor_note(vendor_id, note_id, update_lease_note_request, opts = {})
+      data, _status_code, _headers = update_vendor_note_with_http_info(vendor_id, note_id, update_lease_note_request, opts)
       data
     end
 
     # Update a note
-    # Updates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a vendor note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param vendor_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def update_vendor_note_with_http_info(vendor_id, note_id, note_put_message, opts = {})
+    def update_vendor_note_with_http_info(vendor_id, note_id, update_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VendorsApi.update_vendor_note ...'
       end
@@ -1233,9 +1233,9 @@ module Buildium
       if @api_client.config.client_side_validation && note_id.nil?
         fail ArgumentError, "Missing the required parameter 'note_id' when calling VendorsApi.update_vendor_note"
       end
-      # verify the required parameter 'note_put_message' is set
-      if @api_client.config.client_side_validation && note_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_put_message' when calling VendorsApi.update_vendor_note"
+      # verify the required parameter 'update_lease_note_request' is set
+      if @api_client.config.client_side_validation && update_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_note_request' when calling VendorsApi.update_vendor_note"
       end
       # resource path
       local_var_path = '/v1/vendors/{vendorId}/notes/{noteId}'.sub('{' + 'vendorId' + '}', CGI.escape(vendor_id.to_s)).sub('{' + 'noteId' + '}', CGI.escape(note_id.to_s))
@@ -1250,14 +1250,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'

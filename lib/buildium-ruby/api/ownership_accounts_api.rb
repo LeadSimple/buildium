@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create an ownership account
-    # Creates an ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Associations &gt; Owners</span> - `View` `Edit`
-    # @param association_ownership_account_post_message [AssociationOwnershipAccountPostMessage] 
+    # Creates an ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Associations > Owners</span> - `View` `Edit`
+    # @param create_association_ownership_account_request [CreateAssociationOwnershipAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationOwnershipAccountMessage]
-    def create_association_ownership_account(association_ownership_account_post_message, opts = {})
-      data, _status_code, _headers = create_association_ownership_account_with_http_info(association_ownership_account_post_message, opts)
+    def create_association_ownership_account(create_association_ownership_account_request, opts = {})
+      data, _status_code, _headers = create_association_ownership_account_with_http_info(create_association_ownership_account_request, opts)
       data
     end
 
     # Create an ownership account
-    # Creates an ownership account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param association_ownership_account_post_message [AssociationOwnershipAccountPostMessage] 
+    # Creates an ownership account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Owners&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_association_ownership_account_request [CreateAssociationOwnershipAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationOwnershipAccountMessage, Integer, Hash)>] AssociationOwnershipAccountMessage data, response status code and response headers
-    def create_association_ownership_account_with_http_info(association_ownership_account_post_message, opts = {})
+    def create_association_ownership_account_with_http_info(create_association_ownership_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountsApi.create_association_ownership_account ...'
       end
-      # verify the required parameter 'association_ownership_account_post_message' is set
-      if @api_client.config.client_side_validation && association_ownership_account_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_ownership_account_post_message' when calling OwnershipAccountsApi.create_association_ownership_account"
+      # verify the required parameter 'create_association_ownership_account_request' is set
+      if @api_client.config.client_side_validation && create_association_ownership_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_association_ownership_account_request' when calling OwnershipAccountsApi.create_association_ownership_account"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_ownership_account_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_association_ownership_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationOwnershipAccountMessage'
@@ -88,23 +88,23 @@ module Buildium
     end
 
     # Create a note
-    # Creates a new ownership account note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
+    # Creates a new ownership account note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def create_association_ownership_account_note(ownership_account_id, note_post_message, opts = {})
-      data, _status_code, _headers = create_association_ownership_account_note_with_http_info(ownership_account_id, note_post_message, opts)
+    def create_association_ownership_account_note(ownership_account_id, create_lease_note_request, opts = {})
+      data, _status_code, _headers = create_association_ownership_account_note_with_http_info(ownership_account_id, create_lease_note_request, opts)
       data
     end
 
     # Create a note
-    # Creates a new ownership account note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a new ownership account note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def create_association_ownership_account_note_with_http_info(ownership_account_id, note_post_message, opts = {})
+    def create_association_ownership_account_note_with_http_info(ownership_account_id, create_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountsApi.create_association_ownership_account_note ...'
       end
@@ -112,9 +112,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountsApi.create_association_ownership_account_note"
       end
-      # verify the required parameter 'note_post_message' is set
-      if @api_client.config.client_side_validation && note_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_post_message' when calling OwnershipAccountsApi.create_association_ownership_account_note"
+      # verify the required parameter 'create_lease_note_request' is set
+      if @api_client.config.client_side_validation && create_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_note_request' when calling OwnershipAccountsApi.create_association_ownership_account_note"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/notes'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -129,14 +129,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -162,7 +162,7 @@ module Buildium
     end
 
     # Retrieve all ownership accounts
-    # Retrieves a list of ownership accounts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View`
+    # Retrieves a list of ownership accounts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :ids Filters results to the specified set of ids.
     # @option opts [Array<Integer>] :associationids Filters results to any ownership accounts who belong to the specified set of association ids.
@@ -181,7 +181,7 @@ module Buildium
     end
 
     # Retrieve all ownership accounts
-    # Retrieves a list of ownership accounts.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of ownership accounts.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :ids Filters results to the specified set of ids.
     # @option opts [Array<Integer>] :associationids Filters results to any ownership accounts who belong to the specified set of association ids.
@@ -257,7 +257,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves an ownership account note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; OwnershipAccounts</span> - `View`
+    # Retrieves an ownership account note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > OwnershipAccounts</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -268,7 +268,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves an ownership account note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; OwnershipAccounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an ownership account note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; OwnershipAccounts&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -326,7 +326,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves notes for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; OwnershipAccounts</span> - `View`
+    # Retrieves notes for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > OwnershipAccounts</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -342,7 +342,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves notes for an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; OwnershipAccounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves notes for an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; OwnershipAccounts&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -407,7 +407,7 @@ module Buildium
     end
 
     # Retrieve an ownership account
-    # Retrieves a specific ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View`
+    # Retrieves a specific ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View`
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param [Hash] opts the optional parameters
     # @return [AssociationOwnershipAccountMessage]
@@ -417,7 +417,7 @@ module Buildium
     end
 
     # Retrieve an ownership account
-    # Retrieves a specific ownership account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific ownership account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationOwnershipAccountMessage, Integer, Hash)>] AssociationOwnershipAccountMessage data, response status code and response headers
@@ -469,24 +469,161 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update an ownership account
-    # Updates an ownership account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
+    # Retrieve all partial payment settings for an ownership account
+    # Retrieves partial payment settings for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > OwnershipAccounts</span> - `View`
     # @param ownership_account_id [Integer] 
-    # @param association_ownership_account_put_message [AssociationOwnershipAccountPutMessage] 
+    # @param [Hash] opts the optional parameters
+    # @return [PartialPaymentSettingsMessage]
+    def get_ownership_account_partial_payment_settings(ownership_account_id, opts = {})
+      data, _status_code, _headers = get_ownership_account_partial_payment_settings_with_http_info(ownership_account_id, opts)
+      data
+    end
+
+    # Retrieve all partial payment settings for an ownership account
+    # Retrieves partial payment settings for an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; OwnershipAccounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PartialPaymentSettingsMessage, Integer, Hash)>] PartialPaymentSettingsMessage data, response status code and response headers
+    def get_ownership_account_partial_payment_settings_with_http_info(ownership_account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OwnershipAccountsApi.get_ownership_account_partial_payment_settings ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountsApi.get_ownership_account_partial_payment_settings"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/partialpaymentsettings'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PartialPaymentSettingsMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"OwnershipAccountsApi.get_ownership_account_partial_payment_settings",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OwnershipAccountsApi#get_ownership_account_partial_payment_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update partial payment settings for an ownership account
+    # Updates partial payment settings for an ownership account.              <br /><br /><h4>Required Permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership Accounts</span> - `View` `Edit`              <span class=\"permissionBlock\">Administration > Application Settings</span> - `View` `Edit`
+    # @param ownership_account_id [Integer] 
+    # @param patch_global_partial_payment_settings_request [PatchGlobalPartialPaymentSettingsRequest] &lt;span&gt;Represents the structure of the data that can be provided to a &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6902\&quot;&gt;JSON patch document&lt;/a&gt; as path values via &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6901/\&quot;&gt;JSON pointer&lt;/a&gt; syntax.&lt;/span&gt;
+    # @param [Hash] opts the optional parameters
+    # @return [PartialPaymentSettingsMessage]
+    def patch_ownership_account_partial_payment(ownership_account_id, patch_global_partial_payment_settings_request, opts = {})
+      data, _status_code, _headers = patch_ownership_account_partial_payment_with_http_info(ownership_account_id, patch_global_partial_payment_settings_request, opts)
+      data
+    end
+
+    # Update partial payment settings for an ownership account
+    # Updates partial payment settings for an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required Permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Application Settings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param patch_global_partial_payment_settings_request [PatchGlobalPartialPaymentSettingsRequest] &lt;span&gt;Represents the structure of the data that can be provided to a &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6902\&quot;&gt;JSON patch document&lt;/a&gt; as path values via &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6901/\&quot;&gt;JSON pointer&lt;/a&gt; syntax.&lt;/span&gt;
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PartialPaymentSettingsMessage, Integer, Hash)>] PartialPaymentSettingsMessage data, response status code and response headers
+    def patch_ownership_account_partial_payment_with_http_info(ownership_account_id, patch_global_partial_payment_settings_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OwnershipAccountsApi.patch_ownership_account_partial_payment ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountsApi.patch_ownership_account_partial_payment"
+      end
+      # verify the required parameter 'patch_global_partial_payment_settings_request' is set
+      if @api_client.config.client_side_validation && patch_global_partial_payment_settings_request.nil?
+        fail ArgumentError, "Missing the required parameter 'patch_global_partial_payment_settings_request' when calling OwnershipAccountsApi.patch_ownership_account_partial_payment"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/partialpaymentsettings'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json', 'application/json-patch+json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(patch_global_partial_payment_settings_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PartialPaymentSettingsMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"OwnershipAccountsApi.patch_ownership_account_partial_payment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OwnershipAccountsApi#patch_ownership_account_partial_payment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update an ownership account
+    # Updates an ownership account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View` `Edit`
+    # @param ownership_account_id [Integer] 
+    # @param update_association_ownership_account_request [UpdateAssociationOwnershipAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationOwnershipAccountMessage]
-    def update_association_ownership_account(ownership_account_id, association_ownership_account_put_message, opts = {})
-      data, _status_code, _headers = update_association_ownership_account_with_http_info(ownership_account_id, association_ownership_account_put_message, opts)
+    def update_association_ownership_account(ownership_account_id, update_association_ownership_account_request, opts = {})
+      data, _status_code, _headers = update_association_ownership_account_with_http_info(ownership_account_id, update_association_ownership_account_request, opts)
       data
     end
 
     # Update an ownership account
-    # Updates an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param association_ownership_account_put_message [AssociationOwnershipAccountPutMessage] 
+    # @param update_association_ownership_account_request [UpdateAssociationOwnershipAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationOwnershipAccountMessage, Integer, Hash)>] AssociationOwnershipAccountMessage data, response status code and response headers
-    def update_association_ownership_account_with_http_info(ownership_account_id, association_ownership_account_put_message, opts = {})
+    def update_association_ownership_account_with_http_info(ownership_account_id, update_association_ownership_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountsApi.update_association_ownership_account ...'
       end
@@ -494,9 +631,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountsApi.update_association_ownership_account"
       end
-      # verify the required parameter 'association_ownership_account_put_message' is set
-      if @api_client.config.client_side_validation && association_ownership_account_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_ownership_account_put_message' when calling OwnershipAccountsApi.update_association_ownership_account"
+      # verify the required parameter 'update_association_ownership_account_request' is set
+      if @api_client.config.client_side_validation && update_association_ownership_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_association_ownership_account_request' when calling OwnershipAccountsApi.update_association_ownership_account"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -511,14 +648,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_ownership_account_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_association_ownership_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationOwnershipAccountMessage'
@@ -544,25 +681,25 @@ module Buildium
     end
 
     # Update a note
-    # Updates an association ownership account note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View` `Edit`
+    # Updates an association ownership account note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership Accounts</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def update_association_ownership_account_note(ownership_account_id, note_id, note_put_message, opts = {})
-      data, _status_code, _headers = update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, note_put_message, opts)
+    def update_association_ownership_account_note(ownership_account_id, note_id, update_lease_note_request, opts = {})
+      data, _status_code, _headers = update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, update_lease_note_request, opts)
       data
     end
 
     # Update a note
-    # Updates an association ownership account note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an association ownership account note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, note_put_message, opts = {})
+    def update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, update_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountsApi.update_association_ownership_account_note ...'
       end
@@ -574,9 +711,9 @@ module Buildium
       if @api_client.config.client_side_validation && note_id.nil?
         fail ArgumentError, "Missing the required parameter 'note_id' when calling OwnershipAccountsApi.update_association_ownership_account_note"
       end
-      # verify the required parameter 'note_put_message' is set
-      if @api_client.config.client_side_validation && note_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_put_message' when calling OwnershipAccountsApi.update_association_ownership_account_note"
+      # verify the required parameter 'update_lease_note_request' is set
+      if @api_client.config.client_side_validation && update_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_note_request' when calling OwnershipAccountsApi.update_association_ownership_account_note"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s)).sub('{' + 'noteId' + '}', CGI.escape(note_id.to_s))
@@ -591,14 +728,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'

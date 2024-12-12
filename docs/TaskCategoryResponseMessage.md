@@ -7,7 +7,7 @@
 | **id** | **Integer** | Task category unique identifier. | [optional] |
 | **name** | **String** | Name of the task category. | [optional] |
 | **href** | **String** | A link to the task category resource. | [optional] |
-| **sub_category** | [**TaskSubCategoryMessage**](TaskSubCategoryMessage.md) |  | [optional] |
+| **sub_category** | [**TaskCategoryResponseMessageSubCategory**](TaskCategoryResponseMessageSubCategory.md) |  | [optional] |
 
 ## Example
 

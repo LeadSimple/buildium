@@ -142,8 +142,16 @@ module Buildium
         invalid_properties.push('invalid value for "file_name", file_name cannot be nil.')
       end
 
+      if @file_name.to_s.length < 1
+        invalid_properties.push('invalid value for "file_name", the character length must be great than or equal to 1.')
+      end
+
       if @title.nil?
         invalid_properties.push('invalid value for "title", title cannot be nil.')
+      end
+
+      if @title.to_s.length < 1
+        invalid_properties.push('invalid value for "title", the character length must be great than or equal to 1.')
       end
 
       if @category_id.nil?
@@ -160,7 +168,9 @@ module Buildium
       entity_type_validator = EnumAttributeValidator.new('String', ["Account", "Association", "AssociationOwner", "AssociationUnit", "Lease", "OwnershipAccount", "PublicAsset", "Rental", "RentalOwner", "RentalUnit", "Tenant", "Vendor"])
       return false unless entity_type_validator.valid?(@entity_type)
       return false if @file_name.nil?
+      return false if @file_name.to_s.length < 1
       return false if @title.nil?
+      return false if @title.to_s.length < 1
       return false if @category_id.nil?
       true
     end
@@ -173,6 +183,34 @@ module Buildium
         fail ArgumentError, "invalid value #{ entity_type.inspect } for \"entity_type\", must be one of #{validator.allowable_values}."
       end
       @entity_type = entity_type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] file_name Value to be assigned
+    def file_name=(file_name)
+      if file_name.nil?
+        fail ArgumentError, 'file_name cannot be nil'
+      end
+
+      if file_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "file_name", the character length must be great than or equal to 1.'
+      end
+
+      @file_name = file_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if title.nil?
+        fail ArgumentError, 'title cannot be nil'
+      end
+
+      if title.to_s.length < 1
+        fail ArgumentError, 'invalid value for "title", the character length must be great than or equal to 1.'
+      end
+
+      @title = title
     end
 
     # Checks equality by comparing each attribute.
@@ -211,7 +249,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -318,5 +356,6 @@ module Buildium
         value
       end
     end
+
   end
 end

@@ -8,7 +8,7 @@
 | **association_id** | **Integer** | Association unique identifier that the unit belongs to. | [optional] |
 | **association_name** | **String** | Association name that the unit belongs to. | [optional] |
 | **unit_number** | **String** | Unit number. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**AssociationUnitMessageAddress**](AssociationUnitMessageAddress.md) |  | [optional] |
 | **unit_bedrooms** | **String** | Number of bedrooms in the unit. | [optional] |
 | **unit_bathrooms** | **String** | Number of bathrooms in the unit. | [optional] |
 | **unit_size** | **Integer** | Size of the unit. | [optional] |

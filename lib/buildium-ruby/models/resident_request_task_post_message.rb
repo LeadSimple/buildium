@@ -54,10 +54,10 @@ module Buildium
     # Notes provided by the resident specific to entering the premises. The value cannot exceed 65535 characters.
     attr_accessor :resident_entry_notes
 
-    # Indicates whether the request is shared with rental owners (applies to requests for rentals only)
+    # Indicates whether the request is shared with rental owners (applies to requests for rentals only). Defaults to False if not set or for association requests.
     attr_accessor :share_with_rental_owners
 
-    # Indicates whether the request is shared with board members (applies to requests for associations only)
+    # Indicates whether the request is shared with board members (applies to requests for associations only). Defaults to False if not set or for rental requests.
     attr_accessor :share_with_board_members
 
     class EnumAttributeValidator
@@ -219,6 +219,10 @@ module Buildium
         invalid_properties.push('invalid value for "title", title cannot be nil.')
       end
 
+      if @title.to_s.length < 1
+        invalid_properties.push('invalid value for "title", the character length must be great than or equal to 1.')
+      end
+
       if @unit_agreement_id.nil?
         invalid_properties.push('invalid value for "unit_agreement_id", unit_agreement_id cannot be nil.')
       end
@@ -242,6 +246,7 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @title.nil?
+      return false if @title.to_s.length < 1
       return false if @unit_agreement_id.nil?
       return false if @requested_by_entity_id.nil?
       return false if @task_status.nil?
@@ -251,6 +256,20 @@ module Buildium
       priority_validator = EnumAttributeValidator.new('String', ["Low", "Normal", "High"])
       return false unless priority_validator.valid?(@priority)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if title.nil?
+        fail ArgumentError, 'title cannot be nil'
+      end
+
+      if title.to_s.length < 1
+        fail ArgumentError, 'invalid value for "title", the character length must be great than or equal to 1.'
+      end
+
+      @title = title
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -318,7 +337,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -425,5 +444,6 @@ module Buildium
         value
       end
     end
+
   end
 end

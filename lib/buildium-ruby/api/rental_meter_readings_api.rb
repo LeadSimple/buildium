@@ -20,7 +20,7 @@ module Buildium
       @api_client = api_client
     end
     # Delete meter reading details for a given date
-    # Delete meter reading details for a property for a given date.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View` `Edit` `Delete`
+    # Delete meter reading details for a property for a given date.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease Transactions</span> - `View` `Edit` `Delete`
     # @param property_id [Integer] 
     # @param readingdate [Date] Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD.
     # @param metertype [String] Filters results to the specified meter type.
@@ -32,7 +32,7 @@ module Buildium
     end
 
     # Delete meter reading details for a given date
-    # Delete meter reading details for a property for a given date.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+    # Delete meter reading details for a property for a given date.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
     # @param property_id [Integer] 
     # @param readingdate [Date] Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD.
     # @param metertype [String] Filters results to the specified meter type.
@@ -102,7 +102,7 @@ module Buildium
     end
 
     # Retrieve all meter reading details
-    # Retrieves all meter reading details for a property.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # Retrieves all meter reading details for a property.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
     # @param property_id [Integer] 
     # @param readingdate [Date] Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD.
     # @param metertype [String] Filters results to the specified meter type.
@@ -114,7 +114,7 @@ module Buildium
     end
 
     # Retrieve all meter reading details
-    # Retrieves all meter reading details for a property.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all meter reading details for a property.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param property_id [Integer] 
     # @param readingdate [Date] Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD.
     # @param metertype [String] Filters results to the specified meter type.
@@ -184,7 +184,7 @@ module Buildium
     end
 
     # Retrieve all meter readings
-    # Retrieves all meter readings for a rental property.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # Retrieves all meter readings for a rental property.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
     # @param property_id [Integer] 
     # @param readingdatefrom [Date] Filters results to any meter readings whose entry date that is greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD. The maximum date range is 365 days.
     # @param readingdateto [Date] Filters results to any meter readings whose entry date is less than or equal to the specified value. The value must be formatted as YYYY-MM-DD. The maximum date range is 365 days.
@@ -200,7 +200,7 @@ module Buildium
     end
 
     # Retrieve all meter readings
-    # Retrieves all meter readings for a rental property.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all meter readings for a rental property.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param property_id [Integer] 
     # @param readingdatefrom [Date] Filters results to any meter readings whose entry date that is greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD. The maximum date range is 365 days.
     # @param readingdateto [Date] Filters results to any meter readings whose entry date is less than or equal to the specified value. The value must be formatted as YYYY-MM-DD. The maximum date range is 365 days.
@@ -277,27 +277,27 @@ module Buildium
     end
 
     # Create/Update meter reading details
-    # This endpoint can be used to both create and update a meter reading detail for a property.              <ul><li>There can only be one meter reading detail for a given combination of MeterType and ReadingDate for a property.</li><li>If you are updating an existing meter reading detail, use the query parameters to specify the existing meter reading detail to update.</li><li>If you are creating a new meter reading detail, do not pass any query parameters.</li><li>When adding a new item to the Details array, leave out the `Id` field.</li><li>When updating an existing item in the Details array, the `Id` field of the existing item must be included.</li></ul><br /><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # This endpoint can be used to both create and update a meter reading detail for a property.              <ul><li>There can only be one meter reading detail for a given combination of MeterType and ReadingDate for a property.</li><li>If you are updating an existing meter reading detail, use the query parameters to specify the existing meter reading detail to update.</li><li>If you are creating a new meter reading detail, do not pass any query parameters.</li><li>When adding a new item to the Details array, leave out the `Id` field.</li><li>When updating an existing item in the Details array, the `Id` field of the existing item must be included.</li></ul><br /><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View` `Edit`
     # @param property_id [Integer] 
-    # @param meter_reading_details_put_message [MeterReadingDetailsPutMessage] 
+    # @param upsert_association_meter_reading_details_async_request [UpsertAssociationMeterReadingDetailsAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :readingdate Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD.
     # @option opts [String] :metertype Filters results to the specified meter type.
     # @return [MeterReadingDetailsMessage]
-    def upsert_meter_reading_details_for_rental_async(property_id, meter_reading_details_put_message, opts = {})
-      data, _status_code, _headers = upsert_meter_reading_details_for_rental_async_with_http_info(property_id, meter_reading_details_put_message, opts)
+    def upsert_meter_reading_details_for_rental_async(property_id, upsert_association_meter_reading_details_async_request, opts = {})
+      data, _status_code, _headers = upsert_meter_reading_details_for_rental_async_with_http_info(property_id, upsert_association_meter_reading_details_async_request, opts)
       data
     end
 
     # Create/Update meter reading details
-    # This endpoint can be used to both create and update a meter reading detail for a property.              &lt;ul&gt;&lt;li&gt;There can only be one meter reading detail for a given combination of MeterType and ReadingDate for a property.&lt;/li&gt;&lt;li&gt;If you are updating an existing meter reading detail, use the query parameters to specify the existing meter reading detail to update.&lt;/li&gt;&lt;li&gt;If you are creating a new meter reading detail, do not pass any query parameters.&lt;/li&gt;&lt;li&gt;When adding a new item to the Details array, leave out the &#x60;Id&#x60; field.&lt;/li&gt;&lt;li&gt;When updating an existing item in the Details array, the &#x60;Id&#x60; field of the existing item must be included.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # This endpoint can be used to both create and update a meter reading detail for a property.              &lt;ul&gt;&lt;li&gt;There can only be one meter reading detail for a given combination of MeterType and ReadingDate for a property.&lt;/li&gt;&lt;li&gt;If you are updating an existing meter reading detail, use the query parameters to specify the existing meter reading detail to update.&lt;/li&gt;&lt;li&gt;If you are creating a new meter reading detail, do not pass any query parameters.&lt;/li&gt;&lt;li&gt;When adding a new item to the Details array, leave out the &#x60;Id&#x60; field.&lt;/li&gt;&lt;li&gt;When updating an existing item in the Details array, the &#x60;Id&#x60; field of the existing item must be included.&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param property_id [Integer] 
-    # @param meter_reading_details_put_message [MeterReadingDetailsPutMessage] 
+    # @param upsert_association_meter_reading_details_async_request [UpsertAssociationMeterReadingDetailsAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :readingdate Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD.
     # @option opts [String] :metertype Filters results to the specified meter type.
     # @return [Array<(MeterReadingDetailsMessage, Integer, Hash)>] MeterReadingDetailsMessage data, response status code and response headers
-    def upsert_meter_reading_details_for_rental_async_with_http_info(property_id, meter_reading_details_put_message, opts = {})
+    def upsert_meter_reading_details_for_rental_async_with_http_info(property_id, upsert_association_meter_reading_details_async_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalMeterReadingsApi.upsert_meter_reading_details_for_rental_async ...'
       end
@@ -305,9 +305,9 @@ module Buildium
       if @api_client.config.client_side_validation && property_id.nil?
         fail ArgumentError, "Missing the required parameter 'property_id' when calling RentalMeterReadingsApi.upsert_meter_reading_details_for_rental_async"
       end
-      # verify the required parameter 'meter_reading_details_put_message' is set
-      if @api_client.config.client_side_validation && meter_reading_details_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'meter_reading_details_put_message' when calling RentalMeterReadingsApi.upsert_meter_reading_details_for_rental_async"
+      # verify the required parameter 'upsert_association_meter_reading_details_async_request' is set
+      if @api_client.config.client_side_validation && upsert_association_meter_reading_details_async_request.nil?
+        fail ArgumentError, "Missing the required parameter 'upsert_association_meter_reading_details_async_request' when calling RentalMeterReadingsApi.upsert_meter_reading_details_for_rental_async"
       end
       allowable_values = ["Electric", "Gas", "Oil", "Water", "Sewer"]
       if @api_client.config.client_side_validation && opts[:'metertype'] && !allowable_values.include?(opts[:'metertype'])
@@ -328,14 +328,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(meter_reading_details_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upsert_association_meter_reading_details_async_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'MeterReadingDetailsMessage'

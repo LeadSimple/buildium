@@ -12,11 +12,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_property_group
 
-> <PropertyGroupMessage> create_property_group(property_group_post_message)
+> <PropertyGroupMessage> create_property_group(create_property_group_request)
 
 Create a property group
 
-Creates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Creates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -37,11 +37,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::PropertyGroupsApi.new
-property_group_post_message = Buildium::PropertyGroupPostMessage.new({name: 'name_example', property_ids: [37]}) # PropertyGroupPostMessage | 
+create_property_group_request = Buildium::CreatePropertyGroupRequest.new({name: 'name_example', property_ids: [37]}) # CreatePropertyGroupRequest | 
 
 begin
   # Create a property group
-  result = api_instance.create_property_group(property_group_post_message)
+  result = api_instance.create_property_group(create_property_group_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling PropertyGroupsApi->create_property_group: #{e}"
@@ -52,12 +52,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PropertyGroupMessage>, Integer, Hash)> create_property_group_with_http_info(property_group_post_message)
+> <Array(<PropertyGroupMessage>, Integer, Hash)> create_property_group_with_http_info(create_property_group_request)
 
 ```ruby
 begin
   # Create a property group
-  data, status_code, headers = api_instance.create_property_group_with_http_info(property_group_post_message)
+  data, status_code, headers = api_instance.create_property_group_with_http_info(create_property_group_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PropertyGroupMessage>
@@ -70,7 +70,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **property_group_post_message** | [**PropertyGroupPostMessage**](PropertyGroupPostMessage.md) |  |  |
+| **create_property_group_request** | [**CreatePropertyGroupRequest**](CreatePropertyGroupRequest.md) |  |  |
 
 ### Return type
 
@@ -92,7 +92,7 @@ end
 
 Retrieve a property group
 
-Retrieves a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`              <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View`              <span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -168,7 +168,7 @@ end
 
 Retrieve all property groups
 
-Retrieves all property groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all property groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View`              <br /><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -250,11 +250,11 @@ end
 
 ## update_property_group
 
-> <PropertyGroupMessage> update_property_group(property_group_id, property_group_put_message)
+> <PropertyGroupMessage> update_property_group(property_group_id, update_property_group_request)
 
 Update a property group
 
-Updates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -276,11 +276,11 @@ end
 
 api_instance = Buildium::PropertyGroupsApi.new
 property_group_id = 56 # Integer | 
-property_group_put_message = Buildium::PropertyGroupPutMessage.new({name: 'name_example', property_ids: [37]}) # PropertyGroupPutMessage | 
+update_property_group_request = Buildium::UpdatePropertyGroupRequest.new({name: 'name_example', property_ids: [37]}) # UpdatePropertyGroupRequest | 
 
 begin
   # Update a property group
-  result = api_instance.update_property_group(property_group_id, property_group_put_message)
+  result = api_instance.update_property_group(property_group_id, update_property_group_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling PropertyGroupsApi->update_property_group: #{e}"
@@ -291,12 +291,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PropertyGroupMessage>, Integer, Hash)> update_property_group_with_http_info(property_group_id, property_group_put_message)
+> <Array(<PropertyGroupMessage>, Integer, Hash)> update_property_group_with_http_info(property_group_id, update_property_group_request)
 
 ```ruby
 begin
   # Update a property group
-  data, status_code, headers = api_instance.update_property_group_with_http_info(property_group_id, property_group_put_message)
+  data, status_code, headers = api_instance.update_property_group_with_http_info(property_group_id, update_property_group_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PropertyGroupMessage>
@@ -310,7 +310,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **property_group_id** | **Integer** |  |  |
-| **property_group_put_message** | [**PropertyGroupPutMessage**](PropertyGroupPutMessage.md) |  |  |
+| **update_property_group_request** | [**UpdatePropertyGroupRequest**](UpdatePropertyGroupRequest.md) |  |  |
 
 ### Return type
 

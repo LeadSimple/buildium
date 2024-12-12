@@ -14,7 +14,7 @@
 | **task_status** | **String** | Request status. |  |
 | **priority** | **String** | Request priority. |  |
 | **due_date** | **Date** | Request due date. The date must be formatted as YYYY-MM-DD. | [optional] |
-| **contact_detail** | [**ContactDetailSaveMessage**](ContactDetailSaveMessage.md) |  |  |
+| **contact_detail** | [**ContactRequestTaskPostMessageContactDetail**](ContactRequestTaskPostMessageContactDetail.md) |  |  |
 
 ## Example
 

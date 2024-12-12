@@ -16,7 +16,7 @@ All URIs are relative to *https://api.buildium.com*
 
 Retrieve all resident center users
 
-Retrieves all resident center users for both rentals and associations.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Resident Center Users</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` is required to retrieve resident center users that are tenants.              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` is required to retrieve resident center users that are association owners.
+Retrieves all resident center users for both rentals and associations.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Resident Center Users</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` is required to retrieve resident center users that are tenants.              <br /><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` is required to retrieve resident center users that are association owners.
 
 ### Examples
 
@@ -108,7 +108,7 @@ end
 
 Retrieve a retail cash user
 
-Retrieves a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations &gt; Association owners and tenants</span> - `View`
+Retrieves a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -186,7 +186,7 @@ end
 
 Retrieve all retail cash users
 
-Retrieves all retail cash users.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations &gt; Association owners and tenants</span> - `View`
+Retrieves all retail cash users.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -276,11 +276,11 @@ end
 
 ## update_retail_cash_user
 
-> <RetailCashUserMessage> update_retail_cash_user(user_id, unit_agreement_id, retail_cash_user_put_message)
+> <RetailCashUserMessage> update_retail_cash_user(user_id, unit_agreement_id, update_retail_cash_user_request)
 
 Update a retail cash user
 
-Updates a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`              OR              <span class=\"permissionBlock\"> Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Updates a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`              OR              <span class=\"permissionBlock\"> Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -303,11 +303,11 @@ end
 api_instance = Buildium::ResidentCenterApi.new
 user_id = 56 # Integer | 
 unit_agreement_id = 56 # Integer | 
-retail_cash_user_put_message = Buildium::RetailCashUserPutMessage.new({is_enabled: false}) # RetailCashUserPutMessage | 
+update_retail_cash_user_request = Buildium::UpdateRetailCashUserRequest.new({is_enabled: false}) # UpdateRetailCashUserRequest | 
 
 begin
   # Update a retail cash user
-  result = api_instance.update_retail_cash_user(user_id, unit_agreement_id, retail_cash_user_put_message)
+  result = api_instance.update_retail_cash_user(user_id, unit_agreement_id, update_retail_cash_user_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ResidentCenterApi->update_retail_cash_user: #{e}"
@@ -318,12 +318,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RetailCashUserMessage>, Integer, Hash)> update_retail_cash_user_with_http_info(user_id, unit_agreement_id, retail_cash_user_put_message)
+> <Array(<RetailCashUserMessage>, Integer, Hash)> update_retail_cash_user_with_http_info(user_id, unit_agreement_id, update_retail_cash_user_request)
 
 ```ruby
 begin
   # Update a retail cash user
-  data, status_code, headers = api_instance.update_retail_cash_user_with_http_info(user_id, unit_agreement_id, retail_cash_user_put_message)
+  data, status_code, headers = api_instance.update_retail_cash_user_with_http_info(user_id, unit_agreement_id, update_retail_cash_user_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RetailCashUserMessage>
@@ -338,7 +338,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **user_id** | **Integer** |  |  |
 | **unit_agreement_id** | **Integer** |  |  |
-| **retail_cash_user_put_message** | [**RetailCashUserPutMessage**](RetailCashUserPutMessage.md) |  |  |
+| **update_retail_cash_user_request** | [**UpdateRetailCashUserRequest**](UpdateRetailCashUserRequest.md) |  |  |
 
 ### Return type
 

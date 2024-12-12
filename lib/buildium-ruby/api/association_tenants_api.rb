@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a tenant
-    # Creates an association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
-    # @param association_tenant_post_message [AssociationTenantPostMessage] 
+    # Creates an association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
+    # @param create_association_tenant_request [CreateAssociationTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationTenantMessage]
-    def create_association_tenant(association_tenant_post_message, opts = {})
-      data, _status_code, _headers = create_association_tenant_with_http_info(association_tenant_post_message, opts)
+    def create_association_tenant(create_association_tenant_request, opts = {})
+      data, _status_code, _headers = create_association_tenant_with_http_info(create_association_tenant_request, opts)
       data
     end
 
     # Create a tenant
-    # Creates an association tenant.    &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param association_tenant_post_message [AssociationTenantPostMessage] 
+    # Creates an association tenant.    &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_association_tenant_request [CreateAssociationTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationTenantMessage, Integer, Hash)>] AssociationTenantMessage data, response status code and response headers
-    def create_association_tenant_with_http_info(association_tenant_post_message, opts = {})
+    def create_association_tenant_with_http_info(create_association_tenant_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationTenantsApi.create_association_tenant ...'
       end
-      # verify the required parameter 'association_tenant_post_message' is set
-      if @api_client.config.client_side_validation && association_tenant_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_tenant_post_message' when calling AssociationTenantsApi.create_association_tenant"
+      # verify the required parameter 'create_association_tenant_request' is set
+      if @api_client.config.client_side_validation && create_association_tenant_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_association_tenant_request' when calling AssociationTenantsApi.create_association_tenant"
       end
       # resource path
       local_var_path = '/v1/associations/tenants'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_tenant_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_association_tenant_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationTenantMessage'
@@ -88,23 +88,23 @@ module Buildium
     end
 
     # Create a note
-    # Creates an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Creates an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def create_association_tenant_note(tenant_id, note_post_message, opts = {})
-      data, _status_code, _headers = create_association_tenant_note_with_http_info(tenant_id, note_post_message, opts)
+    def create_association_tenant_note(tenant_id, create_lease_note_request, opts = {})
+      data, _status_code, _headers = create_association_tenant_note_with_http_info(tenant_id, create_lease_note_request, opts)
       data
     end
 
     # Create a note
-    # Creates an association tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates an association tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def create_association_tenant_note_with_http_info(tenant_id, note_post_message, opts = {})
+    def create_association_tenant_note_with_http_info(tenant_id, create_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationTenantsApi.create_association_tenant_note ...'
       end
@@ -112,9 +112,9 @@ module Buildium
       if @api_client.config.client_side_validation && tenant_id.nil?
         fail ArgumentError, "Missing the required parameter 'tenant_id' when calling AssociationTenantsApi.create_association_tenant_note"
       end
-      # verify the required parameter 'note_post_message' is set
-      if @api_client.config.client_side_validation && note_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_post_message' when calling AssociationTenantsApi.create_association_tenant_note"
+      # verify the required parameter 'create_lease_note_request' is set
+      if @api_client.config.client_side_validation && create_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_note_request' when calling AssociationTenantsApi.create_association_tenant_note"
       end
       # resource path
       local_var_path = '/v1/associations/tenants/{tenantId}/notes'.sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s))
@@ -129,14 +129,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -162,7 +162,7 @@ module Buildium
     end
 
     # Retrieve a tenant
-    # Retrieves a specific association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves a specific association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
     # @return [AssociationTenantMessage]
@@ -172,7 +172,7 @@ module Buildium
     end
 
     # Retrieve a tenant
-    # Retrieves a specific association tenant.    &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific association tenant.    &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationTenantMessage, Integer, Hash)>] AssociationTenantMessage data, response status code and response headers
@@ -225,7 +225,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -236,7 +236,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves an association tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an association tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -294,7 +294,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all association tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves all association tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
     # @param tenant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -310,7 +310,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all association tenant notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all association tenant notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -375,7 +375,7 @@ module Buildium
     end
 
     # Retrieve all tenants
-    # Retrieves a list of association tenants.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves a list of association tenants.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name Filters results to only records whose name *contains* the specified value.
     # @option opts [String] :phone Filters results to only records whose phone number *contains* the specified value.
@@ -396,7 +396,7 @@ module Buildium
     end
 
     # Retrieve all tenants
-    # Retrieves a list of association tenants.    &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of association tenants.    &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name Filters results to only records whose name *contains* the specified value.
     # @option opts [String] :phone Filters results to only records whose phone number *contains* the specified value.
@@ -472,23 +472,23 @@ module Buildium
     end
 
     # Update a tenant
-    # Updates an association tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Updates an association tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] The identifier of the association tenant to update.
-    # @param association_tenant_put_message [AssociationTenantPutMessage] 
+    # @param update_association_tenant_request [UpdateAssociationTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationTenantMessage]
-    def update_association_tenant(tenant_id, association_tenant_put_message, opts = {})
-      data, _status_code, _headers = update_association_tenant_with_http_info(tenant_id, association_tenant_put_message, opts)
+    def update_association_tenant(tenant_id, update_association_tenant_request, opts = {})
+      data, _status_code, _headers = update_association_tenant_with_http_info(tenant_id, update_association_tenant_request, opts)
       data
     end
 
     # Update a tenant
-    # Updates an association tenant.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an association tenant.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] The identifier of the association tenant to update.
-    # @param association_tenant_put_message [AssociationTenantPutMessage] 
+    # @param update_association_tenant_request [UpdateAssociationTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationTenantMessage, Integer, Hash)>] AssociationTenantMessage data, response status code and response headers
-    def update_association_tenant_with_http_info(tenant_id, association_tenant_put_message, opts = {})
+    def update_association_tenant_with_http_info(tenant_id, update_association_tenant_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationTenantsApi.update_association_tenant ...'
       end
@@ -496,9 +496,9 @@ module Buildium
       if @api_client.config.client_side_validation && tenant_id.nil?
         fail ArgumentError, "Missing the required parameter 'tenant_id' when calling AssociationTenantsApi.update_association_tenant"
       end
-      # verify the required parameter 'association_tenant_put_message' is set
-      if @api_client.config.client_side_validation && association_tenant_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_tenant_put_message' when calling AssociationTenantsApi.update_association_tenant"
+      # verify the required parameter 'update_association_tenant_request' is set
+      if @api_client.config.client_side_validation && update_association_tenant_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_association_tenant_request' when calling AssociationTenantsApi.update_association_tenant"
       end
       # resource path
       local_var_path = '/v1/associations/tenants/{tenantId}'.sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s))
@@ -513,14 +513,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_tenant_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_association_tenant_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationTenantMessage'
@@ -546,25 +546,25 @@ module Buildium
     end
 
     # Update a note
-    # Updates an association tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Updates an association tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def update_association_tenant_note(tenant_id, note_id, note_put_message, opts = {})
-      data, _status_code, _headers = update_association_tenant_note_with_http_info(tenant_id, note_id, note_put_message, opts)
+    def update_association_tenant_note(tenant_id, note_id, update_lease_note_request, opts = {})
+      data, _status_code, _headers = update_association_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request, opts)
       data
     end
 
     # Update a note
-    # Updates an association tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an association tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def update_association_tenant_note_with_http_info(tenant_id, note_id, note_put_message, opts = {})
+    def update_association_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationTenantsApi.update_association_tenant_note ...'
       end
@@ -576,9 +576,9 @@ module Buildium
       if @api_client.config.client_side_validation && note_id.nil?
         fail ArgumentError, "Missing the required parameter 'note_id' when calling AssociationTenantsApi.update_association_tenant_note"
       end
-      # verify the required parameter 'note_put_message' is set
-      if @api_client.config.client_side_validation && note_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_put_message' when calling AssociationTenantsApi.update_association_tenant_note"
+      # verify the required parameter 'update_lease_note_request' is set
+      if @api_client.config.client_side_validation && update_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_note_request' when calling AssociationTenantsApi.update_association_tenant_note"
       end
       # resource path
       local_var_path = '/v1/associations/tenants/{tenantId}/notes/{noteId}'.sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s)).sub('{' + 'noteId' + '}', CGI.escape(note_id.to_s))
@@ -593,14 +593,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'

@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a contact request
-    # Creates a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
-    # @param contact_request_task_post_message [ContactRequestTaskPostMessage] 
+    # Creates a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
+    # @param create_contact_request_task_request [CreateContactRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ContactRequestTaskMessage]
-    def create_contact_request_task(contact_request_task_post_message, opts = {})
-      data, _status_code, _headers = create_contact_request_task_with_http_info(contact_request_task_post_message, opts)
+    def create_contact_request_task(create_contact_request_task_request, opts = {})
+      data, _status_code, _headers = create_contact_request_task_with_http_info(create_contact_request_task_request, opts)
       data
     end
 
     # Create a contact request
-    # Creates a contact request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param contact_request_task_post_message [ContactRequestTaskPostMessage] 
+    # Creates a contact request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_contact_request_task_request [CreateContactRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ContactRequestTaskMessage, Integer, Hash)>] ContactRequestTaskMessage data, response status code and response headers
-    def create_contact_request_task_with_http_info(contact_request_task_post_message, opts = {})
+    def create_contact_request_task_with_http_info(create_contact_request_task_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContactRequestsApi.create_contact_request_task ...'
       end
-      # verify the required parameter 'contact_request_task_post_message' is set
-      if @api_client.config.client_side_validation && contact_request_task_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'contact_request_task_post_message' when calling ContactRequestsApi.create_contact_request_task"
+      # verify the required parameter 'create_contact_request_task_request' is set
+      if @api_client.config.client_side_validation && create_contact_request_task_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_contact_request_task_request' when calling ContactRequestsApi.create_contact_request_task"
       end
       # resource path
       local_var_path = '/v1/tasks/contactrequests'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(contact_request_task_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_contact_request_task_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ContactRequestTaskMessage'
@@ -88,7 +88,7 @@ module Buildium
     end
 
     # Retrieve a contact request
-    # Retrieves a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param contact_request_task_id [Integer] The contact request identifier.
     # @param [Hash] opts the optional parameters
     # @return [ContactRequestTaskMessage]
@@ -98,7 +98,7 @@ module Buildium
     end
 
     # Retrieve a contact request
-    # Retrieves a contact request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a contact request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param contact_request_task_id [Integer] The contact request identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ContactRequestTaskMessage, Integer, Hash)>] ContactRequestTaskMessage data, response status code and response headers
@@ -151,7 +151,7 @@ module Buildium
     end
 
     # Retrieve all contact requests
-    # Retrieves a list of contact requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a list of contact requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -175,7 +175,7 @@ module Buildium
     end
 
     # Retrieve all contact requests
-    # Retrieves a list of contact requests.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of contact requests.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -265,23 +265,23 @@ module Buildium
     end
 
     # Update a contact request
-    # Updates a contact request.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates a contact request.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
     # @param contact_request_task_id [Integer] The contact request identifier.
-    # @param contact_request_task_put_message [ContactRequestTaskPutMessage] 
+    # @param update_contact_request_task_request [UpdateContactRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ContactRequestTaskMessage]
-    def update_contact_request_task(contact_request_task_id, contact_request_task_put_message, opts = {})
-      data, _status_code, _headers = update_contact_request_task_with_http_info(contact_request_task_id, contact_request_task_put_message, opts)
+    def update_contact_request_task(contact_request_task_id, update_contact_request_task_request, opts = {})
+      data, _status_code, _headers = update_contact_request_task_with_http_info(contact_request_task_id, update_contact_request_task_request, opts)
       data
     end
 
     # Update a contact request
-    # Updates a contact request.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a contact request.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param contact_request_task_id [Integer] The contact request identifier.
-    # @param contact_request_task_put_message [ContactRequestTaskPutMessage] 
+    # @param update_contact_request_task_request [UpdateContactRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ContactRequestTaskMessage, Integer, Hash)>] ContactRequestTaskMessage data, response status code and response headers
-    def update_contact_request_task_with_http_info(contact_request_task_id, contact_request_task_put_message, opts = {})
+    def update_contact_request_task_with_http_info(contact_request_task_id, update_contact_request_task_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContactRequestsApi.update_contact_request_task ...'
       end
@@ -289,9 +289,9 @@ module Buildium
       if @api_client.config.client_side_validation && contact_request_task_id.nil?
         fail ArgumentError, "Missing the required parameter 'contact_request_task_id' when calling ContactRequestsApi.update_contact_request_task"
       end
-      # verify the required parameter 'contact_request_task_put_message' is set
-      if @api_client.config.client_side_validation && contact_request_task_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'contact_request_task_put_message' when calling ContactRequestsApi.update_contact_request_task"
+      # verify the required parameter 'update_contact_request_task_request' is set
+      if @api_client.config.client_side_validation && update_contact_request_task_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_contact_request_task_request' when calling ContactRequestsApi.update_contact_request_task"
       end
       # resource path
       local_var_path = '/v1/tasks/contactrequests/{contactRequestTaskId}'.sub('{' + 'contactRequestTaskId' + '}', CGI.escape(contact_request_task_id.to_s))
@@ -306,14 +306,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(contact_request_task_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_contact_request_task_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ContactRequestTaskMessage'

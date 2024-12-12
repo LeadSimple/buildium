@@ -48,6 +48,9 @@ module Buildium
     # A collection of applications associated with the applicant.
     attr_accessor :applications
 
+    # Date and time the applicant was last updated.
+    attr_accessor :last_updated_date_time
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -83,7 +86,8 @@ module Buildium
         :'email' => :'Email',
         :'phone_numbers' => :'PhoneNumbers',
         :'status' => :'Status',
-        :'applications' => :'Applications'
+        :'applications' => :'Applications',
+        :'last_updated_date_time' => :'LastUpdatedDateTime'
       }
     end
 
@@ -105,7 +109,8 @@ module Buildium
         :'email' => :'String',
         :'phone_numbers' => :'Array<PhoneNumberMessage>',
         :'status' => :'String',
-        :'applications' => :'Array<ApplicantApplicationMessage>'
+        :'applications' => :'Array<ApplicantApplicationMessage>',
+        :'last_updated_date_time' => :'Time'
       }
     end
 
@@ -177,6 +182,10 @@ module Buildium
           self.applications = value
         end
       end
+
+      if attributes.key?(:'last_updated_date_time')
+        self.last_updated_date_time = attributes[:'last_updated_date_time']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -189,7 +198,7 @@ module Buildium
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      status_validator = EnumAttributeValidator.new('String', ["Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New", "Draft"])
+      status_validator = EnumAttributeValidator.new('String', ["Unknown", "Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New", "Draft", "AddedToDraftLease"])
       return false unless status_validator.valid?(@status)
       true
     end
@@ -197,7 +206,7 @@ module Buildium
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] status Object to be assigned
     def status=(status)
-      validator = EnumAttributeValidator.new('String', ["Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New", "Draft"])
+      validator = EnumAttributeValidator.new('String', ["Unknown", "Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New", "Draft", "AddedToDraftLease"])
       unless validator.valid?(status)
         fail ArgumentError, "invalid value #{ status.inspect } for \"status\", must be one of #{validator.allowable_values}."
       end
@@ -219,7 +228,8 @@ module Buildium
           email == o.email &&
           phone_numbers == o.phone_numbers &&
           status == o.status &&
-          applications == o.applications
+          applications == o.applications &&
+          last_updated_date_time == o.last_updated_date_time
     end
 
     # @see the `==` method
@@ -231,7 +241,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, applicant_group_id, property_id, unit_id, tenant_id, first_name, last_name, email, phone_numbers, status, applications].hash
+      [id, applicant_group_id, property_id, unit_id, tenant_id, first_name, last_name, email, phone_numbers, status, applications, last_updated_date_time].hash
     end
 
     # Builds the object from hash
@@ -245,7 +255,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -352,5 +362,6 @@ module Buildium
         value
       end
     end
+
   end
 end

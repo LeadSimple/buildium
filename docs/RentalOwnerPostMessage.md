@@ -13,11 +13,11 @@
 | **management_agreement_end_date** | **Date** | End date of the management agreement with the rental owner. Must be formatted as &#x60;YYYY-MM-DD&#x60;. | [optional] |
 | **email** | **String** | Email of the rental owner. | [optional] |
 | **alternate_email** | **String** | Alternate email of the rental owner. | [optional] |
-| **phone_numbers** | [**PhoneNumbersMessage**](PhoneNumbersMessage.md) |  | [optional] |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  |  |
+| **phone_numbers** | [**RentalOwnerPostMessagePhoneNumbers**](RentalOwnerPostMessagePhoneNumbers.md) |  | [optional] |
+| **address** | [**RentalOwnerPostMessageAddress**](RentalOwnerPostMessageAddress.md) |  |  |
 | **comment** | **String** | Comments about the rental owner. The comments cannot exceed 65,535 characters. | [optional] |
 | **property_ids** | **Array&lt;Integer&gt;** | A list of rental property ID&#39;s to associate with this rental owner. At least one property ID must be provided. |  |
-| **tax_information** | [**TaxInformationPostMessage**](TaxInformationPostMessage.md) |  | [optional] |
+| **tax_information** | [**RentalOwnerPostMessageTaxInformation**](RentalOwnerPostMessageTaxInformation.md) |  | [optional] |
 
 ## Example
 

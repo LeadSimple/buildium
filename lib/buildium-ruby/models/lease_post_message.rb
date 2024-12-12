@@ -110,8 +110,8 @@ module Buildium
         :'tenant_ids' => :'Array<Integer>',
         :'applicant_ids' => :'Array<Integer>',
         :'cosigners' => :'Array<LeaseCosignerPostMessage>',
-        :'rent' => :'LeaseRentPostMessage',
-        :'security_deposit' => :'LeaseSecurityDepositPostMessage',
+        :'rent' => :'LeasePostMessageRent',
+        :'security_deposit' => :'LeasePostMessageSecurityDeposit',
         :'prorated_first_month_rent' => :'Float',
         :'prorated_last_month_rent' => :'Float'
       }
@@ -287,7 +287,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -394,5 +394,6 @@ module Buildium
         value
       end
     end
+
   end
 end

@@ -12,11 +12,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_resource
 
-> <ResidentRequestTaskMessage> create_resource(resident_request_task_post_message)
+> <ResidentRequestTaskMessage> create_resource(create_resource_request)
 
 Create a resident request
 
-Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -37,11 +37,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::ResidentRequestsApi.new
-resident_request_task_post_message = Buildium::ResidentRequestTaskPostMessage.new({title: 'title_example', unit_agreement_id: 37, requested_by_entity_id: 37, task_status: 'New', priority: 'Low'}) # ResidentRequestTaskPostMessage | 
+create_resource_request = Buildium::CreateResourceRequest.new({title: 'title_example', unit_agreement_id: 37, requested_by_entity_id: 37, task_status: 'New', priority: 'Low'}) # CreateResourceRequest | 
 
 begin
   # Create a resident request
-  result = api_instance.create_resource(resident_request_task_post_message)
+  result = api_instance.create_resource(create_resource_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ResidentRequestsApi->create_resource: #{e}"
@@ -52,12 +52,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ResidentRequestTaskMessage>, Integer, Hash)> create_resource_with_http_info(resident_request_task_post_message)
+> <Array(<ResidentRequestTaskMessage>, Integer, Hash)> create_resource_with_http_info(create_resource_request)
 
 ```ruby
 begin
   # Create a resident request
-  data, status_code, headers = api_instance.create_resource_with_http_info(resident_request_task_post_message)
+  data, status_code, headers = api_instance.create_resource_with_http_info(create_resource_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ResidentRequestTaskMessage>
@@ -70,7 +70,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **resident_request_task_post_message** | [**ResidentRequestTaskPostMessage**](ResidentRequestTaskPostMessage.md) |  |  |
+| **create_resource_request** | [**CreateResourceRequest**](CreateResourceRequest.md) |  |  |
 
 ### Return type
 
@@ -92,7 +92,7 @@ end
 
 Retrieve a resident request
 
-Retrieves a specific resident request.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves a specific resident request.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -168,7 +168,7 @@ end
 
 Retrieve all resident requests
 
-Retrieves a list of resident requests.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves a list of resident requests.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -272,11 +272,11 @@ end
 
 ## update_resource
 
-> <ResidentRequestTaskMessage> update_resource(resident_request_task_id, resident_request_task_put_message)
+> <ResidentRequestTaskMessage> update_resource(resident_request_task_id, update_resource_request)
 
 Update a resident request
 
-Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -298,11 +298,11 @@ end
 
 api_instance = Buildium::ResidentRequestsApi.new
 resident_request_task_id = 56 # Integer | The resident request identifier.
-resident_request_task_put_message = Buildium::ResidentRequestTaskPutMessage.new({title: 'title_example', task_status: 'New', priority: 'Low'}) # ResidentRequestTaskPutMessage | 
+update_resource_request = Buildium::UpdateResourceRequest.new({title: 'title_example', task_status: 'New', priority: 'Low'}) # UpdateResourceRequest | 
 
 begin
   # Update a resident request
-  result = api_instance.update_resource(resident_request_task_id, resident_request_task_put_message)
+  result = api_instance.update_resource(resident_request_task_id, update_resource_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ResidentRequestsApi->update_resource: #{e}"
@@ -313,12 +313,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ResidentRequestTaskMessage>, Integer, Hash)> update_resource_with_http_info(resident_request_task_id, resident_request_task_put_message)
+> <Array(<ResidentRequestTaskMessage>, Integer, Hash)> update_resource_with_http_info(resident_request_task_id, update_resource_request)
 
 ```ruby
 begin
   # Update a resident request
-  data, status_code, headers = api_instance.update_resource_with_http_info(resident_request_task_id, resident_request_task_put_message)
+  data, status_code, headers = api_instance.update_resource_with_http_info(resident_request_task_id, update_resource_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ResidentRequestTaskMessage>
@@ -332,7 +332,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **resident_request_task_id** | **Integer** | The resident request identifier. |  |
-| **resident_request_task_put_message** | [**ResidentRequestTaskPutMessage**](ResidentRequestTaskPutMessage.md) |  |  |
+| **update_resource_request** | [**UpdateResourceRequest**](UpdateResourceRequest.md) |  |  |
 
 ### Return type
 

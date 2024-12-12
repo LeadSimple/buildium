@@ -14,11 +14,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_rental_owner_request_task
 
-> <RentalOwnerRequestTaskMessage> create_rental_owner_request_task(rental_owner_request_task_post_message)
+> <RentalOwnerRequestTaskMessage> create_rental_owner_request_task(create_rental_owner_request_task_request)
 
 Create a rental owner request
 
-Creates a rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Creates a rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -39,11 +39,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::RentalOwnerRequestsApi.new
-rental_owner_request_task_post_message = Buildium::RentalOwnerRequestTaskPostMessage.new({title: 'title_example', task_status: 'New', priority: 'Low', requested_by_rental_owner_id: 37}) # RentalOwnerRequestTaskPostMessage | 
+create_rental_owner_request_task_request = Buildium::CreateRentalOwnerRequestTaskRequest.new({title: 'title_example', task_status: 'New', priority: 'Low', requested_by_rental_owner_id: 37}) # CreateRentalOwnerRequestTaskRequest | 
 
 begin
   # Create a rental owner request
-  result = api_instance.create_rental_owner_request_task(rental_owner_request_task_post_message)
+  result = api_instance.create_rental_owner_request_task(create_rental_owner_request_task_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalOwnerRequestsApi->create_rental_owner_request_task: #{e}"
@@ -54,12 +54,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RentalOwnerRequestTaskMessage>, Integer, Hash)> create_rental_owner_request_task_with_http_info(rental_owner_request_task_post_message)
+> <Array(<RentalOwnerRequestTaskMessage>, Integer, Hash)> create_rental_owner_request_task_with_http_info(create_rental_owner_request_task_request)
 
 ```ruby
 begin
   # Create a rental owner request
-  data, status_code, headers = api_instance.create_rental_owner_request_task_with_http_info(rental_owner_request_task_post_message)
+  data, status_code, headers = api_instance.create_rental_owner_request_task_with_http_info(create_rental_owner_request_task_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RentalOwnerRequestTaskMessage>
@@ -72,7 +72,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **rental_owner_request_task_post_message** | [**RentalOwnerRequestTaskPostMessage**](RentalOwnerRequestTaskPostMessage.md) |  |  |
+| **create_rental_owner_request_task_request** | [**CreateRentalOwnerRequestTaskRequest**](CreateRentalOwnerRequestTaskRequest.md) |  |  |
 
 ### Return type
 
@@ -94,7 +94,7 @@ end
 
 Retrieve all rental owner requests
 
-Retrieves all rental owner requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves all rental owner requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -127,10 +127,7 @@ opts = {
   taskcategoryid: 56, # Integer | Filters results to any tasks with the specified category identifier.
   priorities: ['Low'], # Array<String> | Filters results to any tasks whose priority matches the specified values. If no priority is specified, tasks with any priority will be returned.
   assignedtoid: 56, # Integer | Filters results to any tasks that have been assigned to the specified staff user identifier.
-  tasktitle: 'tasktitle_example', # String | Filters results to any task whose title *contains* the specified value.
-  orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
-  offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
-  limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
+  tasktitle: 'tasktitle_example' # String | Filters results to any task whose title *contains* the specified value.
 }
 
 begin
@@ -176,9 +173,6 @@ end
 | **priorities** | [**Array&lt;String&gt;**](String.md) | Filters results to any tasks whose priority matches the specified values. If no priority is specified, tasks with any priority will be returned. | [optional] |
 | **assignedtoid** | **Integer** | Filters results to any tasks that have been assigned to the specified staff user identifier. | [optional] |
 | **tasktitle** | **String** | Filters results to any task whose title *contains* the specified value. | [optional] |
-| **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
-| **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
-| **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
 
 ### Return type
 
@@ -200,7 +194,7 @@ end
 
 Retrieve a rental owner request
 
-Retrieves a specific rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves a specific rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -276,7 +270,7 @@ end
 
 Retrieve rental owner contribution request
 
-Retrieves the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -348,11 +342,11 @@ end
 
 ## update_rental_owner_request_task
 
-> <RentalOwnerRequestTaskMessage> update_rental_owner_request_task(rental_owner_request_task_id, rental_owner_request_task_put_message)
+> <RentalOwnerRequestTaskMessage> update_rental_owner_request_task(rental_owner_request_task_id, update_rental_owner_request_task_request)
 
 Update a rental owner request
 
-Updates a rental owner request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Updates a rental owner request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -374,11 +368,11 @@ end
 
 api_instance = Buildium::RentalOwnerRequestsApi.new
 rental_owner_request_task_id = 56 # Integer | The rental owner request identifier.
-rental_owner_request_task_put_message = Buildium::RentalOwnerRequestTaskPutMessage.new({title: 'title_example', task_status: 'New', priority: 'Low'}) # RentalOwnerRequestTaskPutMessage | 
+update_rental_owner_request_task_request = Buildium::UpdateRentalOwnerRequestTaskRequest.new({title: 'title_example', task_status: 'New', priority: 'Low'}) # UpdateRentalOwnerRequestTaskRequest | 
 
 begin
   # Update a rental owner request
-  result = api_instance.update_rental_owner_request_task(rental_owner_request_task_id, rental_owner_request_task_put_message)
+  result = api_instance.update_rental_owner_request_task(rental_owner_request_task_id, update_rental_owner_request_task_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalOwnerRequestsApi->update_rental_owner_request_task: #{e}"
@@ -389,12 +383,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RentalOwnerRequestTaskMessage>, Integer, Hash)> update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, rental_owner_request_task_put_message)
+> <Array(<RentalOwnerRequestTaskMessage>, Integer, Hash)> update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_request)
 
 ```ruby
 begin
   # Update a rental owner request
-  data, status_code, headers = api_instance.update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, rental_owner_request_task_put_message)
+  data, status_code, headers = api_instance.update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RentalOwnerRequestTaskMessage>
@@ -408,7 +402,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **rental_owner_request_task_id** | **Integer** | The rental owner request identifier. |  |
-| **rental_owner_request_task_put_message** | [**RentalOwnerRequestTaskPutMessage**](RentalOwnerRequestTaskPutMessage.md) |  |  |
+| **update_rental_owner_request_task_request** | [**UpdateRentalOwnerRequestTaskRequest**](UpdateRentalOwnerRequestTaskRequest.md) |  |  |
 
 ### Return type
 
@@ -426,11 +420,11 @@ end
 
 ## update_rental_owner_request_task_contribution_data
 
-> <RentalOwnerContributionDataMessage> update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+> <RentalOwnerContributionDataMessage> update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, update_rental_owner_request_task_contribution_data_request)
 
 Update a rental owner contribution request
 
-Updates the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Updates the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -452,11 +446,11 @@ end
 
 api_instance = Buildium::RentalOwnerRequestsApi.new
 rental_owner_request_task_id = 56 # Integer | The rental owner request identifier.
-rental_owner_contribution_data_put_message = Buildium::RentalOwnerContributionDataPutMessage.new # RentalOwnerContributionDataPutMessage | 
+update_rental_owner_request_task_contribution_data_request = Buildium::UpdateRentalOwnerRequestTaskContributionDataRequest.new # UpdateRentalOwnerRequestTaskContributionDataRequest | 
 
 begin
   # Update a rental owner contribution request
-  result = api_instance.update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+  result = api_instance.update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, update_rental_owner_request_task_contribution_data_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalOwnerRequestsApi->update_rental_owner_request_task_contribution_data: #{e}"
@@ -467,12 +461,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RentalOwnerContributionDataMessage>, Integer, Hash)> update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+> <Array(<RentalOwnerContributionDataMessage>, Integer, Hash)> update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_contribution_data_request)
 
 ```ruby
 begin
   # Update a rental owner contribution request
-  data, status_code, headers = api_instance.update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, rental_owner_contribution_data_put_message)
+  data, status_code, headers = api_instance.update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_contribution_data_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RentalOwnerContributionDataMessage>
@@ -486,7 +480,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **rental_owner_request_task_id** | **Integer** | The rental owner request identifier. |  |
-| **rental_owner_contribution_data_put_message** | [**RentalOwnerContributionDataPutMessage**](RentalOwnerContributionDataPutMessage.md) |  |  |
+| **update_rental_owner_request_task_contribution_data_request** | [**UpdateRentalOwnerRequestTaskContributionDataRequest**](UpdateRentalOwnerRequestTaskContributionDataRequest.md) |  |  |
 
 ### Return type
 

@@ -8,7 +8,7 @@
 | **name** | **String** | Property group name. | [optional] |
 | **description** | **String** | Property group description. | [optional] |
 | **properties** | [**Array&lt;PropertyMessage&gt;**](PropertyMessage.md) | A list of association and/or rental property unique identifiers assigned to the property group. | [optional] |
-| **created_by_user** | [**CreatedByUserMessage**](CreatedByUserMessage.md) |  | [optional] |
+| **created_by_user** | [**PropertyGroupMessageCreatedByUser**](PropertyGroupMessageCreatedByUser.md) |  | [optional] |
 
 ## Example
 

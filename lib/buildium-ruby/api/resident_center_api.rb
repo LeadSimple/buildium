@@ -20,7 +20,7 @@ module Buildium
       @api_client = api_client
     end
     # Retrieve all resident center users
-    # Retrieves all resident center users for both rentals and associations.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Resident Center Users</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` is required to retrieve resident center users that are tenants.              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` is required to retrieve resident center users that are association owners.
+    # Retrieves all resident center users for both rentals and associations.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Resident Center Users</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` is required to retrieve resident center users that are tenants.              <br /><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` is required to retrieve resident center users that are association owners.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :unitagreementids Filters results to any resident center user who is associated with the specified lease and/or association ownership account identifiers.
     # @option opts [Array<Integer>] :userids Filters results to any resident center user with the specified tenant and/or association owner identifiers.
@@ -37,7 +37,7 @@ module Buildium
     end
 
     # Retrieve all resident center users
-    # Retrieves all resident center users for both rentals and associations.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Resident Center Users&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; is required to retrieve resident center users that are tenants.              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; is required to retrieve resident center users that are association owners.
+    # Retrieves all resident center users for both rentals and associations.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Resident Center Users&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60; is required to retrieve resident center users that are tenants.              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; is required to retrieve resident center users that are association owners.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :unitagreementids Filters results to any resident center user who is associated with the specified lease and/or association ownership account identifiers.
     # @option opts [Array<Integer>] :userids Filters results to any resident center user with the specified tenant and/or association owner identifiers.
@@ -109,7 +109,7 @@ module Buildium
     end
 
     # Retrieve a retail cash user
-    # Retrieves a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations > Association owners and tenants</span> - `View`
     # @param user_id [Integer] 
     # @param unit_agreement_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -120,7 +120,7 @@ module Buildium
     end
 
     # Retrieve a retail cash user
-    # Retrieves a retail cash user.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              OR              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt; Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a retail cash user.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              OR              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt; Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param user_id [Integer] 
     # @param unit_agreement_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -178,7 +178,7 @@ module Buildium
     end
 
     # Retrieve all retail cash users
-    # Retrieves all retail cash users.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves all retail cash users.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              OR              <span class=\"permissionBlock\"> Associations > Association owners and tenants</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :entityid Filters results to any users associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is provided.
@@ -196,7 +196,7 @@ module Buildium
     end
 
     # Retrieve all retail cash users
-    # Retrieves all retail cash users.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              OR              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt; Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all retail cash users.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              OR              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt; Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :entityid Filters results to any users associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is provided.
@@ -270,25 +270,25 @@ module Buildium
     end
 
     # Update a retail cash user
-    # Updates a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`              OR              <span class=\"permissionBlock\"> Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Updates a retail cash user.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`              OR              <span class=\"permissionBlock\"> Associations > Association owners and tenants</span> - `View` `Edit`
     # @param user_id [Integer] 
     # @param unit_agreement_id [Integer] 
-    # @param retail_cash_user_put_message [RetailCashUserPutMessage] 
+    # @param update_retail_cash_user_request [UpdateRetailCashUserRequest] 
     # @param [Hash] opts the optional parameters
     # @return [RetailCashUserMessage]
-    def update_retail_cash_user(user_id, unit_agreement_id, retail_cash_user_put_message, opts = {})
-      data, _status_code, _headers = update_retail_cash_user_with_http_info(user_id, unit_agreement_id, retail_cash_user_put_message, opts)
+    def update_retail_cash_user(user_id, unit_agreement_id, update_retail_cash_user_request, opts = {})
+      data, _status_code, _headers = update_retail_cash_user_with_http_info(user_id, unit_agreement_id, update_retail_cash_user_request, opts)
       data
     end
 
     # Update a retail cash user
-    # Updates a retail cash user.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              OR              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt; Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a retail cash user.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              OR              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt; Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param user_id [Integer] 
     # @param unit_agreement_id [Integer] 
-    # @param retail_cash_user_put_message [RetailCashUserPutMessage] 
+    # @param update_retail_cash_user_request [UpdateRetailCashUserRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(RetailCashUserMessage, Integer, Hash)>] RetailCashUserMessage data, response status code and response headers
-    def update_retail_cash_user_with_http_info(user_id, unit_agreement_id, retail_cash_user_put_message, opts = {})
+    def update_retail_cash_user_with_http_info(user_id, unit_agreement_id, update_retail_cash_user_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ResidentCenterApi.update_retail_cash_user ...'
       end
@@ -300,9 +300,9 @@ module Buildium
       if @api_client.config.client_side_validation && unit_agreement_id.nil?
         fail ArgumentError, "Missing the required parameter 'unit_agreement_id' when calling ResidentCenterApi.update_retail_cash_user"
       end
-      # verify the required parameter 'retail_cash_user_put_message' is set
-      if @api_client.config.client_side_validation && retail_cash_user_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'retail_cash_user_put_message' when calling ResidentCenterApi.update_retail_cash_user"
+      # verify the required parameter 'update_retail_cash_user_request' is set
+      if @api_client.config.client_side_validation && update_retail_cash_user_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_retail_cash_user_request' when calling ResidentCenterApi.update_retail_cash_user"
       end
       # resource path
       local_var_path = '/v1/retailcashusers/{userId}/{unitAgreementId}'.sub('{' + 'userId' + '}', CGI.escape(user_id.to_s)).sub('{' + 'unitAgreementId' + '}', CGI.escape(unit_agreement_id.to_s))
@@ -317,14 +317,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(retail_cash_user_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_retail_cash_user_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'RetailCashUserMessage'

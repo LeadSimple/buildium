@@ -156,6 +156,10 @@ module Buildium
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
       if @sub_type.nil?
         invalid_properties.push('invalid value for "sub_type", sub_type cannot be nil.')
       end
@@ -167,12 +171,27 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @name.nil?
+      return false if @name.to_s.length < 1
       return false if @sub_type.nil?
       sub_type_validator = EnumAttributeValidator.new('String', ["CurrentAsset", "FixedAsset", "CurrentLiability", "LongTermLiability", "Equity", "Income", "NonOperatingIncome", "OperatingExpenses", "NonOperatingExpenses"])
       return false unless sub_type_validator.valid?(@sub_type)
       cash_flow_classification_validator = EnumAttributeValidator.new('String', ["OperatingActivities", "InvestingActivities", "FinancingActivities"])
       return false unless cash_flow_classification_validator.valid?(@cash_flow_classification)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -233,7 +252,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -340,5 +359,6 @@ module Buildium
         value
       end
     end
+
   end
 end

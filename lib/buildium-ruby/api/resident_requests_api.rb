@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a resident request
-    # Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
-    # @param resident_request_task_post_message [ResidentRequestTaskPostMessage] 
+    # Creates a resident request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
+    # @param create_resource_request [CreateResourceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ResidentRequestTaskMessage]
-    def create_resource(resident_request_task_post_message, opts = {})
-      data, _status_code, _headers = create_resource_with_http_info(resident_request_task_post_message, opts)
+    def create_resource(create_resource_request, opts = {})
+      data, _status_code, _headers = create_resource_with_http_info(create_resource_request, opts)
       data
     end
 
     # Create a resident request
-    # Creates a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param resident_request_task_post_message [ResidentRequestTaskPostMessage] 
+    # Creates a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_resource_request [CreateResourceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ResidentRequestTaskMessage, Integer, Hash)>] ResidentRequestTaskMessage data, response status code and response headers
-    def create_resource_with_http_info(resident_request_task_post_message, opts = {})
+    def create_resource_with_http_info(create_resource_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ResidentRequestsApi.create_resource ...'
       end
-      # verify the required parameter 'resident_request_task_post_message' is set
-      if @api_client.config.client_side_validation && resident_request_task_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'resident_request_task_post_message' when calling ResidentRequestsApi.create_resource"
+      # verify the required parameter 'create_resource_request' is set
+      if @api_client.config.client_side_validation && create_resource_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_resource_request' when calling ResidentRequestsApi.create_resource"
       end
       # resource path
       local_var_path = '/v1/tasks/residentrequests'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(resident_request_task_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_resource_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ResidentRequestTaskMessage'
@@ -88,7 +88,7 @@ module Buildium
     end
 
     # Retrieve a resident request
-    # Retrieves a specific resident request.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a specific resident request.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param resident_request_task_id [Integer] The resident request identifier.
     # @param [Hash] opts the optional parameters
     # @return [ResidentRequestTaskMessage]
@@ -98,7 +98,7 @@ module Buildium
     end
 
     # Retrieve a resident request
-    # Retrieves a specific resident request.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific resident request.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param resident_request_task_id [Integer] The resident request identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ResidentRequestTaskMessage, Integer, Hash)>] ResidentRequestTaskMessage data, response status code and response headers
@@ -151,7 +151,7 @@ module Buildium
     end
 
     # Retrieve all resident requests
-    # Retrieves a list of resident requests.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a list of resident requests.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -176,7 +176,7 @@ module Buildium
     end
 
     # Retrieve all resident requests
-    # Retrieves a list of resident requests.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of resident requests.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -268,23 +268,23 @@ module Buildium
     end
 
     # Update a resident request
-    # Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Update a resident request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
     # @param resident_request_task_id [Integer] The resident request identifier.
-    # @param resident_request_task_put_message [ResidentRequestTaskPutMessage] 
+    # @param update_resource_request [UpdateResourceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ResidentRequestTaskMessage]
-    def update_resource(resident_request_task_id, resident_request_task_put_message, opts = {})
-      data, _status_code, _headers = update_resource_with_http_info(resident_request_task_id, resident_request_task_put_message, opts)
+    def update_resource(resident_request_task_id, update_resource_request, opts = {})
+      data, _status_code, _headers = update_resource_with_http_info(resident_request_task_id, update_resource_request, opts)
       data
     end
 
     # Update a resident request
-    # Update a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a resident request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param resident_request_task_id [Integer] The resident request identifier.
-    # @param resident_request_task_put_message [ResidentRequestTaskPutMessage] 
+    # @param update_resource_request [UpdateResourceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ResidentRequestTaskMessage, Integer, Hash)>] ResidentRequestTaskMessage data, response status code and response headers
-    def update_resource_with_http_info(resident_request_task_id, resident_request_task_put_message, opts = {})
+    def update_resource_with_http_info(resident_request_task_id, update_resource_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ResidentRequestsApi.update_resource ...'
       end
@@ -292,9 +292,9 @@ module Buildium
       if @api_client.config.client_side_validation && resident_request_task_id.nil?
         fail ArgumentError, "Missing the required parameter 'resident_request_task_id' when calling ResidentRequestsApi.update_resource"
       end
-      # verify the required parameter 'resident_request_task_put_message' is set
-      if @api_client.config.client_side_validation && resident_request_task_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'resident_request_task_put_message' when calling ResidentRequestsApi.update_resource"
+      # verify the required parameter 'update_resource_request' is set
+      if @api_client.config.client_side_validation && update_resource_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_resource_request' when calling ResidentRequestsApi.update_resource"
       end
       # resource path
       local_var_path = '/v1/tasks/residentrequests/{residentRequestTaskId}'.sub('{' + 'residentRequestTaskId' + '}', CGI.escape(resident_request_task_id.to_s))
@@ -309,14 +309,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(resident_request_task_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_resource_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ResidentRequestTaskMessage'

@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a tenant
-    # Creates a rental tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
-    # @param rental_tenant_post_message [RentalTenantPostMessage] 
+    # Creates a rental tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals > Leases</span> - `View` `Edit`
+    # @param create_rental_tenant_request [CreateRentalTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [TenantMessage]
-    def create_rental_tenant(rental_tenant_post_message, opts = {})
-      data, _status_code, _headers = create_rental_tenant_with_http_info(rental_tenant_post_message, opts)
+    def create_rental_tenant(create_rental_tenant_request, opts = {})
+      data, _status_code, _headers = create_rental_tenant_with_http_info(create_rental_tenant_request, opts)
       data
     end
 
     # Create a tenant
-    # Creates a rental tenant.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param rental_tenant_post_message [RentalTenantPostMessage] 
+    # Creates a rental tenant.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Leases&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_rental_tenant_request [CreateRentalTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TenantMessage, Integer, Hash)>] TenantMessage data, response status code and response headers
-    def create_rental_tenant_with_http_info(rental_tenant_post_message, opts = {})
+    def create_rental_tenant_with_http_info(create_rental_tenant_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalTenantsApi.create_rental_tenant ...'
       end
-      # verify the required parameter 'rental_tenant_post_message' is set
-      if @api_client.config.client_side_validation && rental_tenant_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'rental_tenant_post_message' when calling RentalTenantsApi.create_rental_tenant"
+      # verify the required parameter 'create_rental_tenant_request' is set
+      if @api_client.config.client_side_validation && create_rental_tenant_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_rental_tenant_request' when calling RentalTenantsApi.create_rental_tenant"
       end
       # resource path
       local_var_path = '/v1/leases/tenants'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_tenant_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_rental_tenant_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'TenantMessage'
@@ -88,23 +88,23 @@ module Buildium
     end
 
     # Create a note
-    # Creates a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+    # Creates a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def create_tenant_note(tenant_id, note_post_message, opts = {})
-      data, _status_code, _headers = create_tenant_note_with_http_info(tenant_id, note_post_message, opts)
+    def create_tenant_note(tenant_id, create_lease_note_request, opts = {})
+      data, _status_code, _headers = create_tenant_note_with_http_info(tenant_id, create_lease_note_request, opts)
       data
     end
 
     # Create a note
-    # Creates a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def create_tenant_note_with_http_info(tenant_id, note_post_message, opts = {})
+    def create_tenant_note_with_http_info(tenant_id, create_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalTenantsApi.create_tenant_note ...'
       end
@@ -112,9 +112,9 @@ module Buildium
       if @api_client.config.client_side_validation && tenant_id.nil?
         fail ArgumentError, "Missing the required parameter 'tenant_id' when calling RentalTenantsApi.create_tenant_note"
       end
-      # verify the required parameter 'note_post_message' is set
-      if @api_client.config.client_side_validation && note_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_post_message' when calling RentalTenantsApi.create_tenant_note"
+      # verify the required parameter 'create_lease_note_request' is set
+      if @api_client.config.client_side_validation && create_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_note_request' when calling RentalTenantsApi.create_tenant_note"
       end
       # resource path
       local_var_path = '/v1/leases/tenants/{tenantId}/notes'.sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s))
@@ -129,14 +129,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -162,7 +162,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+    # Retrieves all tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -178,7 +178,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all tenant notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all tenant notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -243,7 +243,7 @@ module Buildium
     end
 
     # Retrieve all tenants
-    # Retrieves a list of tenants.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+    # Retrieves a list of tenants.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :buildingstatuses Filters results by the status of the rental property the tenants are associated with. If no status is specified tenants in either &#x60;active&#x60; and &#x60;inactive&#x60; rental properties will be returned.
     # @option opts [Array<String>] :leasetermstatuses Filters results to any tenant whose lease term matches the specified status.  If no status is specified tenants with any lease terms status will be returned.
@@ -255,6 +255,7 @@ module Buildium
     # @option opts [Array<Integer>] :rentalownerids Filters results to tenants whose rental unit belongs to a property with a rental owner in the specified set of rental owner ids.
     # @option opts [Time] :lastupdatedfrom Filters results to any rental tenants that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [Time] :lastupdatedto Filters results to any rental tenants that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Array<Integer>] :unitids Filters results to only tenants associated with the specified set of unit ids.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -265,7 +266,7 @@ module Buildium
     end
 
     # Retrieve all tenants
-    # Retrieves a list of tenants.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of tenants.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :buildingstatuses Filters results by the status of the rental property the tenants are associated with. If no status is specified tenants in either &#x60;active&#x60; and &#x60;inactive&#x60; rental properties will be returned.
     # @option opts [Array<String>] :leasetermstatuses Filters results to any tenant whose lease term matches the specified status.  If no status is specified tenants with any lease terms status will be returned.
@@ -277,6 +278,7 @@ module Buildium
     # @option opts [Array<Integer>] :rentalownerids Filters results to tenants whose rental unit belongs to a property with a rental owner in the specified set of rental owner ids.
     # @option opts [Time] :lastupdatedfrom Filters results to any rental tenants that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [Time] :lastupdatedto Filters results to any rental tenants that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Array<Integer>] :unitids Filters results to only tenants associated with the specified set of unit ids.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -308,6 +310,7 @@ module Buildium
       query_params[:'rentalownerids'] = @api_client.build_collection_param(opts[:'rentalownerids'], :multi) if !opts[:'rentalownerids'].nil?
       query_params[:'lastupdatedfrom'] = opts[:'lastupdatedfrom'] if !opts[:'lastupdatedfrom'].nil?
       query_params[:'lastupdatedto'] = opts[:'lastupdatedto'] if !opts[:'lastupdatedto'].nil?
+      query_params[:'unitids'] = @api_client.build_collection_param(opts[:'unitids'], :multi) if !opts[:'unitids'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
@@ -347,7 +350,7 @@ module Buildium
     end
 
     # Retrieve a tenant
-    # Retrieve a specific tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+    # Retrieve a specific tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
     # @return [TenantMessage]
@@ -357,7 +360,7 @@ module Buildium
     end
 
     # Retrieve a tenant
-    # Retrieve a specific tenant.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve a specific tenant.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] The tenant identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(TenantMessage, Integer, Hash)>] TenantMessage data, response status code and response headers
@@ -410,7 +413,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+    # Retrieves a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -421,7 +424,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -479,25 +482,25 @@ module Buildium
     end
 
     # Update a note
-    # Updates a tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+    # Updates a tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def update_lease_tenant_note(tenant_id, note_id, note_put_message, opts = {})
-      data, _status_code, _headers = update_lease_tenant_note_with_http_info(tenant_id, note_id, note_put_message, opts)
+    def update_lease_tenant_note(tenant_id, note_id, update_lease_note_request, opts = {})
+      data, _status_code, _headers = update_lease_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request, opts)
       data
     end
 
     # Update a note
-    # Updates a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a tenant note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def update_lease_tenant_note_with_http_info(tenant_id, note_id, note_put_message, opts = {})
+    def update_lease_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalTenantsApi.update_lease_tenant_note ...'
       end
@@ -509,9 +512,9 @@ module Buildium
       if @api_client.config.client_side_validation && note_id.nil?
         fail ArgumentError, "Missing the required parameter 'note_id' when calling RentalTenantsApi.update_lease_tenant_note"
       end
-      # verify the required parameter 'note_put_message' is set
-      if @api_client.config.client_side_validation && note_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_put_message' when calling RentalTenantsApi.update_lease_tenant_note"
+      # verify the required parameter 'update_lease_note_request' is set
+      if @api_client.config.client_side_validation && update_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_note_request' when calling RentalTenantsApi.update_lease_tenant_note"
       end
       # resource path
       local_var_path = '/v1/leases/tenants/{tenantId}/notes/{noteId}'.sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s)).sub('{' + 'noteId' + '}', CGI.escape(note_id.to_s))
@@ -526,14 +529,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -559,23 +562,23 @@ module Buildium
     end
 
     # Update a tenant
-    # Updates a rental tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+    # Updates a rental tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`
     # @param tenant_id [Integer] 
-    # @param rental_tenant_put_message [RentalTenantPutMessage] 
+    # @param update_rental_tenant_request [UpdateRentalTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [TenantMessage]
-    def update_rental_tenant(tenant_id, rental_tenant_put_message, opts = {})
-      data, _status_code, _headers = update_rental_tenant_with_http_info(tenant_id, rental_tenant_put_message, opts)
+    def update_rental_tenant(tenant_id, update_rental_tenant_request, opts = {})
+      data, _status_code, _headers = update_rental_tenant_with_http_info(tenant_id, update_rental_tenant_request, opts)
       data
     end
 
     # Update a tenant
-    # Updates a rental tenant.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a rental tenant.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param tenant_id [Integer] 
-    # @param rental_tenant_put_message [RentalTenantPutMessage] 
+    # @param update_rental_tenant_request [UpdateRentalTenantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TenantMessage, Integer, Hash)>] TenantMessage data, response status code and response headers
-    def update_rental_tenant_with_http_info(tenant_id, rental_tenant_put_message, opts = {})
+    def update_rental_tenant_with_http_info(tenant_id, update_rental_tenant_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalTenantsApi.update_rental_tenant ...'
       end
@@ -583,9 +586,9 @@ module Buildium
       if @api_client.config.client_side_validation && tenant_id.nil?
         fail ArgumentError, "Missing the required parameter 'tenant_id' when calling RentalTenantsApi.update_rental_tenant"
       end
-      # verify the required parameter 'rental_tenant_put_message' is set
-      if @api_client.config.client_side_validation && rental_tenant_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'rental_tenant_put_message' when calling RentalTenantsApi.update_rental_tenant"
+      # verify the required parameter 'update_rental_tenant_request' is set
+      if @api_client.config.client_side_validation && update_rental_tenant_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_rental_tenant_request' when calling RentalTenantsApi.update_rental_tenant"
       end
       # resource path
       local_var_path = '/v1/leases/tenants/{tenantId}'.sub('{' + 'tenantId' + '}', CGI.escape(tenant_id.to_s))
@@ -600,14 +603,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_tenant_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_rental_tenant_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'TenantMessage'

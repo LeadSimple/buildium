@@ -26,11 +26,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_applicant
 
-> <ApplicantMessage> create_applicant(applicant_post_message)
+> <ApplicantMessage> create_applicant(create_applicant_request)
 
 Create an applicant
 
-Creates an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+Creates an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
 
 ### Examples
 
@@ -51,11 +51,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::ApplicantsApi.new
-applicant_post_message = Buildium::ApplicantPostMessage.new({first_name: 'first_name_example', last_name: 'last_name_example', send_rental_application_email: false}) # ApplicantPostMessage | 
+create_applicant_request = Buildium::CreateApplicantRequest.new({first_name: 'first_name_example', last_name: 'last_name_example', send_rental_application_email: false}) # CreateApplicantRequest | 
 
 begin
   # Create an applicant
-  result = api_instance.create_applicant(applicant_post_message)
+  result = api_instance.create_applicant(create_applicant_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->create_applicant: #{e}"
@@ -66,12 +66,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ApplicantMessage>, Integer, Hash)> create_applicant_with_http_info(applicant_post_message)
+> <Array(<ApplicantMessage>, Integer, Hash)> create_applicant_with_http_info(create_applicant_request)
 
 ```ruby
 begin
   # Create an applicant
-  data, status_code, headers = api_instance.create_applicant_with_http_info(applicant_post_message)
+  data, status_code, headers = api_instance.create_applicant_with_http_info(create_applicant_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ApplicantMessage>
@@ -84,7 +84,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **applicant_post_message** | [**ApplicantPostMessage**](ApplicantPostMessage.md) |  |  |
+| **create_applicant_request** | [**CreateApplicantRequest**](CreateApplicantRequest.md) |  |  |
 
 ### Return type
 
@@ -102,11 +102,11 @@ end
 
 ## create_applicant_group
 
-> <ApplicantGroupMessage> create_applicant_group(applicant_group_post_message)
+> <ApplicantGroupMessage> create_applicant_group(create_applicant_group_request)
 
 Create an applicant group
 
-Creates an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+Creates an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
 
 ### Examples
 
@@ -127,11 +127,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::ApplicantsApi.new
-applicant_group_post_message = Buildium::ApplicantGroupPostMessage.new({applicant_ids: [37]}) # ApplicantGroupPostMessage | 
+create_applicant_group_request = Buildium::CreateApplicantGroupRequest.new({applicant_ids: [37]}) # CreateApplicantGroupRequest | 
 
 begin
   # Create an applicant group
-  result = api_instance.create_applicant_group(applicant_group_post_message)
+  result = api_instance.create_applicant_group(create_applicant_group_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->create_applicant_group: #{e}"
@@ -142,12 +142,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ApplicantGroupMessage>, Integer, Hash)> create_applicant_group_with_http_info(applicant_group_post_message)
+> <Array(<ApplicantGroupMessage>, Integer, Hash)> create_applicant_group_with_http_info(create_applicant_group_request)
 
 ```ruby
 begin
   # Create an applicant group
-  data, status_code, headers = api_instance.create_applicant_group_with_http_info(applicant_group_post_message)
+  data, status_code, headers = api_instance.create_applicant_group_with_http_info(create_applicant_group_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ApplicantGroupMessage>
@@ -160,7 +160,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **applicant_group_post_message** | [**ApplicantGroupPostMessage**](ApplicantGroupPostMessage.md) |  |  |
+| **create_applicant_group_request** | [**CreateApplicantGroupRequest**](CreateApplicantGroupRequest.md) |  |  |
 
 ### Return type
 
@@ -178,11 +178,11 @@ end
 
 ## create_applicant_note
 
-> <NoteMessage> create_applicant_note(applicant_id, note_post_message)
+> <NoteMessage> create_applicant_note(applicant_id, create_lease_note_request)
 
 Create an applicant note
 
-Creates an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> -  `View` `Edit`
+Creates an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> -  `View` `Edit`
 
 ### Examples
 
@@ -204,11 +204,11 @@ end
 
 api_instance = Buildium::ApplicantsApi.new
 applicant_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create an applicant note
-  result = api_instance.create_applicant_note(applicant_id, note_post_message)
+  result = api_instance.create_applicant_note(applicant_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->create_applicant_note: #{e}"
@@ -219,12 +219,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_applicant_note_with_http_info(applicant_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_applicant_note_with_http_info(applicant_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create an applicant note
-  data, status_code, headers = api_instance.create_applicant_note_with_http_info(applicant_id, note_post_message)
+  data, status_code, headers = api_instance.create_applicant_note_with_http_info(applicant_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -238,7 +238,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **applicant_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -256,11 +256,11 @@ end
 
 ## create_application_group_note
 
-> <NoteMessage> create_application_group_note(applicant_group_id, note_post_message)
+> <NoteMessage> create_application_group_note(applicant_group_id, create_lease_note_request)
 
 Create an applicant group note
 
-Creates an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+Creates an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
 
 ### Examples
 
@@ -282,11 +282,11 @@ end
 
 api_instance = Buildium::ApplicantsApi.new
 applicant_group_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create an applicant group note
-  result = api_instance.create_application_group_note(applicant_group_id, note_post_message)
+  result = api_instance.create_application_group_note(applicant_group_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->create_application_group_note: #{e}"
@@ -297,12 +297,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_application_group_note_with_http_info(applicant_group_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_application_group_note_with_http_info(applicant_group_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create an applicant group note
-  data, status_code, headers = api_instance.create_application_group_note_with_http_info(applicant_group_id, note_post_message)
+  data, status_code, headers = api_instance.create_application_group_note_with_http_info(applicant_group_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -316,7 +316,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **applicant_group_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -338,7 +338,7 @@ end
 
 Retrieve all applicant notes
 
-Retrieves all applicant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves all applicant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -428,7 +428,7 @@ end
 
 Retrieve an applicant
 
-Retrieves an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -504,7 +504,7 @@ end
 
 Retrieve an applicant group
 
-Retrieves an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -580,7 +580,7 @@ end
 
 Retrieve an applicant group note
 
-Retrieves an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -658,7 +658,7 @@ end
 
 Retrieve all applicant group notes
 
-Retrieves all applicant group notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves all applicant group notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -748,7 +748,7 @@ end
 
 Retrieve all applicant groups
 
-Retrieves all applicant groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves all applicant groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -840,7 +840,7 @@ end
 
 Retrieve an applicant note
 
-Retrieves an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -918,7 +918,7 @@ end
 
 Retrieve all applicants
 
-Retrieves all applicants.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves all applicants.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -948,6 +948,8 @@ opts = {
   email: 'email_example', # String | Filters results to applicants whose email *contains* the specified value
   applicationsubmittedstartdate: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any applicant who submitted an application on or after the date specified.
   applicationsubmittedenddate: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any applicant who submitted an application on or prior to the date specified.
+  lastupdatedfrom: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any applicants that were updated on or after the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
+  lastupdatedto: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any applicants that were updated on or before the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
   orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
   offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
   limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
@@ -992,6 +994,8 @@ end
 | **email** | **String** | Filters results to applicants whose email *contains* the specified value | [optional] |
 | **applicationsubmittedstartdate** | **Time** | Filters results to any applicant who submitted an application on or after the date specified. | [optional] |
 | **applicationsubmittedenddate** | **Time** | Filters results to any applicant who submitted an application on or prior to the date specified. | [optional] |
+| **lastupdatedfrom** | **Time** | Filters results to any applicants that were updated on or after the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
+| **lastupdatedto** | **Time** | Filters results to any applicants that were updated on or before the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
 | **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
 | **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
 | **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
@@ -1016,7 +1020,7 @@ end
 
 Retrieve an application
 
-Retrieves an application.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves an application.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -1094,7 +1098,7 @@ end
 
 Retrieve all applications
 
-Retrieves all the applications for a given applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves all the applications for a given applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -1174,11 +1178,11 @@ end
 
 ## update_applicant
 
-> <ApplicantMessage> update_applicant(applicant_id, applicant_put_message)
+> <ApplicantMessage> update_applicant(applicant_id, update_applicant_request)
 
 Update an applicant
 
-Updates an applicant.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+Updates an applicant.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
 
 ### Examples
 
@@ -1200,11 +1204,11 @@ end
 
 api_instance = Buildium::ApplicantsApi.new
 applicant_id = 56 # Integer | 
-applicant_put_message = Buildium::ApplicantPutMessage.new({first_name: 'first_name_example', last_name: 'last_name_example'}) # ApplicantPutMessage | 
+update_applicant_request = Buildium::UpdateApplicantRequest.new({first_name: 'first_name_example', last_name: 'last_name_example'}) # UpdateApplicantRequest | 
 
 begin
   # Update an applicant
-  result = api_instance.update_applicant(applicant_id, applicant_put_message)
+  result = api_instance.update_applicant(applicant_id, update_applicant_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->update_applicant: #{e}"
@@ -1215,12 +1219,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ApplicantMessage>, Integer, Hash)> update_applicant_with_http_info(applicant_id, applicant_put_message)
+> <Array(<ApplicantMessage>, Integer, Hash)> update_applicant_with_http_info(applicant_id, update_applicant_request)
 
 ```ruby
 begin
   # Update an applicant
-  data, status_code, headers = api_instance.update_applicant_with_http_info(applicant_id, applicant_put_message)
+  data, status_code, headers = api_instance.update_applicant_with_http_info(applicant_id, update_applicant_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ApplicantMessage>
@@ -1234,7 +1238,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **applicant_id** | **Integer** |  |  |
-| **applicant_put_message** | [**ApplicantPutMessage**](ApplicantPutMessage.md) |  |  |
+| **update_applicant_request** | [**UpdateApplicantRequest**](UpdateApplicantRequest.md) |  |  |
 
 ### Return type
 
@@ -1252,11 +1256,11 @@ end
 
 ## update_applicant_group
 
-> <ApplicantGroupMessage> update_applicant_group(applicant_group_id, applicant_group_put_message)
+> <ApplicantGroupMessage> update_applicant_group(applicant_group_id, update_applicant_group_request)
 
 Update an applicant group
 
-Updates an applicant group.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+Updates an applicant group.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
 
 ### Examples
 
@@ -1278,11 +1282,11 @@ end
 
 api_instance = Buildium::ApplicantsApi.new
 applicant_group_id = 56 # Integer | 
-applicant_group_put_message = Buildium::ApplicantGroupPutMessage.new({applicant_group_status: 'Undecided', applicant_ids: [37]}) # ApplicantGroupPutMessage | 
+update_applicant_group_request = Buildium::UpdateApplicantGroupRequest.new({applicant_group_status: 'Undecided', applicant_ids: [37]}) # UpdateApplicantGroupRequest | 
 
 begin
   # Update an applicant group
-  result = api_instance.update_applicant_group(applicant_group_id, applicant_group_put_message)
+  result = api_instance.update_applicant_group(applicant_group_id, update_applicant_group_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->update_applicant_group: #{e}"
@@ -1293,12 +1297,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ApplicantGroupMessage>, Integer, Hash)> update_applicant_group_with_http_info(applicant_group_id, applicant_group_put_message)
+> <Array(<ApplicantGroupMessage>, Integer, Hash)> update_applicant_group_with_http_info(applicant_group_id, update_applicant_group_request)
 
 ```ruby
 begin
   # Update an applicant group
-  data, status_code, headers = api_instance.update_applicant_group_with_http_info(applicant_group_id, applicant_group_put_message)
+  data, status_code, headers = api_instance.update_applicant_group_with_http_info(applicant_group_id, update_applicant_group_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ApplicantGroupMessage>
@@ -1312,7 +1316,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **applicant_group_id** | **Integer** |  |  |
-| **applicant_group_put_message** | [**ApplicantGroupPutMessage**](ApplicantGroupPutMessage.md) |  |  |
+| **update_applicant_group_request** | [**UpdateApplicantGroupRequest**](UpdateApplicantGroupRequest.md) |  |  |
 
 ### Return type
 
@@ -1330,11 +1334,11 @@ end
 
 ## update_application
 
-> <ApplicationMessage> update_application(applicant_id, application_id, application_put_message)
+> <ApplicationMessage> update_application(applicant_id, application_id, update_application_request)
 
 Update an application
 
-Updates a rental application.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+Updates a rental application.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
 
 ### Examples
 
@@ -1357,11 +1361,11 @@ end
 api_instance = Buildium::ApplicantsApi.new
 applicant_id = 56 # Integer | 
 application_id = 56 # Integer | 
-application_put_message = Buildium::ApplicationPutMessage.new({application_status: 'Undecided'}) # ApplicationPutMessage | 
+update_application_request = Buildium::UpdateApplicationRequest.new({application_status: 'Undecided'}) # UpdateApplicationRequest | 
 
 begin
   # Update an application
-  result = api_instance.update_application(applicant_id, application_id, application_put_message)
+  result = api_instance.update_application(applicant_id, application_id, update_application_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->update_application: #{e}"
@@ -1372,12 +1376,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ApplicationMessage>, Integer, Hash)> update_application_with_http_info(applicant_id, application_id, application_put_message)
+> <Array(<ApplicationMessage>, Integer, Hash)> update_application_with_http_info(applicant_id, application_id, update_application_request)
 
 ```ruby
 begin
   # Update an application
-  data, status_code, headers = api_instance.update_application_with_http_info(applicant_id, application_id, application_put_message)
+  data, status_code, headers = api_instance.update_application_with_http_info(applicant_id, application_id, update_application_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ApplicationMessage>
@@ -1392,7 +1396,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **applicant_id** | **Integer** |  |  |
 | **application_id** | **Integer** |  |  |
-| **application_put_message** | [**ApplicationPutMessage**](ApplicationPutMessage.md) |  |  |
+| **update_application_request** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md) |  |  |
 
 ### Return type
 
@@ -1410,11 +1414,11 @@ end
 
 ## update_application_group_note
 
-> <NoteMessage> update_application_group_note(applicant_group_id, note_id, note_put_message)
+> <NoteMessage> update_application_group_note(applicant_group_id, note_id, update_lease_note_request)
 
 Update an applicant group note
 
-Updates an applicant group note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+Updates an applicant group note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
 
 ### Examples
 
@@ -1437,11 +1441,11 @@ end
 api_instance = Buildium::ApplicantsApi.new
 applicant_group_id = 56 # Integer | 
 note_id = 56 # Integer | 
-note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
+update_lease_note_request = Buildium::UpdateLeaseNoteRequest.new({note: 'note_example'}) # UpdateLeaseNoteRequest | 
 
 begin
   # Update an applicant group note
-  result = api_instance.update_application_group_note(applicant_group_id, note_id, note_put_message)
+  result = api_instance.update_application_group_note(applicant_group_id, note_id, update_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ApplicantsApi->update_application_group_note: #{e}"
@@ -1452,12 +1456,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> update_application_group_note_with_http_info(applicant_group_id, note_id, note_put_message)
+> <Array(<NoteMessage>, Integer, Hash)> update_application_group_note_with_http_info(applicant_group_id, note_id, update_lease_note_request)
 
 ```ruby
 begin
   # Update an applicant group note
-  data, status_code, headers = api_instance.update_application_group_note_with_http_info(applicant_group_id, note_id, note_put_message)
+  data, status_code, headers = api_instance.update_application_group_note_with_http_info(applicant_group_id, note_id, update_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -1472,7 +1476,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **applicant_group_id** | **Integer** |  |  |
 | **note_id** | **Integer** |  |  |
-| **note_put_message** | [**NotePutMessage**](NotePutMessage.md) |  |  |
+| **update_lease_note_request** | [**UpdateLeaseNoteRequest**](UpdateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 

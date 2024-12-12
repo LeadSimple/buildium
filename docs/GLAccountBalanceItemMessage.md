@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **balance** | **Float** | The sum of transactions associated with the general ledger account for the given accounting entity. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**GLAccountBalanceItemMessageAccountingEntity**](GLAccountBalanceItemMessageAccountingEntity.md) |  | [optional] |
 
 ## Example
 

@@ -7,7 +7,7 @@
 | **id** | **Integer** | Email unique identifier. | [optional] |
 | **sent_date_time** | **Time** | The date and time the email was sent. | [optional] |
 | **subject** | **String** | Email subject. | [optional] |
-| **sender** | [**EmailSenderMessage**](EmailSenderMessage.md) |  | [optional] |
+| **sender** | [**EmailMessageSender**](EmailMessageSender.md) |  | [optional] |
 
 ## Example
 

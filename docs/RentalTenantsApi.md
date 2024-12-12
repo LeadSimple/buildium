@@ -16,11 +16,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_rental_tenant
 
-> <TenantMessage> create_rental_tenant(rental_tenant_post_message)
+> <TenantMessage> create_rental_tenant(create_rental_tenant_request)
 
 Create a tenant
 
-Creates a rental tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Leases</span> - `View` `Edit`
+Creates a rental tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals > Leases</span> - `View` `Edit`
 
 ### Examples
 
@@ -41,11 +41,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::RentalTenantsApi.new
-rental_tenant_post_message = Buildium::RentalTenantPostMessage.new({lease_id: 37, first_name: 'first_name_example', last_name: 'last_name_example', address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # RentalTenantPostMessage | 
+create_rental_tenant_request = Buildium::CreateRentalTenantRequest.new({lease_id: 37, first_name: 'first_name_example', last_name: 'last_name_example', address: Buildium::AssociationTenantPostMessagePrimaryAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'})}) # CreateRentalTenantRequest | 
 
 begin
   # Create a tenant
-  result = api_instance.create_rental_tenant(rental_tenant_post_message)
+  result = api_instance.create_rental_tenant(create_rental_tenant_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalTenantsApi->create_rental_tenant: #{e}"
@@ -56,12 +56,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TenantMessage>, Integer, Hash)> create_rental_tenant_with_http_info(rental_tenant_post_message)
+> <Array(<TenantMessage>, Integer, Hash)> create_rental_tenant_with_http_info(create_rental_tenant_request)
 
 ```ruby
 begin
   # Create a tenant
-  data, status_code, headers = api_instance.create_rental_tenant_with_http_info(rental_tenant_post_message)
+  data, status_code, headers = api_instance.create_rental_tenant_with_http_info(create_rental_tenant_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TenantMessage>
@@ -74,7 +74,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **rental_tenant_post_message** | [**RentalTenantPostMessage**](RentalTenantPostMessage.md) |  |  |
+| **create_rental_tenant_request** | [**CreateRentalTenantRequest**](CreateRentalTenantRequest.md) |  |  |
 
 ### Return type
 
@@ -92,11 +92,11 @@ end
 
 ## create_tenant_note
 
-> <NoteMessage> create_tenant_note(tenant_id, note_post_message)
+> <NoteMessage> create_tenant_note(tenant_id, create_lease_note_request)
 
 Create a note
 
-Creates a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+Creates a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -118,11 +118,11 @@ end
 
 api_instance = Buildium::RentalTenantsApi.new
 tenant_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create a note
-  result = api_instance.create_tenant_note(tenant_id, note_post_message)
+  result = api_instance.create_tenant_note(tenant_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalTenantsApi->create_tenant_note: #{e}"
@@ -133,12 +133,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_tenant_note_with_http_info(tenant_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_tenant_note_with_http_info(tenant_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create a note
-  data, status_code, headers = api_instance.create_tenant_note_with_http_info(tenant_id, note_post_message)
+  data, status_code, headers = api_instance.create_tenant_note_with_http_info(tenant_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -152,7 +152,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **tenant_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -174,7 +174,7 @@ end
 
 Retrieve all notes
 
-Retrieves all tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+Retrieves all tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
 
 ### Examples
 
@@ -264,7 +264,7 @@ end
 
 Retrieve all tenants
 
-Retrieves a list of tenants.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+Retrieves a list of tenants.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
 
 ### Examples
 
@@ -296,6 +296,7 @@ opts = {
   rentalownerids: [37], # Array<Integer> | Filters results to tenants whose rental unit belongs to a property with a rental owner in the specified set of rental owner ids.
   lastupdatedfrom: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any rental tenants that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
   lastupdatedto: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any rental tenants that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
+  unitids: [37], # Array<Integer> | Filters results to only tenants associated with the specified set of unit ids.
   orderby: 'orderby_example', # String | `orderby` indicates the field(s) and direction to sort the results in the response. See <a href=\"#section/API-Overview/Bulk-Request-Options\">Bulk Request Options</a> for more information.
   offset: 56, # Integer | `offset` indicates the position of the first record to return. The `offset` is zero-based and the default is 0.
   limit: 56 # Integer | `limit` indicates the maximum number of results to be returned in the response. `limit` can range between 1 and 1000 and the default is 50.
@@ -342,6 +343,7 @@ end
 | **rentalownerids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to tenants whose rental unit belongs to a property with a rental owner in the specified set of rental owner ids. | [optional] |
 | **lastupdatedfrom** | **Time** | Filters results to any rental tenants that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
 | **lastupdatedto** | **Time** | Filters results to any rental tenants that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ. | [optional] |
+| **unitids** | [**Array&lt;Integer&gt;**](Integer.md) | Filters results to only tenants associated with the specified set of unit ids. | [optional] |
 | **orderby** | **String** | &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information. | [optional] |
 | **offset** | **Integer** | &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0. | [optional] |
 | **limit** | **Integer** | &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50. | [optional] |
@@ -366,7 +368,7 @@ end
 
 Retrieve a tenant
 
-Retrieve a specific tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+Retrieve a specific tenant.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
 
 ### Examples
 
@@ -442,7 +444,7 @@ end
 
 Retrieve a note
 
-Retrieves a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`
+Retrieves a tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`
 
 ### Examples
 
@@ -516,11 +518,11 @@ end
 
 ## update_lease_tenant_note
 
-> <NoteMessage> update_lease_tenant_note(tenant_id, note_id, note_put_message)
+> <NoteMessage> update_lease_tenant_note(tenant_id, note_id, update_lease_note_request)
 
 Update a note
 
-Updates a tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+Updates a tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -543,11 +545,11 @@ end
 api_instance = Buildium::RentalTenantsApi.new
 tenant_id = 56 # Integer | 
 note_id = 56 # Integer | 
-note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
+update_lease_note_request = Buildium::UpdateLeaseNoteRequest.new({note: 'note_example'}) # UpdateLeaseNoteRequest | 
 
 begin
   # Update a note
-  result = api_instance.update_lease_tenant_note(tenant_id, note_id, note_put_message)
+  result = api_instance.update_lease_tenant_note(tenant_id, note_id, update_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalTenantsApi->update_lease_tenant_note: #{e}"
@@ -558,12 +560,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> update_lease_tenant_note_with_http_info(tenant_id, note_id, note_put_message)
+> <Array(<NoteMessage>, Integer, Hash)> update_lease_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request)
 
 ```ruby
 begin
   # Update a note
-  data, status_code, headers = api_instance.update_lease_tenant_note_with_http_info(tenant_id, note_id, note_put_message)
+  data, status_code, headers = api_instance.update_lease_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -578,7 +580,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **tenant_id** | **Integer** |  |  |
 | **note_id** | **Integer** |  |  |
-| **note_put_message** | [**NotePutMessage**](NotePutMessage.md) |  |  |
+| **update_lease_note_request** | [**UpdateLeaseNoteRequest**](UpdateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -596,11 +598,11 @@ end
 
 ## update_rental_tenant
 
-> <TenantMessage> update_rental_tenant(tenant_id, rental_tenant_put_message)
+> <TenantMessage> update_rental_tenant(tenant_id, update_rental_tenant_request)
 
 Update a tenant
 
-Updates a rental tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View` `Edit`
+Updates a rental tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -622,11 +624,11 @@ end
 
 api_instance = Buildium::RentalTenantsApi.new
 tenant_id = 56 # Integer | 
-rental_tenant_put_message = Buildium::RentalTenantPutMessage.new({first_name: 'first_name_example', last_name: 'last_name_example', address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # RentalTenantPutMessage | 
+update_rental_tenant_request = Buildium::UpdateRentalTenantRequest.new({first_name: 'first_name_example', last_name: 'last_name_example', address: Buildium::AssociationTenantPostMessagePrimaryAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'})}) # UpdateRentalTenantRequest | 
 
 begin
   # Update a tenant
-  result = api_instance.update_rental_tenant(tenant_id, rental_tenant_put_message)
+  result = api_instance.update_rental_tenant(tenant_id, update_rental_tenant_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalTenantsApi->update_rental_tenant: #{e}"
@@ -637,12 +639,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<TenantMessage>, Integer, Hash)> update_rental_tenant_with_http_info(tenant_id, rental_tenant_put_message)
+> <Array(<TenantMessage>, Integer, Hash)> update_rental_tenant_with_http_info(tenant_id, update_rental_tenant_request)
 
 ```ruby
 begin
   # Update a tenant
-  data, status_code, headers = api_instance.update_rental_tenant_with_http_info(tenant_id, rental_tenant_put_message)
+  data, status_code, headers = api_instance.update_rental_tenant_with_http_info(tenant_id, update_rental_tenant_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <TenantMessage>
@@ -656,7 +658,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **tenant_id** | **Integer** |  |  |
-| **rental_tenant_put_message** | [**RentalTenantPutMessage**](RentalTenantPutMessage.md) |  |  |
+| **update_rental_tenant_request** | [**UpdateRentalTenantRequest**](UpdateRentalTenantRequest.md) |  |  |
 
 ### Return type
 

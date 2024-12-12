@@ -8,7 +8,7 @@
 | **tax_payer_id** | **String** | The tax payer identifier. | [optional] |
 | **tax_payer_name1** | **String** | Tax payer name line 1. | [optional] |
 | **tax_payer_name2** | **String** | Tax payer name line 2. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**AssociationTaxInformationMessageAddress**](AssociationTaxInformationMessageAddress.md) |  | [optional] |
 
 ## Example
 

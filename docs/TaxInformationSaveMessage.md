@@ -9,7 +9,7 @@
 | **tax_payer_name1** | **String** | The tax payer name 1. The value cannot exceed 40 characters. | [optional] |
 | **tax_payer_name2** | **String** | The tax payer name 2. The value cannot exceed 40 characters. | [optional] |
 | **include_in1099** | **Boolean** | Indicates whether the vendor should be included in 1099 form generation. |  |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  | [optional] |
+| **address** | [**TaxInformationPostMessageAddress**](TaxInformationPostMessageAddress.md) |  | [optional] |
 
 ## Example
 

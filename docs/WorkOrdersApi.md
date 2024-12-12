@@ -12,11 +12,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_work_order
 
-> <WorkOrderMessage> create_work_order(work_order_post_message)
+> <WorkOrderMessage> create_work_order(create_work_order_request)
 
 Create a work order
 
-Creates a work order.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View` `Edit`
+Creates a work order.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Work Orders</span> - `View` `Edit`
 
 ### Examples
 
@@ -37,11 +37,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::WorkOrdersApi.new
-work_order_post_message = Buildium::WorkOrderPostMessage.new({entry_allowed: 'Unknown', vendor_id: 37}) # WorkOrderPostMessage | 
+create_work_order_request = Buildium::CreateWorkOrderRequest.new({entry_allowed: 'Unknown', vendor_id: 37}) # CreateWorkOrderRequest | 
 
 begin
   # Create a work order
-  result = api_instance.create_work_order(work_order_post_message)
+  result = api_instance.create_work_order(create_work_order_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling WorkOrdersApi->create_work_order: #{e}"
@@ -52,12 +52,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<WorkOrderMessage>, Integer, Hash)> create_work_order_with_http_info(work_order_post_message)
+> <Array(<WorkOrderMessage>, Integer, Hash)> create_work_order_with_http_info(create_work_order_request)
 
 ```ruby
 begin
   # Create a work order
-  data, status_code, headers = api_instance.create_work_order_with_http_info(work_order_post_message)
+  data, status_code, headers = api_instance.create_work_order_with_http_info(create_work_order_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WorkOrderMessage>
@@ -70,7 +70,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **work_order_post_message** | [**WorkOrderPostMessage**](WorkOrderPostMessage.md) |  |  |
+| **create_work_order_request** | [**CreateWorkOrderRequest**](CreateWorkOrderRequest.md) |  |  |
 
 ### Return type
 
@@ -92,7 +92,7 @@ end
 
 Retrieve all work orders
 
-Retrieves a list of work orders.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View`
+Retrieves a list of work orders.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Work Orders</span> - `View`
 
 ### Examples
 
@@ -212,7 +212,7 @@ end
 
 Retrieve a work order
 
-Retrieves a specific work order.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View`
+Retrieves a specific work order.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Work Orders</span> - `View`
 
 ### Examples
 
@@ -284,11 +284,11 @@ end
 
 ## update_work_order
 
-> <WorkOrderMessage> update_work_order(work_order_id, work_order_put_message)
+> <WorkOrderMessage> update_work_order(work_order_id, update_work_order_request)
 
 Update a work order
 
-Updates a work order.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Work Orders</span> - `View` `Edit`
+Updates a work order.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Work Orders</span> - `View` `Edit`
 
 ### Examples
 
@@ -310,11 +310,11 @@ end
 
 api_instance = Buildium::WorkOrdersApi.new
 work_order_id = 56 # Integer | 
-work_order_put_message = Buildium::WorkOrderPutMessage.new({entry_allowed: 'Unknown', vendor_id: 37}) # WorkOrderPutMessage | 
+update_work_order_request = Buildium::UpdateWorkOrderRequest.new({entry_allowed: 'Unknown', vendor_id: 37}) # UpdateWorkOrderRequest | 
 
 begin
   # Update a work order
-  result = api_instance.update_work_order(work_order_id, work_order_put_message)
+  result = api_instance.update_work_order(work_order_id, update_work_order_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling WorkOrdersApi->update_work_order: #{e}"
@@ -325,12 +325,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<WorkOrderMessage>, Integer, Hash)> update_work_order_with_http_info(work_order_id, work_order_put_message)
+> <Array(<WorkOrderMessage>, Integer, Hash)> update_work_order_with_http_info(work_order_id, update_work_order_request)
 
 ```ruby
 begin
   # Update a work order
-  data, status_code, headers = api_instance.update_work_order_with_http_info(work_order_id, work_order_put_message)
+  data, status_code, headers = api_instance.update_work_order_with_http_info(work_order_id, update_work_order_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <WorkOrderMessage>
@@ -344,7 +344,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **work_order_id** | **Integer** |  |  |
-| **work_order_put_message** | [**WorkOrderPutMessage**](WorkOrderPutMessage.md) |  |  |
+| **update_work_order_request** | [**UpdateWorkOrderRequest**](UpdateWorkOrderRequest.md) |  |  |
 
 ### Return type
 

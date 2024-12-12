@@ -10,7 +10,7 @@
 | **memo** | **String** | Memo associated with the refund, if applicable. | [optional] |
 | **check_number** | **String** | Check number associated with the refund, if applicable. | [optional] |
 | **bank_account_id** | **Integer** | Unique identifier of the bank account that the refund was made from. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**LeaseLedgerRefundMessageAddress**](LeaseLedgerRefundMessageAddress.md) |  | [optional] |
 | **total_amount** | **Float** | Total amount of the refund. | [optional] |
 | **lines** | [**Array&lt;LeaseLedgerRefundLineMessage&gt;**](LeaseLedgerRefundLineMessage.md) | A collection of line items included in the refund. | [optional] |
 

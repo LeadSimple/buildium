@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a listing contact
-    # Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`
-    # @param listing_contact_save_message [ListingContactSaveMessage] 
+    # Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit`
+    # @param create_listing_contact_request [CreateListingContactRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ListingContactMessage]
-    def create_listing_contact(listing_contact_save_message, opts = {})
-      data, _status_code, _headers = create_listing_contact_with_http_info(listing_contact_save_message, opts)
+    def create_listing_contact(create_listing_contact_request, opts = {})
+      data, _status_code, _headers = create_listing_contact_with_http_info(create_listing_contact_request, opts)
       data
     end
 
     # Create a listing contact
-    # Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param listing_contact_save_message [ListingContactSaveMessage] 
+    # Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_listing_contact_request [CreateListingContactRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListingContactMessage, Integer, Hash)>] ListingContactMessage data, response status code and response headers
-    def create_listing_contact_with_http_info(listing_contact_save_message, opts = {})
+    def create_listing_contact_with_http_info(create_listing_contact_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ListingsApi.create_listing_contact ...'
       end
-      # verify the required parameter 'listing_contact_save_message' is set
-      if @api_client.config.client_side_validation && listing_contact_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'listing_contact_save_message' when calling ListingsApi.create_listing_contact"
+      # verify the required parameter 'create_listing_contact_request' is set
+      if @api_client.config.client_side_validation && create_listing_contact_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_listing_contact_request' when calling ListingsApi.create_listing_contact"
       end
       # resource path
       local_var_path = '/v1/rentals/units/listingcontacts'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(listing_contact_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_listing_contact_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ListingContactMessage'
@@ -88,7 +88,7 @@ module Buildium
     end
 
     # Delete a listing
-    # Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit` `Delete`
+    # Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit` `Delete`
     # @param unit_id [Integer] The rental property unit identifier.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -98,7 +98,7 @@ module Buildium
     end
 
     # Delete a listing
-    # Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.&lt;br /&gt;&lt;br /&gt;Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist&#39;s tools provided in your craigslist account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+    # Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.&lt;br /&gt;&lt;br /&gt;Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist&#39;s tools provided in your craigslist account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
     # @param unit_id [Integer] The rental property unit identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -151,7 +151,7 @@ module Buildium
     end
 
     # Retrieve all listing contacts
-    # Retrieves all listing contacts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`
+    # Retrieves all listing contacts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -163,7 +163,7 @@ module Buildium
     end
 
     # Retrieve all listing contacts
-    # Retrieves all listing contacts.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all listing contacts.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -217,7 +217,7 @@ module Buildium
     end
 
     # Retrieve a listing contact
-    # Retrieves a specific listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`
+    # Retrieves a specific listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View`
     # @param listing_contact_id [Integer] The listing contact identifier.
     # @param [Hash] opts the optional parameters
     # @return [ListingContactMessage]
@@ -227,7 +227,7 @@ module Buildium
     end
 
     # Retrieve a listing contact
-    # Retrieves a specific listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60;
     # @param listing_contact_id [Integer] The listing contact identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListingContactMessage, Integer, Hash)>] ListingContactMessage data, response status code and response headers
@@ -280,7 +280,7 @@ module Buildium
     end
 
     # Retrieve a listing
-    # Retrieves a specific listing.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # Retrieves a specific listing.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
     # @param unit_id [Integer] The rental unit identifier.
     # @param [Hash] opts the optional parameters
     # @return [ListingMessage]
@@ -290,7 +290,7 @@ module Buildium
     end
 
     # Retrieve a listing
-    # Retrieves a specific listing.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific listing.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param unit_id [Integer] The rental unit identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListingMessage, Integer, Hash)>] ListingMessage data, response status code and response headers
@@ -343,7 +343,7 @@ module Buildium
     end
 
     # Retrieve all listings
-    # Retrieves all listings.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+    # Retrieves all listings.  <br /><br /><span class=\"permissionBlock\">Rentals > Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; refers to.
     # @option opts [Integer] :entityid Filters results to only listings that are associated with the specified entity id value. The id must be of the type specified in &#x60;EntityType&#x60; property.
@@ -357,7 +357,7 @@ module Buildium
     end
 
     # Retrieve all listings
-    # Retrieves all listings.  &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all listings.  &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; refers to.
     # @option opts [Integer] :entityid Filters results to only listings that are associated with the specified entity id value. The id must be of the type specified in &#x60;EntityType&#x60; property.
@@ -419,23 +419,23 @@ module Buildium
     end
 
     # Update a listing contact
-    # Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`
+    # Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit`
     # @param listing_contact_id [Integer] The listing contact identifier.
-    # @param listing_contact_save_message [ListingContactSaveMessage] 
+    # @param create_listing_contact_request [CreateListingContactRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ListingContactMessage]
-    def update_listing_contact(listing_contact_id, listing_contact_save_message, opts = {})
-      data, _status_code, _headers = update_listing_contact_with_http_info(listing_contact_id, listing_contact_save_message, opts)
+    def update_listing_contact(listing_contact_id, create_listing_contact_request, opts = {})
+      data, _status_code, _headers = update_listing_contact_with_http_info(listing_contact_id, create_listing_contact_request, opts)
       data
     end
 
     # Update a listing contact
-    # Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param listing_contact_id [Integer] The listing contact identifier.
-    # @param listing_contact_save_message [ListingContactSaveMessage] 
+    # @param create_listing_contact_request [CreateListingContactRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListingContactMessage, Integer, Hash)>] ListingContactMessage data, response status code and response headers
-    def update_listing_contact_with_http_info(listing_contact_id, listing_contact_save_message, opts = {})
+    def update_listing_contact_with_http_info(listing_contact_id, create_listing_contact_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ListingsApi.update_listing_contact ...'
       end
@@ -443,9 +443,9 @@ module Buildium
       if @api_client.config.client_side_validation && listing_contact_id.nil?
         fail ArgumentError, "Missing the required parameter 'listing_contact_id' when calling ListingsApi.update_listing_contact"
       end
-      # verify the required parameter 'listing_contact_save_message' is set
-      if @api_client.config.client_side_validation && listing_contact_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'listing_contact_save_message' when calling ListingsApi.update_listing_contact"
+      # verify the required parameter 'create_listing_contact_request' is set
+      if @api_client.config.client_side_validation && create_listing_contact_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_listing_contact_request' when calling ListingsApi.update_listing_contact"
       end
       # resource path
       local_var_path = '/v1/rentals/units/listingcontacts/{listingContactId}'.sub('{' + 'listingContactId' + '}', CGI.escape(listing_contact_id.to_s))
@@ -460,14 +460,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(listing_contact_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_listing_contact_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ListingContactMessage'
@@ -493,23 +493,23 @@ module Buildium
     end
 
     # Create/Update a listing
-    # This endpoint can be used to both *create* and *update* a listing. If no listing exists for the unit one will be created, otherwise the existing listing will be updated. A unit can only ever have one active listing.    <br /><br />  Upon creation the listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours. Updates to the listing will appear immediately in your Buildium public website and propagated to syndicated sites within 24-48 hours.   <br /><br />  Note, the listing will automatically pull in the information, features, and media that exists for the property and unit details.   <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+    # This endpoint can be used to both *create* and *update* a listing. If no listing exists for the unit one will be created, otherwise the existing listing will be updated. A unit can only ever have one active listing.    <br /><br />  Upon creation the listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours. Updates to the listing will appear immediately in your Buildium public website and propagated to syndicated sites within 24-48 hours.   <br /><br />  Note, the listing will automatically pull in the information, features, and media that exists for the property and unit details.   <br /><br /><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View` `Edit`
     # @param unit_id [Integer] 
-    # @param listing_put_message [ListingPutMessage] 
+    # @param upsert_listings_async_request [UpsertListingsAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ListingMessage]
-    def upsert_listings_async(unit_id, listing_put_message, opts = {})
-      data, _status_code, _headers = upsert_listings_async_with_http_info(unit_id, listing_put_message, opts)
+    def upsert_listings_async(unit_id, upsert_listings_async_request, opts = {})
+      data, _status_code, _headers = upsert_listings_async_with_http_info(unit_id, upsert_listings_async_request, opts)
       data
     end
 
     # Create/Update a listing
-    # This endpoint can be used to both *create* and *update* a listing. If no listing exists for the unit one will be created, otherwise the existing listing will be updated. A unit can only ever have one active listing.    &lt;br /&gt;&lt;br /&gt;  Upon creation the listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours. Updates to the listing will appear immediately in your Buildium public website and propagated to syndicated sites within 24-48 hours.   &lt;br /&gt;&lt;br /&gt;  Note, the listing will automatically pull in the information, features, and media that exists for the property and unit details.   &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # This endpoint can be used to both *create* and *update* a listing. If no listing exists for the unit one will be created, otherwise the existing listing will be updated. A unit can only ever have one active listing.    &lt;br /&gt;&lt;br /&gt;  Upon creation the listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours. Updates to the listing will appear immediately in your Buildium public website and propagated to syndicated sites within 24-48 hours.   &lt;br /&gt;&lt;br /&gt;  Note, the listing will automatically pull in the information, features, and media that exists for the property and unit details.   &lt;br /&gt;&lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Listings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param unit_id [Integer] 
-    # @param listing_put_message [ListingPutMessage] 
+    # @param upsert_listings_async_request [UpsertListingsAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListingMessage, Integer, Hash)>] ListingMessage data, response status code and response headers
-    def upsert_listings_async_with_http_info(unit_id, listing_put_message, opts = {})
+    def upsert_listings_async_with_http_info(unit_id, upsert_listings_async_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ListingsApi.upsert_listings_async ...'
       end
@@ -517,9 +517,9 @@ module Buildium
       if @api_client.config.client_side_validation && unit_id.nil?
         fail ArgumentError, "Missing the required parameter 'unit_id' when calling ListingsApi.upsert_listings_async"
       end
-      # verify the required parameter 'listing_put_message' is set
-      if @api_client.config.client_side_validation && listing_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'listing_put_message' when calling ListingsApi.upsert_listings_async"
+      # verify the required parameter 'upsert_listings_async_request' is set
+      if @api_client.config.client_side_validation && upsert_listings_async_request.nil?
+        fail ArgumentError, "Missing the required parameter 'upsert_listings_async_request' when calling ListingsApi.upsert_listings_async"
       end
       # resource path
       local_var_path = '/v1/rentals/units/{unitId}/listing'.sub('{' + 'unitId' + '}', CGI.escape(unit_id.to_s))
@@ -534,14 +534,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(listing_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upsert_listings_async_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ListingMessage'

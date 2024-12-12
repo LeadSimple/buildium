@@ -36,6 +36,13 @@ module Buildium
     # Indicates the delinquency status of the association owner.
     attr_accessor :delinquency_status
 
+    attr_accessor :primary_address
+
+    attr_accessor :alternate_address
+
+    # Indicates the association owner's mailing preference.
+    attr_accessor :mailing_preference
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -67,7 +74,10 @@ module Buildium
         :'email' => :'Email',
         :'alternate_email' => :'AlternateEmail',
         :'phone_numbers' => :'PhoneNumbers',
-        :'delinquency_status' => :'DelinquencyStatus'
+        :'delinquency_status' => :'DelinquencyStatus',
+        :'primary_address' => :'PrimaryAddress',
+        :'alternate_address' => :'AlternateAddress',
+        :'mailing_preference' => :'MailingPreference'
       }
     end
 
@@ -85,7 +95,10 @@ module Buildium
         :'email' => :'String',
         :'alternate_email' => :'String',
         :'phone_numbers' => :'Array<PhoneNumberMessage>',
-        :'delinquency_status' => :'String'
+        :'delinquency_status' => :'String',
+        :'primary_address' => :'AssociationOwnerMessagePrimaryAddress',
+        :'alternate_address' => :'AssociationOwnerMessageAlternateAddress',
+        :'mailing_preference' => :'String'
       }
     end
 
@@ -139,6 +152,18 @@ module Buildium
       if attributes.key?(:'delinquency_status')
         self.delinquency_status = attributes[:'delinquency_status']
       end
+
+      if attributes.key?(:'primary_address')
+        self.primary_address = attributes[:'primary_address']
+      end
+
+      if attributes.key?(:'alternate_address')
+        self.alternate_address = attributes[:'alternate_address']
+      end
+
+      if attributes.key?(:'mailing_preference')
+        self.mailing_preference = attributes[:'mailing_preference']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -153,6 +178,8 @@ module Buildium
     def valid?
       delinquency_status_validator = EnumAttributeValidator.new('String', ["NoDelinquency", "InCollections", "InForeclosure", "Foreclosed"])
       return false unless delinquency_status_validator.valid?(@delinquency_status)
+      mailing_preference_validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
+      return false unless mailing_preference_validator.valid?(@mailing_preference)
       true
     end
 
@@ -166,6 +193,16 @@ module Buildium
       @delinquency_status = delinquency_status
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] mailing_preference Object to be assigned
+    def mailing_preference=(mailing_preference)
+      validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
+      unless validator.valid?(mailing_preference)
+        fail ArgumentError, "invalid value #{ mailing_preference.inspect } for \"mailing_preference\", must be one of #{validator.allowable_values}."
+      end
+      @mailing_preference = mailing_preference
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -177,7 +214,10 @@ module Buildium
           email == o.email &&
           alternate_email == o.alternate_email &&
           phone_numbers == o.phone_numbers &&
-          delinquency_status == o.delinquency_status
+          delinquency_status == o.delinquency_status &&
+          primary_address == o.primary_address &&
+          alternate_address == o.alternate_address &&
+          mailing_preference == o.mailing_preference
     end
 
     # @see the `==` method
@@ -189,7 +229,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, first_name, last_name, email, alternate_email, phone_numbers, delinquency_status].hash
+      [id, first_name, last_name, email, alternate_email, phone_numbers, delinquency_status, primary_address, alternate_address, mailing_preference].hash
     end
 
     # Builds the object from hash
@@ -203,7 +243,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -310,5 +350,6 @@ module Buildium
         value
       end
     end
+
   end
 end

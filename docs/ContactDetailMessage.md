@@ -7,7 +7,7 @@
 | **first_name** | **String** | Contact first name. | [optional] |
 | **last_name** | **String** | Contact last name. | [optional] |
 | **email** | **String** | Contact email. | [optional] |
-| **phone_numbers** | [**ContactDetailPhoneMessage**](ContactDetailPhoneMessage.md) |  | [optional] |
+| **phone_numbers** | [**ContactDetailMessagePhoneNumbers**](ContactDetailMessagePhoneNumbers.md) |  | [optional] |
 
 ## Example
 

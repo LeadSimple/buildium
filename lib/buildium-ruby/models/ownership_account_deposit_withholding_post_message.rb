@@ -18,13 +18,13 @@ module Buildium
     # Date of the deposit withholding. The date must be formatted as YYYY-MM-DD.
     attr_accessor :entry_date
 
-    # General Ledger Account identifier to record the deposit withholding under.
+    # The identifier of the liability general ledger account from which to withhold the funds. Note, the specified liability account must have a positive balance.
     attr_accessor :deposit_liability_gl_account_id
 
     # Memo associated with the withholding. Memo cannot exceed 65 characters.
     attr_accessor :memo
 
-    # Collection of line items included in this deposit withholding. At least one line item is required.
+    # Line items specifying the income accounts the deposit will be applied to. The total amount of the line items can not exceed the balance of the liability account.
     attr_accessor :lines
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -149,7 +149,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -256,5 +256,6 @@ module Buildium
         value
       end
     end
+
   end
 end

@@ -110,13 +110,13 @@ module Buildium
       {
         :'id' => :'Integer',
         :'task_type' => :'String',
-        :'category' => :'TaskCategoryResponseMessage',
+        :'category' => :'AllTasksMessageCategory',
         :'title' => :'String',
         :'description' => :'String',
-        :'property' => :'PropertyMessage',
+        :'property' => :'AllTasksMessageProperty',
         :'unit_id' => :'Integer',
-        :'unit_agreement' => :'UnitAgreementMessage',
-        :'requested_by_user_entity' => :'RequestedByUserEntityMessage',
+        :'unit_agreement' => :'AllTasksMessageUnitAgreement',
+        :'requested_by_user_entity' => :'AllTasksMessageRequestedByUserEntity',
         :'assigned_to_user_id' => :'Integer',
         :'task_status' => :'String',
         :'priority' => :'String',
@@ -302,7 +302,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -409,5 +409,6 @@ module Buildium
         value
       end
     end
+
   end
 end

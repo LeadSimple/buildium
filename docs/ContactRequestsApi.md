@@ -12,11 +12,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_contact_request_task
 
-> <ContactRequestTaskMessage> create_contact_request_task(contact_request_task_post_message)
+> <ContactRequestTaskMessage> create_contact_request_task(create_contact_request_task_request)
 
 Create a contact request
 
-Creates a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Creates a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -37,11 +37,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::ContactRequestsApi.new
-contact_request_task_post_message = Buildium::ContactRequestTaskPostMessage.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low', contact_detail: Buildium::ContactDetailSaveMessage.new({first_name: 'first_name_example'})}) # ContactRequestTaskPostMessage | 
+create_contact_request_task_request = Buildium::CreateContactRequestTaskRequest.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low', contact_detail: Buildium::ContactRequestTaskPostMessageContactDetail.new({first_name: 'first_name_example'})}) # CreateContactRequestTaskRequest | 
 
 begin
   # Create a contact request
-  result = api_instance.create_contact_request_task(contact_request_task_post_message)
+  result = api_instance.create_contact_request_task(create_contact_request_task_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ContactRequestsApi->create_contact_request_task: #{e}"
@@ -52,12 +52,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ContactRequestTaskMessage>, Integer, Hash)> create_contact_request_task_with_http_info(contact_request_task_post_message)
+> <Array(<ContactRequestTaskMessage>, Integer, Hash)> create_contact_request_task_with_http_info(create_contact_request_task_request)
 
 ```ruby
 begin
   # Create a contact request
-  data, status_code, headers = api_instance.create_contact_request_task_with_http_info(contact_request_task_post_message)
+  data, status_code, headers = api_instance.create_contact_request_task_with_http_info(create_contact_request_task_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ContactRequestTaskMessage>
@@ -70,7 +70,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **contact_request_task_post_message** | [**ContactRequestTaskPostMessage**](ContactRequestTaskPostMessage.md) |  |  |
+| **create_contact_request_task_request** | [**CreateContactRequestTaskRequest**](CreateContactRequestTaskRequest.md) |  |  |
 
 ### Return type
 
@@ -92,7 +92,7 @@ end
 
 Retrieve a contact request
 
-Retrieves a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves a contact request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -168,7 +168,7 @@ end
 
 Retrieve all contact requests
 
-Retrieves a list of contact requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves a list of contact requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -270,11 +270,11 @@ end
 
 ## update_contact_request_task
 
-> <ContactRequestTaskMessage> update_contact_request_task(contact_request_task_id, contact_request_task_put_message)
+> <ContactRequestTaskMessage> update_contact_request_task(contact_request_task_id, update_contact_request_task_request)
 
 Update a contact request
 
-Updates a contact request.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Updates a contact request.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -296,11 +296,11 @@ end
 
 api_instance = Buildium::ContactRequestsApi.new
 contact_request_task_id = 56 # Integer | The contact request identifier.
-contact_request_task_put_message = Buildium::ContactRequestTaskPutMessage.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low', contact_detail: Buildium::ContactDetailSaveMessage.new({first_name: 'first_name_example'})}) # ContactRequestTaskPutMessage | 
+update_contact_request_task_request = Buildium::UpdateContactRequestTaskRequest.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low', contact_detail: Buildium::ContactRequestTaskPutMessageContactDetail.new({first_name: 'first_name_example'})}) # UpdateContactRequestTaskRequest | 
 
 begin
   # Update a contact request
-  result = api_instance.update_contact_request_task(contact_request_task_id, contact_request_task_put_message)
+  result = api_instance.update_contact_request_task(contact_request_task_id, update_contact_request_task_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ContactRequestsApi->update_contact_request_task: #{e}"
@@ -311,12 +311,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ContactRequestTaskMessage>, Integer, Hash)> update_contact_request_task_with_http_info(contact_request_task_id, contact_request_task_put_message)
+> <Array(<ContactRequestTaskMessage>, Integer, Hash)> update_contact_request_task_with_http_info(contact_request_task_id, update_contact_request_task_request)
 
 ```ruby
 begin
   # Update a contact request
-  data, status_code, headers = api_instance.update_contact_request_task_with_http_info(contact_request_task_id, contact_request_task_put_message)
+  data, status_code, headers = api_instance.update_contact_request_task_with_http_info(contact_request_task_id, update_contact_request_task_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ContactRequestTaskMessage>
@@ -330,7 +330,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **contact_request_task_id** | **Integer** | The contact request identifier. |  |
-| **contact_request_task_put_message** | [**ContactRequestTaskPutMessage**](ContactRequestTaskPutMessage.md) |  |  |
+| **update_contact_request_task_request** | [**UpdateContactRequestTaskRequest**](UpdateContactRequestTaskRequest.md) |  |  |
 
 ### Return type
 

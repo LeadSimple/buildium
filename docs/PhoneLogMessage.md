@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Phone log unique identifier. | [optional] |
-| **participant** | [**ParticipantMessage**](ParticipantMessage.md) |  | [optional] |
-| **logged_by_staff_user** | [**LoggedByStaffUserMessage**](LoggedByStaffUserMessage.md) |  | [optional] |
+| **participant** | [**PhoneLogMessageParticipant**](PhoneLogMessageParticipant.md) |  | [optional] |
+| **logged_by_staff_user** | [**PhoneLogMessageLoggedByStaffUser**](PhoneLogMessageLoggedByStaffUser.md) |  | [optional] |
 | **subject** | **String** | Subject of the phone call. | [optional] |
 | **description** | **String** | Description of the phone call. | [optional] |
 | **call_date_time** | **Time** | The date and time in UTC of when the call took place. | [optional] |

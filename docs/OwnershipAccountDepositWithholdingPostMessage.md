@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **entry_date** | **Date** | Date of the deposit withholding. The date must be formatted as YYYY-MM-DD. |  |
-| **deposit_liability_gl_account_id** | **Integer** | General Ledger Account identifier to record the deposit withholding under. |  |
+| **deposit_liability_gl_account_id** | **Integer** | The identifier of the liability general ledger account from which to withhold the funds. Note, the specified liability account must have a positive balance. |  |
 | **memo** | **String** | Memo associated with the withholding. Memo cannot exceed 65 characters. | [optional] |
-| **lines** | [**Array&lt;OwnershipAccountDepositWithholdingLinePostMessage&gt;**](OwnershipAccountDepositWithholdingLinePostMessage.md) | Collection of line items included in this deposit withholding. At least one line item is required. | [optional] |
+| **lines** | [**Array&lt;OwnershipAccountDepositWithholdingLinePostMessage&gt;**](OwnershipAccountDepositWithholdingLinePostMessage.md) | Line items specifying the income accounts the deposit will be applied to. The total amount of the line items can not exceed the balance of the liability account. | [optional] |
 
 ## Example
 

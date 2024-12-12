@@ -20,23 +20,23 @@ module Buildium
       @api_client = api_client
     end
     # Create a payment (auto allocated)
-    # Creates a payment on the ownership account ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &gt; Application Settings &gt; Residents page in your account. If you'd like to specify the general ledger accounts the payment should apply to, please use the <a href=\"#operation/CreateOwnershipAccountLedgerPayment\">Create a payment</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # Creates a payment on the ownership account ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings > Application Settings > Residents page in your account. If you'd like to specify the general ledger accounts the payment should apply to, please use the <a href=\"#operation/CreateOwnershipAccountLedgerPayment\">Create a payment</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_auto_allocated_payment_post_message [OwnershipAccountAutoAllocatedPaymentPostMessage] 
+    # @param create_ownership_account_auto_allocated_payment_request [CreateOwnershipAccountAutoAllocatedPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountTransactionMessage]
-    def create_ownership_account_auto_allocated_payment(ownership_account_id, ownership_account_auto_allocated_payment_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, ownership_account_auto_allocated_payment_post_message, opts)
+    def create_ownership_account_auto_allocated_payment(ownership_account_id, create_ownership_account_auto_allocated_payment_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, create_ownership_account_auto_allocated_payment_request, opts)
       data
     end
 
     # Create a payment (auto allocated)
-    # Creates a payment on the ownership account ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &amp;gt; Application Settings &amp;gt; Residents page in your account. If you&#39;d like to specify the general ledger accounts the payment should apply to, please use the &lt;a href&#x3D;\&quot;#operation/CreateOwnershipAccountLedgerPayment\&quot;&gt;Create a payment&lt;/a&gt; endpoint.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a payment on the ownership account ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &gt; Application Settings &gt; Residents page in your account. If you&#39;d like to specify the general ledger accounts the payment should apply to, please use the &lt;a href&#x3D;\&quot;#operation/CreateOwnershipAccountLedgerPayment\&quot;&gt;Create a payment&lt;/a&gt; endpoint.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_auto_allocated_payment_post_message [OwnershipAccountAutoAllocatedPaymentPostMessage] 
+    # @param create_ownership_account_auto_allocated_payment_request [CreateOwnershipAccountAutoAllocatedPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
-    def create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, ownership_account_auto_allocated_payment_post_message, opts = {})
+    def create_ownership_account_auto_allocated_payment_with_http_info(ownership_account_id, create_ownership_account_auto_allocated_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_auto_allocated_payment ...'
       end
@@ -44,9 +44,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_auto_allocated_payment"
       end
-      # verify the required parameter 'ownership_account_auto_allocated_payment_post_message' is set
-      if @api_client.config.client_side_validation && ownership_account_auto_allocated_payment_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_auto_allocated_payment_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_auto_allocated_payment"
+      # verify the required parameter 'create_ownership_account_auto_allocated_payment_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_auto_allocated_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_auto_allocated_payment_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_auto_allocated_payment"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/autoallocatedpayments'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -61,14 +61,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_auto_allocated_payment_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_auto_allocated_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
@@ -94,23 +94,23 @@ module Buildium
     end
 
     # Create a credit
-    # Creates a ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # Creates a ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_credit_post_message [OwnershipAccountCreditPostMessage] 
+    # @param create_ownership_account_credit_request [CreateOwnershipAccountCreditRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountTransactionMessage]
-    def create_ownership_account_credit(ownership_account_id, ownership_account_credit_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_credit_with_http_info(ownership_account_id, ownership_account_credit_post_message, opts)
+    def create_ownership_account_credit(ownership_account_id, create_ownership_account_credit_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_credit_with_http_info(ownership_account_id, create_ownership_account_credit_request, opts)
       data
     end
 
     # Create a credit
-    # Creates a ledger credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a ledger credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_credit_post_message [OwnershipAccountCreditPostMessage] 
+    # @param create_ownership_account_credit_request [CreateOwnershipAccountCreditRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
-    def create_ownership_account_credit_with_http_info(ownership_account_id, ownership_account_credit_post_message, opts = {})
+    def create_ownership_account_credit_with_http_info(ownership_account_id, create_ownership_account_credit_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_credit ...'
       end
@@ -118,9 +118,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_credit"
       end
-      # verify the required parameter 'ownership_account_credit_post_message' is set
-      if @api_client.config.client_side_validation && ownership_account_credit_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_credit_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_credit"
+      # verify the required parameter 'create_ownership_account_credit_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_credit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_credit_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_credit"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/credits'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -135,14 +135,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_credit_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_credit_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
@@ -168,23 +168,23 @@ module Buildium
     end
 
     # Create a recurring credit
-    # Creates a recurring credit transaction that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # Creates a recurring credit transaction that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param credit_recurring_transaction_post_message [CreditRecurringTransactionPostMessage] 
+    # @param create_ownership_account_credit_recurring_transaction_request [CreateOwnershipAccountCreditRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountRecurringCreditMessage]
-    def create_ownership_account_credit_recurring_transaction(ownership_account_id, credit_recurring_transaction_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_credit_recurring_transaction_with_http_info(ownership_account_id, credit_recurring_transaction_post_message, opts)
+    def create_ownership_account_credit_recurring_transaction(ownership_account_id, create_ownership_account_credit_recurring_transaction_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_credit_recurring_transaction_with_http_info(ownership_account_id, create_ownership_account_credit_recurring_transaction_request, opts)
       data
     end
 
     # Create a recurring credit
-    # Creates a recurring credit transaction that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a recurring credit transaction that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param credit_recurring_transaction_post_message [CreditRecurringTransactionPostMessage] 
+    # @param create_ownership_account_credit_recurring_transaction_request [CreateOwnershipAccountCreditRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountRecurringCreditMessage, Integer, Hash)>] OwnershipAccountRecurringCreditMessage data, response status code and response headers
-    def create_ownership_account_credit_recurring_transaction_with_http_info(ownership_account_id, credit_recurring_transaction_post_message, opts = {})
+    def create_ownership_account_credit_recurring_transaction_with_http_info(ownership_account_id, create_ownership_account_credit_recurring_transaction_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_credit_recurring_transaction ...'
       end
@@ -192,9 +192,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_credit_recurring_transaction"
       end
-      # verify the required parameter 'credit_recurring_transaction_post_message' is set
-      if @api_client.config.client_side_validation && credit_recurring_transaction_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'credit_recurring_transaction_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_credit_recurring_transaction"
+      # verify the required parameter 'create_ownership_account_credit_recurring_transaction_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_credit_recurring_transaction_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_credit_recurring_transaction_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_credit_recurring_transaction"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcredits'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -209,14 +209,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(credit_recurring_transaction_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_credit_recurring_transaction_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountRecurringCreditMessage'
@@ -242,23 +242,23 @@ module Buildium
     end
 
     # Create a deposit withholding
-    # Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+    # Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_deposit_withholding_post_message [OwnershipAccountDepositWithholdingPostMessage] 
+    # @param create_ownership_account_deposit_withholding_request [CreateOwnershipAccountDepositWithholdingRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountTransactionMessage]
-    def create_ownership_account_deposit_withholding(ownership_account_id, ownership_account_deposit_withholding_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, ownership_account_deposit_withholding_post_message, opts)
+    def create_ownership_account_deposit_withholding(ownership_account_id, create_ownership_account_deposit_withholding_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, create_ownership_account_deposit_withholding_request, opts)
       data
     end
 
     # Create a deposit withholding
-    # Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Withholds an association owner deposit by reallocating the funds from a liability account to an income account to cover an expense(s).              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_deposit_withholding_post_message [OwnershipAccountDepositWithholdingPostMessage] 
+    # @param create_ownership_account_deposit_withholding_request [CreateOwnershipAccountDepositWithholdingRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
-    def create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, ownership_account_deposit_withholding_post_message, opts = {})
+    def create_ownership_account_deposit_withholding_with_http_info(ownership_account_id, create_ownership_account_deposit_withholding_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_deposit_withholding ...'
       end
@@ -266,9 +266,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_deposit_withholding"
       end
-      # verify the required parameter 'ownership_account_deposit_withholding_post_message' is set
-      if @api_client.config.client_side_validation && ownership_account_deposit_withholding_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_deposit_withholding_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_deposit_withholding"
+      # verify the required parameter 'create_ownership_account_deposit_withholding_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_deposit_withholding_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_deposit_withholding_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_deposit_withholding"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/applieddeposits'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -283,14 +283,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_deposit_withholding_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_deposit_withholding_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
@@ -316,23 +316,23 @@ module Buildium
     end
 
     # Create a charge
-    # Creates a ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`  <br />
+    # Creates a ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Accounting > Bills</span> - `View` `Edit` In order to associate the charge to a bill using the BillId property, you must have this permission.
     # @param ownership_account_id [Integer] The ownership account identifier.
-    # @param ownership_account_ledger_charge_post_message [OwnershipAccountLedgerChargePostMessage] 
+    # @param create_ownership_account_ledger_charge_request [CreateOwnershipAccountLedgerChargeRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountTransactionMessage]
-    def create_ownership_account_ledger_charge(ownership_account_id, ownership_account_ledger_charge_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_ledger_charge_with_http_info(ownership_account_id, ownership_account_ledger_charge_post_message, opts)
+    def create_ownership_account_ledger_charge(ownership_account_id, create_ownership_account_ledger_charge_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_ledger_charge_with_http_info(ownership_account_id, create_ownership_account_ledger_charge_request, opts)
       data
     end
 
     # Create a charge
-    # Creates a ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;
+    # Creates a ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; In order to associate the charge to a bill using the BillId property, you must have this permission.
     # @param ownership_account_id [Integer] The ownership account identifier.
-    # @param ownership_account_ledger_charge_post_message [OwnershipAccountLedgerChargePostMessage] 
+    # @param create_ownership_account_ledger_charge_request [CreateOwnershipAccountLedgerChargeRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
-    def create_ownership_account_ledger_charge_with_http_info(ownership_account_id, ownership_account_ledger_charge_post_message, opts = {})
+    def create_ownership_account_ledger_charge_with_http_info(ownership_account_id, create_ownership_account_ledger_charge_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_ledger_charge ...'
       end
@@ -340,9 +340,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_ledger_charge"
       end
-      # verify the required parameter 'ownership_account_ledger_charge_post_message' is set
-      if @api_client.config.client_side_validation && ownership_account_ledger_charge_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_ledger_charge_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_ledger_charge"
+      # verify the required parameter 'create_ownership_account_ledger_charge_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_ledger_charge_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_ledger_charge_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_ledger_charge"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/charges'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -357,14 +357,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_ledger_charge_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_ledger_charge_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
@@ -390,23 +390,23 @@ module Buildium
     end
 
     # Create a payment
-    # Creates a ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # Creates a ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_ledger_payment_post_message [OwnershipAccountLedgerPaymentPostMessage] 
+    # @param create_ownership_account_ledger_payment_request [CreateOwnershipAccountLedgerPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountTransactionMessage]
-    def create_ownership_account_ledger_payment(ownership_account_id, ownership_account_ledger_payment_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_ledger_payment_with_http_info(ownership_account_id, ownership_account_ledger_payment_post_message, opts)
+    def create_ownership_account_ledger_payment(ownership_account_id, create_ownership_account_ledger_payment_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_ledger_payment_with_http_info(ownership_account_id, create_ownership_account_ledger_payment_request, opts)
       data
     end
 
     # Create a payment
-    # Creates a ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_ledger_payment_post_message [OwnershipAccountLedgerPaymentPostMessage] 
+    # @param create_ownership_account_ledger_payment_request [CreateOwnershipAccountLedgerPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
-    def create_ownership_account_ledger_payment_with_http_info(ownership_account_id, ownership_account_ledger_payment_post_message, opts = {})
+    def create_ownership_account_ledger_payment_with_http_info(ownership_account_id, create_ownership_account_ledger_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_ledger_payment ...'
       end
@@ -414,9 +414,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_ledger_payment"
       end
-      # verify the required parameter 'ownership_account_ledger_payment_post_message' is set
-      if @api_client.config.client_side_validation && ownership_account_ledger_payment_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_ledger_payment_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_ledger_payment"
+      # verify the required parameter 'create_ownership_account_ledger_payment_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_ledger_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_ledger_payment_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_ledger_payment"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/payments'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -431,14 +431,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_ledger_payment_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_ledger_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
@@ -464,23 +464,23 @@ module Buildium
     end
 
     # Create a recurring payment
-    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param payment_recurring_transaction_post_message [PaymentRecurringTransactionPostMessage] 
+    # @param create_ownership_account_recurring_payment_request [CreateOwnershipAccountRecurringPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountRecurringPaymentMessage]
-    def create_ownership_account_recurring_payment(ownership_account_id, payment_recurring_transaction_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_recurring_payment_with_http_info(ownership_account_id, payment_recurring_transaction_post_message, opts)
+    def create_ownership_account_recurring_payment(ownership_account_id, create_ownership_account_recurring_payment_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_recurring_payment_with_http_info(ownership_account_id, create_ownership_account_recurring_payment_request, opts)
       data
     end
 
     # Create a recurring payment
-    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a recurring payment that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param payment_recurring_transaction_post_message [PaymentRecurringTransactionPostMessage] 
+    # @param create_ownership_account_recurring_payment_request [CreateOwnershipAccountRecurringPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountRecurringPaymentMessage, Integer, Hash)>] OwnershipAccountRecurringPaymentMessage data, response status code and response headers
-    def create_ownership_account_recurring_payment_with_http_info(ownership_account_id, payment_recurring_transaction_post_message, opts = {})
+    def create_ownership_account_recurring_payment_with_http_info(ownership_account_id, create_ownership_account_recurring_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_recurring_payment ...'
       end
@@ -488,9 +488,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_recurring_payment"
       end
-      # verify the required parameter 'payment_recurring_transaction_post_message' is set
-      if @api_client.config.client_side_validation && payment_recurring_transaction_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'payment_recurring_transaction_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_recurring_payment"
+      # verify the required parameter 'create_ownership_account_recurring_payment_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_recurring_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_recurring_payment_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_recurring_payment"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringpayments'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -505,14 +505,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(payment_recurring_transaction_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_recurring_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountRecurringPaymentMessage'
@@ -538,23 +538,23 @@ module Buildium
     end
 
     # Create a refund
-    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_refund_post_message [OwnershipAccountRefundPostMessage] 
+    # @param create_ownership_account_refund_request [CreateOwnershipAccountRefundRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountRefundMessage]
-    def create_ownership_account_refund(ownership_account_id, ownership_account_refund_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_account_refund_with_http_info(ownership_account_id, ownership_account_refund_post_message, opts)
+    def create_ownership_account_refund(ownership_account_id, create_ownership_account_refund_request, opts = {})
+      data, _status_code, _headers = create_ownership_account_refund_with_http_info(ownership_account_id, create_ownership_account_refund_request, opts)
       data
     end
 
     # Create a refund
-    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param ownership_account_refund_post_message [OwnershipAccountRefundPostMessage] 
+    # @param create_ownership_account_refund_request [CreateOwnershipAccountRefundRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountRefundMessage, Integer, Hash)>] OwnershipAccountRefundMessage data, response status code and response headers
-    def create_ownership_account_refund_with_http_info(ownership_account_id, ownership_account_refund_post_message, opts = {})
+    def create_ownership_account_refund_with_http_info(ownership_account_id, create_ownership_account_refund_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_account_refund ...'
       end
@@ -562,9 +562,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_account_refund"
       end
-      # verify the required parameter 'ownership_account_refund_post_message' is set
-      if @api_client.config.client_side_validation && ownership_account_refund_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_refund_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_account_refund"
+      # verify the required parameter 'create_ownership_account_refund_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_refund_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_refund_request' when calling OwnershipAccountTransactionsApi.create_ownership_account_refund"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/refunds'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -579,14 +579,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_refund_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_refund_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountRefundMessage'
@@ -612,23 +612,23 @@ module Buildium
     end
 
     # Create a recurring charge
-    # Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`
     # @param ownership_account_id [Integer] 
-    # @param charge_recurring_transaction_post_message [ChargeRecurringTransactionPostMessage] 
+    # @param create_ownership_accounts_charge_recurring_transaction_request [CreateOwnershipAccountsChargeRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountChargeRecurringTransactionMessage]
-    def create_ownership_accounts_charge_recurring_transaction(ownership_account_id, charge_recurring_transaction_post_message, opts = {})
-      data, _status_code, _headers = create_ownership_accounts_charge_recurring_transaction_with_http_info(ownership_account_id, charge_recurring_transaction_post_message, opts)
+    def create_ownership_accounts_charge_recurring_transaction(ownership_account_id, create_ownership_accounts_charge_recurring_transaction_request, opts = {})
+      data, _status_code, _headers = create_ownership_accounts_charge_recurring_transaction_with_http_info(ownership_account_id, create_ownership_accounts_charge_recurring_transaction_request, opts)
       data
     end
 
     # Create a recurring charge
-    # Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a recurring charge transaction that will post automatically on the specified ownership account ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
-    # @param charge_recurring_transaction_post_message [ChargeRecurringTransactionPostMessage] 
+    # @param create_ownership_accounts_charge_recurring_transaction_request [CreateOwnershipAccountsChargeRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountChargeRecurringTransactionMessage, Integer, Hash)>] OwnershipAccountChargeRecurringTransactionMessage data, response status code and response headers
-    def create_ownership_accounts_charge_recurring_transaction_with_http_info(ownership_account_id, charge_recurring_transaction_post_message, opts = {})
+    def create_ownership_accounts_charge_recurring_transaction_with_http_info(ownership_account_id, create_ownership_accounts_charge_recurring_transaction_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.create_ownership_accounts_charge_recurring_transaction ...'
       end
@@ -636,9 +636,9 @@ module Buildium
       if @api_client.config.client_side_validation && ownership_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.create_ownership_accounts_charge_recurring_transaction"
       end
-      # verify the required parameter 'charge_recurring_transaction_post_message' is set
-      if @api_client.config.client_side_validation && charge_recurring_transaction_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'charge_recurring_transaction_post_message' when calling OwnershipAccountTransactionsApi.create_ownership_accounts_charge_recurring_transaction"
+      # verify the required parameter 'create_ownership_accounts_charge_recurring_transaction_request' is set
+      if @api_client.config.client_side_validation && create_ownership_accounts_charge_recurring_transaction_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_accounts_charge_recurring_transaction_request' when calling OwnershipAccountTransactionsApi.create_ownership_accounts_charge_recurring_transaction"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/recurringcharges'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
@@ -653,14 +653,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(charge_recurring_transaction_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_accounts_charge_recurring_transaction_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountChargeRecurringTransactionMessage'
@@ -685,8 +685,89 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve all charges
+    # Retrieves all ledger charges for a specific ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
+    # @param ownership_account_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
+    # @option opts [Date] :transactiondateto Filters results to any lease transaction whose end date is less than or equal to the specified value.
+    # @option opts [Array<Integer>] :billids Filters results to any charge that has been associated to the indicated bill ids.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<OwnershipAccountLedgerChargeMessage>]
+    def get_all_ownership_account_charges(ownership_account_id, opts = {})
+      data, _status_code, _headers = get_all_ownership_account_charges_with_http_info(ownership_account_id, opts)
+      data
+    end
+
+    # Retrieve all charges
+    # Retrieves all ledger charges for a specific ownership account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
+    # @option opts [Date] :transactiondateto Filters results to any lease transaction whose end date is less than or equal to the specified value.
+    # @option opts [Array<Integer>] :billids Filters results to any charge that has been associated to the indicated bill ids.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<OwnershipAccountLedgerChargeMessage>, Integer, Hash)>] Array<OwnershipAccountLedgerChargeMessage> data, response status code and response headers
+    def get_all_ownership_account_charges_with_http_info(ownership_account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.get_all_ownership_account_charges ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.get_all_ownership_account_charges"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/charges'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'transactiondatefrom'] = opts[:'transactiondatefrom'] if !opts[:'transactiondatefrom'].nil?
+      query_params[:'transactiondateto'] = opts[:'transactiondateto'] if !opts[:'transactiondateto'].nil?
+      query_params[:'billids'] = @api_client.build_collection_param(opts[:'billids'], :multi) if !opts[:'billids'].nil?
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<OwnershipAccountLedgerChargeMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"OwnershipAccountTransactionsApi.get_all_ownership_account_charges",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OwnershipAccountTransactionsApi#get_all_ownership_account_charges\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all recurring transactions
-    # Retrieves all recurring transactions for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+    # Retrieves all recurring transactions for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -699,7 +780,7 @@ module Buildium
     end
 
     # Retrieve all recurring transactions
-    # Retrieves all recurring transactions for an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all recurring transactions for an ownership account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -757,8 +838,77 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve a charge
+    # Retrieves a specific ownership account ledger charge.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
+    # @param ownership_account_id [Integer] The ownership account identifier.
+    # @param charge_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [OwnershipAccountLedgerChargeMessage]
+    def get_ownership_account_charge_by_id(ownership_account_id, charge_id, opts = {})
+      data, _status_code, _headers = get_ownership_account_charge_by_id_with_http_info(ownership_account_id, charge_id, opts)
+      data
+    end
+
+    # Retrieve a charge
+    # Retrieves a specific ownership account ledger charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # @param ownership_account_id [Integer] The ownership account identifier.
+    # @param charge_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OwnershipAccountLedgerChargeMessage, Integer, Hash)>] OwnershipAccountLedgerChargeMessage data, response status code and response headers
+    def get_ownership_account_charge_by_id_with_http_info(ownership_account_id, charge_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.get_ownership_account_charge_by_id ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.get_ownership_account_charge_by_id"
+      end
+      # verify the required parameter 'charge_id' is set
+      if @api_client.config.client_side_validation && charge_id.nil?
+        fail ArgumentError, "Missing the required parameter 'charge_id' when calling OwnershipAccountTransactionsApi.get_ownership_account_charge_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/charges/{chargeId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s)).sub('{' + 'chargeId' + '}', CGI.escape(charge_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OwnershipAccountLedgerChargeMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"OwnershipAccountTransactionsApi.get_ownership_account_charge_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OwnershipAccountTransactionsApi#get_ownership_account_charge_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all transactions
-    # Retrieves all ledger transactions for a specific ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+    # Retrieves all ledger transactions for a specific ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
@@ -774,7 +924,7 @@ module Buildium
     end
 
     # Retrieve all transactions
-    # Retrieves all ledger transactions for a specific ownership account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all ledger transactions for a specific ownership account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
@@ -843,7 +993,7 @@ module Buildium
     end
 
     # Retrieve all outstanding balances
-    # Retrieves a list of ownership account outstanding balances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Outstanding Balances</span> - `View`
+    # Retrieves a list of ownership account outstanding balances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Outstanding Balances</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :associationid Association unique identifier
     # @option opts [Array<String>] :ownershipaccountstatuses List of ownership account statuses
@@ -860,7 +1010,7 @@ module Buildium
     end
 
     # Retrieve all outstanding balances
-    # Retrieves a list of ownership account outstanding balances.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Outstanding Balances&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of ownership account outstanding balances.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Outstanding Balances&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :associationid Association unique identifier
     # @option opts [Array<String>] :ownershipaccountstatuses List of ownership account statuses
@@ -936,7 +1086,7 @@ module Buildium
     end
 
     # Retrieve a recurring credit
-    # Retrieves a recurring credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+    # Retrieves a recurring credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -947,7 +1097,7 @@ module Buildium
     end
 
     # Retrieve a recurring credit
-    # Retrieves a recurring credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a recurring credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1005,7 +1155,7 @@ module Buildium
     end
 
     # Retrieve a refund
-    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param refund_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1016,7 +1166,7 @@ module Buildium
     end
 
     # Retrieve a refund
-    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param refund_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1074,7 +1224,7 @@ module Buildium
     end
 
     # Retrieve a transaction
-    # Retrieves a specific ownership account ledger transaction.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+    # Retrieves a specific ownership account ledger transaction.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param transaction_id [Integer] The transaction identifier.
     # @param [Hash] opts the optional parameters
@@ -1085,7 +1235,7 @@ module Buildium
     end
 
     # Retrieve a transaction
-    # Retrieves a specific ownership account ledger transaction.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific ownership account ledger transaction.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param transaction_id [Integer] The transaction identifier.
     # @param [Hash] opts the optional parameters
@@ -1143,7 +1293,7 @@ module Buildium
     end
 
     # Retrieve a recurring charge
-    # Retrieves a recurring charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+    # Retrieves a recurring charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1154,7 +1304,7 @@ module Buildium
     end
 
     # Retrieve a recurring charge
-    # Retrieves a recurring charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a recurring charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1212,7 +1362,7 @@ module Buildium
     end
 
     # Retrieve a recurring payment
-    # Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View`
+    # Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View`
     # @param ownership_account_id [Integer] 
     # @param payment_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1223,7 +1373,7 @@ module Buildium
     end
 
     # Retrieve a recurring payment
-    # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param ownership_account_id [Integer] 
     # @param payment_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1281,25 +1431,25 @@ module Buildium
     end
 
     # Update a charge
-    # Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`              <br />
+    # Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`              <br />
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param charge_id [Integer] The charge identifier.
-    # @param ownership_account_ledger_charge_put_message [OwnershipAccountLedgerChargePutMessage] 
+    # @param update_ownership_account_charge_request [UpdateOwnershipAccountChargeRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountTransactionMessage]
-    def update_ownership_account_charge(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message, opts = {})
-      data, _status_code, _headers = update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message, opts)
+    def update_ownership_account_charge(ownership_account_id, charge_id, update_ownership_account_charge_request, opts = {})
+      data, _status_code, _headers = update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, update_ownership_account_charge_request, opts)
       data
     end
 
     # Update a charge
-    # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;
+    # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;
     # @param ownership_account_id [Integer] The ownership account identifier.
     # @param charge_id [Integer] The charge identifier.
-    # @param ownership_account_ledger_charge_put_message [OwnershipAccountLedgerChargePutMessage] 
+    # @param update_ownership_account_charge_request [UpdateOwnershipAccountChargeRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
-    def update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, ownership_account_ledger_charge_put_message, opts = {})
+    def update_ownership_account_charge_with_http_info(ownership_account_id, charge_id, update_ownership_account_charge_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.update_ownership_account_charge ...'
       end
@@ -1311,9 +1461,9 @@ module Buildium
       if @api_client.config.client_side_validation && charge_id.nil?
         fail ArgumentError, "Missing the required parameter 'charge_id' when calling OwnershipAccountTransactionsApi.update_ownership_account_charge"
       end
-      # verify the required parameter 'ownership_account_ledger_charge_put_message' is set
-      if @api_client.config.client_side_validation && ownership_account_ledger_charge_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_ledger_charge_put_message' when calling OwnershipAccountTransactionsApi.update_ownership_account_charge"
+      # verify the required parameter 'update_ownership_account_charge_request' is set
+      if @api_client.config.client_side_validation && update_ownership_account_charge_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_ownership_account_charge_request' when calling OwnershipAccountTransactionsApi.update_ownership_account_charge"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/charges/{chargeId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s)).sub('{' + 'chargeId' + '}', CGI.escape(charge_id.to_s))
@@ -1328,14 +1478,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_ledger_charge_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_ownership_account_charge_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
@@ -1360,26 +1510,106 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a payment
-    # Updates a ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit`
+    # Update a deposit withholding
+    # Updates an ownership account deposit withholding.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
     # @param ownership_account_id [Integer] 
-    # @param payment_id [Integer] 
-    # @param ownership_account_ledger_payment_put_message [OwnershipAccountLedgerPaymentPutMessage] 
+    # @param deposit_id [Integer] 
+    # @param update_ownership_account_deposit_withholding_request [UpdateOwnershipAccountDepositWithholdingRequest] 
     # @param [Hash] opts the optional parameters
     # @return [OwnershipAccountTransactionMessage]
-    def update_ownership_account_ledger_payment(ownership_account_id, payment_id, ownership_account_ledger_payment_put_message, opts = {})
-      data, _status_code, _headers = update_ownership_account_ledger_payment_with_http_info(ownership_account_id, payment_id, ownership_account_ledger_payment_put_message, opts)
+    def update_ownership_account_deposit_withholding(ownership_account_id, deposit_id, update_ownership_account_deposit_withholding_request, opts = {})
+      data, _status_code, _headers = update_ownership_account_deposit_withholding_with_http_info(ownership_account_id, deposit_id, update_ownership_account_deposit_withholding_request, opts)
+      data
+    end
+
+    # Update a deposit withholding
+    # Updates an ownership account deposit withholding.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param ownership_account_id [Integer] 
+    # @param deposit_id [Integer] 
+    # @param update_ownership_account_deposit_withholding_request [UpdateOwnershipAccountDepositWithholdingRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
+    def update_ownership_account_deposit_withholding_with_http_info(ownership_account_id, deposit_id, update_ownership_account_deposit_withholding_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.update_ownership_account_deposit_withholding ...'
+      end
+      # verify the required parameter 'ownership_account_id' is set
+      if @api_client.config.client_side_validation && ownership_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'ownership_account_id' when calling OwnershipAccountTransactionsApi.update_ownership_account_deposit_withholding"
+      end
+      # verify the required parameter 'deposit_id' is set
+      if @api_client.config.client_side_validation && deposit_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deposit_id' when calling OwnershipAccountTransactionsApi.update_ownership_account_deposit_withholding"
+      end
+      # verify the required parameter 'update_ownership_account_deposit_withholding_request' is set
+      if @api_client.config.client_side_validation && update_ownership_account_deposit_withholding_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_ownership_account_deposit_withholding_request' when calling OwnershipAccountTransactionsApi.update_ownership_account_deposit_withholding"
+      end
+      # resource path
+      local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/applieddeposits/{depositId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s)).sub('{' + 'depositId' + '}', CGI.escape(deposit_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_ownership_account_deposit_withholding_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"OwnershipAccountTransactionsApi.update_ownership_account_deposit_withholding",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: OwnershipAccountTransactionsApi#update_ownership_account_deposit_withholding\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a payment
+    # Updates a ledger payment. Each line item must have a unique general ledger account identifier. PaymentMethod, Date, Memo, and the total Amount cannot be changed for payments with a PaymentMethod of `BuildiumEFT`, `BuildiumCC` or `RetailCash`.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit`
+    # @param ownership_account_id [Integer] 
+    # @param payment_id [Integer] 
+    # @param update_ownership_account_ledger_payment_request [UpdateOwnershipAccountLedgerPaymentRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [OwnershipAccountTransactionMessage]
+    def update_ownership_account_ledger_payment(ownership_account_id, payment_id, update_ownership_account_ledger_payment_request, opts = {})
+      data, _status_code, _headers = update_ownership_account_ledger_payment_with_http_info(ownership_account_id, payment_id, update_ownership_account_ledger_payment_request, opts)
       data
     end
 
     # Update a payment
-    # Updates a ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a ledger payment. Each line item must have a unique general ledger account identifier. PaymentMethod, Date, Memo, and the total Amount cannot be changed for payments with a PaymentMethod of &#x60;BuildiumEFT&#x60;, &#x60;BuildiumCC&#x60; or &#x60;RetailCash&#x60;.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Ownership account transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param ownership_account_id [Integer] 
     # @param payment_id [Integer] 
-    # @param ownership_account_ledger_payment_put_message [OwnershipAccountLedgerPaymentPutMessage] 
+    # @param update_ownership_account_ledger_payment_request [UpdateOwnershipAccountLedgerPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(OwnershipAccountTransactionMessage, Integer, Hash)>] OwnershipAccountTransactionMessage data, response status code and response headers
-    def update_ownership_account_ledger_payment_with_http_info(ownership_account_id, payment_id, ownership_account_ledger_payment_put_message, opts = {})
+    def update_ownership_account_ledger_payment_with_http_info(ownership_account_id, payment_id, update_ownership_account_ledger_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: OwnershipAccountTransactionsApi.update_ownership_account_ledger_payment ...'
       end
@@ -1391,9 +1621,9 @@ module Buildium
       if @api_client.config.client_side_validation && payment_id.nil?
         fail ArgumentError, "Missing the required parameter 'payment_id' when calling OwnershipAccountTransactionsApi.update_ownership_account_ledger_payment"
       end
-      # verify the required parameter 'ownership_account_ledger_payment_put_message' is set
-      if @api_client.config.client_side_validation && ownership_account_ledger_payment_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'ownership_account_ledger_payment_put_message' when calling OwnershipAccountTransactionsApi.update_ownership_account_ledger_payment"
+      # verify the required parameter 'update_ownership_account_ledger_payment_request' is set
+      if @api_client.config.client_side_validation && update_ownership_account_ledger_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_ownership_account_ledger_payment_request' when calling OwnershipAccountTransactionsApi.update_ownership_account_ledger_payment"
       end
       # resource path
       local_var_path = '/v1/associations/ownershipaccounts/{ownershipAccountId}/payments/{paymentId}'.sub('{' + 'ownershipAccountId' + '}', CGI.escape(ownership_account_id.to_s)).sub('{' + 'paymentId' + '}', CGI.escape(payment_id.to_s))
@@ -1408,14 +1638,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(ownership_account_ledger_payment_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_ownership_account_ledger_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'OwnershipAccountTransactionMessage'

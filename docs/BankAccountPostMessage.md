@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **check_printing_info** | [**CheckPrintingInfoPostMessage**](CheckPrintingInfoPostMessage.md) |  | [optional] |
+| **check_printing_info** | [**BankAccountPostMessageCheckPrintingInfo**](BankAccountPostMessageCheckPrintingInfo.md) |  | [optional] |
 | **name** | **String** | Bank account name. |  |
 | **description** | **String** | Bank account description. | [optional] |
 | **bank_account_type** | **String** | Type of bank account. |  |

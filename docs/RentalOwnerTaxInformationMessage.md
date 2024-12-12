@@ -9,7 +9,7 @@
 | **tax_payer_name1** | **String** | Tax payer name line 1. | [optional] |
 | **tax_payer_name2** | **String** | Tax payer name line 2. | [optional] |
 | **include_in1099** | **Boolean** | Indicates whether the rental owner should be included in 1099 form generation. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**AssociationTaxInformationMessageAddress**](AssociationTaxInformationMessageAddress.md) |  | [optional] |
 
 ## Example
 

@@ -16,11 +16,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_association_tenant
 
-> <AssociationTenantMessage> create_association_tenant(association_tenant_post_message)
+> <AssociationTenantMessage> create_association_tenant(create_association_tenant_request)
 
 Create a tenant
 
-Creates an association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Creates an association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -41,11 +41,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::AssociationTenantsApi.new
-association_tenant_post_message = Buildium::AssociationTenantPostMessage.new({first_name: 'first_name_example', last_name: 'last_name_example', primary_address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'}), ownership_account_id: 37}) # AssociationTenantPostMessage | 
+create_association_tenant_request = Buildium::CreateAssociationTenantRequest.new({first_name: 'first_name_example', last_name: 'last_name_example', primary_address: Buildium::AssociationTenantPostMessagePrimaryAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'}), ownership_account_id: 37}) # CreateAssociationTenantRequest | 
 
 begin
   # Create a tenant
-  result = api_instance.create_association_tenant(association_tenant_post_message)
+  result = api_instance.create_association_tenant(create_association_tenant_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationTenantsApi->create_association_tenant: #{e}"
@@ -56,12 +56,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationTenantMessage>, Integer, Hash)> create_association_tenant_with_http_info(association_tenant_post_message)
+> <Array(<AssociationTenantMessage>, Integer, Hash)> create_association_tenant_with_http_info(create_association_tenant_request)
 
 ```ruby
 begin
   # Create a tenant
-  data, status_code, headers = api_instance.create_association_tenant_with_http_info(association_tenant_post_message)
+  data, status_code, headers = api_instance.create_association_tenant_with_http_info(create_association_tenant_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationTenantMessage>
@@ -74,7 +74,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **association_tenant_post_message** | [**AssociationTenantPostMessage**](AssociationTenantPostMessage.md) |  |  |
+| **create_association_tenant_request** | [**CreateAssociationTenantRequest**](CreateAssociationTenantRequest.md) |  |  |
 
 ### Return type
 
@@ -92,11 +92,11 @@ end
 
 ## create_association_tenant_note
 
-> <NoteMessage> create_association_tenant_note(tenant_id, note_post_message)
+> <NoteMessage> create_association_tenant_note(tenant_id, create_lease_note_request)
 
 Create a note
 
-Creates an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Creates an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -118,11 +118,11 @@ end
 
 api_instance = Buildium::AssociationTenantsApi.new
 tenant_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create a note
-  result = api_instance.create_association_tenant_note(tenant_id, note_post_message)
+  result = api_instance.create_association_tenant_note(tenant_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationTenantsApi->create_association_tenant_note: #{e}"
@@ -133,12 +133,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_association_tenant_note_with_http_info(tenant_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_association_tenant_note_with_http_info(tenant_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create a note
-  data, status_code, headers = api_instance.create_association_tenant_note_with_http_info(tenant_id, note_post_message)
+  data, status_code, headers = api_instance.create_association_tenant_note_with_http_info(tenant_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -152,7 +152,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **tenant_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -174,7 +174,7 @@ end
 
 Retrieve a tenant
 
-Retrieves a specific association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves a specific association tenant.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -250,7 +250,7 @@ end
 
 Retrieve a note
 
-Retrieves an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves an association tenant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -328,7 +328,7 @@ end
 
 Retrieve all notes
 
-Retrieves all association tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves all association tenant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -418,7 +418,7 @@ end
 
 Retrieve all tenants
 
-Retrieves a list of association tenants.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves a list of association tenants.    <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -514,11 +514,11 @@ end
 
 ## update_association_tenant
 
-> <AssociationTenantMessage> update_association_tenant(tenant_id, association_tenant_put_message)
+> <AssociationTenantMessage> update_association_tenant(tenant_id, update_association_tenant_request)
 
 Update a tenant
 
-Updates an association tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Updates an association tenant.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -540,11 +540,11 @@ end
 
 api_instance = Buildium::AssociationTenantsApi.new
 tenant_id = 56 # Integer | The identifier of the association tenant to update.
-association_tenant_put_message = Buildium::AssociationTenantPutMessage.new({first_name: 'first_name_example', last_name: 'last_name_example', primary_address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # AssociationTenantPutMessage | 
+update_association_tenant_request = Buildium::UpdateAssociationTenantRequest.new({first_name: 'first_name_example', last_name: 'last_name_example', primary_address: Buildium::AssociationTenantPostMessagePrimaryAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'})}) # UpdateAssociationTenantRequest | 
 
 begin
   # Update a tenant
-  result = api_instance.update_association_tenant(tenant_id, association_tenant_put_message)
+  result = api_instance.update_association_tenant(tenant_id, update_association_tenant_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationTenantsApi->update_association_tenant: #{e}"
@@ -555,12 +555,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationTenantMessage>, Integer, Hash)> update_association_tenant_with_http_info(tenant_id, association_tenant_put_message)
+> <Array(<AssociationTenantMessage>, Integer, Hash)> update_association_tenant_with_http_info(tenant_id, update_association_tenant_request)
 
 ```ruby
 begin
   # Update a tenant
-  data, status_code, headers = api_instance.update_association_tenant_with_http_info(tenant_id, association_tenant_put_message)
+  data, status_code, headers = api_instance.update_association_tenant_with_http_info(tenant_id, update_association_tenant_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationTenantMessage>
@@ -574,7 +574,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **tenant_id** | **Integer** | The identifier of the association tenant to update. |  |
-| **association_tenant_put_message** | [**AssociationTenantPutMessage**](AssociationTenantPutMessage.md) |  |  |
+| **update_association_tenant_request** | [**UpdateAssociationTenantRequest**](UpdateAssociationTenantRequest.md) |  |  |
 
 ### Return type
 
@@ -592,11 +592,11 @@ end
 
 ## update_association_tenant_note
 
-> <NoteMessage> update_association_tenant_note(tenant_id, note_id, note_put_message)
+> <NoteMessage> update_association_tenant_note(tenant_id, note_id, update_lease_note_request)
 
 Update a note
 
-Updates an association tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Updates an association tenant note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -619,11 +619,11 @@ end
 api_instance = Buildium::AssociationTenantsApi.new
 tenant_id = 56 # Integer | 
 note_id = 56 # Integer | 
-note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
+update_lease_note_request = Buildium::UpdateLeaseNoteRequest.new({note: 'note_example'}) # UpdateLeaseNoteRequest | 
 
 begin
   # Update a note
-  result = api_instance.update_association_tenant_note(tenant_id, note_id, note_put_message)
+  result = api_instance.update_association_tenant_note(tenant_id, note_id, update_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationTenantsApi->update_association_tenant_note: #{e}"
@@ -634,12 +634,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> update_association_tenant_note_with_http_info(tenant_id, note_id, note_put_message)
+> <Array(<NoteMessage>, Integer, Hash)> update_association_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request)
 
 ```ruby
 begin
   # Update a note
-  data, status_code, headers = api_instance.update_association_tenant_note_with_http_info(tenant_id, note_id, note_put_message)
+  data, status_code, headers = api_instance.update_association_tenant_note_with_http_info(tenant_id, note_id, update_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -654,7 +654,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **tenant_id** | **Integer** |  |  |
 | **note_id** | **Integer** |  |  |
-| **note_put_message** | [**NotePutMessage**](NotePutMessage.md) |  |  |
+| **update_lease_note_request** | [**UpdateLeaseNoteRequest**](UpdateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 

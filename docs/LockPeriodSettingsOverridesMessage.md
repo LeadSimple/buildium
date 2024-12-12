@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **property** | [**PropertyMessage**](PropertyMessage.md) |  | [optional] |
+| **property** | [**LockPeriodSettingsOverridesMessageProperty**](LockPeriodSettingsOverridesMessageProperty.md) |  | [optional] |
 | **lock_date** | **Date** | Accounting transactions related to the property specified in the Property field on or prior to this date will be locked. | [optional] |
 
 ## Example

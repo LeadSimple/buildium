@@ -13,9 +13,9 @@
 | **shared_with** | **Array&lt;String&gt;** | Indicates the who the task update was shared with. | [optional] |
 | **file_ids** | **Array&lt;Integer&gt;** | List of file unique identifiers associated with the task history. These identifiers can be used to retrieve the file metadata and/or download the files. | [optional] |
 | **created_date_t_ime** | **Time** | The date and time the task history was created. | [optional] |
-| **created_by_user** | [**TaskHistoryUserMessage**](TaskHistoryUserMessage.md) |  | [optional] |
+| **created_by_user** | [**TaskHistoryMessageCreatedByUser**](TaskHistoryMessageCreatedByUser.md) |  | [optional] |
 | **last_updated_date_time** | **Time** | The date and time the task was last updated. | [optional] |
-| **last_updated_by_user** | [**TaskHistoryUserMessage**](TaskHistoryUserMessage.md) |  | [optional] |
+| **last_updated_by_user** | [**TaskHistoryMessageLastUpdatedByUser**](TaskHistoryMessageLastUpdatedByUser.md) |  | [optional] |
 
 ## Example
 

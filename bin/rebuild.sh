@@ -14,6 +14,7 @@ sed -i"" 's/ExternalApiRentalUnitImageUploadRequests_CreateUploadFileRequestAsyn
 sed -i"" 's/ExternalApiLeaseLedgerChargesWrite_CreateCharge/CreateLeaseLedgerCharge/g' bin/swagger.json
 sed -i"" 's/ExternalApiOwnershipAccountLedgerCharges_CreateCharge/CreateOwnershipAccountLedgerCharge/g' bin/swagger.json
 sed -i"" 's/ExternalApiTaskHistoryFileUploads_CreateUploadFileRequestAsync/UploadTaskHistoryFileRequestAsync/g' bin/swagger.json
+sed -i"" '/\/v1\/bills\/{billId}\/files\/uploadrequests/,/operationId/ s/"operationId": "CreateUploadFileRequest"/"operationId": "CreateBillUploadFileRequest"/g' bin/swagger.json
 
 # Replace the weird "ExternalApiSomething" artifact in the operation names,
 # so that the generated code will be cleaner

@@ -5,10 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | The bill line item unique identifier. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
-| **gl_account** | [**GLAccountMessage**](GLAccountMessage.md) |  | [optional] |
+| **accounting_entity** | [**BillLineMessageAccountingEntity**](BillLineMessageAccountingEntity.md) |  | [optional] |
+| **gl_account** | [**BillLineMessageGLAccount**](BillLineMessageGLAccount.md) |  | [optional] |
 | **amount** | **Float** | Line item amount. | [optional] |
-| **markup** | [**BillMarkupMessage**](BillMarkupMessage.md) |  | [optional] |
+| **markup** | [**BillLineMessageMarkup**](BillLineMessageMarkup.md) |  | [optional] |
 | **memo** | **String** | Description of the line item. | [optional] |
 
 ## Example

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Rental unit unique identifier. | [optional] |
 | **unit_number** | **String** | Unit number. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**ListingUnitMessageAddress**](ListingUnitMessageAddress.md) |  | [optional] |
 | **unit_bedrooms** | **String** | Number of bedrooms in the unit. Null if no value is set. | [optional] |
 | **unit_bathrooms** | **String** | Number of bathrooms in the unit. Null if no value is set. | [optional] |
 | **unit_size** | **Integer** | Size of the unit. Null if no value is set. | [optional] |

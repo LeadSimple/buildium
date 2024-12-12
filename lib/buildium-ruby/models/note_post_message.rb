@@ -71,6 +71,10 @@ module Buildium
         invalid_properties.push('invalid value for "note", note cannot be nil.')
       end
 
+      if @note.to_s.length < 1
+        invalid_properties.push('invalid value for "note", the character length must be great than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -78,7 +82,22 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @note.nil?
+      return false if @note.to_s.length < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] note Value to be assigned
+    def note=(note)
+      if note.nil?
+        fail ArgumentError, 'note cannot be nil'
+      end
+
+      if note.to_s.length < 1
+        fail ArgumentError, 'invalid value for "note", the character length must be great than or equal to 1.'
+      end
+
+      @note = note
     end
 
     # Checks equality by comparing each attribute.
@@ -112,7 +131,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -219,5 +238,6 @@ module Buildium
         value
       end
     end
+
   end
 end

@@ -13,7 +13,7 @@
 | **ownership_account_id** | **Integer** | Ownership account unique identifier associated with the transaction, if applicable. Null if value is not set. | [optional] |
 | **payee_association_owner_id** | **Integer** | The payee&#39;s association owner unique identifier associated with the transaction, where applicable. | [optional] |
 | **payment_method** | **String** | The payment method used for the transaction. | [optional] |
-| **journal** | [**JournalMessage**](JournalMessage.md) |  | [optional] |
+| **journal** | [**LeaseTransactionMessageJournal**](LeaseTransactionMessageJournal.md) |  | [optional] |
 
 ## Example
 

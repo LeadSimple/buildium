@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Note unique identifier. | [optional] |
 | **note** | **String** | Note contents. | [optional] |
-| **last_updated_by_user** | [**LastUpdatedByUserMessage**](LastUpdatedByUserMessage.md) |  | [optional] |
+| **last_updated_by_user** | [**NoteMessageLastUpdatedByUser**](NoteMessageLastUpdatedByUser.md) |  | [optional] |
 
 ## Example
 

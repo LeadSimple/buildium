@@ -8,7 +8,7 @@
 | **first_name** | **String** | The first name of the applicant. The value can not exceed 127 characters. |  |
 | **last_name** | **String** | The last name of the applicant. The value can not exceed 127 characters. |  |
 | **email** | **String** | The email address of the applicant. | [optional] |
-| **phone_numbers** | [**PhoneNumbersMessage**](PhoneNumbersMessage.md) |  | [optional] |
+| **phone_numbers** | [**ApplicantPutMessagePhoneNumbers**](ApplicantPutMessagePhoneNumbers.md) |  | [optional] |
 
 ## Example
 

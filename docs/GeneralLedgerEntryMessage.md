@@ -10,7 +10,7 @@
 | **amount** | **Float** | Entry amount. | [optional] |
 | **balance** | **Float** | The general ledger account balance after this entry was recorded. | [optional] |
 | **transaction_type** | **String** | Indicates the type of transaction that occurred. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**GeneralLedgerEntryMessageAccountingEntity**](GeneralLedgerEntryMessageAccountingEntity.md) |  | [optional] |
 
 ## Example
 

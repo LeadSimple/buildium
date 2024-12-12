@@ -20,23 +20,23 @@ module Buildium
       @api_client = api_client
     end
     # Create a board member
-    # Creates a board member for a given association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Creates a board member for a given association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
     # @param association_id [Integer] 
-    # @param association_board_member_post_message [AssociationBoardMemberPostMessage] 
+    # @param create_board_member_request [CreateBoardMemberRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationBoardMemberMessage]
-    def create_board_member(association_id, association_board_member_post_message, opts = {})
-      data, _status_code, _headers = create_board_member_with_http_info(association_id, association_board_member_post_message, opts)
+    def create_board_member(association_id, create_board_member_request, opts = {})
+      data, _status_code, _headers = create_board_member_with_http_info(association_id, create_board_member_request, opts)
       data
     end
 
     # Create a board member
-    # Creates a board member for a given association.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a board member for a given association.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
-    # @param association_board_member_post_message [AssociationBoardMemberPostMessage] 
+    # @param create_board_member_request [CreateBoardMemberRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationBoardMemberMessage, Integer, Hash)>] AssociationBoardMemberMessage data, response status code and response headers
-    def create_board_member_with_http_info(association_id, association_board_member_post_message, opts = {})
+    def create_board_member_with_http_info(association_id, create_board_member_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BoardMembersApi.create_board_member ...'
       end
@@ -44,9 +44,9 @@ module Buildium
       if @api_client.config.client_side_validation && association_id.nil?
         fail ArgumentError, "Missing the required parameter 'association_id' when calling BoardMembersApi.create_board_member"
       end
-      # verify the required parameter 'association_board_member_post_message' is set
-      if @api_client.config.client_side_validation && association_board_member_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_board_member_post_message' when calling BoardMembersApi.create_board_member"
+      # verify the required parameter 'create_board_member_request' is set
+      if @api_client.config.client_side_validation && create_board_member_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_board_member_request' when calling BoardMembersApi.create_board_member"
       end
       # resource path
       local_var_path = '/v1/associations/{associationId}/boardmembers'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
@@ -61,14 +61,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_board_member_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_board_member_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationBoardMemberMessage'
@@ -94,7 +94,7 @@ module Buildium
     end
 
     # Delete a board member
-    # Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit` `Delete`
+    # Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit` `Delete`
     # @param association_id [Integer] 
     # @param board_member_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -105,7 +105,7 @@ module Buildium
     end
 
     # Delete a board member
-    # Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+    # Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
     # @param association_id [Integer] 
     # @param board_member_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -163,7 +163,7 @@ module Buildium
     end
 
     # Retrieve all board members
-    # Retrieves all association board members.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves all association board members.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :statuses Filters results to only records whose status is equal to the specified values.
@@ -180,7 +180,7 @@ module Buildium
     end
 
     # Retrieve all board members
-    # Retrieves all association board members.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all association board members.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :statuses Filters results to only records whose status is equal to the specified values.
@@ -255,7 +255,7 @@ module Buildium
     end
 
     # Retrieve a board member
-    # Retrieves an association board member.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+    # Retrieves an association board member.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
     # @param association_id [Integer] 
     # @param board_member_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -266,7 +266,7 @@ module Buildium
     end
 
     # Retrieve a board member
-    # Retrieves an association board member.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an association board member.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param board_member_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -324,25 +324,25 @@ module Buildium
     end
 
     # Update a board member
-    # Updates a board member for a given association.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+    # Updates a board member for a given association.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
     # @param association_id [Integer] 
     # @param board_member_id [Integer] 
-    # @param association_board_member_put_message [AssociationBoardMemberPutMessage] 
+    # @param update_board_member_request [UpdateBoardMemberRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationBoardMemberMessage]
-    def update_board_member(association_id, board_member_id, association_board_member_put_message, opts = {})
-      data, _status_code, _headers = update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message, opts)
+    def update_board_member(association_id, board_member_id, update_board_member_request, opts = {})
+      data, _status_code, _headers = update_board_member_with_http_info(association_id, board_member_id, update_board_member_request, opts)
       data
     end
 
     # Update a board member
-    # Updates a board member for a given association.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a board member for a given association.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
     # @param board_member_id [Integer] 
-    # @param association_board_member_put_message [AssociationBoardMemberPutMessage] 
+    # @param update_board_member_request [UpdateBoardMemberRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationBoardMemberMessage, Integer, Hash)>] AssociationBoardMemberMessage data, response status code and response headers
-    def update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message, opts = {})
+    def update_board_member_with_http_info(association_id, board_member_id, update_board_member_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BoardMembersApi.update_board_member ...'
       end
@@ -354,9 +354,9 @@ module Buildium
       if @api_client.config.client_side_validation && board_member_id.nil?
         fail ArgumentError, "Missing the required parameter 'board_member_id' when calling BoardMembersApi.update_board_member"
       end
-      # verify the required parameter 'association_board_member_put_message' is set
-      if @api_client.config.client_side_validation && association_board_member_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_board_member_put_message' when calling BoardMembersApi.update_board_member"
+      # verify the required parameter 'update_board_member_request' is set
+      if @api_client.config.client_side_validation && update_board_member_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_board_member_request' when calling BoardMembersApi.update_board_member"
       end
       # resource path
       local_var_path = '/v1/associations/{associationId}/boardmembers/{boardMemberId}'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s)).sub('{' + 'boardMemberId' + '}', CGI.escape(board_member_id.to_s))
@@ -371,14 +371,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_board_member_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_board_member_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationBoardMemberMessage'

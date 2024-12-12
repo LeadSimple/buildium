@@ -10,7 +10,7 @@
 | **unit_number** | **String** | Unit number. | [optional] |
 | **description** | **String** | Description of the unit. | [optional] |
 | **market_rent** | **Float** | Market rent of the unit. This value is separate from the lease rent and is typically used for rental listings. Null if no value is set. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**ListingUnitMessageAddress**](ListingUnitMessageAddress.md) |  | [optional] |
 | **unit_bedrooms** | **String** | Number of bedrooms in the unit. Null if no value is set. | [optional] |
 | **unit_bathrooms** | **String** | Number of bathrooms in the unit. Null if no value is set. | [optional] |
 | **unit_size** | **Integer** | Size of the unit. Null if no value is set. | [optional] |

@@ -9,7 +9,7 @@
 | **memo** | **String** | A brief note describing the reason for the refund. The value cannot exceed 65 characters. | [optional] |
 | **check_number** | **String** | Check number associated with the refund, if applicable. The value cannot exceed 30 characters. | [optional] |
 | **bank_account_id** | **Integer** | Unique identifier of the bank account the refund is issued from. |  |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  |  |
+| **address** | [**LeaseLedgerRefundPostMessageAddress**](LeaseLedgerRefundPostMessageAddress.md) |  |  |
 | **lines** | [**Array&lt;LeaseLedgerRefundLinePostMessage&gt;**](LeaseLedgerRefundLinePostMessage.md) | A collection of line items included in the refund. At least one line item is required. |  |
 
 ## Example

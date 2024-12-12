@@ -16,11 +16,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_rental_appliance
 
-> <RentalApplianceMessage> create_rental_appliance(rental_appliance_post_message)
+> <RentalApplianceMessage> create_rental_appliance(create_rental_appliance_request)
 
 Create an appliance
 
-Creates a rental property appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+Creates a rental property appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -41,11 +41,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::RentalAppliancesApi.new
-rental_appliance_post_message = Buildium::RentalAppliancePostMessage.new({property_id: 37, name: 'name_example'}) # RentalAppliancePostMessage | 
+create_rental_appliance_request = Buildium::CreateRentalApplianceRequest.new({property_id: 37, name: 'name_example'}) # CreateRentalApplianceRequest | 
 
 begin
   # Create an appliance
-  result = api_instance.create_rental_appliance(rental_appliance_post_message)
+  result = api_instance.create_rental_appliance(create_rental_appliance_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalAppliancesApi->create_rental_appliance: #{e}"
@@ -56,12 +56,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RentalApplianceMessage>, Integer, Hash)> create_rental_appliance_with_http_info(rental_appliance_post_message)
+> <Array(<RentalApplianceMessage>, Integer, Hash)> create_rental_appliance_with_http_info(create_rental_appliance_request)
 
 ```ruby
 begin
   # Create an appliance
-  data, status_code, headers = api_instance.create_rental_appliance_with_http_info(rental_appliance_post_message)
+  data, status_code, headers = api_instance.create_rental_appliance_with_http_info(create_rental_appliance_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RentalApplianceMessage>
@@ -74,7 +74,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **rental_appliance_post_message** | [**RentalAppliancePostMessage**](RentalAppliancePostMessage.md) |  |  |
+| **create_rental_appliance_request** | [**CreateRentalApplianceRequest**](CreateRentalApplianceRequest.md) |  |  |
 
 ### Return type
 
@@ -92,11 +92,11 @@ end
 
 ## create_rental_appliance_service_history
 
-> <RentalApplianceServiceHistoryMessage> create_rental_appliance_service_history(appliance_id, rental_appliance_service_history_post_message)
+> <RentalApplianceServiceHistoryMessage> create_rental_appliance_service_history(appliance_id, create_rental_appliance_service_history_request)
 
 Create a service history
 
-Creates a service history record for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+Creates a service history record for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -118,11 +118,11 @@ end
 
 api_instance = Buildium::RentalAppliancesApi.new
 appliance_id = 56 # Integer | 
-rental_appliance_service_history_post_message = Buildium::RentalApplianceServiceHistoryPostMessage.new({service_type: 'Installed', date: Date.today}) # RentalApplianceServiceHistoryPostMessage | 
+create_rental_appliance_service_history_request = Buildium::CreateRentalApplianceServiceHistoryRequest.new({service_type: 'Installed', date: Date.today}) # CreateRentalApplianceServiceHistoryRequest | 
 
 begin
   # Create a service history
-  result = api_instance.create_rental_appliance_service_history(appliance_id, rental_appliance_service_history_post_message)
+  result = api_instance.create_rental_appliance_service_history(appliance_id, create_rental_appliance_service_history_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalAppliancesApi->create_rental_appliance_service_history: #{e}"
@@ -133,12 +133,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RentalApplianceServiceHistoryMessage>, Integer, Hash)> create_rental_appliance_service_history_with_http_info(appliance_id, rental_appliance_service_history_post_message)
+> <Array(<RentalApplianceServiceHistoryMessage>, Integer, Hash)> create_rental_appliance_service_history_with_http_info(appliance_id, create_rental_appliance_service_history_request)
 
 ```ruby
 begin
   # Create a service history
-  data, status_code, headers = api_instance.create_rental_appliance_service_history_with_http_info(appliance_id, rental_appliance_service_history_post_message)
+  data, status_code, headers = api_instance.create_rental_appliance_service_history_with_http_info(appliance_id, create_rental_appliance_service_history_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RentalApplianceServiceHistoryMessage>
@@ -152,7 +152,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **appliance_id** | **Integer** |  |  |
-| **rental_appliance_service_history_post_message** | [**RentalApplianceServiceHistoryPostMessage**](RentalApplianceServiceHistoryPostMessage.md) |  |  |
+| **create_rental_appliance_service_history_request** | [**CreateRentalApplianceServiceHistoryRequest**](CreateRentalApplianceServiceHistoryRequest.md) |  |  |
 
 ### Return type
 
@@ -174,7 +174,7 @@ end
 
 Delete an appliance
 
-Deletes an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+Deletes an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -249,7 +249,7 @@ nil (empty response body)
 
 Retrieve an appliance
 
-Retrieves a rental appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Retrieves a rental appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -325,7 +325,7 @@ end
 
 Retrieve all service history
 
-Retrieves all of the service history records for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Retrieves all of the service history records for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -409,7 +409,7 @@ end
 
 Retrieve a service history
 
-Retrieves a specific service history record for a given appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Retrieves a specific service history record for a given appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -487,7 +487,7 @@ end
 
 Retrieve all appliances
 
-Retrieves all rental appliances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Retrieves all rental appliances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -569,11 +569,11 @@ end
 
 ## update_rental_appliance
 
-> <RentalApplianceMessage> update_rental_appliance(appliance_id, rental_appliance_put_message)
+> <RentalApplianceMessage> update_rental_appliance(appliance_id, update_rental_appliance_request)
 
 Update an appliance
 
-Updates a rental appliance.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+Updates a rental appliance.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -595,11 +595,11 @@ end
 
 api_instance = Buildium::RentalAppliancesApi.new
 appliance_id = 56 # Integer | 
-rental_appliance_put_message = Buildium::RentalAppliancePutMessage.new({name: 'name_example'}) # RentalAppliancePutMessage | 
+update_rental_appliance_request = Buildium::UpdateRentalApplianceRequest.new({name: 'name_example'}) # UpdateRentalApplianceRequest | 
 
 begin
   # Update an appliance
-  result = api_instance.update_rental_appliance(appliance_id, rental_appliance_put_message)
+  result = api_instance.update_rental_appliance(appliance_id, update_rental_appliance_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling RentalAppliancesApi->update_rental_appliance: #{e}"
@@ -610,12 +610,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<RentalApplianceMessage>, Integer, Hash)> update_rental_appliance_with_http_info(appliance_id, rental_appliance_put_message)
+> <Array(<RentalApplianceMessage>, Integer, Hash)> update_rental_appliance_with_http_info(appliance_id, update_rental_appliance_request)
 
 ```ruby
 begin
   # Update an appliance
-  data, status_code, headers = api_instance.update_rental_appliance_with_http_info(appliance_id, rental_appliance_put_message)
+  data, status_code, headers = api_instance.update_rental_appliance_with_http_info(appliance_id, update_rental_appliance_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <RentalApplianceMessage>
@@ -629,7 +629,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **appliance_id** | **Integer** |  |  |
-| **rental_appliance_put_message** | [**RentalAppliancePutMessage**](RentalAppliancePutMessage.md) |  |  |
+| **update_rental_appliance_request** | [**UpdateRentalApplianceRequest**](UpdateRentalApplianceRequest.md) |  |  |
 
 ### Return type
 

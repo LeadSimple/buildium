@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a general journal entry
-    # Creates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
-    # @param general_journal_entry_post_message [GeneralJournalEntryPostMessage] 
+    # Creates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` `Edit`
+    # @param create_general_journal_entry_request [CreateGeneralJournalEntryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GeneralLedgerTransactionMessage]
-    def create_general_journal_entry(general_journal_entry_post_message, opts = {})
-      data, _status_code, _headers = create_general_journal_entry_with_http_info(general_journal_entry_post_message, opts)
+    def create_general_journal_entry(create_general_journal_entry_request, opts = {})
+      data, _status_code, _headers = create_general_journal_entry_with_http_info(create_general_journal_entry_request, opts)
       data
     end
 
     # Create a general journal entry
-    # Creates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param general_journal_entry_post_message [GeneralJournalEntryPostMessage] 
+    # Creates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_general_journal_entry_request [CreateGeneralJournalEntryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GeneralLedgerTransactionMessage, Integer, Hash)>] GeneralLedgerTransactionMessage data, response status code and response headers
-    def create_general_journal_entry_with_http_info(general_journal_entry_post_message, opts = {})
+    def create_general_journal_entry_with_http_info(create_general_journal_entry_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: GeneralLedgerApi.create_general_journal_entry ...'
       end
-      # verify the required parameter 'general_journal_entry_post_message' is set
-      if @api_client.config.client_side_validation && general_journal_entry_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'general_journal_entry_post_message' when calling GeneralLedgerApi.create_general_journal_entry"
+      # verify the required parameter 'create_general_journal_entry_request' is set
+      if @api_client.config.client_side_validation && create_general_journal_entry_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_general_journal_entry_request' when calling GeneralLedgerApi.create_general_journal_entry"
       end
       # resource path
       local_var_path = '/v1/generalledger/journalentries'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(general_journal_entry_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_general_journal_entry_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'GeneralLedgerTransactionMessage'
@@ -88,27 +88,27 @@ module Buildium
     end
 
     # Create a general ledger account
-    # Creates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`
-    # @param gl_account_post_message [GLAccountPostMessage] 
+    # Creates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View` `Edit`
+    # @param create_general_ledger_account_request [CreateGeneralLedgerAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GLAccountMessage]
-    def create_general_ledger_account(gl_account_post_message, opts = {})
-      data, _status_code, _headers = create_general_ledger_account_with_http_info(gl_account_post_message, opts)
+    def create_general_ledger_account(create_general_ledger_account_request, opts = {})
+      data, _status_code, _headers = create_general_ledger_account_with_http_info(create_general_ledger_account_request, opts)
       data
     end
 
     # Create a general ledger account
-    # Creates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param gl_account_post_message [GLAccountPostMessage] 
+    # Creates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_general_ledger_account_request [CreateGeneralLedgerAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GLAccountMessage, Integer, Hash)>] GLAccountMessage data, response status code and response headers
-    def create_general_ledger_account_with_http_info(gl_account_post_message, opts = {})
+    def create_general_ledger_account_with_http_info(create_general_ledger_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: GeneralLedgerApi.create_general_ledger_account ...'
       end
-      # verify the required parameter 'gl_account_post_message' is set
-      if @api_client.config.client_side_validation && gl_account_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'gl_account_post_message' when calling GeneralLedgerApi.create_general_ledger_account"
+      # verify the required parameter 'create_general_ledger_account_request' is set
+      if @api_client.config.client_side_validation && create_general_ledger_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_general_ledger_account_request' when calling GeneralLedgerApi.create_general_ledger_account"
       end
       # resource path
       local_var_path = '/v1/glaccounts'
@@ -123,14 +123,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(gl_account_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_general_ledger_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'GLAccountMessage'
@@ -156,7 +156,7 @@ module Buildium
     end
 
     # Retrieve all general ledger accounts
-    # Retrieves a list of general ledger accounts.<br /><br />General ledger accounts are used to categorize transactions for accounting purposes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+    # Retrieves a list of general ledger accounts.<br /><br />General ledger accounts are used to categorize transactions for accounting purposes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :accounttypes Filters results by the specified general ledger account types.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -169,7 +169,7 @@ module Buildium
     end
 
     # Retrieve all general ledger accounts
-    # Retrieves a list of general ledger accounts.&lt;br /&gt;&lt;br /&gt;General ledger accounts are used to categorize transactions for accounting purposes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of general ledger accounts.&lt;br /&gt;&lt;br /&gt;General ledger accounts are used to categorize transactions for accounting purposes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :accounttypes Filters results by the specified general ledger account types.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -229,13 +229,16 @@ module Buildium
     end
 
     # Retrieve all general ledger transactions
-    # Retrieves a list of general ledger transactions.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+    # Retrieves a list of general ledger transactions.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
     # @param startdate [Date] Filters results to any transaction whose date is greater than or equal to the specified value.
     # @param enddate [Date] Filters results to any transaction whose date is less than or equal to the specified value.
     # @param glaccountids [Array<Integer>] Filters results to transactions whose general ledger account belongs to the specified set of general ledger account ids.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :selectionentityid Filters results to any transaction containing journal lines for an entity associated with the specified entity id value. The id must be of the type specified in SelectionEntityType.
     # @option opts [String] :selectionentitytype Specifies the type of entity that SelectionEntityId refers to.
+    # @option opts [Integer] :selectionentityunitid Filters results to any transaction containing journal lines for the unitId specified. Only applicable when the SelectionEntityType is Rentals or Associations.
+    # @option opts [Time] :lastupdatedfrom Filters results to any transactions that were updated on or after the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any transactions that were updated on or before the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -246,13 +249,16 @@ module Buildium
     end
 
     # Retrieve all general ledger transactions
-    # Retrieves a list of general ledger transactions.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of general ledger transactions.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param startdate [Date] Filters results to any transaction whose date is greater than or equal to the specified value.
     # @param enddate [Date] Filters results to any transaction whose date is less than or equal to the specified value.
     # @param glaccountids [Array<Integer>] Filters results to transactions whose general ledger account belongs to the specified set of general ledger account ids.
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :selectionentityid Filters results to any transaction containing journal lines for an entity associated with the specified entity id value. The id must be of the type specified in SelectionEntityType.
     # @option opts [String] :selectionentitytype Specifies the type of entity that SelectionEntityId refers to.
+    # @option opts [Integer] :selectionentityunitid Filters results to any transaction containing journal lines for the unitId specified. Only applicable when the SelectionEntityType is Rentals or Associations.
+    # @option opts [Time] :lastupdatedfrom Filters results to any transactions that were updated on or after the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any transactions that were updated on or before the specified date. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -287,6 +293,9 @@ module Buildium
       query_params[:'glaccountids'] = @api_client.build_collection_param(glaccountids, :multi)
       query_params[:'selectionentityid'] = opts[:'selectionentityid'] if !opts[:'selectionentityid'].nil?
       query_params[:'selectionentitytype'] = opts[:'selectionentitytype'] if !opts[:'selectionentitytype'].nil?
+      query_params[:'selectionentityunitid'] = opts[:'selectionentityunitid'] if !opts[:'selectionentityunitid'].nil?
+      query_params[:'lastupdatedfrom'] = opts[:'lastupdatedfrom'] if !opts[:'lastupdatedfrom'].nil?
+      query_params[:'lastupdatedto'] = opts[:'lastupdatedto'] if !opts[:'lastupdatedto'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
@@ -326,7 +335,7 @@ module Buildium
     end
 
     # Retrieve all general ledger entries
-    # Retrieves all general ledger entries              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+    # Retrieves all general ledger entries              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
     # @param accountingbasis [String] The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened.
     # @param glaccountids [Array<Integer>] Filters results to entries whose general ledger account belongs to the specified set of general ledger account ids.
     # @param startdate [Date] Filters results to any entries whose start date is greater than or equal to the specified value.
@@ -344,7 +353,7 @@ module Buildium
     end
 
     # Retrieve all general ledger entries
-    # Retrieves all general ledger entries              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all general ledger entries              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param accountingbasis [String] The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened.
     # @param glaccountids [Array<Integer>] Filters results to entries whose general ledger account belongs to the specified set of general ledger account ids.
     # @param startdate [Date] Filters results to any entries whose start date is greater than or equal to the specified value.
@@ -435,13 +444,14 @@ module Buildium
     end
 
     # Retrieve all general ledger account balances
-    # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+    # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
     # @param accountingbasis [String] The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened.
     # @param asofdate [Date] Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; field refers to.
     # @option opts [Integer] :entityid Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in &#x60;EntityType&#x60;.
     # @option opts [Array<Integer>] :glaccountids Filters results to the specified set of general ledger account identifiers.
+    # @option opts [Boolean] :aggregatebalancesbyunitid Indicates whether to aggregate the AccountingEntityBalances by unit identifier in the response. If the value is set to true the AccountingEntityBalances will be aggregated by AccountingEntity.Unit.Id otherwise the response will have the balances aggregated by AccountingEntity.Id.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -452,13 +462,14 @@ module Buildium
     end
 
     # Retrieve all general ledger account balances
-    # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all general ledger account balances as of a given date. The response includes the total balance of each account along with the subtotals for any accounting entities (company, associations or rental properties) that have transactions assigned to the account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param accountingbasis [String] The methodology in which revenues and expenses are recognized when calculating the balances. Specifying &#x60;Cash&#x60; calculates balances based on when money changes hands. Specifying &#x60;Accrual&#x60; calculates balances based on the period in which the transaction originally happened.
     # @param asofdate [Date] Indicates the end date through which the balances will be calculated. This will include all transactions in your account until this specified date.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; field refers to.
     # @option opts [Integer] :entityid Filters transactions used in calculating the general ledger account balances to only those containing journal lines for with the specified entity id value. The entity id specified must be of the type specified in &#x60;EntityType&#x60;.
     # @option opts [Array<Integer>] :glaccountids Filters results to the specified set of general ledger account identifiers.
+    # @option opts [Boolean] :aggregatebalancesbyunitid Indicates whether to aggregate the AccountingEntityBalances by unit identifier in the response. If the value is set to true the AccountingEntityBalances will be aggregated by AccountingEntity.Unit.Id otherwise the response will have the balances aggregated by AccountingEntity.Id.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -494,6 +505,7 @@ module Buildium
       query_params[:'entitytype'] = opts[:'entitytype'] if !opts[:'entitytype'].nil?
       query_params[:'entityid'] = opts[:'entityid'] if !opts[:'entityid'].nil?
       query_params[:'glaccountids'] = @api_client.build_collection_param(opts[:'glaccountids'], :multi) if !opts[:'glaccountids'].nil?
+      query_params[:'aggregatebalancesbyunitid'] = opts[:'aggregatebalancesbyunitid'] if !opts[:'aggregatebalancesbyunitid'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
@@ -533,7 +545,7 @@ module Buildium
     end
 
     # Retrieve a general ledger account
-    # Retrieves a specific general ledger account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+    # Retrieves a specific general ledger account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
     # @param gl_account_id [Integer] The general ledger account identifier.
     # @param [Hash] opts the optional parameters
     # @return [GLAccountMessage]
@@ -543,7 +555,7 @@ module Buildium
     end
 
     # Retrieve a general ledger account
-    # Retrieves a specific general ledger account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific general ledger account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param gl_account_id [Integer] The general ledger account identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(GLAccountMessage, Integer, Hash)>] GLAccountMessage data, response status code and response headers
@@ -596,7 +608,7 @@ module Buildium
     end
 
     # Retrieve a general ledger transaction
-    # Retrieves a specific general ledger transaction.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+    # Retrieves a specific general ledger transaction.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
     # @param transaction_id [Integer] The general ledger transaction identifier.
     # @param [Hash] opts the optional parameters
     # @return [GeneralLedgerTransactionMessage]
@@ -606,7 +618,7 @@ module Buildium
     end
 
     # Retrieve a general ledger transaction
-    # Retrieves a specific general ledger transaction.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific general ledger transaction.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param transaction_id [Integer] The general ledger transaction identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(GeneralLedgerTransactionMessage, Integer, Hash)>] GeneralLedgerTransactionMessage data, response status code and response headers
@@ -659,23 +671,23 @@ module Buildium
     end
 
     # Update a general journal entry
-    # Updates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` `Edit`
+    # Updates a general journal entry.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` `Edit`
     # @param journal_entry_id [Integer] 
-    # @param general_journal_entry_put_message [GeneralJournalEntryPutMessage] 
+    # @param update_general_journal_entry_request [UpdateGeneralJournalEntryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GeneralLedgerTransactionMessage]
-    def update_general_journal_entry(journal_entry_id, general_journal_entry_put_message, opts = {})
-      data, _status_code, _headers = update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message, opts)
+    def update_general_journal_entry(journal_entry_id, update_general_journal_entry_request, opts = {})
+      data, _status_code, _headers = update_general_journal_entry_with_http_info(journal_entry_id, update_general_journal_entry_request, opts)
       data
     end
 
     # Update a general journal entry
-    # Updates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a general journal entry.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param journal_entry_id [Integer] 
-    # @param general_journal_entry_put_message [GeneralJournalEntryPutMessage] 
+    # @param update_general_journal_entry_request [UpdateGeneralJournalEntryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GeneralLedgerTransactionMessage, Integer, Hash)>] GeneralLedgerTransactionMessage data, response status code and response headers
-    def update_general_journal_entry_with_http_info(journal_entry_id, general_journal_entry_put_message, opts = {})
+    def update_general_journal_entry_with_http_info(journal_entry_id, update_general_journal_entry_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: GeneralLedgerApi.update_general_journal_entry ...'
       end
@@ -683,9 +695,9 @@ module Buildium
       if @api_client.config.client_side_validation && journal_entry_id.nil?
         fail ArgumentError, "Missing the required parameter 'journal_entry_id' when calling GeneralLedgerApi.update_general_journal_entry"
       end
-      # verify the required parameter 'general_journal_entry_put_message' is set
-      if @api_client.config.client_side_validation && general_journal_entry_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'general_journal_entry_put_message' when calling GeneralLedgerApi.update_general_journal_entry"
+      # verify the required parameter 'update_general_journal_entry_request' is set
+      if @api_client.config.client_side_validation && update_general_journal_entry_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_general_journal_entry_request' when calling GeneralLedgerApi.update_general_journal_entry"
       end
       # resource path
       local_var_path = '/v1/generalledger/journalentries/{journalEntryId}'.sub('{' + 'journalEntryId' + '}', CGI.escape(journal_entry_id.to_s))
@@ -700,14 +712,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(general_journal_entry_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_general_journal_entry_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'GeneralLedgerTransactionMessage'
@@ -733,23 +745,23 @@ module Buildium
     end
 
     # Update a general ledger account
-    # Updates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View` `Edit`
+    # Updates a general ledger account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View` `Edit`
     # @param gl_account_id [Integer] 
-    # @param gl_account_put_message [GLAccountPutMessage] 
+    # @param update_gl_account_request [UpdateGLAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [GLAccountMessage]
-    def update_gl_account(gl_account_id, gl_account_put_message, opts = {})
-      data, _status_code, _headers = update_gl_account_with_http_info(gl_account_id, gl_account_put_message, opts)
+    def update_gl_account(gl_account_id, update_gl_account_request, opts = {})
+      data, _status_code, _headers = update_gl_account_with_http_info(gl_account_id, update_gl_account_request, opts)
       data
     end
 
     # Update a general ledger account
-    # Updates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a general ledger account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param gl_account_id [Integer] 
-    # @param gl_account_put_message [GLAccountPutMessage] 
+    # @param update_gl_account_request [UpdateGLAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(GLAccountMessage, Integer, Hash)>] GLAccountMessage data, response status code and response headers
-    def update_gl_account_with_http_info(gl_account_id, gl_account_put_message, opts = {})
+    def update_gl_account_with_http_info(gl_account_id, update_gl_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: GeneralLedgerApi.update_gl_account ...'
       end
@@ -757,9 +769,9 @@ module Buildium
       if @api_client.config.client_side_validation && gl_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'gl_account_id' when calling GeneralLedgerApi.update_gl_account"
       end
-      # verify the required parameter 'gl_account_put_message' is set
-      if @api_client.config.client_side_validation && gl_account_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'gl_account_put_message' when calling GeneralLedgerApi.update_gl_account"
+      # verify the required parameter 'update_gl_account_request' is set
+      if @api_client.config.client_side_validation && update_gl_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_gl_account_request' when calling GeneralLedgerApi.update_gl_account"
       end
       # resource path
       local_var_path = '/v1/glaccounts/{glAccountId}'.sub('{' + 'glAccountId' + '}', CGI.escape(gl_account_id.to_s))
@@ -774,14 +786,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(gl_account_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_gl_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'GLAccountMessage'

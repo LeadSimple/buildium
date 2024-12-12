@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **payee** | [**BankAccountCheckPayeeSaveMessage**](BankAccountCheckPayeeSaveMessage.md) |  |  |
+| **payee** | [**BankAccountCheckPostMessagePayee**](BankAccountCheckPostMessagePayee.md) |  |  |
 | **check_number** | **String** | Check number. | [optional] |
 | **entry_date** | **Date** | Date the check was recorded. |  |
 | **memo** | **String** | Memo associated with the check, if applicable. | [optional] |

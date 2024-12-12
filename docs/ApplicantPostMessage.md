@@ -8,7 +8,7 @@
 | **first_name** | **String** | The first name of the applicant. The value can not exceed 127 characters. |  |
 | **last_name** | **String** | The last name of the applicant. The value can not exceed 127 characters. |  |
 | **email** | **String** | The email address of the applicant. | [optional] |
-| **phone_numbers** | [**PhoneNumbersMessage**](PhoneNumbersMessage.md) |  | [optional] |
+| **phone_numbers** | [**ApplicantPostMessagePhoneNumbers**](ApplicantPostMessagePhoneNumbers.md) |  | [optional] |
 | **send_rental_application_email** | **Boolean** | Indicates whether to send the applicant an email with a link to the online rental application form. |  |
 
 ## Example

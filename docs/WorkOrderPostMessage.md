@@ -11,10 +11,11 @@
 | **entry_notes** | **String** | Notes specific to entering the unit. The value cannot exceed 65,535 characters. | [optional] |
 | **vendor_id** | **Integer** | Vendor unique identifier. |  |
 | **vendor_notes** | **String** | Notes specific to the vendor. The value cannot exceed 65,535 characters. | [optional] |
-| **entry_contact_id** | **Integer** | Contact user unique identifier. The user type must be one of the following types: &#x60;RentalTenant&#x60;, &#x60;AssociationOwner&#x60;, &#x60;Staff&#x60;, &#x60;RentalOwner&#x60;. | [optional] |
+| **entry_contact_id** | **Integer** | Contact user unique identifier. The user type must be one of the following: &#x60;RentalTenant&#x60;, &#x60;AssociationOwner&#x60;, &#x60;Staff&#x60;, &#x60;RentalOwner&#x60;. | [optional] |
+| **entry_contact_ids** | **Array&lt;Integer&gt;** | Collection of entry contact user unique identifiers for the work order. The user type of each user in the collection must be one of the following: &#x60;RentalTenant&#x60;, &#x60;AssociationOwner&#x60;, &#x60;Staff&#x60;, &#x60;RentalOwner&#x60;. | [optional] |
 | **line_items** | [**Array&lt;WorkOrderLineItemSaveMessage&gt;**](WorkOrderLineItemSaveMessage.md) | Work order line items. | [optional] |
 | **task_id** | **Integer** | Task unique identifier to associate with the work order. | [optional] |
-| **task** | [**WorkOrderTaskPostMessage**](WorkOrderTaskPostMessage.md) |  | [optional] |
+| **task** | [**WorkOrderPostMessageTask**](WorkOrderPostMessageTask.md) |  | [optional] |
 
 ## Example
 
@@ -30,6 +31,7 @@ instance = Buildium::WorkOrderPostMessage.new(
   vendor_id: null,
   vendor_notes: null,
   entry_contact_id: null,
+  entry_contact_ids: null,
   line_items: null,
   task_id: null,
   task: null

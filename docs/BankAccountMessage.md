@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Bank account unique identifier. | [optional] |
-| **gl_account** | [**GLAccountMessage**](GLAccountMessage.md) |  | [optional] |
-| **check_printing_info** | [**CheckPrintingInfoMessage**](CheckPrintingInfoMessage.md) |  | [optional] |
-| **electronic_payments** | [**ElectronicPaymentsMessage**](ElectronicPaymentsMessage.md) |  | [optional] |
+| **gl_account** | [**BankAccountMessageGLAccount**](BankAccountMessageGLAccount.md) |  | [optional] |
+| **check_printing_info** | [**BankAccountMessageCheckPrintingInfo**](BankAccountMessageCheckPrintingInfo.md) |  | [optional] |
+| **electronic_payments** | [**BankAccountMessageElectronicPayments**](BankAccountMessageElectronicPayments.md) |  | [optional] |
 | **name** | **String** | Bank Account name. | [optional] |
 | **description** | **String** | Bank account description. | [optional] |
 | **bank_account_type** | **String** | Type of bank account. Values are &#x60;Checking&#x60; or &#x60;Savings&#x60;. | [optional] |

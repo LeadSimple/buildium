@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **accounting_entity** | [**BillPaymentAccountingEntityMessage**](BillPaymentAccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**BillPaymentLineMessageAccountingEntity**](BillPaymentLineMessageAccountingEntity.md) |  | [optional] |
 | **gl_account_id** | **Integer** | The general ledger account the line item is allocated to. | [optional] |
 | **amount** | **Float** | Line item amount. | [optional] |
 

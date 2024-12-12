@@ -5,9 +5,9 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **payment_method** | **String** | The payment method used for the transaction. | [optional] |
-| **payee** | [**PayeeMessage**](PayeeMessage.md) |  | [optional] |
+| **payee** | [**PaymentDetailMessagePayee**](PaymentDetailMessagePayee.md) |  | [optional] |
 | **is_internal_transaction** | **Boolean** | Whether the transaction is processed internally. | [optional] |
-| **internal_transaction_status** | [**InternalTransactionStatusMessage**](InternalTransactionStatusMessage.md) |  | [optional] |
+| **internal_transaction_status** | [**PaymentDetailMessageInternalTransactionStatus**](PaymentDetailMessageInternalTransactionStatus.md) |  | [optional] |
 
 ## Example
 

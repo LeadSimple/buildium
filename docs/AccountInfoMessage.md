@@ -7,8 +7,8 @@
 | **id** | **Integer** | Account unique identifier. | [optional] |
 | **company_name** | **String** | Account company name. | [optional] |
 | **url** | **String** | Url for this account. | [optional] |
-| **contact** | [**ContactInfoMessage**](ContactInfoMessage.md) |  | [optional] |
-| **accounting_settings** | [**AccountingSettingsMessage**](AccountingSettingsMessage.md) |  | [optional] |
+| **contact** | [**AccountInfoMessageContact**](AccountInfoMessageContact.md) |  | [optional] |
+| **accounting_settings** | [**AccountInfoMessageAccountingSettings**](AccountInfoMessageAccountingSettings.md) |  | [optional] |
 
 ## Example
 

@@ -8,7 +8,7 @@
 | **name** | **String** | Name of the budget. | [optional] |
 | **start_date** | **Date** | Start date of the budget. | [optional] |
 | **end_date** | **Date** | End date of the budget. | [optional] |
-| **property** | [**PropertyMessage**](PropertyMessage.md) |  | [optional] |
+| **property** | [**BudgetMessageProperty**](BudgetMessageProperty.md) |  | [optional] |
 | **details** | [**Array&lt;BudgetDetailsMessage&gt;**](BudgetDetailsMessage.md) | The details of the budget. | [optional] |
 
 ## Example

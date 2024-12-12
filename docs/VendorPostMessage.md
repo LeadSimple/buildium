@@ -10,15 +10,15 @@
 | **company_name** | **String** | Company name of the vendor. Required if &#x60;IsCompany&#x60; is &#x60;true&#x60;. The value cannot exceed 127 characters. | [optional] |
 | **primary_email** | **String** | Primary email for the vendor. | [optional] |
 | **alternate_email** | **String** | Alternate email for the vendor. | [optional] |
-| **phone_numbers** | [**PhoneNumbersMessage**](PhoneNumbersMessage.md) |  | [optional] |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  | [optional] |
+| **phone_numbers** | [**VendorPostMessagePhoneNumbers**](VendorPostMessagePhoneNumbers.md) |  | [optional] |
+| **address** | [**VendorPostMessageAddress**](VendorPostMessageAddress.md) |  | [optional] |
 | **category_id** | **Integer** | The unique identifier of the vendor category. |  |
 | **expense_gl_account_id** | **Integer** | The unique identifier of the default expense general ledger account to associate with the vendor. | [optional] |
 | **account_number** | **String** | The account number of the vendor. The value cannot exceed 30 characters. | [optional] |
 | **website** | **String** | The website of the vendor. The value must be a valid URL. For example &#x60;http://www.example.com&#x60;. The value cannot exceed 100 characters. | [optional] |
-| **vendor_insurance** | [**VendorInsuranceSaveMessage**](VendorInsuranceSaveMessage.md) |  | [optional] |
+| **vendor_insurance** | [**VendorPostMessageVendorInsurance**](VendorPostMessageVendorInsurance.md) |  | [optional] |
 | **comments** | **String** | Comments about the vendor. The value cannot exceed 65,535 characters. | [optional] |
-| **tax_information** | [**TaxInformationPostMessage**](TaxInformationPostMessage.md) |  | [optional] |
+| **tax_information** | [**VendorPostMessageTaxInformation**](VendorPostMessageTaxInformation.md) |  | [optional] |
 
 ## Example
 

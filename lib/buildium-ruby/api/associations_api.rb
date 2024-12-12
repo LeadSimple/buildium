@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create an association
-    # Creates an association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
-    # @param association_post_message [AssociationPostMessage] 
+    # Creates an association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
+    # @param create_association_request [CreateAssociationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationMessage]
-    def create_association(association_post_message, opts = {})
-      data, _status_code, _headers = create_association_with_http_info(association_post_message, opts)
+    def create_association(create_association_request, opts = {})
+      data, _status_code, _headers = create_association_with_http_info(create_association_request, opts)
       data
     end
 
     # Create an association
-    # Creates an association.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param association_post_message [AssociationPostMessage] 
+    # Creates an association.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_association_request [CreateAssociationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationMessage, Integer, Hash)>] AssociationMessage data, response status code and response headers
-    def create_association_with_http_info(association_post_message, opts = {})
+    def create_association_with_http_info(create_association_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationsApi.create_association ...'
       end
-      # verify the required parameter 'association_post_message' is set
-      if @api_client.config.client_side_validation && association_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_post_message' when calling AssociationsApi.create_association"
+      # verify the required parameter 'create_association_request' is set
+      if @api_client.config.client_side_validation && create_association_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_association_request' when calling AssociationsApi.create_association"
       end
       # resource path
       local_var_path = '/v1/associations'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_association_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationMessage'
@@ -88,23 +88,23 @@ module Buildium
     end
 
     # Create a note
-    # Creates a note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Creates a note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def create_association_note(association_id, note_post_message, opts = {})
-      data, _status_code, _headers = create_association_note_with_http_info(association_id, note_post_message, opts)
+    def create_association_note(association_id, create_lease_note_request, opts = {})
+      data, _status_code, _headers = create_association_note_with_http_info(association_id, create_lease_note_request, opts)
       data
     end
 
     # Create a note
-    # Creates a note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a note.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def create_association_note_with_http_info(association_id, note_post_message, opts = {})
+    def create_association_note_with_http_info(association_id, create_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationsApi.create_association_note ...'
       end
@@ -112,9 +112,9 @@ module Buildium
       if @api_client.config.client_side_validation && association_id.nil?
         fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.create_association_note"
       end
-      # verify the required parameter 'note_post_message' is set
-      if @api_client.config.client_side_validation && note_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_post_message' when calling AssociationsApi.create_association_note"
+      # verify the required parameter 'create_lease_note_request' is set
+      if @api_client.config.client_side_validation && create_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_note_request' when calling AssociationsApi.create_association_note"
       end
       # resource path
       local_var_path = '/v1/associations/{associationId}/notes'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
@@ -129,14 +129,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -162,7 +162,7 @@ module Buildium
     end
 
     # Retrieve an association
-    # Retrieve a specific association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieve a specific association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param association_id [Integer] The association identifier.
     # @param [Hash] opts the optional parameters
     # @return [AssociationMessage]
@@ -172,7 +172,7 @@ module Buildium
     end
 
     # Retrieve an association
-    # Retrieve a specific association.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve a specific association.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] The association identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationMessage, Integer, Hash)>] AssociationMessage data, response status code and response headers
@@ -225,7 +225,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves a note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves a note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param association_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -236,7 +236,7 @@ module Buildium
     end
 
     # Retrieve a note
-    # Retrieves a note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -294,7 +294,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves all notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -310,7 +310,7 @@ module Buildium
     end
 
     # Retrieve all notes
-    # Retrieves all notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -375,7 +375,7 @@ module Buildium
     end
 
     # Retrieve all preferred vendors
-    # Retrieves all preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+    # Retrieves all preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -388,7 +388,7 @@ module Buildium
     end
 
     # Retrieve all preferred vendors
-    # Retrieves all preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -447,7 +447,7 @@ module Buildium
     end
 
     # Retrieve all associations
-    # Retrieves a list of associations.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves a list of associations.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :ids Filters results to the specified set of ids.
     # @option opts [String] :location Filters results to any association whose city or state *contains* the specified value.
@@ -465,7 +465,7 @@ module Buildium
     end
 
     # Retrieve all associations
-    # Retrieves a list of associations.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of associations.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :ids Filters results to the specified set of ids.
     # @option opts [String] :location Filters results to any association whose city or state *contains* the specified value.
@@ -535,7 +535,7 @@ module Buildium
     end
 
     # Retrieve all association bank lockbox data
-    # Retrieves all association bank lockbox data.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves all association bank lockbox data.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :associationids Filters results to only include Associations with matching IDs
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -548,7 +548,7 @@ module Buildium
     end
 
     # Retrieve all association bank lockbox data
-    # Retrieves all association bank lockbox data.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all association bank lockbox data.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :associationids Filters results to only include Associations with matching IDs
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -604,7 +604,7 @@ module Buildium
     end
 
     # Retrieve ePay settings
-    # Retrieves ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [EPaySettingsMessage]
@@ -614,7 +614,7 @@ module Buildium
     end
 
     # Retrieve ePay settings
-    # Retrieves ePay settings for an association.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves ePay settings for an association.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EPaySettingsMessage, Integer, Hash)>] EPaySettingsMessage data, response status code and response headers
@@ -667,7 +667,7 @@ module Buildium
     end
 
     # Inactivate an association
-    # Inactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Inactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -677,7 +677,7 @@ module Buildium
     end
 
     # Inactivate an association
-    # Inactivates an association along with associated units and ownership accounts.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Inactivates an association along with associated units and ownership accounts.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -730,7 +730,7 @@ module Buildium
     end
 
     # Reactivate an association
-    # Reactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Reactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -740,7 +740,7 @@ module Buildium
     end
 
     # Reactivate an association
-    # Reactivates an association along with associated units and ownership accounts.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Reactivates an association along with associated units and ownership accounts.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -793,23 +793,23 @@ module Buildium
     end
 
     # Update an association
-    # Updates an association.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Updates an association.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
-    # @param association_put_message [AssociationPutMessage] 
+    # @param update_association_request [UpdateAssociationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationMessage]
-    def update_association(association_id, association_put_message, opts = {})
-      data, _status_code, _headers = update_association_with_http_info(association_id, association_put_message, opts)
+    def update_association(association_id, update_association_request, opts = {})
+      data, _status_code, _headers = update_association_with_http_info(association_id, update_association_request, opts)
       data
     end
 
     # Update an association
-    # Updates an association.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;&lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an association.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;&lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
-    # @param association_put_message [AssociationPutMessage] 
+    # @param update_association_request [UpdateAssociationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationMessage, Integer, Hash)>] AssociationMessage data, response status code and response headers
-    def update_association_with_http_info(association_id, association_put_message, opts = {})
+    def update_association_with_http_info(association_id, update_association_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationsApi.update_association ...'
       end
@@ -817,9 +817,9 @@ module Buildium
       if @api_client.config.client_side_validation && association_id.nil?
         fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.update_association"
       end
-      # verify the required parameter 'association_put_message' is set
-      if @api_client.config.client_side_validation && association_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_put_message' when calling AssociationsApi.update_association"
+      # verify the required parameter 'update_association_request' is set
+      if @api_client.config.client_side_validation && update_association_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_association_request' when calling AssociationsApi.update_association"
       end
       # resource path
       local_var_path = '/v1/associations/{associationId}'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
@@ -834,14 +834,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_association_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationMessage'
@@ -867,25 +867,25 @@ module Buildium
     end
 
     # Update a note
-    # Updates a note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Updates a note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def update_association_note(association_id, note_id, note_put_message, opts = {})
-      data, _status_code, _headers = update_association_note_with_http_info(association_id, note_id, note_put_message, opts)
+    def update_association_note(association_id, note_id, update_lease_note_request, opts = {})
+      data, _status_code, _headers = update_association_note_with_http_info(association_id, note_id, update_lease_note_request, opts)
       data
     end
 
     # Update a note
-    # Updates a note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def update_association_note_with_http_info(association_id, note_id, note_put_message, opts = {})
+    def update_association_note_with_http_info(association_id, note_id, update_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationsApi.update_association_note ...'
       end
@@ -897,9 +897,9 @@ module Buildium
       if @api_client.config.client_side_validation && note_id.nil?
         fail ArgumentError, "Missing the required parameter 'note_id' when calling AssociationsApi.update_association_note"
       end
-      # verify the required parameter 'note_put_message' is set
-      if @api_client.config.client_side_validation && note_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_put_message' when calling AssociationsApi.update_association_note"
+      # verify the required parameter 'update_lease_note_request' is set
+      if @api_client.config.client_side_validation && update_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_note_request' when calling AssociationsApi.update_association_note"
       end
       # resource path
       local_var_path = '/v1/associations/{associationId}/notes/{noteId}'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s)).sub('{' + 'noteId' + '}', CGI.escape(note_id.to_s))
@@ -914,14 +914,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -947,23 +947,23 @@ module Buildium
     end
 
     # Update preferred vendors
-    # Updates preferred vendors.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+    # Updates preferred vendors.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
     # @param association_id [Integer] 
-    # @param association_preferred_vendor_put_message [AssociationPreferredVendorPutMessage] 
+    # @param update_association_preferred_vendors_request [UpdateAssociationPreferredVendorsRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<AssociationPreferredVendorMessage>]
-    def update_association_preferred_vendors(association_id, association_preferred_vendor_put_message, opts = {})
-      data, _status_code, _headers = update_association_preferred_vendors_with_http_info(association_id, association_preferred_vendor_put_message, opts)
+    def update_association_preferred_vendors(association_id, update_association_preferred_vendors_request, opts = {})
+      data, _status_code, _headers = update_association_preferred_vendors_with_http_info(association_id, update_association_preferred_vendors_request, opts)
       data
     end
 
     # Update preferred vendors
-    # Updates preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;&lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates preferred vendors.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;&lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
-    # @param association_preferred_vendor_put_message [AssociationPreferredVendorPutMessage] 
+    # @param update_association_preferred_vendors_request [UpdateAssociationPreferredVendorsRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<AssociationPreferredVendorMessage>, Integer, Hash)>] Array<AssociationPreferredVendorMessage> data, response status code and response headers
-    def update_association_preferred_vendors_with_http_info(association_id, association_preferred_vendor_put_message, opts = {})
+    def update_association_preferred_vendors_with_http_info(association_id, update_association_preferred_vendors_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationsApi.update_association_preferred_vendors ...'
       end
@@ -971,9 +971,9 @@ module Buildium
       if @api_client.config.client_side_validation && association_id.nil?
         fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.update_association_preferred_vendors"
       end
-      # verify the required parameter 'association_preferred_vendor_put_message' is set
-      if @api_client.config.client_side_validation && association_preferred_vendor_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_preferred_vendor_put_message' when calling AssociationsApi.update_association_preferred_vendors"
+      # verify the required parameter 'update_association_preferred_vendors_request' is set
+      if @api_client.config.client_side_validation && update_association_preferred_vendors_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_association_preferred_vendors_request' when calling AssociationsApi.update_association_preferred_vendors"
       end
       # resource path
       local_var_path = '/v1/associations/{associationId}/vendors'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
@@ -988,14 +988,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_preferred_vendor_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_association_preferred_vendors_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Array<AssociationPreferredVendorMessage>'
@@ -1021,23 +1021,23 @@ module Buildium
     end
 
     # Update ePay settings
-    # Updates ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Updates ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param association_id [Integer] 
-    # @param e_pay_settings_put_message [EPaySettingsPutMessage] 
+    # @param update_e_pay_settings_for_association_request [UpdateEPaySettingsForAssociationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [EPaySettingsMessage]
-    def update_e_pay_settings_for_association(association_id, e_pay_settings_put_message, opts = {})
-      data, _status_code, _headers = update_e_pay_settings_for_association_with_http_info(association_id, e_pay_settings_put_message, opts)
+    def update_e_pay_settings_for_association(association_id, update_e_pay_settings_for_association_request, opts = {})
+      data, _status_code, _headers = update_e_pay_settings_for_association_with_http_info(association_id, update_e_pay_settings_for_association_request, opts)
       data
     end
 
     # Update ePay settings
-    # Updates ePay settings for an association.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates ePay settings for an association.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param association_id [Integer] 
-    # @param e_pay_settings_put_message [EPaySettingsPutMessage] 
+    # @param update_e_pay_settings_for_association_request [UpdateEPaySettingsForAssociationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EPaySettingsMessage, Integer, Hash)>] EPaySettingsMessage data, response status code and response headers
-    def update_e_pay_settings_for_association_with_http_info(association_id, e_pay_settings_put_message, opts = {})
+    def update_e_pay_settings_for_association_with_http_info(association_id, update_e_pay_settings_for_association_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AssociationsApi.update_e_pay_settings_for_association ...'
       end
@@ -1045,9 +1045,9 @@ module Buildium
       if @api_client.config.client_side_validation && association_id.nil?
         fail ArgumentError, "Missing the required parameter 'association_id' when calling AssociationsApi.update_e_pay_settings_for_association"
       end
-      # verify the required parameter 'e_pay_settings_put_message' is set
-      if @api_client.config.client_side_validation && e_pay_settings_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'e_pay_settings_put_message' when calling AssociationsApi.update_e_pay_settings_for_association"
+      # verify the required parameter 'update_e_pay_settings_for_association_request' is set
+      if @api_client.config.client_side_validation && update_e_pay_settings_for_association_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_e_pay_settings_for_association_request' when calling AssociationsApi.update_e_pay_settings_for_association"
       end
       # resource path
       local_var_path = '/v1/associations/{associationId}/epaysettings'.sub('{' + 'associationId' + '}', CGI.escape(association_id.to_s))
@@ -1062,14 +1062,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(e_pay_settings_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_e_pay_settings_for_association_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'EPaySettingsMessage'

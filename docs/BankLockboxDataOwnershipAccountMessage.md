@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Association ownership account unique identifier. | [optional] |
 | **unit_number** | **String** | Unit number of the unit for this ownership account. | [optional] |
-| **unit_address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **unit_address** | [**BankLockboxDataOwnershipAccountMessageUnitAddress**](BankLockboxDataOwnershipAccountMessageUnitAddress.md) |  | [optional] |
 | **delinquency_status** | **String** | Indicates the delinquency status of the ownership account | [optional] |
 | **association_owners** | [**Array&lt;BankLockboxDataAssociationOwnerMessage&gt;**](BankLockboxDataAssociationOwnerMessage.md) | Association owners for this ownership account. | [optional] |
 

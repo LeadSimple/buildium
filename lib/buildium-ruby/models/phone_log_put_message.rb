@@ -89,8 +89,16 @@ module Buildium
         invalid_properties.push('invalid value for "subject", subject cannot be nil.')
       end
 
+      if @subject.to_s.length < 1
+        invalid_properties.push('invalid value for "subject", the character length must be great than or equal to 1.')
+      end
+
       if @description.nil?
         invalid_properties.push('invalid value for "description", description cannot be nil.')
+      end
+
+      if @description.to_s.length < 1
+        invalid_properties.push('invalid value for "description", the character length must be great than or equal to 1.')
       end
 
       if @call_date_time.nil?
@@ -104,9 +112,39 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @subject.nil?
+      return false if @subject.to_s.length < 1
       return false if @description.nil?
+      return false if @description.to_s.length < 1
       return false if @call_date_time.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] subject Value to be assigned
+    def subject=(subject)
+      if subject.nil?
+        fail ArgumentError, 'subject cannot be nil'
+      end
+
+      if subject.to_s.length < 1
+        fail ArgumentError, 'invalid value for "subject", the character length must be great than or equal to 1.'
+      end
+
+      @subject = subject
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if description.nil?
+        fail ArgumentError, 'description cannot be nil'
+      end
+
+      if description.to_s.length < 1
+        fail ArgumentError, 'invalid value for "description", the character length must be great than or equal to 1.'
+      end
+
+      @description = description
     end
 
     # Checks equality by comparing each attribute.
@@ -142,7 +180,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -249,5 +287,6 @@ module Buildium
         value
       end
     end
+
   end
 end

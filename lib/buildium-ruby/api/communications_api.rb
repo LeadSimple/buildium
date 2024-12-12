@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create an announcement
-    # Creates and publishes an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
-    # @param announcement_post_message [AnnouncementPostMessage] 
+    # Creates and publishes an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View` `Edit`
+    # @param create_announcement_request [CreateAnnouncementRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AnnouncementMessage]
-    def create_announcement(announcement_post_message, opts = {})
-      data, _status_code, _headers = create_announcement_with_http_info(announcement_post_message, opts)
+    def create_announcement(create_announcement_request, opts = {})
+      data, _status_code, _headers = create_announcement_with_http_info(create_announcement_request, opts)
       data
     end
 
     # Create an announcement
-    # Creates and publishes an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param announcement_post_message [AnnouncementPostMessage] 
+    # Creates and publishes an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_announcement_request [CreateAnnouncementRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AnnouncementMessage, Integer, Hash)>] AnnouncementMessage data, response status code and response headers
-    def create_announcement_with_http_info(announcement_post_message, opts = {})
+    def create_announcement_with_http_info(create_announcement_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CommunicationsApi.create_announcement ...'
       end
-      # verify the required parameter 'announcement_post_message' is set
-      if @api_client.config.client_side_validation && announcement_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'announcement_post_message' when calling CommunicationsApi.create_announcement"
+      # verify the required parameter 'create_announcement_request' is set
+      if @api_client.config.client_side_validation && create_announcement_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_announcement_request' when calling CommunicationsApi.create_announcement"
       end
       # resource path
       local_var_path = '/v1/communications/announcements'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(announcement_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_announcement_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AnnouncementMessage'
@@ -88,27 +88,27 @@ module Buildium
     end
 
     # Send an email
-    # Sends an email to one or more recipients using the specified email template.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
-    # @param email_post_message [EmailPostMessage] 
+    # Sends an email to one or more recipients using the specified email template.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication > Emails</span> - `View` `Edit`
+    # @param create_email_request [CreateEmailRequest] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def create_email(email_post_message, opts = {})
-      create_email_with_http_info(email_post_message, opts)
+    def create_email(create_email_request, opts = {})
+      create_email_with_http_info(create_email_request, opts)
       nil
     end
 
     # Send an email
-    # Sends an email to one or more recipients using the specified email template.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param email_post_message [EmailPostMessage] 
+    # Sends an email to one or more recipients using the specified email template.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &gt; Emails&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_email_request [CreateEmailRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def create_email_with_http_info(email_post_message, opts = {})
+    def create_email_with_http_info(create_email_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CommunicationsApi.create_email ...'
       end
-      # verify the required parameter 'email_post_message' is set
-      if @api_client.config.client_side_validation && email_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'email_post_message' when calling CommunicationsApi.create_email"
+      # verify the required parameter 'create_email_request' is set
+      if @api_client.config.client_side_validation && create_email_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_email_request' when calling CommunicationsApi.create_email"
       end
       # resource path
       local_var_path = '/v1/communications/emails'
@@ -123,14 +123,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(email_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_email_request)
 
       # return_type
       return_type = opts[:debug_return_type]
@@ -156,27 +156,27 @@ module Buildium
     end
 
     # Create a phone log
-    # Creates a phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View` `Edit`
-    # @param phone_log_post_message [PhoneLogPostMessage] 
+    # Creates a phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View` `Edit`
+    # @param create_phone_log_request [CreatePhoneLogRequest] 
     # @param [Hash] opts the optional parameters
     # @return [PhoneLogMessage]
-    def create_phone_log(phone_log_post_message, opts = {})
-      data, _status_code, _headers = create_phone_log_with_http_info(phone_log_post_message, opts)
+    def create_phone_log(create_phone_log_request, opts = {})
+      data, _status_code, _headers = create_phone_log_with_http_info(create_phone_log_request, opts)
       data
     end
 
     # Create a phone log
-    # Creates a phone log.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param phone_log_post_message [PhoneLogPostMessage] 
+    # Creates a phone log.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_phone_log_request [CreatePhoneLogRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PhoneLogMessage, Integer, Hash)>] PhoneLogMessage data, response status code and response headers
-    def create_phone_log_with_http_info(phone_log_post_message, opts = {})
+    def create_phone_log_with_http_info(create_phone_log_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CommunicationsApi.create_phone_log ...'
       end
-      # verify the required parameter 'phone_log_post_message' is set
-      if @api_client.config.client_side_validation && phone_log_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'phone_log_post_message' when calling CommunicationsApi.create_phone_log"
+      # verify the required parameter 'create_phone_log_request' is set
+      if @api_client.config.client_side_validation && create_phone_log_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_phone_log_request' when calling CommunicationsApi.create_phone_log"
       end
       # resource path
       local_var_path = '/v1/communications/phonelogs'
@@ -191,14 +191,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(phone_log_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_phone_log_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PhoneLogMessage'
@@ -224,7 +224,7 @@ module Buildium
     end
 
     # Expire an announcement
-    # Removes the announcement from the Resident Center immediately.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
+    # Removes the announcement from the Resident Center immediately.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View` `Edit`
     # @param announcement_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -234,7 +234,7 @@ module Buildium
     end
 
     # Expire an announcement
-    # Removes the announcement from the Resident Center immediately.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Removes the announcement from the Resident Center immediately.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Announcements&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param announcement_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -287,7 +287,7 @@ module Buildium
     end
 
     # Retrieve all announcements
-    # Retrieves all announcements.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+    # Retrieves all announcements.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :announcementdatefrom Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @option opts [Date] :announcementdateto Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -304,7 +304,7 @@ module Buildium
     end
 
     # Retrieve all announcements
-    # Retrieves all announcements.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all announcements.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :announcementdatefrom Filters results to any announcements created on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @option opts [Date] :announcementdateto Filters results to any announcements created on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -372,7 +372,7 @@ module Buildium
     end
 
     # Retrieve an announcement
-    # Retrieves an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+    # Retrieves an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View`
     # @param announcement_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [AnnouncementMessage]
@@ -382,7 +382,7 @@ module Buildium
     end
 
     # Retrieve an announcement
-    # Retrieves an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an announcement.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
     # @param announcement_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AnnouncementMessage, Integer, Hash)>] AnnouncementMessage data, response status code and response headers
@@ -435,7 +435,7 @@ module Buildium
     end
 
     # Retrieve all announcement properties
-    # Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+    # Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View`
     # @param announcement_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -448,7 +448,7 @@ module Buildium
     end
 
     # Retrieve all announcement properties
-    # Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Announcements&lt;/span&gt; - &#x60;View&#x60;
     # @param announcement_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -507,7 +507,7 @@ module Buildium
     end
 
     # Retrieve an email
-    # Retrieves the content of an email. To retrieve the recipients of the email see the [Retrieve all email recipients](#tag/Communications/operation/GetEmailRecipients) endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Emails</span> - `View`
+    # Retrieves the content of an email. To retrieve the recipients of the email see the [Retrieve all email recipients](#tag/Communications/operation/GetEmailRecipients) endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Emails</span> - `View`
     # @param email_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [EmailMessage]
@@ -517,7 +517,7 @@ module Buildium
     end
 
     # Retrieve an email
-    # Retrieves the content of an email. To retrieve the recipients of the email see the [Retrieve all email recipients](#tag/Communications/operation/GetEmailRecipients) endpoint.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves the content of an email. To retrieve the recipients of the email see the [Retrieve all email recipients](#tag/Communications/operation/GetEmailRecipients) endpoint.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Emails&lt;/span&gt; - &#x60;View&#x60;
     # @param email_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(EmailMessage, Integer, Hash)>] EmailMessage data, response status code and response headers
@@ -570,7 +570,7 @@ module Buildium
     end
 
     # Retrieve all email recipients
-    # Retrieves all email recipients.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Email</span> - `View`              <br /><h4>Optional Permissions:</h4><br />              The following permissions are optional, but results with a missing permission will be filtered out.              <span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` In order to retrieve recipients that are Vendors, you must have this permission.              <span class=\"permissionBlock\">Administration &gt; Users</span> - `View` In order to see recipients that are Staff, you must have this permission.
+    # Retrieves all email recipients.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Email</span> - `View`              <br /><h4>Optional Permissions:</h4><br />              The following permissions are optional, but results with a missing permission will be filtered out.              <span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` In order to retrieve recipients that are Vendors, you must have this permission.              <span class=\"permissionBlock\">Administration > Users</span> - `View` In order to see recipients that are Staff, you must have this permission.
     # @param email_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -583,7 +583,7 @@ module Buildium
     end
 
     # Retrieve all email recipients
-    # Retrieves all email recipients.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Email&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;br /&gt;              The following permissions are optional, but results with a missing permission will be filtered out.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60; In order to retrieve recipients that are Vendors, you must have this permission.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Users&lt;/span&gt; - &#x60;View&#x60; In order to see recipients that are Staff, you must have this permission.
+    # Retrieves all email recipients.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Email&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;br /&gt;              The following permissions are optional, but results with a missing permission will be filtered out.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60; In order to retrieve recipients that are Vendors, you must have this permission.              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Users&lt;/span&gt; - &#x60;View&#x60; In order to see recipients that are Staff, you must have this permission.
     # @param email_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -642,7 +642,7 @@ module Buildium
     end
 
     # Retrieve all emails
-    # Retrieves all emails.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View`
+    # Retrieves all emails.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication > Emails</span> - `View`
     # @param sentdatetimefrom [Time] Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
     # @param sentdatetimeto [Time] Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
     # @param [Hash] opts the optional parameters
@@ -659,7 +659,7 @@ module Buildium
     end
 
     # Retrieve all emails
-    # Retrieves all emails.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &amp;gt; Emails&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all emails.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communication &gt; Emails&lt;/span&gt; - &#x60;View&#x60;
     # @param sentdatetimefrom [Time] Filters results to any emails whose sent date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
     # @param sentdatetimeto [Time] Filters results to any emails whose sent date and time are less than or equal to the specified value. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ. The maximum date range is 90 days.
     # @param [Hash] opts the optional parameters
@@ -731,7 +731,7 @@ module Buildium
     end
 
     # Retrieve all communication templates
-    # Retrieves all mailing and email templates. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves all mailing and email templates. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -743,7 +743,7 @@ module Buildium
     end
 
     # Retrieve all communication templates
-    # Retrieves all mailing and email templates. A template is a tool in Buildium that allows you to create \&quot;mail merge\&quot; templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all mailing and email templates. A template is a tool in Buildium that allows you to create \&quot;mail merge\&quot; templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -797,7 +797,7 @@ module Buildium
     end
 
     # Retrieve a communication template
-    # Retrieves a communication template. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves a communication template. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param template_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [MailingTemplateMessage]
@@ -807,7 +807,7 @@ module Buildium
     end
 
     # Retrieve a communication template
-    # Retrieves a communication template. A template is a tool in Buildium that allows you to create \&quot;mail merge\&quot; templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &amp;gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a communication template. A template is a tool in Buildium that allows you to create \&quot;mail merge\&quot; templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Mailing Templates&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;h4&gt;Optional Permissions:&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Property Rental owners&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Association owners and tenants&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Maintenance &gt; Vendors&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param template_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(MailingTemplateMessage, Integer, Hash)>] MailingTemplateMessage data, response status code and response headers
@@ -860,7 +860,7 @@ module Buildium
     end
 
     # Retrieve a phone log
-    # Retrieves a specific phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View`
+    # Retrieves a specific phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View`
     # @param phone_log_id [Integer] The phone log identifier
     # @param [Hash] opts the optional parameters
     # @return [PhoneLogMessage]
@@ -870,7 +870,7 @@ module Buildium
     end
 
     # Retrieve a phone log
-    # Retrieves a specific phone log.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific phone log.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60;
     # @param phone_log_id [Integer] The phone log identifier
     # @param [Hash] opts the optional parameters
     # @return [Array<(PhoneLogMessage, Integer, Hash)>] PhoneLogMessage data, response status code and response headers
@@ -923,7 +923,7 @@ module Buildium
     end
 
     # Retrieve all phone logs
-    # Retrieves all phone logs.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View`
+    # Retrieves all phone logs.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :fromdate Filters results to any phone log whose call date is greater than or equal to the specified value.
     # @option opts [Date] :todate Filters results to any phone log whose call date is less than or equal to the specified value.
@@ -943,7 +943,7 @@ module Buildium
     end
 
     # Retrieve all phone logs
-    # Retrieves all phone logs.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all phone logs.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :fromdate Filters results to any phone log whose call date is greater than or equal to the specified value.
     # @option opts [Date] :todate Filters results to any phone log whose call date is less than or equal to the specified value.
@@ -1021,23 +1021,23 @@ module Buildium
     end
 
     # Update a phone log
-    # Update a phone log  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View` `Edit`
+    # Update a phone log  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View` `Edit`
     # @param phone_log_id [Integer] The phone log identifier.
-    # @param phone_log_put_message [PhoneLogPutMessage] 
+    # @param update_phone_log_request [UpdatePhoneLogRequest] 
     # @param [Hash] opts the optional parameters
     # @return [PhoneLogMessage]
-    def update_phone_log(phone_log_id, phone_log_put_message, opts = {})
-      data, _status_code, _headers = update_phone_log_with_http_info(phone_log_id, phone_log_put_message, opts)
+    def update_phone_log(phone_log_id, update_phone_log_request, opts = {})
+      data, _status_code, _headers = update_phone_log_with_http_info(phone_log_id, update_phone_log_request, opts)
       data
     end
 
     # Update a phone log
-    # Update a phone log  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &amp;gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Update a phone log  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Communications &gt; Timelines (Phone Logs)&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param phone_log_id [Integer] The phone log identifier.
-    # @param phone_log_put_message [PhoneLogPutMessage] 
+    # @param update_phone_log_request [UpdatePhoneLogRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PhoneLogMessage, Integer, Hash)>] PhoneLogMessage data, response status code and response headers
-    def update_phone_log_with_http_info(phone_log_id, phone_log_put_message, opts = {})
+    def update_phone_log_with_http_info(phone_log_id, update_phone_log_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CommunicationsApi.update_phone_log ...'
       end
@@ -1045,9 +1045,9 @@ module Buildium
       if @api_client.config.client_side_validation && phone_log_id.nil?
         fail ArgumentError, "Missing the required parameter 'phone_log_id' when calling CommunicationsApi.update_phone_log"
       end
-      # verify the required parameter 'phone_log_put_message' is set
-      if @api_client.config.client_side_validation && phone_log_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'phone_log_put_message' when calling CommunicationsApi.update_phone_log"
+      # verify the required parameter 'update_phone_log_request' is set
+      if @api_client.config.client_side_validation && update_phone_log_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_phone_log_request' when calling CommunicationsApi.update_phone_log"
       end
       # resource path
       local_var_path = '/v1/communications/phonelogs/{phoneLogId}'.sub('{' + 'phoneLogId' + '}', CGI.escape(phone_log_id.to_s))
@@ -1062,14 +1062,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(phone_log_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_phone_log_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PhoneLogMessage'

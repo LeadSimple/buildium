@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **eft_payments** | [**EFTPaymentsMessage**](EFTPaymentsMessage.md) |  | [optional] |
-| **credit_card_payments** | [**CCPaymentsMessage**](CCPaymentsMessage.md) |  | [optional] |
-| **offline_payments** | [**OfflinePaymentsMessage**](OfflinePaymentsMessage.md) |  | [optional] |
+| **eft_payments** | [**EPaySettingsMessageEFTPayments**](EPaySettingsMessageEFTPayments.md) |  | [optional] |
+| **credit_card_payments** | [**EPaySettingsMessageCreditCardPayments**](EPaySettingsMessageCreditCardPayments.md) |  | [optional] |
+| **offline_payments** | [**EPaySettingsMessageOfflinePayments**](EPaySettingsMessageOfflinePayments.md) |  | [optional] |
 
 ## Example
 

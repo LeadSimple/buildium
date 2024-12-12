@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **gl_account_id** | **Integer** | The general ledger account identifier to record the budget details under. |  |
-| **monthly_amounts** | [**BudgetMonthlyAmountsSaveMessage**](BudgetMonthlyAmountsSaveMessage.md) |  |  |
+| **monthly_amounts** | [**BudgetDetailsSaveMessageMonthlyAmounts**](BudgetDetailsSaveMessageMonthlyAmounts.md) |  |  |
 
 ## Example
 

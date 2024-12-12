@@ -7,7 +7,7 @@
 | **id** | **Integer** | Transfer unique identifier. | [optional] |
 | **entry_date** | **Date** | Date the transfer was recorded. | [optional] |
 | **memo** | **String** | Memo associated with the transfer, if applicable. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**BankAccountTransferMessageAccountingEntity**](BankAccountTransferMessageAccountingEntity.md) |  | [optional] |
 | **total_amount** | **Float** | Total amount of the transfer. | [optional] |
 | **transfer_to_bank_account_id** | **Integer** | Bank account identifier the money was transferred to. | [optional] |
 

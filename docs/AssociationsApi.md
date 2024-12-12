@@ -23,11 +23,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_association
 
-> <AssociationMessage> create_association(association_post_message)
+> <AssociationMessage> create_association(create_association_request)
 
 Create an association
 
-Creates an association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Creates an association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -48,11 +48,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::AssociationsApi.new
-association_post_message = Buildium::AssociationPostMessage.new({name: 'name_example', operating_bank_account_id: 37, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # AssociationPostMessage | 
+create_association_request = Buildium::CreateAssociationRequest.new({name: 'name_example', operating_bank_account_id: 37, address: Buildium::AssociationPostMessageAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'})}) # CreateAssociationRequest | 
 
 begin
   # Create an association
-  result = api_instance.create_association(association_post_message)
+  result = api_instance.create_association(create_association_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationsApi->create_association: #{e}"
@@ -63,12 +63,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationMessage>, Integer, Hash)> create_association_with_http_info(association_post_message)
+> <Array(<AssociationMessage>, Integer, Hash)> create_association_with_http_info(create_association_request)
 
 ```ruby
 begin
   # Create an association
-  data, status_code, headers = api_instance.create_association_with_http_info(association_post_message)
+  data, status_code, headers = api_instance.create_association_with_http_info(create_association_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationMessage>
@@ -81,7 +81,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **association_post_message** | [**AssociationPostMessage**](AssociationPostMessage.md) |  |  |
+| **create_association_request** | [**CreateAssociationRequest**](CreateAssociationRequest.md) |  |  |
 
 ### Return type
 
@@ -99,11 +99,11 @@ end
 
 ## create_association_note
 
-> <NoteMessage> create_association_note(association_id, note_post_message)
+> <NoteMessage> create_association_note(association_id, create_lease_note_request)
 
 Create a note
 
-Creates a note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Creates a note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -125,11 +125,11 @@ end
 
 api_instance = Buildium::AssociationsApi.new
 association_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create a note
-  result = api_instance.create_association_note(association_id, note_post_message)
+  result = api_instance.create_association_note(association_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationsApi->create_association_note: #{e}"
@@ -140,12 +140,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_association_note_with_http_info(association_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_association_note_with_http_info(association_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create a note
-  data, status_code, headers = api_instance.create_association_note_with_http_info(association_id, note_post_message)
+  data, status_code, headers = api_instance.create_association_note_with_http_info(association_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -159,7 +159,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -181,7 +181,7 @@ end
 
 Retrieve an association
 
-Retrieve a specific association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieve a specific association.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -257,7 +257,7 @@ end
 
 Retrieve a note
 
-Retrieves a note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves a note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -335,7 +335,7 @@ end
 
 Retrieve all notes
 
-Retrieves all notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -425,7 +425,7 @@ end
 
 Retrieve all preferred vendors
 
-Retrieves all preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieves all preferred vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -509,7 +509,7 @@ end
 
 Retrieve all associations
 
-Retrieves a list of associations.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves a list of associations.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -603,7 +603,7 @@ end
 
 Retrieve all association bank lockbox data
 
-Retrieves all association bank lockbox data.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all association bank lockbox data.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -687,7 +687,7 @@ end
 
 Retrieve ePay settings
 
-Retrieves ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -763,7 +763,7 @@ end
 
 Inactivate an association
 
-Inactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Inactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -838,7 +838,7 @@ nil (empty response body)
 
 Reactivate an association
 
-Reactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Reactivates an association along with associated units and ownership accounts.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -909,11 +909,11 @@ nil (empty response body)
 
 ## update_association
 
-> <AssociationMessage> update_association(association_id, association_put_message)
+> <AssociationMessage> update_association(association_id, update_association_request)
 
 Update an association
 
-Updates an association.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates an association.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -935,11 +935,11 @@ end
 
 api_instance = Buildium::AssociationsApi.new
 association_id = 56 # Integer | 
-association_put_message = Buildium::AssociationPutMessage.new({name: 'name_example', operating_bank_account_id: 37, address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'}), fiscal_year_end_day: 37, fiscal_year_end_month: 37}) # AssociationPutMessage | 
+update_association_request = Buildium::UpdateAssociationRequest.new({name: 'name_example', operating_bank_account_id: 37, address: Buildium::AssociationPostMessageAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'}), fiscal_year_end_day: 37, fiscal_year_end_month: 37}) # UpdateAssociationRequest | 
 
 begin
   # Update an association
-  result = api_instance.update_association(association_id, association_put_message)
+  result = api_instance.update_association(association_id, update_association_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationsApi->update_association: #{e}"
@@ -950,12 +950,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationMessage>, Integer, Hash)> update_association_with_http_info(association_id, association_put_message)
+> <Array(<AssociationMessage>, Integer, Hash)> update_association_with_http_info(association_id, update_association_request)
 
 ```ruby
 begin
   # Update an association
-  data, status_code, headers = api_instance.update_association_with_http_info(association_id, association_put_message)
+  data, status_code, headers = api_instance.update_association_with_http_info(association_id, update_association_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationMessage>
@@ -969,7 +969,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
-| **association_put_message** | [**AssociationPutMessage**](AssociationPutMessage.md) |  |  |
+| **update_association_request** | [**UpdateAssociationRequest**](UpdateAssociationRequest.md) |  |  |
 
 ### Return type
 
@@ -987,11 +987,11 @@ end
 
 ## update_association_note
 
-> <NoteMessage> update_association_note(association_id, note_id, note_put_message)
+> <NoteMessage> update_association_note(association_id, note_id, update_lease_note_request)
 
 Update a note
 
-Updates a note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates a note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -1014,11 +1014,11 @@ end
 api_instance = Buildium::AssociationsApi.new
 association_id = 56 # Integer | 
 note_id = 56 # Integer | 
-note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
+update_lease_note_request = Buildium::UpdateLeaseNoteRequest.new({note: 'note_example'}) # UpdateLeaseNoteRequest | 
 
 begin
   # Update a note
-  result = api_instance.update_association_note(association_id, note_id, note_put_message)
+  result = api_instance.update_association_note(association_id, note_id, update_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationsApi->update_association_note: #{e}"
@@ -1029,12 +1029,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> update_association_note_with_http_info(association_id, note_id, note_put_message)
+> <Array(<NoteMessage>, Integer, Hash)> update_association_note_with_http_info(association_id, note_id, update_lease_note_request)
 
 ```ruby
 begin
   # Update a note
-  data, status_code, headers = api_instance.update_association_note_with_http_info(association_id, note_id, note_put_message)
+  data, status_code, headers = api_instance.update_association_note_with_http_info(association_id, note_id, update_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -1049,7 +1049,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
 | **note_id** | **Integer** |  |  |
-| **note_put_message** | [**NotePutMessage**](NotePutMessage.md) |  |  |
+| **update_lease_note_request** | [**UpdateLeaseNoteRequest**](UpdateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -1067,11 +1067,11 @@ end
 
 ## update_association_preferred_vendors
 
-> <Array<AssociationPreferredVendorMessage>> update_association_preferred_vendors(association_id, association_preferred_vendor_put_message)
+> <Array<AssociationPreferredVendorMessage>> update_association_preferred_vendors(association_id, update_association_preferred_vendors_request)
 
 Update preferred vendors
 
-Updates preferred vendors.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Updates preferred vendors.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br /><br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -1093,11 +1093,11 @@ end
 
 api_instance = Buildium::AssociationsApi.new
 association_id = 56 # Integer | 
-association_preferred_vendor_put_message = Buildium::AssociationPreferredVendorPutMessage.new({vendor_ids: [37]}) # AssociationPreferredVendorPutMessage | 
+update_association_preferred_vendors_request = Buildium::UpdateAssociationPreferredVendorsRequest.new({vendor_ids: [37]}) # UpdateAssociationPreferredVendorsRequest | 
 
 begin
   # Update preferred vendors
-  result = api_instance.update_association_preferred_vendors(association_id, association_preferred_vendor_put_message)
+  result = api_instance.update_association_preferred_vendors(association_id, update_association_preferred_vendors_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationsApi->update_association_preferred_vendors: #{e}"
@@ -1108,12 +1108,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<AssociationPreferredVendorMessage>>, Integer, Hash)> update_association_preferred_vendors_with_http_info(association_id, association_preferred_vendor_put_message)
+> <Array(<Array<AssociationPreferredVendorMessage>>, Integer, Hash)> update_association_preferred_vendors_with_http_info(association_id, update_association_preferred_vendors_request)
 
 ```ruby
 begin
   # Update preferred vendors
-  data, status_code, headers = api_instance.update_association_preferred_vendors_with_http_info(association_id, association_preferred_vendor_put_message)
+  data, status_code, headers = api_instance.update_association_preferred_vendors_with_http_info(association_id, update_association_preferred_vendors_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<AssociationPreferredVendorMessage>>
@@ -1127,7 +1127,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
-| **association_preferred_vendor_put_message** | [**AssociationPreferredVendorPutMessage**](AssociationPreferredVendorPutMessage.md) |  |  |
+| **update_association_preferred_vendors_request** | [**UpdateAssociationPreferredVendorsRequest**](UpdateAssociationPreferredVendorsRequest.md) |  |  |
 
 ### Return type
 
@@ -1145,11 +1145,11 @@ end
 
 ## update_e_pay_settings_for_association
 
-> <EPaySettingsMessage> update_e_pay_settings_for_association(association_id, e_pay_settings_put_message)
+> <EPaySettingsMessage> update_e_pay_settings_for_association(association_id, update_e_pay_settings_for_association_request)
 
 Update ePay settings
 
-Updates ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+Updates ePay settings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -1171,11 +1171,11 @@ end
 
 api_instance = Buildium::AssociationsApi.new
 association_id = 56 # Integer | 
-e_pay_settings_put_message = Buildium::EPaySettingsPutMessage.new({eft_payments: Buildium::EFTPaymentsPutMessage.new({payments_enabled: false}), credit_card_payments: Buildium::CCPaymentsPutMessage.new({payments_enabled: false}), offline_payments: Buildium::OfflinePaymentsPutMessage.new({display_info_in_resident_center: false, display_company_address: false})}) # EPaySettingsPutMessage | 
+update_e_pay_settings_for_association_request = Buildium::UpdateEPaySettingsForAssociationRequest.new({eft_payments: Buildium::EPaySettingsPutMessageEFTPayments.new({payments_enabled: false}), credit_card_payments: Buildium::EPaySettingsPutMessageCreditCardPayments.new({payments_enabled: false}), offline_payments: Buildium::EPaySettingsPutMessageOfflinePayments.new({display_info_in_resident_center: false, display_company_address: false})}) # UpdateEPaySettingsForAssociationRequest | 
 
 begin
   # Update ePay settings
-  result = api_instance.update_e_pay_settings_for_association(association_id, e_pay_settings_put_message)
+  result = api_instance.update_e_pay_settings_for_association(association_id, update_e_pay_settings_for_association_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationsApi->update_e_pay_settings_for_association: #{e}"
@@ -1186,12 +1186,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EPaySettingsMessage>, Integer, Hash)> update_e_pay_settings_for_association_with_http_info(association_id, e_pay_settings_put_message)
+> <Array(<EPaySettingsMessage>, Integer, Hash)> update_e_pay_settings_for_association_with_http_info(association_id, update_e_pay_settings_for_association_request)
 
 ```ruby
 begin
   # Update ePay settings
-  data, status_code, headers = api_instance.update_e_pay_settings_for_association_with_http_info(association_id, e_pay_settings_put_message)
+  data, status_code, headers = api_instance.update_e_pay_settings_for_association_with_http_info(association_id, update_e_pay_settings_for_association_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <EPaySettingsMessage>
@@ -1205,7 +1205,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
-| **e_pay_settings_put_message** | [**EPaySettingsPutMessage**](EPaySettingsPutMessage.md) |  |  |
+| **update_e_pay_settings_for_association_request** | [**UpdateEPaySettingsForAssociationRequest**](UpdateEPaySettingsForAssociationRequest.md) |  |  |
 
 ### Return type
 

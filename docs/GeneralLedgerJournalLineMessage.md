@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **gl_account** | [**GLAccountMessage**](GLAccountMessage.md) |  | [optional] |
+| **gl_account** | [**GeneralLedgerJournalLineMessageGLAccount**](GeneralLedgerJournalLineMessageGLAccount.md) |  | [optional] |
 | **amount** | **Float** | Amount of the line item. | [optional] |
 | **is_cash_posting** | **Boolean** | Indicates whether the line item is a cash posting. | [optional] |
 | **reference_number** | **String** | Reference number for the line item. | [optional] |
 | **memo** | **String** | Memo for the line item. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**GeneralLedgerJournalLineMessageAccountingEntity**](GeneralLedgerJournalLineMessageAccountingEntity.md) |  | [optional] |
 
 ## Example
 

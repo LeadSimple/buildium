@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **general_ledger_transaction** | [**GLTransactionMessageV1**](GLTransactionMessageV1.md) |  | [optional] |
+| **general_ledger_transaction** | [**UndepositedFundsMessageGeneralLedgerTransaction**](UndepositedFundsMessageGeneralLedgerTransaction.md) |  | [optional] |
 
 ## Example
 

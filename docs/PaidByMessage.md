@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**GeneralLedgerJournalLineMessageAccountingEntity**](GeneralLedgerJournalLineMessageAccountingEntity.md) |  | [optional] |
 | **amount** | **Float** | Amount of the line item. | [optional] |
 
 ## Example

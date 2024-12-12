@@ -10,10 +10,10 @@
 | **email** | **String** | Email. | [optional] |
 | **alternate_email** | **String** | Alternate email. | [optional] |
 | **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | List of phone numbers of the association user. | [optional] |
-| **primary_address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
-| **alternate_address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **primary_address** | [**AssociationOwnerMessagePrimaryAddress**](AssociationOwnerMessagePrimaryAddress.md) |  | [optional] |
+| **alternate_address** | [**AssociationOwnerMessageAlternateAddress**](AssociationOwnerMessageAlternateAddress.md) |  | [optional] |
 | **comment** | **String** | General comments. | [optional] |
-| **emergency_contact** | [**EmergencyContactMessage**](EmergencyContactMessage.md) |  | [optional] |
+| **emergency_contact** | [**AssociationOwnerMessageEmergencyContact**](AssociationOwnerMessageEmergencyContact.md) |  | [optional] |
 | **ownership_accounts** | [**Array&lt;AssociationOwnershipAccountMessage&gt;**](AssociationOwnershipAccountMessage.md) | List of associated ownership accounts. | [optional] |
 | **mailing_preference** | **String** | Indicates the association owner&#39;s mailing preference. | [optional] |
 | **vehicles** | [**Array&lt;VehicleMessage&gt;**](VehicleMessage.md) | List of vehicles associated with the association owner. | [optional] |

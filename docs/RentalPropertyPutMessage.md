@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | Rental property name. The value cannot exceed 127 characters. |  |
 | **structure_description** | **String** | Description of the rental property building. The description cannot exceed 65,535 characters. | [optional] |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  |  |
+| **address** | [**RentalPropertyPutMessageAddress**](RentalPropertyPutMessageAddress.md) |  |  |
 | **rental_sub_type** | **String** | Subtype of the rental property |  |
 | **operating_bank_account_id** | **Integer** | The primary bank account that an rental property uses for its income and expenses. |  |
 | **property_manager_id** | **Integer** | Indicates the staff member identifier that acts as the property manager for this rental property. Note, the staff member must have permissions to this rental to be assigned as the property manager.  Set this field to null if you don&#39;t want to assign a staff member to the rental property. | [optional] |

@@ -52,7 +52,7 @@ module Buildium
         :'name' => :'String',
         :'description' => :'String',
         :'properties' => :'Array<PropertyMessage>',
-        :'created_by_user' => :'CreatedByUserMessage'
+        :'created_by_user' => :'PropertyGroupMessageCreatedByUser'
       }
     end
 
@@ -148,7 +148,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -255,5 +255,6 @@ module Buildium
         value
       end
     end
+
   end
 end

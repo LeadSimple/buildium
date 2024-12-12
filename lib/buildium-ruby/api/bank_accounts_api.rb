@@ -19,28 +19,108 @@ module Buildium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Clear transactions for a reconciliation
+    # Clears transactions for a reconciliation. Reconciliation transactions can only be cleared for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View` `Edit`
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param clear_transactions_request [ClearTransactionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def clear_transactions(bank_account_id, reconciliation_id, clear_transactions_request, opts = {})
+      clear_transactions_with_http_info(bank_account_id, reconciliation_id, clear_transactions_request, opts)
+      nil
+    end
+
+    # Clear transactions for a reconciliation
+    # Clears transactions for a reconciliation. Reconciliation transactions can only be cleared for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param clear_transactions_request [ClearTransactionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def clear_transactions_with_http_info(bank_account_id, reconciliation_id, clear_transactions_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.clear_transactions ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.clear_transactions"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.clear_transactions"
+      end
+      # verify the required parameter 'clear_transactions_request' is set
+      if @api_client.config.client_side_validation && clear_transactions_request.nil?
+        fail ArgumentError, "Missing the required parameter 'clear_transactions_request' when calling BankAccountsApi.clear_transactions"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}/cleartransactionsrequest'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(clear_transactions_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.clear_transactions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#clear_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create a bank account
-    # Creates a bank account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Banking</span> - `View` `Edit`
-    # @param bank_account_post_message [BankAccountPostMessage] 
+    # Creates a bank account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Banking</span> - `View` `Edit`
+    # @param create_bank_account_request [CreateBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountMessage]
-    def create_bank_account(bank_account_post_message, opts = {})
-      data, _status_code, _headers = create_bank_account_with_http_info(bank_account_post_message, opts)
+    def create_bank_account(create_bank_account_request, opts = {})
+      data, _status_code, _headers = create_bank_account_with_http_info(create_bank_account_request, opts)
       data
     end
 
     # Create a bank account
-    # Creates a bank account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Banking&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param bank_account_post_message [BankAccountPostMessage] 
+    # Creates a bank account.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Banking&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_bank_account_request [CreateBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountMessage, Integer, Hash)>] BankAccountMessage data, response status code and response headers
-    def create_bank_account_with_http_info(bank_account_post_message, opts = {})
+    def create_bank_account_with_http_info(create_bank_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_bank_account ...'
       end
-      # verify the required parameter 'bank_account_post_message' is set
-      if @api_client.config.client_side_validation && bank_account_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_post_message' when calling BankAccountsApi.create_bank_account"
+      # verify the required parameter 'create_bank_account_request' is set
+      if @api_client.config.client_side_validation && create_bank_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_bank_account_request' when calling BankAccountsApi.create_bank_account"
       end
       # resource path
       local_var_path = '/v1/bankaccounts'
@@ -55,14 +135,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_bank_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountMessage'
@@ -88,23 +168,23 @@ module Buildium
     end
 
     # Create a check
-    # Creates a check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Creates a check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
-    # @param bank_account_check_post_message [BankAccountCheckPostMessage] 
+    # @param create_bank_account_check_request [CreateBankAccountCheckRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountCheckMessage]
-    def create_bank_account_check(bank_account_id, bank_account_check_post_message, opts = {})
-      data, _status_code, _headers = create_bank_account_check_with_http_info(bank_account_id, bank_account_check_post_message, opts)
+    def create_bank_account_check(bank_account_id, create_bank_account_check_request, opts = {})
+      data, _status_code, _headers = create_bank_account_check_with_http_info(bank_account_id, create_bank_account_check_request, opts)
       data
     end
 
     # Create a check
-    # Creates a check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
-    # @param bank_account_check_post_message [BankAccountCheckPostMessage] 
+    # @param create_bank_account_check_request [CreateBankAccountCheckRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountCheckMessage, Integer, Hash)>] BankAccountCheckMessage data, response status code and response headers
-    def create_bank_account_check_with_http_info(bank_account_id, bank_account_check_post_message, opts = {})
+    def create_bank_account_check_with_http_info(bank_account_id, create_bank_account_check_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_bank_account_check ...'
       end
@@ -112,9 +192,9 @@ module Buildium
       if @api_client.config.client_side_validation && bank_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.create_bank_account_check"
       end
-      # verify the required parameter 'bank_account_check_post_message' is set
-      if @api_client.config.client_side_validation && bank_account_check_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_check_post_message' when calling BankAccountsApi.create_bank_account_check"
+      # verify the required parameter 'create_bank_account_check_request' is set
+      if @api_client.config.client_side_validation && create_bank_account_check_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_bank_account_check_request' when calling BankAccountsApi.create_bank_account_check"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/checks'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
@@ -129,14 +209,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_check_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_bank_account_check_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountCheckMessage'
@@ -162,23 +242,23 @@ module Buildium
     end
 
     # Create a deposit
-    # Creates a deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Creates a deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
-    # @param bank_account_deposit_post_message [BankAccountDepositPostMessage] 
+    # @param create_bank_account_deposit_request [CreateBankAccountDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountDepositMessage]
-    def create_bank_account_deposit(bank_account_id, bank_account_deposit_post_message, opts = {})
-      data, _status_code, _headers = create_bank_account_deposit_with_http_info(bank_account_id, bank_account_deposit_post_message, opts)
+    def create_bank_account_deposit(bank_account_id, create_bank_account_deposit_request, opts = {})
+      data, _status_code, _headers = create_bank_account_deposit_with_http_info(bank_account_id, create_bank_account_deposit_request, opts)
       data
     end
 
     # Create a deposit
-    # Creates a deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
-    # @param bank_account_deposit_post_message [BankAccountDepositPostMessage] 
+    # @param create_bank_account_deposit_request [CreateBankAccountDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountDepositMessage, Integer, Hash)>] BankAccountDepositMessage data, response status code and response headers
-    def create_bank_account_deposit_with_http_info(bank_account_id, bank_account_deposit_post_message, opts = {})
+    def create_bank_account_deposit_with_http_info(bank_account_id, create_bank_account_deposit_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_bank_account_deposit ...'
       end
@@ -186,9 +266,9 @@ module Buildium
       if @api_client.config.client_side_validation && bank_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.create_bank_account_deposit"
       end
-      # verify the required parameter 'bank_account_deposit_post_message' is set
-      if @api_client.config.client_side_validation && bank_account_deposit_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_deposit_post_message' when calling BankAccountsApi.create_bank_account_deposit"
+      # verify the required parameter 'create_bank_account_deposit_request' is set
+      if @api_client.config.client_side_validation && create_bank_account_deposit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_bank_account_deposit_request' when calling BankAccountsApi.create_bank_account_deposit"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/deposits'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
@@ -203,14 +283,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_deposit_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_bank_account_deposit_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountDepositMessage'
@@ -236,23 +316,23 @@ module Buildium
     end
 
     # Create a transfer
-    # Creates a bank account transfer.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Creates a bank account transfer.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
-    # @param bank_account_transfer_save_message [BankAccountTransferSaveMessage] 
+    # @param create_bank_account_transfer_request [CreateBankAccountTransferRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountTransferMessage]
-    def create_bank_account_transfer(bank_account_id, bank_account_transfer_save_message, opts = {})
-      data, _status_code, _headers = create_bank_account_transfer_with_http_info(bank_account_id, bank_account_transfer_save_message, opts)
+    def create_bank_account_transfer(bank_account_id, create_bank_account_transfer_request, opts = {})
+      data, _status_code, _headers = create_bank_account_transfer_with_http_info(bank_account_id, create_bank_account_transfer_request, opts)
       data
     end
 
     # Create a transfer
-    # Creates a bank account transfer.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a bank account transfer.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
-    # @param bank_account_transfer_save_message [BankAccountTransferSaveMessage] 
+    # @param create_bank_account_transfer_request [CreateBankAccountTransferRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountTransferMessage, Integer, Hash)>] BankAccountTransferMessage data, response status code and response headers
-    def create_bank_account_transfer_with_http_info(bank_account_id, bank_account_transfer_save_message, opts = {})
+    def create_bank_account_transfer_with_http_info(bank_account_id, create_bank_account_transfer_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_bank_account_transfer ...'
       end
@@ -260,9 +340,9 @@ module Buildium
       if @api_client.config.client_side_validation && bank_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.create_bank_account_transfer"
       end
-      # verify the required parameter 'bank_account_transfer_save_message' is set
-      if @api_client.config.client_side_validation && bank_account_transfer_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_transfer_save_message' when calling BankAccountsApi.create_bank_account_transfer"
+      # verify the required parameter 'create_bank_account_transfer_request' is set
+      if @api_client.config.client_side_validation && create_bank_account_transfer_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_bank_account_transfer_request' when calling BankAccountsApi.create_bank_account_transfer"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/transfers'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
@@ -277,14 +357,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_transfer_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_bank_account_transfer_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountTransferMessage'
@@ -310,25 +390,25 @@ module Buildium
     end
 
     # Upload a file for a check
-    # Uploads a file and associates it to the specified check record.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/bankaccounts/{bankAccountId:int}/checks/{checkId:int}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Checks</span> - `View` `Edit`  <span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
+    # Uploads a file and associates it to the specified check record.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/bankaccounts/{bankAccountId:int}/checks/{checkId:int}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Checks</span> - `View` `Edit`  <span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
-    # @param file_name_post_message [FileNamePostMessage] 
+    # @param create_upload_file_request_request [CreateUploadFileRequestRequest] 
     # @param [Hash] opts the optional parameters
     # @return [FileUploadTicketMessage]
-    def create_check_upload_file_request(bank_account_id, check_id, file_name_post_message, opts = {})
-      data, _status_code, _headers = create_check_upload_file_request_with_http_info(bank_account_id, check_id, file_name_post_message, opts)
+    def create_check_upload_file_request(bank_account_id, check_id, create_upload_file_request_request, opts = {})
+      data, _status_code, _headers = create_check_upload_file_request_with_http_info(bank_account_id, check_id, create_upload_file_request_request, opts)
       data
     end
 
     # Upload a file for a check
-    # Uploads a file and associates it to the specified check record.  &lt;br /&gt;&lt;br /&gt;Uploading a file requires making two API requests. Each step is outlined below.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 1 - Save file metadata&lt;/strong&gt;&lt;br /&gt;  The first step in the file upload process is to submit the file metadata to &#x60;/v1/bankaccounts/{bankAccountId:int}/checks/{checkId:int}/files/uploadrequests&#x60;. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 2 - Upload the file binary&lt;/strong&gt;&lt;br /&gt;  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  &lt;br /&gt;  1. Form a POST request using the value of the &#x60;BucketUrl&#x60; property as the URL.   &lt;br /&gt;&lt;br /&gt;  2. Set the &#x60;Content-Type&#x60; header to &#x60;multipart/form-data&#x60;.  &lt;br /&gt;&lt;br /&gt;  3. Copy the fields from the &#x60;FormData&#x60;  property to this request as form-data key/value pairs.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; These values must added to the request form-data in the order they were received in the response.  &lt;br /&gt;&lt;br /&gt;  4. Lastly create a form-data key named &#x60;file&#x60; and set the value to the file binary.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This must be the last field in the form-data list.  &lt;br /&gt;&lt;br /&gt;This image shows what the POST request should look like if you&#39;re using Postman:  &lt;img src&#x3D;\&quot;file-upload-example.png\&quot; /&gt;&lt;br /&gt;&lt;br /&gt;  5. Send the POST request! A successful request will return with a &#x60;204 - NO CONTENT&#x60; HTTP response code. For any failure responses, please refer to &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\&quot;&gt;AWS documentation&lt;/a&gt; on REST error responses.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The file identifier is not generated in this response. To retrieve the file identifier, call &#x60;/v1/files&#x60; and pass the &#x60;PhysicalFileName&#x60; value received from the response of this endpoint into the &#x60;physicalfilenames&#x60; query parameter.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Checks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
+    # Uploads a file and associates it to the specified check record.  &lt;br /&gt;&lt;br /&gt;Uploading a file requires making two API requests. Each step is outlined below.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 1 - Save file metadata&lt;/strong&gt;&lt;br /&gt;  The first step in the file upload process is to submit the file metadata to &#x60;/v1/bankaccounts/{bankAccountId:int}/checks/{checkId:int}/files/uploadrequests&#x60;. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 2 - Upload the file binary&lt;/strong&gt;&lt;br /&gt;  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  &lt;br /&gt;  1. Form a POST request using the value of the &#x60;BucketUrl&#x60; property as the URL.   &lt;br /&gt;&lt;br /&gt;  2. Set the &#x60;Content-Type&#x60; header to &#x60;multipart/form-data&#x60;.  &lt;br /&gt;&lt;br /&gt;  3. Copy the fields from the &#x60;FormData&#x60;  property to this request as form-data key/value pairs.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; These values must added to the request form-data in the order they were received in the response.  &lt;br /&gt;&lt;br /&gt;  4. Lastly create a form-data key named &#x60;file&#x60; and set the value to the file binary.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This must be the last field in the form-data list.  &lt;br /&gt;&lt;br /&gt;This image shows what the POST request should look like if you&#39;re using Postman:  &lt;img src&#x3D;\&quot;file-upload-example.png\&quot; /&gt;&lt;br /&gt;&lt;br /&gt;  5. Send the POST request! A successful request will return with a &#x60;204 - NO CONTENT&#x60; HTTP response code. For any failure responses, please refer to &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\&quot;&gt;AWS documentation&lt;/a&gt; on REST error responses.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The file identifier is not generated in this response. To retrieve the file identifier, call &#x60;/v1/files&#x60; and pass the &#x60;PhysicalFileName&#x60; value received from the response of this endpoint into the &#x60;physicalfilenames&#x60; query parameter.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Checks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
-    # @param file_name_post_message [FileNamePostMessage] 
+    # @param create_upload_file_request_request [CreateUploadFileRequestRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(FileUploadTicketMessage, Integer, Hash)>] FileUploadTicketMessage data, response status code and response headers
-    def create_check_upload_file_request_with_http_info(bank_account_id, check_id, file_name_post_message, opts = {})
+    def create_check_upload_file_request_with_http_info(bank_account_id, check_id, create_upload_file_request_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_check_upload_file_request ...'
       end
@@ -340,9 +420,9 @@ module Buildium
       if @api_client.config.client_side_validation && check_id.nil?
         fail ArgumentError, "Missing the required parameter 'check_id' when calling BankAccountsApi.create_check_upload_file_request"
       end
-      # verify the required parameter 'file_name_post_message' is set
-      if @api_client.config.client_side_validation && file_name_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'file_name_post_message' when calling BankAccountsApi.create_check_upload_file_request"
+      # verify the required parameter 'create_upload_file_request_request' is set
+      if @api_client.config.client_side_validation && create_upload_file_request_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_upload_file_request_request' when calling BankAccountsApi.create_check_upload_file_request"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/checks/{checkId}/files/uploadrequests'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'checkId' + '}', CGI.escape(check_id.to_s))
@@ -357,14 +437,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(file_name_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_upload_file_request_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'FileUploadTicketMessage'
@@ -389,24 +469,98 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Create a quick deposit
-    # Creates a quick deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View` `Edit`
+    # Create a reconciliation
+    # Creates a reconciliation. Reconciliations can only be created for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
-    # @param bank_account_quick_deposit_save_message [BankAccountQuickDepositSaveMessage] 
+    # @param create_pending_reconciliations_request [CreatePendingReconciliationsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [BankAccountReconciliationMessage]
+    def create_pending_reconciliations(bank_account_id, create_pending_reconciliations_request, opts = {})
+      data, _status_code, _headers = create_pending_reconciliations_with_http_info(bank_account_id, create_pending_reconciliations_request, opts)
+      data
+    end
+
+    # Create a reconciliation
+    # Creates a reconciliation. Reconciliations can only be created for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bank_account_id [Integer] 
+    # @param create_pending_reconciliations_request [CreatePendingReconciliationsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BankAccountReconciliationMessage, Integer, Hash)>] BankAccountReconciliationMessage data, response status code and response headers
+    def create_pending_reconciliations_with_http_info(bank_account_id, create_pending_reconciliations_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_pending_reconciliations ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.create_pending_reconciliations"
+      end
+      # verify the required parameter 'create_pending_reconciliations_request' is set
+      if @api_client.config.client_side_validation && create_pending_reconciliations_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_pending_reconciliations_request' when calling BankAccountsApi.create_pending_reconciliations"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_pending_reconciliations_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BankAccountReconciliationMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.create_pending_reconciliations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#create_pending_reconciliations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Create a quick deposit
+    # Creates a quick deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View` `Edit`
+    # @param bank_account_id [Integer] 
+    # @param create_quick_deposit_request [CreateQuickDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountQuickDepositMessage]
-    def create_quick_deposit(bank_account_id, bank_account_quick_deposit_save_message, opts = {})
-      data, _status_code, _headers = create_quick_deposit_with_http_info(bank_account_id, bank_account_quick_deposit_save_message, opts)
+    def create_quick_deposit(bank_account_id, create_quick_deposit_request, opts = {})
+      data, _status_code, _headers = create_quick_deposit_with_http_info(bank_account_id, create_quick_deposit_request, opts)
       data
     end
 
     # Create a quick deposit
-    # Creates a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
-    # @param bank_account_quick_deposit_save_message [BankAccountQuickDepositSaveMessage] 
+    # @param create_quick_deposit_request [CreateQuickDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountQuickDepositMessage, Integer, Hash)>] BankAccountQuickDepositMessage data, response status code and response headers
-    def create_quick_deposit_with_http_info(bank_account_id, bank_account_quick_deposit_save_message, opts = {})
+    def create_quick_deposit_with_http_info(bank_account_id, create_quick_deposit_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_quick_deposit ...'
       end
@@ -414,9 +568,9 @@ module Buildium
       if @api_client.config.client_side_validation && bank_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.create_quick_deposit"
       end
-      # verify the required parameter 'bank_account_quick_deposit_save_message' is set
-      if @api_client.config.client_side_validation && bank_account_quick_deposit_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_quick_deposit_save_message' when calling BankAccountsApi.create_quick_deposit"
+      # verify the required parameter 'create_quick_deposit_request' is set
+      if @api_client.config.client_side_validation && create_quick_deposit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_quick_deposit_request' when calling BankAccountsApi.create_quick_deposit"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/quickdeposits'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
@@ -431,14 +585,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_quick_deposit_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_quick_deposit_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountQuickDepositMessage'
@@ -464,23 +618,23 @@ module Buildium
     end
 
     # Create a withdrawal
-    # Creates a bank account withdrawal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Creates a bank account withdrawal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
-    # @param bank_account_withdrawal_save_message [BankAccountWithdrawalSaveMessage] 
+    # @param create_withdrawal_for_bank_account_request [CreateWithdrawalForBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountWithdrawalMessage]
-    def create_withdrawal_for_bank_account(bank_account_id, bank_account_withdrawal_save_message, opts = {})
-      data, _status_code, _headers = create_withdrawal_for_bank_account_with_http_info(bank_account_id, bank_account_withdrawal_save_message, opts)
+    def create_withdrawal_for_bank_account(bank_account_id, create_withdrawal_for_bank_account_request, opts = {})
+      data, _status_code, _headers = create_withdrawal_for_bank_account_with_http_info(bank_account_id, create_withdrawal_for_bank_account_request, opts)
       data
     end
 
     # Create a withdrawal
-    # Creates a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
-    # @param bank_account_withdrawal_save_message [BankAccountWithdrawalSaveMessage] 
+    # @param create_withdrawal_for_bank_account_request [CreateWithdrawalForBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountWithdrawalMessage, Integer, Hash)>] BankAccountWithdrawalMessage data, response status code and response headers
-    def create_withdrawal_for_bank_account_with_http_info(bank_account_id, bank_account_withdrawal_save_message, opts = {})
+    def create_withdrawal_for_bank_account_with_http_info(bank_account_id, create_withdrawal_for_bank_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.create_withdrawal_for_bank_account ...'
       end
@@ -488,9 +642,9 @@ module Buildium
       if @api_client.config.client_side_validation && bank_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.create_withdrawal_for_bank_account"
       end
-      # verify the required parameter 'bank_account_withdrawal_save_message' is set
-      if @api_client.config.client_side_validation && bank_account_withdrawal_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_withdrawal_save_message' when calling BankAccountsApi.create_withdrawal_for_bank_account"
+      # verify the required parameter 'create_withdrawal_for_bank_account_request' is set
+      if @api_client.config.client_side_validation && create_withdrawal_for_bank_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_withdrawal_for_bank_account_request' when calling BankAccountsApi.create_withdrawal_for_bank_account"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/withdrawals'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
@@ -505,14 +659,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_withdrawal_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_withdrawal_for_bank_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountWithdrawalMessage'
@@ -538,7 +692,7 @@ module Buildium
     end
 
     # Delete a file for a check
-    # Deletes a file for a check              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccounts</span> - `View` `Edit` `Delete`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
+    # Deletes a file for a check              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccounts</span> - `View` `Edit` `Delete`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param file_id [Integer] 
@@ -550,7 +704,7 @@ module Buildium
     end
 
     # Delete a file for a check
-    # Deletes a file for a check              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
+    # Deletes a file for a check              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param file_id [Integer] 
@@ -613,7 +767,7 @@ module Buildium
     end
 
     # Download a file for a check
-    # Downloads a specific file associated to the check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
+    # Downloads a specific file associated to the check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param file_id [Integer] 
@@ -625,7 +779,7 @@ module Buildium
     end
 
     # Download a file for a check
-    # Downloads a specific file associated to the check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
+    # Downloads a specific file associated to the check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param file_id [Integer] 
@@ -687,8 +841,77 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Finalize a manual reconciliation
+    # Finalizes a manual reconciliation. Reconciliations can only be finalized for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View` `Edit`
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def finalize_reconciliation(bank_account_id, reconciliation_id, opts = {})
+      finalize_reconciliation_with_http_info(bank_account_id, reconciliation_id, opts)
+      nil
+    end
+
+    # Finalize a manual reconciliation
+    # Finalizes a manual reconciliation. Reconciliations can only be finalized for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def finalize_reconciliation_with_http_info(bank_account_id, reconciliation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.finalize_reconciliation ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.finalize_reconciliation"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.finalize_reconciliation"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}/finalizerequest'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.finalize_reconciliation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#finalize_reconciliation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all bank accounts
-    # Retrieves a list of bank accounts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves a list of bank accounts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :bankaccountstatus Filters results by the status of the bank account. If no status is specified, bank accounts with any status will be returned.
     # @option opts [String] :bankname Filters results to any bank account whose name *contains* the specified value.
@@ -703,7 +926,7 @@ module Buildium
     end
 
     # Retrieve all bank accounts
-    # Retrieves a list of bank accounts.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of bank accounts.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :bankaccountstatus Filters results by the status of the bank account. If no status is specified, bank accounts with any status will be returned.
     # @option opts [String] :bankname Filters results to any bank account whose name *contains* the specified value.
@@ -767,7 +990,7 @@ module Buildium
     end
 
     # Retrieve all quick deposits
-    # Retrieves all quick deposits.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`
+    # Retrieves all quick deposits.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -782,7 +1005,7 @@ module Buildium
     end
 
     # Retrieve all quick deposits
-    # Retrieves all quick deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all quick deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -853,7 +1076,7 @@ module Buildium
     end
 
     # Retrieve a bank account
-    # Retrieves a specific bank account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves a specific bank account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param bank_account_id [Integer] The bank account identifier.
     # @param [Hash] opts the optional parameters
     # @return [BankAccountMessage]
@@ -863,7 +1086,7 @@ module Buildium
     end
 
     # Retrieve a bank account
-    # Retrieves a specific bank account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific bank account.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] The bank account identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountMessage, Integer, Hash)>] BankAccountMessage data, response status code and response headers
@@ -916,7 +1139,7 @@ module Buildium
     end
 
     # Retrieve a file for a check
-    # Retrieves the metadata for a specific file associated with the specified check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
+    # Retrieves the metadata for a specific file associated with the specified check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param file_id [Integer] 
@@ -928,7 +1151,7 @@ module Buildium
     end
 
     # Retrieve a file for a check
-    # Retrieves the metadata for a specific file associated with the specified check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
+    # Retrieves the metadata for a specific file associated with the specified check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param file_id [Integer] 
@@ -991,7 +1214,7 @@ module Buildium
     end
 
     # Retrieve all checks
-    # Retrieves all bank account checks.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
+    # Retrieves all bank account checks.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1006,7 +1229,7 @@ module Buildium
     end
 
     # Retrieve all checks
-    # Retrieves all bank account checks.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
+    # Retrieves all bank account checks.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1077,7 +1300,7 @@ module Buildium
     end
 
     # Retrieve a deposit
-    # Retrieves a bank account deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>
+    # Retrieves a bank account deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1088,7 +1311,7 @@ module Buildium
     end
 
     # Retrieve a deposit
-    # Retrieves a bank account deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
+    # Retrieves a bank account deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1146,7 +1369,7 @@ module Buildium
     end
 
     # Retrieve all deposits
-    # Retrieves all bank account deposits.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>
+    # Retrieves all bank account deposits.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for deposits associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any deposits that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any deposits that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1161,7 +1384,7 @@ module Buildium
     end
 
     # Retrieve all deposits
-    # Retrieves all bank account deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
+    # Retrieves all bank account deposits.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for deposits associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any deposits that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any deposits that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1231,8 +1454,86 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve all transactions for a reconciliation
+    # Retrieves all transactions, both cleared and uncleared, up to the Statement Ending Date of the related reconciliation. This is true for pending and completed reconciliations. Transactions can only be retrieved for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<BankAccountReconciliationTransactionMessage>]
+    def get_bank_account_reconciliation_transactions(bank_account_id, reconciliation_id, opts = {})
+      data, _status_code, _headers = get_bank_account_reconciliation_transactions_with_http_info(bank_account_id, reconciliation_id, opts)
+      data
+    end
+
+    # Retrieve all transactions for a reconciliation
+    # Retrieves all transactions, both cleared and uncleared, up to the Statement Ending Date of the related reconciliation. This is true for pending and completed reconciliations. Transactions can only be retrieved for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<BankAccountReconciliationTransactionMessage>, Integer, Hash)>] Array<BankAccountReconciliationTransactionMessage> data, response status code and response headers
+    def get_bank_account_reconciliation_transactions_with_http_info(bank_account_id, reconciliation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.get_bank_account_reconciliation_transactions ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.get_bank_account_reconciliation_transactions"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.get_bank_account_reconciliation_transactions"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}/transactions'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<BankAccountReconciliationTransactionMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.get_bank_account_reconciliation_transactions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#get_bank_account_reconciliation_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a transaction
-    # Retrieves a specific bank account transaction.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Account</span> - `View`
+    # Retrieves a specific bank account transaction.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Account</span> - `View`
     # @param bank_account_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1243,7 +1544,7 @@ module Buildium
     end
 
     # Retrieve a transaction
-    # Retrieves a specific bank account transaction.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Account&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific bank account transaction.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Account&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1301,7 +1602,7 @@ module Buildium
     end
 
     # Retrieve all transactions
-    # Retrieves all bank account transactions.              <br /><br />              Note: When using the `orderby` query string parameter, the only supported parameter is `EntryDate`.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves all bank account transactions.              <br /><br />              Note: When using the `orderby` query string parameter, the only supported parameter is `EntryDate`.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1318,7 +1619,7 @@ module Buildium
     end
 
     # Retrieve all transactions
-    # Retrieves all bank account transactions.              &lt;br /&gt;&lt;br /&gt;              Note: When using the &#x60;orderby&#x60; query string parameter, the only supported parameter is &#x60;EntryDate&#x60;.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all bank account transactions.              &lt;br /&gt;&lt;br /&gt;              Note: When using the &#x60;orderby&#x60; query string parameter, the only supported parameter is &#x60;EntryDate&#x60;.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1397,7 +1698,7 @@ module Buildium
     end
 
     # Retrieve a transfer
-    # Retrieves a bank account transfer.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves a bank account transfer.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param bank_account_id [Integer] The bank account identifier.
     # @param transfer_id [Integer] The transfer identifier.
     # @param [Hash] opts the optional parameters
@@ -1408,7 +1709,7 @@ module Buildium
     end
 
     # Retrieve a transfer
-    # Retrieves a bank account transfer.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a bank account transfer.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] The bank account identifier.
     # @param transfer_id [Integer] The transfer identifier.
     # @param [Hash] opts the optional parameters
@@ -1466,7 +1767,7 @@ module Buildium
     end
 
     # Retrieve all transfers
-    # Retrieves all bank account transfers.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`
+    # Retrieves all bank account transfers.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transfers that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transfers that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1481,7 +1782,7 @@ module Buildium
     end
 
     # Retrieve all transfers
-    # Retrieves all bank account transfers.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all bank account transfers.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transfers that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transfers that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1552,7 +1853,7 @@ module Buildium
     end
 
     # Retrieve a withdrawal
-    # Retrieves a bank account withdrawal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccounts</span> - `View`
+    # Retrieves a bank account withdrawal.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccounts</span> - `View`
     # @param bank_account_id [Integer] 
     # @param withdrawal_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1563,7 +1864,7 @@ module Buildium
     end
 
     # Retrieve a withdrawal
-    # Retrieves a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccounts&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param withdrawal_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1621,7 +1922,7 @@ module Buildium
     end
 
     # Retrieve all withdrawals
-    # Retrieves all bank account withdrawals.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccounts</span> - `View`
+    # Retrieves all bank account withdrawals.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccounts</span> - `View`
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1636,7 +1937,7 @@ module Buildium
     end
 
     # Retrieve all withdrawals
-    # Retrieves all bank account withdrawals.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all bank account withdrawals.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccounts&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param startdate [Date] Filters results to any transactions that were recorded on or after the specified date. The value must be formatted as YYYY-MM-DD.
     # @param enddate [Date] Filters results to any transactions that were recorded on or before the specified date. The value must be formatted as YYYY-MM-DD.
@@ -1707,7 +2008,7 @@ module Buildium
     end
 
     # Retrieve a check
-    # Retrieves a bank account check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
+    # Retrieves a bank account check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1718,7 +2019,7 @@ module Buildium
     end
 
     # Retrieve a check
-    # Retrieves a bank account check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
+    # Retrieves a bank account check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1776,7 +2077,7 @@ module Buildium
     end
 
     # Retrieve all files for a check
-    # Retrieves the metadata for all files associated to the specified check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
+    # Retrieves the metadata for all files associated to the specified check.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View` <span class=\"permissionBlock\">(Required for checks associated with a Company) </span>
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1790,7 +2091,7 @@ module Buildium
     end
 
     # Retrieve all files for a check
-    # Retrieves the metadata for all files associated to the specified check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
+    # Retrieves the metadata for all files associated to the specified check.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Transactions&lt;/span&gt; - &#x60;View&#x60; &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;(Required for checks associated with a Company) &lt;/span&gt;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1854,7 +2155,7 @@ module Buildium
     end
 
     # Retrieve a quick deposit
-    # Retrieves a quick deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; BankAccount</span> - `View`
+    # Retrieves a quick deposit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`
     # @param bank_account_id [Integer] 
     # @param quick_deposit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1865,7 +2166,7 @@ module Buildium
     end
 
     # Retrieve a quick deposit
-    # Retrieves a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param quick_deposit_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1922,8 +2223,218 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve a reconciliation's balance
+    # Retrieves a bank account reconciliation's balance. Reconciliation balances can only be retrieved for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [BankAccountReconciliationBalanceMessage]
+    def get_reconciliation_balance_by_id(bank_account_id, reconciliation_id, opts = {})
+      data, _status_code, _headers = get_reconciliation_balance_by_id_with_http_info(bank_account_id, reconciliation_id, opts)
+      data
+    end
+
+    # Retrieve a reconciliation&#39;s balance
+    # Retrieves a bank account reconciliation&#39;s balance. Reconciliation balances can only be retrieved for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BankAccountReconciliationBalanceMessage, Integer, Hash)>] BankAccountReconciliationBalanceMessage data, response status code and response headers
+    def get_reconciliation_balance_by_id_with_http_info(bank_account_id, reconciliation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.get_reconciliation_balance_by_id ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.get_reconciliation_balance_by_id"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.get_reconciliation_balance_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}/balances'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BankAccountReconciliationBalanceMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.get_reconciliation_balance_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#get_reconciliation_balance_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a reconciliation
+    # Retrieves a bank account reconciliation. Reconciliations can only be retrieved for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [BankAccountReconciliationMessage]
+    def get_reconciliation_by_id(bank_account_id, reconciliation_id, opts = {})
+      data, _status_code, _headers = get_reconciliation_by_id_with_http_info(bank_account_id, reconciliation_id, opts)
+      data
+    end
+
+    # Retrieve a reconciliation
+    # Retrieves a bank account reconciliation. Reconciliations can only be retrieved for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BankAccountReconciliationMessage, Integer, Hash)>] BankAccountReconciliationMessage data, response status code and response headers
+    def get_reconciliation_by_id_with_http_info(bank_account_id, reconciliation_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.get_reconciliation_by_id ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.get_reconciliation_by_id"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.get_reconciliation_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BankAccountReconciliationMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.get_reconciliation_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#get_reconciliation_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve all reconciliations
+    # Retrieves all bank account reconciliations. Reconciliations can only be retrieved for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View`
+    # @param bank_account_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<BankAccountReconciliationMessage>]
+    def get_reconciliations(bank_account_id, opts = {})
+      data, _status_code, _headers = get_reconciliations_with_http_info(bank_account_id, opts)
+      data
+    end
+
+    # Retrieve all reconciliations
+    # Retrieves all bank account reconciliations. Reconciliations can only be retrieved for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60;
+    # @param bank_account_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<BankAccountReconciliationMessage>, Integer, Hash)>] Array<BankAccountReconciliationMessage> data, response status code and response headers
+    def get_reconciliations_with_http_info(bank_account_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.get_reconciliations ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.get_reconciliations"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<BankAccountReconciliationMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.get_reconciliations",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#get_reconciliations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve all undeposited funds
-    # Retrieve all bank account undeposited funds.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieve all bank account undeposited funds.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param bank_account_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -1936,7 +2447,7 @@ module Buildium
     end
 
     # Retrieve all undeposited funds
-    # Retrieve all bank account undeposited funds.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve all bank account undeposited funds.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param bank_account_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -1994,24 +2505,104 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a bank account
-    # Updates a bank account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Banking</span> - `View` `Edit`
+    # Un-clear transactions for a reconciliation
+    # Un-clears transactions for a reconciliation. Reconciliation transactions can only be un-cleared for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
-    # @param bank_account_put_message [BankAccountPutMessage] 
+    # @param reconciliation_id [Integer] 
+    # @param unclear_transactions_request [UnclearTransactionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def unclear_transactions(bank_account_id, reconciliation_id, unclear_transactions_request, opts = {})
+      unclear_transactions_with_http_info(bank_account_id, reconciliation_id, unclear_transactions_request, opts)
+      nil
+    end
+
+    # Un-clear transactions for a reconciliation
+    # Un-clears transactions for a reconciliation. Reconciliation transactions can only be un-cleared for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param unclear_transactions_request [UnclearTransactionsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def unclear_transactions_with_http_info(bank_account_id, reconciliation_id, unclear_transactions_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.unclear_transactions ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.unclear_transactions"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.unclear_transactions"
+      end
+      # verify the required parameter 'unclear_transactions_request' is set
+      if @api_client.config.client_side_validation && unclear_transactions_request.nil?
+        fail ArgumentError, "Missing the required parameter 'unclear_transactions_request' when calling BankAccountsApi.unclear_transactions"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}/uncleartransactionsrequest'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(unclear_transactions_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.unclear_transactions",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#unclear_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a bank account
+    # Updates a bank account.;              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Banking</span> - `View` `Edit`
+    # @param bank_account_id [Integer] 
+    # @param update_bank_account_request [UpdateBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountMessage]
-    def update_bank_account(bank_account_id, bank_account_put_message, opts = {})
-      data, _status_code, _headers = update_bank_account_with_http_info(bank_account_id, bank_account_put_message, opts)
+    def update_bank_account(bank_account_id, update_bank_account_request, opts = {})
+      data, _status_code, _headers = update_bank_account_with_http_info(bank_account_id, update_bank_account_request, opts)
       data
     end
 
     # Update a bank account
-    # Updates a bank account.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Banking&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a bank account.;              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Banking&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
-    # @param bank_account_put_message [BankAccountPutMessage] 
+    # @param update_bank_account_request [UpdateBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountMessage, Integer, Hash)>] BankAccountMessage data, response status code and response headers
-    def update_bank_account_with_http_info(bank_account_id, bank_account_put_message, opts = {})
+    def update_bank_account_with_http_info(bank_account_id, update_bank_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_bank_account ...'
       end
@@ -2019,9 +2610,9 @@ module Buildium
       if @api_client.config.client_side_validation && bank_account_id.nil?
         fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.update_bank_account"
       end
-      # verify the required parameter 'bank_account_put_message' is set
-      if @api_client.config.client_side_validation && bank_account_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_put_message' when calling BankAccountsApi.update_bank_account"
+      # verify the required parameter 'update_bank_account_request' is set
+      if @api_client.config.client_side_validation && update_bank_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_bank_account_request' when calling BankAccountsApi.update_bank_account"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s))
@@ -2036,14 +2627,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_bank_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountMessage'
@@ -2069,25 +2660,25 @@ module Buildium
     end
 
     # Update a deposit
-    # Updates a deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
-    # @param bank_account_deposit_put_message [BankAccountDepositPutMessage] 
+    # @param update_bank_account_deposit_request [UpdateBankAccountDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountDepositMessage]
-    def update_bank_account_deposit(bank_account_id, deposit_id, bank_account_deposit_put_message, opts = {})
-      data, _status_code, _headers = update_bank_account_deposit_with_http_info(bank_account_id, deposit_id, bank_account_deposit_put_message, opts)
+    def update_bank_account_deposit(bank_account_id, deposit_id, update_bank_account_deposit_request, opts = {})
+      data, _status_code, _headers = update_bank_account_deposit_with_http_info(bank_account_id, deposit_id, update_bank_account_deposit_request, opts)
       data
     end
 
     # Update a deposit
-    # Updates a deposit.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a deposit.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param deposit_id [Integer] 
-    # @param bank_account_deposit_put_message [BankAccountDepositPutMessage] 
+    # @param update_bank_account_deposit_request [UpdateBankAccountDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountDepositMessage, Integer, Hash)>] BankAccountDepositMessage data, response status code and response headers
-    def update_bank_account_deposit_with_http_info(bank_account_id, deposit_id, bank_account_deposit_put_message, opts = {})
+    def update_bank_account_deposit_with_http_info(bank_account_id, deposit_id, update_bank_account_deposit_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_bank_account_deposit ...'
       end
@@ -2099,9 +2690,9 @@ module Buildium
       if @api_client.config.client_side_validation && deposit_id.nil?
         fail ArgumentError, "Missing the required parameter 'deposit_id' when calling BankAccountsApi.update_bank_account_deposit"
       end
-      # verify the required parameter 'bank_account_deposit_put_message' is set
-      if @api_client.config.client_side_validation && bank_account_deposit_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_deposit_put_message' when calling BankAccountsApi.update_bank_account_deposit"
+      # verify the required parameter 'update_bank_account_deposit_request' is set
+      if @api_client.config.client_side_validation && update_bank_account_deposit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_bank_account_deposit_request' when calling BankAccountsApi.update_bank_account_deposit"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/deposits/{depositId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'depositId' + '}', CGI.escape(deposit_id.to_s))
@@ -2116,14 +2707,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_deposit_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_bank_account_deposit_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountDepositMessage'
@@ -2149,25 +2740,25 @@ module Buildium
     end
 
     # Update a transfer
-    # Updates a bank account transfer.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a bank account transfer.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param transfer_id [Integer] 
-    # @param bank_account_transfer_save_message [BankAccountTransferSaveMessage] 
+    # @param create_bank_account_transfer_request [CreateBankAccountTransferRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountTransferMessage]
-    def update_bank_account_transfer(bank_account_id, transfer_id, bank_account_transfer_save_message, opts = {})
-      data, _status_code, _headers = update_bank_account_transfer_with_http_info(bank_account_id, transfer_id, bank_account_transfer_save_message, opts)
+    def update_bank_account_transfer(bank_account_id, transfer_id, create_bank_account_transfer_request, opts = {})
+      data, _status_code, _headers = update_bank_account_transfer_with_http_info(bank_account_id, transfer_id, create_bank_account_transfer_request, opts)
       data
     end
 
     # Update a transfer
-    # Updates a bank account transfer.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a bank account transfer.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param transfer_id [Integer] 
-    # @param bank_account_transfer_save_message [BankAccountTransferSaveMessage] 
+    # @param create_bank_account_transfer_request [CreateBankAccountTransferRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountTransferMessage, Integer, Hash)>] BankAccountTransferMessage data, response status code and response headers
-    def update_bank_account_transfer_with_http_info(bank_account_id, transfer_id, bank_account_transfer_save_message, opts = {})
+    def update_bank_account_transfer_with_http_info(bank_account_id, transfer_id, create_bank_account_transfer_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_bank_account_transfer ...'
       end
@@ -2179,9 +2770,9 @@ module Buildium
       if @api_client.config.client_side_validation && transfer_id.nil?
         fail ArgumentError, "Missing the required parameter 'transfer_id' when calling BankAccountsApi.update_bank_account_transfer"
       end
-      # verify the required parameter 'bank_account_transfer_save_message' is set
-      if @api_client.config.client_side_validation && bank_account_transfer_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_transfer_save_message' when calling BankAccountsApi.update_bank_account_transfer"
+      # verify the required parameter 'create_bank_account_transfer_request' is set
+      if @api_client.config.client_side_validation && create_bank_account_transfer_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_bank_account_transfer_request' when calling BankAccountsApi.update_bank_account_transfer"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/transfers/{transferId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'transferId' + '}', CGI.escape(transfer_id.to_s))
@@ -2196,14 +2787,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_transfer_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_bank_account_transfer_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountTransferMessage'
@@ -2229,25 +2820,25 @@ module Buildium
     end
 
     # Update a withdrawal
-    # Updates a bank account withdrawal.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a bank account withdrawal.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param withdrawal_id [Integer] 
-    # @param bank_account_withdrawal_save_message [BankAccountWithdrawalSaveMessage] 
+    # @param create_withdrawal_for_bank_account_request [CreateWithdrawalForBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountWithdrawalMessage]
-    def update_bank_account_withdrawal(bank_account_id, withdrawal_id, bank_account_withdrawal_save_message, opts = {})
-      data, _status_code, _headers = update_bank_account_withdrawal_with_http_info(bank_account_id, withdrawal_id, bank_account_withdrawal_save_message, opts)
+    def update_bank_account_withdrawal(bank_account_id, withdrawal_id, create_withdrawal_for_bank_account_request, opts = {})
+      data, _status_code, _headers = update_bank_account_withdrawal_with_http_info(bank_account_id, withdrawal_id, create_withdrawal_for_bank_account_request, opts)
       data
     end
 
     # Update a withdrawal
-    # Updates a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a bank account withdrawal.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param withdrawal_id [Integer] 
-    # @param bank_account_withdrawal_save_message [BankAccountWithdrawalSaveMessage] 
+    # @param create_withdrawal_for_bank_account_request [CreateWithdrawalForBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountWithdrawalMessage, Integer, Hash)>] BankAccountWithdrawalMessage data, response status code and response headers
-    def update_bank_account_withdrawal_with_http_info(bank_account_id, withdrawal_id, bank_account_withdrawal_save_message, opts = {})
+    def update_bank_account_withdrawal_with_http_info(bank_account_id, withdrawal_id, create_withdrawal_for_bank_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_bank_account_withdrawal ...'
       end
@@ -2259,9 +2850,9 @@ module Buildium
       if @api_client.config.client_side_validation && withdrawal_id.nil?
         fail ArgumentError, "Missing the required parameter 'withdrawal_id' when calling BankAccountsApi.update_bank_account_withdrawal"
       end
-      # verify the required parameter 'bank_account_withdrawal_save_message' is set
-      if @api_client.config.client_side_validation && bank_account_withdrawal_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_withdrawal_save_message' when calling BankAccountsApi.update_bank_account_withdrawal"
+      # verify the required parameter 'create_withdrawal_for_bank_account_request' is set
+      if @api_client.config.client_side_validation && create_withdrawal_for_bank_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_withdrawal_for_bank_account_request' when calling BankAccountsApi.update_bank_account_withdrawal"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/withdrawals/{withdrawalId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'withdrawalId' + '}', CGI.escape(withdrawal_id.to_s))
@@ -2276,14 +2867,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_withdrawal_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_withdrawal_for_bank_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountWithdrawalMessage'
@@ -2309,25 +2900,25 @@ module Buildium
     end
 
     # Update a check
-    # Updates a check.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a check.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
-    # @param bank_account_check_put_message [BankAccountCheckPutMessage] 
+    # @param update_check_for_bank_account_request [UpdateCheckForBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountCheckMessage]
-    def update_check_for_bank_account(bank_account_id, check_id, bank_account_check_put_message, opts = {})
-      data, _status_code, _headers = update_check_for_bank_account_with_http_info(bank_account_id, check_id, bank_account_check_put_message, opts)
+    def update_check_for_bank_account(bank_account_id, check_id, update_check_for_bank_account_request, opts = {})
+      data, _status_code, _headers = update_check_for_bank_account_with_http_info(bank_account_id, check_id, update_check_for_bank_account_request, opts)
       data
     end
 
     # Update a check
-    # Updates a check.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a check.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param check_id [Integer] 
-    # @param bank_account_check_put_message [BankAccountCheckPutMessage] 
+    # @param update_check_for_bank_account_request [UpdateCheckForBankAccountRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountCheckMessage, Integer, Hash)>] BankAccountCheckMessage data, response status code and response headers
-    def update_check_for_bank_account_with_http_info(bank_account_id, check_id, bank_account_check_put_message, opts = {})
+    def update_check_for_bank_account_with_http_info(bank_account_id, check_id, update_check_for_bank_account_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_check_for_bank_account ...'
       end
@@ -2339,9 +2930,9 @@ module Buildium
       if @api_client.config.client_side_validation && check_id.nil?
         fail ArgumentError, "Missing the required parameter 'check_id' when calling BankAccountsApi.update_check_for_bank_account"
       end
-      # verify the required parameter 'bank_account_check_put_message' is set
-      if @api_client.config.client_side_validation && bank_account_check_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_check_put_message' when calling BankAccountsApi.update_check_for_bank_account"
+      # verify the required parameter 'update_check_for_bank_account_request' is set
+      if @api_client.config.client_side_validation && update_check_for_bank_account_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_check_for_bank_account_request' when calling BankAccountsApi.update_check_for_bank_account"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/checks/{checkId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'checkId' + '}', CGI.escape(check_id.to_s))
@@ -2356,14 +2947,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_check_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_check_for_bank_account_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountCheckMessage'
@@ -2389,25 +2980,25 @@ module Buildium
     end
 
     # Update a quick deposit
-    # Updates a quick deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Updates a quick deposit.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param bank_account_id [Integer] 
     # @param quick_deposit_id [Integer] 
-    # @param bank_account_quick_deposit_save_message [BankAccountQuickDepositSaveMessage] 
+    # @param create_quick_deposit_request [CreateQuickDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BankAccountQuickDepositMessage]
-    def update_quick_deposit(bank_account_id, quick_deposit_id, bank_account_quick_deposit_save_message, opts = {})
-      data, _status_code, _headers = update_quick_deposit_with_http_info(bank_account_id, quick_deposit_id, bank_account_quick_deposit_save_message, opts)
+    def update_quick_deposit(bank_account_id, quick_deposit_id, create_quick_deposit_request, opts = {})
+      data, _status_code, _headers = update_quick_deposit_with_http_info(bank_account_id, quick_deposit_id, create_quick_deposit_request, opts)
       data
     end
 
     # Update a quick deposit
-    # Updates a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a quick deposit.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param bank_account_id [Integer] 
     # @param quick_deposit_id [Integer] 
-    # @param bank_account_quick_deposit_save_message [BankAccountQuickDepositSaveMessage] 
+    # @param create_quick_deposit_request [CreateQuickDepositRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BankAccountQuickDepositMessage, Integer, Hash)>] BankAccountQuickDepositMessage data, response status code and response headers
-    def update_quick_deposit_with_http_info(bank_account_id, quick_deposit_id, bank_account_quick_deposit_save_message, opts = {})
+    def update_quick_deposit_with_http_info(bank_account_id, quick_deposit_id, create_quick_deposit_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_quick_deposit ...'
       end
@@ -2419,9 +3010,9 @@ module Buildium
       if @api_client.config.client_side_validation && quick_deposit_id.nil?
         fail ArgumentError, "Missing the required parameter 'quick_deposit_id' when calling BankAccountsApi.update_quick_deposit"
       end
-      # verify the required parameter 'bank_account_quick_deposit_save_message' is set
-      if @api_client.config.client_side_validation && bank_account_quick_deposit_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'bank_account_quick_deposit_save_message' when calling BankAccountsApi.update_quick_deposit"
+      # verify the required parameter 'create_quick_deposit_request' is set
+      if @api_client.config.client_side_validation && create_quick_deposit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_quick_deposit_request' when calling BankAccountsApi.update_quick_deposit"
       end
       # resource path
       local_var_path = '/v1/bankaccounts/{bankAccountId}/quickdeposits/{quickDepositId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'quickDepositId' + '}', CGI.escape(quick_deposit_id.to_s))
@@ -2436,14 +3027,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(bank_account_quick_deposit_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_quick_deposit_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BankAccountQuickDepositMessage'
@@ -2464,6 +3055,166 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: BankAccountsApi#update_quick_deposit\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a reconciliation
+    # Updates a reconciliation. Reconciliations can only be updated for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View` `Edit`
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param update_reconciliation_request [UpdateReconciliationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [BankAccountReconciliationMessage]
+    def update_reconciliation(bank_account_id, reconciliation_id, update_reconciliation_request, opts = {})
+      data, _status_code, _headers = update_reconciliation_with_http_info(bank_account_id, reconciliation_id, update_reconciliation_request, opts)
+      data
+    end
+
+    # Update a reconciliation
+    # Updates a reconciliation. Reconciliations can only be updated for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param update_reconciliation_request [UpdateReconciliationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BankAccountReconciliationMessage, Integer, Hash)>] BankAccountReconciliationMessage data, response status code and response headers
+    def update_reconciliation_with_http_info(bank_account_id, reconciliation_id, update_reconciliation_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_reconciliation ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.update_reconciliation"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.update_reconciliation"
+      end
+      # verify the required parameter 'update_reconciliation_request' is set
+      if @api_client.config.client_side_validation && update_reconciliation_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_reconciliation_request' when calling BankAccountsApi.update_reconciliation"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_reconciliation_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BankAccountReconciliationMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.update_reconciliation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#update_reconciliation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a reconciliation's balance
+    # Updates a bank account reconciliation's balance. Reconciliation balances can only be updated for bank accounts that are not linked externally.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > BankAccount</span> - `View` `Edit`
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param update_reconciliation_balances_request [UpdateReconciliationBalancesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [BankAccountReconciliationBalanceMessage]
+    def update_reconciliation_balances(bank_account_id, reconciliation_id, update_reconciliation_balances_request, opts = {})
+      data, _status_code, _headers = update_reconciliation_balances_with_http_info(bank_account_id, reconciliation_id, update_reconciliation_balances_request, opts)
+      data
+    end
+
+    # Update a reconciliation&#39;s balance
+    # Updates a bank account reconciliation&#39;s balance. Reconciliation balances can only be updated for bank accounts that are not linked externally.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; BankAccount&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param bank_account_id [Integer] 
+    # @param reconciliation_id [Integer] 
+    # @param update_reconciliation_balances_request [UpdateReconciliationBalancesRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BankAccountReconciliationBalanceMessage, Integer, Hash)>] BankAccountReconciliationBalanceMessage data, response status code and response headers
+    def update_reconciliation_balances_with_http_info(bank_account_id, reconciliation_id, update_reconciliation_balances_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BankAccountsApi.update_reconciliation_balances ...'
+      end
+      # verify the required parameter 'bank_account_id' is set
+      if @api_client.config.client_side_validation && bank_account_id.nil?
+        fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling BankAccountsApi.update_reconciliation_balances"
+      end
+      # verify the required parameter 'reconciliation_id' is set
+      if @api_client.config.client_side_validation && reconciliation_id.nil?
+        fail ArgumentError, "Missing the required parameter 'reconciliation_id' when calling BankAccountsApi.update_reconciliation_balances"
+      end
+      # verify the required parameter 'update_reconciliation_balances_request' is set
+      if @api_client.config.client_side_validation && update_reconciliation_balances_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_reconciliation_balances_request' when calling BankAccountsApi.update_reconciliation_balances"
+      end
+      # resource path
+      local_var_path = '/v1/bankaccounts/{bankAccountId}/reconciliations/{reconciliationId}/balances'.sub('{' + 'bankAccountId' + '}', CGI.escape(bank_account_id.to_s)).sub('{' + 'reconciliationId' + '}', CGI.escape(reconciliation_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_reconciliation_balances_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BankAccountReconciliationBalanceMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"BankAccountsApi.update_reconciliation_balances",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BankAccountsApi#update_reconciliation_balances\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

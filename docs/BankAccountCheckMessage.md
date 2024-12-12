@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Check unique identifier. | [optional] |
-| **payee** | [**BankAccountCheckPayeeMessage**](BankAccountCheckPayeeMessage.md) |  | [optional] |
+| **payee** | [**BankAccountCheckMessagePayee**](BankAccountCheckMessagePayee.md) |  | [optional] |
 | **check_number** | **String** | Check number. | [optional] |
 | **entry_date** | **Date** | Date the check was recorded. | [optional] |
 | **memo** | **String** | Memo associated with the check, if applicable. | [optional] |

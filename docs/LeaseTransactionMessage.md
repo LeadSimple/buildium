@@ -13,7 +13,7 @@
 | **lease_id** | **Integer** | Lease unique identifier associated with the transaction, if applicable. Null if value is not set. | [optional] |
 | **payee_tenant_id** | **Integer** | The payee&#39;s tenant unique identifier associated with the transaction, where applicable. | [optional] |
 | **payment_method** | **String** | The payment method used for the transaction. | [optional] |
-| **journal** | [**JournalMessage**](JournalMessage.md) |  | [optional] |
+| **journal** | [**LeaseTransactionMessageJournal**](LeaseTransactionMessageJournal.md) |  | [optional] |
 
 ## Example
 

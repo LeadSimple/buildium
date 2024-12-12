@@ -7,7 +7,7 @@
 | **lease_type** | **String** | Describes the type of lease. |  |
 | **lease_to_date** | **Date** | End date of the lease. This is required if &#x60;LeaseType&#x60; is &#x60;Fixed&#x60; or &#x60;FixedWithRollover&#x60; | [optional] |
 | **automatically_move_out_tenants** | **Boolean** | Indicates whether to automatically move out all tenants assigned to the lease and set the lease status to past when the lease ends. | [optional] |
-| **rent** | [**LeaseRentPostMessage**](LeaseRentPostMessage.md) |  |  |
+| **rent** | [**LeaseRenewalPostMessageRent**](LeaseRenewalPostMessageRent.md) |  |  |
 | **cosigners** | [**Array&lt;LeaseCosignerPostMessage&gt;**](LeaseCosignerPostMessage.md) | List of the cosigners to create on the lease. | [optional] |
 | **tenant_ids** | **Array&lt;Integer&gt;** | Unique identifiers of existing tenants to include on the lease. The request must include at least one tenant in this property OR the &#x60;Tenants&#x60; property. | [optional] |
 | **tenants** | [**Array&lt;RentalTenantRenewalPostMessage&gt;**](RentalTenantRenewalPostMessage.md) | List of new tenants to create on the lease. The request must include at least one tenant in this property OR the &#x60;TenantIds&#x60; property. | [optional] |

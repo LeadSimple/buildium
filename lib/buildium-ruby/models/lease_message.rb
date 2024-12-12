@@ -148,7 +148,7 @@ module Buildium
         :'renewal_offer_status' => :'String',
         :'current_tenants' => :'Array<TenantMessage>',
         :'current_number_of_occupants' => :'Integer',
-        :'account_details' => :'LeaseAccountDetailMessage',
+        :'account_details' => :'LeaseMessageAccountDetails',
         :'cosigners' => :'Array<CosignerMessage>',
         :'automatically_move_out_tenants' => :'Boolean',
         :'created_date_time' => :'Time',
@@ -385,7 +385,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -492,5 +492,6 @@ module Buildium
         value
       end
     end
+
   end
 end

@@ -14,13 +14,13 @@
 | **company_name** | **String** | Company name for the vendor. Empty if &#x60;IsCompany&#x60; is &#x60;false&#x60; | [optional] |
 | **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | List of phone numbers for the vendor. | [optional] |
 | **website** | **String** | Website of the vendor. | [optional] |
-| **category** | [**LookupMessage**](LookupMessage.md) |  | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
-| **vendor_insurance** | [**VendorInsuranceMessage**](VendorInsuranceMessage.md) |  | [optional] |
+| **category** | [**VendorMessageCategory**](VendorMessageCategory.md) |  | [optional] |
+| **address** | [**VendorMessageAddress**](VendorMessageAddress.md) |  | [optional] |
+| **vendor_insurance** | [**VendorMessageVendorInsurance**](VendorMessageVendorInsurance.md) |  | [optional] |
 | **comments** | **String** | General comments about the vendor. | [optional] |
 | **account_number** | **String** | Vendor account number. | [optional] |
 | **expense_gl_account_id** | **Integer** | The unique identifier of the default expense general ledger account to associate with the vendor. | [optional] |
-| **tax_information** | [**VendorTaxInformationMessage**](VendorTaxInformationMessage.md) |  | [optional] |
+| **tax_information** | [**VendorMessageTaxInformation**](VendorMessageTaxInformation.md) |  | [optional] |
 
 ## Example
 

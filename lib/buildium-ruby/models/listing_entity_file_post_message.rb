@@ -89,6 +89,10 @@ module Buildium
         invalid_properties.push('invalid value for "file_name", file_name cannot be nil.')
       end
 
+      if @file_name.to_s.length < 1
+        invalid_properties.push('invalid value for "file_name", the character length must be great than or equal to 1.')
+      end
+
       if @show_in_listing.nil?
         invalid_properties.push('invalid value for "show_in_listing", show_in_listing cannot be nil.')
       end
@@ -100,8 +104,23 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @file_name.nil?
+      return false if @file_name.to_s.length < 1
       return false if @show_in_listing.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] file_name Value to be assigned
+    def file_name=(file_name)
+      if file_name.nil?
+        fail ArgumentError, 'file_name cannot be nil'
+      end
+
+      if file_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "file_name", the character length must be great than or equal to 1.'
+      end
+
+      @file_name = file_name
     end
 
     # Checks equality by comparing each attribute.
@@ -137,7 +156,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -244,5 +263,6 @@ module Buildium
         value
       end
     end
+
   end
 end

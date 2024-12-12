@@ -11,9 +11,9 @@
 | **available_date** | **Date** | The date the unit will be available to move in. | [optional] |
 | **is_managed_externally** | **Boolean** | Indicates if the listing is managed by an external vendor. Note, the &#x60;Contact&#x60; property will be &#x60;null&#x60; if the this property is &#x60;true&#x60; as the contact information is managed by a vendor outside of Buildium. | [optional] |
 | **rental_application_url** | **String** | The URL to the online rental application hosted by Buildium. | [optional] |
-| **contact** | [**ListingContactMessage**](ListingContactMessage.md) |  | [optional] |
-| **property** | [**ListingPropertyMessage**](ListingPropertyMessage.md) |  | [optional] |
-| **unit** | [**ListingUnitMessage**](ListingUnitMessage.md) |  | [optional] |
+| **contact** | [**ListingMessageContact**](ListingMessageContact.md) |  | [optional] |
+| **property** | [**ListingMessageProperty**](ListingMessageProperty.md) |  | [optional] |
+| **unit** | [**ListingMessageUnit**](ListingMessageUnit.md) |  | [optional] |
 
 ## Example
 

@@ -19,11 +19,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_file_category
 
-> <FileCategoryMessage> create_file_category(file_category_post_message)
+> <FileCategoryMessage> create_file_category(create_file_category_request)
 
 Create a category
 
-Creates a file category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`
+Creates a file category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View` `Edit`
 
 ### Examples
 
@@ -44,11 +44,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::FilesApi.new
-file_category_post_message = Buildium::FileCategoryPostMessage.new({name: 'name_example'}) # FileCategoryPostMessage | 
+create_file_category_request = Buildium::CreateFileCategoryRequest.new({name: 'name_example'}) # CreateFileCategoryRequest | 
 
 begin
   # Create a category
-  result = api_instance.create_file_category(file_category_post_message)
+  result = api_instance.create_file_category(create_file_category_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling FilesApi->create_file_category: #{e}"
@@ -59,12 +59,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileCategoryMessage>, Integer, Hash)> create_file_category_with_http_info(file_category_post_message)
+> <Array(<FileCategoryMessage>, Integer, Hash)> create_file_category_with_http_info(create_file_category_request)
 
 ```ruby
 begin
   # Create a category
-  data, status_code, headers = api_instance.create_file_category_with_http_info(file_category_post_message)
+  data, status_code, headers = api_instance.create_file_category_with_http_info(create_file_category_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <FileCategoryMessage>
@@ -77,7 +77,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **file_category_post_message** | [**FileCategoryPostMessage**](FileCategoryPostMessage.md) |  |  |
+| **create_file_category_request** | [**CreateFileCategoryRequest**](CreateFileCategoryRequest.md) |  |  |
 
 ### Return type
 
@@ -95,11 +95,11 @@ end
 
 ## create_upload_file_request_async
 
-> <FileUploadTicketMessage> create_upload_file_request_async(file_upload_post_message)
+> <FileUploadTicketMessage> create_upload_file_request_async(create_upload_file_request_async_request)
 
 Upload a file
 
-Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`
+Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View` `Edit`
 
 ### Examples
 
@@ -120,11 +120,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::FilesApi.new
-file_upload_post_message = Buildium::FileUploadPostMessage.new({entity_type: 'Account', file_name: 'file_name_example', title: 'title_example', category_id: 37}) # FileUploadPostMessage | 
+create_upload_file_request_async_request = Buildium::CreateUploadFileRequestAsyncRequest.new({entity_type: 'Account', file_name: 'file_name_example', title: 'title_example', category_id: 37}) # CreateUploadFileRequestAsyncRequest | 
 
 begin
   # Upload a file
-  result = api_instance.create_upload_file_request_async(file_upload_post_message)
+  result = api_instance.create_upload_file_request_async(create_upload_file_request_async_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling FilesApi->create_upload_file_request_async: #{e}"
@@ -135,12 +135,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_upload_file_request_async_with_http_info(file_upload_post_message)
+> <Array(<FileUploadTicketMessage>, Integer, Hash)> create_upload_file_request_async_with_http_info(create_upload_file_request_async_request)
 
 ```ruby
 begin
   # Upload a file
-  data, status_code, headers = api_instance.create_upload_file_request_async_with_http_info(file_upload_post_message)
+  data, status_code, headers = api_instance.create_upload_file_request_async_with_http_info(create_upload_file_request_async_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <FileUploadTicketMessage>
@@ -153,7 +153,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **file_upload_post_message** | [**FileUploadPostMessage**](FileUploadPostMessage.md) |  |  |
+| **create_upload_file_request_async_request** | [**CreateUploadFileRequestAsyncRequest**](CreateUploadFileRequestAsyncRequest.md) |  |  |
 
 ### Return type
 
@@ -175,7 +175,7 @@ end
 
 Retrieve a file
 
-Retrieves the file metadata for a specific file. Note this endpoint will only return file metadata. To download files make requests to the <a href=\"#operation/FileDownloadGetFileDownloadUrlAsync\">Download File endpoint.</a><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Retrieves the file metadata for a specific file. Note this endpoint will only return file metadata. To download files make requests to the <a href=\"#operation/FileDownloadGetFileDownloadUrlAsync\">Download File endpoint.</a><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View`
 
 ### Examples
 
@@ -251,7 +251,7 @@ end
 
 Retrieve all categories
 
-Retrieves a list of file categories.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Retrieves a list of file categories.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View`
 
 ### Examples
 
@@ -333,7 +333,7 @@ end
 
 Retrieve a category
 
-Retrieves a specific file category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Retrieves a specific file category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View`
 
 ### Examples
 
@@ -409,7 +409,7 @@ end
 
 Download a file
 
-Downloading a file requires making two API requests. The first request to `/v1/files/{fileId}/downloadrequest` will return a secure URL that can be used to download the file contents. Note the download URL is transient and will expire after 5 minutes.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Downloading a file requires making two API requests. The first request to `/v1/files/{fileId}/downloadrequest` will return a secure URL that can be used to download the file contents. Note the download URL is transient and will expire after 5 minutes.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View`
 
 ### Examples
 
@@ -485,7 +485,7 @@ end
 
 Retrieve file share settings
 
-Retrieves a file's share settings. Note, that the response JSON schema includes share setting fields for all file entity types, however only fields that pertain to the queried file entity type will be populated. For example, if a file of entity type Rental is retrieved only the fields in the Rental section of the response will have values.              <br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Retrieves a file's share settings. Note, that the response JSON schema includes share setting fields for all file entity types, however only fields that pertain to the queried file entity type will be populated. For example, if a file of entity type Rental is retrieved only the fields in the Rental section of the response will have values.              <br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View`
 
 ### Examples
 
@@ -561,7 +561,7 @@ end
 
 Retrieve all files
 
-Retrieves a list of files that exist within the customer account. Note this endpoint will only return file metadata. To download files make requests to the <a href=\"#operation/FileDownloadGetFileDownloadUrlAsync\">Download File</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View`
+Retrieves a list of files that exist within the customer account. Note this endpoint will only return file metadata. To download files make requests to the <a href=\"#operation/FileDownloadGetFileDownloadUrlAsync\">Download File</a> endpoint.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View`
 
 ### Examples
 
@@ -653,11 +653,11 @@ end
 
 ## update_file
 
-> <FileMessage> update_file(file_id, file_put_message)
+> <FileMessage> update_file(file_id, update_file_request)
 
 Update a file
 
-Updates a metadata of the file.               <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`
+Updates a metadata of the file.               <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View` `Edit`
 
 ### Examples
 
@@ -679,11 +679,11 @@ end
 
 api_instance = Buildium::FilesApi.new
 file_id = 56 # Integer | 
-file_put_message = Buildium::FilePutMessage.new({title: 'title_example', category_id: 37}) # FilePutMessage | 
+update_file_request = Buildium::UpdateFileRequest.new({title: 'title_example', category_id: 37}) # UpdateFileRequest | 
 
 begin
   # Update a file
-  result = api_instance.update_file(file_id, file_put_message)
+  result = api_instance.update_file(file_id, update_file_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling FilesApi->update_file: #{e}"
@@ -694,12 +694,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileMessage>, Integer, Hash)> update_file_with_http_info(file_id, file_put_message)
+> <Array(<FileMessage>, Integer, Hash)> update_file_with_http_info(file_id, update_file_request)
 
 ```ruby
 begin
   # Update a file
-  data, status_code, headers = api_instance.update_file_with_http_info(file_id, file_put_message)
+  data, status_code, headers = api_instance.update_file_with_http_info(file_id, update_file_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <FileMessage>
@@ -713,7 +713,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **file_id** | **Integer** |  |  |
-| **file_put_message** | [**FilePutMessage**](FilePutMessage.md) |  |  |
+| **update_file_request** | [**UpdateFileRequest**](UpdateFileRequest.md) |  |  |
 
 ### Return type
 
@@ -731,11 +731,11 @@ end
 
 ## update_file_category
 
-> <FileCategoryMessage> update_file_category(file_category_id, file_category_put_message)
+> <FileCategoryMessage> update_file_category(file_category_id, update_file_category_request)
 
 Update a category
 
-Updates a file category. Note that file categories where `IsEditable` is `false` can not be updated.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`
+Updates a file category. Note that file categories where `IsEditable` is `false` can not be updated.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View` `Edit`
 
 ### Examples
 
@@ -757,11 +757,11 @@ end
 
 api_instance = Buildium::FilesApi.new
 file_category_id = 56 # Integer | 
-file_category_put_message = Buildium::FileCategoryPutMessage.new({name: 'name_example'}) # FileCategoryPutMessage | 
+update_file_category_request = Buildium::UpdateFileCategoryRequest.new({name: 'name_example'}) # UpdateFileCategoryRequest | 
 
 begin
   # Update a category
-  result = api_instance.update_file_category(file_category_id, file_category_put_message)
+  result = api_instance.update_file_category(file_category_id, update_file_category_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling FilesApi->update_file_category: #{e}"
@@ -772,12 +772,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileCategoryMessage>, Integer, Hash)> update_file_category_with_http_info(file_category_id, file_category_put_message)
+> <Array(<FileCategoryMessage>, Integer, Hash)> update_file_category_with_http_info(file_category_id, update_file_category_request)
 
 ```ruby
 begin
   # Update a category
-  data, status_code, headers = api_instance.update_file_category_with_http_info(file_category_id, file_category_put_message)
+  data, status_code, headers = api_instance.update_file_category_with_http_info(file_category_id, update_file_category_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <FileCategoryMessage>
@@ -791,7 +791,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **file_category_id** | **Integer** |  |  |
-| **file_category_put_message** | [**FileCategoryPutMessage**](FileCategoryPutMessage.md) |  |  |
+| **update_file_category_request** | [**UpdateFileCategoryRequest**](UpdateFileCategoryRequest.md) |  |  |
 
 ### Return type
 
@@ -809,11 +809,11 @@ end
 
 ## update_file_sharing_setting
 
-> <FileSharingMessage> update_file_sharing_setting(file_id, file_sharing_put_message)
+> <FileSharingMessage> update_file_sharing_setting(file_id, update_file_sharing_setting_request)
 
 Update file share settings
 
-Updates a file's share settings. Note, can only update a file's share settings based on the file's entity type (ie: If the file belongs to a rental property, you can only update the rental file sharing settings). The response payload contains file share setting values for all file entity types, but the relevant setting values correlate to the file's entity type.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents &gt; Files</span> - `View` `Edit`
+Updates a file's share settings. Note, can only update a file's share settings based on the file's entity type (ie: If the file belongs to a rental property, you can only update the rental file sharing settings). The response payload contains file share setting values for all file entity types, but the relevant setting values correlate to the file's entity type.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Documents > Files</span> - `View` `Edit`
 
 ### Examples
 
@@ -835,11 +835,11 @@ end
 
 api_instance = Buildium::FilesApi.new
 file_id = 56 # Integer | 
-file_sharing_put_message = Buildium::FileSharingPutMessage.new # FileSharingPutMessage | 
+update_file_sharing_setting_request = Buildium::UpdateFileSharingSettingRequest.new # UpdateFileSharingSettingRequest | 
 
 begin
   # Update file share settings
-  result = api_instance.update_file_sharing_setting(file_id, file_sharing_put_message)
+  result = api_instance.update_file_sharing_setting(file_id, update_file_sharing_setting_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling FilesApi->update_file_sharing_setting: #{e}"
@@ -850,12 +850,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<FileSharingMessage>, Integer, Hash)> update_file_sharing_setting_with_http_info(file_id, file_sharing_put_message)
+> <Array(<FileSharingMessage>, Integer, Hash)> update_file_sharing_setting_with_http_info(file_id, update_file_sharing_setting_request)
 
 ```ruby
 begin
   # Update file share settings
-  data, status_code, headers = api_instance.update_file_sharing_setting_with_http_info(file_id, file_sharing_put_message)
+  data, status_code, headers = api_instance.update_file_sharing_setting_with_http_info(file_id, update_file_sharing_setting_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <FileSharingMessage>
@@ -869,7 +869,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **file_id** | **Integer** |  |  |
-| **file_sharing_put_message** | [**FileSharingPutMessage**](FileSharingPutMessage.md) |  |  |
+| **update_file_sharing_setting_request** | [**UpdateFileSharingSettingRequest**](UpdateFileSharingSettingRequest.md) |  |  |
 
 ### Return type
 

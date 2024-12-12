@@ -12,6 +12,7 @@
 | **lines** | [**Array&lt;RecurringTransactionLineMessage&gt;**](RecurringTransactionLineMessage.md) | Line items describing how the transaction is to be allocated when it is processed. | [optional] |
 | **amount** | **Float** | Total amount of the recurring transaction. | [optional] |
 | **memo** | **String** | Memo associated with the recurring transaction. | [optional] |
+| **first_occurrence_date** | **Date** | The date the first occurrence of this transaction was processed. | [optional] |
 | **next_occurrence_date** | **Date** | The next date the scheduled transaction will be processed. | [optional] |
 | **post_days_in_advance** | **Integer** | The number of days ahead of the transaction date the transaction will post on the lease ledger. This setting is used to add the transaction to the ledger ahead of it&#39;s due date for visibility. For example, if the &#x60;FirstOccurrenceDate&#x60; is set to 8/10/2022 and this value is set to 5 then the charge will added to the ledger on 8/5/2022, but will have transaction date of 8/10/2022. | [optional] |
 | **frequency** | **String** | Indicates the frequency at which the recurring transaction is processed. | [optional] |
@@ -31,6 +32,7 @@ instance = Buildium::RecurringTransactionMessage.new(
   lines: null,
   amount: null,
   memo: null,
+  first_occurrence_date: null,
   next_occurrence_date: null,
   post_days_in_advance: null,
   frequency: null,

@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a budget
-    # Creates a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View` `Edit`
-    # @param budget_post_message [BudgetPostMessage] 
+    # Creates a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Budgets</span> - `View` `Edit`
+    # @param create_budget_async_request [CreateBudgetAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BudgetMessage]
-    def create_budget(budget_post_message, opts = {})
-      data, _status_code, _headers = create_budget_with_http_info(budget_post_message, opts)
+    def create_budget_async(create_budget_async_request, opts = {})
+      data, _status_code, _headers = create_budget_async_with_http_info(create_budget_async_request, opts)
       data
     end
 
     # Create a budget
-    # Creates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param budget_post_message [BudgetPostMessage] 
+    # Creates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_budget_async_request [CreateBudgetAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BudgetMessage, Integer, Hash)>] BudgetMessage data, response status code and response headers
-    def create_budget_with_http_info(budget_post_message, opts = {})
+    def create_budget_async_with_http_info(create_budget_async_request, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: BudgetsApi.create_budget ...'
+        @api_client.config.logger.debug 'Calling API: BudgetsApi.create_budget_async ...'
       end
-      # verify the required parameter 'budget_post_message' is set
-      if @api_client.config.client_side_validation && budget_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'budget_post_message' when calling BudgetsApi.create_budget"
+      # verify the required parameter 'create_budget_async_request' is set
+      if @api_client.config.client_side_validation && create_budget_async_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_budget_async_request' when calling BudgetsApi.create_budget_async"
       end
       # resource path
       local_var_path = '/v1/budgets'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(budget_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_budget_async_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BudgetMessage'
@@ -71,7 +71,7 @@ module Buildium
       auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
 
       new_options = opts.merge(
-        :operation => :"BudgetsApi.create_budget",
+        :operation => :"BudgetsApi.create_budget_async",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -82,13 +82,13 @@ module Buildium
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: BudgetsApi#create_budget\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: BudgetsApi#create_budget_async\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
     # Retrieve a budget
-    # Retrieves a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View`
+    # Retrieves a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Budgets</span> - `View`
     # @param budget_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [BudgetMessage]
@@ -98,7 +98,7 @@ module Buildium
     end
 
     # Retrieve a budget
-    # Retrieves a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
     # @param budget_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BudgetMessage, Integer, Hash)>] BudgetMessage data, response status code and response headers
@@ -151,7 +151,7 @@ module Buildium
     end
 
     # Retrieve all budgets
-    # Retrieves all budgets.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View`
+    # Retrieves all budgets.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Budgets</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to any budget associated to any of the specified set of property ids.
     # @option opts [Integer] :fiscalyear Filters results to any budgets that end in the given fiscal year. FiscalYear must be a positive number.
@@ -166,7 +166,7 @@ module Buildium
     end
 
     # Retrieve all budgets
-    # Retrieves all budgets.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all budgets.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Budgets&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to any budget associated to any of the specified set of property ids.
     # @option opts [Integer] :fiscalyear Filters results to any budgets that end in the given fiscal year. FiscalYear must be a positive number.
@@ -226,23 +226,23 @@ module Buildium
     end
 
     # Update a budget
-    # Updates a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Budgets</span> - `View` `Edit`
+    # Updates a budget.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Budgets</span> - `View` `Edit`
     # @param budget_id [Integer] 
-    # @param budget_put_message [BudgetPutMessage] 
+    # @param update_budget_request [UpdateBudgetRequest] 
     # @param [Hash] opts the optional parameters
     # @return [BudgetMessage]
-    def update_budget(budget_id, budget_put_message, opts = {})
-      data, _status_code, _headers = update_budget_with_http_info(budget_id, budget_put_message, opts)
+    def update_budget(budget_id, update_budget_request, opts = {})
+      data, _status_code, _headers = update_budget_with_http_info(budget_id, update_budget_request, opts)
       data
     end
 
     # Update a budget
-    # Updates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a budget.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Budgets&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param budget_id [Integer] 
-    # @param budget_put_message [BudgetPutMessage] 
+    # @param update_budget_request [UpdateBudgetRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(BudgetMessage, Integer, Hash)>] BudgetMessage data, response status code and response headers
-    def update_budget_with_http_info(budget_id, budget_put_message, opts = {})
+    def update_budget_with_http_info(budget_id, update_budget_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BudgetsApi.update_budget ...'
       end
@@ -250,9 +250,9 @@ module Buildium
       if @api_client.config.client_side_validation && budget_id.nil?
         fail ArgumentError, "Missing the required parameter 'budget_id' when calling BudgetsApi.update_budget"
       end
-      # verify the required parameter 'budget_put_message' is set
-      if @api_client.config.client_side_validation && budget_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'budget_put_message' when calling BudgetsApi.update_budget"
+      # verify the required parameter 'update_budget_request' is set
+      if @api_client.config.client_side_validation && update_budget_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_budget_request' when calling BudgetsApi.update_budget"
       end
       # resource path
       local_var_path = '/v1/budgets/{budgetId}'.sub('{' + 'budgetId' + '}', CGI.escape(budget_id.to_s))
@@ -267,14 +267,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(budget_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_budget_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'BudgetMessage'

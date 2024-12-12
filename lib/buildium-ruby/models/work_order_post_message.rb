@@ -36,8 +36,11 @@ module Buildium
     # Notes specific to the vendor. The value cannot exceed 65,535 characters.
     attr_accessor :vendor_notes
 
-    # Contact user unique identifier. The user type must be one of the following types: `RentalTenant`, `AssociationOwner`, `Staff`, `RentalOwner`.
+    # Contact user unique identifier. The user type must be one of the following: `RentalTenant`, `AssociationOwner`, `Staff`, `RentalOwner`.
     attr_accessor :entry_contact_id
+
+    # Collection of entry contact user unique identifiers for the work order. The user type of each user in the collection must be one of the following: `RentalTenant`, `AssociationOwner`, `Staff`, `RentalOwner`.
+    attr_accessor :entry_contact_ids
 
     # Work order line items.
     attr_accessor :line_items
@@ -80,6 +83,7 @@ module Buildium
         :'vendor_id' => :'VendorId',
         :'vendor_notes' => :'VendorNotes',
         :'entry_contact_id' => :'EntryContactId',
+        :'entry_contact_ids' => :'EntryContactIds',
         :'line_items' => :'LineItems',
         :'task_id' => :'TaskId',
         :'task' => :'Task'
@@ -102,9 +106,10 @@ module Buildium
         :'vendor_id' => :'Integer',
         :'vendor_notes' => :'String',
         :'entry_contact_id' => :'Integer',
+        :'entry_contact_ids' => :'Array<Integer>',
         :'line_items' => :'Array<WorkOrderLineItemSaveMessage>',
         :'task_id' => :'Integer',
-        :'task' => :'WorkOrderTaskPostMessage'
+        :'task' => :'WorkOrderPostMessageTask'
       }
     end
 
@@ -159,6 +164,12 @@ module Buildium
 
       if attributes.key?(:'entry_contact_id')
         self.entry_contact_id = attributes[:'entry_contact_id']
+      end
+
+      if attributes.key?(:'entry_contact_ids')
+        if (value = attributes[:'entry_contact_ids']).is_a?(Array)
+          self.entry_contact_ids = value
+        end
       end
 
       if attributes.key?(:'line_items')
@@ -224,6 +235,7 @@ module Buildium
           vendor_id == o.vendor_id &&
           vendor_notes == o.vendor_notes &&
           entry_contact_id == o.entry_contact_id &&
+          entry_contact_ids == o.entry_contact_ids &&
           line_items == o.line_items &&
           task_id == o.task_id &&
           task == o.task
@@ -238,7 +250,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [work_details, invoice_number, chargeable_to, entry_allowed, entry_notes, vendor_id, vendor_notes, entry_contact_id, line_items, task_id, task].hash
+      [work_details, invoice_number, chargeable_to, entry_allowed, entry_notes, vendor_id, vendor_notes, entry_contact_id, entry_contact_ids, line_items, task_id, task].hash
     end
 
     # Builds the object from hash
@@ -252,7 +264,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -359,5 +371,6 @@ module Buildium
         value
       end
     end
+
   end
 end

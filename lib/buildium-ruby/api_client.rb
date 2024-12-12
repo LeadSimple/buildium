@@ -253,7 +253,7 @@ module Buildium
         end
       end
 
-      return if body.nil? || body.empty?
+      return nil if body.nil? || body.empty?
 
       # return response body directly for String return type
       return body if return_type == 'String'
@@ -281,7 +281,7 @@ module Buildium
     # @param [String] return_type Return type
     # @return [Mixed] Data in a particular type
     def convert_to_type(data, return_type)
-      return if data.nil?
+      return nil if data.nil?
       case return_type
       when 'String'
         data.to_s
@@ -361,7 +361,7 @@ module Buildium
     # @param [Array] accepts array for Accept
     # @return [String] the Accept header (e.g. application/json)
     def select_header_accept(accepts)
-      return if accepts.nil? || accepts.empty?
+      return nil if accepts.nil? || accepts.empty?
       # use JSON when present, otherwise use all of the provided
       json_accept = accepts.find { |s| json_mime?(s) }
       json_accept || accepts.join(',')

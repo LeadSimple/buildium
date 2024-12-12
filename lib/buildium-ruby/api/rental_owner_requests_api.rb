@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a rental owner request
-    # Creates a rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
-    # @param rental_owner_request_task_post_message [RentalOwnerRequestTaskPostMessage] 
+    # Creates a rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
+    # @param create_rental_owner_request_task_request [CreateRentalOwnerRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [RentalOwnerRequestTaskMessage]
-    def create_rental_owner_request_task(rental_owner_request_task_post_message, opts = {})
-      data, _status_code, _headers = create_rental_owner_request_task_with_http_info(rental_owner_request_task_post_message, opts)
+    def create_rental_owner_request_task(create_rental_owner_request_task_request, opts = {})
+      data, _status_code, _headers = create_rental_owner_request_task_with_http_info(create_rental_owner_request_task_request, opts)
       data
     end
 
     # Create a rental owner request
-    # Creates a rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param rental_owner_request_task_post_message [RentalOwnerRequestTaskPostMessage] 
+    # Creates a rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_rental_owner_request_task_request [CreateRentalOwnerRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(RentalOwnerRequestTaskMessage, Integer, Hash)>] RentalOwnerRequestTaskMessage data, response status code and response headers
-    def create_rental_owner_request_task_with_http_info(rental_owner_request_task_post_message, opts = {})
+    def create_rental_owner_request_task_with_http_info(create_rental_owner_request_task_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalOwnerRequestsApi.create_rental_owner_request_task ...'
       end
-      # verify the required parameter 'rental_owner_request_task_post_message' is set
-      if @api_client.config.client_side_validation && rental_owner_request_task_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'rental_owner_request_task_post_message' when calling RentalOwnerRequestsApi.create_rental_owner_request_task"
+      # verify the required parameter 'create_rental_owner_request_task_request' is set
+      if @api_client.config.client_side_validation && create_rental_owner_request_task_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_rental_owner_request_task_request' when calling RentalOwnerRequestsApi.create_rental_owner_request_task"
       end
       # resource path
       local_var_path = '/v1/tasks/rentalownerrequests'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_owner_request_task_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_rental_owner_request_task_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'RentalOwnerRequestTaskMessage'
@@ -88,7 +88,7 @@ module Buildium
     end
 
     # Retrieve all rental owner requests
-    # Retrieves all rental owner requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves all rental owner requests.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -102,9 +102,6 @@ module Buildium
     # @option opts [Array<String>] :priorities Filters results to any tasks whose priority matches the specified values. If no priority is specified, tasks with any priority will be returned.
     # @option opts [Integer] :assignedtoid Filters results to any tasks that have been assigned to the specified staff user identifier.
     # @option opts [String] :tasktitle Filters results to any task whose title *contains* the specified value.
-    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
-    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
-    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
     # @return [Array<RentalOwnerRequestTaskMessage>]
     def get_all_rental_owner_request_tasks(opts = {})
       data, _status_code, _headers = get_all_rental_owner_request_tasks_with_http_info(opts)
@@ -112,7 +109,7 @@ module Buildium
     end
 
     # Retrieve all rental owner requests
-    # Retrieves all rental owner requests.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all rental owner requests.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -126,9 +123,6 @@ module Buildium
     # @option opts [Array<String>] :priorities Filters results to any tasks whose priority matches the specified values. If no priority is specified, tasks with any priority will be returned.
     # @option opts [Integer] :assignedtoid Filters results to any tasks that have been assigned to the specified staff user identifier.
     # @option opts [String] :tasktitle Filters results to any task whose title *contains* the specified value.
-    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
-    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
-    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
     # @return [Array<(Array<RentalOwnerRequestTaskMessage>, Integer, Hash)>] Array<RentalOwnerRequestTaskMessage> data, response status code and response headers
     def get_all_rental_owner_request_tasks_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -163,9 +157,6 @@ module Buildium
       query_params[:'priorities'] = @api_client.build_collection_param(opts[:'priorities'], :multi) if !opts[:'priorities'].nil?
       query_params[:'assignedtoid'] = opts[:'assignedtoid'] if !opts[:'assignedtoid'].nil?
       query_params[:'tasktitle'] = opts[:'tasktitle'] if !opts[:'tasktitle'].nil?
-      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
-      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -202,7 +193,7 @@ module Buildium
     end
 
     # Retrieve a rental owner request
-    # Retrieves a specific rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a specific rental owner request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
     # @param [Hash] opts the optional parameters
     # @return [RentalOwnerRequestTaskMessage]
@@ -212,7 +203,7 @@ module Buildium
     end
 
     # Retrieve a rental owner request
-    # Retrieves a specific rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(RentalOwnerRequestTaskMessage, Integer, Hash)>] RentalOwnerRequestTaskMessage data, response status code and response headers
@@ -265,7 +256,7 @@ module Buildium
     end
 
     # Retrieve rental owner contribution request
-    # Retrieves the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
     # @param [Hash] opts the optional parameters
     # @return [RentalOwnerContributionDataMessage]
@@ -275,7 +266,7 @@ module Buildium
     end
 
     # Retrieve rental owner contribution request
-    # Retrieves the contribution details for a rental owner contribution request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves the contribution details for a rental owner contribution request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(RentalOwnerContributionDataMessage, Integer, Hash)>] RentalOwnerContributionDataMessage data, response status code and response headers
@@ -328,23 +319,23 @@ module Buildium
     end
 
     # Update a rental owner request
-    # Updates a rental owner request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates a rental owner request.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
-    # @param rental_owner_request_task_put_message [RentalOwnerRequestTaskPutMessage] 
+    # @param update_rental_owner_request_task_request [UpdateRentalOwnerRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [RentalOwnerRequestTaskMessage]
-    def update_rental_owner_request_task(rental_owner_request_task_id, rental_owner_request_task_put_message, opts = {})
-      data, _status_code, _headers = update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, rental_owner_request_task_put_message, opts)
+    def update_rental_owner_request_task(rental_owner_request_task_id, update_rental_owner_request_task_request, opts = {})
+      data, _status_code, _headers = update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_request, opts)
       data
     end
 
     # Update a rental owner request
-    # Updates a rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a rental owner request.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
-    # @param rental_owner_request_task_put_message [RentalOwnerRequestTaskPutMessage] 
+    # @param update_rental_owner_request_task_request [UpdateRentalOwnerRequestTaskRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(RentalOwnerRequestTaskMessage, Integer, Hash)>] RentalOwnerRequestTaskMessage data, response status code and response headers
-    def update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, rental_owner_request_task_put_message, opts = {})
+    def update_rental_owner_request_task_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalOwnerRequestsApi.update_rental_owner_request_task ...'
       end
@@ -352,9 +343,9 @@ module Buildium
       if @api_client.config.client_side_validation && rental_owner_request_task_id.nil?
         fail ArgumentError, "Missing the required parameter 'rental_owner_request_task_id' when calling RentalOwnerRequestsApi.update_rental_owner_request_task"
       end
-      # verify the required parameter 'rental_owner_request_task_put_message' is set
-      if @api_client.config.client_side_validation && rental_owner_request_task_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'rental_owner_request_task_put_message' when calling RentalOwnerRequestsApi.update_rental_owner_request_task"
+      # verify the required parameter 'update_rental_owner_request_task_request' is set
+      if @api_client.config.client_side_validation && update_rental_owner_request_task_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_rental_owner_request_task_request' when calling RentalOwnerRequestsApi.update_rental_owner_request_task"
       end
       # resource path
       local_var_path = '/v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId}'.sub('{' + 'rentalOwnerRequestTaskId' + '}', CGI.escape(rental_owner_request_task_id.to_s))
@@ -369,14 +360,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_owner_request_task_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_rental_owner_request_task_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'RentalOwnerRequestTaskMessage'
@@ -402,23 +393,23 @@ module Buildium
     end
 
     # Update a rental owner contribution request
-    # Updates the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates the contribution details for a rental owner contribution request.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
-    # @param rental_owner_contribution_data_put_message [RentalOwnerContributionDataPutMessage] 
+    # @param update_rental_owner_request_task_contribution_data_request [UpdateRentalOwnerRequestTaskContributionDataRequest] 
     # @param [Hash] opts the optional parameters
     # @return [RentalOwnerContributionDataMessage]
-    def update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, rental_owner_contribution_data_put_message, opts = {})
-      data, _status_code, _headers = update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, rental_owner_contribution_data_put_message, opts)
+    def update_rental_owner_request_task_contribution_data(rental_owner_request_task_id, update_rental_owner_request_task_contribution_data_request, opts = {})
+      data, _status_code, _headers = update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_contribution_data_request, opts)
       data
     end
 
     # Update a rental owner contribution request
-    # Updates the contribution details for a rental owner contribution request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates the contribution details for a rental owner contribution request.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param rental_owner_request_task_id [Integer] The rental owner request identifier.
-    # @param rental_owner_contribution_data_put_message [RentalOwnerContributionDataPutMessage] 
+    # @param update_rental_owner_request_task_contribution_data_request [UpdateRentalOwnerRequestTaskContributionDataRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(RentalOwnerContributionDataMessage, Integer, Hash)>] RentalOwnerContributionDataMessage data, response status code and response headers
-    def update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, rental_owner_contribution_data_put_message, opts = {})
+    def update_rental_owner_request_task_contribution_data_with_http_info(rental_owner_request_task_id, update_rental_owner_request_task_contribution_data_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: RentalOwnerRequestsApi.update_rental_owner_request_task_contribution_data ...'
       end
@@ -426,9 +417,9 @@ module Buildium
       if @api_client.config.client_side_validation && rental_owner_request_task_id.nil?
         fail ArgumentError, "Missing the required parameter 'rental_owner_request_task_id' when calling RentalOwnerRequestsApi.update_rental_owner_request_task_contribution_data"
       end
-      # verify the required parameter 'rental_owner_contribution_data_put_message' is set
-      if @api_client.config.client_side_validation && rental_owner_contribution_data_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'rental_owner_contribution_data_put_message' when calling RentalOwnerRequestsApi.update_rental_owner_request_task_contribution_data"
+      # verify the required parameter 'update_rental_owner_request_task_contribution_data_request' is set
+      if @api_client.config.client_side_validation && update_rental_owner_request_task_contribution_data_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_rental_owner_request_task_contribution_data_request' when calling RentalOwnerRequestsApi.update_rental_owner_request_task_contribution_data"
       end
       # resource path
       local_var_path = '/v1/tasks/rentalownerrequests/{rentalOwnerRequestTaskId}/contributiondata'.sub('{' + 'rentalOwnerRequestTaskId' + '}', CGI.escape(rental_owner_request_task_id.to_s))
@@ -443,14 +434,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(rental_owner_contribution_data_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_rental_owner_request_task_contribution_data_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'RentalOwnerContributionDataMessage'

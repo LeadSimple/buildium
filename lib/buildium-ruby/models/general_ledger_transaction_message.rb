@@ -45,6 +45,9 @@ module Buildium
 
     attr_accessor :journal
 
+    # The date and time the transaction was last updated.
+    attr_accessor :last_updated_date_time
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -80,7 +83,8 @@ module Buildium
         :'unit_number' => :'UnitNumber',
         :'payment_detail' => :'PaymentDetail',
         :'deposit_details' => :'DepositDetails',
-        :'journal' => :'Journal'
+        :'journal' => :'Journal',
+        :'last_updated_date_time' => :'LastUpdatedDateTime'
       }
     end
 
@@ -97,12 +101,13 @@ module Buildium
         :'transaction_type' => :'String',
         :'total_amount' => :'Float',
         :'check_number' => :'String',
-        :'unit_agreement' => :'UnitAgreementMessage',
+        :'unit_agreement' => :'GeneralLedgerTransactionMessageUnitAgreement',
         :'unit_id' => :'Integer',
         :'unit_number' => :'String',
-        :'payment_detail' => :'PaymentDetailMessage',
-        :'deposit_details' => :'DepositDetailMessage',
-        :'journal' => :'GeneralLedgerJournalMessage'
+        :'payment_detail' => :'GeneralLedgerTransactionMessagePaymentDetail',
+        :'deposit_details' => :'GeneralLedgerTransactionMessageDepositDetails',
+        :'journal' => :'GeneralLedgerTransactionMessageJournal',
+        :'last_updated_date_time' => :'Time'
       }
     end
 
@@ -170,6 +175,10 @@ module Buildium
       if attributes.key?(:'journal')
         self.journal = attributes[:'journal']
       end
+
+      if attributes.key?(:'last_updated_date_time')
+        self.last_updated_date_time = attributes[:'last_updated_date_time']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -212,7 +221,8 @@ module Buildium
           unit_number == o.unit_number &&
           payment_detail == o.payment_detail &&
           deposit_details == o.deposit_details &&
-          journal == o.journal
+          journal == o.journal &&
+          last_updated_date_time == o.last_updated_date_time
     end
 
     # @see the `==` method
@@ -224,7 +234,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, date, transaction_type, total_amount, check_number, unit_agreement, unit_id, unit_number, payment_detail, deposit_details, journal].hash
+      [id, date, transaction_type, total_amount, check_number, unit_agreement, unit_id, unit_number, payment_detail, deposit_details, journal, last_updated_date_time].hash
     end
 
     # Builds the object from hash
@@ -238,7 +248,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -345,5 +355,6 @@ module Buildium
         value
       end
     end
+
   end
 end

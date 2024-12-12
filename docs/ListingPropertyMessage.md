@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Rental property unique identifier. | [optional] |
 | **name** | **String** | Name of the rental property. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**ListingPropertyMessageAddress**](ListingPropertyMessageAddress.md) |  | [optional] |
 | **number_units** | **Integer** | Number of units in the rental property. | [optional] |
 | **structure_description** | **String** | Description of the rental property structure. | [optional] |
 | **year_built** | **Integer** | Year the rental property was built. | [optional] |

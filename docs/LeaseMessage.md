@@ -17,7 +17,7 @@
 | **renewal_offer_status** | **String** | Describes the status of the renewal offer. Null if no renewal offer exists. | [optional] |
 | **current_tenants** | [**Array&lt;TenantMessage&gt;**](TenantMessage.md) | List of the current tenants on the lease. | [optional] |
 | **current_number_of_occupants** | **Integer** | Count of current tenants. | [optional] |
-| **account_details** | [**LeaseAccountDetailMessage**](LeaseAccountDetailMessage.md) |  | [optional] |
+| **account_details** | [**LeaseMessageAccountDetails**](LeaseMessageAccountDetails.md) |  | [optional] |
 | **cosigners** | [**Array&lt;CosignerMessage&gt;**](CosignerMessage.md) | List of the cosigners on the lease. | [optional] |
 | **automatically_move_out_tenants** | **Boolean** | Indicates whether to automatically move out all tenants assigned to the lease and set the lease status to past when the lease ends. | [optional] |
 | **created_date_time** | **Time** | Date and time the lease was created. | [optional] |

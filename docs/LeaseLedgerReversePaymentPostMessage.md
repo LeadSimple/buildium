@@ -6,8 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **entry_date** | **Date** | Date of the transaction. |  |
 | **payment_transaction_id** | **Integer** | Transaction identifier of the payment to reverse. Note, this payment transaction must be deposited. |  |
-| **nsf_charge** | [**LeaseLedgerReversePaymentNSFChargePostMessage**](LeaseLedgerReversePaymentNSFChargePostMessage.md) |  | [optional] |
-| **bank_fee** | [**LeaseLedgerReversePaymentOtherBankChargePostMessage**](LeaseLedgerReversePaymentOtherBankChargePostMessage.md) |  | [optional] |
+| **nsf_charge** | [**LeaseLedgerReversePaymentPostMessageNSFCharge**](LeaseLedgerReversePaymentPostMessageNSFCharge.md) |  | [optional] |
+| **bank_fee** | [**LeaseLedgerReversePaymentPostMessageBankFee**](LeaseLedgerReversePaymentPostMessageBankFee.md) |  | [optional] |
 
 ## Example
 

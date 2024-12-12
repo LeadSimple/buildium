@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **total_balance** | **Float** | The sum of transactions across all accounting entities (rental properties, association properties and your company) that are associated with the given general ledger account. | [optional] |
-| **gl_account** | [**GLAccountMessage**](GLAccountMessage.md) |  | [optional] |
+| **gl_account** | [**GLAccountBalanceMessageGLAccount**](GLAccountBalanceMessageGLAccount.md) |  | [optional] |
 | **accounting_entity_balances** | [**Array&lt;GLAccountBalanceItemMessage&gt;**](GLAccountBalanceItemMessage.md) | A collection of accounting entity balances that make up the &#x60;TotalBalance&#x60;. | [optional] |
 
 ## Example

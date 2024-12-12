@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | Rental property name. The value cannot exceed 127 characters. |  |
 | **structure_description** | **String** | Description of the rental property building. The description cannot exceed 65,535 characters. | [optional] |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  |  |
+| **address** | [**RentalPropertyPostMessageAddress**](RentalPropertyPostMessageAddress.md) |  |  |
 | **rental_sub_type** | **String** | Subtype of the rental property. |  |
 | **rental_owner_ids** | **Array&lt;Integer&gt;** | List of existing rental owner ID&#39;s that are owners of this property. | [optional] |
 | **operating_bank_account_id** | **Integer** | The primary bank account that a rental property uses for its income and expenses. |  |

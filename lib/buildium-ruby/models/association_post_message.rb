@@ -65,13 +65,13 @@ module Buildium
       {
         :'name' => :'String',
         :'operating_bank_account_id' => :'Integer',
-        :'address' => :'SaveAddressMessage',
+        :'address' => :'AssociationPostMessageAddress',
         :'is_active' => :'Boolean',
         :'reserve' => :'Float',
         :'description' => :'String',
         :'year_built' => :'Integer',
         :'property_manager_id' => :'Integer',
-        :'tax_information' => :'TaxInformationPostMessage'
+        :'tax_information' => :'AssociationPostMessageTaxInformation'
       }
     end
 
@@ -141,6 +141,10 @@ module Buildium
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
       if @operating_bank_account_id.nil?
         invalid_properties.push('invalid value for "operating_bank_account_id", operating_bank_account_id cannot be nil.')
       end
@@ -156,9 +160,24 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @name.nil?
+      return false if @name.to_s.length < 1
       return false if @operating_bank_account_id.nil?
       return false if @address.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -200,7 +219,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -307,5 +326,6 @@ module Buildium
         value
       end
     end
+
   end
 end

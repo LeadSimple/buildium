@@ -13,12 +13,12 @@
 | **email** | **String** | Email of the rental owner. | [optional] |
 | **alternate_email** | **String** | Alternate email of the rental owner. | [optional] |
 | **comment** | **String** | Comments about the rental owner. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**RentalOwnerMessageAddress**](RentalOwnerMessageAddress.md) |  | [optional] |
 | **management_agreement_start_date** | **Date** | Start date of the management agreement with the rental owner. Null if value is not set. | [optional] |
 | **management_agreement_end_date** | **Date** | End date of the management agreement with the rental owner. Null if value is not set. | [optional] |
 | **company_name** | **String** | Company name of the rental owner. Empty if &#x60;IsCompany&#x60; is &#x60;false&#x60;. | [optional] |
 | **property_ids** | **Array&lt;Integer&gt;** | A list of rental property ID&#39;s associated with this rental owner. | [optional] |
-| **tax_information** | [**RentalOwnerTaxInformationMessage**](RentalOwnerTaxInformationMessage.md) |  | [optional] |
+| **tax_information** | [**RentalOwnerMessageTaxInformation**](RentalOwnerMessageTaxInformation.md) |  | [optional] |
 
 ## Example
 

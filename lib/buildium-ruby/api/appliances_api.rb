@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create an appliance
-    # Creates an association appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
-    # @param association_appliance_post_message [AssociationAppliancePostMessage] 
+    # Creates an association appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
+    # @param create_association_appliance_request [CreateAssociationApplianceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationApplianceMessage]
-    def create_association_appliance(association_appliance_post_message, opts = {})
-      data, _status_code, _headers = create_association_appliance_with_http_info(association_appliance_post_message, opts)
+    def create_association_appliance(create_association_appliance_request, opts = {})
+      data, _status_code, _headers = create_association_appliance_with_http_info(create_association_appliance_request, opts)
       data
     end
 
     # Create an appliance
-    # Creates an association appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param association_appliance_post_message [AssociationAppliancePostMessage] 
+    # Creates an association appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_association_appliance_request [CreateAssociationApplianceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationApplianceMessage, Integer, Hash)>] AssociationApplianceMessage data, response status code and response headers
-    def create_association_appliance_with_http_info(association_appliance_post_message, opts = {})
+    def create_association_appliance_with_http_info(create_association_appliance_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AppliancesApi.create_association_appliance ...'
       end
-      # verify the required parameter 'association_appliance_post_message' is set
-      if @api_client.config.client_side_validation && association_appliance_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_appliance_post_message' when calling AppliancesApi.create_association_appliance"
+      # verify the required parameter 'create_association_appliance_request' is set
+      if @api_client.config.client_side_validation && create_association_appliance_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_association_appliance_request' when calling AppliancesApi.create_association_appliance"
       end
       # resource path
       local_var_path = '/v1/associations/appliances'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_appliance_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_association_appliance_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationApplianceMessage'
@@ -88,23 +88,23 @@ module Buildium
     end
 
     # Create a service history
-    # Creates a service history for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Creates a service history for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param appliance_id [Integer] 
-    # @param association_appliance_service_history_post_message [AssociationApplianceServiceHistoryPostMessage] 
+    # @param create_association_appliance_service_history_request [CreateAssociationApplianceServiceHistoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationApplianceServiceHistoryMessage]
-    def create_association_appliance_service_history(appliance_id, association_appliance_service_history_post_message, opts = {})
-      data, _status_code, _headers = create_association_appliance_service_history_with_http_info(appliance_id, association_appliance_service_history_post_message, opts)
+    def create_association_appliance_service_history(appliance_id, create_association_appliance_service_history_request, opts = {})
+      data, _status_code, _headers = create_association_appliance_service_history_with_http_info(appliance_id, create_association_appliance_service_history_request, opts)
       data
     end
 
     # Create a service history
-    # Creates a service history for an appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a service history for an appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param appliance_id [Integer] 
-    # @param association_appliance_service_history_post_message [AssociationApplianceServiceHistoryPostMessage] 
+    # @param create_association_appliance_service_history_request [CreateAssociationApplianceServiceHistoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationApplianceServiceHistoryMessage, Integer, Hash)>] AssociationApplianceServiceHistoryMessage data, response status code and response headers
-    def create_association_appliance_service_history_with_http_info(appliance_id, association_appliance_service_history_post_message, opts = {})
+    def create_association_appliance_service_history_with_http_info(appliance_id, create_association_appliance_service_history_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AppliancesApi.create_association_appliance_service_history ...'
       end
@@ -112,9 +112,9 @@ module Buildium
       if @api_client.config.client_side_validation && appliance_id.nil?
         fail ArgumentError, "Missing the required parameter 'appliance_id' when calling AppliancesApi.create_association_appliance_service_history"
       end
-      # verify the required parameter 'association_appliance_service_history_post_message' is set
-      if @api_client.config.client_side_validation && association_appliance_service_history_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_appliance_service_history_post_message' when calling AppliancesApi.create_association_appliance_service_history"
+      # verify the required parameter 'create_association_appliance_service_history_request' is set
+      if @api_client.config.client_side_validation && create_association_appliance_service_history_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_association_appliance_service_history_request' when calling AppliancesApi.create_association_appliance_service_history"
       end
       # resource path
       local_var_path = '/v1/associations/appliances/{applianceId}/servicehistory'.sub('{' + 'applianceId' + '}', CGI.escape(appliance_id.to_s))
@@ -129,14 +129,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_appliance_service_history_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_association_appliance_service_history_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationApplianceServiceHistoryMessage'
@@ -162,7 +162,7 @@ module Buildium
     end
 
     # Delete an appliance
-    # Deletes an associations appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Deletes an associations appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param appliance_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -172,7 +172,7 @@ module Buildium
     end
 
     # Delete an appliance
-    # Deletes an associations appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Deletes an associations appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param appliance_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -225,7 +225,7 @@ module Buildium
     end
 
     # Retrieve all service history
-    # Retrieves all of the service history records for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves all of the service history records for an appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param appliance_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -238,7 +238,7 @@ module Buildium
     end
 
     # Retrieve all service history
-    # Retrieves all of the service history records for an appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all of the service history records for an appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param appliance_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -297,7 +297,7 @@ module Buildium
     end
 
     # Retrieve an appliance
-    # Retrieves an association appliance by id.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves an association appliance by id.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param appliance_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationApplianceMessage]
@@ -307,7 +307,7 @@ module Buildium
     end
 
     # Retrieve an appliance
-    # Retrieves an association appliance by id.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an association appliance by id.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param appliance_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationApplianceMessage, Integer, Hash)>] AssociationApplianceMessage data, response status code and response headers
@@ -360,7 +360,7 @@ module Buildium
     end
 
     # Retrieve a service history
-    # Retrieves a specific service history record for a given appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves a specific service history record for a given appliance.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param appliance_id [Integer] 
     # @param service_history_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -371,7 +371,7 @@ module Buildium
     end
 
     # Retrieve a service history
-    # Retrieves a specific service history record for a given appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific service history record for a given appliance.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param appliance_id [Integer] 
     # @param service_history_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -429,7 +429,7 @@ module Buildium
     end
 
     # Retrieve all appliances
-    # Retrieves all association appliances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves all association appliances.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :associationids Filters results to appliances associated to any of the specified association identifiers.
     # @option opts [Array<Integer>] :unitids Filters results to appliances associated to any of the specified association unit identifiers.
@@ -443,7 +443,7 @@ module Buildium
     end
 
     # Retrieve all appliances
-    # Retrieves all association appliances.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all association appliances.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :associationids Filters results to appliances associated to any of the specified association identifiers.
     # @option opts [Array<Integer>] :unitids Filters results to appliances associated to any of the specified association unit identifiers.
@@ -501,23 +501,23 @@ module Buildium
     end
 
     # Update an appliance
-    # Updates an association appliance.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Updates an association appliance.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param appliance_id [Integer] 
-    # @param association_appliance_put_message [AssociationAppliancePutMessage] 
+    # @param update_association_appliance_request [UpdateAssociationApplianceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AssociationApplianceMessage]
-    def update_association_appliance(appliance_id, association_appliance_put_message, opts = {})
-      data, _status_code, _headers = update_association_appliance_with_http_info(appliance_id, association_appliance_put_message, opts)
+    def update_association_appliance(appliance_id, update_association_appliance_request, opts = {})
+      data, _status_code, _headers = update_association_appliance_with_http_info(appliance_id, update_association_appliance_request, opts)
       data
     end
 
     # Update an appliance
-    # Updates an association appliance.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an association appliance.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param appliance_id [Integer] 
-    # @param association_appliance_put_message [AssociationAppliancePutMessage] 
+    # @param update_association_appliance_request [UpdateAssociationApplianceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(AssociationApplianceMessage, Integer, Hash)>] AssociationApplianceMessage data, response status code and response headers
-    def update_association_appliance_with_http_info(appliance_id, association_appliance_put_message, opts = {})
+    def update_association_appliance_with_http_info(appliance_id, update_association_appliance_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AppliancesApi.update_association_appliance ...'
       end
@@ -525,9 +525,9 @@ module Buildium
       if @api_client.config.client_side_validation && appliance_id.nil?
         fail ArgumentError, "Missing the required parameter 'appliance_id' when calling AppliancesApi.update_association_appliance"
       end
-      # verify the required parameter 'association_appliance_put_message' is set
-      if @api_client.config.client_side_validation && association_appliance_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'association_appliance_put_message' when calling AppliancesApi.update_association_appliance"
+      # verify the required parameter 'update_association_appliance_request' is set
+      if @api_client.config.client_side_validation && update_association_appliance_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_association_appliance_request' when calling AppliancesApi.update_association_appliance"
       end
       # resource path
       local_var_path = '/v1/associations/appliances/{applianceId}'.sub('{' + 'applianceId' + '}', CGI.escape(appliance_id.to_s))
@@ -542,14 +542,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(association_appliance_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_association_appliance_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'AssociationApplianceMessage'

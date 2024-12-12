@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **unit_agreement** | [**UnitAgreementMessage**](UnitAgreementMessage.md) |  | [optional] |
-| **user** | [**ResidentCenterUserReferenceMessage**](ResidentCenterUserReferenceMessage.md) |  | [optional] |
+| **unit_agreement** | [**ResidentCenterUserMessageUnitAgreement**](ResidentCenterUserMessageUnitAgreement.md) |  | [optional] |
+| **user** | [**ResidentCenterUserMessageUser**](ResidentCenterUserMessageUser.md) |  | [optional] |
 | **resident_center_user_status** | **String** | Resident center status for the user. | [optional] |
 | **is_auto_pay_enabled** | **Boolean** | Indicates if the user has an automatic payment scheduled for the future. | [optional] |
 

@@ -8,8 +8,10 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_accounting_lock_period_settings**](AdministrationApi.md#get_accounting_lock_period_settings) | **GET** /v1/administration/accountinglockperiod | Retrieve accounting lock periods |
 | [**get_all_user_roles**](AdministrationApi.md#get_all_user_roles) | **GET** /v1/userroles | Retrieve all user roles |
 | [**get_all_users**](AdministrationApi.md#get_all_users) | **GET** /v1/users | Retrieve all users |
+| [**get_global_partial_payment_settings**](AdministrationApi.md#get_global_partial_payment_settings) | **GET** /v1/administration/residentsettings/partialpaymentsettings | Retrieve the partial payment settings for residents |
 | [**get_user_by_id**](AdministrationApi.md#get_user_by_id) | **GET** /v1/users/{userId} | Retrieve a user |
 | [**get_user_role_by_id**](AdministrationApi.md#get_user_role_by_id) | **GET** /v1/userroles/{userRoleId} | Retrieve a user role |
+| [**patch_global_partial_payment_settings**](AdministrationApi.md#patch_global_partial_payment_settings) | **PATCH** /v1/administration/residentsettings/partialpaymentsettings | Update the partial payment settings for residents |
 
 
 ## get_account_info
@@ -18,7 +20,7 @@ All URIs are relative to *https://api.buildium.com*
 
 Retrieve account info
 
-Retrieves information related to the Buildium account.   <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Account Information</span> - `View`
+Retrieves information related to the Buildium account.   <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Account Information</span> - `View`
 
 ### Examples
 
@@ -91,7 +93,7 @@ This endpoint does not need any parameter.
 
 Retrieve accounting lock periods
 
-Retrieves accounting lock periods.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Application Settings</span> - `View`
+Retrieves accounting lock periods.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Application Settings</span> - `View`
 
 ### Examples
 
@@ -164,7 +166,7 @@ This endpoint does not need any parameter.
 
 Retrieve all user roles
 
-Retrieves a list of user roles.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; User Roles</span> - `View`
+Retrieves a list of user roles.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > User Roles</span> - `View`
 
 ### Examples
 
@@ -246,7 +248,7 @@ end
 
 Retrieve all users
 
-Retrieves a list of users.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Users</span> - `View`
+Retrieves a list of users.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Users</span> - `View`
 
 ### Examples
 
@@ -332,13 +334,86 @@ end
 - **Accept**: application/json
 
 
+## get_global_partial_payment_settings
+
+> <PartialPaymentSettingsMessage> get_global_partial_payment_settings
+
+Retrieve the partial payment settings for residents
+
+Retrieves the partial payment settings for residents.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Application Settings</span> - `View`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AdministrationApi.new
+
+begin
+  # Retrieve the partial payment settings for residents
+  result = api_instance.get_global_partial_payment_settings
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AdministrationApi->get_global_partial_payment_settings: #{e}"
+end
+```
+
+#### Using the get_global_partial_payment_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PartialPaymentSettingsMessage>, Integer, Hash)> get_global_partial_payment_settings_with_http_info
+
+```ruby
+begin
+  # Retrieve the partial payment settings for residents
+  data, status_code, headers = api_instance.get_global_partial_payment_settings_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PartialPaymentSettingsMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AdministrationApi->get_global_partial_payment_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PartialPaymentSettingsMessage**](PartialPaymentSettingsMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_user_by_id
 
 > <UserMessage> get_user_by_id(user_id)
 
 Retrieve a user
 
-Retrieve a specific user.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Users</span> - `View`
+Retrieve a specific user.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Users</span> - `View`
 
 ### Examples
 
@@ -414,7 +489,7 @@ end
 
 Retrieve a user role
 
-Retrieve a specific user role.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; User Roles</span> - `View`
+Retrieve a specific user role.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > User Roles</span> - `View`
 
 ### Examples
 
@@ -481,5 +556,81 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## patch_global_partial_payment_settings
+
+> <PartialPaymentSettingsMessage> patch_global_partial_payment_settings(patch_global_partial_payment_settings_request)
+
+Update the partial payment settings for residents
+
+Updates the partial payment settings for residents.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Application Settings</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::AdministrationApi.new
+patch_global_partial_payment_settings_request = Buildium::PatchGlobalPartialPaymentSettingsRequest.new # PatchGlobalPartialPaymentSettingsRequest | <span>Represents the structure of the data that can be provided to a <a target=\"_blank\" href=\"https://datatracker.ietf.org/doc/html/rfc6902\">JSON patch document</a> as path values via <a target=\"_blank\" href=\"https://datatracker.ietf.org/doc/html/rfc6901/\">JSON pointer</a> syntax.</span>
+
+begin
+  # Update the partial payment settings for residents
+  result = api_instance.patch_global_partial_payment_settings(patch_global_partial_payment_settings_request)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling AdministrationApi->patch_global_partial_payment_settings: #{e}"
+end
+```
+
+#### Using the patch_global_partial_payment_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PartialPaymentSettingsMessage>, Integer, Hash)> patch_global_partial_payment_settings_with_http_info(patch_global_partial_payment_settings_request)
+
+```ruby
+begin
+  # Update the partial payment settings for residents
+  data, status_code, headers = api_instance.patch_global_partial_payment_settings_with_http_info(patch_global_partial_payment_settings_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PartialPaymentSettingsMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling AdministrationApi->patch_global_partial_payment_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **patch_global_partial_payment_settings_request** | [**PatchGlobalPartialPaymentSettingsRequest**](PatchGlobalPartialPaymentSettingsRequest.md) | &lt;span&gt;Represents the structure of the data that can be provided to a &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6902\&quot;&gt;JSON patch document&lt;/a&gt; as path values via &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6901/\&quot;&gt;JSON pointer&lt;/a&gt; syntax.&lt;/span&gt; |  |
+
+### Return type
+
+[**PartialPaymentSettingsMessage**](PartialPaymentSettingsMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/json-patch+json
 - **Accept**: application/json
 

@@ -157,7 +157,7 @@ module Buildium
     def valid?
       return false if @date.nil?
       return false if @payment_method.nil?
-      payment_method_validator = EnumAttributeValidator.new('String', ["Check", "Cash", "MoneyOrder", "CashierCheck", "DirectDeposit", "CreditCard", "ElectronicPayment"])
+      payment_method_validator = EnumAttributeValidator.new('String', ["Check", "Cash", "MoneyOrder", "CashierCheck", "DirectDeposit", "CreditCard", "ElectronicPayment", "BuildiumEFT", "BuildiumCC", "RetailCash"])
       return false unless payment_method_validator.valid?(@payment_method)
       return false if @lines.nil?
       true
@@ -166,7 +166,7 @@ module Buildium
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] payment_method Object to be assigned
     def payment_method=(payment_method)
-      validator = EnumAttributeValidator.new('String', ["Check", "Cash", "MoneyOrder", "CashierCheck", "DirectDeposit", "CreditCard", "ElectronicPayment"])
+      validator = EnumAttributeValidator.new('String', ["Check", "Cash", "MoneyOrder", "CashierCheck", "DirectDeposit", "CreditCard", "ElectronicPayment", "BuildiumEFT", "BuildiumCC", "RetailCash"])
       unless validator.valid?(payment_method)
         fail ArgumentError, "invalid value #{ payment_method.inspect } for \"payment_method\", must be one of #{validator.allowable_values}."
       end
@@ -209,7 +209,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -316,5 +316,6 @@ module Buildium
         value
       end
     end
+
   end
 end

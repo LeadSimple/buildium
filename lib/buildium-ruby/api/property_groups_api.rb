@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a property group
-    # Creates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
-    # @param property_group_post_message [PropertyGroupPostMessage] 
+    # Creates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
+    # @param create_property_group_request [CreatePropertyGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [PropertyGroupMessage]
-    def create_property_group(property_group_post_message, opts = {})
-      data, _status_code, _headers = create_property_group_with_http_info(property_group_post_message, opts)
+    def create_property_group(create_property_group_request, opts = {})
+      data, _status_code, _headers = create_property_group_with_http_info(create_property_group_request, opts)
       data
     end
 
     # Create a property group
-    # Creates a property group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param property_group_post_message [PropertyGroupPostMessage] 
+    # Creates a property group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_property_group_request [CreatePropertyGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PropertyGroupMessage, Integer, Hash)>] PropertyGroupMessage data, response status code and response headers
-    def create_property_group_with_http_info(property_group_post_message, opts = {})
+    def create_property_group_with_http_info(create_property_group_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PropertyGroupsApi.create_property_group ...'
       end
-      # verify the required parameter 'property_group_post_message' is set
-      if @api_client.config.client_side_validation && property_group_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'property_group_post_message' when calling PropertyGroupsApi.create_property_group"
+      # verify the required parameter 'create_property_group_request' is set
+      if @api_client.config.client_side_validation && create_property_group_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_property_group_request' when calling PropertyGroupsApi.create_property_group"
       end
       # resource path
       local_var_path = '/v1/propertygroups'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(property_group_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_property_group_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PropertyGroupMessage'
@@ -88,7 +88,7 @@ module Buildium
     end
 
     # Retrieve a property group
-    # Retrieves a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`              <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View`              <span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param property_group_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [PropertyGroupMessage]
@@ -98,7 +98,7 @@ module Buildium
     end
 
     # Retrieve a property group
-    # Retrieves a property group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a property group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param property_group_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PropertyGroupMessage, Integer, Hash)>] PropertyGroupMessage data, response status code and response headers
@@ -151,7 +151,7 @@ module Buildium
     end
 
     # Retrieve all property groups
-    # Retrieves all property groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+    # Retrieves all property groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View`              <br /><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to property groups that contain any of the specified property ids.
     # @option opts [String] :nameordescription Filters results to any property group whose name or description contains the specified value.
@@ -165,7 +165,7 @@ module Buildium
     end
 
     # Retrieve all property groups
-    # Retrieves all property groups.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all property groups.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :propertyids Filters results to property groups that contain any of the specified property ids.
     # @option opts [String] :nameordescription Filters results to any property group whose name or description contains the specified value.
@@ -223,23 +223,23 @@ module Buildium
     end
 
     # Update a property group
-    # Updates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+    # Updates a property group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Rental properties and units or</span> - `View` `Edit`              <span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
     # @param property_group_id [Integer] 
-    # @param property_group_put_message [PropertyGroupPutMessage] 
+    # @param update_property_group_request [UpdatePropertyGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [PropertyGroupMessage]
-    def update_property_group(property_group_id, property_group_put_message, opts = {})
-      data, _status_code, _headers = update_property_group_with_http_info(property_group_id, property_group_put_message, opts)
+    def update_property_group(property_group_id, update_property_group_request, opts = {})
+      data, _status_code, _headers = update_property_group_with_http_info(property_group_id, update_property_group_request, opts)
       data
     end
 
     # Update a property group
-    # Updates a property group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &amp;gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a property group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Rental properties and units or&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Associations &gt; Associations and units&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param property_group_id [Integer] 
-    # @param property_group_put_message [PropertyGroupPutMessage] 
+    # @param update_property_group_request [UpdatePropertyGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PropertyGroupMessage, Integer, Hash)>] PropertyGroupMessage data, response status code and response headers
-    def update_property_group_with_http_info(property_group_id, property_group_put_message, opts = {})
+    def update_property_group_with_http_info(property_group_id, update_property_group_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PropertyGroupsApi.update_property_group ...'
       end
@@ -247,9 +247,9 @@ module Buildium
       if @api_client.config.client_side_validation && property_group_id.nil?
         fail ArgumentError, "Missing the required parameter 'property_group_id' when calling PropertyGroupsApi.update_property_group"
       end
-      # verify the required parameter 'property_group_put_message' is set
-      if @api_client.config.client_side_validation && property_group_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'property_group_put_message' when calling PropertyGroupsApi.update_property_group"
+      # verify the required parameter 'update_property_group_request' is set
+      if @api_client.config.client_side_validation && update_property_group_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_property_group_request' when calling PropertyGroupsApi.update_property_group"
       end
       # resource path
       local_var_path = '/v1/propertygroups/{propertyGroupId}'.sub('{' + 'propertyGroupId' + '}', CGI.escape(property_group_id.to_s))
@@ -264,14 +264,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(property_group_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_property_group_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PropertyGroupMessage'

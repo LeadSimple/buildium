@@ -11,11 +11,11 @@
 | **alternate_email** | **String** | Alternate email of the tenant. | [optional] |
 | **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | List of phone numbers for the tenant. | [optional] |
 | **created_date_time** | **Time** | Created date of this tenant record. | [optional] |
-| **emergency_contact** | [**EmergencyContactMessage**](EmergencyContactMessage.md) |  | [optional] |
+| **emergency_contact** | [**TenantMessageEmergencyContact**](TenantMessageEmergencyContact.md) |  | [optional] |
 | **date_of_birth** | **Date** | Tenant date of birth. | [optional] |
 | **sms_opt_in_status** | **String** | Indicates the tenants SMS opt in status. Null if no status exists for the tenant. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
-| **alternate_address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**TenantMessageAddress**](TenantMessageAddress.md) |  | [optional] |
+| **alternate_address** | [**TenantMessageAlternateAddress**](TenantMessageAlternateAddress.md) |  | [optional] |
 | **mailing_preference** | **String** | Mailing preference for the tenant. | [optional] |
 | **leases** | [**Array&lt;LeaseMessage&gt;**](LeaseMessage.md) | List of leases, regardless of status, that the tenant is associated with. | [optional] |
 | **comment** | **String** | Comments about the tenant. | [optional] |

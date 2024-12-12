@@ -4,18 +4,18 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **account** | [**FileSharingAccountPutMessage**](FileSharingAccountPutMessage.md) |  | [optional] |
-| **rental** | [**FileSharingRentalPutMessage**](FileSharingRentalPutMessage.md) |  | [optional] |
-| **rental_unit** | [**FileSharingRentalUnitPutMesage**](FileSharingRentalUnitPutMesage.md) |  | [optional] |
-| **lease** | [**FileSharingLeasePutMessage**](FileSharingLeasePutMessage.md) |  | [optional] |
-| **tenant** | [**FileSharingTenantPutMessage**](FileSharingTenantPutMessage.md) |  | [optional] |
-| **rental_owner** | [**FileSharingRentalOwnerPutMessage**](FileSharingRentalOwnerPutMessage.md) |  | [optional] |
-| **association** | [**FileSharingAssociationPutMessage**](FileSharingAssociationPutMessage.md) |  | [optional] |
-| **association_unit** | [**FileSharingAssociationUnitPutMessage**](FileSharingAssociationUnitPutMessage.md) |  | [optional] |
-| **ownership_account** | [**FileSharingOwnershipAccountPutMessage**](FileSharingOwnershipAccountPutMessage.md) |  | [optional] |
-| **association_owner** | [**FileSharingAssociationOwnerPutMessage**](FileSharingAssociationOwnerPutMessage.md) |  | [optional] |
-| **vendor** | [**FileSharingVendorPutMessage**](FileSharingVendorPutMessage.md) |  | [optional] |
-| **committee** | [**FileSharingCommitteePutMessage**](FileSharingCommitteePutMessage.md) |  | [optional] |
+| **account** | [**FileSharingPutMessageAccount**](FileSharingPutMessageAccount.md) |  | [optional] |
+| **rental** | [**FileSharingPutMessageRental**](FileSharingPutMessageRental.md) |  | [optional] |
+| **rental_unit** | [**FileSharingPutMessageRentalUnit**](FileSharingPutMessageRentalUnit.md) |  | [optional] |
+| **lease** | [**FileSharingPutMessageLease**](FileSharingPutMessageLease.md) |  | [optional] |
+| **tenant** | [**FileSharingPutMessageTenant**](FileSharingPutMessageTenant.md) |  | [optional] |
+| **rental_owner** | [**FileSharingPutMessageRentalOwner**](FileSharingPutMessageRentalOwner.md) |  | [optional] |
+| **association** | [**FileSharingPutMessageAssociation**](FileSharingPutMessageAssociation.md) |  | [optional] |
+| **association_unit** | [**FileSharingPutMessageAssociationUnit**](FileSharingPutMessageAssociationUnit.md) |  | [optional] |
+| **ownership_account** | [**FileSharingPutMessageOwnershipAccount**](FileSharingPutMessageOwnershipAccount.md) |  | [optional] |
+| **association_owner** | [**FileSharingPutMessageAssociationOwner**](FileSharingPutMessageAssociationOwner.md) |  | [optional] |
+| **vendor** | [**FileSharingPutMessageVendor**](FileSharingPutMessageVendor.md) |  | [optional] |
+| **committee** | [**FileSharingPutMessageCommittee**](FileSharingPutMessageCommittee.md) |  | [optional] |
 
 ## Example
 

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | File unique identifier. | [optional] |
-| **file_entity** | [**FileEntityMessage**](FileEntityMessage.md) |  | [optional] |
+| **file_entity** | [**FileMessageFileEntity**](FileMessageFileEntity.md) |  | [optional] |
 | **category_id** | **Integer** | The category identifier assigned to this file. | [optional] |
 | **title** | **String** | Title of the file. | [optional] |
 | **description** | **String** | Description of the file. | [optional] |

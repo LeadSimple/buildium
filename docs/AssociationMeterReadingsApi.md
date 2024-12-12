@@ -16,7 +16,7 @@ All URIs are relative to *https://api.buildium.com*
 
 Delete meter reading details for a given date
 
-Delete meter reading details for an association for a given date.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership account transactions</span> - `View` `Edit` `Delete`
+Delete meter reading details for an association for a given date.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership account transactions</span> - `View` `Edit` `Delete`
 
 ### Examples
 
@@ -95,7 +95,7 @@ nil (empty response body)
 
 Retrieve all meter reading details
 
-Retrieves all meter reading details for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all meter reading details for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -175,7 +175,7 @@ end
 
 Retrieve all meter readings
 
-Retrieves all meter readings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View`
+Retrieves all meter readings for an association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View`
 
 ### Examples
 
@@ -261,11 +261,11 @@ end
 
 ## upsert_association_meter_reading_details_async
 
-> <MeterReadingDetailsMessage> upsert_association_meter_reading_details_async(association_id, meter_reading_details_put_message, opts)
+> <MeterReadingDetailsMessage> upsert_association_meter_reading_details_async(association_id, upsert_association_meter_reading_details_async_request, opts)
 
 Create/Update meter reading details
 
-This endpoint can be used to both create and update a meter reading detail for an association.              <ul><li>There can only be one meter reading detail for a given combination of MeterType and ReadingDate for an association</li><li>If you are updating an existing meter reading detail, use the query parameters to specify the existing meter reading detail to update.</li><li>If you are creating a new meter reading detail, do not pass any query parameters.</li><li>When adding a new item to the Details array, leave out the `Id` field.</li><li>When updating an existing item in the Details array, the `Id` field of the existing item must be included.</li></ul><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Associations and units</span> - `View` `Edit`
+This endpoint can be used to both create and update a meter reading detail for an association.              <ul><li>There can only be one meter reading detail for a given combination of MeterType and ReadingDate for an association</li><li>If you are updating an existing meter reading detail, use the query parameters to specify the existing meter reading detail to update.</li><li>If you are creating a new meter reading detail, do not pass any query parameters.</li><li>When adding a new item to the Details array, leave out the `Id` field.</li><li>When updating an existing item in the Details array, the `Id` field of the existing item must be included.</li></ul><br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Associations and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -287,7 +287,7 @@ end
 
 api_instance = Buildium::AssociationMeterReadingsApi.new
 association_id = 56 # Integer | 
-meter_reading_details_put_message = Buildium::MeterReadingDetailsPutMessage.new({reading_date: Date.today, meter_type: 'Electric', details: [Buildium::MeterReadingDetailPutMessage.new({unit_id: 37, prior_value: 37, value: 37})]}) # MeterReadingDetailsPutMessage | 
+upsert_association_meter_reading_details_async_request = Buildium::UpsertAssociationMeterReadingDetailsAsyncRequest.new({reading_date: Date.today, meter_type: 'Electric', details: [Buildium::MeterReadingDetailPutMessage.new({unit_id: 37, prior_value: 37, value: 37})]}) # UpsertAssociationMeterReadingDetailsAsyncRequest | 
 opts = {
   readingdate: Date.parse('2013-10-20'), # Date | Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD.
   metertype: 'Electric' # String | Filters results to the specified meter type.
@@ -295,7 +295,7 @@ opts = {
 
 begin
   # Create/Update meter reading details
-  result = api_instance.upsert_association_meter_reading_details_async(association_id, meter_reading_details_put_message, opts)
+  result = api_instance.upsert_association_meter_reading_details_async(association_id, upsert_association_meter_reading_details_async_request, opts)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationMeterReadingsApi->upsert_association_meter_reading_details_async: #{e}"
@@ -306,12 +306,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<MeterReadingDetailsMessage>, Integer, Hash)> upsert_association_meter_reading_details_async_with_http_info(association_id, meter_reading_details_put_message, opts)
+> <Array(<MeterReadingDetailsMessage>, Integer, Hash)> upsert_association_meter_reading_details_async_with_http_info(association_id, upsert_association_meter_reading_details_async_request, opts)
 
 ```ruby
 begin
   # Create/Update meter reading details
-  data, status_code, headers = api_instance.upsert_association_meter_reading_details_async_with_http_info(association_id, meter_reading_details_put_message, opts)
+  data, status_code, headers = api_instance.upsert_association_meter_reading_details_async_with_http_info(association_id, upsert_association_meter_reading_details_async_request, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <MeterReadingDetailsMessage>
@@ -325,7 +325,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
-| **meter_reading_details_put_message** | [**MeterReadingDetailsPutMessage**](MeterReadingDetailsPutMessage.md) |  |  |
+| **upsert_association_meter_reading_details_async_request** | [**UpsertAssociationMeterReadingDetailsAsyncRequest**](UpsertAssociationMeterReadingDetailsAsyncRequest.md) |  |  |
 | **readingdate** | **Date** | Filters results to any meter readings whose entry date is equal to the specified value. The value must be formatted as YYYY-MM-DD. | [optional] |
 | **metertype** | **String** | Filters results to the specified meter type. | [optional] |
 

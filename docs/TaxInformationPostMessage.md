@@ -8,7 +8,7 @@
 | **tax_payer_type** | **String** | The tax payer type. Required if &#x60;TaxPayerId&#x60; is set. | [optional] |
 | **tax_payer_name1** | **String** | The tax payer name 1. The value cannot exceed 40 characters. | [optional] |
 | **tax_payer_name2** | **String** | The tax payer name 2. The value cannot exceed 40 characters. | [optional] |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  | [optional] |
+| **address** | [**TaxInformationPostMessageAddress**](TaxInformationPostMessageAddress.md) |  | [optional] |
 
 ## Example
 

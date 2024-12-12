@@ -13,11 +13,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_board_member
 
-> <AssociationBoardMemberMessage> create_board_member(association_id, association_board_member_post_message)
+> <AssociationBoardMemberMessage> create_board_member(association_id, create_board_member_request)
 
 Create a board member
 
-Creates a board member for a given association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Creates a board member for a given association.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -39,11 +39,11 @@ end
 
 api_instance = Buildium::BoardMembersApi.new
 association_id = 56 # Integer | 
-association_board_member_post_message = Buildium::AssociationBoardMemberPostMessage.new({association_owner_id: 37, board_position_type: 'President'}) # AssociationBoardMemberPostMessage | 
+create_board_member_request = Buildium::CreateBoardMemberRequest.new({association_owner_id: 37, board_position_type: 'President'}) # CreateBoardMemberRequest | 
 
 begin
   # Create a board member
-  result = api_instance.create_board_member(association_id, association_board_member_post_message)
+  result = api_instance.create_board_member(association_id, create_board_member_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling BoardMembersApi->create_board_member: #{e}"
@@ -54,12 +54,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationBoardMemberMessage>, Integer, Hash)> create_board_member_with_http_info(association_id, association_board_member_post_message)
+> <Array(<AssociationBoardMemberMessage>, Integer, Hash)> create_board_member_with_http_info(association_id, create_board_member_request)
 
 ```ruby
 begin
   # Create a board member
-  data, status_code, headers = api_instance.create_board_member_with_http_info(association_id, association_board_member_post_message)
+  data, status_code, headers = api_instance.create_board_member_with_http_info(association_id, create_board_member_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationBoardMemberMessage>
@@ -73,7 +73,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
-| **association_board_member_post_message** | [**AssociationBoardMemberPostMessage**](AssociationBoardMemberPostMessage.md) |  |  |
+| **create_board_member_request** | [**CreateBoardMemberRequest**](CreateBoardMemberRequest.md) |  |  |
 
 ### Return type
 
@@ -95,7 +95,7 @@ end
 
 Delete a board member
 
-Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit` `Delete`
+Deletes a board member. Note, this is a hard delete from the database and data can not be restored.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit` `Delete`
 
 ### Examples
 
@@ -172,7 +172,7 @@ nil (empty response body)
 
 Retrieve all board members
 
-Retrieves all association board members.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves all association board members.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -264,7 +264,7 @@ end
 
 Retrieve a board member
 
-Retrieves an association board member.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves an association board member.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -338,11 +338,11 @@ end
 
 ## update_board_member
 
-> <AssociationBoardMemberMessage> update_board_member(association_id, board_member_id, association_board_member_put_message)
+> <AssociationBoardMemberMessage> update_board_member(association_id, board_member_id, update_board_member_request)
 
 Update a board member
 
-Updates a board member for a given association.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Updates a board member for a given association.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -365,11 +365,11 @@ end
 api_instance = Buildium::BoardMembersApi.new
 association_id = 56 # Integer | 
 board_member_id = 56 # Integer | 
-association_board_member_put_message = Buildium::AssociationBoardMemberPutMessage.new({board_position_type: 'President'}) # AssociationBoardMemberPutMessage | 
+update_board_member_request = Buildium::UpdateBoardMemberRequest.new({board_position_type: 'President'}) # UpdateBoardMemberRequest | 
 
 begin
   # Update a board member
-  result = api_instance.update_board_member(association_id, board_member_id, association_board_member_put_message)
+  result = api_instance.update_board_member(association_id, board_member_id, update_board_member_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling BoardMembersApi->update_board_member: #{e}"
@@ -380,12 +380,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationBoardMemberMessage>, Integer, Hash)> update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message)
+> <Array(<AssociationBoardMemberMessage>, Integer, Hash)> update_board_member_with_http_info(association_id, board_member_id, update_board_member_request)
 
 ```ruby
 begin
   # Update a board member
-  data, status_code, headers = api_instance.update_board_member_with_http_info(association_id, board_member_id, association_board_member_put_message)
+  data, status_code, headers = api_instance.update_board_member_with_http_info(association_id, board_member_id, update_board_member_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationBoardMemberMessage>
@@ -400,7 +400,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **association_id** | **Integer** |  |  |
 | **board_member_id** | **Integer** |  |  |
-| **association_board_member_put_message** | [**AssociationBoardMemberPutMessage**](AssociationBoardMemberPutMessage.md) |  |  |
+| **update_board_member_request** | [**UpdateBoardMemberRequest**](UpdateBoardMemberRequest.md) |  |  |
 
 ### Return type
 

@@ -10,17 +10,19 @@ All URIs are relative to *https://api.buildium.com*
 | [**get_association_ownership_account_note_by_note_id**](OwnershipAccountsApi.md#get_association_ownership_account_note_by_note_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Retrieve a note |
 | [**get_association_ownership_account_notes**](OwnershipAccountsApi.md#get_association_ownership_account_notes) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes | Retrieve all notes |
 | [**get_ownership_account_by_id**](OwnershipAccountsApi.md#get_ownership_account_by_id) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId} | Retrieve an ownership account |
+| [**get_ownership_account_partial_payment_settings**](OwnershipAccountsApi.md#get_ownership_account_partial_payment_settings) | **GET** /v1/associations/ownershipaccounts/{ownershipAccountId}/partialpaymentsettings | Retrieve all partial payment settings for an ownership account |
+| [**patch_ownership_account_partial_payment**](OwnershipAccountsApi.md#patch_ownership_account_partial_payment) | **PATCH** /v1/associations/ownershipaccounts/{ownershipAccountId}/partialpaymentsettings | Update partial payment settings for an ownership account |
 | [**update_association_ownership_account**](OwnershipAccountsApi.md#update_association_ownership_account) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId} | Update an ownership account |
 | [**update_association_ownership_account_note**](OwnershipAccountsApi.md#update_association_ownership_account_note) | **PUT** /v1/associations/ownershipaccounts/{ownershipAccountId}/notes/{noteId} | Update a note |
 
 
 ## create_association_ownership_account
 
-> <AssociationOwnershipAccountMessage> create_association_ownership_account(association_ownership_account_post_message)
+> <AssociationOwnershipAccountMessage> create_association_ownership_account(create_association_ownership_account_request)
 
 Create an ownership account
 
-Creates an ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Associations &gt; Owners</span> - `View` `Edit`
+Creates an ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Associations > Owners</span> - `View` `Edit`
 
 ### Examples
 
@@ -41,11 +43,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::OwnershipAccountsApi.new
-association_ownership_account_post_message = Buildium::AssociationOwnershipAccountPostMessage.new({unit_id: 37, date_of_purchase: Date.today, send_welcome_email: false, replace_existing_ownership_account: false}) # AssociationOwnershipAccountPostMessage | 
+create_association_ownership_account_request = Buildium::CreateAssociationOwnershipAccountRequest.new({unit_id: 37, date_of_purchase: Date.today, send_welcome_email: false, replace_existing_ownership_account: false}) # CreateAssociationOwnershipAccountRequest | 
 
 begin
   # Create an ownership account
-  result = api_instance.create_association_ownership_account(association_ownership_account_post_message)
+  result = api_instance.create_association_ownership_account(create_association_ownership_account_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling OwnershipAccountsApi->create_association_ownership_account: #{e}"
@@ -56,12 +58,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationOwnershipAccountMessage>, Integer, Hash)> create_association_ownership_account_with_http_info(association_ownership_account_post_message)
+> <Array(<AssociationOwnershipAccountMessage>, Integer, Hash)> create_association_ownership_account_with_http_info(create_association_ownership_account_request)
 
 ```ruby
 begin
   # Create an ownership account
-  data, status_code, headers = api_instance.create_association_ownership_account_with_http_info(association_ownership_account_post_message)
+  data, status_code, headers = api_instance.create_association_ownership_account_with_http_info(create_association_ownership_account_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationOwnershipAccountMessage>
@@ -74,7 +76,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **association_ownership_account_post_message** | [**AssociationOwnershipAccountPostMessage**](AssociationOwnershipAccountPostMessage.md) |  |  |
+| **create_association_ownership_account_request** | [**CreateAssociationOwnershipAccountRequest**](CreateAssociationOwnershipAccountRequest.md) |  |  |
 
 ### Return type
 
@@ -92,11 +94,11 @@ end
 
 ## create_association_ownership_account_note
 
-> <NoteMessage> create_association_ownership_account_note(ownership_account_id, note_post_message)
+> <NoteMessage> create_association_ownership_account_note(ownership_account_id, create_lease_note_request)
 
 Create a note
 
-Creates a new ownership account note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
+Creates a new ownership account note.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -118,11 +120,11 @@ end
 
 api_instance = Buildium::OwnershipAccountsApi.new
 ownership_account_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create a note
-  result = api_instance.create_association_ownership_account_note(ownership_account_id, note_post_message)
+  result = api_instance.create_association_ownership_account_note(ownership_account_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling OwnershipAccountsApi->create_association_ownership_account_note: #{e}"
@@ -133,12 +135,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_association_ownership_account_note_with_http_info(ownership_account_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_association_ownership_account_note_with_http_info(ownership_account_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create a note
-  data, status_code, headers = api_instance.create_association_ownership_account_note_with_http_info(ownership_account_id, note_post_message)
+  data, status_code, headers = api_instance.create_association_ownership_account_note_with_http_info(ownership_account_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -152,7 +154,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ownership_account_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -174,7 +176,7 @@ end
 
 Retrieve all ownership accounts
 
-Retrieves a list of ownership accounts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View`
+Retrieves a list of ownership accounts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View`
 
 ### Examples
 
@@ -270,7 +272,7 @@ end
 
 Retrieve a note
 
-Retrieves an ownership account note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; OwnershipAccounts</span> - `View`
+Retrieves an ownership account note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > OwnershipAccounts</span> - `View`
 
 ### Examples
 
@@ -348,7 +350,7 @@ end
 
 Retrieve all notes
 
-Retrieves notes for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; OwnershipAccounts</span> - `View`
+Retrieves notes for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > OwnershipAccounts</span> - `View`
 
 ### Examples
 
@@ -438,7 +440,7 @@ end
 
 Retrieve an ownership account
 
-Retrieves a specific ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View`
+Retrieves a specific ownership account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View`
 
 ### Examples
 
@@ -508,13 +510,13 @@ end
 - **Accept**: application/json
 
 
-## update_association_ownership_account
+## get_ownership_account_partial_payment_settings
 
-> <AssociationOwnershipAccountMessage> update_association_ownership_account(ownership_account_id, association_ownership_account_put_message)
+> <PartialPaymentSettingsMessage> get_ownership_account_partial_payment_settings(ownership_account_id)
 
-Update an ownership account
+Retrieve all partial payment settings for an ownership account
 
-Updates an ownership account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
+Retrieves partial payment settings for an ownership account.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > OwnershipAccounts</span> - `View`
 
 ### Examples
 
@@ -536,11 +538,165 @@ end
 
 api_instance = Buildium::OwnershipAccountsApi.new
 ownership_account_id = 56 # Integer | 
-association_ownership_account_put_message = Buildium::AssociationOwnershipAccountPutMessage.new({date_of_purchase: Date.today}) # AssociationOwnershipAccountPutMessage | 
+
+begin
+  # Retrieve all partial payment settings for an ownership account
+  result = api_instance.get_ownership_account_partial_payment_settings(ownership_account_id)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling OwnershipAccountsApi->get_ownership_account_partial_payment_settings: #{e}"
+end
+```
+
+#### Using the get_ownership_account_partial_payment_settings_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PartialPaymentSettingsMessage>, Integer, Hash)> get_ownership_account_partial_payment_settings_with_http_info(ownership_account_id)
+
+```ruby
+begin
+  # Retrieve all partial payment settings for an ownership account
+  data, status_code, headers = api_instance.get_ownership_account_partial_payment_settings_with_http_info(ownership_account_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PartialPaymentSettingsMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling OwnershipAccountsApi->get_ownership_account_partial_payment_settings_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+
+### Return type
+
+[**PartialPaymentSettingsMessage**](PartialPaymentSettingsMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## patch_ownership_account_partial_payment
+
+> <PartialPaymentSettingsMessage> patch_ownership_account_partial_payment(ownership_account_id, patch_global_partial_payment_settings_request)
+
+Update partial payment settings for an ownership account
+
+Updates partial payment settings for an ownership account.              <br /><br /><h4>Required Permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership Accounts</span> - `View` `Edit`              <span class=\"permissionBlock\">Administration > Application Settings</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::OwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+patch_global_partial_payment_settings_request = Buildium::PatchGlobalPartialPaymentSettingsRequest.new # PatchGlobalPartialPaymentSettingsRequest | <span>Represents the structure of the data that can be provided to a <a target=\"_blank\" href=\"https://datatracker.ietf.org/doc/html/rfc6902\">JSON patch document</a> as path values via <a target=\"_blank\" href=\"https://datatracker.ietf.org/doc/html/rfc6901/\">JSON pointer</a> syntax.</span>
+
+begin
+  # Update partial payment settings for an ownership account
+  result = api_instance.patch_ownership_account_partial_payment(ownership_account_id, patch_global_partial_payment_settings_request)
+  p result
+rescue Buildium::ApiError => e
+  puts "Error when calling OwnershipAccountsApi->patch_ownership_account_partial_payment: #{e}"
+end
+```
+
+#### Using the patch_ownership_account_partial_payment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PartialPaymentSettingsMessage>, Integer, Hash)> patch_ownership_account_partial_payment_with_http_info(ownership_account_id, patch_global_partial_payment_settings_request)
+
+```ruby
+begin
+  # Update partial payment settings for an ownership account
+  data, status_code, headers = api_instance.patch_ownership_account_partial_payment_with_http_info(ownership_account_id, patch_global_partial_payment_settings_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PartialPaymentSettingsMessage>
+rescue Buildium::ApiError => e
+  puts "Error when calling OwnershipAccountsApi->patch_ownership_account_partial_payment_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ownership_account_id** | **Integer** |  |  |
+| **patch_global_partial_payment_settings_request** | [**PatchGlobalPartialPaymentSettingsRequest**](PatchGlobalPartialPaymentSettingsRequest.md) | &lt;span&gt;Represents the structure of the data that can be provided to a &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6902\&quot;&gt;JSON patch document&lt;/a&gt; as path values via &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6901/\&quot;&gt;JSON pointer&lt;/a&gt; syntax.&lt;/span&gt; |  |
+
+### Return type
+
+[**PartialPaymentSettingsMessage**](PartialPaymentSettingsMessage.md)
+
+### Authorization
+
+[clientId](../README.md#clientId), [clientSecret](../README.md#clientSecret)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, application/json-patch+json
+- **Accept**: application/json
+
+
+## update_association_ownership_account
+
+> <AssociationOwnershipAccountMessage> update_association_ownership_account(ownership_account_id, update_association_ownership_account_request)
+
+Update an ownership account
+
+Updates an ownership account.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View` `Edit`
+
+### Examples
+
+```ruby
+require 'time'
+require 'buildium-ruby'
+# setup authorization
+Buildium.configure do |config|
+  # Configure API key authorization: clientId
+  config.api_key['clientId'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientId'] = 'Bearer'
+
+  # Configure API key authorization: clientSecret
+  config.api_key['clientSecret'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['clientSecret'] = 'Bearer'
+end
+
+api_instance = Buildium::OwnershipAccountsApi.new
+ownership_account_id = 56 # Integer | 
+update_association_ownership_account_request = Buildium::UpdateAssociationOwnershipAccountRequest.new({date_of_purchase: Date.today}) # UpdateAssociationOwnershipAccountRequest | 
 
 begin
   # Update an ownership account
-  result = api_instance.update_association_ownership_account(ownership_account_id, association_ownership_account_put_message)
+  result = api_instance.update_association_ownership_account(ownership_account_id, update_association_ownership_account_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling OwnershipAccountsApi->update_association_ownership_account: #{e}"
@@ -551,12 +707,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationOwnershipAccountMessage>, Integer, Hash)> update_association_ownership_account_with_http_info(ownership_account_id, association_ownership_account_put_message)
+> <Array(<AssociationOwnershipAccountMessage>, Integer, Hash)> update_association_ownership_account_with_http_info(ownership_account_id, update_association_ownership_account_request)
 
 ```ruby
 begin
   # Update an ownership account
-  data, status_code, headers = api_instance.update_association_ownership_account_with_http_info(ownership_account_id, association_ownership_account_put_message)
+  data, status_code, headers = api_instance.update_association_ownership_account_with_http_info(ownership_account_id, update_association_ownership_account_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationOwnershipAccountMessage>
@@ -570,7 +726,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ownership_account_id** | **Integer** |  |  |
-| **association_ownership_account_put_message** | [**AssociationOwnershipAccountPutMessage**](AssociationOwnershipAccountPutMessage.md) |  |  |
+| **update_association_ownership_account_request** | [**UpdateAssociationOwnershipAccountRequest**](UpdateAssociationOwnershipAccountRequest.md) |  |  |
 
 ### Return type
 
@@ -588,11 +744,11 @@ end
 
 ## update_association_ownership_account_note
 
-> <NoteMessage> update_association_ownership_account_note(ownership_account_id, note_id, note_put_message)
+> <NoteMessage> update_association_ownership_account_note(ownership_account_id, note_id, update_lease_note_request)
 
 Update a note
 
-Updates an association ownership account note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View` `Edit`
+Updates an association ownership account note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Ownership Accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -615,11 +771,11 @@ end
 api_instance = Buildium::OwnershipAccountsApi.new
 ownership_account_id = 56 # Integer | 
 note_id = 56 # Integer | 
-note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
+update_lease_note_request = Buildium::UpdateLeaseNoteRequest.new({note: 'note_example'}) # UpdateLeaseNoteRequest | 
 
 begin
   # Update a note
-  result = api_instance.update_association_ownership_account_note(ownership_account_id, note_id, note_put_message)
+  result = api_instance.update_association_ownership_account_note(ownership_account_id, note_id, update_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling OwnershipAccountsApi->update_association_ownership_account_note: #{e}"
@@ -630,12 +786,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, note_put_message)
+> <Array(<NoteMessage>, Integer, Hash)> update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, update_lease_note_request)
 
 ```ruby
 begin
   # Update a note
-  data, status_code, headers = api_instance.update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, note_put_message)
+  data, status_code, headers = api_instance.update_association_ownership_account_note_with_http_info(ownership_account_id, note_id, update_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -650,7 +806,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ownership_account_id** | **Integer** |  |  |
 | **note_id** | **Integer** |  |  |
-| **note_put_message** | [**NotePutMessage**](NotePutMessage.md) |  |  |
+| **update_lease_note_request** | [**UpdateLeaseNoteRequest**](UpdateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 

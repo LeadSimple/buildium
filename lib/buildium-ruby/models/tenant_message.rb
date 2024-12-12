@@ -120,11 +120,11 @@ module Buildium
         :'alternate_email' => :'String',
         :'phone_numbers' => :'Array<PhoneNumberMessage>',
         :'created_date_time' => :'Time',
-        :'emergency_contact' => :'EmergencyContactMessage',
+        :'emergency_contact' => :'TenantMessageEmergencyContact',
         :'date_of_birth' => :'Date',
         :'sms_opt_in_status' => :'String',
-        :'address' => :'AddressMessage',
-        :'alternate_address' => :'AddressMessage',
+        :'address' => :'TenantMessageAddress',
+        :'alternate_address' => :'TenantMessageAlternateAddress',
         :'mailing_preference' => :'String',
         :'leases' => :'Array<LeaseMessage>',
         :'comment' => :'String',
@@ -293,7 +293,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -400,5 +400,6 @@ module Buildium
         value
       end
     end
+
   end
 end

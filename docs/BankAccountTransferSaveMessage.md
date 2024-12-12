@@ -8,7 +8,7 @@
 | **transfer_to_bank_account_id** | **Integer** | Bank account identifier the money will be transferred to. |  |
 | **total_amount** | **Float** | Total amount to transfer. |  |
 | **memo** | **String** | Memo associated with the transfer, if applicable. | [optional] |
-| **accounting_entity** | [**BankAccountTransferAccountingEntitySaveMessage**](BankAccountTransferAccountingEntitySaveMessage.md) |  |  |
+| **accounting_entity** | [**BankAccountTransferSaveMessageAccountingEntity**](BankAccountTransferSaveMessageAccountingEntity.md) |  |  |
 
 ## Example
 

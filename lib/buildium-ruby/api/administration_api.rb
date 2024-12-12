@@ -20,7 +20,7 @@ module Buildium
       @api_client = api_client
     end
     # Retrieve account info
-    # Retrieves information related to the Buildium account.   <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Account Information</span> - `View`
+    # Retrieves information related to the Buildium account.   <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Account Information</span> - `View`
     # @param [Hash] opts the optional parameters
     # @return [AccountInfoMessage]
     def get_account_info(opts = {})
@@ -29,7 +29,7 @@ module Buildium
     end
 
     # Retrieve account info
-    # Retrieves information related to the Buildium account.   &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Account Information&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves information related to the Buildium account.   &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Account Information&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @return [Array<(AccountInfoMessage, Integer, Hash)>] AccountInfoMessage data, response status code and response headers
     def get_account_info_with_http_info(opts = {})
@@ -77,7 +77,7 @@ module Buildium
     end
 
     # Retrieve accounting lock periods
-    # Retrieves accounting lock periods.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Application Settings</span> - `View`
+    # Retrieves accounting lock periods.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Application Settings</span> - `View`
     # @param [Hash] opts the optional parameters
     # @return [AccountingLockPeriodMessage]
     def get_accounting_lock_period_settings(opts = {})
@@ -86,7 +86,7 @@ module Buildium
     end
 
     # Retrieve accounting lock periods
-    # Retrieves accounting lock periods.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Application Settings&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves accounting lock periods.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Application Settings&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @return [Array<(AccountingLockPeriodMessage, Integer, Hash)>] AccountingLockPeriodMessage data, response status code and response headers
     def get_accounting_lock_period_settings_with_http_info(opts = {})
@@ -134,7 +134,7 @@ module Buildium
     end
 
     # Retrieve all user roles
-    # Retrieves a list of user roles.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; User Roles</span> - `View`
+    # Retrieves a list of user roles.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > User Roles</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -146,7 +146,7 @@ module Buildium
     end
 
     # Retrieve all user roles
-    # Retrieves a list of user roles.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; User Roles&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of user roles.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; User Roles&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -200,7 +200,7 @@ module Buildium
     end
 
     # Retrieve all users
-    # Retrieves a list of users.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Users</span> - `View`
+    # Retrieves a list of users.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Users</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :roleids Describes the role of the user.
     # @option opts [Array<String>] :usertypes Describes the user type of the user.
@@ -217,7 +217,7 @@ module Buildium
     end
 
     # Retrieve all users
-    # Retrieves a list of users.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Users&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of users.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Users&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Array<Integer>] :roleids Describes the role of the user.
     # @option opts [Array<String>] :usertypes Describes the user type of the user.
@@ -288,8 +288,65 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve the partial payment settings for residents
+    # Retrieves the partial payment settings for residents.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Application Settings</span> - `View`
+    # @param [Hash] opts the optional parameters
+    # @return [PartialPaymentSettingsMessage]
+    def get_global_partial_payment_settings(opts = {})
+      data, _status_code, _headers = get_global_partial_payment_settings_with_http_info(opts)
+      data
+    end
+
+    # Retrieve the partial payment settings for residents
+    # Retrieves the partial payment settings for residents.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Application Settings&lt;/span&gt; - &#x60;View&#x60;
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PartialPaymentSettingsMessage, Integer, Hash)>] PartialPaymentSettingsMessage data, response status code and response headers
+    def get_global_partial_payment_settings_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdministrationApi.get_global_partial_payment_settings ...'
+      end
+      # resource path
+      local_var_path = '/v1/administration/residentsettings/partialpaymentsettings'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PartialPaymentSettingsMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AdministrationApi.get_global_partial_payment_settings",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdministrationApi#get_global_partial_payment_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a user
-    # Retrieve a specific user.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; Users</span> - `View`
+    # Retrieve a specific user.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Users</span> - `View`
     # @param user_id [Integer] The user identifier.
     # @param [Hash] opts the optional parameters
     # @return [UserMessage]
@@ -299,7 +356,7 @@ module Buildium
     end
 
     # Retrieve a user
-    # Retrieve a specific user.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; Users&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve a specific user.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Users&lt;/span&gt; - &#x60;View&#x60;
     # @param user_id [Integer] The user identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserMessage, Integer, Hash)>] UserMessage data, response status code and response headers
@@ -352,7 +409,7 @@ module Buildium
     end
 
     # Retrieve a user role
-    # Retrieve a specific user role.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; User Roles</span> - `View`
+    # Retrieve a specific user role.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > User Roles</span> - `View`
     # @param user_role_id [Integer] The user role identifier.
     # @param [Hash] opts the optional parameters
     # @return [UserRoleMessage]
@@ -362,7 +419,7 @@ module Buildium
     end
 
     # Retrieve a user role
-    # Retrieve a specific user role.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &amp;gt; User Roles&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieve a specific user role.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; User Roles&lt;/span&gt; - &#x60;View&#x60;
     # @param user_role_id [Integer] The user role identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserRoleMessage, Integer, Hash)>] UserRoleMessage data, response status code and response headers
@@ -410,6 +467,74 @@ module Buildium
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AdministrationApi#get_user_role_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update the partial payment settings for residents
+    # Updates the partial payment settings for residents.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > Application Settings</span> - `View` `Edit`
+    # @param patch_global_partial_payment_settings_request [PatchGlobalPartialPaymentSettingsRequest] &lt;span&gt;Represents the structure of the data that can be provided to a &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6902\&quot;&gt;JSON patch document&lt;/a&gt; as path values via &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6901/\&quot;&gt;JSON pointer&lt;/a&gt; syntax.&lt;/span&gt;
+    # @param [Hash] opts the optional parameters
+    # @return [PartialPaymentSettingsMessage]
+    def patch_global_partial_payment_settings(patch_global_partial_payment_settings_request, opts = {})
+      data, _status_code, _headers = patch_global_partial_payment_settings_with_http_info(patch_global_partial_payment_settings_request, opts)
+      data
+    end
+
+    # Update the partial payment settings for residents
+    # Updates the partial payment settings for residents.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Administration &gt; Application Settings&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param patch_global_partial_payment_settings_request [PatchGlobalPartialPaymentSettingsRequest] &lt;span&gt;Represents the structure of the data that can be provided to a &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6902\&quot;&gt;JSON patch document&lt;/a&gt; as path values via &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://datatracker.ietf.org/doc/html/rfc6901/\&quot;&gt;JSON pointer&lt;/a&gt; syntax.&lt;/span&gt;
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PartialPaymentSettingsMessage, Integer, Hash)>] PartialPaymentSettingsMessage data, response status code and response headers
+    def patch_global_partial_payment_settings_with_http_info(patch_global_partial_payment_settings_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdministrationApi.patch_global_partial_payment_settings ...'
+      end
+      # verify the required parameter 'patch_global_partial_payment_settings_request' is set
+      if @api_client.config.client_side_validation && patch_global_partial_payment_settings_request.nil?
+        fail ArgumentError, "Missing the required parameter 'patch_global_partial_payment_settings_request' when calling AdministrationApi.patch_global_partial_payment_settings"
+      end
+      # resource path
+      local_var_path = '/v1/administration/residentsettings/partialpaymentsettings'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json', 'application/json-patch+json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(patch_global_partial_payment_settings_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PartialPaymentSettingsMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"AdministrationApi.patch_global_partial_payment_settings",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdministrationApi#patch_global_partial_payment_settings\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

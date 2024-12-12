@@ -12,11 +12,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_to_do_task
 
-> <ToDoTaskMessage> create_to_do_task(to_do_task_post_message)
+> <ToDoTaskMessage> create_to_do_task(create_to_do_task_request)
 
 Create a to do request
 
-Creates a to do task.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Creates a to do task.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -37,11 +37,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::ToDoRequestsApi.new
-to_do_task_post_message = Buildium::ToDoTaskPostMessage.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low'}) # ToDoTaskPostMessage | 
+create_to_do_task_request = Buildium::CreateToDoTaskRequest.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low'}) # CreateToDoTaskRequest | 
 
 begin
   # Create a to do request
-  result = api_instance.create_to_do_task(to_do_task_post_message)
+  result = api_instance.create_to_do_task(create_to_do_task_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ToDoRequestsApi->create_to_do_task: #{e}"
@@ -52,12 +52,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ToDoTaskMessage>, Integer, Hash)> create_to_do_task_with_http_info(to_do_task_post_message)
+> <Array(<ToDoTaskMessage>, Integer, Hash)> create_to_do_task_with_http_info(create_to_do_task_request)
 
 ```ruby
 begin
   # Create a to do request
-  data, status_code, headers = api_instance.create_to_do_task_with_http_info(to_do_task_post_message)
+  data, status_code, headers = api_instance.create_to_do_task_with_http_info(create_to_do_task_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ToDoTaskMessage>
@@ -70,7 +70,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **to_do_task_post_message** | [**ToDoTaskPostMessage**](ToDoTaskPostMessage.md) |  |  |
+| **create_to_do_task_request** | [**CreateToDoTaskRequest**](CreateToDoTaskRequest.md) |  |  |
 
 ### Return type
 
@@ -92,7 +92,7 @@ end
 
 Retrieve a to do request
 
-Retrieves a to do task.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves a to do task.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -168,7 +168,7 @@ end
 
 Retrieve all to do requests
 
-Retrieves a list of to do tasks.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+Retrieves a list of to do tasks.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
 
 ### Examples
 
@@ -270,11 +270,11 @@ end
 
 ## update_to_do_task
 
-> <ToDoTaskMessage> update_to_do_task(to_do_task_id, to_do_task_put_message)
+> <ToDoTaskMessage> update_to_do_task(to_do_task_id, update_to_do_task_request)
 
 Update a to do request
 
-Updates a to do task  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+Updates a to do task  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
 
 ### Examples
 
@@ -296,11 +296,11 @@ end
 
 api_instance = Buildium::ToDoRequestsApi.new
 to_do_task_id = 56 # Integer | The to do task identifier.
-to_do_task_put_message = Buildium::ToDoTaskPutMessage.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low'}) # ToDoTaskPutMessage | 
+update_to_do_task_request = Buildium::UpdateToDoTaskRequest.new({title: 'title_example', assigned_to_user_id: 37, task_status: 'New', priority: 'Low'}) # UpdateToDoTaskRequest | 
 
 begin
   # Update a to do request
-  result = api_instance.update_to_do_task(to_do_task_id, to_do_task_put_message)
+  result = api_instance.update_to_do_task(to_do_task_id, update_to_do_task_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ToDoRequestsApi->update_to_do_task: #{e}"
@@ -311,12 +311,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ToDoTaskMessage>, Integer, Hash)> update_to_do_task_with_http_info(to_do_task_id, to_do_task_put_message)
+> <Array(<ToDoTaskMessage>, Integer, Hash)> update_to_do_task_with_http_info(to_do_task_id, update_to_do_task_request)
 
 ```ruby
 begin
   # Update a to do request
-  data, status_code, headers = api_instance.update_to_do_task_with_http_info(to_do_task_id, to_do_task_put_message)
+  data, status_code, headers = api_instance.update_to_do_task_with_http_info(to_do_task_id, update_to_do_task_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ToDoTaskMessage>
@@ -330,7 +330,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **to_do_task_id** | **Integer** | The to do task identifier. |  |
-| **to_do_task_put_message** | [**ToDoTaskPutMessage**](ToDoTaskPutMessage.md) |  |  |
+| **update_to_do_task_request** | [**UpdateToDoTaskRequest**](UpdateToDoTaskRequest.md) |  |  |
 
 ### Return type
 

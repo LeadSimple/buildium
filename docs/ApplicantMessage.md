@@ -15,6 +15,7 @@
 | **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | Applicant phone numbers. | [optional] |
 | **status** | **String** | Applicant status. | [optional] |
 | **applications** | [**Array&lt;ApplicantApplicationMessage&gt;**](ApplicantApplicationMessage.md) | A collection of applications associated with the applicant. | [optional] |
+| **last_updated_date_time** | **Time** | Date and time the applicant was last updated. | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = Buildium::ApplicantMessage.new(
   email: null,
   phone_numbers: null,
   status: null,
-  applications: null
+  applications: null,
+  last_updated_date_time: null
 )
 ```
 

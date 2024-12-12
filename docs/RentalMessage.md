@@ -11,11 +11,11 @@
 | **is_active** | **Boolean** | Indicates whether the rental property is active within the Buildium platform. | [optional] |
 | **operating_bank_account_id** | **Integer** | The primary bank account that a rental property uses for its income and expenses. | [optional] |
 | **reserve** | **Float** | A property reserve is cash that a property manager keeps on hand in case of unexpected expenses. It is available cash that isn&#39;t disbursed in an owner draw. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**ListingPropertyMessageAddress**](ListingPropertyMessageAddress.md) |  | [optional] |
 | **year_built** | **Integer** | Year the rental property was built. | [optional] |
 | **rental_type** | **String** | Indicates the type of rental property. | [optional] |
 | **rental_sub_type** | **String** | Indicates the sub type of the rental property. | [optional] |
-| **rental_manager** | [**PropertyManagerMessage**](PropertyManagerMessage.md) |  | [optional] |
+| **rental_manager** | [**RentalMessageRentalManager**](RentalMessageRentalManager.md) |  | [optional] |
 
 ## Example
 

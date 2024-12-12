@@ -65,18 +65,18 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account' => :'FileSharingAccountMessage',
-        :'rental' => :'FileSharingRentalMessage',
-        :'rental_unit' => :'FileSharingRentalUnitMesage',
-        :'lease' => :'FileSharingLeaseMessage',
-        :'tenant' => :'FileSharingTenantMessage',
-        :'rental_owner' => :'FileSharingRentalOwnerMessage',
-        :'association' => :'FileSharingAssociationMessage',
-        :'association_unit' => :'FileSharingAssociationUnitMessage',
-        :'ownership_account' => :'FileSharingOwnershipAccountMessage',
-        :'association_owner' => :'FileSharingAssociationOwnerMessage',
-        :'vendor' => :'FileSharingVendorMessage',
-        :'committee' => :'FileSharingCommitteeMessage'
+        :'account' => :'FileSharingMessageAccount',
+        :'rental' => :'FileSharingMessageRental',
+        :'rental_unit' => :'FileSharingMessageRentalUnit',
+        :'lease' => :'FileSharingMessageLease',
+        :'tenant' => :'FileSharingMessageTenant',
+        :'rental_owner' => :'FileSharingMessageRentalOwner',
+        :'association' => :'FileSharingMessageAssociation',
+        :'association_unit' => :'FileSharingMessageAssociationUnit',
+        :'ownership_account' => :'FileSharingMessageOwnershipAccount',
+        :'association_owner' => :'FileSharingMessageAssociationOwner',
+        :'vendor' => :'FileSharingMessageVendor',
+        :'committee' => :'FileSharingMessageCommittee'
       }
     end
 
@@ -205,7 +205,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -312,5 +312,6 @@ module Buildium
         value
       end
     end
+
   end
 end

@@ -106,9 +106,9 @@ module Buildium
         :'shared_with' => :'Array<String>',
         :'file_ids' => :'Array<Integer>',
         :'created_date_t_ime' => :'Time',
-        :'created_by_user' => :'TaskHistoryUserMessage',
+        :'created_by_user' => :'TaskHistoryMessageCreatedByUser',
         :'last_updated_date_time' => :'Time',
-        :'last_updated_by_user' => :'TaskHistoryUserMessage'
+        :'last_updated_by_user' => :'TaskHistoryMessageLastUpdatedByUser'
       }
     end
 
@@ -265,7 +265,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -372,5 +372,6 @@ module Buildium
         value
       end
     end
+
   end
 end

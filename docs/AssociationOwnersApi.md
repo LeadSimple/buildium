@@ -19,11 +19,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_association_owner
 
-> <AssociationOwnerMessage> create_association_owner(association_owner_to_existing_ownership_account_post_message)
+> <AssociationOwnerMessage> create_association_owner(create_association_owner_request)
 
 Create an owner
 
-Creates an association owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Associations &gt; Ownership accounts</span> - `View` `Edit`
+Creates an association owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Associations > Ownership accounts</span> - `View` `Edit`
 
 ### Examples
 
@@ -44,11 +44,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::AssociationOwnersApi.new
-association_owner_to_existing_ownership_account_post_message = Buildium::AssociationOwnerToExistingOwnershipAccountPostMessage.new({ownership_account_id: 37, send_welcome_email: false, primary_address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'}), first_name: 'first_name_example', last_name: 'last_name_example', is_owner_occupied: false}) # AssociationOwnerToExistingOwnershipAccountPostMessage | 
+create_association_owner_request = Buildium::CreateAssociationOwnerRequest.new({ownership_account_id: 37, send_welcome_email: false, primary_address: Buildium::AssociationOwnerPostMessagePrimaryAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'}), first_name: 'first_name_example', last_name: 'last_name_example', is_owner_occupied: false}) # CreateAssociationOwnerRequest | 
 
 begin
   # Create an owner
-  result = api_instance.create_association_owner(association_owner_to_existing_ownership_account_post_message)
+  result = api_instance.create_association_owner(create_association_owner_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationOwnersApi->create_association_owner: #{e}"
@@ -59,12 +59,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationOwnerMessage>, Integer, Hash)> create_association_owner_with_http_info(association_owner_to_existing_ownership_account_post_message)
+> <Array(<AssociationOwnerMessage>, Integer, Hash)> create_association_owner_with_http_info(create_association_owner_request)
 
 ```ruby
 begin
   # Create an owner
-  data, status_code, headers = api_instance.create_association_owner_with_http_info(association_owner_to_existing_ownership_account_post_message)
+  data, status_code, headers = api_instance.create_association_owner_with_http_info(create_association_owner_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationOwnerMessage>
@@ -77,7 +77,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **association_owner_to_existing_ownership_account_post_message** | [**AssociationOwnerToExistingOwnershipAccountPostMessage**](AssociationOwnerToExistingOwnershipAccountPostMessage.md) |  |  |
+| **create_association_owner_request** | [**CreateAssociationOwnerRequest**](CreateAssociationOwnerRequest.md) |  |  |
 
 ### Return type
 
@@ -95,11 +95,11 @@ end
 
 ## create_association_owner_note
 
-> <NoteMessage> create_association_owner_note(owner_id, note_post_message)
+> <NoteMessage> create_association_owner_note(owner_id, create_lease_note_request)
 
 Create a note
 
-Creates an association owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Creates an association owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -121,11 +121,11 @@ end
 
 api_instance = Buildium::AssociationOwnersApi.new
 owner_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create a note
-  result = api_instance.create_association_owner_note(owner_id, note_post_message)
+  result = api_instance.create_association_owner_note(owner_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationOwnersApi->create_association_owner_note: #{e}"
@@ -136,12 +136,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_association_owner_note_with_http_info(owner_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_association_owner_note_with_http_info(owner_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create a note
-  data, status_code, headers = api_instance.create_association_owner_note_with_http_info(owner_id, note_post_message)
+  data, status_code, headers = api_instance.create_association_owner_note_with_http_info(owner_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -155,7 +155,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **owner_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -177,7 +177,7 @@ end
 
 Retrieve all owners
 
-Retrieves a list of association owners.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves a list of association owners.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -277,7 +277,7 @@ end
 
 Retrieve an owner
 
-Retrieve a specific association owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieve a specific association owner.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -353,7 +353,7 @@ end
 
 Retrieve a note
 
-Retrieves an association owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves an association owner note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -431,7 +431,7 @@ end
 
 Retrieve all notes
 
-Retrieves all association owner notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`
+Retrieves all association owner notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`
 
 ### Examples
 
@@ -521,7 +521,7 @@ end
 
 Retrieve an occupancy status
 
-Retrieves the owner occupancy status for an association unit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
+Retrieves the owner occupancy status for an association unit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations > Ownership Accounts</span> - `View`
 
 ### Examples
 
@@ -599,7 +599,7 @@ end
 
 Retrieve all occupancy statuses
 
-Retrieves the occupancy status for all of the units owned by the association owner.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
+Retrieves the occupancy status for all of the units owned by the association owner.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` <br /><span class=\"permissionBlock\">Associations > Ownership Accounts</span> - `View`
 
 ### Examples
 
@@ -679,11 +679,11 @@ end
 
 ## update_association_owner
 
-> <AssociationOwnerMessage> update_association_owner(owner_id, association_owner_put_message)
+> <AssociationOwnerMessage> update_association_owner(owner_id, update_association_owner_request)
 
 Update an owner
 
-Updates an existing association owner.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Updates an existing association owner.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -705,11 +705,11 @@ end
 
 api_instance = Buildium::AssociationOwnersApi.new
 owner_id = 56 # Integer | The identifier of the association owner to update.
-association_owner_put_message = Buildium::AssociationOwnerPutMessage.new({first_name: 'first_name_example', last_name: 'last_name_example', primary_address: Buildium::SaveAddressMessage.new({address_line1: 'address_line1_example', country: 'UnitedStates'})}) # AssociationOwnerPutMessage | 
+update_association_owner_request = Buildium::UpdateAssociationOwnerRequest.new({first_name: 'first_name_example', last_name: 'last_name_example', primary_address: Buildium::AssociationOwnerPostMessagePrimaryAddress.new({address_line1: 'address_line1_example', country: 'Afghanistan'})}) # UpdateAssociationOwnerRequest | 
 
 begin
   # Update an owner
-  result = api_instance.update_association_owner(owner_id, association_owner_put_message)
+  result = api_instance.update_association_owner(owner_id, update_association_owner_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationOwnersApi->update_association_owner: #{e}"
@@ -720,12 +720,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationOwnerMessage>, Integer, Hash)> update_association_owner_with_http_info(owner_id, association_owner_put_message)
+> <Array(<AssociationOwnerMessage>, Integer, Hash)> update_association_owner_with_http_info(owner_id, update_association_owner_request)
 
 ```ruby
 begin
   # Update an owner
-  data, status_code, headers = api_instance.update_association_owner_with_http_info(owner_id, association_owner_put_message)
+  data, status_code, headers = api_instance.update_association_owner_with_http_info(owner_id, update_association_owner_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationOwnerMessage>
@@ -739,7 +739,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **owner_id** | **Integer** | The identifier of the association owner to update. |  |
-| **association_owner_put_message** | [**AssociationOwnerPutMessage**](AssociationOwnerPutMessage.md) |  |  |
+| **update_association_owner_request** | [**UpdateAssociationOwnerRequest**](UpdateAssociationOwnerRequest.md) |  |  |
 
 ### Return type
 
@@ -757,11 +757,11 @@ end
 
 ## update_association_owner_note
 
-> <NoteMessage> update_association_owner_note(owner_id, note_id, note_put_message)
+> <NoteMessage> update_association_owner_note(owner_id, note_id, update_lease_note_request)
 
 Update a note
 
-Updates an association owner note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit`
+Updates an association owner note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit`
 
 ### Examples
 
@@ -784,11 +784,11 @@ end
 api_instance = Buildium::AssociationOwnersApi.new
 owner_id = 56 # Integer | 
 note_id = 56 # Integer | 
-note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
+update_lease_note_request = Buildium::UpdateLeaseNoteRequest.new({note: 'note_example'}) # UpdateLeaseNoteRequest | 
 
 begin
   # Update a note
-  result = api_instance.update_association_owner_note(owner_id, note_id, note_put_message)
+  result = api_instance.update_association_owner_note(owner_id, note_id, update_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationOwnersApi->update_association_owner_note: #{e}"
@@ -799,12 +799,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> update_association_owner_note_with_http_info(owner_id, note_id, note_put_message)
+> <Array(<NoteMessage>, Integer, Hash)> update_association_owner_note_with_http_info(owner_id, note_id, update_lease_note_request)
 
 ```ruby
 begin
   # Update a note
-  data, status_code, headers = api_instance.update_association_owner_note_with_http_info(owner_id, note_id, note_put_message)
+  data, status_code, headers = api_instance.update_association_owner_note_with_http_info(owner_id, note_id, update_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -819,7 +819,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **owner_id** | **Integer** |  |  |
 | **note_id** | **Integer** |  |  |
-| **note_put_message** | [**NotePutMessage**](NotePutMessage.md) |  |  |
+| **update_lease_note_request** | [**UpdateLeaseNoteRequest**](UpdateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -837,11 +837,11 @@ end
 
 ## update_association_owner_occupancy_status
 
-> <AssociationOwnerUnitOccupancyStatusMessage> update_association_owner_occupancy_status(owner_id, unit_id, association_owner_unit_occupancy_put_message)
+> <AssociationOwnerUnitOccupancyStatusMessage> update_association_owner_occupancy_status(owner_id, unit_id, update_association_owner_occupancy_status_request)
 
 Update occupancy status
 
-Updates whether a unit is occupied by the association owner.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View` `Edit` <br /><span class=\"permissionBlock\">Associations &gt; Ownership Accounts</span> - `View`
+Updates whether a unit is occupied by the association owner.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View` `Edit` <br /><span class=\"permissionBlock\">Associations > Ownership Accounts</span> - `View`
 
 ### Examples
 
@@ -864,11 +864,11 @@ end
 api_instance = Buildium::AssociationOwnersApi.new
 owner_id = 56 # Integer | 
 unit_id = 56 # Integer | 
-association_owner_unit_occupancy_put_message = Buildium::AssociationOwnerUnitOccupancyPutMessage.new({is_occupied: false}) # AssociationOwnerUnitOccupancyPutMessage | 
+update_association_owner_occupancy_status_request = Buildium::UpdateAssociationOwnerOccupancyStatusRequest.new({is_occupied: false}) # UpdateAssociationOwnerOccupancyStatusRequest | 
 
 begin
   # Update occupancy status
-  result = api_instance.update_association_owner_occupancy_status(owner_id, unit_id, association_owner_unit_occupancy_put_message)
+  result = api_instance.update_association_owner_occupancy_status(owner_id, unit_id, update_association_owner_occupancy_status_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling AssociationOwnersApi->update_association_owner_occupancy_status: #{e}"
@@ -879,12 +879,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AssociationOwnerUnitOccupancyStatusMessage>, Integer, Hash)> update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, association_owner_unit_occupancy_put_message)
+> <Array(<AssociationOwnerUnitOccupancyStatusMessage>, Integer, Hash)> update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, update_association_owner_occupancy_status_request)
 
 ```ruby
 begin
   # Update occupancy status
-  data, status_code, headers = api_instance.update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, association_owner_unit_occupancy_put_message)
+  data, status_code, headers = api_instance.update_association_owner_occupancy_status_with_http_info(owner_id, unit_id, update_association_owner_occupancy_status_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AssociationOwnerUnitOccupancyStatusMessage>
@@ -899,7 +899,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **owner_id** | **Integer** |  |  |
 | **unit_id** | **Integer** |  |  |
-| **association_owner_unit_occupancy_put_message** | [**AssociationOwnerUnitOccupancyPutMessage**](AssociationOwnerUnitOccupancyPutMessage.md) |  |  |
+| **update_association_owner_occupancy_status_request** | [**UpdateAssociationOwnerOccupancyStatusRequest**](UpdateAssociationOwnerOccupancyStatusRequest.md) |  |  |
 
 ### Return type
 

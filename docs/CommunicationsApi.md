@@ -23,11 +23,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_announcement
 
-> <AnnouncementMessage> create_announcement(announcement_post_message)
+> <AnnouncementMessage> create_announcement(create_announcement_request)
 
 Create an announcement
 
-Creates and publishes an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
+Creates and publishes an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View` `Edit`
 
 ### Examples
 
@@ -48,11 +48,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::CommunicationsApi.new
-announcement_post_message = Buildium::AnnouncementPostMessage.new({subject: 'subject_example', body: 'body_example', notify_association_tenants: false, include_alternate_email: false, property_ids: [37]}) # AnnouncementPostMessage | 
+create_announcement_request = Buildium::CreateAnnouncementRequest.new({subject: 'subject_example', body: 'body_example', notify_association_tenants: false, include_alternate_email: false, property_ids: [37]}) # CreateAnnouncementRequest | 
 
 begin
   # Create an announcement
-  result = api_instance.create_announcement(announcement_post_message)
+  result = api_instance.create_announcement(create_announcement_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling CommunicationsApi->create_announcement: #{e}"
@@ -63,12 +63,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AnnouncementMessage>, Integer, Hash)> create_announcement_with_http_info(announcement_post_message)
+> <Array(<AnnouncementMessage>, Integer, Hash)> create_announcement_with_http_info(create_announcement_request)
 
 ```ruby
 begin
   # Create an announcement
-  data, status_code, headers = api_instance.create_announcement_with_http_info(announcement_post_message)
+  data, status_code, headers = api_instance.create_announcement_with_http_info(create_announcement_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AnnouncementMessage>
@@ -81,7 +81,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **announcement_post_message** | [**AnnouncementPostMessage**](AnnouncementPostMessage.md) |  |  |
+| **create_announcement_request** | [**CreateAnnouncementRequest**](CreateAnnouncementRequest.md) |  |  |
 
 ### Return type
 
@@ -99,11 +99,11 @@ end
 
 ## create_email
 
-> create_email(email_post_message)
+> create_email(create_email_request)
 
 Send an email
 
-Sends an email to one or more recipients using the specified email template.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View` `Edit`
+Sends an email to one or more recipients using the specified email template.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication > Emails</span> - `View` `Edit`
 
 ### Examples
 
@@ -124,11 +124,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::CommunicationsApi.new
-email_post_message = Buildium::EmailPostMessage.new({template_id: 37, subject: 'subject_example', include_alternate_emails: false, exclude_delinquent_recipients: false, include_association_tenants: false}) # EmailPostMessage | 
+create_email_request = Buildium::CreateEmailRequest.new({template_id: 37, subject: 'subject_example', include_alternate_emails: false, exclude_delinquent_recipients: false, include_association_tenants: false}) # CreateEmailRequest | 
 
 begin
   # Send an email
-  api_instance.create_email(email_post_message)
+  api_instance.create_email(create_email_request)
 rescue Buildium::ApiError => e
   puts "Error when calling CommunicationsApi->create_email: #{e}"
 end
@@ -138,12 +138,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> create_email_with_http_info(email_post_message)
+> <Array(nil, Integer, Hash)> create_email_with_http_info(create_email_request)
 
 ```ruby
 begin
   # Send an email
-  data, status_code, headers = api_instance.create_email_with_http_info(email_post_message)
+  data, status_code, headers = api_instance.create_email_with_http_info(create_email_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -156,7 +156,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **email_post_message** | [**EmailPostMessage**](EmailPostMessage.md) |  |  |
+| **create_email_request** | [**CreateEmailRequest**](CreateEmailRequest.md) |  |  |
 
 ### Return type
 
@@ -174,11 +174,11 @@ nil (empty response body)
 
 ## create_phone_log
 
-> <PhoneLogMessage> create_phone_log(phone_log_post_message)
+> <PhoneLogMessage> create_phone_log(create_phone_log_request)
 
 Create a phone log
 
-Creates a phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View` `Edit`
+Creates a phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View` `Edit`
 
 ### Examples
 
@@ -199,11 +199,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::CommunicationsApi.new
-phone_log_post_message = Buildium::PhoneLogPostMessage.new({participant: Buildium::PhoneLogParticipantPostMessage.new({entity_type: 'Vendor', entity_id: 37}), subject: 'subject_example', description: 'description_example', call_date_time: Time.now}) # PhoneLogPostMessage | 
+create_phone_log_request = Buildium::CreatePhoneLogRequest.new({participant: Buildium::PhoneLogPostMessageParticipant.new({entity_type: 'Vendor', entity_id: 37}), subject: 'subject_example', description: 'description_example', call_date_time: Time.now}) # CreatePhoneLogRequest | 
 
 begin
   # Create a phone log
-  result = api_instance.create_phone_log(phone_log_post_message)
+  result = api_instance.create_phone_log(create_phone_log_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling CommunicationsApi->create_phone_log: #{e}"
@@ -214,12 +214,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PhoneLogMessage>, Integer, Hash)> create_phone_log_with_http_info(phone_log_post_message)
+> <Array(<PhoneLogMessage>, Integer, Hash)> create_phone_log_with_http_info(create_phone_log_request)
 
 ```ruby
 begin
   # Create a phone log
-  data, status_code, headers = api_instance.create_phone_log_with_http_info(phone_log_post_message)
+  data, status_code, headers = api_instance.create_phone_log_with_http_info(create_phone_log_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PhoneLogMessage>
@@ -232,7 +232,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **phone_log_post_message** | [**PhoneLogPostMessage**](PhoneLogPostMessage.md) |  |  |
+| **create_phone_log_request** | [**CreatePhoneLogRequest**](CreatePhoneLogRequest.md) |  |  |
 
 ### Return type
 
@@ -254,7 +254,7 @@ end
 
 Expire an announcement
 
-Removes the announcement from the Resident Center immediately.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View` `Edit`
+Removes the announcement from the Resident Center immediately.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View` `Edit`
 
 ### Examples
 
@@ -329,7 +329,7 @@ nil (empty response body)
 
 Retrieve all announcements
 
-Retrieves all announcements.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+Retrieves all announcements.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View`
 
 ### Examples
 
@@ -421,7 +421,7 @@ end
 
 Retrieve an announcement
 
-Retrieves an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+Retrieves an announcement.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View`
 
 ### Examples
 
@@ -497,7 +497,7 @@ end
 
 Retrieve all announcement properties
 
-Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Announcements</span> - `View`
+Retrieves a list of association and/or rental properties whose residents received the announcement. An empty response collection indicates that the announcement was sent to all properties at the time of its creation.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Announcements</span> - `View`
 
 ### Examples
 
@@ -581,7 +581,7 @@ end
 
 Retrieve an email
 
-Retrieves the content of an email. To retrieve the recipients of the email see the [Retrieve all email recipients](#tag/Communications/operation/GetEmailRecipients) endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Emails</span> - `View`
+Retrieves the content of an email. To retrieve the recipients of the email see the [Retrieve all email recipients](#tag/Communications/operation/GetEmailRecipients) endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Emails</span> - `View`
 
 ### Examples
 
@@ -657,7 +657,7 @@ end
 
 Retrieve all email recipients
 
-Retrieves all email recipients.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Email</span> - `View`              <br /><h4>Optional Permissions:</h4><br />              The following permissions are optional, but results with a missing permission will be filtered out.              <span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` In order to retrieve recipients that are Vendors, you must have this permission.              <span class=\"permissionBlock\">Administration &gt; Users</span> - `View` In order to see recipients that are Staff, you must have this permission.
+Retrieves all email recipients.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Email</span> - `View`              <br /><h4>Optional Permissions:</h4><br />              The following permissions are optional, but results with a missing permission will be filtered out.              <span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` In order to retrieve recipients that are Vendors, you must have this permission.              <span class=\"permissionBlock\">Administration > Users</span> - `View` In order to see recipients that are Staff, you must have this permission.
 
 ### Examples
 
@@ -741,7 +741,7 @@ end
 
 Retrieve all emails
 
-Retrieves all emails.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication &gt; Emails</span> - `View`
+Retrieves all emails.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communication > Emails</span> - `View`
 
 ### Examples
 
@@ -833,7 +833,7 @@ end
 
 Retrieve all communication templates
 
-Retrieves all mailing and email templates. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves all mailing and email templates. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -915,7 +915,7 @@ end
 
 Retrieve a communication template
 
-Retrieves a communication template. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals &gt; Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations &gt; Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+Retrieves a communication template. A template is a tool in Buildium that allows you to create \"mail merge\" templates for emails and postal mailings to easily send common messages to residents, rental owners and vendors.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Mailing Templates</span> - `View`              <br /><h4>Optional Permissions:</h4><span class=\"permissionBlock\">Rentals > Tenants</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Property Rental owners</span> - `View`              <br /><span class=\"permissionBlock\">Associations > Association owners and tenants</span> - `View`              <br /><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`              <br /><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
 
 ### Examples
 
@@ -991,7 +991,7 @@ end
 
 Retrieve a phone log
 
-Retrieves a specific phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View`
+Retrieves a specific phone log.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View`
 
 ### Examples
 
@@ -1067,7 +1067,7 @@ end
 
 Retrieve all phone logs
 
-Retrieves all phone logs.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View`
+Retrieves all phone logs.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View`
 
 ### Examples
 
@@ -1161,11 +1161,11 @@ end
 
 ## update_phone_log
 
-> <PhoneLogMessage> update_phone_log(phone_log_id, phone_log_put_message)
+> <PhoneLogMessage> update_phone_log(phone_log_id, update_phone_log_request)
 
 Update a phone log
 
-Update a phone log  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications &gt; Timelines (Phone Logs)</span> - `View` `Edit`
+Update a phone log  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Communications > Timelines (Phone Logs)</span> - `View` `Edit`
 
 ### Examples
 
@@ -1187,11 +1187,11 @@ end
 
 api_instance = Buildium::CommunicationsApi.new
 phone_log_id = 56 # Integer | The phone log identifier.
-phone_log_put_message = Buildium::PhoneLogPutMessage.new({subject: 'subject_example', description: 'description_example', call_date_time: Time.now}) # PhoneLogPutMessage | 
+update_phone_log_request = Buildium::UpdatePhoneLogRequest.new({subject: 'subject_example', description: 'description_example', call_date_time: Time.now}) # UpdatePhoneLogRequest | 
 
 begin
   # Update a phone log
-  result = api_instance.update_phone_log(phone_log_id, phone_log_put_message)
+  result = api_instance.update_phone_log(phone_log_id, update_phone_log_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling CommunicationsApi->update_phone_log: #{e}"
@@ -1202,12 +1202,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PhoneLogMessage>, Integer, Hash)> update_phone_log_with_http_info(phone_log_id, phone_log_put_message)
+> <Array(<PhoneLogMessage>, Integer, Hash)> update_phone_log_with_http_info(phone_log_id, update_phone_log_request)
 
 ```ruby
 begin
   # Update a phone log
-  data, status_code, headers = api_instance.update_phone_log_with_http_info(phone_log_id, phone_log_put_message)
+  data, status_code, headers = api_instance.update_phone_log_with_http_info(phone_log_id, update_phone_log_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PhoneLogMessage>
@@ -1221,7 +1221,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **phone_log_id** | **Integer** | The phone log identifier. |  |
-| **phone_log_put_message** | [**PhoneLogPutMessage**](PhoneLogPutMessage.md) |  |  |
+| **update_phone_log_request** | [**UpdatePhoneLogRequest**](UpdatePhoneLogRequest.md) |  |  |
 
 ### Return type
 

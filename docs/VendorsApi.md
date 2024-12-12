@@ -25,11 +25,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_vendor
 
-> <VendorMessage> create_vendor(vendor_post_message)
+> <VendorMessage> create_vendor(create_vendor_request)
 
 Create a vendor
 
-Creates a vendor.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Creates a vendor.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -50,11 +50,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::VendorsApi.new
-vendor_post_message = Buildium::VendorPostMessage.new({is_company: false, category_id: 37}) # VendorPostMessage | 
+create_vendor_request = Buildium::CreateVendorRequest.new({is_company: false, category_id: 37}) # CreateVendorRequest | 
 
 begin
   # Create a vendor
-  result = api_instance.create_vendor(vendor_post_message)
+  result = api_instance.create_vendor(create_vendor_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->create_vendor: #{e}"
@@ -65,12 +65,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<VendorMessage>, Integer, Hash)> create_vendor_with_http_info(vendor_post_message)
+> <Array(<VendorMessage>, Integer, Hash)> create_vendor_with_http_info(create_vendor_request)
 
 ```ruby
 begin
   # Create a vendor
-  data, status_code, headers = api_instance.create_vendor_with_http_info(vendor_post_message)
+  data, status_code, headers = api_instance.create_vendor_with_http_info(create_vendor_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <VendorMessage>
@@ -83,7 +83,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **vendor_post_message** | [**VendorPostMessage**](VendorPostMessage.md) |  |  |
+| **create_vendor_request** | [**CreateVendorRequest**](CreateVendorRequest.md) |  |  |
 
 ### Return type
 
@@ -101,11 +101,11 @@ end
 
 ## create_vendor_category
 
-> <VendorCategoryMessage> create_vendor_category(vendor_category_save_message)
+> <VendorCategoryMessage> create_vendor_category(create_vendor_category_request)
 
 Create a vendor category
 
-Creates a vendor category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Creates a vendor category.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -126,11 +126,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::VendorsApi.new
-vendor_category_save_message = Buildium::VendorCategorySaveMessage.new({name: 'name_example'}) # VendorCategorySaveMessage | 
+create_vendor_category_request = Buildium::CreateVendorCategoryRequest.new({name: 'name_example'}) # CreateVendorCategoryRequest | 
 
 begin
   # Create a vendor category
-  result = api_instance.create_vendor_category(vendor_category_save_message)
+  result = api_instance.create_vendor_category(create_vendor_category_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->create_vendor_category: #{e}"
@@ -141,12 +141,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<VendorCategoryMessage>, Integer, Hash)> create_vendor_category_with_http_info(vendor_category_save_message)
+> <Array(<VendorCategoryMessage>, Integer, Hash)> create_vendor_category_with_http_info(create_vendor_category_request)
 
 ```ruby
 begin
   # Create a vendor category
-  data, status_code, headers = api_instance.create_vendor_category_with_http_info(vendor_category_save_message)
+  data, status_code, headers = api_instance.create_vendor_category_with_http_info(create_vendor_category_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <VendorCategoryMessage>
@@ -159,7 +159,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **vendor_category_save_message** | [**VendorCategorySaveMessage**](VendorCategorySaveMessage.md) |  |  |
+| **create_vendor_category_request** | [**CreateVendorCategoryRequest**](CreateVendorCategoryRequest.md) |  |  |
 
 ### Return type
 
@@ -177,11 +177,11 @@ end
 
 ## create_vendor_credit
 
-> <VendorCreditMessage> create_vendor_credit(vendor_id, vendor_credit_post_message)
+> <VendorCreditMessage> create_vendor_credit(vendor_id, create_vendor_credit_request)
 
 Create a credit
 
-Creates a credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View` `Edit`
+Creates a credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bills</span> - `View` `Edit`
 
 ### Examples
 
@@ -203,11 +203,11 @@ end
 
 api_instance = Buildium::VendorsApi.new
 vendor_id = 56 # Integer | 
-vendor_credit_post_message = Buildium::VendorCreditPostMessage.new({entry_date: Date.today, lines: [Buildium::VendorCreditLineItemPostMessage.new({gl_account_id: 37, amount: 3.56, accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'})})]}) # VendorCreditPostMessage | 
+create_vendor_credit_request = Buildium::CreateVendorCreditRequest.new({entry_date: Date.today, lines: [Buildium::VendorCreditLineItemPostMessage.new({gl_account_id: 37, amount: 3.56, accounting_entity: Buildium::VendorCreditLineItemPostMessageAccountingEntity.new({id: 37, accounting_entity_type: 'Association'})})]}) # CreateVendorCreditRequest | 
 
 begin
   # Create a credit
-  result = api_instance.create_vendor_credit(vendor_id, vendor_credit_post_message)
+  result = api_instance.create_vendor_credit(vendor_id, create_vendor_credit_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->create_vendor_credit: #{e}"
@@ -218,12 +218,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<VendorCreditMessage>, Integer, Hash)> create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message)
+> <Array(<VendorCreditMessage>, Integer, Hash)> create_vendor_credit_with_http_info(vendor_id, create_vendor_credit_request)
 
 ```ruby
 begin
   # Create a credit
-  data, status_code, headers = api_instance.create_vendor_credit_with_http_info(vendor_id, vendor_credit_post_message)
+  data, status_code, headers = api_instance.create_vendor_credit_with_http_info(vendor_id, create_vendor_credit_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <VendorCreditMessage>
@@ -237,7 +237,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **vendor_id** | **Integer** |  |  |
-| **vendor_credit_post_message** | [**VendorCreditPostMessage**](VendorCreditPostMessage.md) |  |  |
+| **create_vendor_credit_request** | [**CreateVendorCreditRequest**](CreateVendorCreditRequest.md) |  |  |
 
 ### Return type
 
@@ -255,11 +255,11 @@ end
 
 ## create_vendor_note
 
-> <NoteMessage> create_vendor_note(vendor_id, note_post_message)
+> <NoteMessage> create_vendor_note(vendor_id, create_lease_note_request)
 
 Create a note
 
-Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Creates a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -281,11 +281,11 @@ end
 
 api_instance = Buildium::VendorsApi.new
 vendor_id = 56 # Integer | 
-note_post_message = Buildium::NotePostMessage.new({note: 'note_example'}) # NotePostMessage | 
+create_lease_note_request = Buildium::CreateLeaseNoteRequest.new({note: 'note_example'}) # CreateLeaseNoteRequest | 
 
 begin
   # Create a note
-  result = api_instance.create_vendor_note(vendor_id, note_post_message)
+  result = api_instance.create_vendor_note(vendor_id, create_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->create_vendor_note: #{e}"
@@ -296,12 +296,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> create_vendor_note_with_http_info(vendor_id, note_post_message)
+> <Array(<NoteMessage>, Integer, Hash)> create_vendor_note_with_http_info(vendor_id, create_lease_note_request)
 
 ```ruby
 begin
   # Create a note
-  data, status_code, headers = api_instance.create_vendor_note_with_http_info(vendor_id, note_post_message)
+  data, status_code, headers = api_instance.create_vendor_note_with_http_info(vendor_id, create_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -315,7 +315,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **vendor_id** | **Integer** |  |  |
-| **note_post_message** | [**NotePostMessage**](NotePostMessage.md) |  |  |
+| **create_lease_note_request** | [**CreateLeaseNoteRequest**](CreateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 
@@ -333,11 +333,11 @@ end
 
 ## create_vendor_refund
 
-> <VendorRefundMessage> create_vendor_refund(vendor_id, vendor_refund_post_message)
+> <VendorRefundMessage> create_vendor_refund(vendor_id, create_vendor_refund_request)
 
 Create a refund
 
-Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`              <span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
 
 ### Examples
 
@@ -359,11 +359,11 @@ end
 
 api_instance = Buildium::VendorsApi.new
 vendor_id = 56 # Integer | 
-vendor_refund_post_message = Buildium::VendorRefundPostMessage.new({entry_date: Date.today, bank_account_id: 37, payment_method: 'Check', lines: [Buildium::VendorRefundLinePostMessage.new({gl_account_id: 37, amount: 3.56, accounting_entity: Buildium::AccountingEntitySaveMessage.new({id: 37, accounting_entity_type: 'Association'})})]}) # VendorRefundPostMessage | 
+create_vendor_refund_request = Buildium::CreateVendorRefundRequest.new({entry_date: Date.today, bank_account_id: 37, payment_method: 'Check', lines: [Buildium::VendorRefundLinePostMessage.new({gl_account_id: 37, amount: 3.56, accounting_entity: Buildium::VendorRefundLinePostMessageAccountingEntity.new({id: 37, accounting_entity_type: 'Association'})})]}) # CreateVendorRefundRequest | 
 
 begin
   # Create a refund
-  result = api_instance.create_vendor_refund(vendor_id, vendor_refund_post_message)
+  result = api_instance.create_vendor_refund(vendor_id, create_vendor_refund_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->create_vendor_refund: #{e}"
@@ -374,12 +374,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<VendorRefundMessage>, Integer, Hash)> create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message)
+> <Array(<VendorRefundMessage>, Integer, Hash)> create_vendor_refund_with_http_info(vendor_id, create_vendor_refund_request)
 
 ```ruby
 begin
   # Create a refund
-  data, status_code, headers = api_instance.create_vendor_refund_with_http_info(vendor_id, vendor_refund_post_message)
+  data, status_code, headers = api_instance.create_vendor_refund_with_http_info(vendor_id, create_vendor_refund_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <VendorRefundMessage>
@@ -393,7 +393,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **vendor_id** | **Integer** |  |  |
-| **vendor_refund_post_message** | [**VendorRefundPostMessage**](VendorRefundPostMessage.md) |  |  |
+| **create_vendor_refund_request** | [**CreateVendorRefundRequest**](CreateVendorRefundRequest.md) |  |  |
 
 ### Return type
 
@@ -415,7 +415,7 @@ end
 
 Retrieve all vendor categories
 
-Retrieves a list of vendor categories.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieves a list of vendor categories.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -493,11 +493,11 @@ end
 
 ## get_all_vendor_transactions
 
-> <Array<VendorTransactionMessage>> get_all_vendor_transactions(vendor_id, transactiondatefrom, transactiondateto, opts)
+> <Array<VendorTransactionMessage>> get_all_vendor_transactions(transactiondatefrom, transactiondateto, vendor_id, opts)
 
 Retrieve all transactions
 
-Retrieves all transactions for a given vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`  <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Transactions</span> - `View`
+Retrieves all transactions for a given vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`  <br /><span class=\"permissionBlock\">Accounting > General Ledger Transactions</span> - `View`
 
 ### Examples
 
@@ -518,9 +518,9 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::VendorsApi.new
-vendor_id = 56 # Integer | 
 transactiondatefrom = Date.parse('2013-10-20') # Date | Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days.
 transactiondateto = Date.parse('2013-10-20') # Date | Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days.
+vendor_id = 56 # Integer | 
 opts = {
   transactiontypes: ['Bill'], # Array<String> | Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned.
   referencenumber: 'referencenumber_example', # String | Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters.
@@ -532,7 +532,7 @@ opts = {
 
 begin
   # Retrieve all transactions
-  result = api_instance.get_all_vendor_transactions(vendor_id, transactiondatefrom, transactiondateto, opts)
+  result = api_instance.get_all_vendor_transactions(transactiondatefrom, transactiondateto, vendor_id, opts)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->get_all_vendor_transactions: #{e}"
@@ -543,12 +543,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<VendorTransactionMessage>>, Integer, Hash)> get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts)
+> <Array(<Array<VendorTransactionMessage>>, Integer, Hash)> get_all_vendor_transactions_with_http_info(transactiondatefrom, transactiondateto, vendor_id, opts)
 
 ```ruby
 begin
   # Retrieve all transactions
-  data, status_code, headers = api_instance.get_all_vendor_transactions_with_http_info(vendor_id, transactiondatefrom, transactiondateto, opts)
+  data, status_code, headers = api_instance.get_all_vendor_transactions_with_http_info(transactiondatefrom, transactiondateto, vendor_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<VendorTransactionMessage>>
@@ -561,9 +561,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **vendor_id** | **Integer** |  |  |
 | **transactiondatefrom** | **Date** | Filters results to any vendor transaction whose entry date that is greater than or equal to the specified value. The maximum date range is 365 days. |  |
 | **transactiondateto** | **Date** | Filters results to any vendor transaction whose entry date is less than or equal to the specified value. The maximum date range is 365 days. |  |
+| **vendor_id** | **Integer** |  |  |
 | **transactiontypes** | [**Array&lt;String&gt;**](String.md) | Filters results to any vendor transaction whose vendor transaction type matches the specified status. If no type is specified, vendor transactions with any type will be returned. | [optional] |
 | **referencenumber** | **String** | Filters results to vendor transaction whose reference number contains the specified value. The reference number cannot exceed 40 characters. | [optional] |
 | **memo** | **String** | Filters results to vendor transaction whose memo contains the specified value. The memo cannot exceed 40 characters. | [optional] |
@@ -591,7 +591,7 @@ end
 
 Retrieve all vendors
 
-Retrieves a list of vendors.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieves a list of vendors.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -617,7 +617,7 @@ opts = {
   email: 'email_example', # String | Filters results to any vendor whose email *contains* the specified value.
   website: 'website_example', # String | Filters results to any vendor whose website *contains* the specified value.
   name: 'name_example', # String | Filters results to any vendor whose name *contains* the specified value.
-  insuranceexpiration: 'None', # String | Filters results to any vendor whose insurance will expire in the specified date range.
+  insuranceexpiration: 'Expired', # String | Filters results to any vendor whose insurance will expire in the specified date range.
   phone: 'phone_example', # String | Filters results to any vendor who has a phone number that *contains* the specified value.
   lastupdatedfrom: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any vendors that were updated on or after the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
   lastupdatedto: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Filters results to any vendors that were updated on or before the specified date. The value must be in UTC and formatted as YYYY-MM-DDTHH:MM:SSZ.
@@ -689,7 +689,7 @@ end
 
 Retrieve a vendor
 
-Retrieve a specific vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieve a specific vendor.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -765,7 +765,7 @@ end
 
 Retrieve a vendor category
 
-Retrieves a specific vendor category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieves a specific vendor category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -841,7 +841,7 @@ end
 
 Retrieve a credit
 
-Retrieves a credit.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bills</span> - `View`
+Retrieves a credit.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bills</span> - `View`
 
 ### Examples
 
@@ -919,7 +919,7 @@ end
 
 Retrieve a note
 
-Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieves a vendor note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -997,7 +997,7 @@ end
 
 Retrieve all notes
 
-Retrieves all vendor notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieves all vendor notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -1083,11 +1083,11 @@ end
 
 ## get_vendor_refund
 
-> <VendorCreditMessage> get_vendor_refund(vendor_id, vendor_refund_id)
+> <VendorRefundMessage> get_vendor_refund(vendor_id, vendor_refund_id)
 
 Retrieve a refund
 
-Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View`
+Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View`
 
 ### Examples
 
@@ -1124,7 +1124,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<VendorCreditMessage>, Integer, Hash)> get_vendor_refund_with_http_info(vendor_id, vendor_refund_id)
+> <Array(<VendorRefundMessage>, Integer, Hash)> get_vendor_refund_with_http_info(vendor_id, vendor_refund_id)
 
 ```ruby
 begin
@@ -1132,7 +1132,7 @@ begin
   data, status_code, headers = api_instance.get_vendor_refund_with_http_info(vendor_id, vendor_refund_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <VendorCreditMessage>
+  p data # => <VendorRefundMessage>
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->get_vendor_refund_with_http_info: #{e}"
 end
@@ -1147,7 +1147,7 @@ end
 
 ### Return type
 
-[**VendorCreditMessage**](VendorCreditMessage.md)
+[**VendorRefundMessage**](VendorRefundMessage.md)
 
 ### Authorization
 
@@ -1161,11 +1161,11 @@ end
 
 ## update_vendor
 
-> <VendorMessage> update_vendor(vendor_id, vendor_put_message)
+> <VendorMessage> update_vendor(vendor_id, update_vendor_request)
 
 Update a vendor
 
-Updates a vendor.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Updates a vendor.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -1187,11 +1187,11 @@ end
 
 api_instance = Buildium::VendorsApi.new
 vendor_id = 56 # Integer | 
-vendor_put_message = Buildium::VendorPutMessage.new({is_company: false, category_id: 37}) # VendorPutMessage | 
+update_vendor_request = Buildium::UpdateVendorRequest.new({is_company: false, category_id: 37}) # UpdateVendorRequest | 
 
 begin
   # Update a vendor
-  result = api_instance.update_vendor(vendor_id, vendor_put_message)
+  result = api_instance.update_vendor(vendor_id, update_vendor_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->update_vendor: #{e}"
@@ -1202,12 +1202,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<VendorMessage>, Integer, Hash)> update_vendor_with_http_info(vendor_id, vendor_put_message)
+> <Array(<VendorMessage>, Integer, Hash)> update_vendor_with_http_info(vendor_id, update_vendor_request)
 
 ```ruby
 begin
   # Update a vendor
-  data, status_code, headers = api_instance.update_vendor_with_http_info(vendor_id, vendor_put_message)
+  data, status_code, headers = api_instance.update_vendor_with_http_info(vendor_id, update_vendor_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <VendorMessage>
@@ -1221,7 +1221,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **vendor_id** | **Integer** |  |  |
-| **vendor_put_message** | [**VendorPutMessage**](VendorPutMessage.md) |  |  |
+| **update_vendor_request** | [**UpdateVendorRequest**](UpdateVendorRequest.md) |  |  |
 
 ### Return type
 
@@ -1239,11 +1239,11 @@ end
 
 ## update_vendor_category
 
-> <VendorCategoryMessage> update_vendor_category(vendor_category_id, vendor_category_save_message)
+> <VendorCategoryMessage> update_vendor_category(vendor_category_id, create_vendor_category_request)
 
 Update a vendor category
 
-Updates a vendor category.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Updates a vendor category.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -1265,11 +1265,11 @@ end
 
 api_instance = Buildium::VendorsApi.new
 vendor_category_id = 56 # Integer | 
-vendor_category_save_message = Buildium::VendorCategorySaveMessage.new({name: 'name_example'}) # VendorCategorySaveMessage | 
+create_vendor_category_request = Buildium::CreateVendorCategoryRequest.new({name: 'name_example'}) # CreateVendorCategoryRequest | 
 
 begin
   # Update a vendor category
-  result = api_instance.update_vendor_category(vendor_category_id, vendor_category_save_message)
+  result = api_instance.update_vendor_category(vendor_category_id, create_vendor_category_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->update_vendor_category: #{e}"
@@ -1280,12 +1280,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<VendorCategoryMessage>, Integer, Hash)> update_vendor_category_with_http_info(vendor_category_id, vendor_category_save_message)
+> <Array(<VendorCategoryMessage>, Integer, Hash)> update_vendor_category_with_http_info(vendor_category_id, create_vendor_category_request)
 
 ```ruby
 begin
   # Update a vendor category
-  data, status_code, headers = api_instance.update_vendor_category_with_http_info(vendor_category_id, vendor_category_save_message)
+  data, status_code, headers = api_instance.update_vendor_category_with_http_info(vendor_category_id, create_vendor_category_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <VendorCategoryMessage>
@@ -1299,7 +1299,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **vendor_category_id** | **Integer** |  |  |
-| **vendor_category_save_message** | [**VendorCategorySaveMessage**](VendorCategorySaveMessage.md) |  |  |
+| **create_vendor_category_request** | [**CreateVendorCategoryRequest**](CreateVendorCategoryRequest.md) |  |  |
 
 ### Return type
 
@@ -1317,11 +1317,11 @@ end
 
 ## update_vendor_note
 
-> <NoteMessage> update_vendor_note(vendor_id, note_id, note_put_message)
+> <NoteMessage> update_vendor_note(vendor_id, note_id, update_lease_note_request)
 
 Update a note
 
-Updates a vendor note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance &gt; Vendors</span> - `View` `Edit`
+Updates a vendor note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Maintenance > Vendors</span> - `View` `Edit`
 
 ### Examples
 
@@ -1344,11 +1344,11 @@ end
 api_instance = Buildium::VendorsApi.new
 vendor_id = 56 # Integer | 
 note_id = 56 # Integer | 
-note_put_message = Buildium::NotePutMessage.new({note: 'note_example'}) # NotePutMessage | 
+update_lease_note_request = Buildium::UpdateLeaseNoteRequest.new({note: 'note_example'}) # UpdateLeaseNoteRequest | 
 
 begin
   # Update a note
-  result = api_instance.update_vendor_note(vendor_id, note_id, note_put_message)
+  result = api_instance.update_vendor_note(vendor_id, note_id, update_lease_note_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling VendorsApi->update_vendor_note: #{e}"
@@ -1359,12 +1359,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NoteMessage>, Integer, Hash)> update_vendor_note_with_http_info(vendor_id, note_id, note_put_message)
+> <Array(<NoteMessage>, Integer, Hash)> update_vendor_note_with_http_info(vendor_id, note_id, update_lease_note_request)
 
 ```ruby
 begin
   # Update a note
-  data, status_code, headers = api_instance.update_vendor_note_with_http_info(vendor_id, note_id, note_put_message)
+  data, status_code, headers = api_instance.update_vendor_note_with_http_info(vendor_id, note_id, update_lease_note_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NoteMessage>
@@ -1379,7 +1379,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **vendor_id** | **Integer** |  |  |
 | **note_id** | **Integer** |  |  |
-| **note_put_message** | [**NotePutMessage**](NotePutMessage.md) |  |  |
+| **update_lease_note_request** | [**UpdateLeaseNoteRequest**](UpdateLeaseNoteRequest.md) |  |  |
 
 ### Return type
 

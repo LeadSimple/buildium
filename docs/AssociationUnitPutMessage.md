@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **unit_number** | **String** | Unit Number. Must be unique within the association and cannot exceed 30 characters. |  |
 | **unit_size** | **Integer** | Size of the unit. | [optional] |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  |  |
+| **address** | [**AssociationUnitPutMessageAddress**](AssociationUnitPutMessageAddress.md) |  |  |
 | **unit_bedrooms** | **String** | Number of bedrooms in the unit. | [optional] |
 | **unit_bathrooms** | **String** | Number of bathrooms in the unit. | [optional] |
 

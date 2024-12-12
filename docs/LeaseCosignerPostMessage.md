@@ -8,9 +8,9 @@
 | **last_name** | **String** | Last name of the cosigner. |  |
 | **email** | **String** | Email for the cosigner. | [optional] |
 | **alternate_email** | **String** | Alternate Email for the cosigner. | [optional] |
-| **phone_numbers** | [**PhoneNumbersMessage**](PhoneNumbersMessage.md) |  | [optional] |
-| **address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  | [optional] |
-| **alternate_address** | [**SaveAddressMessage**](SaveAddressMessage.md) |  | [optional] |
+| **phone_numbers** | [**LeaseCosignerPostMessagePhoneNumbers**](LeaseCosignerPostMessagePhoneNumbers.md) |  | [optional] |
+| **address** | [**LeaseCosignerPostMessageAddress**](LeaseCosignerPostMessageAddress.md) |  | [optional] |
+| **alternate_address** | [**LeaseCosignerPostMessageAlternateAddress**](LeaseCosignerPostMessageAlternateAddress.md) |  | [optional] |
 | **mailing_preference** | **String** | Mailing preferences for the cosigner. If an alternate address exists and this value is not provided then the primary address will be set as the preferred address. | [optional] |
 
 ## Example

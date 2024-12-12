@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **association** | [**BankLockboxDataAssociationMessage**](BankLockboxDataAssociationMessage.md) |  | [optional] |
+| **association** | [**BankLockboxDataMessageAssociation**](BankLockboxDataMessageAssociation.md) |  | [optional] |
 | **ownership_accounts** | [**Array&lt;BankLockboxDataOwnershipAccountMessage&gt;**](BankLockboxDataOwnershipAccountMessage.md) | Information about ownership accounts that belong to the association. | [optional] |
 
 ## Example

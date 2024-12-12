@@ -16,11 +16,11 @@ All URIs are relative to *https://api.buildium.com*
 
 ## create_listing_contact
 
-> <ListingContactMessage> create_listing_contact(listing_contact_save_message)
+> <ListingContactMessage> create_listing_contact(create_listing_contact_request)
 
 Create a listing contact
 
-Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`
+Create a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit`
 
 ### Examples
 
@@ -41,11 +41,11 @@ Buildium.configure do |config|
 end
 
 api_instance = Buildium::ListingsApi.new
-listing_contact_save_message = Buildium::ListingContactSaveMessage.new({name: 'name_example'}) # ListingContactSaveMessage | 
+create_listing_contact_request = Buildium::CreateListingContactRequest.new({name: 'name_example'}) # CreateListingContactRequest | 
 
 begin
   # Create a listing contact
-  result = api_instance.create_listing_contact(listing_contact_save_message)
+  result = api_instance.create_listing_contact(create_listing_contact_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ListingsApi->create_listing_contact: #{e}"
@@ -56,12 +56,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListingContactMessage>, Integer, Hash)> create_listing_contact_with_http_info(listing_contact_save_message)
+> <Array(<ListingContactMessage>, Integer, Hash)> create_listing_contact_with_http_info(create_listing_contact_request)
 
 ```ruby
 begin
   # Create a listing contact
-  data, status_code, headers = api_instance.create_listing_contact_with_http_info(listing_contact_save_message)
+  data, status_code, headers = api_instance.create_listing_contact_with_http_info(create_listing_contact_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListingContactMessage>
@@ -74,7 +74,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **listing_contact_save_message** | [**ListingContactSaveMessage**](ListingContactSaveMessage.md) |  |  |
+| **create_listing_contact_request** | [**CreateListingContactRequest**](CreateListingContactRequest.md) |  |  |
 
 ### Return type
 
@@ -96,7 +96,7 @@ end
 
 Delete a listing
 
-Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit` `Delete`
+Deleting a listing will immediately remove it from your Buildium public website. The listing will also be removed  from any syndicated sites within 24-48 hours.<br /><br />Listings manually created on craigslist using the Buildium  guided tool will not be removed. The listing must be removed using craigslist's tools provided in your craigslist account.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit` `Delete`
 
 ### Examples
 
@@ -171,7 +171,7 @@ nil (empty response body)
 
 Retrieve all listing contacts
 
-Retrieves all listing contacts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`
+Retrieves all listing contacts.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View`
 
 ### Examples
 
@@ -253,7 +253,7 @@ end
 
 Retrieve a listing contact
 
-Retrieves a specific listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`
+Retrieves a specific listing contact.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View`
 
 ### Examples
 
@@ -329,7 +329,7 @@ end
 
 Retrieve a listing
 
-Retrieves a specific listing.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Retrieves a specific listing.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -405,7 +405,7 @@ end
 
 Retrieve all listings
 
-Retrieves all listings.  <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View`
+Retrieves all listings.  <br /><br /><span class=\"permissionBlock\">Rentals > Listings</span> - `View`  <br /><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View`
 
 ### Examples
 
@@ -487,11 +487,11 @@ end
 
 ## update_listing_contact
 
-> <ListingContactMessage> update_listing_contact(listing_contact_id, listing_contact_save_message)
+> <ListingContactMessage> update_listing_contact(listing_contact_id, create_listing_contact_request)
 
 Update a listing contact
 
-Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`
+Update a listing contact. Note, at least one contact field (phone number, email or website) is required for the listing contact.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit`
 
 ### Examples
 
@@ -513,11 +513,11 @@ end
 
 api_instance = Buildium::ListingsApi.new
 listing_contact_id = 56 # Integer | The listing contact identifier.
-listing_contact_save_message = Buildium::ListingContactSaveMessage.new({name: 'name_example'}) # ListingContactSaveMessage | 
+create_listing_contact_request = Buildium::CreateListingContactRequest.new({name: 'name_example'}) # CreateListingContactRequest | 
 
 begin
   # Update a listing contact
-  result = api_instance.update_listing_contact(listing_contact_id, listing_contact_save_message)
+  result = api_instance.update_listing_contact(listing_contact_id, create_listing_contact_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ListingsApi->update_listing_contact: #{e}"
@@ -528,12 +528,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListingContactMessage>, Integer, Hash)> update_listing_contact_with_http_info(listing_contact_id, listing_contact_save_message)
+> <Array(<ListingContactMessage>, Integer, Hash)> update_listing_contact_with_http_info(listing_contact_id, create_listing_contact_request)
 
 ```ruby
 begin
   # Update a listing contact
-  data, status_code, headers = api_instance.update_listing_contact_with_http_info(listing_contact_id, listing_contact_save_message)
+  data, status_code, headers = api_instance.update_listing_contact_with_http_info(listing_contact_id, create_listing_contact_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListingContactMessage>
@@ -547,7 +547,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **listing_contact_id** | **Integer** | The listing contact identifier. |  |
-| **listing_contact_save_message** | [**ListingContactSaveMessage**](ListingContactSaveMessage.md) |  |  |
+| **create_listing_contact_request** | [**CreateListingContactRequest**](CreateListingContactRequest.md) |  |  |
 
 ### Return type
 
@@ -565,11 +565,11 @@ end
 
 ## upsert_listings_async
 
-> <ListingMessage> upsert_listings_async(unit_id, listing_put_message)
+> <ListingMessage> upsert_listings_async(unit_id, upsert_listings_async_request)
 
 Create/Update a listing
 
-This endpoint can be used to both *create* and *update* a listing. If no listing exists for the unit one will be created, otherwise the existing listing will be updated. A unit can only ever have one active listing.    <br /><br />  Upon creation the listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours. Updates to the listing will appear immediately in your Buildium public website and propagated to syndicated sites within 24-48 hours.   <br /><br />  Note, the listing will automatically pull in the information, features, and media that exists for the property and unit details.   <br /><br /><span class=\"permissionBlock\">Rentals &gt; Listings</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals &gt; Rental properties and units</span> - `View` `Edit`
+This endpoint can be used to both *create* and *update* a listing. If no listing exists for the unit one will be created, otherwise the existing listing will be updated. A unit can only ever have one active listing.    <br /><br />  Upon creation the listing will post immediately to your Buildium public website, and will post to the selected syndicated sites within 24-48 hours. Updates to the listing will appear immediately in your Buildium public website and propagated to syndicated sites within 24-48 hours.   <br /><br />  Note, the listing will automatically pull in the information, features, and media that exists for the property and unit details.   <br /><br /><span class=\"permissionBlock\">Rentals > Listings</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Rentals > Rental properties and units</span> - `View` `Edit`
 
 ### Examples
 
@@ -591,11 +591,11 @@ end
 
 api_instance = Buildium::ListingsApi.new
 unit_id = 56 # Integer | 
-listing_put_message = Buildium::ListingPutMessage.new({rent: 3.56, available_date: Date.today, is_managed_externally: false}) # ListingPutMessage | 
+upsert_listings_async_request = Buildium::UpsertListingsAsyncRequest.new({rent: 3.56, available_date: Date.today, is_managed_externally: false}) # UpsertListingsAsyncRequest | 
 
 begin
   # Create/Update a listing
-  result = api_instance.upsert_listings_async(unit_id, listing_put_message)
+  result = api_instance.upsert_listings_async(unit_id, upsert_listings_async_request)
   p result
 rescue Buildium::ApiError => e
   puts "Error when calling ListingsApi->upsert_listings_async: #{e}"
@@ -606,12 +606,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ListingMessage>, Integer, Hash)> upsert_listings_async_with_http_info(unit_id, listing_put_message)
+> <Array(<ListingMessage>, Integer, Hash)> upsert_listings_async_with_http_info(unit_id, upsert_listings_async_request)
 
 ```ruby
 begin
   # Create/Update a listing
-  data, status_code, headers = api_instance.upsert_listings_async_with_http_info(unit_id, listing_put_message)
+  data, status_code, headers = api_instance.upsert_listings_async_with_http_info(unit_id, upsert_listings_async_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ListingMessage>
@@ -625,7 +625,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **unit_id** | **Integer** |  |  |
-| **listing_put_message** | [**ListingPutMessage**](ListingPutMessage.md) |  |  |
+| **upsert_listings_async_request** | [**UpsertListingsAsyncRequest**](UpsertListingsAsyncRequest.md) |  |  |
 
 ### Return type
 

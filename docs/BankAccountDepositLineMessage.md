@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | The unique identifier of the line item. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**BankAccountDepositLineMessageAccountingEntity**](BankAccountDepositLineMessageAccountingEntity.md) |  | [optional] |
 | **gl_account_id** | **Integer** | The general ledger account identifier under which the line item amount is recorded. | [optional] |
 | **memo** | **String** | Memo for the line item. | [optional] |
 | **reference_number** | **String** | Reference number for the line item. | [optional] |

@@ -10,11 +10,11 @@
 | **email** | **String** | The email of the lead. | [optional] |
 | **phone_number** | **String** | The phone number of the lead. | [optional] |
 | **price_paid** | **Float** | The price paid for the lead. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**ClientLeadMessageAddress**](ClientLeadMessageAddress.md) |  | [optional] |
 | **property_type** | **String** | The property type of the lead&#39;s property. | [optional] |
 | **comments** | **String** | Additional comments submitted for the lead. | [optional] |
 | **lead_status** | **String** | The current status of the client lead. | [optional] |
-| **credit_request** | [**ClientLeadCreditRequestMessage**](ClientLeadCreditRequestMessage.md) |  | [optional] |
+| **credit_request** | [**ClientLeadMessageCreditRequest**](ClientLeadMessageCreditRequest.md) |  | [optional] |
 
 ## Example
 

@@ -65,18 +65,18 @@ module Buildium
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'account' => :'FileSharingAccountPutMessage',
-        :'rental' => :'FileSharingRentalPutMessage',
-        :'rental_unit' => :'FileSharingRentalUnitPutMesage',
-        :'lease' => :'FileSharingLeasePutMessage',
-        :'tenant' => :'FileSharingTenantPutMessage',
-        :'rental_owner' => :'FileSharingRentalOwnerPutMessage',
-        :'association' => :'FileSharingAssociationPutMessage',
-        :'association_unit' => :'FileSharingAssociationUnitPutMessage',
-        :'ownership_account' => :'FileSharingOwnershipAccountPutMessage',
-        :'association_owner' => :'FileSharingAssociationOwnerPutMessage',
-        :'vendor' => :'FileSharingVendorPutMessage',
-        :'committee' => :'FileSharingCommitteePutMessage'
+        :'account' => :'FileSharingPutMessageAccount',
+        :'rental' => :'FileSharingPutMessageRental',
+        :'rental_unit' => :'FileSharingPutMessageRentalUnit',
+        :'lease' => :'FileSharingPutMessageLease',
+        :'tenant' => :'FileSharingPutMessageTenant',
+        :'rental_owner' => :'FileSharingPutMessageRentalOwner',
+        :'association' => :'FileSharingPutMessageAssociation',
+        :'association_unit' => :'FileSharingPutMessageAssociationUnit',
+        :'ownership_account' => :'FileSharingPutMessageOwnershipAccount',
+        :'association_owner' => :'FileSharingPutMessageAssociationOwner',
+        :'vendor' => :'FileSharingPutMessageVendor',
+        :'committee' => :'FileSharingPutMessageCommittee'
       }
     end
 
@@ -205,7 +205,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -312,5 +312,6 @@ module Buildium
         value
       end
     end
+
   end
 end

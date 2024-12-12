@@ -17,8 +17,8 @@
 | **is_entry_permitted_by_resident** | **Boolean** | Indicates whether the resident has explicitly granted permission to enter the unit. Set this value to null if the resident has not provided a response. | [optional] |
 | **does_resident_have_pets** | **Boolean** | Indicates whether the resident has pets. Set this value to null if the resident has not provided a response. | [optional] |
 | **resident_entry_notes** | **String** | Notes provided by the resident specific to entering the premises. The value cannot exceed 65535 characters. | [optional] |
-| **share_with_rental_owners** | **Boolean** | Indicates whether the request is shared with rental owners (applies to requests for rentals only) | [optional] |
-| **share_with_board_members** | **Boolean** | Indicates whether the request is shared with board members (applies to requests for associations only) | [optional] |
+| **share_with_rental_owners** | **Boolean** | Indicates whether the request is shared with rental owners (applies to requests for rentals only). Defaults to False if not set or for association requests. | [optional] |
+| **share_with_board_members** | **Boolean** | Indicates whether the request is shared with board members (applies to requests for associations only). Defaults to False if not set or for rental requests. | [optional] |
 
 ## Example
 

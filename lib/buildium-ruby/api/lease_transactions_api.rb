@@ -20,23 +20,23 @@ module Buildium
       @api_client = api_client
     end
     # Create a payment (auto allocated)
-    # Creates a payment on the lease ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &gt; Application Settings &gt; Residents page in your account. If you'd like to specify the GL accounts the payment should apply to, please use the <a href=\"#operation/CreatePayment\">Create a payment</a> endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Creates a payment on the lease ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings > Application Settings > Residents page in your account. If you'd like to specify the GL accounts the payment should apply to, please use the <a href=\"#operation/CreatePayment\">Create a payment</a> endpoint.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] 
-    # @param lease_auto_allocated_payment_post_message [LeaseAutoAllocatedPaymentPostMessage] 
+    # @param create_lease_auto_allocated_payment_request [CreateLeaseAutoAllocatedPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
-    def create_lease_auto_allocated_payment(lease_id, lease_auto_allocated_payment_post_message, opts = {})
-      data, _status_code, _headers = create_lease_auto_allocated_payment_with_http_info(lease_id, lease_auto_allocated_payment_post_message, opts)
+    def create_lease_auto_allocated_payment(lease_id, create_lease_auto_allocated_payment_request, opts = {})
+      data, _status_code, _headers = create_lease_auto_allocated_payment_with_http_info(lease_id, create_lease_auto_allocated_payment_request, opts)
       data
     end
 
     # Create a payment (auto allocated)
-    # Creates a payment on the lease ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &amp;gt; Application Settings &amp;gt; Residents page in your account. If you&#39;d like to specify the GL accounts the payment should apply to, please use the &lt;a href&#x3D;\&quot;#operation/CreatePayment\&quot;&gt;Create a payment&lt;/a&gt; endpoint.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a payment on the lease ledger. Note that the recorded payment will be automatically allocated to the general ledger accounts based on the payment allocation settings. These settings can be found under the Settings &gt; Application Settings &gt; Residents page in your account. If you&#39;d like to specify the GL accounts the payment should apply to, please use the &lt;a href&#x3D;\&quot;#operation/CreatePayment\&quot;&gt;Create a payment&lt;/a&gt; endpoint.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
-    # @param lease_auto_allocated_payment_post_message [LeaseAutoAllocatedPaymentPostMessage] 
+    # @param create_lease_auto_allocated_payment_request [CreateLeaseAutoAllocatedPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
-    def create_lease_auto_allocated_payment_with_http_info(lease_id, lease_auto_allocated_payment_post_message, opts = {})
+    def create_lease_auto_allocated_payment_with_http_info(lease_id, create_lease_auto_allocated_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_auto_allocated_payment ...'
       end
@@ -44,9 +44,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_auto_allocated_payment"
       end
-      # verify the required parameter 'lease_auto_allocated_payment_post_message' is set
-      if @api_client.config.client_side_validation && lease_auto_allocated_payment_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_auto_allocated_payment_post_message' when calling LeaseTransactionsApi.create_lease_auto_allocated_payment"
+      # verify the required parameter 'create_lease_auto_allocated_payment_request' is set
+      if @api_client.config.client_side_validation && create_lease_auto_allocated_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_auto_allocated_payment_request' when calling LeaseTransactionsApi.create_lease_auto_allocated_payment"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/autoallocatedpayments'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -61,14 +61,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_auto_allocated_payment_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_auto_allocated_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
@@ -94,23 +94,23 @@ module Buildium
     end
 
     # Create a recurring charge
-    # Creates a recurring charge transaction that will post automatically on the specified lease ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Creates a recurring charge transaction that will post automatically on the specified lease ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] 
-    # @param charge_recurring_transaction_post_message [ChargeRecurringTransactionPostMessage] 
+    # @param create_ownership_accounts_charge_recurring_transaction_request [CreateOwnershipAccountsChargeRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseChargeRecurringTransactionMessage]
-    def create_lease_charge_recurring_transaction(lease_id, charge_recurring_transaction_post_message, opts = {})
-      data, _status_code, _headers = create_lease_charge_recurring_transaction_with_http_info(lease_id, charge_recurring_transaction_post_message, opts)
+    def create_lease_charge_recurring_transaction(lease_id, create_ownership_accounts_charge_recurring_transaction_request, opts = {})
+      data, _status_code, _headers = create_lease_charge_recurring_transaction_with_http_info(lease_id, create_ownership_accounts_charge_recurring_transaction_request, opts)
       data
     end
 
     # Create a recurring charge
-    # Creates a recurring charge transaction that will post automatically on the specified lease ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a recurring charge transaction that will post automatically on the specified lease ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
-    # @param charge_recurring_transaction_post_message [ChargeRecurringTransactionPostMessage] 
+    # @param create_ownership_accounts_charge_recurring_transaction_request [CreateOwnershipAccountsChargeRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseChargeRecurringTransactionMessage, Integer, Hash)>] LeaseChargeRecurringTransactionMessage data, response status code and response headers
-    def create_lease_charge_recurring_transaction_with_http_info(lease_id, charge_recurring_transaction_post_message, opts = {})
+    def create_lease_charge_recurring_transaction_with_http_info(lease_id, create_ownership_accounts_charge_recurring_transaction_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_charge_recurring_transaction ...'
       end
@@ -118,9 +118,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_charge_recurring_transaction"
       end
-      # verify the required parameter 'charge_recurring_transaction_post_message' is set
-      if @api_client.config.client_side_validation && charge_recurring_transaction_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'charge_recurring_transaction_post_message' when calling LeaseTransactionsApi.create_lease_charge_recurring_transaction"
+      # verify the required parameter 'create_ownership_accounts_charge_recurring_transaction_request' is set
+      if @api_client.config.client_side_validation && create_ownership_accounts_charge_recurring_transaction_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_accounts_charge_recurring_transaction_request' when calling LeaseTransactionsApi.create_lease_charge_recurring_transaction"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/recurringcharges'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -135,14 +135,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(charge_recurring_transaction_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_accounts_charge_recurring_transaction_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseChargeRecurringTransactionMessage'
@@ -168,23 +168,23 @@ module Buildium
     end
 
     # Create a credit
-    # Creates a lease ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Creates a lease ledger credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] The lease unique identifier.
-    # @param lease_ledger_credit_post_message [LeaseLedgerCreditPostMessage] 
+    # @param create_lease_credit_request [CreateLeaseCreditRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
-    def create_lease_credit(lease_id, lease_ledger_credit_post_message, opts = {})
-      data, _status_code, _headers = create_lease_credit_with_http_info(lease_id, lease_ledger_credit_post_message, opts)
+    def create_lease_credit(lease_id, create_lease_credit_request, opts = {})
+      data, _status_code, _headers = create_lease_credit_with_http_info(lease_id, create_lease_credit_request, opts)
       data
     end
 
     # Create a credit
-    # Creates a lease ledger credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a lease ledger credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] The lease unique identifier.
-    # @param lease_ledger_credit_post_message [LeaseLedgerCreditPostMessage] 
+    # @param create_lease_credit_request [CreateLeaseCreditRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
-    def create_lease_credit_with_http_info(lease_id, lease_ledger_credit_post_message, opts = {})
+    def create_lease_credit_with_http_info(lease_id, create_lease_credit_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_credit ...'
       end
@@ -192,9 +192,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_credit"
       end
-      # verify the required parameter 'lease_ledger_credit_post_message' is set
-      if @api_client.config.client_side_validation && lease_ledger_credit_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_ledger_credit_post_message' when calling LeaseTransactionsApi.create_lease_credit"
+      # verify the required parameter 'create_lease_credit_request' is set
+      if @api_client.config.client_side_validation && create_lease_credit_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_credit_request' when calling LeaseTransactionsApi.create_lease_credit"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/credits'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -209,14 +209,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_credit_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_credit_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
@@ -242,23 +242,23 @@ module Buildium
     end
 
     # Create a recurring credit
-    # Creates a recurring credit transaction on the specified lease ledger.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Creates a recurring credit transaction on the specified lease ledger.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] 
-    # @param credit_recurring_transaction_post_message [CreditRecurringTransactionPostMessage] 
+    # @param create_ownership_account_credit_recurring_transaction_request [CreateOwnershipAccountCreditRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseRecurringCreditMessage]
-    def create_lease_credit_recurring_transaction(lease_id, credit_recurring_transaction_post_message, opts = {})
-      data, _status_code, _headers = create_lease_credit_recurring_transaction_with_http_info(lease_id, credit_recurring_transaction_post_message, opts)
+    def create_lease_credit_recurring_transaction(lease_id, create_ownership_account_credit_recurring_transaction_request, opts = {})
+      data, _status_code, _headers = create_lease_credit_recurring_transaction_with_http_info(lease_id, create_ownership_account_credit_recurring_transaction_request, opts)
       data
     end
 
     # Create a recurring credit
-    # Creates a recurring credit transaction on the specified lease ledger.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a recurring credit transaction on the specified lease ledger.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
-    # @param credit_recurring_transaction_post_message [CreditRecurringTransactionPostMessage] 
+    # @param create_ownership_account_credit_recurring_transaction_request [CreateOwnershipAccountCreditRecurringTransactionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseRecurringCreditMessage, Integer, Hash)>] LeaseRecurringCreditMessage data, response status code and response headers
-    def create_lease_credit_recurring_transaction_with_http_info(lease_id, credit_recurring_transaction_post_message, opts = {})
+    def create_lease_credit_recurring_transaction_with_http_info(lease_id, create_ownership_account_credit_recurring_transaction_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_credit_recurring_transaction ...'
       end
@@ -266,9 +266,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_credit_recurring_transaction"
       end
-      # verify the required parameter 'credit_recurring_transaction_post_message' is set
-      if @api_client.config.client_side_validation && credit_recurring_transaction_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'credit_recurring_transaction_post_message' when calling LeaseTransactionsApi.create_lease_credit_recurring_transaction"
+      # verify the required parameter 'create_ownership_account_credit_recurring_transaction_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_credit_recurring_transaction_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_credit_recurring_transaction_request' when calling LeaseTransactionsApi.create_lease_credit_recurring_transaction"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/recurringcredits'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -283,14 +283,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(credit_recurring_transaction_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_credit_recurring_transaction_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseRecurringCreditMessage'
@@ -316,23 +316,23 @@ module Buildium
     end
 
     # Create a charge
-    # Creates a charge transaction on a specific lease ledger.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Creates a charge transaction on a specific lease ledger.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`  <br /><span class=\"permissionBlock\">Accounting > Bills</span> - `View` `Edit` In order to associate the charge to a bill using the BillId property, you must have this permission.
     # @param lease_id [Integer] 
-    # @param lease_charge_post_message [LeaseChargePostMessage] 
+    # @param create_lease_ledger_charge_request [CreateLeaseLedgerChargeRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<LeaseTransactionMessage>]
-    def create_lease_ledger_charge(lease_id, lease_charge_post_message, opts = {})
-      data, _status_code, _headers = create_lease_ledger_charge_with_http_info(lease_id, lease_charge_post_message, opts)
+    def create_lease_ledger_charge(lease_id, create_lease_ledger_charge_request, opts = {})
+      data, _status_code, _headers = create_lease_ledger_charge_with_http_info(lease_id, create_lease_ledger_charge_request, opts)
       data
     end
 
     # Create a charge
-    # Creates a charge transaction on a specific lease ledger.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a charge transaction on a specific lease ledger.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;  &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bills&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; In order to associate the charge to a bill using the BillId property, you must have this permission.
     # @param lease_id [Integer] 
-    # @param lease_charge_post_message [LeaseChargePostMessage] 
+    # @param create_lease_ledger_charge_request [CreateLeaseLedgerChargeRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<LeaseTransactionMessage>, Integer, Hash)>] Array<LeaseTransactionMessage> data, response status code and response headers
-    def create_lease_ledger_charge_with_http_info(lease_id, lease_charge_post_message, opts = {})
+    def create_lease_ledger_charge_with_http_info(lease_id, create_lease_ledger_charge_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_ledger_charge ...'
       end
@@ -340,9 +340,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_ledger_charge"
       end
-      # verify the required parameter 'lease_charge_post_message' is set
-      if @api_client.config.client_side_validation && lease_charge_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_charge_post_message' when calling LeaseTransactionsApi.create_lease_ledger_charge"
+      # verify the required parameter 'create_lease_ledger_charge_request' is set
+      if @api_client.config.client_side_validation && create_lease_ledger_charge_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_ledger_charge_request' when calling LeaseTransactionsApi.create_lease_ledger_charge"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/charges'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -357,14 +357,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_charge_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_ledger_charge_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Array<LeaseTransactionMessage>'
@@ -390,23 +390,23 @@ module Buildium
     end
 
     # Create a deposit withholding
-    # Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Ledger</span> - `View` `Edit`             <br /><span class=\"permissionBlock\">Accounting &gt; General Ledger Accounts</span> - `View`
+    # Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease Ledger</span> - `View` `Edit`             <br /><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
     # @param lease_id [Integer] 
-    # @param lease_ledger_deposit_withholding_post_message [LeaseLedgerDepositWithholdingPostMessage] 
+    # @param create_lease_ledger_deposit_withholding_request [CreateLeaseLedgerDepositWithholdingRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
-    def create_lease_ledger_deposit_withholding(lease_id, lease_ledger_deposit_withholding_post_message, opts = {})
-      data, _status_code, _headers = create_lease_ledger_deposit_withholding_with_http_info(lease_id, lease_ledger_deposit_withholding_post_message, opts)
+    def create_lease_ledger_deposit_withholding(lease_id, create_lease_ledger_deposit_withholding_request, opts = {})
+      data, _status_code, _headers = create_lease_ledger_deposit_withholding_with_http_info(lease_id, create_lease_ledger_deposit_withholding_request, opts)
       data
     end
 
     # Create a deposit withholding
-    # Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease Ledger&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;             &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Withholds a resident deposit by reallocating the funds from a liability account to an income account to cover an expense(s).             &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease Ledger&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;             &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
-    # @param lease_ledger_deposit_withholding_post_message [LeaseLedgerDepositWithholdingPostMessage] 
+    # @param create_lease_ledger_deposit_withholding_request [CreateLeaseLedgerDepositWithholdingRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
-    def create_lease_ledger_deposit_withholding_with_http_info(lease_id, lease_ledger_deposit_withholding_post_message, opts = {})
+    def create_lease_ledger_deposit_withholding_with_http_info(lease_id, create_lease_ledger_deposit_withholding_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_ledger_deposit_withholding ...'
       end
@@ -414,9 +414,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_ledger_deposit_withholding"
       end
-      # verify the required parameter 'lease_ledger_deposit_withholding_post_message' is set
-      if @api_client.config.client_side_validation && lease_ledger_deposit_withholding_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_ledger_deposit_withholding_post_message' when calling LeaseTransactionsApi.create_lease_ledger_deposit_withholding"
+      # verify the required parameter 'create_lease_ledger_deposit_withholding_request' is set
+      if @api_client.config.client_side_validation && create_lease_ledger_deposit_withholding_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_ledger_deposit_withholding_request' when calling LeaseTransactionsApi.create_lease_ledger_deposit_withholding"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/applieddeposits'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -431,14 +431,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_deposit_withholding_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_ledger_deposit_withholding_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
@@ -464,23 +464,23 @@ module Buildium
     end
 
     # Create a refund
-    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Creates a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param lease_id [Integer] 
-    # @param lease_ledger_refund_post_message [LeaseLedgerRefundPostMessage] 
+    # @param create_lease_ledger_refund_request [CreateLeaseLedgerRefundRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseLedgerRefundMessage]
-    def create_lease_ledger_refund(lease_id, lease_ledger_refund_post_message, opts = {})
-      data, _status_code, _headers = create_lease_ledger_refund_with_http_info(lease_id, lease_ledger_refund_post_message, opts)
+    def create_lease_ledger_refund(lease_id, create_lease_ledger_refund_request, opts = {})
+      data, _status_code, _headers = create_lease_ledger_refund_with_http_info(lease_id, create_lease_ledger_refund_request, opts)
       data
     end
 
     # Create a refund
-    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
-    # @param lease_ledger_refund_post_message [LeaseLedgerRefundPostMessage] 
+    # @param create_lease_ledger_refund_request [CreateLeaseLedgerRefundRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseLedgerRefundMessage, Integer, Hash)>] LeaseLedgerRefundMessage data, response status code and response headers
-    def create_lease_ledger_refund_with_http_info(lease_id, lease_ledger_refund_post_message, opts = {})
+    def create_lease_ledger_refund_with_http_info(lease_id, create_lease_ledger_refund_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_ledger_refund ...'
       end
@@ -488,9 +488,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_ledger_refund"
       end
-      # verify the required parameter 'lease_ledger_refund_post_message' is set
-      if @api_client.config.client_side_validation && lease_ledger_refund_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_ledger_refund_post_message' when calling LeaseTransactionsApi.create_lease_ledger_refund"
+      # verify the required parameter 'create_lease_ledger_refund_request' is set
+      if @api_client.config.client_side_validation && create_lease_ledger_refund_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_ledger_refund_request' when calling LeaseTransactionsApi.create_lease_ledger_refund"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/refunds'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -505,14 +505,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_refund_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_ledger_refund_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseLedgerRefundMessage'
@@ -538,23 +538,23 @@ module Buildium
     end
 
     # Create a recurring payment
-    # Creates a recurring payment that will post automatically on the specified lease ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View` `Edit`
+    # Creates a recurring payment that will post automatically on the specified lease ledger.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease Transactions</span> - `View` `Edit`
     # @param lease_id [Integer] 
-    # @param payment_recurring_transaction_post_message [PaymentRecurringTransactionPostMessage] 
+    # @param create_ownership_account_recurring_payment_request [CreateOwnershipAccountRecurringPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseRecurringPaymentMessage]
-    def create_lease_recurring_payment(lease_id, payment_recurring_transaction_post_message, opts = {})
-      data, _status_code, _headers = create_lease_recurring_payment_with_http_info(lease_id, payment_recurring_transaction_post_message, opts)
+    def create_lease_recurring_payment(lease_id, create_ownership_account_recurring_payment_request, opts = {})
+      data, _status_code, _headers = create_lease_recurring_payment_with_http_info(lease_id, create_ownership_account_recurring_payment_request, opts)
       data
     end
 
     # Create a recurring payment
-    # Creates a recurring payment that will post automatically on the specified lease ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a recurring payment that will post automatically on the specified lease ledger.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
-    # @param payment_recurring_transaction_post_message [PaymentRecurringTransactionPostMessage] 
+    # @param create_ownership_account_recurring_payment_request [CreateOwnershipAccountRecurringPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseRecurringPaymentMessage, Integer, Hash)>] LeaseRecurringPaymentMessage data, response status code and response headers
-    def create_lease_recurring_payment_with_http_info(lease_id, payment_recurring_transaction_post_message, opts = {})
+    def create_lease_recurring_payment_with_http_info(lease_id, create_ownership_account_recurring_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_recurring_payment ...'
       end
@@ -562,9 +562,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_recurring_payment"
       end
-      # verify the required parameter 'payment_recurring_transaction_post_message' is set
-      if @api_client.config.client_side_validation && payment_recurring_transaction_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'payment_recurring_transaction_post_message' when calling LeaseTransactionsApi.create_lease_recurring_payment"
+      # verify the required parameter 'create_ownership_account_recurring_payment_request' is set
+      if @api_client.config.client_side_validation && create_ownership_account_recurring_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_ownership_account_recurring_payment_request' when calling LeaseTransactionsApi.create_lease_recurring_payment"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/recurringpayments'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -579,14 +579,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(payment_recurring_transaction_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_ownership_account_recurring_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseRecurringPaymentMessage'
@@ -612,23 +612,23 @@ module Buildium
     end
 
     # Create a payment reversal
-    # Reverses a lease ledger payment. Note, this action can only be taken on a payment that has been deposited.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View` `Edit`
+    # Reverses a lease ledger payment. Note, this action can only be taken on a payment that has been deposited.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View` `Edit`
     # @param lease_id [Integer] The lease unique identifier.
-    # @param lease_ledger_reverse_payment_post_message [LeaseLedgerReversePaymentPostMessage] 
+    # @param create_lease_reverse_payment_request [CreateLeaseReversePaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
-    def create_lease_reverse_payment(lease_id, lease_ledger_reverse_payment_post_message, opts = {})
-      data, _status_code, _headers = create_lease_reverse_payment_with_http_info(lease_id, lease_ledger_reverse_payment_post_message, opts)
+    def create_lease_reverse_payment(lease_id, create_lease_reverse_payment_request, opts = {})
+      data, _status_code, _headers = create_lease_reverse_payment_with_http_info(lease_id, create_lease_reverse_payment_request, opts)
       data
     end
 
     # Create a payment reversal
-    # Reverses a lease ledger payment. Note, this action can only be taken on a payment that has been deposited.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Reverses a lease ledger payment. Note, this action can only be taken on a payment that has been deposited.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] The lease unique identifier.
-    # @param lease_ledger_reverse_payment_post_message [LeaseLedgerReversePaymentPostMessage] 
+    # @param create_lease_reverse_payment_request [CreateLeaseReversePaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
-    def create_lease_reverse_payment_with_http_info(lease_id, lease_ledger_reverse_payment_post_message, opts = {})
+    def create_lease_reverse_payment_with_http_info(lease_id, create_lease_reverse_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_lease_reverse_payment ...'
       end
@@ -636,9 +636,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_lease_reverse_payment"
       end
-      # verify the required parameter 'lease_ledger_reverse_payment_post_message' is set
-      if @api_client.config.client_side_validation && lease_ledger_reverse_payment_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_ledger_reverse_payment_post_message' when calling LeaseTransactionsApi.create_lease_reverse_payment"
+      # verify the required parameter 'create_lease_reverse_payment_request' is set
+      if @api_client.config.client_side_validation && create_lease_reverse_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_reverse_payment_request' when calling LeaseTransactionsApi.create_lease_reverse_payment"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/reversepayments'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -653,14 +653,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_reverse_payment_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_reverse_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
@@ -686,23 +686,23 @@ module Buildium
     end
 
     # Create a payment
-    # Creates a lease ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Creates a lease ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] The lease unique identifier.
-    # @param lease_ledger_payment_post_message [LeaseLedgerPaymentPostMessage] 
+    # @param create_payment_request [CreatePaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
-    def create_payment(lease_id, lease_ledger_payment_post_message, opts = {})
-      data, _status_code, _headers = create_payment_with_http_info(lease_id, lease_ledger_payment_post_message, opts)
+    def create_payment(lease_id, create_payment_request, opts = {})
+      data, _status_code, _headers = create_payment_with_http_info(lease_id, create_payment_request, opts)
       data
     end
 
     # Create a payment
-    # Creates a lease ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates a lease ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] The lease unique identifier.
-    # @param lease_ledger_payment_post_message [LeaseLedgerPaymentPostMessage] 
+    # @param create_payment_request [CreatePaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
-    def create_payment_with_http_info(lease_id, lease_ledger_payment_post_message, opts = {})
+    def create_payment_with_http_info(lease_id, create_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.create_payment ...'
       end
@@ -710,9 +710,9 @@ module Buildium
       if @api_client.config.client_side_validation && lease_id.nil?
         fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.create_payment"
       end
-      # verify the required parameter 'lease_ledger_payment_post_message' is set
-      if @api_client.config.client_side_validation && lease_ledger_payment_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_ledger_payment_post_message' when calling LeaseTransactionsApi.create_payment"
+      # verify the required parameter 'create_payment_request' is set
+      if @api_client.config.client_side_validation && create_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_payment_request' when calling LeaseTransactionsApi.create_payment"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/payments'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
@@ -727,14 +727,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_payment_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
@@ -759,8 +759,158 @@ module Buildium
       return data, status_code, headers
     end
 
+    # Retrieve all charges
+    # Retrieves all the charges for a specific lease.  <br /><br /><h4>Required permissions(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View`
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
+    # @option opts [Date] :transactiondateto Filters results to any lease transaction whose end date is less than or equal to the specified value.
+    # @option opts [Array<Integer>] :billids Filters results to any charge that has been associated to the indicated bill ids.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<LeaseChargeMessage>]
+    def get_all_charges(lease_id, opts = {})
+      data, _status_code, _headers = get_all_charges_with_http_info(lease_id, opts)
+      data
+    end
+
+    # Retrieve all charges
+    # Retrieves all the charges for a specific lease.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permissions(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
+    # @option opts [Date] :transactiondateto Filters results to any lease transaction whose end date is less than or equal to the specified value.
+    # @option opts [Array<Integer>] :billids Filters results to any charge that has been associated to the indicated bill ids.
+    # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
+    # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
+    # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
+    # @return [Array<(Array<LeaseChargeMessage>, Integer, Hash)>] Array<LeaseChargeMessage> data, response status code and response headers
+    def get_all_charges_with_http_info(lease_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.get_all_charges ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.get_all_charges"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/charges'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'transactiondatefrom'] = opts[:'transactiondatefrom'] if !opts[:'transactiondatefrom'].nil?
+      query_params[:'transactiondateto'] = opts[:'transactiondateto'] if !opts[:'transactiondateto'].nil?
+      query_params[:'billids'] = @api_client.build_collection_param(opts[:'billids'], :multi) if !opts[:'billids'].nil?
+      query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
+      query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<LeaseChargeMessage>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeaseTransactionsApi.get_all_charges",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeaseTransactionsApi#get_all_charges\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Retrieve a charge
+    # Retrieves a specific lease charge.  <br /><br /><h4>Required permissions(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View`
+    # @param lease_id [Integer] 
+    # @param charge_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseChargeMessage]
+    def get_charge_by_id(lease_id, charge_id, opts = {})
+      data, _status_code, _headers = get_charge_by_id_with_http_info(lease_id, charge_id, opts)
+      data
+    end
+
+    # Retrieve a charge
+    # Retrieves a specific lease charge.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permissions(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param charge_id [Integer] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseChargeMessage, Integer, Hash)>] LeaseChargeMessage data, response status code and response headers
+    def get_charge_by_id_with_http_info(lease_id, charge_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.get_charge_by_id ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.get_charge_by_id"
+      end
+      # verify the required parameter 'charge_id' is set
+      if @api_client.config.client_side_validation && charge_id.nil?
+        fail ArgumentError, "Missing the required parameter 'charge_id' when calling LeaseTransactionsApi.get_charge_by_id"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/charges/{chargeId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'chargeId' + '}', CGI.escape(charge_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseChargeMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeaseTransactionsApi.get_charge_by_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeaseTransactionsApi#get_charge_by_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Retrieve a recurring charge
-    # Retrieves a recurring charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+    # Retrieves a recurring charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View`
     # @param lease_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -771,7 +921,7 @@ module Buildium
     end
 
     # Retrieve a recurring charge
-    # Retrieves a recurring charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a recurring charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -829,7 +979,7 @@ module Buildium
     end
 
     # Retrieve a refund
-    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting &gt; Bank Accounts</span> - `View`
+    # Retrieves a refund.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Accounting > Bank Accounts</span> - `View`
     # @param lease_id [Integer] 
     # @param refund_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -840,7 +990,7 @@ module Buildium
     end
 
     # Retrieve a refund
-    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &amp;gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a refund.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; Bank Accounts&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param refund_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -898,7 +1048,7 @@ module Buildium
     end
 
     # Retrieve a lease transaction
-    # Retrieves a specific lease transaction.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View`
+    # Retrieves a specific lease transaction.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease Transactions</span> - `View`
     # @param lease_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -909,7 +1059,7 @@ module Buildium
     end
 
     # Retrieve a lease transaction
-    # Retrieves a specific lease transaction.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific lease transaction.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -967,7 +1117,7 @@ module Buildium
     end
 
     # Retrieve all lease transactions
-    # Retrieves all the transactions for a specific lease.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+    # Retrieves all the transactions for a specific lease.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View`
     # @param lease_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
@@ -983,7 +1133,7 @@ module Buildium
     end
 
     # Retrieve all lease transactions
-    # Retrieves all the transactions for a specific lease.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all the transactions for a specific lease.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Date] :transactiondatefrom Filters results to any lease transaction whose start date is greater than or equal to the specified value.
@@ -1052,7 +1202,7 @@ module Buildium
     end
 
     # Retrieve all outstanding balances
-    # Retrieves a list of leases that have outstanding balances. Leases with a zero or credit balance will not be returned in the results.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Outstanding Balances</span> - `View`
+    # Retrieves a list of leases that have outstanding balances. Leases with a zero or credit balance will not be returned in the results.               <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Outstanding Balances</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype 
     # @option opts [Integer] :entityid 
@@ -1071,7 +1221,7 @@ module Buildium
     end
 
     # Retrieve all outstanding balances
-    # Retrieves a list of leases that have outstanding balances. Leases with a zero or credit balance will not be returned in the results.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Outstanding Balances&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of leases that have outstanding balances. Leases with a zero or credit balance will not be returned in the results.               &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Outstanding Balances&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype 
     # @option opts [Integer] :entityid 
@@ -1159,7 +1309,7 @@ module Buildium
     end
 
     # Retrieve a recurring credit
-    # Retrieves a recurring credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+    # Retrieves a recurring credit.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View`
     # @param lease_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1170,7 +1320,7 @@ module Buildium
     end
 
     # Retrieve a recurring credit
-    # Retrieves a recurring credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a recurring credit.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param transaction_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1228,7 +1378,7 @@ module Buildium
     end
 
     # Retrieve all recurring transactions
-    # Retrieves all recurring transactions for a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View`
+    # Retrieves all recurring transactions for a given lease.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View`
     # @param lease_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -1241,7 +1391,7 @@ module Buildium
     end
 
     # Retrieve all recurring transactions
-    # Retrieves all recurring transactions for a given lease.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all recurring transactions for a given lease.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -1300,7 +1450,7 @@ module Buildium
     end
 
     # Retrieve a recurring payment
-    # Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease Transactions</span> - `View`
+    # Retrieves a recurring payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease Transactions</span> - `View`
     # @param lease_id [Integer] 
     # @param payment_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1311,7 +1461,7 @@ module Buildium
     end
 
     # Retrieve a recurring payment
-    # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a recurring payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease Transactions&lt;/span&gt; - &#x60;View&#x60;
     # @param lease_id [Integer] 
     # @param payment_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -1368,26 +1518,106 @@ module Buildium
       return data, status_code, headers
     end
 
-    # Update a charge
-    # Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Update a deposit withholding
+    # Updates a resident deposit withholding.              <br /><br /><h4>Required permission(s):</h4><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease Ledger</span> - `View` `Edit`              <br /><span class=\"permissionBlock\">Accounting > General Ledger Accounts</span> - `View`
     # @param lease_id [Integer] 
-    # @param charge_id [Integer] 
-    # @param lease_charge_put_message [LeaseChargePutMessage] 
+    # @param deposit_id [Integer] 
+    # @param update_deposit_withholding_request [UpdateDepositWithholdingRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
-    def update_lease_charge(lease_id, charge_id, lease_charge_put_message, opts = {})
-      data, _status_code, _headers = update_lease_charge_with_http_info(lease_id, charge_id, lease_charge_put_message, opts)
+    def update_deposit_withholding(lease_id, deposit_id, update_deposit_withholding_request, opts = {})
+      data, _status_code, _headers = update_deposit_withholding_with_http_info(lease_id, deposit_id, update_deposit_withholding_request, opts)
+      data
+    end
+
+    # Update a deposit withholding
+    # Updates a resident deposit withholding.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease Ledger&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;              &lt;br /&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Accounting &gt; General Ledger Accounts&lt;/span&gt; - &#x60;View&#x60;
+    # @param lease_id [Integer] 
+    # @param deposit_id [Integer] 
+    # @param update_deposit_withholding_request [UpdateDepositWithholdingRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
+    def update_deposit_withholding_with_http_info(lease_id, deposit_id, update_deposit_withholding_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.update_deposit_withholding ...'
+      end
+      # verify the required parameter 'lease_id' is set
+      if @api_client.config.client_side_validation && lease_id.nil?
+        fail ArgumentError, "Missing the required parameter 'lease_id' when calling LeaseTransactionsApi.update_deposit_withholding"
+      end
+      # verify the required parameter 'deposit_id' is set
+      if @api_client.config.client_side_validation && deposit_id.nil?
+        fail ArgumentError, "Missing the required parameter 'deposit_id' when calling LeaseTransactionsApi.update_deposit_withholding"
+      end
+      # verify the required parameter 'update_deposit_withholding_request' is set
+      if @api_client.config.client_side_validation && update_deposit_withholding_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_deposit_withholding_request' when calling LeaseTransactionsApi.update_deposit_withholding"
+      end
+      # resource path
+      local_var_path = '/v1/leases/{leaseId}/applieddeposits/{depositId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'depositId' + '}', CGI.escape(deposit_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_deposit_withholding_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['clientId', 'clientSecret']
+
+      new_options = opts.merge(
+        :operation => :"LeaseTransactionsApi.update_deposit_withholding",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LeaseTransactionsApi#update_deposit_withholding\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a charge
+    # Updates a charge.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`
+    # @param lease_id [Integer] 
+    # @param charge_id [Integer] 
+    # @param update_lease_charge_request [UpdateLeaseChargeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [LeaseTransactionMessage]
+    def update_lease_charge(lease_id, charge_id, update_lease_charge_request, opts = {})
+      data, _status_code, _headers = update_lease_charge_with_http_info(lease_id, charge_id, update_lease_charge_request, opts)
       data
     end
 
     # Update a charge
-    # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a charge.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
     # @param charge_id [Integer] 
-    # @param lease_charge_put_message [LeaseChargePutMessage] 
+    # @param update_lease_charge_request [UpdateLeaseChargeRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
-    def update_lease_charge_with_http_info(lease_id, charge_id, lease_charge_put_message, opts = {})
+    def update_lease_charge_with_http_info(lease_id, charge_id, update_lease_charge_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.update_lease_charge ...'
       end
@@ -1399,9 +1629,9 @@ module Buildium
       if @api_client.config.client_side_validation && charge_id.nil?
         fail ArgumentError, "Missing the required parameter 'charge_id' when calling LeaseTransactionsApi.update_lease_charge"
       end
-      # verify the required parameter 'lease_charge_put_message' is set
-      if @api_client.config.client_side_validation && lease_charge_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_charge_put_message' when calling LeaseTransactionsApi.update_lease_charge"
+      # verify the required parameter 'update_lease_charge_request' is set
+      if @api_client.config.client_side_validation && update_lease_charge_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_charge_request' when calling LeaseTransactionsApi.update_lease_charge"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/charges/{chargeId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'chargeId' + '}', CGI.escape(charge_id.to_s))
@@ -1416,14 +1646,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_charge_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_charge_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'
@@ -1449,25 +1679,25 @@ module Buildium
     end
 
     # Update a payment
-    # Updates a ledger payment.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Lease transactions</span> - `View` `Edit`
+    # Updates a ledger payment. Each line item must have a unique general ledger account identifier. PaymentMethod, Date, Memo, and the total Amount cannot be changed for payments with a PaymentMethod of `BuildiumEFT`, `BuildiumCC` or `RetailCash`.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Lease transactions</span> - `View` `Edit`
     # @param lease_id [Integer] 
     # @param payment_id [Integer] 
-    # @param lease_ledger_payment_put_message [LeaseLedgerPaymentPutMessage] 
+    # @param update_lease_ledger_payment_request [UpdateLeaseLedgerPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [LeaseTransactionMessage]
-    def update_lease_ledger_payment(lease_id, payment_id, lease_ledger_payment_put_message, opts = {})
-      data, _status_code, _headers = update_lease_ledger_payment_with_http_info(lease_id, payment_id, lease_ledger_payment_put_message, opts)
+    def update_lease_ledger_payment(lease_id, payment_id, update_lease_ledger_payment_request, opts = {})
+      data, _status_code, _headers = update_lease_ledger_payment_with_http_info(lease_id, payment_id, update_lease_ledger_payment_request, opts)
       data
     end
 
     # Update a payment
-    # Updates a ledger payment.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a ledger payment. Each line item must have a unique general ledger account identifier. PaymentMethod, Date, Memo, and the total Amount cannot be changed for payments with a PaymentMethod of &#x60;BuildiumEFT&#x60;, &#x60;BuildiumCC&#x60; or &#x60;RetailCash&#x60;.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Lease transactions&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param lease_id [Integer] 
     # @param payment_id [Integer] 
-    # @param lease_ledger_payment_put_message [LeaseLedgerPaymentPutMessage] 
+    # @param update_lease_ledger_payment_request [UpdateLeaseLedgerPaymentRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(LeaseTransactionMessage, Integer, Hash)>] LeaseTransactionMessage data, response status code and response headers
-    def update_lease_ledger_payment_with_http_info(lease_id, payment_id, lease_ledger_payment_put_message, opts = {})
+    def update_lease_ledger_payment_with_http_info(lease_id, payment_id, update_lease_ledger_payment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: LeaseTransactionsApi.update_lease_ledger_payment ...'
       end
@@ -1479,9 +1709,9 @@ module Buildium
       if @api_client.config.client_side_validation && payment_id.nil?
         fail ArgumentError, "Missing the required parameter 'payment_id' when calling LeaseTransactionsApi.update_lease_ledger_payment"
       end
-      # verify the required parameter 'lease_ledger_payment_put_message' is set
-      if @api_client.config.client_side_validation && lease_ledger_payment_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'lease_ledger_payment_put_message' when calling LeaseTransactionsApi.update_lease_ledger_payment"
+      # verify the required parameter 'update_lease_ledger_payment_request' is set
+      if @api_client.config.client_side_validation && update_lease_ledger_payment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_ledger_payment_request' when calling LeaseTransactionsApi.update_lease_ledger_payment"
       end
       # resource path
       local_var_path = '/v1/leases/{leaseId}/payments/{paymentId}'.sub('{' + 'leaseId' + '}', CGI.escape(lease_id.to_s)).sub('{' + 'paymentId' + '}', CGI.escape(payment_id.to_s))
@@ -1496,14 +1726,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(lease_ledger_payment_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_ledger_payment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'LeaseTransactionMessage'

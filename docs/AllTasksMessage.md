@@ -6,13 +6,13 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Task unique identifier. | [optional] |
 | **task_type** | **String** | The task type. | [optional] |
-| **category** | [**TaskCategoryResponseMessage**](TaskCategoryResponseMessage.md) |  | [optional] |
+| **category** | [**AllTasksMessageCategory**](AllTasksMessageCategory.md) |  | [optional] |
 | **title** | **String** | Task title. | [optional] |
 | **description** | **String** | Task description. | [optional] |
-| **property** | [**PropertyMessage**](PropertyMessage.md) |  | [optional] |
+| **property** | [**AllTasksMessageProperty**](AllTasksMessageProperty.md) |  | [optional] |
 | **unit_id** | **Integer** | The unit unique identifier associated with the task. | [optional] |
-| **unit_agreement** | [**UnitAgreementMessage**](UnitAgreementMessage.md) |  | [optional] |
-| **requested_by_user_entity** | [**RequestedByUserEntityMessage**](RequestedByUserEntityMessage.md) |  | [optional] |
+| **unit_agreement** | [**AllTasksMessageUnitAgreement**](AllTasksMessageUnitAgreement.md) |  | [optional] |
+| **requested_by_user_entity** | [**AllTasksMessageRequestedByUserEntity**](AllTasksMessageRequestedByUserEntity.md) |  | [optional] |
 | **assigned_to_user_id** | **Integer** | The unique identifier of the staff user assigned to the task. | [optional] |
 | **task_status** | **String** | Task status. | [optional] |
 | **priority** | **String** | Task priority. | [optional] |

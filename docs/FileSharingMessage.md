@@ -4,18 +4,18 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **account** | [**FileSharingAccountMessage**](FileSharingAccountMessage.md) |  | [optional] |
-| **rental** | [**FileSharingRentalMessage**](FileSharingRentalMessage.md) |  | [optional] |
-| **rental_unit** | [**FileSharingRentalUnitMesage**](FileSharingRentalUnitMesage.md) |  | [optional] |
-| **lease** | [**FileSharingLeaseMessage**](FileSharingLeaseMessage.md) |  | [optional] |
-| **tenant** | [**FileSharingTenantMessage**](FileSharingTenantMessage.md) |  | [optional] |
-| **rental_owner** | [**FileSharingRentalOwnerMessage**](FileSharingRentalOwnerMessage.md) |  | [optional] |
-| **association** | [**FileSharingAssociationMessage**](FileSharingAssociationMessage.md) |  | [optional] |
-| **association_unit** | [**FileSharingAssociationUnitMessage**](FileSharingAssociationUnitMessage.md) |  | [optional] |
-| **ownership_account** | [**FileSharingOwnershipAccountMessage**](FileSharingOwnershipAccountMessage.md) |  | [optional] |
-| **association_owner** | [**FileSharingAssociationOwnerMessage**](FileSharingAssociationOwnerMessage.md) |  | [optional] |
-| **vendor** | [**FileSharingVendorMessage**](FileSharingVendorMessage.md) |  | [optional] |
-| **committee** | [**FileSharingCommitteeMessage**](FileSharingCommitteeMessage.md) |  | [optional] |
+| **account** | [**FileSharingMessageAccount**](FileSharingMessageAccount.md) |  | [optional] |
+| **rental** | [**FileSharingMessageRental**](FileSharingMessageRental.md) |  | [optional] |
+| **rental_unit** | [**FileSharingMessageRentalUnit**](FileSharingMessageRentalUnit.md) |  | [optional] |
+| **lease** | [**FileSharingMessageLease**](FileSharingMessageLease.md) |  | [optional] |
+| **tenant** | [**FileSharingMessageTenant**](FileSharingMessageTenant.md) |  | [optional] |
+| **rental_owner** | [**FileSharingMessageRentalOwner**](FileSharingMessageRentalOwner.md) |  | [optional] |
+| **association** | [**FileSharingMessageAssociation**](FileSharingMessageAssociation.md) |  | [optional] |
+| **association_unit** | [**FileSharingMessageAssociationUnit**](FileSharingMessageAssociationUnit.md) |  | [optional] |
+| **ownership_account** | [**FileSharingMessageOwnershipAccount**](FileSharingMessageOwnershipAccount.md) |  | [optional] |
+| **association_owner** | [**FileSharingMessageAssociationOwner**](FileSharingMessageAssociationOwner.md) |  | [optional] |
+| **vendor** | [**FileSharingMessageVendor**](FileSharingMessageVendor.md) |  | [optional] |
+| **committee** | [**FileSharingMessageCommittee**](FileSharingMessageCommittee.md) |  | [optional] |
 
 ## Example
 

@@ -1,0 +1,19 @@
+# To run the container and rebuild the gem:
+# docker-compose run --rm app bash
+# > bin/rebuild.sh
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    environment:
+      - BUNDLE_PATH=/usr/local/bundle
+      - BUNDLE_APP_CONFIG=/usr/local/bundle
+    network_mode: bridge
+
+volumes:
+  bundle_cache:  # Persists installed gems between container runs

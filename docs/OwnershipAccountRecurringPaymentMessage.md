@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | The unique identifier of the recurring payment schedule. | [optional] |
 | **ownership_account_id** | **Integer** | The unique identifier of the ownership account that the recurring payment will be applied to. | [optional] |
-| **payer** | [**PayeeMessage**](PayeeMessage.md) |  | [optional] |
+| **payer** | [**LeaseRecurringPaymentMessagePayer**](LeaseRecurringPaymentMessagePayer.md) |  | [optional] |
 | **payment_method** | **String** | The method of payment for the transaction. | [optional] |
 | **lines** | [**Array&lt;RecurringTransactionLineMessage&gt;**](RecurringTransactionLineMessage.md) | Line items describing how the payment is to be allocated when the recurring transaction is processed. | [optional] |
 | **amount** | **Float** | The total amount of the recurring payment based on sum of the &#x60;Lines.Amount&#x60;. | [optional] |

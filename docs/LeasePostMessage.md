@@ -13,8 +13,8 @@
 | **tenant_ids** | **Array&lt;Integer&gt;** | List of identifiers for existing tenants to add to the lease. The list cannot exceed five tenants. | [optional] |
 | **applicant_ids** | **Array&lt;Integer&gt;** | List of identifiers for applicants to become tenants on the lease. Identifiers must refer to applicants with a Status of &#x60;Approved&#x60;. The list cannot exceed five applicants. | [optional] |
 | **cosigners** | [**Array&lt;LeaseCosignerPostMessage&gt;**](LeaseCosignerPostMessage.md) | List of the cosigners on the lease. | [optional] |
-| **rent** | [**LeaseRentPostMessage**](LeaseRentPostMessage.md) |  | [optional] |
-| **security_deposit** | [**LeaseSecurityDepositPostMessage**](LeaseSecurityDepositPostMessage.md) |  | [optional] |
+| **rent** | [**LeasePostMessageRent**](LeasePostMessageRent.md) |  | [optional] |
+| **security_deposit** | [**LeasePostMessageSecurityDeposit**](LeasePostMessageSecurityDeposit.md) |  | [optional] |
 | **prorated_first_month_rent** | **Float** | Prorated rent charged for the first month of the lease. Must be null if the lease begins on the first day of a month. | [optional] |
 | **prorated_last_month_rent** | **Float** | Prorated rent charged for the last month of the lease. Must be null if the lease ends on the last day of a month. | [optional] |
 

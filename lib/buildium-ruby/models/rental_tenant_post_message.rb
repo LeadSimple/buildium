@@ -104,13 +104,13 @@ module Buildium
         :'last_name' => :'String',
         :'email' => :'String',
         :'alternate_email' => :'String',
-        :'phone_numbers' => :'PhoneNumbersMessage',
+        :'phone_numbers' => :'AssociationTenantPostMessagePhoneNumbers',
         :'date_of_birth' => :'Date',
         :'comment' => :'String',
         :'tax_id' => :'String',
-        :'emergency_contact' => :'SaveEmergencyContactMessage',
-        :'address' => :'SaveAddressMessage',
-        :'alternate_address' => :'SaveAddressMessage',
+        :'emergency_contact' => :'AssociationTenantPostMessageEmergencyContact',
+        :'address' => :'AssociationTenantPostMessagePrimaryAddress',
+        :'alternate_address' => :'AssociationTenantPostMessageAlternateAddress',
         :'mailing_preference' => :'String'
       }
     end
@@ -201,8 +201,16 @@ module Buildium
         invalid_properties.push('invalid value for "first_name", first_name cannot be nil.')
       end
 
+      if @first_name.to_s.length < 1
+        invalid_properties.push('invalid value for "first_name", the character length must be great than or equal to 1.')
+      end
+
       if @last_name.nil?
         invalid_properties.push('invalid value for "last_name", last_name cannot be nil.')
+      end
+
+      if @last_name.to_s.length < 1
+        invalid_properties.push('invalid value for "last_name", the character length must be great than or equal to 1.')
       end
 
       if @address.nil?
@@ -217,11 +225,41 @@ module Buildium
     def valid?
       return false if @lease_id.nil?
       return false if @first_name.nil?
+      return false if @first_name.to_s.length < 1
       return false if @last_name.nil?
+      return false if @last_name.to_s.length < 1
       return false if @address.nil?
       mailing_preference_validator = EnumAttributeValidator.new('String', ["PrimaryAddress", "AlternateAddress"])
       return false unless mailing_preference_validator.valid?(@mailing_preference)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] first_name Value to be assigned
+    def first_name=(first_name)
+      if first_name.nil?
+        fail ArgumentError, 'first_name cannot be nil'
+      end
+
+      if first_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "first_name", the character length must be great than or equal to 1.'
+      end
+
+      @first_name = first_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] last_name Value to be assigned
+    def last_name=(last_name)
+      if last_name.nil?
+        fail ArgumentError, 'last_name cannot be nil'
+      end
+
+      if last_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "last_name", the character length must be great than or equal to 1.'
+      end
+
+      @last_name = last_name
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -277,7 +315,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -384,5 +422,6 @@ module Buildium
         value
       end
     end
+
   end
 end

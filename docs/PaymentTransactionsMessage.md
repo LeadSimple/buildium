@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | Payment transaction unique identifier. | [optional] |
-| **accounting_entity** | [**AccountingEntityMessage**](AccountingEntityMessage.md) |  | [optional] |
+| **accounting_entity** | [**PaymentTransactionsMessageAccountingEntity**](PaymentTransactionsMessageAccountingEntity.md) |  | [optional] |
 | **amount** | **Float** | Payment amount. | [optional] |
 
 ## Example

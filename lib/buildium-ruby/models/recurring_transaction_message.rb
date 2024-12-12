@@ -39,6 +39,9 @@ module Buildium
     # Memo associated with the recurring transaction.
     attr_accessor :memo
 
+    # The date the first occurrence of this transaction was processed.
+    attr_accessor :first_occurrence_date
+
     # The next date the scheduled transaction will be processed.
     attr_accessor :next_occurrence_date
 
@@ -84,6 +87,7 @@ module Buildium
         :'lines' => :'Lines',
         :'amount' => :'Amount',
         :'memo' => :'Memo',
+        :'first_occurrence_date' => :'FirstOccurrenceDate',
         :'next_occurrence_date' => :'NextOccurrenceDate',
         :'post_days_in_advance' => :'PostDaysInAdvance',
         :'frequency' => :'Frequency',
@@ -107,6 +111,7 @@ module Buildium
         :'lines' => :'Array<RecurringTransactionLineMessage>',
         :'amount' => :'Float',
         :'memo' => :'String',
+        :'first_occurrence_date' => :'Date',
         :'next_occurrence_date' => :'Date',
         :'post_days_in_advance' => :'Integer',
         :'frequency' => :'String',
@@ -167,6 +172,10 @@ module Buildium
 
       if attributes.key?(:'memo')
         self.memo = attributes[:'memo']
+      end
+
+      if attributes.key?(:'first_occurrence_date')
+        self.first_occurrence_date = attributes[:'first_occurrence_date']
       end
 
       if attributes.key?(:'next_occurrence_date')
@@ -248,6 +257,7 @@ module Buildium
           lines == o.lines &&
           amount == o.amount &&
           memo == o.memo &&
+          first_occurrence_date == o.first_occurrence_date &&
           next_occurrence_date == o.next_occurrence_date &&
           post_days_in_advance == o.post_days_in_advance &&
           frequency == o.frequency &&
@@ -263,7 +273,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, transaction_type, is_expired, rent_id, offsetting_gl_account_id, lines, amount, memo, next_occurrence_date, post_days_in_advance, frequency, duration].hash
+      [id, transaction_type, is_expired, rent_id, offsetting_gl_account_id, lines, amount, memo, first_occurrence_date, next_occurrence_date, post_days_in_advance, frequency, duration].hash
     end
 
     # Builds the object from hash
@@ -277,7 +287,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -384,5 +394,6 @@ module Buildium
         value
       end
     end
+
   end
 end

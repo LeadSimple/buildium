@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create a task category
-    # Create a task category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
-    # @param task_category_save_message [TaskCategorySaveMessage] 
+    # Create a task category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
+    # @param create_task_category_request [CreateTaskCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [TaskCategoryMessage]
-    def create_task_category(task_category_save_message, opts = {})
-      data, _status_code, _headers = create_task_category_with_http_info(task_category_save_message, opts)
+    def create_task_category(create_task_category_request, opts = {})
+      data, _status_code, _headers = create_task_category_with_http_info(create_task_category_request, opts)
       data
     end
 
     # Create a task category
-    # Create a task category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param task_category_save_message [TaskCategorySaveMessage] 
+    # Create a task category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_task_category_request [CreateTaskCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TaskCategoryMessage, Integer, Hash)>] TaskCategoryMessage data, response status code and response headers
-    def create_task_category_with_http_info(task_category_save_message, opts = {})
+    def create_task_category_with_http_info(create_task_category_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TasksApi.create_task_category ...'
       end
-      # verify the required parameter 'task_category_save_message' is set
-      if @api_client.config.client_side_validation && task_category_save_message.nil?
-        fail ArgumentError, "Missing the required parameter 'task_category_save_message' when calling TasksApi.create_task_category"
+      # verify the required parameter 'create_task_category_request' is set
+      if @api_client.config.client_side_validation && create_task_category_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_task_category_request' when calling TasksApi.create_task_category"
       end
       # resource path
       local_var_path = '/v1/tasks/categories'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(task_category_save_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_task_category_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'TaskCategoryMessage'
@@ -88,7 +88,7 @@ module Buildium
     end
 
     # Delete task history file
-    # Deletes a specific file from a task history record. The file will be permanently deleted from the Buildium platform an can not be recovered.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit` `Delete`
+    # Deletes a specific file from a task history record. The file will be permanently deleted from the Buildium platform an can not be recovered.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit` `Delete`
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param file_id [Integer] 
@@ -100,7 +100,7 @@ module Buildium
     end
 
     # Delete task history file
-    # Deletes a specific file from a task history record. The file will be permanently deleted from the Buildium platform an can not be recovered.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
+    # Deletes a specific file from a task history record. The file will be permanently deleted from the Buildium platform an can not be recovered.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60; &#x60;Delete&#x60;
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param file_id [Integer] 
@@ -163,7 +163,7 @@ module Buildium
     end
 
     # Retrieve all task categories
-    # Retrieves a list of task categories.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a list of task categories.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -175,7 +175,7 @@ module Buildium
     end
 
     # Retrieve all task categories
-    # Retrieves a list of task categories.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of task categories.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
@@ -229,7 +229,7 @@ module Buildium
     end
 
     # Retrieve all task history files
-    # Retrieves the metadata for all files associated with a task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves the metadata for all files associated with a task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -243,7 +243,7 @@ module Buildium
     end
 
     # Retrieve all task history files
-    # Retrieves the metadata for all files associated with a task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves the metadata for all files associated with a task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -307,7 +307,7 @@ module Buildium
     end
 
     # Retrieve all tasks
-    # Retrieves a list of all task/request types (Contact, Owner, Resident and To Do). Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a list of all task/request types (Contact, Owner, Resident and To Do). Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -333,7 +333,7 @@ module Buildium
     end
 
     # Retrieve all tasks
-    # Retrieves a list of all task/request types (Contact, Owner, Resident and To Do). Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a list of all task/request types (Contact, Owner, Resident and To Do). Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Specifies the type of entity that the &#x60;EntityId&#x60; field refers to. This field is required if the &#x60;EntityId&#x60; field is populated.
     # @option opts [Integer] :entityid Filters results to any task associated with the specified entity id value. The value must be of the type specified in the &#x60;EntityType&#x60; field.
@@ -431,7 +431,7 @@ module Buildium
     end
 
     # Download a task history file
-    # Downloads a specific file associated to the task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Downloads a specific file associated to the task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param file_id [Integer] 
@@ -443,7 +443,7 @@ module Buildium
     end
 
     # Download a task history file
-    # Downloads a specific file associated to the task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Downloads a specific file associated to the task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param file_id [Integer] 
@@ -506,7 +506,7 @@ module Buildium
     end
 
     # Retrieve a task
-    # Retrieves a specific task. This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's. Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a specific task. This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's. Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param task_id [Integer] The task identifier
     # @param [Hash] opts the optional parameters
     # @return [AllTasksMessage]
@@ -516,7 +516,7 @@ module Buildium
     end
 
     # Retrieve a task
-    # Retrieves a specific task. This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s. Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific task. This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s. Note, the response payload only contains fields common across all of the request types. To retrieve the full details of the task query the retrieve endpoint specific to the task type.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param task_id [Integer] The task identifier
     # @param [Hash] opts the optional parameters
     # @return [Array<(AllTasksMessage, Integer, Hash)>] AllTasksMessage data, response status code and response headers
@@ -569,7 +569,7 @@ module Buildium
     end
 
     # Retrieve a task category
-    # Retrieves a specific task category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a specific task category.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param task_category_id [Integer] The task category identifier.
     # @param [Hash] opts the optional parameters
     # @return [TaskCategoryMessage]
@@ -579,7 +579,7 @@ module Buildium
     end
 
     # Retrieve a task category
-    # Retrieves a specific task category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific task category.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param task_category_id [Integer] The task category identifier.
     # @param [Hash] opts the optional parameters
     # @return [Array<(TaskCategoryMessage, Integer, Hash)>] TaskCategoryMessage data, response status code and response headers
@@ -632,7 +632,7 @@ module Buildium
     end
 
     # Retrieve all task history
-    # Retrieves all task history records for a specific task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves all task history records for a specific task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param task_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -645,7 +645,7 @@ module Buildium
     end
 
     # Retrieve all task history
-    # Retrieves all task history records for a specific task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all task history records for a specific task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param task_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -704,7 +704,7 @@ module Buildium
     end
 
     # Retrieve a task history
-    # Retrieves a specific task history record for a task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves a specific task history record for a task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -715,7 +715,7 @@ module Buildium
     end
 
     # Retrieve a task history
-    # Retrieves a specific task history record for a task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves a specific task history record for a task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -773,7 +773,7 @@ module Buildium
     end
 
     # Retrieve a task history file
-    # Retrieves the metadata for a specific file associated with a task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View`
+    # Retrieves the metadata for a specific file associated with a task history record.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View`
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param file_id [Integer] 
@@ -785,7 +785,7 @@ module Buildium
     end
 
     # Retrieve a task history file
-    # Retrieves the metadata for a specific file associated with a task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves the metadata for a specific file associated with a task history record.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60;
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
     # @param file_id [Integer] 
@@ -848,23 +848,23 @@ module Buildium
     end
 
     # Update a task category
-    # Updates a task category.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates a task category.  <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
     # @param task_category_id [Integer] The task category identifier.
-    # @param task_category_put_message [TaskCategoryPutMessage] 
+    # @param update_task_category_request [UpdateTaskCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [TaskCategoryMessage]
-    def update_task_category(task_category_id, task_category_put_message, opts = {})
-      data, _status_code, _headers = update_task_category_with_http_info(task_category_id, task_category_put_message, opts)
+    def update_task_category(task_category_id, update_task_category_request, opts = {})
+      data, _status_code, _headers = update_task_category_with_http_info(task_category_id, update_task_category_request, opts)
       data
     end
 
     # Update a task category
-    # Updates a task category.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a task category.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param task_category_id [Integer] The task category identifier.
-    # @param task_category_put_message [TaskCategoryPutMessage] 
+    # @param update_task_category_request [UpdateTaskCategoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TaskCategoryMessage, Integer, Hash)>] TaskCategoryMessage data, response status code and response headers
-    def update_task_category_with_http_info(task_category_id, task_category_put_message, opts = {})
+    def update_task_category_with_http_info(task_category_id, update_task_category_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TasksApi.update_task_category ...'
       end
@@ -872,9 +872,9 @@ module Buildium
       if @api_client.config.client_side_validation && task_category_id.nil?
         fail ArgumentError, "Missing the required parameter 'task_category_id' when calling TasksApi.update_task_category"
       end
-      # verify the required parameter 'task_category_put_message' is set
-      if @api_client.config.client_side_validation && task_category_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'task_category_put_message' when calling TasksApi.update_task_category"
+      # verify the required parameter 'update_task_category_request' is set
+      if @api_client.config.client_side_validation && update_task_category_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_task_category_request' when calling TasksApi.update_task_category"
       end
       # resource path
       local_var_path = '/v1/tasks/categories/{taskCategoryId}'.sub('{' + 'taskCategoryId' + '}', CGI.escape(task_category_id.to_s))
@@ -889,14 +889,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(task_category_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_task_category_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'TaskCategoryMessage'
@@ -922,25 +922,25 @@ module Buildium
     end
 
     # Update a task history
-    # Updates a specific task history record for a task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Updates a specific task history record for a task.              <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
-    # @param task_history_put_message [TaskHistoryPutMessage] 
+    # @param update_task_history_request [UpdateTaskHistoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [TaskHistoryMessage]
-    def update_task_history(task_id, task_history_id, task_history_put_message, opts = {})
-      data, _status_code, _headers = update_task_history_with_http_info(task_id, task_history_id, task_history_put_message, opts)
+    def update_task_history(task_id, task_history_id, update_task_history_request, opts = {})
+      data, _status_code, _headers = update_task_history_with_http_info(task_id, task_history_id, update_task_history_request, opts)
       data
     end
 
     # Update a task history
-    # Updates a specific task history record for a task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a specific task history record for a task.              &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
-    # @param task_history_put_message [TaskHistoryPutMessage] 
+    # @param update_task_history_request [UpdateTaskHistoryRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(TaskHistoryMessage, Integer, Hash)>] TaskHistoryMessage data, response status code and response headers
-    def update_task_history_with_http_info(task_id, task_history_id, task_history_put_message, opts = {})
+    def update_task_history_with_http_info(task_id, task_history_id, update_task_history_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TasksApi.update_task_history ...'
       end
@@ -952,9 +952,9 @@ module Buildium
       if @api_client.config.client_side_validation && task_history_id.nil?
         fail ArgumentError, "Missing the required parameter 'task_history_id' when calling TasksApi.update_task_history"
       end
-      # verify the required parameter 'task_history_put_message' is set
-      if @api_client.config.client_side_validation && task_history_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'task_history_put_message' when calling TasksApi.update_task_history"
+      # verify the required parameter 'update_task_history_request' is set
+      if @api_client.config.client_side_validation && update_task_history_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_task_history_request' when calling TasksApi.update_task_history"
       end
       # resource path
       local_var_path = '/v1/tasks/{taskId}/history/{taskHistoryId}'.sub('{' + 'taskId' + '}', CGI.escape(task_id.to_s)).sub('{' + 'taskHistoryId' + '}', CGI.escape(task_history_id.to_s))
@@ -969,14 +969,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(task_history_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_task_history_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'TaskHistoryMessage'
@@ -1002,25 +1002,25 @@ module Buildium
     end
 
     # Upload a task history file
-    # Uploads a file and associates it to the specified task history record.  <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks &gt; Tasks</span> - `View` `Edit`
+    # Uploads a file and associates it to the specified task history record.  <br /><br />This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do's.  <br /><br />Uploading a file requires making two API requests. Each step is outlined below.  <br /><br /><strong>Step 1 - Save file metadata</strong><br />  The first step in the file upload process is to submit the file metadata to `/v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests`. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  <br /><br /><strong>NOTE:</strong> The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  <br /><br /><strong>Step 2 - Upload the file binary</strong><br />  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  <br />  1. Form a POST request using the value of the `BucketUrl` property as the URL.   <br /><br />  2. Set the `Content-Type` header to `multipart/form-data`.  <br /><br />  3. Copy the fields from the `FormData`  property to this request as form-data key/value pairs.  <br /><strong>NOTE:</strong> These values must added to the request form-data in the order they were received in the response.  <br /><br />  4. Lastly create a form-data key named `file` and set the value to the file binary.  <br /><strong>NOTE:</strong> This must be the last field in the form-data list.  <br /><br />This image shows what the POST request should look like if you're using Postman:  <img src=\"file-upload-example.png\" /><br /><br />  5. Send the POST request! A successful request will return with a `204 - NO CONTENT` HTTP response code. For any failure responses, please refer to <a target=\"_blank\" href=\"https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\">AWS documentation</a> on REST error responses.  <br /><br /><strong>NOTE:</strong> The file identifier is not generated in this response. To retrieve the file identifier, call `/v1/files` and pass the `PhysicalFileName` value received from the response of this endpoint into the `physicalfilenames` query parameter.  <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Tasks > Tasks</span> - `View` `Edit`
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
-    # @param task_history_file_upload_post_message [TaskHistoryFileUploadPostMessage] 
+    # @param upload_task_history_file_request_async_request [UploadTaskHistoryFileRequestAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @return [FileUploadTicketMessage]
-    def upload_task_history_file_request_async(task_id, task_history_id, task_history_file_upload_post_message, opts = {})
-      data, _status_code, _headers = upload_task_history_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message, opts)
+    def upload_task_history_file_request_async(task_id, task_history_id, upload_task_history_file_request_async_request, opts = {})
+      data, _status_code, _headers = upload_task_history_file_request_async_with_http_info(task_id, task_history_id, upload_task_history_file_request_async_request, opts)
       data
     end
 
     # Upload a task history file
-    # Uploads a file and associates it to the specified task history record.  &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.  &lt;br /&gt;&lt;br /&gt;Uploading a file requires making two API requests. Each step is outlined below.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 1 - Save file metadata&lt;/strong&gt;&lt;br /&gt;  The first step in the file upload process is to submit the file metadata to &#x60;/v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests&#x60;. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 2 - Upload the file binary&lt;/strong&gt;&lt;br /&gt;  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  &lt;br /&gt;  1. Form a POST request using the value of the &#x60;BucketUrl&#x60; property as the URL.   &lt;br /&gt;&lt;br /&gt;  2. Set the &#x60;Content-Type&#x60; header to &#x60;multipart/form-data&#x60;.  &lt;br /&gt;&lt;br /&gt;  3. Copy the fields from the &#x60;FormData&#x60;  property to this request as form-data key/value pairs.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; These values must added to the request form-data in the order they were received in the response.  &lt;br /&gt;&lt;br /&gt;  4. Lastly create a form-data key named &#x60;file&#x60; and set the value to the file binary.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This must be the last field in the form-data list.  &lt;br /&gt;&lt;br /&gt;This image shows what the POST request should look like if you&#39;re using Postman:  &lt;img src&#x3D;\&quot;file-upload-example.png\&quot; /&gt;&lt;br /&gt;&lt;br /&gt;  5. Send the POST request! A successful request will return with a &#x60;204 - NO CONTENT&#x60; HTTP response code. For any failure responses, please refer to &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\&quot;&gt;AWS documentation&lt;/a&gt; on REST error responses.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The file identifier is not generated in this response. To retrieve the file identifier, call &#x60;/v1/files&#x60; and pass the &#x60;PhysicalFileName&#x60; value received from the response of this endpoint into the &#x60;physicalfilenames&#x60; query parameter.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &amp;gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Uploads a file and associates it to the specified task history record.  &lt;br /&gt;&lt;br /&gt;This endpoint can be used for any task type - contact requests, rental owner requests, resident requests or to do&#39;s.  &lt;br /&gt;&lt;br /&gt;Uploading a file requires making two API requests. Each step is outlined below.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 1 - Save file metadata&lt;/strong&gt;&lt;br /&gt;  The first step in the file upload process is to submit the file metadata to &#x60;/v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests&#x60;. The response of this call will contain a URL and a collection of form data that will be used in step 2 to generate the request for the file binary upload.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The response data will expire after 5 minutes. The file metadata will not be saved in the Buildium system if step 2 of this process is not completed successfully.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;Step 2 - Upload the file binary&lt;/strong&gt;&lt;br /&gt;  Uploading the file binary will require using the response from step 1 to form a POST request to the Buildium file provider. Follow these steps to create the request:  &lt;br /&gt;  1. Form a POST request using the value of the &#x60;BucketUrl&#x60; property as the URL.   &lt;br /&gt;&lt;br /&gt;  2. Set the &#x60;Content-Type&#x60; header to &#x60;multipart/form-data&#x60;.  &lt;br /&gt;&lt;br /&gt;  3. Copy the fields from the &#x60;FormData&#x60;  property to this request as form-data key/value pairs.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; These values must added to the request form-data in the order they were received in the response.  &lt;br /&gt;&lt;br /&gt;  4. Lastly create a form-data key named &#x60;file&#x60; and set the value to the file binary.  &lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; This must be the last field in the form-data list.  &lt;br /&gt;&lt;br /&gt;This image shows what the POST request should look like if you&#39;re using Postman:  &lt;img src&#x3D;\&quot;file-upload-example.png\&quot; /&gt;&lt;br /&gt;&lt;br /&gt;  5. Send the POST request! A successful request will return with a &#x60;204 - NO CONTENT&#x60; HTTP response code. For any failure responses, please refer to &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses\&quot;&gt;AWS documentation&lt;/a&gt; on REST error responses.  &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; The file identifier is not generated in this response. To retrieve the file identifier, call &#x60;/v1/files&#x60; and pass the &#x60;PhysicalFileName&#x60; value received from the response of this endpoint into the &#x60;physicalfilenames&#x60; query parameter.  &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Tasks &gt; Tasks&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param task_id [Integer] 
     # @param task_history_id [Integer] 
-    # @param task_history_file_upload_post_message [TaskHistoryFileUploadPostMessage] 
+    # @param upload_task_history_file_request_async_request [UploadTaskHistoryFileRequestAsyncRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(FileUploadTicketMessage, Integer, Hash)>] FileUploadTicketMessage data, response status code and response headers
-    def upload_task_history_file_request_async_with_http_info(task_id, task_history_id, task_history_file_upload_post_message, opts = {})
+    def upload_task_history_file_request_async_with_http_info(task_id, task_history_id, upload_task_history_file_request_async_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TasksApi.upload_task_history_file_request_async ...'
       end
@@ -1032,9 +1032,9 @@ module Buildium
       if @api_client.config.client_side_validation && task_history_id.nil?
         fail ArgumentError, "Missing the required parameter 'task_history_id' when calling TasksApi.upload_task_history_file_request_async"
       end
-      # verify the required parameter 'task_history_file_upload_post_message' is set
-      if @api_client.config.client_side_validation && task_history_file_upload_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'task_history_file_upload_post_message' when calling TasksApi.upload_task_history_file_request_async"
+      # verify the required parameter 'upload_task_history_file_request_async_request' is set
+      if @api_client.config.client_side_validation && upload_task_history_file_request_async_request.nil?
+        fail ArgumentError, "Missing the required parameter 'upload_task_history_file_request_async_request' when calling TasksApi.upload_task_history_file_request_async"
       end
       # resource path
       local_var_path = '/v1/tasks/{taskId}/history/{taskHistoryId}/files/uploadrequests'.sub('{' + 'taskId' + '}', CGI.escape(task_id.to_s)).sub('{' + 'taskHistoryId' + '}', CGI.escape(task_history_id.to_s))
@@ -1049,14 +1049,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(task_history_file_upload_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(upload_task_history_file_request_async_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'FileUploadTicketMessage'

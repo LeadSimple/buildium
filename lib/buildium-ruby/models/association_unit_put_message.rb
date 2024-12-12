@@ -72,7 +72,7 @@ module Buildium
       {
         :'unit_number' => :'String',
         :'unit_size' => :'Integer',
-        :'address' => :'SaveAddressMessage',
+        :'address' => :'AssociationUnitPutMessageAddress',
         :'unit_bedrooms' => :'String',
         :'unit_bathrooms' => :'String'
       }
@@ -128,6 +128,10 @@ module Buildium
         invalid_properties.push('invalid value for "unit_number", unit_number cannot be nil.')
       end
 
+      if @unit_number.to_s.length < 1
+        invalid_properties.push('invalid value for "unit_number", the character length must be great than or equal to 1.')
+      end
+
       if @address.nil?
         invalid_properties.push('invalid value for "address", address cannot be nil.')
       end
@@ -139,12 +143,27 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @unit_number.nil?
+      return false if @unit_number.to_s.length < 1
       return false if @address.nil?
       unit_bedrooms_validator = EnumAttributeValidator.new('String', ["NotSet", "Studio", "OneBed", "TwoBed", "ThreeBed", "FourBed", "FiveBed", "SixBed", "SevenBed", "EightBed", "NineBedPlus"])
       return false unless unit_bedrooms_validator.valid?(@unit_bedrooms)
       unit_bathrooms_validator = EnumAttributeValidator.new('String', ["NotSet", "OneBath", "OnePointFiveBath", "TwoBath", "TwoPointFiveBath", "ThreeBath", "FourBath", "FiveBath", "FivePlusBath", "ThreePointFiveBath", "FourPointFiveBath"])
       return false unless unit_bathrooms_validator.valid?(@unit_bathrooms)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] unit_number Value to be assigned
+    def unit_number=(unit_number)
+      if unit_number.nil?
+        fail ArgumentError, 'unit_number cannot be nil'
+      end
+
+      if unit_number.to_s.length < 1
+        fail ArgumentError, 'invalid value for "unit_number", the character length must be great than or equal to 1.'
+      end
+
+      @unit_number = unit_number
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -202,7 +221,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -309,5 +328,6 @@ module Buildium
         value
       end
     end
+
   end
 end

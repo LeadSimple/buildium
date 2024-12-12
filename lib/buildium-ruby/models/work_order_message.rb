@@ -20,6 +20,18 @@ module Buildium
 
     attr_accessor :task
 
+    # Work order title.
+    attr_accessor :title
+
+    # Work order due date.
+    attr_accessor :due_date
+
+    # Work order  priority.
+    attr_accessor :priority
+
+    # Work order status.
+    attr_accessor :status
+
     # Description of the work order.
     attr_accessor :work_details
 
@@ -43,7 +55,10 @@ module Buildium
 
     attr_accessor :entry_contact
 
-    # Unique identifier for the bill related to this work order. This field will be `null` if no bill is related to this work order.
+    # A collection of all entry contacts for the work order
+    attr_accessor :entry_contacts
+
+    # Unique identifier for the bill related to this work order. This field will be `null` if no bill is related to this work order.  If the BillTransactionIds field is available, please refer to that field instead of this one going forward.
     attr_accessor :bill_transaction_id
 
     # The total amount of the work order.
@@ -79,6 +94,10 @@ module Buildium
       {
         :'id' => :'Id',
         :'task' => :'Task',
+        :'title' => :'Title',
+        :'due_date' => :'DueDate',
+        :'priority' => :'Priority',
+        :'status' => :'Status',
         :'work_details' => :'WorkDetails',
         :'invoice_number' => :'InvoiceNumber',
         :'chargeable_to' => :'ChargeableTo',
@@ -87,6 +106,7 @@ module Buildium
         :'vendor_id' => :'VendorId',
         :'vendor_notes' => :'VendorNotes',
         :'entry_contact' => :'EntryContact',
+        :'entry_contacts' => :'EntryContacts',
         :'bill_transaction_id' => :'BillTransactionId',
         :'amount' => :'Amount',
         :'line_items' => :'LineItems'
@@ -102,7 +122,11 @@ module Buildium
     def self.openapi_types
       {
         :'id' => :'Integer',
-        :'task' => :'WorkOrderTaskMessage',
+        :'task' => :'WorkOrderMessageTask',
+        :'title' => :'String',
+        :'due_date' => :'Date',
+        :'priority' => :'String',
+        :'status' => :'String',
         :'work_details' => :'String',
         :'invoice_number' => :'String',
         :'chargeable_to' => :'String',
@@ -110,7 +134,8 @@ module Buildium
         :'entry_notes' => :'String',
         :'vendor_id' => :'Integer',
         :'vendor_notes' => :'String',
-        :'entry_contact' => :'WorkOrderEntryContactMessage',
+        :'entry_contact' => :'WorkOrderMessageEntryContact',
+        :'entry_contacts' => :'Array<WorkOrderEntryContactMessage>',
         :'bill_transaction_id' => :'Integer',
         :'amount' => :'Float',
         :'line_items' => :'Array<WorkOrderLineItemMessage>'
@@ -146,6 +171,22 @@ module Buildium
         self.task = attributes[:'task']
       end
 
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
+      end
+
+      if attributes.key?(:'due_date')
+        self.due_date = attributes[:'due_date']
+      end
+
+      if attributes.key?(:'priority')
+        self.priority = attributes[:'priority']
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
       if attributes.key?(:'work_details')
         self.work_details = attributes[:'work_details']
       end
@@ -178,6 +219,12 @@ module Buildium
         self.entry_contact = attributes[:'entry_contact']
       end
 
+      if attributes.key?(:'entry_contacts')
+        if (value = attributes[:'entry_contacts']).is_a?(Array)
+          self.entry_contacts = value
+        end
+      end
+
       if attributes.key?(:'bill_transaction_id')
         self.bill_transaction_id = attributes[:'bill_transaction_id']
       end
@@ -203,9 +250,33 @@ module Buildium
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      priority_validator = EnumAttributeValidator.new('String', ["Unknown", "Low", "Normal", "High"])
+      return false unless priority_validator.valid?(@priority)
+      status_validator = EnumAttributeValidator.new('String', ["Unknown", "New", "InProgress", "Completed", "Deferred", "Closed"])
+      return false unless status_validator.valid?(@status)
       entry_allowed_validator = EnumAttributeValidator.new('String', ["Unknown", "Yes", "No"])
       return false unless entry_allowed_validator.valid?(@entry_allowed)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] priority Object to be assigned
+    def priority=(priority)
+      validator = EnumAttributeValidator.new('String', ["Unknown", "Low", "Normal", "High"])
+      unless validator.valid?(priority)
+        fail ArgumentError, "invalid value #{ priority.inspect } for \"priority\", must be one of #{validator.allowable_values}."
+      end
+      @priority = priority
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["Unknown", "New", "InProgress", "Completed", "Deferred", "Closed"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value #{ status.inspect } for \"status\", must be one of #{validator.allowable_values}."
+      end
+      @status = status
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -225,6 +296,10 @@ module Buildium
       self.class == o.class &&
           id == o.id &&
           task == o.task &&
+          title == o.title &&
+          due_date == o.due_date &&
+          priority == o.priority &&
+          status == o.status &&
           work_details == o.work_details &&
           invoice_number == o.invoice_number &&
           chargeable_to == o.chargeable_to &&
@@ -233,6 +308,7 @@ module Buildium
           vendor_id == o.vendor_id &&
           vendor_notes == o.vendor_notes &&
           entry_contact == o.entry_contact &&
+          entry_contacts == o.entry_contacts &&
           bill_transaction_id == o.bill_transaction_id &&
           amount == o.amount &&
           line_items == o.line_items
@@ -247,7 +323,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, task, work_details, invoice_number, chargeable_to, entry_allowed, entry_notes, vendor_id, vendor_notes, entry_contact, bill_transaction_id, amount, line_items].hash
+      [id, task, title, due_date, priority, status, work_details, invoice_number, chargeable_to, entry_allowed, entry_notes, vendor_id, vendor_notes, entry_contact, entry_contacts, bill_transaction_id, amount, line_items].hash
     end
 
     # Builds the object from hash
@@ -261,7 +337,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -368,5 +444,6 @@ module Buildium
         value
       end
     end
+
   end
 end

@@ -20,27 +20,27 @@ module Buildium
       @api_client = api_client
     end
     # Create an applicant
-    # Creates an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
-    # @param applicant_post_message [ApplicantPostMessage] 
+    # Creates an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
+    # @param create_applicant_request [CreateApplicantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ApplicantMessage]
-    def create_applicant(applicant_post_message, opts = {})
-      data, _status_code, _headers = create_applicant_with_http_info(applicant_post_message, opts)
+    def create_applicant(create_applicant_request, opts = {})
+      data, _status_code, _headers = create_applicant_with_http_info(create_applicant_request, opts)
       data
     end
 
     # Create an applicant
-    # Creates an applicant.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param applicant_post_message [ApplicantPostMessage] 
+    # Creates an applicant.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_applicant_request [CreateApplicantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicantMessage, Integer, Hash)>] ApplicantMessage data, response status code and response headers
-    def create_applicant_with_http_info(applicant_post_message, opts = {})
+    def create_applicant_with_http_info(create_applicant_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.create_applicant ...'
       end
-      # verify the required parameter 'applicant_post_message' is set
-      if @api_client.config.client_side_validation && applicant_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'applicant_post_message' when calling ApplicantsApi.create_applicant"
+      # verify the required parameter 'create_applicant_request' is set
+      if @api_client.config.client_side_validation && create_applicant_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_applicant_request' when calling ApplicantsApi.create_applicant"
       end
       # resource path
       local_var_path = '/v1/applicants'
@@ -55,14 +55,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(applicant_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_applicant_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ApplicantMessage'
@@ -88,27 +88,27 @@ module Buildium
     end
 
     # Create an applicant group
-    # Creates an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
-    # @param applicant_group_post_message [ApplicantGroupPostMessage] 
+    # Creates an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
+    # @param create_applicant_group_request [CreateApplicantGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ApplicantGroupMessage]
-    def create_applicant_group(applicant_group_post_message, opts = {})
-      data, _status_code, _headers = create_applicant_group_with_http_info(applicant_group_post_message, opts)
+    def create_applicant_group(create_applicant_group_request, opts = {})
+      data, _status_code, _headers = create_applicant_group_with_http_info(create_applicant_group_request, opts)
       data
     end
 
     # Create an applicant group
-    # Creates an applicant group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
-    # @param applicant_group_post_message [ApplicantGroupPostMessage] 
+    # Creates an applicant group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # @param create_applicant_group_request [CreateApplicantGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicantGroupMessage, Integer, Hash)>] ApplicantGroupMessage data, response status code and response headers
-    def create_applicant_group_with_http_info(applicant_group_post_message, opts = {})
+    def create_applicant_group_with_http_info(create_applicant_group_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.create_applicant_group ...'
       end
-      # verify the required parameter 'applicant_group_post_message' is set
-      if @api_client.config.client_side_validation && applicant_group_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'applicant_group_post_message' when calling ApplicantsApi.create_applicant_group"
+      # verify the required parameter 'create_applicant_group_request' is set
+      if @api_client.config.client_side_validation && create_applicant_group_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_applicant_group_request' when calling ApplicantsApi.create_applicant_group"
       end
       # resource path
       local_var_path = '/v1/applicants/groups'
@@ -123,14 +123,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(applicant_group_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_applicant_group_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ApplicantGroupMessage'
@@ -156,23 +156,23 @@ module Buildium
     end
 
     # Create an applicant note
-    # Creates an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> -  `View` `Edit`
+    # Creates an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> -  `View` `Edit`
     # @param applicant_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def create_applicant_note(applicant_id, note_post_message, opts = {})
-      data, _status_code, _headers = create_applicant_note_with_http_info(applicant_id, note_post_message, opts)
+    def create_applicant_note(applicant_id, create_lease_note_request, opts = {})
+      data, _status_code, _headers = create_applicant_note_with_http_info(applicant_id, create_lease_note_request, opts)
       data
     end
 
     # Create an applicant note
-    # Creates an applicant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; -  &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates an applicant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; -  &#x60;View&#x60; &#x60;Edit&#x60;
     # @param applicant_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def create_applicant_note_with_http_info(applicant_id, note_post_message, opts = {})
+    def create_applicant_note_with_http_info(applicant_id, create_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.create_applicant_note ...'
       end
@@ -180,9 +180,9 @@ module Buildium
       if @api_client.config.client_side_validation && applicant_id.nil?
         fail ArgumentError, "Missing the required parameter 'applicant_id' when calling ApplicantsApi.create_applicant_note"
       end
-      # verify the required parameter 'note_post_message' is set
-      if @api_client.config.client_side_validation && note_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_post_message' when calling ApplicantsApi.create_applicant_note"
+      # verify the required parameter 'create_lease_note_request' is set
+      if @api_client.config.client_side_validation && create_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_note_request' when calling ApplicantsApi.create_applicant_note"
       end
       # resource path
       local_var_path = '/v1/applicants/{applicantId}/notes'.sub('{' + 'applicantId' + '}', CGI.escape(applicant_id.to_s))
@@ -197,14 +197,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -230,23 +230,23 @@ module Buildium
     end
 
     # Create an applicant group note
-    # Creates an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+    # Creates an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
     # @param applicant_group_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def create_application_group_note(applicant_group_id, note_post_message, opts = {})
-      data, _status_code, _headers = create_application_group_note_with_http_info(applicant_group_id, note_post_message, opts)
+    def create_application_group_note(applicant_group_id, create_lease_note_request, opts = {})
+      data, _status_code, _headers = create_application_group_note_with_http_info(applicant_group_id, create_lease_note_request, opts)
       data
     end
 
     # Create an applicant group note
-    # Creates an applicant group note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Creates an applicant group note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param applicant_group_id [Integer] 
-    # @param note_post_message [NotePostMessage] 
+    # @param create_lease_note_request [CreateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def create_application_group_note_with_http_info(applicant_group_id, note_post_message, opts = {})
+    def create_application_group_note_with_http_info(applicant_group_id, create_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.create_application_group_note ...'
       end
@@ -254,9 +254,9 @@ module Buildium
       if @api_client.config.client_side_validation && applicant_group_id.nil?
         fail ArgumentError, "Missing the required parameter 'applicant_group_id' when calling ApplicantsApi.create_application_group_note"
       end
-      # verify the required parameter 'note_post_message' is set
-      if @api_client.config.client_side_validation && note_post_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_post_message' when calling ApplicantsApi.create_application_group_note"
+      # verify the required parameter 'create_lease_note_request' is set
+      if @api_client.config.client_side_validation && create_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_lease_note_request' when calling ApplicantsApi.create_application_group_note"
       end
       # resource path
       local_var_path = '/v1/applicants/groups/{applicantGroupId}/notes'.sub('{' + 'applicantGroupId' + '}', CGI.escape(applicant_group_id.to_s))
@@ -271,14 +271,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_post_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'
@@ -304,7 +304,7 @@ module Buildium
     end
 
     # Retrieve all applicant notes
-    # Retrieves all applicant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves all applicant notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -320,7 +320,7 @@ module Buildium
     end
 
     # Retrieve all applicant notes
-    # Retrieves all applicant notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all applicant notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -385,7 +385,7 @@ module Buildium
     end
 
     # Retrieve an applicant
-    # Retrieves an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves an applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [ApplicantMessage]
@@ -395,7 +395,7 @@ module Buildium
     end
 
     # Retrieve an applicant
-    # Retrieves an applicant.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an applicant.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicantMessage, Integer, Hash)>] ApplicantMessage data, response status code and response headers
@@ -448,7 +448,7 @@ module Buildium
     end
 
     # Retrieve an applicant group
-    # Retrieves an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves an applicant group.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_group_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [ApplicantGroupMessage]
@@ -458,7 +458,7 @@ module Buildium
     end
 
     # Retrieve an applicant group
-    # Retrieves an applicant group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an applicant group.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_group_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicantGroupMessage, Integer, Hash)>] ApplicantGroupMessage data, response status code and response headers
@@ -511,7 +511,7 @@ module Buildium
     end
 
     # Retrieve an applicant group note
-    # Retrieves an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves an applicant group note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_group_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -522,7 +522,7 @@ module Buildium
     end
 
     # Retrieve an applicant group note
-    # Retrieves an applicant group note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an applicant group note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_group_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -580,7 +580,7 @@ module Buildium
     end
 
     # Retrieve all applicant group notes
-    # Retrieves all applicant group notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves all applicant group notes.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_group_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -596,7 +596,7 @@ module Buildium
     end
 
     # Retrieve all applicant group notes
-    # Retrieves all applicant group notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all applicant group notes.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_group_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [Time] :updateddatetimefrom Filters results to any note whose updated date and time are greater than or equal to the specified value. The value must be formatted as YYYY-MM-DD HH:MM:SS.
@@ -661,7 +661,7 @@ module Buildium
     end
 
     # Retrieve all applicant groups
-    # Retrieves all applicant groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves all applicant groups.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Filters results to any applicant groups associated with the specified entity identifier. This filter is used in conjunction with the &#x60;EntityType&#x60; field which must be set to the type of entity this identifier references.
     # @option opts [Integer] :entityid Specifies the type of entity that &#x60;EntityId&#x60; refers to. This field is required if &#x60;EntityId&#x60; is specified.
@@ -678,7 +678,7 @@ module Buildium
     end
 
     # Retrieve all applicant groups
-    # Retrieves all applicant groups.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all applicant groups.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :entitytype Filters results to any applicant groups associated with the specified entity identifier. This filter is used in conjunction with the &#x60;EntityType&#x60; field which must be set to the type of entity this identifier references.
     # @option opts [Integer] :entityid Specifies the type of entity that &#x60;EntityId&#x60; refers to. This field is required if &#x60;EntityId&#x60; is specified.
@@ -697,7 +697,7 @@ module Buildium
       if @api_client.config.client_side_validation && opts[:'entitytype'] && !allowable_values.include?(opts[:'entitytype'])
         fail ArgumentError, "invalid value for \"entitytype\", must be one of #{allowable_values}"
       end
-      allowable_values = ["Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New"]
+      allowable_values = ["Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New", "Draft", "AddedToDraftLease"]
       if @api_client.config.client_side_validation && opts[:'applicationgroupstatuses'] && !opts[:'applicationgroupstatuses'].all? { |item| allowable_values.include?(item) }
         fail ArgumentError, "invalid value for \"applicationgroupstatuses\", must include one of #{allowable_values}"
       end
@@ -750,7 +750,7 @@ module Buildium
     end
 
     # Retrieve an applicant note
-    # Retrieves an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves an applicant note.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -761,7 +761,7 @@ module Buildium
     end
 
     # Retrieve an applicant note
-    # Retrieves an applicant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an applicant note.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_id [Integer] 
     # @param note_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -819,7 +819,7 @@ module Buildium
     end
 
     # Retrieve all applicants
-    # Retrieves all applicants.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves all applicants.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :entityid Filters results to any applicant associated with the specified entity identifier. This filter is used in conjunction with the &#x60;EntityType&#x60; field which must be set to the type of entity this identifier references.
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; refers to. This field is required if &#x60;EntityId&#x60; is specified.
@@ -829,6 +829,8 @@ module Buildium
     # @option opts [String] :email Filters results to applicants whose email *contains* the specified value
     # @option opts [Time] :applicationsubmittedstartdate Filters results to any applicant who submitted an application on or after the date specified.
     # @option opts [Time] :applicationsubmittedenddate Filters results to any applicant who submitted an application on or prior to the date specified.
+    # @option opts [Time] :lastupdatedfrom Filters results to any applicants that were updated on or after the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any applicants that were updated on or before the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -839,7 +841,7 @@ module Buildium
     end
 
     # Retrieve all applicants
-    # Retrieves all applicants.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all applicants.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :entityid Filters results to any applicant associated with the specified entity identifier. This filter is used in conjunction with the &#x60;EntityType&#x60; field which must be set to the type of entity this identifier references.
     # @option opts [String] :entitytype Specifies the type of entity that &#x60;EntityId&#x60; refers to. This field is required if &#x60;EntityId&#x60; is specified.
@@ -849,6 +851,8 @@ module Buildium
     # @option opts [String] :email Filters results to applicants whose email *contains* the specified value
     # @option opts [Time] :applicationsubmittedstartdate Filters results to any applicant who submitted an application on or after the date specified.
     # @option opts [Time] :applicationsubmittedenddate Filters results to any applicant who submitted an application on or prior to the date specified.
+    # @option opts [Time] :lastupdatedfrom Filters results to any applicants that were updated on or after the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
+    # @option opts [Time] :lastupdatedto Filters results to any applicants that were updated on or before the specified date and time. The value must be formatted as YYYY-MM-DDTHH:MM:SSZ.
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
     # @option opts [Integer] :offset &#x60;offset&#x60; indicates the position of the first record to return. The &#x60;offset&#x60; is zero-based and the default is 0.
     # @option opts [Integer] :limit &#x60;limit&#x60; indicates the maximum number of results to be returned in the response. &#x60;limit&#x60; can range between 1 and 1000 and the default is 50.
@@ -861,7 +865,7 @@ module Buildium
       if @api_client.config.client_side_validation && opts[:'entitytype'] && !allowable_values.include?(opts[:'entitytype'])
         fail ArgumentError, "invalid value for \"entitytype\", must be one of #{allowable_values}"
       end
-      allowable_values = ["Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New"]
+      allowable_values = ["Undecided", "Approved", "Rejected", "AddedToLease", "Cancelled", "Deferred", "New", "Draft", "AddedToDraftLease"]
       if @api_client.config.client_side_validation && opts[:'applicationstatuses'] && !opts[:'applicationstatuses'].all? { |item| allowable_values.include?(item) }
         fail ArgumentError, "invalid value for \"applicationstatuses\", must include one of #{allowable_values}"
       end
@@ -878,6 +882,8 @@ module Buildium
       query_params[:'email'] = opts[:'email'] if !opts[:'email'].nil?
       query_params[:'applicationsubmittedstartdate'] = opts[:'applicationsubmittedstartdate'] if !opts[:'applicationsubmittedstartdate'].nil?
       query_params[:'applicationsubmittedenddate'] = opts[:'applicationsubmittedenddate'] if !opts[:'applicationsubmittedenddate'].nil?
+      query_params[:'lastupdatedfrom'] = opts[:'lastupdatedfrom'] if !opts[:'lastupdatedfrom'].nil?
+      query_params[:'lastupdatedto'] = opts[:'lastupdatedto'] if !opts[:'lastupdatedto'].nil?
       query_params[:'orderby'] = opts[:'orderby'] if !opts[:'orderby'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
@@ -917,7 +923,7 @@ module Buildium
     end
 
     # Retrieve an application
-    # Retrieves an application.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves an application.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_id [Integer] 
     # @param application_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -928,7 +934,7 @@ module Buildium
     end
 
     # Retrieve an application
-    # Retrieves an application.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves an application.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_id [Integer] 
     # @param application_id [Integer] 
     # @param [Hash] opts the optional parameters
@@ -986,7 +992,7 @@ module Buildium
     end
 
     # Retrieve all applications
-    # Retrieves all the applications for a given applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View`
+    # Retrieves all the applications for a given applicant.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View`
     # @param applicant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -999,7 +1005,7 @@ module Buildium
     end
 
     # Retrieve all applications
-    # Retrieves all the applications for a given applicant.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
+    # Retrieves all the applications for a given applicant.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60;
     # @param applicant_id [Integer] 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :orderby &#x60;orderby&#x60; indicates the field(s) and direction to sort the results in the response. See &lt;a href&#x3D;\&quot;#section/API-Overview/Bulk-Request-Options\&quot;&gt;Bulk Request Options&lt;/a&gt; for more information.
@@ -1058,23 +1064,23 @@ module Buildium
     end
 
     # Update an applicant
-    # Updates an applicant.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+    # Updates an applicant.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
     # @param applicant_id [Integer] 
-    # @param applicant_put_message [ApplicantPutMessage] 
+    # @param update_applicant_request [UpdateApplicantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ApplicantMessage]
-    def update_applicant(applicant_id, applicant_put_message, opts = {})
-      data, _status_code, _headers = update_applicant_with_http_info(applicant_id, applicant_put_message, opts)
+    def update_applicant(applicant_id, update_applicant_request, opts = {})
+      data, _status_code, _headers = update_applicant_with_http_info(applicant_id, update_applicant_request, opts)
       data
     end
 
     # Update an applicant
-    # Updates an applicant.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an applicant.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param applicant_id [Integer] 
-    # @param applicant_put_message [ApplicantPutMessage] 
+    # @param update_applicant_request [UpdateApplicantRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicantMessage, Integer, Hash)>] ApplicantMessage data, response status code and response headers
-    def update_applicant_with_http_info(applicant_id, applicant_put_message, opts = {})
+    def update_applicant_with_http_info(applicant_id, update_applicant_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.update_applicant ...'
       end
@@ -1082,9 +1088,9 @@ module Buildium
       if @api_client.config.client_side_validation && applicant_id.nil?
         fail ArgumentError, "Missing the required parameter 'applicant_id' when calling ApplicantsApi.update_applicant"
       end
-      # verify the required parameter 'applicant_put_message' is set
-      if @api_client.config.client_side_validation && applicant_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'applicant_put_message' when calling ApplicantsApi.update_applicant"
+      # verify the required parameter 'update_applicant_request' is set
+      if @api_client.config.client_side_validation && update_applicant_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_applicant_request' when calling ApplicantsApi.update_applicant"
       end
       # resource path
       local_var_path = '/v1/applicants/{applicantId}'.sub('{' + 'applicantId' + '}', CGI.escape(applicant_id.to_s))
@@ -1099,14 +1105,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(applicant_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_applicant_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ApplicantMessage'
@@ -1132,23 +1138,23 @@ module Buildium
     end
 
     # Update an applicant group
-    # Updates an applicant group.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+    # Updates an applicant group.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
     # @param applicant_group_id [Integer] 
-    # @param applicant_group_put_message [ApplicantGroupPutMessage] 
+    # @param update_applicant_group_request [UpdateApplicantGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ApplicantGroupMessage]
-    def update_applicant_group(applicant_group_id, applicant_group_put_message, opts = {})
-      data, _status_code, _headers = update_applicant_group_with_http_info(applicant_group_id, applicant_group_put_message, opts)
+    def update_applicant_group(applicant_group_id, update_applicant_group_request, opts = {})
+      data, _status_code, _headers = update_applicant_group_with_http_info(applicant_group_id, update_applicant_group_request, opts)
       data
     end
 
     # Update an applicant group
-    # Updates an applicant group.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an applicant group.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param applicant_group_id [Integer] 
-    # @param applicant_group_put_message [ApplicantGroupPutMessage] 
+    # @param update_applicant_group_request [UpdateApplicantGroupRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicantGroupMessage, Integer, Hash)>] ApplicantGroupMessage data, response status code and response headers
-    def update_applicant_group_with_http_info(applicant_group_id, applicant_group_put_message, opts = {})
+    def update_applicant_group_with_http_info(applicant_group_id, update_applicant_group_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.update_applicant_group ...'
       end
@@ -1156,9 +1162,9 @@ module Buildium
       if @api_client.config.client_side_validation && applicant_group_id.nil?
         fail ArgumentError, "Missing the required parameter 'applicant_group_id' when calling ApplicantsApi.update_applicant_group"
       end
-      # verify the required parameter 'applicant_group_put_message' is set
-      if @api_client.config.client_side_validation && applicant_group_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'applicant_group_put_message' when calling ApplicantsApi.update_applicant_group"
+      # verify the required parameter 'update_applicant_group_request' is set
+      if @api_client.config.client_side_validation && update_applicant_group_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_applicant_group_request' when calling ApplicantsApi.update_applicant_group"
       end
       # resource path
       local_var_path = '/v1/applicants/groups/{applicantGroupId}'.sub('{' + 'applicantGroupId' + '}', CGI.escape(applicant_group_id.to_s))
@@ -1173,14 +1179,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(applicant_group_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_applicant_group_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ApplicantGroupMessage'
@@ -1206,25 +1212,25 @@ module Buildium
     end
 
     # Update an application
-    # Updates a rental application.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+    # Updates a rental application.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
     # @param applicant_id [Integer] 
     # @param application_id [Integer] 
-    # @param application_put_message [ApplicationPutMessage] 
+    # @param update_application_request [UpdateApplicationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [ApplicationMessage]
-    def update_application(applicant_id, application_id, application_put_message, opts = {})
-      data, _status_code, _headers = update_application_with_http_info(applicant_id, application_id, application_put_message, opts)
+    def update_application(applicant_id, application_id, update_application_request, opts = {})
+      data, _status_code, _headers = update_application_with_http_info(applicant_id, application_id, update_application_request, opts)
       data
     end
 
     # Update an application
-    # Updates a rental application.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates a rental application.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param applicant_id [Integer] 
     # @param application_id [Integer] 
-    # @param application_put_message [ApplicationPutMessage] 
+    # @param update_application_request [UpdateApplicationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(ApplicationMessage, Integer, Hash)>] ApplicationMessage data, response status code and response headers
-    def update_application_with_http_info(applicant_id, application_id, application_put_message, opts = {})
+    def update_application_with_http_info(applicant_id, application_id, update_application_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.update_application ...'
       end
@@ -1236,9 +1242,9 @@ module Buildium
       if @api_client.config.client_side_validation && application_id.nil?
         fail ArgumentError, "Missing the required parameter 'application_id' when calling ApplicantsApi.update_application"
       end
-      # verify the required parameter 'application_put_message' is set
-      if @api_client.config.client_side_validation && application_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'application_put_message' when calling ApplicantsApi.update_application"
+      # verify the required parameter 'update_application_request' is set
+      if @api_client.config.client_side_validation && update_application_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_application_request' when calling ApplicantsApi.update_application"
       end
       # resource path
       local_var_path = '/v1/applicants/{applicantId}/applications/{applicationId}'.sub('{' + 'applicantId' + '}', CGI.escape(applicant_id.to_s)).sub('{' + 'applicationId' + '}', CGI.escape(application_id.to_s))
@@ -1253,14 +1259,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(application_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_application_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'ApplicationMessage'
@@ -1286,25 +1292,25 @@ module Buildium
     end
 
     # Update an applicant group note
-    # Updates an applicant group note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals &gt; Applicants</span> - `View` `Edit`
+    # Updates an applicant group note.              <br /><br /><strong>NOTE:</strong> Any field not included in the update request will be set to either an empty string or `null` in the database depending on the field definition. <br />The recommended workflow to ensure no data is inadvertently overwritten is to execute a `GET` request for the resource you're about to update and then use this response to fill any of the fields that are not being updated.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Rentals > Applicants</span> - `View` `Edit`
     # @param applicant_group_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [NoteMessage]
-    def update_application_group_note(applicant_group_id, note_id, note_put_message, opts = {})
-      data, _status_code, _headers = update_application_group_note_with_http_info(applicant_group_id, note_id, note_put_message, opts)
+    def update_application_group_note(applicant_group_id, note_id, update_lease_note_request, opts = {})
+      data, _status_code, _headers = update_application_group_note_with_http_info(applicant_group_id, note_id, update_lease_note_request, opts)
       data
     end
 
     # Update an applicant group note
-    # Updates an applicant group note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &amp;gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
+    # Updates an applicant group note.              &lt;br /&gt;&lt;br /&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Any field not included in the update request will be set to either an empty string or &#x60;null&#x60; in the database depending on the field definition. &lt;br /&gt;The recommended workflow to ensure no data is inadvertently overwritten is to execute a &#x60;GET&#x60; request for the resource you&#39;re about to update and then use this response to fill any of the fields that are not being updated.              &lt;br /&gt;&lt;br /&gt;&lt;h4&gt;Required permission(s):&lt;/h4&gt;&lt;span class&#x3D;\&quot;permissionBlock\&quot;&gt;Rentals &gt; Applicants&lt;/span&gt; - &#x60;View&#x60; &#x60;Edit&#x60;
     # @param applicant_group_id [Integer] 
     # @param note_id [Integer] 
-    # @param note_put_message [NotePutMessage] 
+    # @param update_lease_note_request [UpdateLeaseNoteRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(NoteMessage, Integer, Hash)>] NoteMessage data, response status code and response headers
-    def update_application_group_note_with_http_info(applicant_group_id, note_id, note_put_message, opts = {})
+    def update_application_group_note_with_http_info(applicant_group_id, note_id, update_lease_note_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ApplicantsApi.update_application_group_note ...'
       end
@@ -1316,9 +1322,9 @@ module Buildium
       if @api_client.config.client_side_validation && note_id.nil?
         fail ArgumentError, "Missing the required parameter 'note_id' when calling ApplicantsApi.update_application_group_note"
       end
-      # verify the required parameter 'note_put_message' is set
-      if @api_client.config.client_side_validation && note_put_message.nil?
-        fail ArgumentError, "Missing the required parameter 'note_put_message' when calling ApplicantsApi.update_application_group_note"
+      # verify the required parameter 'update_lease_note_request' is set
+      if @api_client.config.client_side_validation && update_lease_note_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_lease_note_request' when calling ApplicantsApi.update_application_group_note"
       end
       # resource path
       local_var_path = '/v1/applicants/groups/{applicantGroupId}/notes/{noteId}'.sub('{' + 'applicantGroupId' + '}', CGI.escape(applicant_group_id.to_s)).sub('{' + 'noteId' + '}', CGI.escape(note_id.to_s))
@@ -1333,14 +1339,14 @@ module Buildium
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
-        header_params['Content-Type'] = content_type
+          header_params['Content-Type'] = content_type
       end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(note_put_message)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_lease_note_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'NoteMessage'

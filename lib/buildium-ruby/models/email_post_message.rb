@@ -15,7 +15,7 @@ require 'time'
 
 module Buildium
   class EmailPostMessage
-    # Unique identifier of the email template to use for the body of the email. Any tokens present in the template will be replaced based on the recipient(s) of the email.
+    # Unique identifier of the email template to use for the body of the email. Any tokens present in the template will be replaced based on the recipient(s) of the email.  The following email templates cannot be used:  <ul><li>1 (Tenant Statement)</li><li>2 (Homeowner Statement)</li><li>3 (Rental Owner Statement)</li><li>123 (Association Tenant Invoice)</li><li>124 (Rental Tenant Invoice)</li></ul>
     attr_accessor :template_id
 
     # Email subject.
@@ -133,6 +133,10 @@ module Buildium
         invalid_properties.push('invalid value for "subject", subject cannot be nil.')
       end
 
+      if @subject.to_s.length < 1
+        invalid_properties.push('invalid value for "subject", the character length must be great than or equal to 1.')
+      end
+
       if @include_alternate_emails.nil?
         invalid_properties.push('invalid value for "include_alternate_emails", include_alternate_emails cannot be nil.')
       end
@@ -153,10 +157,25 @@ module Buildium
     def valid?
       return false if @template_id.nil?
       return false if @subject.nil?
+      return false if @subject.to_s.length < 1
       return false if @include_alternate_emails.nil?
       return false if @exclude_delinquent_recipients.nil?
       return false if @include_association_tenants.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] subject Value to be assigned
+    def subject=(subject)
+      if subject.nil?
+        fail ArgumentError, 'subject cannot be nil'
+      end
+
+      if subject.to_s.length < 1
+        fail ArgumentError, 'invalid value for "subject", the character length must be great than or equal to 1.'
+      end
+
+      @subject = subject
     end
 
     # Checks equality by comparing each attribute.
@@ -196,7 +215,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -303,5 +322,6 @@ module Buildium
         value
       end
     end
+
   end
 end

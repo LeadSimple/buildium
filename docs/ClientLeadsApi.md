@@ -14,7 +14,7 @@ All URIs are relative to *https://api.buildium.com*
 
 Retrieve all client leads
 
-Retrieves all client leads              <br /><br />              Note: When using the `orderby` query string parameter, the only supported options are DateReceived.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; All Property Management</span> - `View`
+Retrieves all client leads              <br /><br />              Note: When using the `orderby` query string parameter, the only supported options are DateReceived.              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > All Property Management</span> - `View`
 
 ### Examples
 
@@ -106,7 +106,7 @@ end
 
 Retrieve a client lead
 
-Retrieves a specific client lead              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration &gt; All Property Management</span> - `View`
+Retrieves a specific client lead              <br /><br /><h4>Required permission(s):</h4><span class=\"permissionBlock\">Administration > All Property Management</span> - `View`
 
 ### Examples
 

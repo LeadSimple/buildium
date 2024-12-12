@@ -174,6 +174,10 @@ module Buildium
         invalid_properties.push('invalid value for "title", title cannot be nil.')
       end
 
+      if @title.to_s.length < 1
+        invalid_properties.push('invalid value for "title", the character length must be great than or equal to 1.')
+      end
+
       if @assigned_to_user_id.nil?
         invalid_properties.push('invalid value for "assigned_to_user_id", assigned_to_user_id cannot be nil.')
       end
@@ -193,6 +197,7 @@ module Buildium
     # @return true if the model is valid
     def valid?
       return false if @title.nil?
+      return false if @title.to_s.length < 1
       return false if @assigned_to_user_id.nil?
       return false if @task_status.nil?
       task_status_validator = EnumAttributeValidator.new('String', ["New", "InProgress", "Completed", "Deferred", "Closed"])
@@ -201,6 +206,20 @@ module Buildium
       priority_validator = EnumAttributeValidator.new('String', ["Low", "Normal", "High"])
       return false unless priority_validator.valid?(@priority)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] title Value to be assigned
+    def title=(title)
+      if title.nil?
+        fail ArgumentError, 'title cannot be nil'
+      end
+
+      if title.to_s.length < 1
+        fail ArgumentError, 'invalid value for "title", the character length must be great than or equal to 1.'
+      end
+
+      @title = title
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -263,7 +282,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -370,5 +389,6 @@ module Buildium
         value
       end
     end
+
   end
 end

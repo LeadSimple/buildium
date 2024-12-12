@@ -22,6 +22,9 @@ module Buildium
     # Memo associated with the charge. The value cannot exceed 65 characters.
     attr_accessor :memo
 
+    # Unique identifier of the bill this charge is associated to. If provided, the property of the lease the  charge is being created in must be in at least one line item of the bill.
+    attr_accessor :bill_id
+
     # A collection of line items included in the charge. At least one line item is required.
     attr_accessor :lines
 
@@ -30,6 +33,7 @@ module Buildium
       {
         :'date' => :'Date',
         :'memo' => :'Memo',
+        :'bill_id' => :'BillId',
         :'lines' => :'Lines'
       }
     end
@@ -44,6 +48,7 @@ module Buildium
       {
         :'date' => :'Date',
         :'memo' => :'String',
+        :'bill_id' => :'Integer',
         :'lines' => :'Array<LeaseChargeLineSaveMessage>'
       }
     end
@@ -77,6 +82,10 @@ module Buildium
         self.memo = attributes[:'memo']
       end
 
+      if attributes.key?(:'bill_id')
+        self.bill_id = attributes[:'bill_id']
+      end
+
       if attributes.key?(:'lines')
         if (value = attributes[:'lines']).is_a?(Array)
           self.lines = value
@@ -104,6 +113,7 @@ module Buildium
       self.class == o.class &&
           date == o.date &&
           memo == o.memo &&
+          bill_id == o.bill_id &&
           lines == o.lines
     end
 
@@ -116,7 +126,7 @@ module Buildium
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [date, memo, lines].hash
+      [date, memo, bill_id, lines].hash
     end
 
     # Builds the object from hash
@@ -130,7 +140,7 @@ module Buildium
     # @param [Hash] attributes Model attributes in the form of hash
     # @return [Object] Returns the model itself
     def build_from_hash(attributes)
-      return unless attributes.is_a?(Hash)
+      return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
       self.class.openapi_types.each_pair do |key, type|
         if attributes[self.class.attribute_map[key]].nil? && self.class.openapi_nullable.include?(key)
@@ -237,5 +247,6 @@ module Buildium
         value
       end
     end
+
   end
 end

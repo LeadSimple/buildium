@@ -10,7 +10,7 @@
 | **announcement_date** | **Date** | Date the announcement was published. | [optional] |
 | **expiration_date** | **Date** | Indicates the date on which the announcement will be removed from the Resident Center. | [optional] |
 | **channels** | **Array&lt;String&gt;** | List of the distribution channels the announcement was sent through. | [optional] |
-| **sender** | [**AnnouncementSenderMessage**](AnnouncementSenderMessage.md) |  | [optional] |
+| **sender** | [**AnnouncementMessageSender**](AnnouncementMessageSender.md) |  | [optional] |
 
 ## Example
 

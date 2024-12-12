@@ -11,8 +11,8 @@
 | **alternate_email** | **String** | Alternate Email for the cosigner. | [optional] |
 | **phone_numbers** | [**Array&lt;PhoneNumberMessage&gt;**](PhoneNumberMessage.md) | List of phone numbers for the cosigner. | [optional] |
 | **created_date_time** | **Time** | Created date of this cosigner record. | [optional] |
-| **address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
-| **alternate_address** | [**AddressMessage**](AddressMessage.md) |  | [optional] |
+| **address** | [**CosignerMessageAddress**](CosignerMessageAddress.md) |  | [optional] |
+| **alternate_address** | [**CosignerMessageAlternateAddress**](CosignerMessageAlternateAddress.md) |  | [optional] |
 | **mailing_preference** | **String** | Mailing preference for the cosigner. | [optional] |
 
 ## Example

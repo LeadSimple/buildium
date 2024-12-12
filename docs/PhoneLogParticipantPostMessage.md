@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **entity_type** | **String** | The type of participant entity. |  |
 | **entity_id** | **Integer** | The unique identifier for the participant entity. |  |
-| **unit_agreement** | [**PhoneLogParticipantUnitAgreementPostMessage**](PhoneLogParticipantUnitAgreementPostMessage.md) |  | [optional] |
+| **unit_agreement** | [**PhoneLogParticipantPostMessageUnitAgreement**](PhoneLogParticipantPostMessageUnitAgreement.md) |  | [optional] |
 
 ## Example
 

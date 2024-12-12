@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    buildium-ruby (3.0.0)
+    buildium-ruby (3.1.0)
       faraday (>= 1.0.1, < 3.0)
       faraday-multipart
 
@@ -27,4 +27,4 @@ DEPENDENCIES
   buildium-ruby!
 
 BUNDLED WITH
-   2.2.29
+   2.5.22
